@@ -1,0 +1,92 @@
+[
+  {
+    "title": "fetch",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)fetch",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)fetch",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/fetch#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "fetch",
+    "section": "fetch",
+    "section_id": "fetch",
+    "heading_level": 1,
+    "content": "# fetch\n\nNext.js extends the [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_API) to allow each request on the server to set its own persistent caching and revalidation semantics.\n\nIn the browser, the `cache` option indicates how a fetch request will interact with the *browser's* HTTP cache. With this extension, `cache` indicates how a *server-side* fetch request will interact with the framework's persistent [Data Cache](/docs/app/building-your-application/caching#data-cache).\n\nYou can call `fetch` with `async` and `await` directly within Server Components.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page() {\n  let data = await fetch('https://api.vercel.app/blog')\n  let posts = await data.json()\n  return (\n    <ul>\n      {posts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```",
+    "preview": "Next.js extends the [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_API) to allow each request on the server to set its own persistent caching and revalidation semantics. In the browser, the `cache` option indicates how a fetch request will interact with the *browser's* HTTP ca",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/fetch#fetch",
+    "position": 1
+  },
+  {
+    "title": "fetch",
+    "section": "[`fetch(url, options)`](#fetchurl-options)",
+    "section_id": "fetch-url-options-fetchurl-options",
+    "heading_level": 2,
+    "content": "## [`fetch(url, options)`](#fetchurl-options)\n\nSince Next.js extends the [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_API), you can use any of the [native options available](https://developer.mozilla.org/docs/Web/API/fetch#parameters).",
+    "preview": "Since Next.js extends the [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_API), you can use any of the [native options available](https://developer.mozilla.org/docs/Web/API/fetch#parameters).",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/fetch#fetch-url-options-fetchurl-options",
+    "position": 2
+  },
+  {
+    "title": "fetch",
+    "section": "[`options.cache`](#optionscache)",
+    "section_id": "options-cache-optionscache",
+    "heading_level": 3,
+    "content": "### [`options.cache`](#optionscache)\n\nConfigure how the request should interact with Next.js [Data Cache](/docs/app/building-your-application/caching#data-cache).\n\n```\nfetch(`https://...`, { cache: 'force-cache' | 'no-store' })\n```\n\n* **`auto no cache`** (default): Next.js fetches the resource from the remote server on every request in development, but will fetch once during `next build` because the route will be statically prerendered. If [Dynamic APIs](/docs/app/building-your-application/rendering/server-components#dynamic-rendering) are detected on the route, Next.js will fetch the resource on every request.\n* **`no-store`**: Next.js fetches the resource from the remote server on every request, even if Dynamic APIs are not detected on the route.\n* **`force-cache`**: Next.js looks for a matching request in its Data Cache.\n  + If there is a match and it is fresh, it will be returned from the cache.\n  + If there is no match or a stale match, Next.js will fetch the resource from the remote server and update the cache with the downloaded resource.",
+    "preview": "Configure how the request should interact with Next.js [Data Cache](/docs/app/building-your-application/caching#data-cache). ``` fetch(`https://...`, { cache: 'force-cache' | 'no-store' }) ``` * **`auto no cache`** (default): Next.js fetches the resource from the remote server on every request in",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/fetch#options-cache-optionscache",
+    "position": 3
+  },
+  {
+    "title": "fetch",
+    "section": "[`options.next.revalidate`](#optionsnextrevalidate)",
+    "section_id": "options-next-revalidate-optionsnextrevalidate",
+    "heading_level": 3,
+    "content": "### [`options.next.revalidate`](#optionsnextrevalidate)\n\n```\nfetch(`https://...`, { next: { revalidate: false | 0 | number } })\n```\n\nSet the cache lifetime of a resource (in seconds).\n\n* **`false`** - Cache the resource indefinitely. Semantically equivalent to `revalidate: Infinity`. The HTTP cache may evict older resources over time.\n* **`0`** - Prevent the resource from being cached.\n* **`number`** - (in seconds) Specify the resource should have a cache lifetime of at most `n` seconds.\n\n> **Good to know**:\n>\n> * If an individual `fetch()` request sets a `revalidate` number lower than the [default `revalidate`](/docs/app/api-reference/file-conventions/route-segment-config#revalidate) of a route, the whole route revalidation interval will be decreased.\n> * If two fetch requests with the same URL in the same route have different `revalidate` values, the lower value will be used.\n> * As a convenience, it is not necessary to set the `cache` option if `revalidate` is set to a number.\n> * Conflicting options such as `{ revalidate: 3600, cache: 'no-store' }` will cause an error.",
+    "preview": "``` fetch(`https://...`, { next: { revalidate: false | 0 | number } }) ``` Set the cache lifetime of a resource (in seconds). * **`false`** - Cache the resource indefinitely. Semantically equivalent to `revalidate: Infinity`. The HTTP cache may evict older resources over time. * **`0`** - Prevent",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/fetch#options-next-revalidate-optionsnextrevalidate",
+    "position": 4
+  },
+  {
+    "title": "fetch",
+    "section": "[`options.next.tags`](#optionsnexttags)",
+    "section_id": "options-next-tags-optionsnexttags",
+    "heading_level": 3,
+    "content": "### [`options.next.tags`](#optionsnexttags)\n\n```\nfetch(`https://...`, { next: { tags: ['collection'] } })\n```\n\nSet the cache tags of a resource. Data can then be revalidated on-demand using [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag). The max length for a custom tag is 256 characters and the max tag items is 128.",
+    "preview": "``` fetch(`https://...`, { next: { tags: ['collection'] } }) ``` Set the cache tags of a resource. Data can then be revalidated on-demand using [`revalidateTag`](https://nextjs.org/docs/app/api-reference/functions/revalidateTag). The max length for a custom tag is 256 characters and the max tag ite",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/fetch#options-next-tags-optionsnexttags",
+    "position": 5
+  },
+  {
+    "title": "fetch",
+    "section": "[Troubleshooting](#troubleshooting)",
+    "section_id": "troubleshooting-troubleshooting",
+    "heading_level": 2,
+    "content": "## [Troubleshooting](#troubleshooting)",
+    "preview": "## [Troubleshooting](#troubleshooting)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/fetch#troubleshooting-troubleshooting",
+    "position": 6
+  },
+  {
+    "title": "fetch",
+    "section": "[Fetch default `auto no store` and `cache: 'no-store'` not showing fresh data in development](#fetch-default-auto-no-store-and-cache-no-store-not-showing-fresh-data-in-development)",
+    "section_id": "fetch-default-auto-no-store-and-cache-no-store-not-showing-fresh-data-in-development-fetch-default-auto-no-store-and-cache-no-store-not-showing-fresh-data-in-development",
+    "heading_level": 3,
+    "content": "### [Fetch default `auto no store` and `cache: 'no-store'` not showing fresh data in development](#fetch-default-auto-no-store-and-cache-no-store-not-showing-fresh-data-in-development)\n\nNext.js caches `fetch` responses in Server Components across Hot Module Replacement (HMR) in local development for faster responses and to reduce costs for billed API calls.\n\nBy default, the [HMR cache](/docs/app/api-reference/config/next-config-js/serverComponentsHmrCache) applies to all fetch requests, including those with the default `auto no cache` and `cache: 'no-store'` option. This means uncached requests will not show fresh data between HMR refreshes. However, the cache will be cleared on navigation or full-page reloads.\n\nSee the [`serverComponentsHmrCache`](/docs/app/api-reference/config/next-config-js/serverComponentsHmrCache) docs for more information.",
+    "preview": "Next.js caches `fetch` responses in Server Components across Hot Module Replacement (HMR) in local development for faster responses and to reduce costs for billed API calls. By default, the [HMR cache](/docs/app/api-reference/config/next-config-js/serverComponentsHmrCache) applies to all fetch requ",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/fetch#fetch-default-auto-no-store-and-cache-no-store-not-showing-fresh-data-in-development-fetch-default-auto-no-store-and-cache-no-store-not-showing-fresh-data-in-development",
+    "position": 7
+  },
+  {
+    "title": "fetch",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.0.0` | `fetch` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.0.0` | `fetch` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/fetch#version-history-version-history",
+    "position": 8
+  }
+]

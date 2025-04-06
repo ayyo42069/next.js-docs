@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Using Google Analytics with Next.js (through `next/script`)",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)Using Google Analytics with Next.js (through `next/script`)",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)Using Google Analytics with Next.js (through `next/script`)",
+    "url": "https://nextjs.org/docs/messages/next-script-for-ga#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Using Google Analytics with Next.js (through `next/script`)",
+    "section": "Using Google Analytics with Next.js (through `next/script`)",
+    "section_id": "using-google-analytics-with-next-js-through-next-script",
+    "heading_level": 1,
+    "content": "# Using Google Analytics with Next.js (through `next/script`)\n\n> Prefer `next/script` component when using the inline script for Google Analytics.",
+    "preview": "> Prefer `next/script` component when using the inline script for Google Analytics.",
+    "url": "https://nextjs.org/docs/messages/next-script-for-ga#using-google-analytics-with-next-js-through-next-script",
+    "position": 1
+  },
+  {
+    "title": "Using Google Analytics with Next.js (through `next/script`)",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nAn inline script was used for Google Analytics which might impact your webpage's performance. Instead, we recommend using `next/script` through the `@next/third-parties` library.",
+    "preview": "An inline script was used for Google Analytics which might impact your webpage's performance. Instead, we recommend using `next/script` through the `@next/third-parties` library.",
+    "url": "https://nextjs.org/docs/messages/next-script-for-ga#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "Using Google Analytics with Next.js (through `next/script`)",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "preview": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "url": "https://nextjs.org/docs/messages/next-script-for-ga#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "Using Google Analytics with Next.js (through `next/script`)",
+    "section": "[Use `@next/third-parties` to add Google Analytics](#use-nextthird-parties-to-add-google-analytics)",
+    "section_id": "use-next-third-parties-to-add-google-analytics-use-nextthird-parties-to-add-google-analytics",
+    "heading_level": 3,
+    "content": "### [Use `@next/third-parties` to add Google Analytics](#use-nextthird-parties-to-add-google-analytics)\n\n**`@next/third-parties`** is a library that provides a collection of components and utilities that improve the performance and developer experience of loading popular third-party libraries in your Next.js application. It is available with Next.js 14 (install `next@latest`).\n\nThe `GoogleAnalytics` component can be used to include [Google Analytics\n4](https://developers.google.com/analytics/devguides/collection/ga4) to your page via the Google tag (`gtag.js`). By default, it fetches the original scripts after hydration occurs on the page.\n\n> **Recommendation**: If Google Tag Manager is already included in your application, you can\n> configure Google Analytics directly using it, rather than including Google Analytics as a separate component. Refer to the [documentation](https://developers.google.com/analytics/devguides/collection/ga4/tag-options#what-is-gtm)\n> to learn more about the differences between Tag Manager and `gtag.js`.\n\nTo load Google Analytics for all routes, include the component directly in your root layout and pass in your measurement ID:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { GoogleAnalytics } from '@next/third-parties/google'\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body>{children}</body>\n      <GoogleAnalytics gaId=\"G-XYZ\" />\n    </html>\n  )\n}\n```\n\nTo load Google Analytics for a single route, include the component in your page file:\n\napp/page.js\n\n```\nimport { GoogleAnalytics } from '@next/third-parties/google'\n \nexport default function Page() {\n  return <GoogleAnalytics gaId=\"G-XYZ\" />\n}\n```\n\n> **Good to know:**\n>\n> * If you are using the Pages Router, please refer to the [`pages/` documentation](/docs/pages/building-your-application/optimizing/third-party-libraries).\n> * `@next/third-parties` also supports [Google Tag Manager](/docs/app/building-your-application/optimizing/third-party-libraries#google-tag-manager) and other third parties.\n> * Using `@next/third-parties` is not required. You can also use the `next/script` component directly. Refer to the [`next/script` documentation](/docs/app/building-your-application/optimizing/scripts) to learn more.",
+    "preview": "**`@next/third-parties`** is a library that provides a collection of components and utilities that improve the performance and developer experience of loading popular third-party libraries in your Next.js application. It is available with Next.js 14 (install `next@latest`). The `GoogleAnalytics` co",
+    "url": "https://nextjs.org/docs/messages/next-script-for-ga#use-next-third-parties-to-add-google-analytics-use-nextthird-parties-to-add-google-analytics",
+    "position": 4
+  },
+  {
+    "title": "Using Google Analytics with Next.js (through `next/script`)",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [`@next/third-parties` Documentation](/docs/app/building-your-application/optimizing/third-party-libraries)\n* [`next/script` Documentation](/docs/app/building-your-application/optimizing/scripts)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [`@next/third-parties` Documentation](/docs/app/building-your-application/optimizing/third-party-libraries) * [`next/script` Documentation](/docs/app/building-your-application/optimizing/scripts) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/next-script-for-ga#useful-links-useful-links",
+    "position": 5
+  }
+]

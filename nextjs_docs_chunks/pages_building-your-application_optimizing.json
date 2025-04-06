@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Optimizations",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Pages Router](/docs/pages)[Building Your Application](/docs/pages/building-your-application)Optimizing",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Pages Router](/docs/pages)[Building Your Application](/docs/pages/building-your-application)Optimizing",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Optimizations",
+    "section": "Optimizations",
+    "section_id": "optimizations",
+    "heading_level": 1,
+    "content": "# Optimizations\n\nNext.js comes with a variety of built-in optimizations designed to improve your application's speed and [Core Web Vitals](https://web.dev/vitals/). This guide will cover the optimizations you can leverage to enhance your user experience.",
+    "preview": "Next.js comes with a variety of built-in optimizations designed to improve your application's speed and [Core Web Vitals](https://web.dev/vitals/). This guide will cover the optimizations you can leverage to enhance your user experience.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing#optimizations",
+    "position": 1
+  },
+  {
+    "title": "Optimizations",
+    "section": "[Built-in Components](#built-in-components)",
+    "section_id": "built-in-components-built-in-components",
+    "heading_level": 2,
+    "content": "## [Built-in Components](#built-in-components)\n\nBuilt-in components abstract away the complexity of implementing common UI optimizations. These components are:\n\n* **Images**: Built on the native `<img>` element. The Image Component optimizes images for performance by lazy loading and automatically resizing images based on device size.\n* **Link**: Built on the native `<a>` tags. The Link Component prefetches pages in the background, for faster and smoother page transitions.\n* **Scripts**: Built on the native `<script>` tags. The Script Component gives you control over loading and execution of third-party scripts.",
+    "preview": "Built-in components abstract away the complexity of implementing common UI optimizations. These components are: * **Images**: Built on the native `<img>` element. The Image Component optimizes images for performance by lazy loading and automatically resizing images based on device size. * **Link**:",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing#built-in-components-built-in-components",
+    "position": 2
+  },
+  {
+    "title": "Optimizations",
+    "section": "[Metadata](#metadata)",
+    "section_id": "metadata-metadata",
+    "heading_level": 2,
+    "content": "## [Metadata](#metadata)\n\nMetadata helps search engines understand your content better (which can result in better SEO), and allows you to customize how your content is presented on social media, helping you create a more engaging and consistent user experience across various platforms.\n\nThe Head Component in Next.js allows you to modify the `<head>` of a page. Learn more in the [Head Component](/docs/pages/api-reference/components/head) documentation.",
+    "preview": "Metadata helps search engines understand your content better (which can result in better SEO), and allows you to customize how your content is presented on social media, helping you create a more engaging and consistent user experience across various platforms. The Head Component in Next.js allows",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing#metadata-metadata",
+    "position": 3
+  },
+  {
+    "title": "Optimizations",
+    "section": "[Static Assets](#static-assets)",
+    "section_id": "static-assets-static-assets",
+    "heading_level": 2,
+    "content": "## [Static Assets](#static-assets)\n\nNext.js `/public` folder can be used to serve static assets like images, fonts, and other files. Files inside `/public` can also be cached by CDN providers so that they are delivered efficiently.",
+    "preview": "Next.js `/public` folder can be used to serve static assets like images, fonts, and other files. Files inside `/public` can also be cached by CDN providers so that they are delivered efficiently.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing#static-assets-static-assets",
+    "position": 4
+  },
+  {
+    "title": "Optimizations",
+    "section": "[Analytics and Monitoring](#analytics-and-monitoring)",
+    "section_id": "analytics-and-monitoring-analytics-and-monitoring",
+    "heading_level": 2,
+    "content": "## [Analytics and Monitoring](#analytics-and-monitoring)\n\nFor large applications, Next.js integrates with popular analytics and monitoring tools to help you understand how your application is performing. Learn more in the [Analytics](/docs/app/building-your-application/optimizing/analytics),  [OpenTelemetry](/docs/pages/building-your-application/optimizing/open-telemetry), and [Instrumentation](/docs/pages/building-your-application/optimizing/instrumentation) guides.\n\n[### Images\n\nOptimize your images with the built-in `next/image` component.](/docs/pages/building-your-application/optimizing/images)[### Fonts\n\nOptimize your application's web fonts with the built-in `next/font` loaders.](/docs/pages/building-your-application/optimizing/fonts)[### Scripts\n\nOptimize 3rd party scripts with the built-in Script component.](/docs/pages/building-your-application/optimizing/scripts)[### Static Assets\n\nNext.js allows you to serve static files, like images, in the public directory. You can learn how it works here.](/docs/pages/building-your-application/optimizing/static-assets)[### Bundling\n\nLearn how to optimize your application's server and client bundles.](/docs/pages/building-your-application/optimizing/package-bundling)[### Analytics\n\nMeasure and track page performance using Next.js Speed Insights](/docs/pages/building-your-application/optimizing/analytics)[### Lazy Loading\n\nLazy load imported libraries and React Components to improve your application's overall loading performance.](/docs/pages/building-your-application/optimizing/lazy-loading)[### Instrumentation\n\nLearn how to use instrumentation to run code at server startup in your Next.js app](/docs/pages/building-your-application/optimizing/instrumentation)[### OpenTelemetry\n\nLearn how to instrument your Next.js app with OpenTelemetry.](/docs/pages/building-your-application/optimizing/open-telemetry)[### Third Party Libraries\n\nOptimize the performance of third-party libraries in your application with the `@next/third-parties` package.](/docs/pages/building-your-application/optimizing/third-party-libraries)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "For large applications, Next.js integrates with popular analytics and monitoring tools to help you understand how your application is performing. Learn more in the [Analytics](/docs/app/building-your-application/optimizing/analytics), [OpenTelemetry](/docs/pages/building-your-application/optimizing",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing#analytics-and-monitoring-analytics-and-monitoring",
+    "position": 5
+  }
+]

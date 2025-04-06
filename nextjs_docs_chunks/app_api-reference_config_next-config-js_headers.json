@@ -1,0 +1,202 @@
+[
+  {
+    "title": "headers",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)headers",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)headers",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "headers",
+    "section": "headers",
+    "section_id": "headers",
+    "heading_level": 1,
+    "content": "# headers\n\nHeaders allow you to set custom HTTP headers on the response to an incoming request on a given path.\n\nTo set custom HTTP headers you can use the `headers` key in `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        source: '/about',\n        headers: [\n          {\n            key: 'x-custom-header',\n            value: 'my custom header value',\n          },\n          {\n            key: 'x-another-custom-header',\n            value: 'my other custom header value',\n          },\n        ],\n      },\n    ]\n  },\n}\n```\n\n`headers` is an async function that expects an array to be returned holding objects with `source` and `headers` properties:\n\n* `source` is the incoming request path pattern.\n* `headers` is an array of response header objects, with `key` and `value` properties.\n* `basePath`: `false` or `undefined` - if false the basePath won't be included when matching, can be used for external rewrites only.\n* `locale`: `false` or `undefined` - whether the locale should not be included when matching.\n* `has` is an array of [has objects](#header-cookie-and-query-matching) with the `type`, `key` and `value` properties.\n* `missing` is an array of [missing objects](#header-cookie-and-query-matching) with the `type`, `key` and `value` properties.\n\nHeaders are checked before the filesystem which includes pages and `/public` files.",
+    "preview": "Headers allow you to set custom HTTP headers on the response to an incoming request on a given path. To set custom HTTP headers you can use the `headers` key in `next.config.js`: next.config.js [Code Block] `headers` is an async function that expects an array to be returned holding objects with",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#headers",
+    "position": 1
+  },
+  {
+    "title": "headers",
+    "section": "[Header Overriding Behavior](#header-overriding-behavior)",
+    "section_id": "header-overriding-behavior-header-overriding-behavior",
+    "heading_level": 2,
+    "content": "## [Header Overriding Behavior](#header-overriding-behavior)\n\nIf two headers match the same path and set the same header key, the last header key will override the first. Using the below headers, the path `/hello` will result in the header `x-hello` being `world` due to the last header value set being `world`.\n\nnext.config.js\n\n```\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        source: '/:path*',\n        headers: [\n          {\n            key: 'x-hello',\n            value: 'there',\n          },\n        ],\n      },\n      {\n        source: '/hello',\n        headers: [\n          {\n            key: 'x-hello',\n            value: 'world',\n          },\n        ],\n      },\n    ]\n  },\n}\n```",
+    "preview": "If two headers match the same path and set the same header key, the last header key will override the first. Using the below headers, the path `/hello` will result in the header `x-hello` being `world` due to the last header value set being `world`. next.config.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#header-overriding-behavior-header-overriding-behavior",
+    "position": 2
+  },
+  {
+    "title": "headers",
+    "section": "[Path Matching](#path-matching)",
+    "section_id": "path-matching-path-matching",
+    "heading_level": 2,
+    "content": "## [Path Matching](#path-matching)\n\nPath matches are allowed, for example `/blog/:slug` will match `/blog/hello-world` (no nested paths):\n\nnext.config.js\n\n```\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        source: '/blog/:slug',\n        headers: [\n          {\n            key: 'x-slug',\n            value: ':slug', // Matched parameters can be used in the value\n          },\n          {\n            key: 'x-slug-:slug', // Matched parameters can be used in the key\n            value: 'my other custom header value',\n          },\n        ],\n      },\n    ]\n  },\n}\n```",
+    "preview": "Path matches are allowed, for example `/blog/:slug` will match `/blog/hello-world` (no nested paths): next.config.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#path-matching-path-matching",
+    "position": 3
+  },
+  {
+    "title": "headers",
+    "section": "[Wildcard Path Matching](#wildcard-path-matching)",
+    "section_id": "wildcard-path-matching-wildcard-path-matching",
+    "heading_level": 3,
+    "content": "### [Wildcard Path Matching](#wildcard-path-matching)\n\nTo match a wildcard path you can use `*` after a parameter, for example `/blog/:slug*` will match `/blog/a/b/c/d/hello-world`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        source: '/blog/:slug*',\n        headers: [\n          {\n            key: 'x-slug',\n            value: ':slug*', // Matched parameters can be used in the value\n          },\n          {\n            key: 'x-slug-:slug*', // Matched parameters can be used in the key\n            value: 'my other custom header value',\n          },\n        ],\n      },\n    ]\n  },\n}\n```",
+    "preview": "To match a wildcard path you can use `*` after a parameter, for example `/blog/:slug*` will match `/blog/a/b/c/d/hello-world`: next.config.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#wildcard-path-matching-wildcard-path-matching",
+    "position": 4
+  },
+  {
+    "title": "headers",
+    "section": "[Regex Path Matching](#regex-path-matching)",
+    "section_id": "regex-path-matching-regex-path-matching",
+    "heading_level": 3,
+    "content": "### [Regex Path Matching](#regex-path-matching)\n\nTo match a regex path you can wrap the regex in parenthesis after a parameter, for example `/blog/:slug(\\\\d{1,})` will match `/blog/123` but not `/blog/abc`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        source: '/blog/:post(\\\\d{1,})',\n        headers: [\n          {\n            key: 'x-post',\n            value: ':post',\n          },\n        ],\n      },\n    ]\n  },\n}\n```\n\nThe following characters `(`, `)`, `{`, `}`, `:`, `*`, `+`, `?` are used for regex path matching, so when used in the `source` as non-special values they must be escaped by adding `\\\\` before them:\n\nnext.config.js\n\n```\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        // this will match `/english(default)/something` being requested\n        source: '/english\\\\(default\\\\)/:slug',\n        headers: [\n          {\n            key: 'x-header',\n            value: 'value',\n          },\n        ],\n      },\n    ]\n  },\n}\n```",
+    "preview": "To match a regex path you can wrap the regex in parenthesis after a parameter, for example `/blog/:slug(\\\\d{1,})` will match `/blog/123` but not `/blog/abc`: next.config.js [Code Block] The following characters `(`, `)`, `{`, `}`, `:`, `*`, `+`, `?` are used for regex path matching, so when used",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#regex-path-matching-regex-path-matching",
+    "position": 5
+  },
+  {
+    "title": "headers",
+    "section": "[Header, Cookie, and Query Matching](#header-cookie-and-query-matching)",
+    "section_id": "header-cookie-and-query-matching-header-cookie-and-query-matching",
+    "heading_level": 2,
+    "content": "## [Header, Cookie, and Query Matching](#header-cookie-and-query-matching)\n\nTo only apply a header when header, cookie, or query values also match the `has` field or don't match the `missing` field can be used. Both the `source` and all `has` items must match and all `missing` items must not match for the header to be applied.\n\n`has` and `missing` items can have the following fields:\n\n* `type`: `String` - must be either `header`, `cookie`, `host`, or `query`.\n* `key`: `String` - the key from the selected type to match against.\n* `value`: `String` or `undefined` - the value to check for, if undefined any value will match. A regex like string can be used to capture a specific part of the value, e.g. if the value `first-(?<paramName>.*)` is used for `first-second` then `second` will be usable in the destination with `:paramName`.\n\nnext.config.js\n\n```\nmodule.exports = {\n  async headers() {\n    return [\n      // if the header `x-add-header` is present,\n      // the `x-another-header` header will be applied\n      {\n        source: '/:path*',\n        has: [\n          {\n            type: 'header',\n            key: 'x-add-header',\n          },\n        ],\n        headers: [\n          {\n            key: 'x-another-header',\n            value: 'hello',\n          },\n        ],\n      },\n      // if the header `x-no-header` is not present,\n      // the `x-another-header` header will be applied\n      {\n        source: '/:path*',\n        missing: [\n          {\n            type: 'header',\n            key: 'x-no-header',\n          },\n        ],\n        headers: [\n          {\n            key: 'x-another-header',\n            value: 'hello',\n          },\n        ],\n      },\n      // if the source, query, and cookie are matched,\n      // the `x-authorized` header will be applied\n      {\n        source: '/specific/:path*',\n        has: [\n          {\n            type: 'query',\n            key: 'page',\n            // the page value will not be available in the\n            // header key/values since value is provided and\n            // doesn't use a named capture group e.g. (?<page>home)\n            value: 'home',\n          },\n          {\n            type: 'cookie',\n            key: 'authorized',\n            value: 'true',\n          },\n        ],\n        headers: [\n          {\n            key: 'x-authorized',\n            value: ':authorized',\n          },\n        ],\n      },\n      // if the header `x-authorized` is present and\n      // contains a matching value, the `x-another-header` will be applied\n      {\n        source: '/:path*',\n        has: [\n          {\n            type: 'header',\n            key: 'x-authorized',\n            value: '(?<authorized>yes|true)',\n          },\n        ],\n        headers: [\n          {\n            key: 'x-another-header',\n            value: ':authorized',\n          },\n        ],\n      },\n      // if the host is `example.com`,\n      // this header will be applied\n      {\n        source: '/:path*',\n        has: [\n          {\n            type: 'host',\n            value: 'example.com',\n          },\n        ],\n        headers: [\n          {\n            key: 'x-another-header',\n            value: ':authorized',\n          },\n        ],\n      },\n    ]\n  },\n}\n```",
+    "preview": "To only apply a header when header, cookie, or query values also match the `has` field or don't match the `missing` field can be used. Both the `source` and all `has` items must match and all `missing` items must not match for the header to be applied. `has` and `missing` items can have the followi",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#header-cookie-and-query-matching-header-cookie-and-query-matching",
+    "position": 6
+  },
+  {
+    "title": "headers",
+    "section": "[Headers with basePath support](#headers-with-basepath-support)",
+    "section_id": "headers-with-basepath-support-headers-with-basepath-support",
+    "heading_level": 2,
+    "content": "## [Headers with basePath support](#headers-with-basepath-support)\n\nWhen leveraging [`basePath` support](/docs/app/api-reference/config/next-config-js/basePath) with headers each `source` is automatically prefixed with the `basePath` unless you add `basePath: false` to the header:\n\nnext.config.js\n\n```\nmodule.exports = {\n  basePath: '/docs',\n \n  async headers() {\n    return [\n      {\n        source: '/with-basePath', // becomes /docs/with-basePath\n        headers: [\n          {\n            key: 'x-hello',\n            value: 'world',\n          },\n        ],\n      },\n      {\n        source: '/without-basePath', // is not modified since basePath: false is set\n        headers: [\n          {\n            key: 'x-hello',\n            value: 'world',\n          },\n        ],\n        basePath: false,\n      },\n    ]\n  },\n}\n```",
+    "preview": "When leveraging [`basePath` support](/docs/app/api-reference/config/next-config-js/basePath) with headers each `source` is automatically prefixed with the `basePath` unless you add `basePath: false` to the header: next.config.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#headers-with-basepath-support-headers-with-basepath-support",
+    "position": 7
+  },
+  {
+    "title": "headers",
+    "section": "[Headers with i18n support](#headers-with-i18n-support)",
+    "section_id": "headers-with-i18n-support-headers-with-i18n-support",
+    "heading_level": 2,
+    "content": "## [Headers with i18n support](#headers-with-i18n-support)\n\nWhen leveraging [`i18n` support](/docs/app/building-your-application/routing/internationalization) with headers each `source` is automatically prefixed to handle the configured `locales` unless you add `locale: false` to the header. If `locale: false` is used you must prefix the `source` with a locale for it to be matched correctly.\n\nnext.config.js\n\n```\nmodule.exports = {\n  i18n: {\n    locales: ['en', 'fr', 'de'],\n    defaultLocale: 'en',\n  },\n \n  async headers() {\n    return [\n      {\n        source: '/with-locale', // automatically handles all locales\n        headers: [\n          {\n            key: 'x-hello',\n            value: 'world',\n          },\n        ],\n      },\n      {\n        // does not handle locales automatically since locale: false is set\n        source: '/nl/with-locale-manual',\n        locale: false,\n        headers: [\n          {\n            key: 'x-hello',\n            value: 'world',\n          },\n        ],\n      },\n      {\n        // this matches '/' since `en` is the defaultLocale\n        source: '/en',\n        locale: false,\n        headers: [\n          {\n            key: 'x-hello',\n            value: 'world',\n          },\n        ],\n      },\n      {\n        // this gets converted to /(en|fr|de)/(.*) so will not match the top-level\n        // `/` or `/fr` routes like /:path* would\n        source: '/(.*)',\n        headers: [\n          {\n            key: 'x-hello',\n            value: 'world',\n          },\n        ],\n      },\n    ]\n  },\n}\n```",
+    "preview": "When leveraging [`i18n` support](/docs/app/building-your-application/routing/internationalization) with headers each `source` is automatically prefixed to handle the configured `locales` unless you add `locale: false` to the header. If `locale: false` is used you must prefix the `source` with a loca",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#headers-with-i18n-support-headers-with-i18n-support",
+    "position": 8
+  },
+  {
+    "title": "headers",
+    "section": "[Cache-Control](#cache-control)",
+    "section_id": "cache-control-cache-control",
+    "heading_level": 2,
+    "content": "## [Cache-Control](#cache-control)\n\nNext.js sets the `Cache-Control` header of `public, max-age=31536000, immutable` for truly immutable assets. It cannot be overridden. These immutable files contain a SHA-hash in the file name, so they can be safely cached indefinitely. For example, [Static Image Imports](/docs/app/building-your-application/optimizing/images#local-images). You cannot set `Cache-Control` headers in `next.config.js` for these assets.\n\nHowever, you can set `Cache-Control` headers for other responses or data.\n\nLearn more about [caching](/docs/app/building-your-application/caching) with the App Router.",
+    "preview": "Next.js sets the `Cache-Control` header of `public, max-age=31536000, immutable` for truly immutable assets. It cannot be overridden. These immutable files contain a SHA-hash in the file name, so they can be safely cached indefinitely. For example, [Static Image Imports](/docs/app/building-your-appl",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#cache-control-cache-control",
+    "position": 9
+  },
+  {
+    "title": "headers",
+    "section": "[Options](#options)",
+    "section_id": "options-options",
+    "heading_level": 2,
+    "content": "## [Options](#options)",
+    "preview": "## [Options](#options)",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#options-options",
+    "position": 10
+  },
+  {
+    "title": "headers",
+    "section": "[CORS](#cors)",
+    "section_id": "cors-cors",
+    "heading_level": 3,
+    "content": "### [CORS](#cors)\n\n[Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) is a security feature that allows you to control which sites can access your resources. You can set the `Access-Control-Allow-Origin` header to allow a specific origin to access your Route Handlers.\n\n```\nasync headers() {\n    return [\n      {\n        source: \"/api/:path*\",\n        headers: [\n          {\n            key: \"Access-Control-Allow-Origin\",\n            value: \"*\", // Set your origin\n          },\n          {\n            key: \"Access-Control-Allow-Methods\",\n            value: \"GET, POST, PUT, DELETE, OPTIONS\",\n          },\n          {\n            key: \"Access-Control-Allow-Headers\",\n            value: \"Content-Type, Authorization\",\n          },\n        ],\n      },\n    ];\n  },\n```",
+    "preview": "[Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) is a security feature that allows you to control which sites can access your resources. You can set the `Access-Control-Allow-Origin` header to allow a specific origin to access your Route Handlers. [Code Block",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#cors-cors",
+    "position": 11
+  },
+  {
+    "title": "headers",
+    "section": "[X-DNS-Prefetch-Control](#x-dns-prefetch-control)",
+    "section_id": "x-dns-prefetch-control-x-dns-prefetch-control",
+    "heading_level": 3,
+    "content": "### [X-DNS-Prefetch-Control](#x-dns-prefetch-control)\n\n[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control) controls DNS prefetching, allowing browsers to proactively perform domain name resolution on external links, images, CSS, JavaScript, and more. This prefetching is performed in the background, so the [DNS](https://developer.mozilla.org/docs/Glossary/DNS) is more likely to be resolved by the time the referenced items are needed. This reduces latency when the user clicks a link.\n\n```\n{\n  key: 'X-DNS-Prefetch-Control',\n  value: 'on'\n}\n```",
+    "preview": "[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control) controls DNS prefetching, allowing browsers to proactively perform domain name resolution on external links, images, CSS, JavaScript, and more. This prefetching is performed in the background, so the [DNS](http",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#x-dns-prefetch-control-x-dns-prefetch-control",
+    "position": 12
+  },
+  {
+    "title": "headers",
+    "section": "[Strict-Transport-Security](#strict-transport-security)",
+    "section_id": "strict-transport-security-strict-transport-security",
+    "heading_level": 3,
+    "content": "### [Strict-Transport-Security](#strict-transport-security)\n\n[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/Strict-Transport-Security) informs browsers it should only be accessed using HTTPS, instead of using HTTP. Using the configuration below, all present and future subdomains will use HTTPS for a `max-age` of 2 years. This blocks access to pages or subdomains that can only be served over HTTP.\n\nIf you're deploying to [Vercel](https://vercel.com/docs/concepts/edge-network/headers#strict-transport-security?utm_source=next-site&utm_medium=docs&utm_campaign=next-website), this header is not necessary as it's automatically added to all deployments unless you declare `headers` in your `next.config.js`.\n\n```\n{\n  key: 'Strict-Transport-Security',\n  value: 'max-age=63072000; includeSubDomains; preload'\n}\n```",
+    "preview": "[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/Strict-Transport-Security) informs browsers it should only be accessed using HTTPS, instead of using HTTP. Using the configuration below, all present and future subdomains will use HTTPS for a `max-age` of 2 years. This blocks access",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#strict-transport-security-strict-transport-security",
+    "position": 13
+  },
+  {
+    "title": "headers",
+    "section": "[X-Frame-Options](#x-frame-options)",
+    "section_id": "x-frame-options-x-frame-options",
+    "heading_level": 3,
+    "content": "### [X-Frame-Options](#x-frame-options)\n\n[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Frame-Options) indicates whether the site should be allowed to be displayed within an `iframe`. This can prevent against clickjacking attacks.\n\n**This header has been superseded by CSP's `frame-ancestors` option**, which has better support in modern browsers (see [Content Security Policy](/docs/app/building-your-application/configuring/content-security-policy) for configuration details).\n\n```\n{\n  key: 'X-Frame-Options',\n  value: 'SAMEORIGIN'\n}\n```",
+    "preview": "[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Frame-Options) indicates whether the site should be allowed to be displayed within an `iframe`. This can prevent against clickjacking attacks. **This header has been superseded by CSP's `frame-ancestors` option**, which has better",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#x-frame-options-x-frame-options",
+    "position": 14
+  },
+  {
+    "title": "headers",
+    "section": "[Permissions-Policy](#permissions-policy)",
+    "section_id": "permissions-policy-permissions-policy",
+    "heading_level": 3,
+    "content": "### [Permissions-Policy](#permissions-policy)\n\n[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/Permissions-Policy) allows you to control which features and APIs can be used in the browser. It was previously named `Feature-Policy`.\n\n```\n{\n  key: 'Permissions-Policy',\n  value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()'\n}\n```",
+    "preview": "[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/Permissions-Policy) allows you to control which features and APIs can be used in the browser. It was previously named `Feature-Policy`. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#permissions-policy-permissions-policy",
+    "position": 15
+  },
+  {
+    "title": "headers",
+    "section": "[X-Content-Type-Options](#x-content-type-options)",
+    "section_id": "x-content-type-options-x-content-type-options",
+    "heading_level": 3,
+    "content": "### [X-Content-Type-Options](#x-content-type-options)\n\n[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Content-Type-Options) prevents the browser from attempting to guess the type of content if the `Content-Type` header is not explicitly set. This can prevent XSS exploits for websites that allow users to upload and share files.\n\nFor example, a user trying to download an image, but having it treated as a different `Content-Type` like an executable, which could be malicious. This header also applies to downloading browser extensions. The only valid value for this header is `nosniff`.\n\n```\n{\n  key: 'X-Content-Type-Options',\n  value: 'nosniff'\n}\n```",
+    "preview": "[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Content-Type-Options) prevents the browser from attempting to guess the type of content if the `Content-Type` header is not explicitly set. This can prevent XSS exploits for websites that allow users to upload and share files. For",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#x-content-type-options-x-content-type-options",
+    "position": 16
+  },
+  {
+    "title": "headers",
+    "section": "[Referrer-Policy](#referrer-policy)",
+    "section_id": "referrer-policy-referrer-policy",
+    "heading_level": 3,
+    "content": "### [Referrer-Policy](#referrer-policy)\n\n[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referrer-Policy) controls how much information the browser includes when navigating from the current website (origin) to another.\n\n```\n{\n  key: 'Referrer-Policy',\n  value: 'origin-when-cross-origin'\n}\n```",
+    "preview": "[This header](https://developer.mozilla.org/docs/Web/HTTP/Headers/Referrer-Policy) controls how much information the browser includes when navigating from the current website (origin) to another. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#referrer-policy-referrer-policy",
+    "position": 17
+  },
+  {
+    "title": "headers",
+    "section": "[Content-Security-Policy](#content-security-policy)",
+    "section_id": "content-security-policy-content-security-policy",
+    "heading_level": 3,
+    "content": "### [Content-Security-Policy](#content-security-policy)\n\nLearn more about adding a [Content Security Policy](/docs/app/building-your-application/configuring/content-security-policy) to your application.",
+    "preview": "Learn more about adding a [Content Security Policy](/docs/app/building-your-application/configuring/content-security-policy) to your application.",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#content-security-policy-content-security-policy",
+    "position": 18
+  },
+  {
+    "title": "headers",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.3.0` | `missing` added. |\n| `v10.2.0` | `has` added. |\n| `v9.5.0` | Headers added. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.3.0` | `missing` added. | | `v10.2.0` | `has` added. | | `v9.5.0` | Headers added. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/headers#version-history-version-history",
+    "position": 19
+  }
+]

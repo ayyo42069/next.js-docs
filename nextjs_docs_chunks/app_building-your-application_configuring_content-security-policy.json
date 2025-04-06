@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Content Security Policy",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Configuring](/docs/app/building-your-application/configuring)Content Security Policy",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Configuring](/docs/app/building-your-application/configuring)Content Security Policy",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Content Security Policy",
+    "section": "Content Security Policy",
+    "section_id": "content-security-policy",
+    "heading_level": 1,
+    "content": "# Content Security Policy\n\n[Content Security Policy (CSP)](https://developer.mozilla.org/docs/Web/HTTP/CSP) is important to guard your Next.js application against various security threats such as cross-site scripting (XSS), clickjacking, and other code injection attacks.\n\nBy using CSP, developers can specify which origins are permissible for content sources, scripts, stylesheets, images, fonts, objects, media (audio, video), iframes, and more.\n\nExamples\n\n* [Strict CSP](https://github.com/vercel/next.js/tree/canary/examples/with-strict-csp)",
+    "preview": "[Content Security Policy (CSP)](https://developer.mozilla.org/docs/Web/HTTP/CSP) is important to guard your Next.js application against various security threats such as cross-site scripting (XSS), clickjacking, and other code injection attacks. By using CSP, developers can specify which origins are",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#content-security-policy",
+    "position": 1
+  },
+  {
+    "title": "Content Security Policy",
+    "section": "[Nonces](#nonces)",
+    "section_id": "nonces-nonces",
+    "heading_level": 2,
+    "content": "## [Nonces](#nonces)\n\nA [nonce](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/nonce) is a unique, random string of characters created for a one-time use. It is used in conjunction with CSP to selectively allow certain inline scripts or styles to execute, bypassing strict CSP directives.",
+    "preview": "A [nonce](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/nonce) is a unique, random string of characters created for a one-time use. It is used in conjunction with CSP to selectively allow certain inline scripts or styles to execute, bypassing strict CSP directives.",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#nonces-nonces",
+    "position": 2
+  },
+  {
+    "title": "Content Security Policy",
+    "section": "[Why use a nonce?](#why-use-a-nonce)",
+    "section_id": "why-use-a-nonce-why-use-a-nonce",
+    "heading_level": 3,
+    "content": "### [Why use a nonce?](#why-use-a-nonce)\n\nEven though CSPs are designed to block malicious scripts, there are legitimate scenarios where inline scripts are necessary. In such cases, nonces offer a way to allow these scripts to execute if they have the correct nonce.",
+    "preview": "Even though CSPs are designed to block malicious scripts, there are legitimate scenarios where inline scripts are necessary. In such cases, nonces offer a way to allow these scripts to execute if they have the correct nonce.",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#why-use-a-nonce-why-use-a-nonce",
+    "position": 3
+  },
+  {
+    "title": "Content Security Policy",
+    "section": "[Adding a nonce with Middleware](#adding-a-nonce-with-middleware)",
+    "section_id": "adding-a-nonce-with-middleware-adding-a-nonce-with-middleware",
+    "heading_level": 3,
+    "content": "### [Adding a nonce with Middleware](#adding-a-nonce-with-middleware)\n\n[Middleware](/docs/app/building-your-application/routing/middleware) enables you to add headers and generate nonces before the page renders.\n\nEvery time a page is viewed, a fresh nonce should be generated. This means that you **must use dynamic rendering to add nonces**.\n\nFor example:\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextRequest, NextResponse } from 'next/server'\n \nexport function middleware(request: NextRequest) {\n  const nonce = Buffer.from(crypto.randomUUID()).toString('base64')\n  const cspHeader = `\n    default-src 'self';\n    script-src 'self' 'nonce-${nonce}' 'strict-dynamic';\n    style-src 'self' 'nonce-${nonce}';\n    img-src 'self' blob: data:;\n    font-src 'self';\n    object-src 'none';\n    base-uri 'self';\n    form-action 'self';\n    frame-ancestors 'none';\n    upgrade-insecure-requests;\n`\n  // Replace newline characters and spaces\n  const contentSecurityPolicyHeaderValue = cspHeader\n    .replace(/\\s{2,}/g, ' ')\n    .trim()\n \n  const requestHeaders = new Headers(request.headers)\n  requestHeaders.set('x-nonce', nonce)\n \n  requestHeaders.set(\n    'Content-Security-Policy',\n    contentSecurityPolicyHeaderValue\n  )\n \n  const response = NextResponse.next({\n    request: {\n      headers: requestHeaders,\n    },\n  })\n  response.headers.set(\n    'Content-Security-Policy',\n    contentSecurityPolicyHeaderValue\n  )\n \n  return response\n}\n```\n\nBy default, Middleware runs on all requests. You can filter Middleware to run on specific paths using a [`matcher`](/docs/app/building-your-application/routing/middleware#matcher).\n\nWe recommend ignoring matching prefetches (from `next/link`) and static assets that don't need the CSP header.\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport const config = {\n  matcher: [\n    /*\n     * Match all request paths except for the ones starting with:\n     * - api (API routes)\n     * - _next/static (static files)\n     * - _next/image (image optimization files)\n     * - favicon.ico (favicon file)\n     */\n    {\n      source: '/((?!api|_next/static|_next/image|favicon.ico).*)',\n      missing: [\n        { type: 'header', key: 'next-router-prefetch' },\n        { type: 'header', key: 'purpose', value: 'prefetch' },\n      ],\n    },\n  ],\n}\n```",
+    "preview": "[Middleware](/docs/app/building-your-application/routing/middleware) enables you to add headers and generate nonces before the page renders. Every time a page is viewed, a fresh nonce should be generated. This means that you **must use dynamic rendering to add nonces**. For example: middleware.ts",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#adding-a-nonce-with-middleware-adding-a-nonce-with-middleware",
+    "position": 4
+  },
+  {
+    "title": "Content Security Policy",
+    "section": "[Reading the nonce](#reading-the-nonce)",
+    "section_id": "reading-the-nonce-reading-the-nonce",
+    "heading_level": 3,
+    "content": "### [Reading the nonce](#reading-the-nonce)\n\nYou can now read the nonce from a [Server Component](/docs/app/building-your-application/rendering/server-components) using [`headers`](/docs/app/api-reference/functions/headers):\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { headers } from 'next/headers'\nimport Script from 'next/script'\n \nexport default async function Page() {\n  const nonce = (await headers()).get('x-nonce')\n \n  return (\n    <Script\n      src=\"https://www.googletagmanager.com/gtag/js\"\n      strategy=\"afterInteractive\"\n      nonce={nonce}\n    />\n  )\n}\n```",
+    "preview": "You can now read the nonce from a [Server Component](/docs/app/building-your-application/rendering/server-components) using [`headers`](/docs/app/api-reference/functions/headers): app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#reading-the-nonce-reading-the-nonce",
+    "position": 5
+  },
+  {
+    "title": "Content Security Policy",
+    "section": "[Without Nonces](#without-nonces)",
+    "section_id": "without-nonces-without-nonces",
+    "heading_level": 2,
+    "content": "## [Without Nonces](#without-nonces)\n\nFor applications that do not require nonces, you can set the CSP header directly in your [`next.config.js`](/docs/app/api-reference/config/next-config-js) file:\n\nnext.config.js\n\n```\nconst cspHeader = `\n    default-src 'self';\n    script-src 'self' 'unsafe-eval' 'unsafe-inline';\n    style-src 'self' 'unsafe-inline';\n    img-src 'self' blob: data:;\n    font-src 'self';\n    object-src 'none';\n    base-uri 'self';\n    form-action 'self';\n    frame-ancestors 'none';\n    upgrade-insecure-requests;\n`\n \nmodule.exports = {\n  async headers() {\n    return [\n      {\n        source: '/(.*)',\n        headers: [\n          {\n            key: 'Content-Security-Policy',\n            value: cspHeader.replace(/\\n/g, ''),\n          },\n        ],\n      },\n    ]\n  },\n}\n```",
+    "preview": "For applications that do not require nonces, you can set the CSP header directly in your [`next.config.js`](/docs/app/api-reference/config/next-config-js) file: next.config.js ``` const cspHeader = ` default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self'",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#without-nonces-without-nonces",
+    "position": 6
+  },
+  {
+    "title": "Content Security Policy",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\nWe recommend using `v13.4.20+` of Next.js to properly handle and apply nonces.",
+    "preview": "We recommend using `v13.4.20+` of Next.js to properly handle and apply nonces.",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#version-history-version-history",
+    "position": 7
+  },
+  {
+    "title": "Content Security Policy",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\n[### Middleware\n\nLearn how to use Middleware to run code before a request is completed.](/docs/app/building-your-application/routing/middleware)[### headers\n\nAPI reference for the headers function.](/docs/app/api-reference/functions/headers)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Middleware Learn how to use Middleware to run code before a request is completed.](/docs/app/building-your-application/routing/middleware)[### headers API reference for the headers function.](/docs/app/api-reference/functions/headers) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/content-security-policy#next-steps",
+    "position": 8
+  }
+]

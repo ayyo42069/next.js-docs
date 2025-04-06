@@ -1,0 +1,72 @@
+[
+  {
+    "title": "generateImageMetadata",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)generateImageMetadata",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)generateImageMetadata",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "generateImageMetadata",
+    "section": "generateImageMetadata",
+    "section_id": "generateimagemetadata",
+    "heading_level": 1,
+    "content": "# generateImageMetadata\n\nYou can use `generateImageMetadata` to generate different versions of one image or return multiple images for one route segment. This is useful for when you want to avoid hard-coding metadata values, such as for icons.",
+    "preview": "You can use `generateImageMetadata` to generate different versions of one image or return multiple images for one route segment. This is useful for when you want to avoid hard-coding metadata values, such as for icons.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#generateimagemetadata",
+    "position": 1
+  },
+  {
+    "title": "generateImageMetadata",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\n`generateImageMetadata` function accepts the following parameters:\n\n#### [`params` (optional)](#params-optional)\n\nAn object containing the [dynamic route parameters](/docs/app/building-your-application/routing/dynamic-routes) object from the root segment down to the segment `generateImageMetadata` is called from.\n\nicon.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport function generateImageMetadata({\n  params,\n}: {\n  params: { slug: string }\n}) {\n  // ...\n}\n```\n\n| Route | URL | `params` |\n| --- | --- | --- |\n| `app/shop/icon.js` | `/shop` | `undefined` |\n| `app/shop/[slug]/icon.js` | `/shop/1` | `{ slug: '1' }` |\n| `app/shop/[tag]/[item]/icon.js` | `/shop/1/2` | `{ tag: '1', item: '2' }` |",
+    "preview": "`generateImageMetadata` function accepts the following parameters: #### [`params` (optional)](#params-optional) An object containing the [dynamic route parameters](/docs/app/building-your-application/routing/dynamic-routes) object from the root segment down to the segment `generateImageMetadata` i",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "generateImageMetadata",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\nThe `generateImageMetadata` function should return an `array` of objects containing the image's metadata such as `alt` and `size`. In addition, each item **must** include an `id` value which will be passed to the props of the image generating function.\n\n| Image Metadata Object | Type |\n| --- | --- |\n| `id` | `string` (required) |\n| `alt` | `string` |\n| `size` | `{ width: number; height: number }` |\n| `contentType` | `string` |\n\nicon.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { ImageResponse } from 'next/og'\n \nexport function generateImageMetadata() {\n  return [\n    {\n      contentType: 'image/png',\n      size: { width: 48, height: 48 },\n      id: 'small',\n    },\n    {\n      contentType: 'image/png',\n      size: { width: 72, height: 72 },\n      id: 'medium',\n    },\n  ]\n}\n \nexport default function Icon({ id }: { id: string }) {\n  return new ImageResponse(\n    (\n      <div\n        style={{\n          width: '100%',\n          height: '100%',\n          display: 'flex',\n          alignItems: 'center',\n          justifyContent: 'center',\n          fontSize: 88,\n          background: '#000',\n          color: '#fafafa',\n        }}\n      >\n        Icon {id}\n      </div>\n    )\n  )\n}\n```",
+    "preview": "The `generateImageMetadata` function should return an `array` of objects containing the image's metadata such as `alt` and `size`. In addition, each item **must** include an `id` value which will be passed to the props of the image generating function. | Image Metadata Object | Type | | --- | --- |",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "generateImageMetadata",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 3,
+    "content": "### [Examples](#examples)\n\n#### [Using external data](#using-external-data)\n\nThis example uses the `params` object and external data to generate multiple [Open Graph images](/docs/app/api-reference/file-conventions/metadata/opengraph-image) for a route segment.\n\napp/products/[id]/opengraph-image.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { ImageResponse } from 'next/og'\nimport { getCaptionForImage, getOGImages } from '@/app/utils/images'\n \nexport async function generateImageMetadata({\n  params,\n}: {\n  params: { id: string }\n}) {\n  const images = await getOGImages(params.id)\n \n  return images.map((image, idx) => ({\n    id: idx,\n    size: { width: 1200, height: 600 },\n    alt: image.text,\n    contentType: 'image/png',\n  }))\n}\n \nexport default async function Image({\n  params,\n  id,\n}: {\n  params: { id: string }\n  id: number\n}) {\n  const productId = (await params).id\n  const imageId = id\n  const text = await getCaptionForImage(productId, imageId)\n \n  return new ImageResponse(\n    (\n      <div\n        style={\n          {\n            // ...\n          }\n        }\n      >\n        {text}\n      </div>\n    )\n  )\n}\n```",
+    "preview": "#### [Using external data](#using-external-data) This example uses the `params` object and external data to generate multiple [Open Graph images](/docs/app/api-reference/file-conventions/metadata/opengraph-image) for a route segment. app/products/[id]/opengraph-image.tsx TypeScript JavaScriptTyp",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "generateImageMetadata",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.3.0` | `generateImageMetadata` introduced. |",
+    "preview": "| Version | Changes | | --- | --- | | `v13.3.0` | `generateImageMetadata` introduced. |",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#version-history-version-history",
+    "position": 5
+  },
+  {
+    "title": "generateImageMetadata",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nView all the Metadata API options.\n\n[### Metadata Files\n\nAPI documentation for the metadata file conventions.](/docs/app/api-reference/file-conventions/metadata)[### Metadata\n\nUse the Metadata API to define metadata in any layout or page.](/docs/app/building-your-application/optimizing/metadata)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "View all the Metadata API options. [### Metadata Files API documentation for the metadata file conventions.](/docs/app/api-reference/file-conventions/metadata)[### Metadata Use the Metadata API to define metadata in any layout or page.](/docs/app/building-your-application/optimizing/metadata) Wa",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata#next-steps",
+    "position": 6
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "title": "Production Checklist",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Deploying](/docs/pages/building-your-application/deploying)Production Checklist",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Deploying](/docs/pages/building-your-application/deploying)Production Checklist",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Production Checklist",
+    "section": "Production Checklist",
+    "section_id": "production-checklist",
+    "heading_level": 1,
+    "content": "# Production Checklist\n\nBefore taking your Next.js application to production, there are some optimizations and patterns you should consider implementing for the best user experience, performance, and security.\n\nThis page provides best practices that you can use as a reference when [building your application](#during-development), [before going to production](#before-going-to-production), and [after deployment](#after-deployment) - as well as the [automatic Next.js optimizations](#automatic-optimizations) you should be aware of.",
+    "preview": "Before taking your Next.js application to production, there are some optimizations and patterns you should consider implementing for the best user experience, performance, and security. This page provides best practices that you can use as a reference when [building your application](#during-develo",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#production-checklist",
+    "position": 1
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[Automatic optimizations](#automatic-optimizations)",
+    "section_id": "automatic-optimizations-automatic-optimizations",
+    "heading_level": 2,
+    "content": "## [Automatic optimizations](#automatic-optimizations)\n\nThese Next.js optimizations are enabled by default and require no configuration:\n\n* **[Code-splitting](/docs/pages/building-your-application/routing/pages-and-layouts):** Next.js automatically code-splits your application code by pages. This means only the code needed for the current page is loaded on navigation. You may also consider [lazy loading](/docs/pages/building-your-application/optimizing/lazy-loading) third-party libraries, where appropriate.\n* **[Prefetching](/docs/pages/api-reference/components/link#prefetch):** When a link to a new route enters the user's viewport, Next.js prefetches the route in background. This makes navigation to new routes almost instant. You can opt out of prefetching, where appropriate.\n* **[Automatic Static Optimization](/docs/pages/building-your-application/rendering/automatic-static-optimization):** Next.js automatically determines that a page is static (can be pre-rendered) if it has no blocking data requirements. Optimized pages can be cached, and served to the end-user from multiple CDN locations. You may opt into [Server-side Rendering](/docs/pages/building-your-application/data-fetching/get-server-side-props), where appropriate.\n\nThese defaults aim to improve your application's performance, and reduce the cost and amount of data transferred on each network request.",
+    "preview": "These Next.js optimizations are enabled by default and require no configuration: * **[Code-splitting](/docs/pages/building-your-application/routing/pages-and-layouts):** Next.js automatically code-splits your application code by pages. This means only the code needed for the current page is loaded",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#automatic-optimizations-automatic-optimizations",
+    "position": 2
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[During development](#during-development)",
+    "section_id": "during-development-during-development",
+    "heading_level": 2,
+    "content": "## [During development](#during-development)\n\nWhile building your application, we recommend using the following features to ensure the best performance and user experience:",
+    "preview": "While building your application, we recommend using the following features to ensure the best performance and user experience:",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#during-development-during-development",
+    "position": 3
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[Routing and rendering](#routing-and-rendering)",
+    "section_id": "routing-and-rendering-routing-and-rendering",
+    "heading_level": 3,
+    "content": "### [Routing and rendering](#routing-and-rendering)\n\n* **[`<Link>` component](/docs/pages/building-your-application/routing/linking-and-navigating):** Use the `<Link>` component for client-side navigation and prefetching.\n* **[Custom Errors](/docs/pages/building-your-application/routing/custom-error):** Gracefully handle [500](/docs/pages/building-your-application/routing/custom-error#500-page) and [404 errors](/docs/pages/building-your-application/routing/custom-error#404-page)",
+    "preview": "* **[`<Link>` component](/docs/pages/building-your-application/routing/linking-and-navigating):** Use the `<Link>` component for client-side navigation and prefetching. * **[Custom Errors](/docs/pages/building-your-application/routing/custom-error):** Gracefully handle [500](/docs/pages/building-you",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#routing-and-rendering-routing-and-rendering",
+    "position": 4
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[Data fetching and caching](#data-fetching-and-caching)",
+    "section_id": "data-fetching-and-caching-data-fetching-and-caching",
+    "heading_level": 3,
+    "content": "### [Data fetching and caching](#data-fetching-and-caching)\n\n* **[API Routes](/docs/pages/building-your-application/routing/api-routes):** Use Route Handlers to access your backend resources, and prevent sensitive secrets from being exposed to the client.\n* **[Data Caching](/docs/pages/building-your-application/data-fetching/get-static-props):** Verify whether your data requests are being cached or not, and opt into caching, where appropriate. Ensure requests that don't use `getStaticProps` are cached where appropriate.\n* **[Incremental Static Regeneration](/docs/pages/building-your-application/data-fetching/incremental-static-regeneration):** Use Incremental Static Regeneration to update static pages after they've been built, without rebuilding your entire site.\n* **[Static Images](/docs/pages/building-your-application/optimizing/static-assets):** Use the `public` directory to automatically cache your application's static assets, e.g. images.",
+    "preview": "* **[API Routes](/docs/pages/building-your-application/routing/api-routes):** Use Route Handlers to access your backend resources, and prevent sensitive secrets from being exposed to the client. * **[Data Caching](/docs/pages/building-your-application/data-fetching/get-static-props):** Verify whethe",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#data-fetching-and-caching-data-fetching-and-caching",
+    "position": 5
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[UI and accessibility](#ui-and-accessibility)",
+    "section_id": "ui-and-accessibility-ui-and-accessibility",
+    "heading_level": 3,
+    "content": "### [UI and accessibility](#ui-and-accessibility)\n\n* **[Font Module](/docs/app/building-your-application/optimizing/fonts):** Optimize fonts by using the Font Module, which automatically hosts your font files with other static assets, removes external network requests, and reduces [layout shift](https://web.dev/articles/cls).\n* **[`<Image>` Component](/docs/app/building-your-application/optimizing/images):** Optimize images by using the Image Component, which automatically optimizes images, prevents layout shift, and serves them in modern formats like WebP.\n* **[`<Script>` Component](/docs/app/building-your-application/optimizing/scripts):** Optimize third-party scripts by using the Script Component, which automatically defers scripts and prevents them from blocking the main thread.\n* **[ESLint](/docs/architecture/accessibility#linting):** Use the built-in `eslint-plugin-jsx-a11y` plugin to catch accessibility issues early.",
+    "preview": "* **[Font Module](/docs/app/building-your-application/optimizing/fonts):** Optimize fonts by using the Font Module, which automatically hosts your font files with other static assets, removes external network requests, and reduces [layout shift](https://web.dev/articles/cls). * **[`<Image>` Componen",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#ui-and-accessibility-ui-and-accessibility",
+    "position": 6
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[Security](#security)",
+    "section_id": "security-security",
+    "heading_level": 3,
+    "content": "### [Security](#security)\n\n* **[Environment Variables](/docs/app/building-your-application/configuring/environment-variables):** Ensure your `.env.*` files are added to `.gitignore` and only public variables are prefixed with `NEXT_PUBLIC_`.\n* **[Content Security Policy](/docs/app/building-your-application/configuring/content-security-policy):** Consider adding a Content Security Policy to protect your application against various security threats such as cross-site scripting, clickjacking, and other code injection attacks.",
+    "preview": "* **[Environment Variables](/docs/app/building-your-application/configuring/environment-variables):** Ensure your `.env.*` files are added to `.gitignore` and only public variables are prefixed with `NEXT_PUBLIC_`. * **[Content Security Policy](/docs/app/building-your-application/configuring/content",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#security-security",
+    "position": 7
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[Metadata and SEO](#metadata-and-seo)",
+    "section_id": "metadata-and-seo-metadata-and-seo",
+    "heading_level": 3,
+    "content": "### [Metadata and SEO](#metadata-and-seo)\n\n* **[`<Head>` Component](/docs/pages/api-reference/components/head):** Use the `next/head` component to add page titles, descriptions, and more.",
+    "preview": "* **[`<Head>` Component](/docs/pages/api-reference/components/head):** Use the `next/head` component to add page titles, descriptions, and more.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#metadata-and-seo-metadata-and-seo",
+    "position": 8
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[Type safety](#type-safety)",
+    "section_id": "type-safety-type-safety",
+    "heading_level": 3,
+    "content": "### [Type safety](#type-safety)\n\n* **TypeScript and [TS Plugin](/docs/app/api-reference/config/typescript):** Use TypeScript and the TypeScript plugin for better type-safety, and to help you catch errors early.",
+    "preview": "* **TypeScript and [TS Plugin](/docs/app/api-reference/config/typescript):** Use TypeScript and the TypeScript plugin for better type-safety, and to help you catch errors early.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#type-safety-type-safety",
+    "position": 9
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[Before going to production](#before-going-to-production)",
+    "section_id": "before-going-to-production-before-going-to-production",
+    "heading_level": 2,
+    "content": "## [Before going to production](#before-going-to-production)\n\nBefore going to production, you can run `next build` to build your application locally and catch any build errors, then run `next start` to measure the performance of your application in a production-like environment.",
+    "preview": "Before going to production, you can run `next build` to build your application locally and catch any build errors, then run `next start` to measure the performance of your application in a production-like environment.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#before-going-to-production-before-going-to-production",
+    "position": 10
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[Core Web Vitals](#core-web-vitals)",
+    "section_id": "core-web-vitals-core-web-vitals",
+    "heading_level": 3,
+    "content": "### [Core Web Vitals](#core-web-vitals)\n\n* **[Lighthouse](https://developers.google.com/web/tools/lighthouse):** Run lighthouse in incognito to gain a better understanding of how your users will experience your site, and to identify areas for improvement. This is a simulated test and should be paired with looking at field data (such as Core Web Vitals).",
+    "preview": "* **[Lighthouse](https://developers.google.com/web/tools/lighthouse):** Run lighthouse in incognito to gain a better understanding of how your users will experience your site, and to identify areas for improvement. This is a simulated test and should be paired with looking at field data (such as Cor",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#core-web-vitals-core-web-vitals",
+    "position": 11
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[Analyzing bundles](#analyzing-bundles)",
+    "section_id": "analyzing-bundles-analyzing-bundles",
+    "heading_level": 3,
+    "content": "### [Analyzing bundles](#analyzing-bundles)\n\nUse the [`@next/bundle-analyzer` plugin](/docs/app/building-your-application/optimizing/package-bundling#analyzing-javascript-bundles) to analyze the size of your JavaScript bundles and identify large modules and dependencies that might be impacting your application's performance.\n\nAdditionally, the following tools can help you understand the impact of adding new dependencies to your application:\n\n* [Import Cost](https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost)\n* [Package Phobia](https://packagephobia.com/)\n* [Bundle Phobia](https://bundlephobia.com/)\n* [bundlejs](https://bundlejs.com/)",
+    "preview": "Use the [`@next/bundle-analyzer` plugin](/docs/app/building-your-application/optimizing/package-bundling#analyzing-javascript-bundles) to analyze the size of your JavaScript bundles and identify large modules and dependencies that might be impacting your application's performance. Additionally, the",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#analyzing-bundles-analyzing-bundles",
+    "position": 12
+  },
+  {
+    "title": "Production Checklist",
+    "section": "[After deployment](#after-deployment)",
+    "section_id": "after-deployment-after-deployment",
+    "heading_level": 2,
+    "content": "## [After deployment](#after-deployment)\n\nDepending on where you deploy your application, you might have access to additional tools and integrations to help you monitor and improve your application's performance.\n\nFor Vercel deployments, we recommend the following:\n\n* **[Analytics](https://vercel.com/analytics?utm_source=next-site&utm_campaign=nextjs-docs&utm_medium=docs):** A built-in analytics dashboard to help you understand your application's traffic, including the number of unique visitors, page views, and more.\n* **[Speed Insights](https://vercel.com/docs/speed-insights?utm_source=next-site&utm_campaign=nextjs-docs&utm_medium=docs):** Real-world performance insights based on visitor data, offering a practical view of how your website is performing in the field.\n* **[Logging](https://vercel.com/docs/observability/runtime-logs?utm_source=next-site&utm_campaign=nextjs-docs&utm_medium=docs):** Runtime and Activity logs to help you debug issues and monitor your application in production. Alternatively, see the [integrations page](https://vercel.com/integrations?utm_source=next-site&utm_campaign=nextjs-docs&utm_medium=docs) for a list of third-party tools and services.\n\n> **Good to know:**\n>\n> To get a comprehensive understanding of the best practices for production deployments on Vercel, including detailed strategies for improving website performance, refer to the [Vercel Production Checklist](https://vercel.com/docs/production-checklist?utm_source=next-site&utm_campaign=nextjs-docs&utm_medium=docs).\n\nFollowing these recommendations will help you build a faster, more reliable, and secure application for your users.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Depending on where you deploy your application, you might have access to additional tools and integrations to help you monitor and improve your application's performance. For Vercel deployments, we recommend the following: * **[Analytics](https://vercel.com/analytics?utm_source=next-site&utm_campa",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/production-checklist#after-deployment-after-deployment",
+    "position": 13
+  }
+]

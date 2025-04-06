@@ -1,0 +1,102 @@
+[
+  {
+    "title": "getStaticProps",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[Functions](/docs/pages/api-reference/functions)getStaticProps",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[Functions](/docs/pages/api-reference/functions)getStaticProps",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-static-props#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "getStaticProps",
+    "section": "getStaticProps",
+    "section_id": "getstaticprops",
+    "heading_level": 1,
+    "content": "# getStaticProps\n\nExporting a function called `getStaticProps` will pre-render a page at build time using the props returned from the function:\n\npages/index.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { InferGetStaticPropsType, GetStaticProps } from 'next'\n \ntype Repo = {\n  name: string\n  stargazers_count: number\n}\n \nexport const getStaticProps = (async (context) => {\n  const res = await fetch('https://api.github.com/repos/vercel/next.js')\n  const repo = await res.json()\n  return { props: { repo } }\n}) satisfies GetStaticProps<{\n  repo: Repo\n}>\n \nexport default function Page({\n  repo,\n}: InferGetStaticPropsType<typeof getStaticProps>) {\n  return repo.stargazers_count\n}\n```\n\nYou can import modules in top-level scope for use in `getStaticProps`. Imports used will **not be bundled for the client-side**. This means you can write **server-side code directly in `getStaticProps`**, including fetching data from your database.",
+    "preview": "Exporting a function called `getStaticProps` will pre-render a page at build time using the props returned from the function: pages/index.tsx TypeScript JavaScriptTypeScript [Code Block] You can import modules in top-level scope for use in `getStaticProps`. Imports used will **not be bundled fo",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-static-props#getstaticprops",
+    "position": 1
+  },
+  {
+    "title": "getStaticProps",
+    "section": "[Context parameter](#context-parameter)",
+    "section_id": "context-parameter-context-parameter",
+    "heading_level": 2,
+    "content": "## [Context parameter](#context-parameter)\n\nThe `context` parameter is an object containing the following keys:\n\n| Name | Description |\n| --- | --- |\n| `params` | Contains the route parameters for pages using [dynamic routes](/docs/pages/building-your-application/routing/dynamic-routes). For example, if the page name is `[id].js`, then `params` will look like `{ id: ... }`. You should use this together with `getStaticPaths`, which we'll explain later. |\n| `preview` | (Deprecated for `draftMode`) `preview` is `true` if the page is in the [Preview Mode](/docs/pages/building-your-application/configuring/preview-mode) and `false` otherwise. |\n| `previewData` | (Deprecated for `draftMode`) The [preview](/docs/pages/building-your-application/configuring/preview-mode) data set by `setPreviewData`. |\n| `draftMode` | `draftMode` is `true` if the page is in the [Draft Mode](/docs/pages/building-your-application/configuring/draft-mode) and `false` otherwise. |\n| `locale` | Contains the active locale (if enabled). |\n| `locales` | Contains all supported locales (if enabled). |\n| `defaultLocale` | Contains the configured default locale (if enabled). |\n| `revalidateReason` | Provides a reason for why the function was called. Can be one of: \"build\" (run at build time), \"stale\" (revalidate period expired, or running in [development mode](/docs/pages/building-your-application/data-fetching/get-static-props#runs-on-every-request-in-development)), \"on-demand\" (triggered via [on-demand revalidation](/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation-with-revalidatepath)) |",
+    "preview": "The `context` parameter is an object containing the following keys: | Name | Description | | --- | --- | | `params` | Contains the route parameters for pages using [dynamic routes](/docs/pages/building-your-application/routing/dynamic-routes). For example, if the page name is `[id].js`, then `param",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-static-props#context-parameter-context-parameter",
+    "position": 2
+  },
+  {
+    "title": "getStaticProps",
+    "section": "[getStaticProps return values](#getstaticprops-return-values)",
+    "section_id": "getstaticprops-return-values-getstaticprops-return-values",
+    "heading_level": 2,
+    "content": "## [getStaticProps return values](#getstaticprops-return-values)\n\nThe `getStaticProps` function should return an object containing either `props`, `redirect`, or `notFound` followed by an **optional** `revalidate` property.",
+    "preview": "The `getStaticProps` function should return an object containing either `props`, `redirect`, or `notFound` followed by an **optional** `revalidate` property.",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-static-props#getstaticprops-return-values-getstaticprops-return-values",
+    "position": 3
+  },
+  {
+    "title": "getStaticProps",
+    "section": "[`props`](#props)",
+    "section_id": "props-props",
+    "heading_level": 3,
+    "content": "### [`props`](#props)\n\nThe `props` object is a key-value pair, where each value is received by the page component. It should be a [serializable object](https://developer.mozilla.org/docs/Glossary/Serialization) so that any props passed, could be serialized with [`JSON.stringify`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).\n\n```\nexport async function getStaticProps(context) {\n  return {\n    props: { message: `Next.js is awesome` }, // will be passed to the page component as props\n  }\n}\n```",
+    "preview": "The `props` object is a key-value pair, where each value is received by the page component. It should be a [serializable object](https://developer.mozilla.org/docs/Glossary/Serialization) so that any props passed, could be serialized with [`JSON.stringify`](https://developer.mozilla.org/docs/Web/Jav",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-static-props#props-props",
+    "position": 4
+  },
+  {
+    "title": "getStaticProps",
+    "section": "[`revalidate`](#revalidate)",
+    "section_id": "revalidate-revalidate",
+    "heading_level": 3,
+    "content": "### [`revalidate`](#revalidate)\n\nThe `revalidate` property is the amount in seconds after which a page re-generation can occur (defaults to `false` or no revalidation).\n\n```\n// This function gets called at build time on server-side.\n// It may be called again, on a serverless function, if\n// revalidation is enabled and a new request comes in\nexport async function getStaticProps() {\n  const res = await fetch('https://.../posts')\n  const posts = await res.json()\n \n  return {\n    props: {\n      posts,\n    },\n    // Next.js will attempt to re-generate the page:\n    // - When a request comes in\n    // - At most once every 10 seconds\n    revalidate: 10, // In seconds\n  }\n}\n```\n\nLearn more about [Incremental Static Regeneration](/docs/pages/building-your-application/data-fetching/incremental-static-regeneration).\n\nThe cache status of a page leveraging ISR can be determined by reading the value of the `x-nextjs-cache` response header. The possible values are the following:\n\n* `MISS` - the path is not in the cache (occurs at most once, on the first visit)\n* `STALE` - the path is in the cache but exceeded the revalidate time so it will be updated in the background\n* `HIT` - the path is in the cache and has not exceeded the revalidate time",
+    "preview": "The `revalidate` property is the amount in seconds after which a page re-generation can occur (defaults to `false` or no revalidation). [Code Block] Learn more about [Incremental Static Regeneration](/docs/pages/building-your-application/data-fetching/incremental-static-regeneration). The cache s",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-static-props#revalidate-revalidate",
+    "position": 5
+  },
+  {
+    "title": "getStaticProps",
+    "section": "[`notFound`](#notfound)",
+    "section_id": "notfound-notfound",
+    "heading_level": 3,
+    "content": "### [`notFound`](#notfound)\n\nThe `notFound` boolean allows the page to return a `404` status and [404 Page](/docs/pages/building-your-application/routing/custom-error#404-page). With `notFound: true`, the page will return a `404` even if there was a successfully generated page before. This is meant to support use cases like user-generated content getting removed by its author. Note, `notFound` follows the same `revalidate` behavior [described here](#revalidate).\n\n```\nexport async function getStaticProps(context) {\n  const res = await fetch(`https://.../data`)\n  const data = await res.json()\n \n  if (!data) {\n    return {\n      notFound: true,\n    }\n  }\n \n  return {\n    props: { data }, // will be passed to the page component as props\n  }\n}\n```\n\n> **Good to know**: `notFound` is not needed for [`fallback: false`](/docs/pages/api-reference/functions/get-static-paths#fallback-false) mode as only paths returned from `getStaticPaths` will be pre-rendered.",
+    "preview": "The `notFound` boolean allows the page to return a `404` status and [404 Page](/docs/pages/building-your-application/routing/custom-error#404-page). With `notFound: true`, the page will return a `404` even if there was a successfully generated page before. This is meant to support use cases like use",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-static-props#notfound-notfound",
+    "position": 6
+  },
+  {
+    "title": "getStaticProps",
+    "section": "[`redirect`](#redirect)",
+    "section_id": "redirect-redirect",
+    "heading_level": 3,
+    "content": "### [`redirect`](#redirect)\n\nThe `redirect` object allows redirecting to internal or external resources. It should match the shape of `{ destination: string, permanent: boolean }`.\n\nIn some rare cases, you might need to assign a custom status code for older `HTTP` clients to properly redirect. In these cases, you can use the `statusCode` property instead of the `permanent` property, **but not both**. You can also set `basePath: false` similar to redirects in `next.config.js`.\n\n```\nexport async function getStaticProps(context) {\n  const res = await fetch(`https://...`)\n  const data = await res.json()\n \n  if (!data) {\n    return {\n      redirect: {\n        destination: '/',\n        permanent: false,\n        // statusCode: 301\n      },\n    }\n  }\n \n  return {\n    props: { data }, // will be passed to the page component as props\n  }\n}\n```\n\nIf the redirects are known at build-time, they should be added in [`next.config.js`](/docs/pages/api-reference/config/next-config-js/redirects) instead.",
+    "preview": "The `redirect` object allows redirecting to internal or external resources. It should match the shape of `{ destination: string, permanent: boolean }`. In some rare cases, you might need to assign a custom status code for older `HTTP` clients to properly redirect. In these cases, you can use the `s",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-static-props#redirect-redirect",
+    "position": 7
+  },
+  {
+    "title": "getStaticProps",
+    "section": "[Reading files: Use `process.cwd()`](#reading-files-use-processcwd)",
+    "section_id": "reading-files-use-process-cwd-reading-files-use-processcwd",
+    "heading_level": 2,
+    "content": "## [Reading files: Use `process.cwd()`](#reading-files-use-processcwd)\n\nFiles can be read directly from the filesystem in `getStaticProps`.\n\nIn order to do so you have to get the full path to a file.\n\nSince Next.js compiles your code into a separate directory you can't use `__dirname` as the path it returns will be different from the Pages Router.\n\nInstead you can use `process.cwd()` which gives you the directory where Next.js is being executed.\n\n```\nimport { promises as fs } from 'fs'\nimport path from 'path'\n \n// posts will be populated at build time by getStaticProps()\nfunction Blog({ posts }) {\n  return (\n    <ul>\n      {posts.map((post) => (\n        <li>\n          <h3>{post.filename}</h3>\n          <p>{post.content}</p>\n        </li>\n      ))}\n    </ul>\n  )\n}\n \n// This function gets called at build time on server-side.\n// It won't be called on client-side, so you can even do\n// direct database queries.\nexport async function getStaticProps() {\n  const postsDirectory = path.join(process.cwd(), 'posts')\n  const filenames = await fs.readdir(postsDirectory)\n \n  const posts = filenames.map(async (filename) => {\n    const filePath = path.join(postsDirectory, filename)\n    const fileContents = await fs.readFile(filePath, 'utf8')\n \n    // Generally you would parse/transform the contents\n    // For example you can transform markdown to HTML here\n \n    return {\n      filename,\n      content: fileContents,\n    }\n  })\n  // By returning { props: { posts } }, the Blog component\n  // will receive `posts` as a prop at build time\n  return {\n    props: {\n      posts: await Promise.all(posts),\n    },\n  }\n}\n \nexport default Blog\n```",
+    "preview": "Files can be read directly from the filesystem in `getStaticProps`. In order to do so you have to get the full path to a file. Since Next.js compiles your code into a separate directory you can't use `__dirname` as the path it returns will be different from the Pages Router. Instead you can use `",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-static-props#reading-files-use-process-cwd-reading-files-use-processcwd",
+    "position": 8
+  },
+  {
+    "title": "getStaticProps",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.4.0` | [App Router](/docs/app/building-your-application/data-fetching) is now stable with simplified data fetching |\n| `v12.2.0` | [On-Demand Incremental Static Regeneration](/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation-with-revalidatepath) is stable. |\n| `v12.1.0` | [On-Demand Incremental Static Regeneration](/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation-with-revalidatepath) added (beta). |\n| `v10.0.0` | `locale`, `locales`, `defaultLocale`, and `notFound` options added. |\n| `v10.0.0` | `fallback: 'blocking'` return option added. |\n| `v9.5.0` | Stable [Incremental Static Regeneration](/docs/pages/building-your-application/data-fetching/incremental-static-regeneration) |\n| `v9.3.0` | `getStaticProps` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.4.0` | [App Router](/docs/app/building-your-application/data-fetching) is now stable with simplified data fetching | | `v12.2.0` | [On-Demand Incremental Static Regeneration](/docs/pages/building-your-application/data-fetching/incremental-static-regeneratio",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-static-props#version-history-version-history",
+    "position": 9
+  }
+]

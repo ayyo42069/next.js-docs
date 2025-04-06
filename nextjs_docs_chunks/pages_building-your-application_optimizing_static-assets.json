@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Static Assets",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Optimizing](/docs/pages/building-your-application/optimizing)Static Assets",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Optimizing](/docs/pages/building-your-application/optimizing)Static Assets",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/static-assets#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Static Assets",
+    "section": "Static Assets",
+    "section_id": "static-assets",
+    "heading_level": 1,
+    "content": "# Static Assets\n\nNext.js can serve static files, like images, under a folder called `public` in the root directory. Files inside `public` can then be referenced by your code starting from the base URL (`/`).\n\nFor example, the file `public/avatars/me.png` can be viewed by visiting the `/avatars/me.png` path. The code to display that image might look like:\n\navatar.js\n\n```\nimport Image from 'next/image'\n \nexport function Avatar({ id, alt }) {\n  return <Image src={`/avatars/${id}.png`} alt={alt} width=\"64\" height=\"64\" />\n}\n \nexport function AvatarOfMe() {\n  return <Avatar id=\"me\" alt=\"A portrait of me\" />\n}\n```",
+    "preview": "Next.js can serve static files, like images, under a folder called `public` in the root directory. Files inside `public` can then be referenced by your code starting from the base URL (`/`). For example, the file `public/avatars/me.png` can be viewed by visiting the `/avatars/me.png` path. The code",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/static-assets#static-assets",
+    "position": 1
+  },
+  {
+    "title": "Static Assets",
+    "section": "[Caching](#caching)",
+    "section_id": "caching-caching",
+    "heading_level": 2,
+    "content": "## [Caching](#caching)\n\nNext.js cannot safely cache assets in the `public` folder because they may change. The default caching headers applied are:\n\n```\nCache-Control: public, max-age=0\n```",
+    "preview": "Next.js cannot safely cache assets in the `public` folder because they may change. The default caching headers applied are: [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/static-assets#caching-caching",
+    "position": 2
+  },
+  {
+    "title": "Static Assets",
+    "section": "[Robots, Favicons, and others](#robots-favicons-and-others)",
+    "section_id": "robots-favicons-and-others-robots-favicons-and-others",
+    "heading_level": 2,
+    "content": "## [Robots, Favicons, and others](#robots-favicons-and-others)\n\nThe folder is also useful for `robots.txt`, `favicon.ico`, Google Site Verification, and any other static files (including `.html`). But make sure to not have a static file with the same name as a file in the `pages/` directory, as this will result in an error. [Read more](/docs/messages/conflicting-public-file-page).\n\n> Good to know:\n>\n> * The directory must be named `public`. The name cannot be changed and it's the only directory used to serve static assets.\n> * Only assets that are in the `public` directory at [build time](/docs/app/api-reference/cli/next#next-build-options) will be served by Next.js. Files added at request time won't be available. We recommend using a third-party service like [Vercel Blob](https://vercel.com/docs/storage/vercel-blob?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) for persistent file storage.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The folder is also useful for `robots.txt`, `favicon.ico`, Google Site Verification, and any other static files (including `.html`). But make sure to not have a static file with the same name as a file in the `pages/` directory, as this will result in an error. [Read more](/docs/messages/conflicting",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/static-assets#robots-favicons-and-others-robots-favicons-and-others",
+    "position": 3
+  }
+]

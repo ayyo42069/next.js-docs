@@ -1,0 +1,182 @@
+[
+  {
+    "title": "Version 15",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Upgrading](/docs/app/building-your-application/upgrading)Version 15",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Upgrading](/docs/app/building-your-application/upgrading)Version 15",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Version 15",
+    "section": "Version 15",
+    "section_id": "version-15",
+    "heading_level": 1,
+    "content": "# Version 15",
+    "preview": "# Version 15",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#version-15",
+    "position": 1
+  },
+  {
+    "title": "Version 15",
+    "section": "[Upgrading from 14 to 15](#upgrading-from-14-to-15)",
+    "section_id": "upgrading-from-14-to-15-upgrading-from-14-to-15",
+    "heading_level": 2,
+    "content": "## [Upgrading from 14 to 15](#upgrading-from-14-to-15)\n\nTo update to Next.js version 15, you can use the `upgrade` codemod:\n\nTerminal\n\n```\nnpx @next/codemod@canary upgrade latest\n```\n\nIf you prefer to do it manually, ensure that you're installing the latest Next & React versions:\n\nTerminal\n\n```\nnpm i next@latest react@latest react-dom@latest eslint-config-next@latest\n```\n\n> **Good to know:**\n>\n> * If you see a peer dependencies warning, you may need to update `react` and `react-dom` to the suggested versions, or you use the `--force` or `--legacy-peer-deps` flag to ignore the warning. This won't be necessary once both Next.js 15 and React 19 are stable.",
+    "preview": "To update to Next.js version 15, you can use the `upgrade` codemod: Terminal [Code Block] If you prefer to do it manually, ensure that you're installing the latest Next & React versions: Terminal [Code Block] > **Good to know:** > > * If you see a peer dependencies warning, you may need to upd",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#upgrading-from-14-to-15-upgrading-from-14-to-15",
+    "position": 2
+  },
+  {
+    "title": "Version 15",
+    "section": "[React 19](#react-19)",
+    "section_id": "react-19-react-19",
+    "heading_level": 2,
+    "content": "## [React 19](#react-19)\n\n* The minimum versions of `react` and `react-dom` is now 19.\n* `useFormState` has been replaced by `useActionState`. The `useFormState` hook is still available in React 19, but it is deprecated and will be removed in a future release. `useActionState` is recommended and includes additional properties like reading the `pending` state directly. [Learn more](https://react.dev/reference/react/useActionState).\n* `useFormStatus` now includes additional keys like `data`, `method`, and `action`. If you are not using React 19, only the `pending` key is available. [Learn more](https://react.dev/reference/react-dom/hooks/useFormStatus).\n* Read more in the [React 19 upgrade guide](https://react.dev/blog/2024/04/25/react-19-upgrade-guide).\n\n> **Good to know:** If you are using TypeScript, ensure you also upgrade `@types/react` and `@types/react-dom` to their latest versions.",
+    "preview": "* The minimum versions of `react` and `react-dom` is now 19. * `useFormState` has been replaced by `useActionState`. The `useFormState` hook is still available in React 19, but it is deprecated and will be removed in a future release. `useActionState` is recommended and includes additional propertie",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#react-19-react-19",
+    "position": 3
+  },
+  {
+    "title": "Version 15",
+    "section": "[Async Request APIs (Breaking change)](#async-request-apis-breaking-change)",
+    "section_id": "async-request-apis-breaking-change-async-request-apis-breaking-change",
+    "heading_level": 2,
+    "content": "## [Async Request APIs (Breaking change)](#async-request-apis-breaking-change)\n\nPreviously synchronous Dynamic APIs that rely on runtime information are now **asynchronous**:\n\n* [`cookies`](/docs/app/api-reference/functions/cookies)\n* [`headers`](/docs/app/api-reference/functions/headers)\n* [`draftMode`](/docs/app/api-reference/functions/draft-mode)\n* `params` in [`layout.js`](/docs/app/api-reference/file-conventions/layout), [`page.js`](/docs/app/api-reference/file-conventions/page), [`route.js`](/docs/app/api-reference/file-conventions/route), [`default.js`](/docs/app/api-reference/file-conventions/default), [`opengraph-image`](/docs/app/api-reference/file-conventions/metadata/opengraph-image), [`twitter-image`](/docs/app/api-reference/file-conventions/metadata/opengraph-image), [`icon`](/docs/app/api-reference/file-conventions/metadata/app-icons), and [`apple-icon`](/docs/app/api-reference/file-conventions/metadata/app-icons).\n* `searchParams` in [`page.js`](/docs/app/api-reference/file-conventions/page)\n\nTo ease the burden of migration, a [codemod is available](/docs/app/building-your-application/upgrading/codemods#150) to automate the process and the APIs can temporarily be accessed synchronously.",
+    "preview": "Previously synchronous Dynamic APIs that rely on runtime information are now **asynchronous**: * [`cookies`](/docs/app/api-reference/functions/cookies) * [`headers`](/docs/app/api-reference/functions/headers) * [`draftMode`](/docs/app/api-reference/functions/draft-mode) * `params` in [`layout.js`](",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#async-request-apis-breaking-change-async-request-apis-breaking-change",
+    "position": 4
+  },
+  {
+    "title": "Version 15",
+    "section": "[`cookies`](#cookies)",
+    "section_id": "cookies-cookies",
+    "heading_level": 3,
+    "content": "### [`cookies`](#cookies)\n\n#### [Recommended Async Usage](#recommended-async-usage)\n\n```\nimport { cookies } from 'next/headers'\n \n// Before\nconst cookieStore = cookies()\nconst token = cookieStore.get('token')\n \n// After\nconst cookieStore = await cookies()\nconst token = cookieStore.get('token')\n```\n\n#### [Temporary Synchronous Usage](#temporary-synchronous-usage)\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { cookies, type UnsafeUnwrappedCookies } from 'next/headers'\n \n// Before\nconst cookieStore = cookies()\nconst token = cookieStore.get('token')\n \n// After\nconst cookieStore = cookies() as unknown as UnsafeUnwrappedCookies\n// will log a warning in dev\nconst token = cookieStore.get('token')\n```",
+    "preview": "#### [Recommended Async Usage](#recommended-async-usage) [Code Block] #### [Temporary Synchronous Usage](#temporary-synchronous-usage) app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#cookies-cookies",
+    "position": 5
+  },
+  {
+    "title": "Version 15",
+    "section": "[`headers`](#headers)",
+    "section_id": "headers-headers",
+    "heading_level": 3,
+    "content": "### [`headers`](#headers)\n\n#### [Recommended Async Usage](#recommended-async-usage-1)\n\n```\nimport { headers } from 'next/headers'\n \n// Before\nconst headersList = headers()\nconst userAgent = headersList.get('user-agent')\n \n// After\nconst headersList = await headers()\nconst userAgent = headersList.get('user-agent')\n```\n\n#### [Temporary Synchronous Usage](#temporary-synchronous-usage-1)\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { headers, type UnsafeUnwrappedHeaders } from 'next/headers'\n \n// Before\nconst headersList = headers()\nconst userAgent = headersList.get('user-agent')\n \n// After\nconst headersList = headers() as unknown as UnsafeUnwrappedHeaders\n// will log a warning in dev\nconst userAgent = headersList.get('user-agent')\n```",
+    "preview": "#### [Recommended Async Usage](#recommended-async-usage-1) [Code Block] #### [Temporary Synchronous Usage](#temporary-synchronous-usage-1) app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#headers-headers",
+    "position": 6
+  },
+  {
+    "title": "Version 15",
+    "section": "[`draftMode`](#draftmode)",
+    "section_id": "draftmode-draftmode",
+    "heading_level": 3,
+    "content": "### [`draftMode`](#draftmode)\n\n#### [Recommended Async Usage](#recommended-async-usage-2)\n\n```\nimport { draftMode } from 'next/headers'\n \n// Before\nconst { isEnabled } = draftMode()\n \n// After\nconst { isEnabled } = await draftMode()\n```\n\n#### [Temporary Synchronous Usage](#temporary-synchronous-usage-2)\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { draftMode, type UnsafeUnwrappedDraftMode } from 'next/headers'\n \n// Before\nconst { isEnabled } = draftMode()\n \n// After\n// will log a warning in dev\nconst { isEnabled } = draftMode() as unknown as UnsafeUnwrappedDraftMode\n```",
+    "preview": "#### [Recommended Async Usage](#recommended-async-usage-2) [Code Block] #### [Temporary Synchronous Usage](#temporary-synchronous-usage-2) app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#draftmode-draftmode",
+    "position": 7
+  },
+  {
+    "title": "Version 15",
+    "section": "[`params` & `searchParams`](#params--searchparams)",
+    "section_id": "params-searchparams-params-searchparams",
+    "heading_level": 3,
+    "content": "### [`params` & `searchParams`](#params--searchparams)\n\n#### [Asynchronous Layout](#asynchronous-layout)\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n// Before\ntype Params = { slug: string }\n \nexport function generateMetadata({ params }: { params: Params }) {\n  const { slug } = params\n}\n \nexport default async function Layout({\n  children,\n  params,\n}: {\n  children: React.ReactNode\n  params: Params\n}) {\n  const { slug } = params\n}\n \n// After\ntype Params = Promise<{ slug: string }>\n \nexport async function generateMetadata({ params }: { params: Params }) {\n  const { slug } = await params\n}\n \nexport default async function Layout({\n  children,\n  params,\n}: {\n  children: React.ReactNode\n  params: Params\n}) {\n  const { slug } = await params\n}\n```\n\n#### [Synchronous Layout](#synchronous-layout)\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n// Before\ntype Params = { slug: string }\n \nexport default function Layout({\n  children,\n  params,\n}: {\n  children: React.ReactNode\n  params: Params\n}) {\n  const { slug } = params\n}\n \n// After\nimport { use } from 'react'\n \ntype Params = Promise<{ slug: string }>\n \nexport default function Layout(props: {\n  children: React.ReactNode\n  params: Params\n}) {\n  const params = use(props.params)\n  const slug = params.slug\n}\n```\n\n#### [Asynchronous Page](#asynchronous-page)\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n// Before\ntype Params = { slug: string }\ntype SearchParams = { [key: string]: string | string[] | undefined }\n \nexport function generateMetadata({\n  params,\n  searchParams,\n}: {\n  params: Params\n  searchParams: SearchParams\n}) {\n  const { slug } = params\n  const { query } = searchParams\n}\n \nexport default async function Page({\n  params,\n  searchParams,\n}: {\n  params: Params\n  searchParams: SearchParams\n}) {\n  const { slug } = params\n  const { query } = searchParams\n}\n \n// After\ntype Params = Promise<{ slug: string }>\ntype SearchParams = Promise<{ [key: string]: string | string[] | undefined }>\n \nexport async function generateMetadata(props: {\n  params: Params\n  searchParams: SearchParams\n}) {\n  const params = await props.params\n  const searchParams = await props.searchParams\n  const slug = params.slug\n  const query = searchParams.query\n}\n \nexport default async function Page(props: {\n  params: Params\n  searchParams: SearchParams\n}) {\n  const params = await props.params\n  const searchParams = await props.searchParams\n  const slug = params.slug\n  const query = searchParams.query\n}\n```\n\n#### [Synchronous Page](#synchronous-page)\n\n```\n'use client'\n \n// Before\ntype Params = { slug: string }\ntype SearchParams = { [key: string]: string | string[] | undefined }\n \nexport default function Page({\n  params,\n  searchParams,\n}: {\n  params: Params\n  searchParams: SearchParams\n}) {\n  const { slug } = params\n  const { query } = searchParams\n}\n \n// After\nimport { use } from 'react'\n \ntype Params = Promise<{ slug: string }>\ntype SearchParams = Promise<{ [key: string]: string | string[] | undefined }>\n \nexport default function Page(props: {\n  params: Params\n  searchParams: SearchParams\n}) {\n  const params = use(props.params)\n  const searchParams = use(props.searchParams)\n  const slug = params.slug\n  const query = searchParams.query\n}\n```\n\n```\n// Before\nexport default function Page({ params, searchParams }) {\n  const { slug } = params\n  const { query } = searchParams\n}\n \n// After\nimport { use } from \"react\"\n \nexport default function Page(props) {\n  const params = use(props.params)\n  const searchParams = use(props.searchParams)\n  const slug = params.slug\n  const query = searchParams.query\n}\n \n```\n\n#### [Route Handlers](#route-handlers)\n\napp/api/route.ts\n\n```\n// Before\ntype Params = { slug: string }\n \nexport async function GET(request: Request, segmentData: { params: Params }) {\n  const params = segmentData.params\n  const slug = params.slug\n}\n \n// After\ntype Params = Promise<{ slug: string }>\n \nexport async function GET(request: Request, segmentData: { params: Params }) {\n  const params = await segmentData.params\n  const slug = params.slug\n}\n```\n\napp/api/route.js\n\n```\n// Before\nexport async function GET(request, segmentData) {\n  const params = segmentData.params\n  const slug = params.slug\n}\n \n// After\nexport async function GET(request, segmentData) {\n  const params = await segmentData.params\n  const slug = params.slug\n}\n```",
+    "preview": "#### [Asynchronous Layout](#asynchronous-layout) app/layout.tsx TypeScript JavaScriptTypeScript [Code Block] #### [Synchronous Layout](#synchronous-layout) app/layout.tsx TypeScript JavaScriptTypeScript [Code Block] #### [Asynchronous Page](#asynchronous-page) app/page.tsx TypeScript Ja",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#params-searchparams-params-searchparams",
+    "position": 8
+  },
+  {
+    "title": "Version 15",
+    "section": "[`runtime` configuration (Breaking change)](#runtime-configuration-breaking-change)",
+    "section_id": "runtime-configuration-breaking-change-runtime-configuration-breaking-change",
+    "heading_level": 2,
+    "content": "## [`runtime` configuration (Breaking change)](#runtime-configuration-breaking-change)\n\nThe `runtime` [segment configuration](/docs/app/api-reference/file-conventions/route-segment-config#runtime) previously supported a value of `experimental-edge` in addition to `edge`. Both configurations refer to the same thing, and to simplify the options, we will now error if `experimental-edge` is used. To fix this, update your `runtime` configuration to `edge`. A [codemod](/docs/app/building-your-application/upgrading/codemods#app-dir-runtime-config-experimental-edge) is available to automatically do this.",
+    "preview": "The `runtime` [segment configuration](/docs/app/api-reference/file-conventions/route-segment-config#runtime) previously supported a value of `experimental-edge` in addition to `edge`. Both configurations refer to the same thing, and to simplify the options, we will now error if `experimental-edge` i",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#runtime-configuration-breaking-change-runtime-configuration-breaking-change",
+    "position": 9
+  },
+  {
+    "title": "Version 15",
+    "section": "[`fetch` requests](#fetch-requests)",
+    "section_id": "fetch-requests-fetch-requests",
+    "heading_level": 2,
+    "content": "## [`fetch` requests](#fetch-requests)\n\n[`fetch` requests](/docs/app/api-reference/functions/fetch) are no longer cached by default.\n\nTo opt specific `fetch` requests into caching, you can pass the `cache: 'force-cache'` option.\n\napp/layout.js\n\n```\nexport default async function RootLayout() {\n  const a = await fetch('https://...') // Not Cached\n  const b = await fetch('https://...', { cache: 'force-cache' }) // Cached\n \n  // ...\n}\n```\n\nTo opt all `fetch` requests in a layout or page into caching, you can use the `export const fetchCache = 'default-cache'` [segment config option](/docs/app/api-reference/file-conventions/route-segment-config). If individual `fetch` requests specify a `cache` option, that will be used instead.\n\napp/layout.js\n\n```\n// Since this is the root layout, all fetch requests in the app\n// that don't set their own cache option will be cached.\nexport const fetchCache = 'default-cache'\n \nexport default async function RootLayout() {\n  const a = await fetch('https://...') // Cached\n  const b = await fetch('https://...', { cache: 'no-store' }) // Not cached\n \n  // ...\n}\n```",
+    "preview": "[`fetch` requests](/docs/app/api-reference/functions/fetch) are no longer cached by default. To opt specific `fetch` requests into caching, you can pass the `cache: 'force-cache'` option. app/layout.js [Code Block] To opt all `fetch` requests in a layout or page into caching, you can use the `ex",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#fetch-requests-fetch-requests",
+    "position": 10
+  },
+  {
+    "title": "Version 15",
+    "section": "[Route Handlers](#route-handlers-1)",
+    "section_id": "route-handlers-route-handlers-1",
+    "heading_level": 2,
+    "content": "## [Route Handlers](#route-handlers-1)\n\n`GET` functions in [Route Handlers](/docs/app/api-reference/file-conventions/route) are no longer cached by default. To opt `GET` methods into caching, you can use a [route config option](/docs/app/api-reference/file-conventions/route-segment-config) such as `export const dynamic = 'force-static'` in your Route Handler file.\n\napp/api/route.js\n\n```\nexport const dynamic = 'force-static'\n \nexport async function GET() {}\n```",
+    "preview": "`GET` functions in [Route Handlers](/docs/app/api-reference/file-conventions/route) are no longer cached by default. To opt `GET` methods into caching, you can use a [route config option](/docs/app/api-reference/file-conventions/route-segment-config) such as `export const dynamic = 'force-static'` i",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#route-handlers-route-handlers-1",
+    "position": 11
+  },
+  {
+    "title": "Version 15",
+    "section": "[Client-side Router Cache](#client-side-router-cache)",
+    "section_id": "client-side-router-cache-client-side-router-cache",
+    "heading_level": 2,
+    "content": "## [Client-side Router Cache](#client-side-router-cache)\n\nWhen navigating between pages via `<Link>` or `useRouter`, [page](/docs/app/api-reference/file-conventions/page) segments are no longer reused from the client-side router cache. However, they are still reused during browser backward and forward navigation and for shared layouts.\n\nTo opt page segments into caching, you can use the [`staleTimes`](/docs/app/api-reference/config/next-config-js/staleTimes) config option:\n\nnext.config.js\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  experimental: {\n    staleTimes: {\n      dynamic: 30,\n      static: 180,\n    },\n  },\n}\n \nmodule.exports = nextConfig\n```\n\n[Layouts](/docs/app/api-reference/file-conventions/layout) and [loading states](/docs/app/api-reference/file-conventions/loading) are still cached and reused on navigation.",
+    "preview": "When navigating between pages via `<Link>` or `useRouter`, [page](/docs/app/api-reference/file-conventions/page) segments are no longer reused from the client-side router cache. However, they are still reused during browser backward and forward navigation and for shared layouts. To opt page segment",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#client-side-router-cache-client-side-router-cache",
+    "position": 12
+  },
+  {
+    "title": "Version 15",
+    "section": "[`next/font`](#nextfont)",
+    "section_id": "next-font-nextfont",
+    "heading_level": 2,
+    "content": "## [`next/font`](#nextfont)\n\nThe `@next/font` package has been removed in favor of the built-in [`next/font`](/docs/app/api-reference/components/font). A [codemod is available](/docs/app/building-your-application/upgrading/codemods#built-in-next-font) to safely and automatically rename your imports.\n\napp/layout.js\n\n```\n// Before\nimport { Inter } from '@next/font/google'\n \n// After\nimport { Inter } from 'next/font/google'\n```",
+    "preview": "The `@next/font` package has been removed in favor of the built-in [`next/font`](/docs/app/api-reference/components/font). A [codemod is available](/docs/app/building-your-application/upgrading/codemods#built-in-next-font) to safely and automatically rename your imports. app/layout.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#next-font-nextfont",
+    "position": 13
+  },
+  {
+    "title": "Version 15",
+    "section": "[bundlePagesRouterDependencies](#bundlepagesrouterdependencies)",
+    "section_id": "bundlepagesrouterdependencies-bundlepagesrouterdependencies",
+    "heading_level": 2,
+    "content": "## [bundlePagesRouterDependencies](#bundlepagesrouterdependencies)\n\n`experimental.bundlePagesExternals` is now stable and renamed to `bundlePagesRouterDependencies`.\n\nnext.config.js\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  // Before\n  experimental: {\n    bundlePagesExternals: true,\n  },\n \n  // After\n  bundlePagesRouterDependencies: true,\n}\n \nmodule.exports = nextConfig\n```",
+    "preview": "`experimental.bundlePagesExternals` is now stable and renamed to `bundlePagesRouterDependencies`. next.config.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#bundlepagesrouterdependencies-bundlepagesrouterdependencies",
+    "position": 14
+  },
+  {
+    "title": "Version 15",
+    "section": "[serverExternalPackages](#serverexternalpackages)",
+    "section_id": "serverexternalpackages-serverexternalpackages",
+    "heading_level": 2,
+    "content": "## [serverExternalPackages](#serverexternalpackages)\n\n`experimental.serverComponentsExternalPackages` is now stable and renamed to `serverExternalPackages`.\n\nnext.config.js\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  // Before\n  experimental: {\n    serverComponentsExternalPackages: ['package-name'],\n  },\n \n  // After\n  serverExternalPackages: ['package-name'],\n}\n \nmodule.exports = nextConfig\n```",
+    "preview": "`experimental.serverComponentsExternalPackages` is now stable and renamed to `serverExternalPackages`. next.config.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#serverexternalpackages-serverexternalpackages",
+    "position": 15
+  },
+  {
+    "title": "Version 15",
+    "section": "[Speed Insights](#speed-insights)",
+    "section_id": "speed-insights-speed-insights",
+    "heading_level": 2,
+    "content": "## [Speed Insights](#speed-insights)\n\nAuto instrumentation for Speed Insights was removed in Next.js 15.\n\nTo continue using Speed Insights, follow the [Vercel Speed Insights Quickstart](https://vercel.com/docs/speed-insights/quickstart) guide.",
+    "preview": "Auto instrumentation for Speed Insights was removed in Next.js 15. To continue using Speed Insights, follow the [Vercel Speed Insights Quickstart](https://vercel.com/docs/speed-insights/quickstart) guide.",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#speed-insights-speed-insights",
+    "position": 16
+  },
+  {
+    "title": "Version 15",
+    "section": "[`NextRequest` Geolocation](#nextrequest-geolocation)",
+    "section_id": "nextrequest-geolocation-nextrequest-geolocation",
+    "heading_level": 2,
+    "content": "## [`NextRequest` Geolocation](#nextrequest-geolocation)\n\nThe `geo` and `ip` properties on `NextRequest` have been removed as these values are provided by your hosting provider. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available to automate this migration.\n\nIf you are using Vercel, you can alternatively use the `geolocation` and `ipAddress` functions from [`@vercel/functions`](https://vercel.com/docs/functions/vercel-functions-package) instead:\n\nmiddleware.ts\n\n```\nimport { geolocation } from '@vercel/functions'\nimport type { NextRequest } from 'next/server'\n \nexport function middleware(request: NextRequest) {\n  const { city } = geolocation(request)\n \n  // ...\n}\n```\n\nmiddleware.ts\n\n```\nimport { ipAddress } from '@vercel/functions'\nimport type { NextRequest } from 'next/server'\n \nexport function middleware(request: NextRequest) {\n  const ip = ipAddress(request)\n \n  // ...\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The `geo` and `ip` properties on `NextRequest` have been removed as these values are provided by your hosting provider. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available to automate this migration. If you are using Vercel, you can alternatively use the `geolocatio",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/version-15#nextrequest-geolocation-nextrequest-geolocation",
+    "position": 17
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "title": "unstable_noStore",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)unstable\\_noStore",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)unstable\\_noStore",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unstable_noStore#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "unstable_noStore",
+    "section": "unstable\\_noStore",
+    "section_id": "unstable-nostore",
+    "heading_level": 1,
+    "content": "# unstable\\_noStore\n\nThis is a legacy API and no longer recommended. It's still supported for backward compatibility.\n\n**In version 15, we recommend using [`connection`](/docs/app/api-reference/functions/connection) instead of `unstable_noStore`.**\n\n`unstable_noStore` can be used to declaratively opt out of static rendering and indicate a particular component should not be cached.\n\n```\nimport { unstable_noStore as noStore } from 'next/cache';\n \nexport default async function ServerComponent() {\n  noStore();\n  const result = await db.query(...);\n  ...\n}\n```\n\n> **Good to know**:\n>\n> * `unstable_noStore` is equivalent to `cache: 'no-store'` on a `fetch`\n> * `unstable_noStore` is preferred over `export const dynamic = 'force-dynamic'` as it is more granular and can be used on a per-component basis\n\n* Using `unstable_noStore` inside [`unstable_cache`](/docs/app/api-reference/functions/unstable_cache) will not opt out of static generation. Instead, it will defer to the cache configuration to determine whether to cache the result or not.",
+    "preview": "This is a legacy API and no longer recommended. It's still supported for backward compatibility. **In version 15, we recommend using [`connection`](/docs/app/api-reference/functions/connection) instead of `unstable_noStore`.** `unstable_noStore` can be used to declaratively opt out of static rende",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unstable_noStore#unstable-nostore",
+    "position": 1
+  },
+  {
+    "title": "unstable_noStore",
+    "section": "[Usage](#usage)",
+    "section_id": "usage-usage",
+    "heading_level": 2,
+    "content": "## [Usage](#usage)\n\nIf you prefer not to pass additional options to `fetch`, like `cache: 'no-store'`, `next: { revalidate: 0 }` or in cases where `fetch` is not available, you can use `noStore()` as a replacement for all of these use cases.\n\n```\nimport { unstable_noStore as noStore } from 'next/cache';\n \nexport default async function ServerComponent() {\n  noStore();\n  const result = await db.query(...);\n  ...\n}\n```",
+    "preview": "If you prefer not to pass additional options to `fetch`, like `cache: 'no-store'`, `next: { revalidate: 0 }` or in cases where `fetch` is not available, you can use `noStore()` as a replacement for all of these use cases. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unstable_noStore#usage-usage",
+    "position": 2
+  },
+  {
+    "title": "unstable_noStore",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0` | `unstable_noStore` deprecated for `connection`. |\n| `v14.0.0` | `unstable_noStore` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0` | `unstable_noStore` deprecated for `connection`. | | `v14.0.0` | `unstable_noStore` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unstable_noStore#version-history-version-history",
+    "position": 3
+  }
+]

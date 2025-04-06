@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Getting Started",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Introduction](/docs)[App Router](/docs/app)Getting Started",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Introduction](/docs)[App Router](/docs/app)Getting Started",
+    "url": "https://nextjs.org/docs/app/getting-started#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Getting Started",
+    "section": "Getting Started",
+    "section_id": "getting-started",
+    "heading_level": 1,
+    "content": "# Getting Started\n\n[### Installation\n\nCreate a new Next.js application with the `create-next-app` CLI, and set up TypeScript, ESLint, and Module Path Aliases.](/docs/app/getting-started/installation)[### Project Structure\n\nAn overview of the folder and file conventions in Next.js, and how to organize your project.](/docs/app/getting-started/project-structure)[### Layouts and Pages\n\nCreate your first pages and layouts, and link between them.](/docs/app/getting-started/layouts-and-pages)[### Images and Fonts\n\nLearn how to optimize images and fonts.](/docs/app/getting-started/images-and-fonts)[### CSS\n\nLearn about the different ways to add CSS to your application, including CSS Modules, Global CSS, Tailwind CSS, and more.](/docs/app/getting-started/css)[### Fetching Data\n\nStart fetching data and streaming content in your application.](/docs/app/getting-started/fetching-data)[### Updating Data\n\nLearn how to update data in your Next.js application.](/docs/app/getting-started/updating-data)[### Error Handling\n\nLearn how to display expected errors and handle uncaught exceptions.](/docs/app/getting-started/error-handling)[### Metadata and OG images\n\nLearn how to add metadata to your pages and create dynamic OG images.](/docs/app/getting-started/metadata-and-og-images)[### Upgrade\n\nLearn how to upgrade your Next.js application to the latest version.](/docs/app/getting-started/upgrading)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Installation Create a new Next.js application with the `create-next-app` CLI, and set up TypeScript, ESLint, and Module Path Aliases.](/docs/app/getting-started/installation)[### Project Structure An overview of the folder and file conventions in Next.js, and how to organize your project.](/d",
+    "url": "https://nextjs.org/docs/app/getting-started#getting-started",
+    "position": 1
+  }
+]

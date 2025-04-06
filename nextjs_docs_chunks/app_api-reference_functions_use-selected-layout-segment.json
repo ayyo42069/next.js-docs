@@ -1,0 +1,72 @@
+[
+  {
+    "title": "useSelectedLayoutSegment",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)useSelectedLayoutSegment",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)useSelectedLayoutSegment",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "useSelectedLayoutSegment",
+    "section": "useSelectedLayoutSegment",
+    "section_id": "useselectedlayoutsegment",
+    "heading_level": 1,
+    "content": "# useSelectedLayoutSegment\n\n`useSelectedLayoutSegment` is a **Client Component** hook that lets you read the active route segment **one level below** the Layout it is called from.\n\nIt is useful for navigation UI, such as tabs inside a parent layout that change style depending on the active child segment.\n\napp/example-client-component.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useSelectedLayoutSegment } from 'next/navigation'\n \nexport default function ExampleClientComponent() {\n  const segment = useSelectedLayoutSegment()\n \n  return <p>Active segment: {segment}</p>\n}\n```\n\n> **Good to know**:\n>\n> * Since `useSelectedLayoutSegment` is a [Client Component](/docs/app/building-your-application/rendering/client-components) hook, and Layouts are [Server Components](/docs/app/building-your-application/rendering/server-components) by default, `useSelectedLayoutSegment` is usually called via a Client Component that is imported into a Layout.\n> * `useSelectedLayoutSegment` only returns the segment one level down. To return all active segments, see [`useSelectedLayoutSegments`](/docs/app/api-reference/functions/use-selected-layout-segments)",
+    "preview": "`useSelectedLayoutSegment` is a **Client Component** hook that lets you read the active route segment **one level below** the Layout it is called from. It is useful for navigation UI, such as tabs inside a parent layout that change style depending on the active child segment. app/example-client-co",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#useselectedlayoutsegment",
+    "position": 1
+  },
+  {
+    "title": "useSelectedLayoutSegment",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\n```\nconst segment = useSelectedLayoutSegment(parallelRoutesKey?: string)\n```\n\n`useSelectedLayoutSegment` *optionally* accepts a [`parallelRoutesKey`](/docs/app/building-your-application/routing/parallel-routes#useselectedlayoutsegments), which allows you to read the active route segment within that slot.",
+    "preview": "[Code Block] `useSelectedLayoutSegment` *optionally* accepts a [`parallelRoutesKey`](/docs/app/building-your-application/routing/parallel-routes#useselectedlayoutsegments), which allows you to read the active route segment within that slot.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "useSelectedLayoutSegment",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\n`useSelectedLayoutSegment` returns a string of the active segment or `null` if one doesn't exist.\n\nFor example, given the Layouts and URLs below, the returned segment would be:\n\n| Layout | Visited URL | Returned Segment |\n| --- | --- | --- |\n| `app/layout.js` | `/` | `null` |\n| `app/layout.js` | `/dashboard` | `'dashboard'` |\n| `app/dashboard/layout.js` | `/dashboard` | `null` |\n| `app/dashboard/layout.js` | `/dashboard/settings` | `'settings'` |\n| `app/dashboard/layout.js` | `/dashboard/analytics` | `'analytics'` |\n| `app/dashboard/layout.js` | `/dashboard/analytics/monthly` | `'analytics'` |",
+    "preview": "`useSelectedLayoutSegment` returns a string of the active segment or `null` if one doesn't exist. For example, given the Layouts and URLs below, the returned segment would be: | Layout | Visited URL | Returned Segment | | --- | --- | --- | | `app/layout.js` | `/` | `null` | | `app/layout.js` | `/d",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "useSelectedLayoutSegment",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "useSelectedLayoutSegment",
+    "section": "[Creating an active link component](#creating-an-active-link-component)",
+    "section_id": "creating-an-active-link-component-creating-an-active-link-component",
+    "heading_level": 3,
+    "content": "### [Creating an active link component](#creating-an-active-link-component)\n\nYou can use `useSelectedLayoutSegment` to create an active link component that changes style depending on the active segment. For example, a featured posts list in the sidebar of a blog:\n\napp/blog/blog-nav-link.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport Link from 'next/link'\nimport { useSelectedLayoutSegment } from 'next/navigation'\n \n// This *client* component will be imported into a blog layout\nexport default function BlogNavLink({\n  slug,\n  children,\n}: {\n  slug: string\n  children: React.ReactNode\n}) {\n  // Navigating to `/blog/hello-world` will return 'hello-world'\n  // for the selected layout segment\n  const segment = useSelectedLayoutSegment()\n  const isActive = slug === segment\n \n  return (\n    <Link\n      href={`/blog/${slug}`}\n      // Change style depending on whether the link is active\n      style={{ fontWeight: isActive ? 'bold' : 'normal' }}\n    >\n      {children}\n    </Link>\n  )\n}\n```\n\napp/blog/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n// Import the Client Component into a parent Layout (Server Component)\nimport { BlogNavLink } from './blog-nav-link'\nimport getFeaturedPosts from './get-featured-posts'\n \nexport default async function Layout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  const featuredPosts = await getFeaturedPosts()\n  return (\n    <div>\n      {featuredPosts.map((post) => (\n        <div key={post.id}>\n          <BlogNavLink slug={post.slug}>{post.title}</BlogNavLink>\n        </div>\n      ))}\n      <div>{children}</div>\n    </div>\n  )\n}\n```",
+    "preview": "You can use `useSelectedLayoutSegment` to create an active link component that changes style depending on the active segment. For example, a featured posts list in the sidebar of a blog: app/blog/blog-nav-link.tsx TypeScript JavaScriptTypeScript ``` 'use client' import Link from 'next/link' im",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#creating-an-active-link-component-creating-an-active-link-component",
+    "position": 5
+  },
+  {
+    "title": "useSelectedLayoutSegment",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.0.0` | `useSelectedLayoutSegment` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.0.0` | `useSelectedLayoutSegment` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment#version-history-version-history",
+    "position": 6
+  }
+]

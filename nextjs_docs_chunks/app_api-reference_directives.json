@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Directives",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[API Reference](/docs/app/api-reference)Directives",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[API Reference](/docs/app/api-reference)Directives",
+    "url": "https://nextjs.org/docs/app/api-reference/directives#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Directives",
+    "section": "Directives",
+    "section_id": "directives",
+    "heading_level": 1,
+    "content": "# Directives\n\nThe following directives are available:\n\n[### use cache\n\nLearn how to use the use cache directive to cache data in your Next.js application.](/docs/app/api-reference/directives/use-cache)[### use client\n\nLearn how to use the use client directive to render a component on the client.](/docs/app/api-reference/directives/use-client)[### use server\n\nLearn how to use the use server directive to execute code on the server.](/docs/app/api-reference/directives/use-server)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The following directives are available: [### use cache Learn how to use the use cache directive to cache data in your Next.js application.](/docs/app/api-reference/directives/use-cache)[### use client Learn how to use the use client directive to render a component on the client.](/docs/app/api-re",
+    "url": "https://nextjs.org/docs/app/api-reference/directives#directives",
+    "position": 1
+  }
+]

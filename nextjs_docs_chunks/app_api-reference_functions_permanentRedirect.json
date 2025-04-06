@@ -1,0 +1,62 @@
+[
+  {
+    "title": "permanentRedirect",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)permanentRedirect",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)permanentRedirect",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/permanentRedirect#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "permanentRedirect",
+    "section": "permanentRedirect",
+    "section_id": "permanentredirect",
+    "heading_level": 1,
+    "content": "# permanentRedirect\n\nThe `permanentRedirect` function allows you to redirect the user to another URL. `permanentRedirect` can be used in Server Components, Client Components, [Route Handlers](/docs/app/building-your-application/routing/route-handlers), and [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations).\n\nWhen used in a streaming context, this will insert a meta tag to emit the redirect on the client side. When used in a server action, it will serve a 303 HTTP redirect response to the caller. Otherwise, it will serve a 308 (Permanent) HTTP redirect response to the caller.\n\nIf a resource doesn't exist, you can use the [`notFound` function](/docs/app/api-reference/functions/not-found) instead.\n\n> **Good to know**: If you prefer to return a 307 (Temporary) HTTP redirect instead of 308 (Permanent), you can use the [`redirect` function](/docs/app/api-reference/functions/redirect) instead.",
+    "preview": "The `permanentRedirect` function allows you to redirect the user to another URL. `permanentRedirect` can be used in Server Components, Client Components, [Route Handlers](/docs/app/building-your-application/routing/route-handlers), and [Server Actions](/docs/app/building-your-application/data-fetchi",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/permanentRedirect#permanentredirect",
+    "position": 1
+  },
+  {
+    "title": "permanentRedirect",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\nThe `permanentRedirect` function accepts two arguments:\n\n```\npermanentRedirect(path, type)\n```\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `path` | `string` | The URL to redirect to. Can be a relative or absolute path. |\n| `type` | `'replace'` (default) or `'push'` (default in Server Actions) | The type of redirect to perform. |\n\nBy default, `permanentRedirect` will use `push` (adding a new entry to the browser history stack) in [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) and `replace` (replacing the current URL in the browser history stack) everywhere else. You can override this behavior by specifying the `type` parameter.\n\nThe `type` parameter has no effect when used in Server Components.",
+    "preview": "The `permanentRedirect` function accepts two arguments: [Code Block] | Parameter | Type | Description | | --- | --- | --- | | `path` | `string` | The URL to redirect to. Can be a relative or absolute path. | | `type` | `'replace'` (default) or `'push'` (default in Server Actions) | The type of red",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/permanentRedirect#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "permanentRedirect",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\n`permanentRedirect` does not return a value.",
+    "preview": "`permanentRedirect` does not return a value.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/permanentRedirect#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "permanentRedirect",
+    "section": "[Example](#example)",
+    "section_id": "example-example",
+    "heading_level": 2,
+    "content": "## [Example](#example)\n\nInvoking the `permanentRedirect()` function throws a `NEXT_REDIRECT` error and terminates rendering of the route segment in which it was thrown.\n\napp/team/[id]/page.js\n\n```\nimport { permanentRedirect } from 'next/navigation'\n \nasync function fetchTeam(id) {\n  const res = await fetch('https://...')\n  if (!res.ok) return undefined\n  return res.json()\n}\n \nexport default async function Profile({ params }) {\n  const { id } = await params\n  const team = await fetchTeam(id)\n  if (!team) {\n    permanentRedirect('/login')\n  }\n \n  // ...\n}\n```\n\n> **Good to know**: `permanentRedirect` does not require you to use `return permanentRedirect()` as it uses the TypeScript [`never`](https://www.typescriptlang.org/docs/handbook/2/functions.html#never) type.",
+    "preview": "Invoking the `permanentRedirect()` function throws a `NEXT_REDIRECT` error and terminates rendering of the route segment in which it was thrown. app/team/[id]/page.js [Code Block] > **Good to know**: `permanentRedirect` does not require you to use `return permanentRedirect()` as it uses the TypeS",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/permanentRedirect#example-example",
+    "position": 4
+  },
+  {
+    "title": "permanentRedirect",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\n[### redirect\n\nAPI Reference for the redirect function.](/docs/app/api-reference/functions/redirect)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### redirect API Reference for the redirect function.](/docs/app/api-reference/functions/redirect) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/permanentRedirect#next-steps",
+    "position": 5
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "title": "No Duplicate Head",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No Duplicate Head",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No Duplicate Head",
+    "url": "https://nextjs.org/docs/messages/no-duplicate-head#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No Duplicate Head",
+    "section": "No Duplicate Head",
+    "section_id": "no-duplicate-head",
+    "heading_level": 1,
+    "content": "# No Duplicate Head\n\n> Prevent duplicate usage of `<Head>` in `pages/_document.js`.",
+    "preview": "> Prevent duplicate usage of `<Head>` in `pages/_document.js`.",
+    "url": "https://nextjs.org/docs/messages/no-duplicate-head#no-duplicate-head",
+    "position": 1
+  },
+  {
+    "title": "No Duplicate Head",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nMore than a single instance of the `<Head />` component was used in a single custom document. This can cause unexpected behavior in your application.",
+    "preview": "More than a single instance of the `<Head />` component was used in a single custom document. This can cause unexpected behavior in your application.",
+    "url": "https://nextjs.org/docs/messages/no-duplicate-head#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No Duplicate Head",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nOnly use a single `<Head />` component in your custom document in `pages/_document.js`.\n\npages/\\_document.js\n\n```\nimport Document, { Html, Head, Main, NextScript } from 'next/document'\n \nclass MyDocument extends Document {\n  static async getInitialProps(ctx) {\n    //...\n  }\n \n  render() {\n    return (\n      <Html>\n        <Head />\n        <body>\n          <Main />\n          <NextScript />\n        </body>\n      </Html>\n    )\n  }\n}\n \nexport default MyDocument\n```",
+    "preview": "Only use a single `<Head />` component in your custom document in `pages/_document.js`. pages/\\_document.js [Code Block]",
+    "url": "https://nextjs.org/docs/messages/no-duplicate-head#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No Duplicate Head",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Custom Document](/docs/pages/building-your-application/routing/custom-document)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Custom Document](/docs/pages/building-your-application/routing/custom-document) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/no-duplicate-head#useful-links-useful-links",
+    "position": 4
+  }
+]

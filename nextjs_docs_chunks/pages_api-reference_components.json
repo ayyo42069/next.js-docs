@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Components",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Pages Router](/docs/pages)[API Reference](/docs/pages/api-reference)Components",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Pages Router](/docs/pages)[API Reference](/docs/pages/api-reference)Components",
+    "url": "https://nextjs.org/docs/pages/api-reference/components#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Components",
+    "section": "Components",
+    "section_id": "components",
+    "heading_level": 1,
+    "content": "# Components\n\n[### Font\n\nAPI Reference for the Font Module](/docs/pages/api-reference/components/font)[### Form\n\nLearn how to use the `<Form>` component to handle form submissions and search params updates with client-side navigation.](/docs/pages/api-reference/components/form)[### Head\n\nAdd custom elements to the `head` of your page with the built-in Head component.](/docs/pages/api-reference/components/head)[### Image\n\nOptimize Images in your Next.js Application using the built-in `next/image` Component.](/docs/pages/api-reference/components/image)[### Image (Legacy)\n\nBackwards compatible Image Optimization with the Legacy Image component.](/docs/pages/api-reference/components/image-legacy)[### Link\n\nAPI reference for the `<Link>` component.](/docs/pages/api-reference/components/link)[### Script\n\nOptimize third-party scripts in your Next.js application using the built-in `next/script` Component.](/docs/pages/api-reference/components/script)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Font API Reference for the Font Module](/docs/pages/api-reference/components/font)[### Form Learn how to use the `<Form>` component to handle form submissions and search params updates with client-side navigation.](/docs/pages/api-reference/components/form)[### Head Add custom elements to th",
+    "url": "https://nextjs.org/docs/pages/api-reference/components#components",
+    "position": 1
+  }
+]

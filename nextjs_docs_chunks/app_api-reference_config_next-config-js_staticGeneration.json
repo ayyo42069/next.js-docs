@@ -1,0 +1,32 @@
+[
+  {
+    "title": "staticGeneration*",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)staticGeneration\\*",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)staticGeneration\\*",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/staticGeneration#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "staticGeneration*",
+    "section": "staticGeneration\\*",
+    "section_id": "staticgeneration",
+    "heading_level": 1,
+    "content": "# staticGeneration\\*\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nThe `staticGeneration*` options allow you to configure the Static Generation process for advanced use cases.\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    staticGenerationRetryCount: 1,\n    staticGenerationMaxConcurrency: 8,\n    staticGenerationMinPagesPerWorker: 25,\n  },\n}\n \nexport default nextConfig\n```",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). The `staticGeneration*` options allow you to configure the Static Generation process for advanced use cases.",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/staticGeneration#staticgeneration",
+    "position": 1
+  },
+  {
+    "title": "staticGeneration*",
+    "section": "[Config Options](#config-options)",
+    "section_id": "config-options-config-options",
+    "heading_level": 2,
+    "content": "## [Config Options](#config-options)\n\nThe following options are available:\n\n* `staticGenerationRetryCount`: The number of times to retry a failed page generation before failing the build.\n* `staticGenerationMaxConcurrency`: The maximum number of pages to be processed per worker.\n* `staticGenerationMinPagesPerWorker`: The minimum number of pages to be processed before starting a new worker.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The following options are available: * `staticGenerationRetryCount`: The number of times to retry a failed page generation before failing the build. * `staticGenerationMaxConcurrency`: The maximum number of pages to be processed per worker. * `staticGenerationMinPagesPerWorker`: The minimum number",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/staticGeneration#config-options-config-options",
+    "position": 2
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "title": "sitemap.xml",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[File Conventions](/docs/app/api-reference/file-conventions)[Metadata Files](/docs/app/api-reference/file-conventions/metadata)sitemap.xml",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [File Conventions](/docs/app/api-reference/file-conventions)[Metadata Files](/docs/app/api-reference/file-conventions/metadata)sitemap.xml",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "sitemap.xml",
+    "section": "sitemap.xml",
+    "section_id": "sitemap-xml",
+    "heading_level": 1,
+    "content": "# sitemap.xml\n\n`sitemap.(xml|js|ts)` is a special file that matches the [Sitemaps XML format](https://www.sitemaps.org/protocol.html) to help search engine crawlers index your site more efficiently.",
+    "preview": "`sitemap.(xml|js|ts)` is a special file that matches the [Sitemaps XML format](https://www.sitemaps.org/protocol.html) to help search engine crawlers index your site more efficiently.",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#sitemap-xml",
+    "position": 1
+  },
+  {
+    "title": "sitemap.xml",
+    "section": "[Sitemap files (.xml)](#sitemap-files-xml)",
+    "section_id": "sitemap-files-xml-sitemap-files-xml",
+    "heading_level": 3,
+    "content": "### [Sitemap files (.xml)](#sitemap-files-xml)\n\nFor smaller applications, you can create a `sitemap.xml` file and place it in the root of your `app` directory.\n\napp/sitemap.xml\n\n```\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://acme.com</loc>\n    <lastmod>2023-04-06T15:02:24.021Z</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>1</priority>\n  </url>\n  <url>\n    <loc>https://acme.com/about</loc>\n    <lastmod>2023-04-06T15:02:24.021Z</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n  <url>\n    <loc>https://acme.com/blog</loc>\n    <lastmod>2023-04-06T15:02:24.021Z</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.5</priority>\n  </url>\n</urlset>\n```",
+    "preview": "For smaller applications, you can create a `sitemap.xml` file and place it in the root of your `app` directory. app/sitemap.xml [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#sitemap-files-xml-sitemap-files-xml",
+    "position": 2
+  },
+  {
+    "title": "sitemap.xml",
+    "section": "[Generating a sitemap using code (.js, .ts)](#generating-a-sitemap-using-code-js-ts)",
+    "section_id": "generating-a-sitemap-using-code-js-ts-generating-a-sitemap-using-code-js-ts",
+    "heading_level": 3,
+    "content": "### [Generating a sitemap using code (.js, .ts)](#generating-a-sitemap-using-code-js-ts)\n\nYou can use the `sitemap.(js|ts)` file convention to programmatically **generate** a sitemap by exporting a default function that returns an array of URLs. If using TypeScript, a [`Sitemap`](#returns) type is available.\n\n> **Good to know**: `sitemap.js` is a special Route Handler that is cached by default unless it uses a [Dynamic API](/docs/app/building-your-application/caching#dynamic-apis) or [dynamic config](/docs/app/building-your-application/caching#segment-config-options) option.\n\napp/sitemap.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MetadataRoute } from 'next'\n \nexport default function sitemap(): MetadataRoute.Sitemap {\n  return [\n    {\n      url: 'https://acme.com',\n      lastModified: new Date(),\n      changeFrequency: 'yearly',\n      priority: 1,\n    },\n    {\n      url: 'https://acme.com/about',\n      lastModified: new Date(),\n      changeFrequency: 'monthly',\n      priority: 0.8,\n    },\n    {\n      url: 'https://acme.com/blog',\n      lastModified: new Date(),\n      changeFrequency: 'weekly',\n      priority: 0.5,\n    },\n  ]\n}\n```\n\nOutput:\n\nacme.com/sitemap.xml\n\n```\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url>\n    <loc>https://acme.com</loc>\n    <lastmod>2023-04-06T15:02:24.021Z</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>1</priority>\n  </url>\n  <url>\n    <loc>https://acme.com/about</loc>\n    <lastmod>2023-04-06T15:02:24.021Z</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n  <url>\n    <loc>https://acme.com/blog</loc>\n    <lastmod>2023-04-06T15:02:24.021Z</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.5</priority>\n  </url>\n</urlset>\n```",
+    "preview": "You can use the `sitemap.(js|ts)` file convention to programmatically **generate** a sitemap by exporting a default function that returns an array of URLs. If using TypeScript, a [`Sitemap`](#returns) type is available. > **Good to know**: `sitemap.js` is a special Route Handler that is cached by d",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#generating-a-sitemap-using-code-js-ts-generating-a-sitemap-using-code-js-ts",
+    "position": 3
+  },
+  {
+    "title": "sitemap.xml",
+    "section": "[Image Sitemaps](#image-sitemaps)",
+    "section_id": "image-sitemaps-image-sitemaps",
+    "heading_level": 3,
+    "content": "### [Image Sitemaps](#image-sitemaps)\n\nYou can use `images` property to create image sitemaps. Learn more details in the [Google Developer Docs](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps).\n\napp/sitemap.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MetadataRoute } from 'next'\n \nexport default function sitemap(): MetadataRoute.Sitemap {\n  return [\n    {\n      url: 'https://example.com',\n      lastModified: '2021-01-01',\n      changeFrequency: 'weekly',\n      priority: 0.5,\n      images: ['https://example.com/image.jpg'],\n    },\n  ]\n}\n```\n\nOutput:\n\nacme.com/sitemap.xml\n\n```\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset\n  xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"\n  xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\"\n>\n  <url>\n    <loc>https://example.com</loc>\n    <image:image>\n      <image:loc>https://example.com/image.jpg</image:loc>\n    </image:image>\n    <lastmod>2021-01-01</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.5</priority>\n  </url>\n</urlset>\n```",
+    "preview": "You can use `images` property to create image sitemaps. Learn more details in the [Google Developer Docs](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps). app/sitemap.ts TypeScript JavaScriptTypeScript [Code Block] Output: acme.com/sitemap.xml [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#image-sitemaps-image-sitemaps",
+    "position": 4
+  },
+  {
+    "title": "sitemap.xml",
+    "section": "[Video Sitemaps](#video-sitemaps)",
+    "section_id": "video-sitemaps-video-sitemaps",
+    "heading_level": 3,
+    "content": "### [Video Sitemaps](#video-sitemaps)\n\nYou can use `videos` property to create video sitemaps. Learn more details in the [Google Developer Docs](https://developers.google.com/search/docs/crawling-indexing/sitemaps/video-sitemaps).\n\napp/sitemap.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MetadataRoute } from 'next'\n \nexport default function sitemap(): MetadataRoute.Sitemap {\n  return [\n    {\n      url: 'https://example.com',\n      lastModified: '2021-01-01',\n      changeFrequency: 'weekly',\n      priority: 0.5,\n      videos: [\n        {\n          title: 'example',\n          thumbnail_loc: 'https://example.com/image.jpg',\n          description: 'this is the description',\n        },\n      ],\n    },\n  ]\n}\n```\n\nOutput:\n\nacme.com/sitemap.xml\n\n```\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset\n  xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"\n  xmlns:video=\"http://www.google.com/schemas/sitemap-video/1.1\"\n>\n  <url>\n    <loc>https://example.com</loc>\n    <video:video>\n      <video:title>example</video:title>\n      <video:thumbnail_loc>https://example.com/image.jpg</video:thumbnail_loc>\n      <video:description>this is the description</video:description>\n    </video:video>\n    <lastmod>2021-01-01</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.5</priority>\n  </url>\n</urlset>\n```",
+    "preview": "You can use `videos` property to create video sitemaps. Learn more details in the [Google Developer Docs](https://developers.google.com/search/docs/crawling-indexing/sitemaps/video-sitemaps). app/sitemap.ts TypeScript JavaScriptTypeScript [Code Block] Output: acme.com/sitemap.xml [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#video-sitemaps-video-sitemaps",
+    "position": 5
+  },
+  {
+    "title": "sitemap.xml",
+    "section": "[Generate a localized Sitemap](#generate-a-localized-sitemap)",
+    "section_id": "generate-a-localized-sitemap-generate-a-localized-sitemap",
+    "heading_level": 3,
+    "content": "### [Generate a localized Sitemap](#generate-a-localized-sitemap)\n\napp/sitemap.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MetadataRoute } from 'next'\n \nexport default function sitemap(): MetadataRoute.Sitemap {\n  return [\n    {\n      url: 'https://acme.com',\n      lastModified: new Date(),\n      alternates: {\n        languages: {\n          es: 'https://acme.com/es',\n          de: 'https://acme.com/de',\n        },\n      },\n    },\n    {\n      url: 'https://acme.com/about',\n      lastModified: new Date(),\n      alternates: {\n        languages: {\n          es: 'https://acme.com/es/about',\n          de: 'https://acme.com/de/about',\n        },\n      },\n    },\n    {\n      url: 'https://acme.com/blog',\n      lastModified: new Date(),\n      alternates: {\n        languages: {\n          es: 'https://acme.com/es/blog',\n          de: 'https://acme.com/de/blog',\n        },\n      },\n    },\n  ]\n}\n```\n\nOutput:\n\nacme.com/sitemap.xml\n\n```\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\">\n  <url>\n    <loc>https://acme.com</loc>\n    <xhtml:link\n      rel=\"alternate\"\n      hreflang=\"es\"\n      href=\"https://acme.com/es\"/>\n    <xhtml:link\n      rel=\"alternate\"\n      hreflang=\"de\"\n      href=\"https://acme.com/de\"/>\n    <lastmod>2023-04-06T15:02:24.021Z</lastmod>\n  </url>\n  <url>\n    <loc>https://acme.com/about</loc>\n    <xhtml:link\n      rel=\"alternate\"\n      hreflang=\"es\"\n      href=\"https://acme.com/es/about\"/>\n    <xhtml:link\n      rel=\"alternate\"\n      hreflang=\"de\"\n      href=\"https://acme.com/de/about\"/>\n    <lastmod>2023-04-06T15:02:24.021Z</lastmod>\n  </url>\n  <url>\n    <loc>https://acme.com/blog</loc>\n    <xhtml:link\n      rel=\"alternate\"\n      hreflang=\"es\"\n      href=\"https://acme.com/es/blog\"/>\n    <xhtml:link\n      rel=\"alternate\"\n      hreflang=\"de\"\n      href=\"https://acme.com/de/blog\"/>\n    <lastmod>2023-04-06T15:02:24.021Z</lastmod>\n  </url>\n</urlset>\n```",
+    "preview": "app/sitemap.ts TypeScript JavaScriptTypeScript [Code Block] Output: acme.com/sitemap.xml [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#generate-a-localized-sitemap-generate-a-localized-sitemap",
+    "position": 6
+  },
+  {
+    "title": "sitemap.xml",
+    "section": "[Generating multiple sitemaps](#generating-multiple-sitemaps)",
+    "section_id": "generating-multiple-sitemaps-generating-multiple-sitemaps",
+    "heading_level": 3,
+    "content": "### [Generating multiple sitemaps](#generating-multiple-sitemaps)\n\nWhile a single sitemap will work for most applications. For large web applications, you may need to split a sitemap into multiple files.\n\nThere are two ways you can create multiple sitemaps:\n\n* By nesting `sitemap.(xml|js|ts)` inside multiple route segments e.g. `app/sitemap.xml` and `app/products/sitemap.xml`.\n* By using the [`generateSitemaps`](/docs/app/api-reference/functions/generate-sitemaps) function.\n\nFor example, to split a sitemap using `generateSitemaps`, return an array of objects with the sitemap `id`. Then, use the `id` to generate the unique sitemaps.\n\napp/product/sitemap.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MetadataRoute } from 'next'\nimport { BASE_URL } from '@/app/lib/constants'\n \nexport async function generateSitemaps() {\n  // Fetch the total number of products and calculate the number of sitemaps needed\n  return [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }]\n}\n \nexport default async function sitemap({\n  id,\n}: {\n  id: number\n}): Promise<MetadataRoute.Sitemap> {\n  // Google's limit is 50,000 URLs per sitemap\n  const start = id * 50000\n  const end = start + 50000\n  const products = await getProducts(\n    `SELECT id, date FROM products WHERE id BETWEEN ${start} AND ${end}`\n  )\n  return products.map((product) => ({\n    url: `${BASE_URL}/product/${product.id}`,\n    lastModified: product.date,\n  }))\n}\n```\n\nYour generated sitemaps will be available at `/.../sitemap/[id]`. For example, `/product/sitemap/1.xml`.\n\nSee the [`generateSitemaps` API reference](/docs/app/api-reference/functions/generate-sitemaps) for more information.",
+    "preview": "While a single sitemap will work for most applications. For large web applications, you may need to split a sitemap into multiple files. There are two ways you can create multiple sitemaps: * By nesting `sitemap.(xml|js|ts)` inside multiple route segments e.g. `app/sitemap.xml` and `app/products/s",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#generating-multiple-sitemaps-generating-multiple-sitemaps",
+    "position": 7
+  },
+  {
+    "title": "sitemap.xml",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\nThe default function exported from `sitemap.(xml|ts|js)` should return an array of objects with the following properties:\n\n```\ntype Sitemap = Array<{\n  url: string\n  lastModified?: string | Date\n  changeFrequency?:\n    | 'always'\n    | 'hourly'\n    | 'daily'\n    | 'weekly'\n    | 'monthly'\n    | 'yearly'\n    | 'never'\n  priority?: number\n  alternates?: {\n    languages?: Languages<string>\n  }\n}>\n```",
+    "preview": "The default function exported from `sitemap.(xml|ts|js)` should return an array of objects with the following properties: [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#returns-returns",
+    "position": 8
+  },
+  {
+    "title": "sitemap.xml",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v14.2.0` | Add localizations support. |\n| `v13.4.14` | Add `changeFrequency` and `priority` attributes to sitemaps. |\n| `v13.3.0` | `sitemap` introduced. |",
+    "preview": "| Version | Changes | | --- | --- | | `v14.2.0` | Add localizations support. | | `v13.4.14` | Add `changeFrequency` and `priority` attributes to sitemaps. | | `v13.3.0` | `sitemap` introduced. |",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#version-history-version-history",
+    "position": 9
+  },
+  {
+    "title": "sitemap.xml",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nLearn how to use the generateSitemaps function.\n\n[### generateSitemaps\n\nLearn how to use the generateSiteMaps function to create multiple sitemaps for your application.](/docs/app/api-reference/functions/generate-sitemaps)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn how to use the generateSitemaps function. [### generateSitemaps Learn how to use the generateSiteMaps function to create multiple sitemaps for your application.](/docs/app/api-reference/functions/generate-sitemaps) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap#next-steps",
+    "position": 10
+  }
+]

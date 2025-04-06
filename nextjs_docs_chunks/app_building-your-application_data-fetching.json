@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Data Fetching",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Building Your Application](/docs/app/building-your-application)Data Fetching",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Building Your Application](/docs/app/building-your-application)Data Fetching",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Data Fetching",
+    "section": "Data Fetching",
+    "section_id": "data-fetching",
+    "heading_level": 1,
+    "content": "# Data Fetching\n\n[### Data Fetching and Caching\n\nLearn best practices for fetching data on the server or client in Next.js.](/docs/app/building-your-application/data-fetching/fetching)[### Server Actions and Mutations\n\nLearn how to handle form submissions and data mutations with Next.js.](/docs/app/building-your-application/data-fetching/server-actions-and-mutations)[### Incremental Static Regeneration (ISR)\n\nLearn how to create or update static pages at runtime with Incremental Static Regeneration.](/docs/app/building-your-application/data-fetching/incremental-static-regeneration)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Data Fetching and Caching Learn best practices for fetching data on the server or client in Next.js.](/docs/app/building-your-application/data-fetching/fetching)[### Server Actions and Mutations Learn how to handle form submissions and data mutations with Next.js.](/docs/app/building-your-app",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching#data-fetching",
+    "position": 1
+  }
+]

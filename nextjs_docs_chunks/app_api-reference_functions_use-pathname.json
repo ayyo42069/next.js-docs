@@ -1,0 +1,62 @@
+[
+  {
+    "title": "usePathname",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)usePathname",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)usePathname",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-pathname#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "usePathname",
+    "section": "usePathname",
+    "section_id": "usepathname",
+    "heading_level": 1,
+    "content": "# usePathname\n\n`usePathname` is a **Client Component** hook that lets you read the current URL's **pathname**.\n\napp/example-client-component.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { usePathname } from 'next/navigation'\n \nexport default function ExampleClientComponent() {\n  const pathname = usePathname()\n  return <p>Current pathname: {pathname}</p>\n}\n```\n\n`usePathname` intentionally requires using a [Client Component](/docs/app/building-your-application/rendering/client-components). It's important to note Client Components are not a de-optimization. They are an integral part of the [Server Components](/docs/app/building-your-application/rendering/server-components) architecture.\n\nFor example, a Client Component with `usePathname` will be rendered into HTML on the initial page load. When navigating to a new route, this component does not need to be re-fetched. Instead, the component is downloaded once (in the client JavaScript bundle), and re-renders based on the current state.\n\n> **Good to know**:\n>\n> * Reading the current URL from a [Server Component](/docs/app/building-your-application/rendering/server-components) is not supported. This design is intentional to support layout state being preserved across page navigations.\n> * Compatibility mode:\n>   + `usePathname` can return `null` when a [fallback route](/docs/pages/api-reference/functions/get-static-paths#fallback-true) is being rendered or when a `pages` directory page has been [automatically statically optimized](/docs/pages/building-your-application/rendering/automatic-static-optimization) by Next.js and the router is not ready.\n>   + When using `usePathname` with rewrites in [`next.config`](/docs/app/api-reference/config/next-config-js/rewrites) or [`Middleware`](/docs/app/building-your-application/routing/middleware), `useState` and `useEffect` must also be used in order to avoid hydration mismatch errors.\n>   + Next.js will automatically update your types if it detects both an `app` and `pages` directory in your project.",
+    "preview": "`usePathname` is a **Client Component** hook that lets you read the current URL's **pathname**. app/example-client-component.tsx TypeScript JavaScriptTypeScript [Code Block] `usePathname` intentionally requires using a [Client Component](/docs/app/building-your-application/rendering/client-comp",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-pathname#usepathname",
+    "position": 1
+  },
+  {
+    "title": "usePathname",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\n```\nconst pathname = usePathname()\n```\n\n`usePathname` does not take any parameters.",
+    "preview": "[Code Block] `usePathname` does not take any parameters.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-pathname#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "usePathname",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\n`usePathname` returns a string of the current URL's pathname. For example:\n\n| URL | Returned value |\n| --- | --- |\n| `/` | `'/'` |\n| `/dashboard` | `'/dashboard'` |\n| `/dashboard?v=2` | `'/dashboard'` |\n| `/blog/hello-world` | `'/blog/hello-world'` |",
+    "preview": "`usePathname` returns a string of the current URL's pathname. For example: | URL | Returned value | | --- | --- | | `/` | `'/'` | | `/dashboard` | `'/dashboard'` | | `/dashboard?v=2` | `'/dashboard'` | | `/blog/hello-world` | `'/blog/hello-world'` |",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-pathname#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "usePathname",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-pathname#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "usePathname",
+    "section": "[Do something in response to a route change](#do-something-in-response-to-a-route-change)",
+    "section_id": "do-something-in-response-to-a-route-change-do-something-in-response-to-a-route-change",
+    "heading_level": 3,
+    "content": "### [Do something in response to a route change](#do-something-in-response-to-a-route-change)\n\napp/example-client-component.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { usePathname, useSearchParams } from 'next/navigation'\n \nfunction ExampleClientComponent() {\n  const pathname = usePathname()\n  const searchParams = useSearchParams()\n  useEffect(() => {\n    // Do something here...\n  }, [pathname, searchParams])\n}\n```\n\n| Version | Changes |\n| --- | --- |\n| `v13.0.0` | `usePathname` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "app/example-client-component.tsx TypeScript JavaScriptTypeScript [Code Block] | Version | Changes | | --- | --- | | `v13.0.0` | `usePathname` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-pathname#do-something-in-response-to-a-route-change-do-something-in-response-to-a-route-change",
+    "position": 5
+  }
+]

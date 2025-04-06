@@ -1,0 +1,162 @@
+[
+  {
+    "title": "Image Optimization",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Optimizing](/docs/pages/building-your-application/optimizing)Images",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Optimizing](/docs/pages/building-your-application/optimizing)Images",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Image Optimization",
+    "section": "Image Optimization",
+    "section_id": "image-optimization",
+    "heading_level": 1,
+    "content": "# Image Optimization\n\nExamples\n\n* [Image Component](https://github.com/vercel/next.js/tree/canary/examples/image-component)\n\nAccording to [Web Almanac](https://almanac.httparchive.org), images account for a huge portion of the typical website\u2019s [page weight](https://almanac.httparchive.org/en/2022/page-weight#content-type-and-file-formats) and can have a sizable impact on your website's [LCP performance](https://almanac.httparchive.org/en/2022/performance#lcp-image-optimization).\n\nThe Next.js Image component extends the HTML `<img>` element with features for automatic image optimization:\n\n* **Size Optimization:** Automatically serve correctly sized images for each device, using modern image formats like WebP.\n* **Visual Stability:** Prevent [layout shift](/learn/seo/web-performance/cls) automatically when images are loading.\n* **Faster Page Loads:** Images are only loaded when they enter the viewport using native browser lazy loading, with optional blur-up placeholders.\n* **Asset Flexibility:** On-demand image resizing, even for images stored on remote servers\n\n> **\ud83c\udfa5 Watch:** Learn more about how to use `next/image` \u2192 [YouTube (9 minutes)](https://youtu.be/IU_qq_c_lKA).",
+    "preview": "Examples * [Image Component](https://github.com/vercel/next.js/tree/canary/examples/image-component) According to [Web Almanac](https://almanac.httparchive.org), images account for a huge portion of the typical website\u2019s [page weight](https://almanac.httparchive.org/en/2022/page-weight#content-typ",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#image-optimization",
+    "position": 1
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Usage](#usage)",
+    "section_id": "usage-usage",
+    "heading_level": 2,
+    "content": "## [Usage](#usage)\n\n```\nimport Image from 'next/image'\n```\n\nYou can then define the `src` for your image (either local or remote).",
+    "preview": "[Code Block] You can then define the `src` for your image (either local or remote).",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#usage-usage",
+    "position": 2
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Local Images](#local-images)",
+    "section_id": "local-images-local-images",
+    "heading_level": 3,
+    "content": "### [Local Images](#local-images)\n\nTo use a local image, `import` your `.jpg`, `.png`, or `.webp` image files.\n\nNext.js will [automatically determine](#image-sizing) the intrinsic `width` and `height` of your image based on the imported file. These values are used to determine the image ratio and prevent [Cumulative Layout Shift](https://nextjs.org/learn/seo/web-performance/cls) while your image is loading.\n\npages/index.js\n\n```\nimport Image from 'next/image'\nimport profilePic from '../public/me.png'\n \nexport default function Page() {\n  return (\n    <Image\n      src={profilePic}\n      alt=\"Picture of the author\"\n      // width={500} automatically provided\n      // height={500} automatically provided\n      // blurDataURL=\"data:...\" automatically provided\n      // placeholder=\"blur\" // Optional blur-up while loading\n    />\n  )\n}\n```\n\n> **Warning:** Dynamic `await import()` or `require()` are *not* supported. The `import` must be static so it can be analyzed at build time.\n\nYou can optionally configure `localPatterns` in your `next.config.js` file in order to allow specific images and block all others.\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    localPatterns: [\n      {\n        pathname: '/assets/images/**',\n        search: '',\n      },\n    ],\n  },\n}\n```",
+    "preview": "To use a local image, `import` your `.jpg`, `.png`, or `.webp` image files. Next.js will [automatically determine](#image-sizing) the intrinsic `width` and `height` of your image based on the imported file. These values are used to determine the image ratio and prevent [Cumulative Layout Shift](htt",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#local-images-local-images",
+    "position": 3
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Remote Images](#remote-images)",
+    "section_id": "remote-images-remote-images",
+    "heading_level": 3,
+    "content": "### [Remote Images](#remote-images)\n\nTo use a remote image, the `src` property should be a URL string.\n\nSince Next.js does not have access to remote files during the build process, you'll need to provide the [`width`](/docs/app/api-reference/components/image#width), [`height`](/docs/app/api-reference/components/image#height) and optional [`blurDataURL`](/docs/app/api-reference/components/image#blurdataurl) props manually.\n\nThe `width` and `height` attributes are used to infer the correct aspect ratio of image and avoid layout shift from the image loading in. The `width` and `height` do *not* determine the rendered size of the image file. Learn more about [Image Sizing](#image-sizing).\n\napp/page.js\n\n```\nimport Image from 'next/image'\n \nexport default function Page() {\n  return (\n    <Image\n      src=\"https://s3.amazonaws.com/my-bucket/profile.png\"\n      alt=\"Picture of the author\"\n      width={500}\n      height={500}\n    />\n  )\n}\n```\n\nTo safely allow optimizing images, define a list of supported URL patterns in `next.config.js`. Be as specific as possible to prevent malicious usage. For example, the following configuration will only allow images from a specific AWS S3 bucket:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    remotePatterns: [\n      {\n        protocol: 'https',\n        hostname: 's3.amazonaws.com',\n        port: '',\n        pathname: '/my-bucket/**',\n        search: '',\n      },\n    ],\n  },\n}\n```\n\nLearn more about [`remotePatterns`](/docs/app/api-reference/components/image#remotepatterns) configuration. If you want to use relative URLs for the image `src`, use a [`loader`](/docs/app/api-reference/components/image#loader).",
+    "preview": "To use a remote image, the `src` property should be a URL string. Since Next.js does not have access to remote files during the build process, you'll need to provide the [`width`](/docs/app/api-reference/components/image#width), [`height`](/docs/app/api-reference/components/image#height) and option",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#remote-images-remote-images",
+    "position": 4
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Domains](#domains)",
+    "section_id": "domains-domains",
+    "heading_level": 3,
+    "content": "### [Domains](#domains)\n\nSometimes you may want to optimize a remote image, but still use the built-in Next.js Image Optimization API. To do this, leave the `loader` at its default setting and enter an absolute URL for the Image `src` prop.\n\nTo protect your application from malicious users, you must define a list of remote hostnames you intend to use with the `next/image` component.\n\n> Learn more about [`remotePatterns`](/docs/app/api-reference/components/image#remotepatterns) configuration.",
+    "preview": "Sometimes you may want to optimize a remote image, but still use the built-in Next.js Image Optimization API. To do this, leave the `loader` at its default setting and enter an absolute URL for the Image `src` prop. To protect your application from malicious users, you must define a list of remote",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#domains-domains",
+    "position": 5
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Loaders](#loaders)",
+    "section_id": "loaders-loaders",
+    "heading_level": 3,
+    "content": "### [Loaders](#loaders)\n\nNote that in the [example earlier](#local-images), a partial URL (`\"/me.png\"`) is provided for a local image. This is possible because of the loader architecture.\n\nA loader is a function that generates the URLs for your image. It modifies the provided `src`, and generates multiple URLs to request the image at different sizes. These multiple URLs are used in the automatic [srcset](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/srcset) generation, so that visitors to your site will be served an image that is the right size for their viewport.\n\nThe default loader for Next.js applications uses the built-in Image Optimization API, which optimizes images from anywhere on the web, and then serves them directly from the Next.js web server. If you would like to serve your images directly from a CDN or image server, you can write your own loader function with a few lines of JavaScript.\n\nYou can define a loader per-image with the [`loader` prop](/docs/app/api-reference/components/image#loader), or at the application level with the [`loaderFile` configuration](/docs/app/api-reference/components/image#loaderfile).",
+    "preview": "Note that in the [example earlier](#local-images), a partial URL (`\"/me.png\"`) is provided for a local image. This is possible because of the loader architecture. A loader is a function that generates the URLs for your image. It modifies the provided `src`, and generates multiple URLs to request th",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#loaders-loaders",
+    "position": 6
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Priority](#priority)",
+    "section_id": "priority-priority",
+    "heading_level": 2,
+    "content": "## [Priority](#priority)\n\nYou should add the `priority` property to the image that will be the [Largest Contentful Paint (LCP) element](https://web.dev/lcp/#what-elements-are-considered) for each page. Doing so allows Next.js to [preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload) the image, leading to a meaningful boost in LCP.\n\nThe LCP element is typically the largest image or text block visible within the viewport of the page. When you run `next dev`, you'll see a console warning if the LCP element is an `<Image>` without the `priority` property.\n\nOnce you've identified the LCP image, you can add the property like this:\n\napp/page.js\n\n```\nimport Image from 'next/image'\n \nexport default function Home() {\n  return (\n    <>\n      <h1>My Homepage</h1>\n      <Image\n        src=\"/me.png\"\n        alt=\"Picture of the author\"\n        width={500}\n        height={500}\n        priority\n      />\n      <p>Welcome to my homepage!</p>\n    </>\n  )\n}\n```\n\nSee more about priority in the [`next/image` component documentation](/docs/app/api-reference/components/image#priority).",
+    "preview": "You should add the `priority` property to the image that will be the [Largest Contentful Paint (LCP) element](https://web.dev/lcp/#what-elements-are-considered) for each page. Doing so allows Next.js to [preload](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preload) the image, le",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#priority-priority",
+    "position": 7
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Image Sizing](#image-sizing)",
+    "section_id": "image-sizing-image-sizing",
+    "heading_level": 2,
+    "content": "## [Image Sizing](#image-sizing)\n\nOne of the ways that images most commonly hurt performance is through *layout shift*, where the image pushes other elements around on the page as it loads in. This performance problem is so annoying to users that it has its own Core Web Vital, called [Cumulative Layout Shift](https://web.dev/cls/). The way to avoid image-based layout shifts is to [always size your images](https://web.dev/optimize-cls/#images-without-dimensions). This allows the browser to reserve precisely enough space for the image before it loads.\n\nBecause `next/image` is designed to guarantee good performance results, it cannot be used in a way that will contribute to layout shift, and **must** be sized in one of three ways:\n\n1. Automatically, using a [static import](#local-images)\n2. Manually, by including a [`width`](/docs/app/api-reference/components/image#width) and [`height`](/docs/app/api-reference/components/image#height) property used to determine the image's aspect ratio.\n3. Implicitly, by using [fill](/docs/app/api-reference/components/image#fill) which causes the image to expand to fill its parent element.\n\n> **What if I don't know the size of my images?**\n>\n> If you are accessing images from a source without knowledge of the images' sizes, there are several things you can do:\n>\n> **Use `fill`**\n>\n> The [`fill`](/docs/app/api-reference/components/image#fill) prop allows your image to be sized by its parent element. Consider using CSS to give the image's parent element space on the page along [`sizes`](/docs/app/api-reference/components/image#sizes) prop to match any media query break points. You can also use [`object-fit`](https://developer.mozilla.org/docs/Web/CSS/object-fit) with `fill`, `contain`, or `cover`, and [`object-position`](https://developer.mozilla.org/docs/Web/CSS/object-position) to define how the image should occupy that space.\n>\n> **Normalize your images**\n>\n> If you're serving images from a source that you control, consider modifying your image pipeline to normalize the images to a specific size.\n>\n> **Modify your API calls**\n>\n> If your application is retrieving image URLs using an API call (such as to a CMS), you may be able to modify the API call to return the image dimensions along with the URL.\n\nIf none of the suggested methods works for sizing your images, the `next/image` component is designed to work well on a page alongside standard `<img>` elements.",
+    "preview": "One of the ways that images most commonly hurt performance is through *layout shift*, where the image pushes other elements around on the page as it loads in. This performance problem is so annoying to users that it has its own Core Web Vital, called [Cumulative Layout Shift](https://web.dev/cls/).",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#image-sizing-image-sizing",
+    "position": 8
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Styling](#styling)",
+    "section_id": "styling-styling",
+    "heading_level": 2,
+    "content": "## [Styling](#styling)\n\nStyling the Image component is similar to styling a normal `<img>` element, but there are a few guidelines to keep in mind:\n\n* Use `className` or `style`, not `styled-jsx`.\n  + In most cases, we recommend using the `className` prop. This can be an imported [CSS Module](/docs/app/building-your-application/styling/css), a [global stylesheet](/docs/app/building-your-application/styling/css#global-styles), etc.\n  + You can also use the `style` prop to assign inline styles.\n  + You cannot use [styled-jsx](/docs/app/building-your-application/styling/css-in-js) because it's scoped to the current component (unless you mark the style as `global`).\n* When using `fill`, the parent element must have `position: relative`\n  + This is necessary for the proper rendering of the image element in that layout mode.\n* When using `fill`, the parent element must have `display: block`\n  + This is the default for `<div>` elements but should be specified otherwise.",
+    "preview": "Styling the Image component is similar to styling a normal `<img>` element, but there are a few guidelines to keep in mind: * Use `className` or `style`, not `styled-jsx`. + In most cases, we recommend using the `className` prop. This can be an imported [CSS Module](/docs/app/building-your-applic",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#styling-styling",
+    "position": 9
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#examples-examples",
+    "position": 10
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Responsive](#responsive)",
+    "section_id": "responsive-responsive",
+    "heading_level": 3,
+    "content": "### [Responsive](#responsive)\n\n[Image: Responsive image filling the width and height of its parent container][Image: Responsive image filling the width and height of its parent container]\n\n```\nimport Image from 'next/image'\nimport mountains from '../public/mountains.jpg'\n \nexport default function Responsive() {\n  return (\n    <div style={{ display: 'flex', flexDirection: 'column' }}>\n      <Image\n        alt=\"Mountains\"\n        // Importing an image will\n        // automatically set the width and height\n        src={mountains}\n        sizes=\"100vw\"\n        // Make the image display full width\n        style={{\n          width: '100%',\n          height: 'auto',\n        }}\n      />\n    </div>\n  )\n}\n```",
+    "preview": "[Image: Responsive image filling the width and height of its parent container][Image: Responsive image filling the width and height of its parent container] [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#responsive-responsive",
+    "position": 11
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Fill Container](#fill-container)",
+    "section_id": "fill-container-fill-container",
+    "heading_level": 3,
+    "content": "### [Fill Container](#fill-container)\n\n[Image: Grid of images filling parent container width][Image: Grid of images filling parent container width]\n\n```\nimport Image from 'next/image'\nimport mountains from '../public/mountains.jpg'\n \nexport default function Fill() {\n  return (\n    <div\n      style={{\n        display: 'grid',\n        gridGap: '8px',\n        gridTemplateColumns: 'repeat(auto-fit, minmax(400px, auto))',\n      }}\n    >\n      <div style={{ position: 'relative', height: '400px' }}>\n        <Image\n          alt=\"Mountains\"\n          src={mountains}\n          fill\n          sizes=\"(min-width: 808px) 50vw, 100vw\"\n          style={{\n            objectFit: 'cover', // cover, contain, none\n          }}\n        />\n      </div>\n      {/* And more images in the grid... */}\n    </div>\n  )\n}\n```",
+    "preview": "[Image: Grid of images filling parent container width][Image: Grid of images filling parent container width] [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#fill-container-fill-container",
+    "position": 12
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Background Image](#background-image)",
+    "section_id": "background-image-background-image",
+    "heading_level": 3,
+    "content": "### [Background Image](#background-image)\n\n[Image: Background image taking full width and height of page][Image: Background image taking full width and height of page]\n\n```\nimport Image from 'next/image'\nimport mountains from '../public/mountains.jpg'\n \nexport default function Background() {\n  return (\n    <Image\n      alt=\"Mountains\"\n      src={mountains}\n      placeholder=\"blur\"\n      quality={100}\n      fill\n      sizes=\"100vw\"\n      style={{\n        objectFit: 'cover',\n      }}\n    />\n  )\n}\n```\n\nFor examples of the Image component used with the various styles, see the [Image Component Demo](https://image-component.nextjs.gallery).",
+    "preview": "[Image: Background image taking full width and height of page][Image: Background image taking full width and height of page] [Code Block] For examples of the Image component used with the various styles, see the [Image Component Demo](https://image-component.nextjs.gallery).",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#background-image-background-image",
+    "position": 13
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Other Properties](#other-properties)",
+    "section_id": "other-properties-other-properties",
+    "heading_level": 2,
+    "content": "## [Other Properties](#other-properties)\n\n[**View all properties available to the `next/image` component.**](/docs/app/api-reference/components/image)",
+    "preview": "[**View all properties available to the `next/image` component.**](/docs/app/api-reference/components/image)",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#other-properties-other-properties",
+    "position": 14
+  },
+  {
+    "title": "Image Optimization",
+    "section": "[Configuration](#configuration)",
+    "section_id": "configuration-configuration",
+    "heading_level": 2,
+    "content": "## [Configuration](#configuration)\n\nThe `next/image` component and Next.js Image Optimization API can be configured in the [`next.config.js` file](/docs/app/api-reference/config/next-config-js). These configurations allow you to [enable remote images](/docs/app/api-reference/components/image#remotepatterns), [define custom image breakpoints](/docs/app/api-reference/components/image#devicesizes), [change caching behavior](/docs/app/api-reference/components/image#caching-behavior) and more.\n\n[**Read the full image configuration documentation for more information.**](/docs/app/api-reference/components/image#configuration-options)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The `next/image` component and Next.js Image Optimization API can be configured in the [`next.config.js` file](/docs/app/api-reference/config/next-config-js). These configurations allow you to [enable remote images](/docs/app/api-reference/components/image#remotepatterns), [define custom image break",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/images#configuration-configuration",
+    "position": 15
+  }
+]

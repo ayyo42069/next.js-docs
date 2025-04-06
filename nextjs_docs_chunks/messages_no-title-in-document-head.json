@@ -1,0 +1,52 @@
+[
+  {
+    "title": "No Title in Document Head",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No Title in Document Head",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No Title in Document Head",
+    "url": "https://nextjs.org/docs/messages/no-title-in-document-head#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No Title in Document Head",
+    "section": "No Title in Document Head",
+    "section_id": "no-title-in-document-head",
+    "heading_level": 1,
+    "content": "# No Title in Document Head\n\n> Prevent usage of `<title>` with `Head` component from `next/document`.",
+    "preview": "> Prevent usage of `<title>` with `Head` component from `next/document`.",
+    "url": "https://nextjs.org/docs/messages/no-title-in-document-head#no-title-in-document-head",
+    "position": 1
+  },
+  {
+    "title": "No Title in Document Head",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nA `<title>` element was defined within the `Head` component imported from `next/document`, which should only be used for any `<head>` code that is common for all pages. Title tags should be defined at the page-level using `next/head` instead.",
+    "preview": "A `<title>` element was defined within the `Head` component imported from `next/document`, which should only be used for any `<head>` code that is common for all pages. Title tags should be defined at the page-level using `next/head` instead.",
+    "url": "https://nextjs.org/docs/messages/no-title-in-document-head#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No Title in Document Head",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nWithin a page or component, import and use `next/head` to define a page title:\n\npages/index.js\n\n```\nimport Head from 'next/head'\n \nexport function Home() {\n  return (\n    <div>\n      <Head>\n        <title>My page title</title>\n      </Head>\n    </div>\n  )\n}\n```",
+    "preview": "Within a page or component, import and use `next/head` to define a page title: pages/index.js [Code Block]",
+    "url": "https://nextjs.org/docs/messages/no-title-in-document-head#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No Title in Document Head",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [next/head](/docs/pages/api-reference/components/head)\n* [Custom Document](/docs/pages/building-your-application/routing/custom-document)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [next/head](/docs/pages/api-reference/components/head) * [Custom Document](/docs/pages/building-your-application/routing/custom-document) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/no-title-in-document-head#useful-links-useful-links",
+    "position": 4
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "title": "No HTML link for pages",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No HTML link for pages",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No HTML link for pages",
+    "url": "https://nextjs.org/docs/messages/no-html-link-for-pages#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No HTML link for pages",
+    "section": "No HTML link for pages",
+    "section_id": "no-html-link-for-pages",
+    "heading_level": 1,
+    "content": "# No HTML link for pages\n\n> Prevent usage of `<a>` elements to navigate to internal Next.js pages.",
+    "preview": "> Prevent usage of `<a>` elements to navigate to internal Next.js pages.",
+    "url": "https://nextjs.org/docs/messages/no-html-link-for-pages#no-html-link-for-pages",
+    "position": 1
+  },
+  {
+    "title": "No HTML link for pages",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nAn `<a>` element was used to navigate to a page route without using the `next/link` component, causing unnecessary full-page refreshes.\n\nThe `Link` component is required to enable client-side route transitions between pages and provide a single-page app experience.",
+    "preview": "An `<a>` element was used to navigate to a page route without using the `next/link` component, causing unnecessary full-page refreshes. The `Link` component is required to enable client-side route transitions between pages and provide a single-page app experience.",
+    "url": "https://nextjs.org/docs/messages/no-html-link-for-pages#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No HTML link for pages",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nMake sure to import the `Link` component and wrap anchor elements that route to different page routes.\n\n**Before:**\n\npages/index.js\n\n```\nfunction Home() {\n  return (\n    <div>\n      <a href=\"/about\">About Us</a>\n    </div>\n  )\n}\n```\n\n**After:**\n\npages/index.js\n\n```\nimport Link from 'next/link'\n \nfunction Home() {\n  return (\n    <div>\n      <Link href=\"/about\">About Us</Link>\n    </div>\n  )\n}\n \nexport default Home\n```",
+    "preview": "Make sure to import the `Link` component and wrap anchor elements that route to different page routes. **Before:** pages/index.js [Code Block] **After:** pages/index.js [Code Block]",
+    "url": "https://nextjs.org/docs/messages/no-html-link-for-pages#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No HTML link for pages",
+    "section": "[Options](#options)",
+    "section_id": "options-options",
+    "heading_level": 3,
+    "content": "### [Options](#options)\n\n#### [`pagesDir`](#pagesdir)\n\nThis rule can normally locate your `pages` directory automatically.\n\nIf you're working in a monorepo, we recommend configuring the [`rootDir`](/docs/pages/api-reference/config/eslint#specifying-a-root-directory-within-a-monorepo) setting in `eslint-plugin-next`, which `pagesDir` will use to locate your `pages` directory.\n\nIn some cases, you may also need to configure this rule directly by providing a `pages` directory. This can be a path or an array of paths.\n\neslint.config.json\n\n```\n{\n  \"rules\": {\n    \"@next/next/no-html-link-for-pages\": [\"error\", \"packages/my-app/pages/\"]\n  }\n}\n```",
+    "preview": "#### [`pagesDir`](#pagesdir) This rule can normally locate your `pages` directory automatically. If you're working in a monorepo, we recommend configuring the [`rootDir`](/docs/pages/api-reference/config/eslint#specifying-a-root-directory-within-a-monorepo) setting in `eslint-plugin-next`, which `",
+    "url": "https://nextjs.org/docs/messages/no-html-link-for-pages#options-options",
+    "position": 4
+  },
+  {
+    "title": "No HTML link for pages",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [next/link API Reference](/docs/pages/api-reference/components/link)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [next/link API Reference](/docs/pages/api-reference/components/link) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/no-html-link-for-pages#useful-links-useful-links",
+    "position": 5
+  }
+]

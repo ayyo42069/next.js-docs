@@ -1,0 +1,52 @@
+[
+  {
+    "title": "No Unwanted Polyfill.io",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No Unwanted Polyfill.io",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No Unwanted Polyfill.io",
+    "url": "https://nextjs.org/docs/messages/no-unwanted-polyfillio#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No Unwanted Polyfill.io",
+    "section": "No Unwanted Polyfill.io",
+    "section_id": "no-unwanted-polyfill-io",
+    "heading_level": 1,
+    "content": "# No Unwanted Polyfill.io\n\n> Prevent duplicate polyfills from Polyfill.io.",
+    "preview": "> Prevent duplicate polyfills from Polyfill.io.",
+    "url": "https://nextjs.org/docs/messages/no-unwanted-polyfillio#no-unwanted-polyfill-io",
+    "position": 1
+  },
+  {
+    "title": "No Unwanted Polyfill.io",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nYou are using polyfills from Polyfill.io and including polyfills already shipped with Next.js. This unnecessarily increases page weight which can affect loading performance.",
+    "preview": "You are using polyfills from Polyfill.io and including polyfills already shipped with Next.js. This unnecessarily increases page weight which can affect loading performance.",
+    "url": "https://nextjs.org/docs/messages/no-unwanted-polyfillio#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No Unwanted Polyfill.io",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nRemove all duplicate polyfills. If you need to add polyfills but are not sure if Next.js already includes it, take a look at the list of [supported browsers and features](/docs/architecture/supported-browsers).",
+    "preview": "Remove all duplicate polyfills. If you need to add polyfills but are not sure if Next.js already includes it, take a look at the list of [supported browsers and features](/docs/architecture/supported-browsers).",
+    "url": "https://nextjs.org/docs/messages/no-unwanted-polyfillio#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No Unwanted Polyfill.io",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Supported Browsers and Features](/docs/architecture/supported-browsers)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Supported Browsers and Features](/docs/architecture/supported-browsers) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/no-unwanted-polyfillio#useful-links-useful-links",
+    "position": 4
+  }
+]

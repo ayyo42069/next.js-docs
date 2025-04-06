@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Lazy Loading",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Optimizing](/docs/pages/building-your-application/optimizing)Lazy Loading",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Optimizing](/docs/pages/building-your-application/optimizing)Lazy Loading",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "Lazy Loading",
+    "section_id": "lazy-loading",
+    "heading_level": 1,
+    "content": "# Lazy Loading\n\n[Lazy loading](https://developer.mozilla.org/docs/Web/Performance/Lazy_loading) in Next.js helps improve the initial loading performance of an application by decreasing the amount of JavaScript needed to render a route.\n\nIt allows you to defer loading of **Client Components** and imported libraries, and only include them in the client bundle when they're needed. For example, you might want to defer loading a modal until a user clicks to open it.\n\nThere are two ways you can implement lazy loading in Next.js:\n\n1. Using [Dynamic Imports](#nextdynamic) with `next/dynamic`\n2. Using [`React.lazy()`](https://react.dev/reference/react/lazy) with [Suspense](https://react.dev/reference/react/Suspense)\n\nBy default, Server Components are automatically [code split](https://developer.mozilla.org/docs/Glossary/Code_splitting), and you can use [streaming](/docs/app/building-your-application/routing/loading-ui-and-streaming) to progressively send pieces of UI from the server to the client. Lazy loading applies to Client Components.",
+    "preview": "[Lazy loading](https://developer.mozilla.org/docs/Web/Performance/Lazy_loading) in Next.js helps improve the initial loading performance of an application by decreasing the amount of JavaScript needed to render a route. It allows you to defer loading of **Client Components** and imported libraries,",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#lazy-loading",
+    "position": 1
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[`next/dynamic`](#nextdynamic)",
+    "section_id": "next-dynamic-nextdynamic",
+    "heading_level": 2,
+    "content": "## [`next/dynamic`](#nextdynamic)\n\n`next/dynamic` is a composite of [`React.lazy()`](https://react.dev/reference/react/lazy) and [Suspense](https://react.dev/reference/react/Suspense). It behaves the same way in the `app` and `pages` directories to allow for incremental migration.",
+    "preview": "`next/dynamic` is a composite of [`React.lazy()`](https://react.dev/reference/react/lazy) and [Suspense](https://react.dev/reference/react/Suspense). It behaves the same way in the `app` and `pages` directories to allow for incremental migration.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#next-dynamic-nextdynamic",
+    "position": 2
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)\n\nBy using `next/dynamic`, the header component will not be included in the page's initial JavaScript bundle. The page will render the Suspense `fallback` first, followed by the `Header` component when the `Suspense` boundary is resolved.\n\n```\nimport dynamic from 'next/dynamic'\n \nconst DynamicHeader = dynamic(() => import('../components/header'), {\n  loading: () => <p>Loading...</p>,\n})\n \nexport default function Home() {\n  return <DynamicHeader />\n}\n```\n\n> **Good to know**: In `import('path/to/component')`, the path must be explicitly written. It can't be a template string nor a variable. Furthermore the `import()` has to be inside the `dynamic()` call for Next.js to be able to match webpack bundles / module ids to the specific `dynamic()` call and preload them before rendering. `dynamic()` can't be used inside of React rendering as it needs to be marked in the top level of the module for preloading to work, similar to `React.lazy`.",
+    "preview": "By using `next/dynamic`, the header component will not be included in the page's initial JavaScript bundle. The page will render the Suspense `fallback` first, followed by the `Header` component when the `Suspense` boundary is resolved. [Code Block] > **Good to know**: In `import('path/to/componen",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#examples-examples",
+    "position": 3
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[With named exports](#with-named-exports)",
+    "section_id": "with-named-exports-with-named-exports",
+    "heading_level": 2,
+    "content": "## [With named exports](#with-named-exports)\n\nTo dynamically import a named export, you can return it from the [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) returned by [`import()`](https://github.com/tc39/proposal-dynamic-import#example):\n\ncomponents/hello.js\n\n```\nexport function Hello() {\n  return <p>Hello!</p>\n}\n \n// pages/index.js\nimport dynamic from 'next/dynamic'\n \nconst DynamicComponent = dynamic(() =>\n  import('../components/hello').then((mod) => mod.Hello)\n)\n```",
+    "preview": "To dynamically import a named export, you can return it from the [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) returned by [`import()`](https://github.com/tc39/proposal-dynamic-import#example): components/hello.js [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#with-named-exports-with-named-exports",
+    "position": 4
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[With no SSR](#with-no-ssr)",
+    "section_id": "with-no-ssr-with-no-ssr",
+    "heading_level": 2,
+    "content": "## [With no SSR](#with-no-ssr)\n\nTo dynamically load a component on the client side, you can use the `ssr` option to disable server-rendering. This is useful if an external dependency or component relies on browser APIs like `window`.\n\n```\n'use client'\n \nimport dynamic from 'next/dynamic'\n \nconst DynamicHeader = dynamic(() => import('../components/header'), {\n  ssr: false,\n})\n```",
+    "preview": "To dynamically load a component on the client side, you can use the `ssr` option to disable server-rendering. This is useful if an external dependency or component relies on browser APIs like `window`. [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#with-no-ssr-with-no-ssr",
+    "position": 5
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[With external libraries](#with-external-libraries)",
+    "section_id": "with-external-libraries-with-external-libraries",
+    "heading_level": 2,
+    "content": "## [With external libraries](#with-external-libraries)\n\nThis example uses the external library `fuse.js` for fuzzy search. The module is only loaded in the browser after the user types in the search input.\n\n```\nimport { useState } from 'react'\n \nconst names = ['Tim', 'Joe', 'Bel', 'Lee']\n \nexport default function Page() {\n  const [results, setResults] = useState()\n \n  return (\n    <div>\n      <input\n        type=\"text\"\n        placeholder=\"Search\"\n        onChange={async (e) => {\n          const { value } = e.currentTarget\n          // Dynamically load fuse.js\n          const Fuse = (await import('fuse.js')).default\n          const fuse = new Fuse(names)\n \n          setResults(fuse.search(value))\n        }}\n      />\n      <pre>Results: {JSON.stringify(results, null, 2)}</pre>\n    </div>\n  )\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "This example uses the external library `fuse.js` for fuzzy search. The module is only loaded in the browser after the user types in the search input. [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading#with-external-libraries-with-external-libraries",
+    "position": 6
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "title": "error.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)error.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)error.js",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/error#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "error.js",
+    "section": "error.js",
+    "section_id": "error-js",
+    "heading_level": 1,
+    "content": "# error.js\n\nAn **error** file allows you to handle unexpected runtime errors and display fallback UI.\n\n[Image: error.js special file][Image: error.js special file]\n\napp/dashboard/error.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client' // Error boundaries must be Client Components\n \nimport { useEffect } from 'react'\n \nexport default function Error({\n  error,\n  reset,\n}: {\n  error: Error & { digest?: string }\n  reset: () => void\n}) {\n  useEffect(() => {\n    // Log the error to an error reporting service\n    console.error(error)\n  }, [error])\n \n  return (\n    <div>\n      <h2>Something went wrong!</h2>\n      <button\n        onClick={\n          // Attempt to recover by trying to re-render the segment\n          () => reset()\n        }\n      >\n        Try again\n      </button>\n    </div>\n  )\n}\n```\n\n`error.js` wraps a route segment and its nested children in a [React Error Boundary](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary). When an error throws within the boundary, the `error` component shows as the fallback UI.\n\n[Image: How error.js works][Image: How error.js works]\n> **Good to know**:\n>\n> * The [React DevTools](https://react.dev/learn/react-developer-tools) allow you to toggle error boundaries to test error states.\n> * If you want errors to bubble up to the parent error boundary, you can `throw` when rendering the `error` component.",
+    "preview": "An **error** file allows you to handle unexpected runtime errors and display fallback UI. [Image: error.js special file][Image: error.js special file] app/dashboard/error.tsx TypeScript JavaScriptTypeScript [Code Block] `error.js` wraps a route segment and its nested children in a [React Error",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/error#error-js",
+    "position": 1
+  },
+  {
+    "title": "error.js",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/error#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "error.js",
+    "section": "[Props](#props)",
+    "section_id": "props-props",
+    "heading_level": 3,
+    "content": "### [Props](#props)\n\n#### [`error`](#error)\n\nAn instance of an [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error) object forwarded to the `error.js` Client Component.\n\n> **Good to know:** During development, the `Error` object forwarded to the client will be serialized and include the `message` of the original error for easier debugging. However, **this behavior is different in production** to avoid leaking potentially sensitive details included in the error to the client.\n\n#### [`error.message`](#errormessage)\n\n* Errors forwarded from Client Components show the original `Error` message.\n* Errors forwarded from Server Components show a generic message with an identifier. This is to prevent leaking sensitive details. You can use the identifier, under `errors.digest`, to match the corresponding server-side logs.\n\n#### [`error.digest`](#errordigest)\n\nAn automatically generated hash of the error thrown. It can be used to match the corresponding error in server-side logs.\n\n#### [`reset`](#reset)\n\nThe cause of an error can sometimes be temporary. In these cases, trying again might resolve the issue.\n\nAn error component can use the `reset()` function to prompt the user to attempt to recover from the error. When executed, the function will try to re-render the error boundary's contents. If successful, the fallback error component is replaced with the result of the re-render.\n\napp/dashboard/error.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client' // Error boundaries must be Client Components\n \nexport default function Error({\n  error,\n  reset,\n}: {\n  error: Error & { digest?: string }\n  reset: () => void\n}) {\n  return (\n    <div>\n      <h2>Something went wrong!</h2>\n      <button onClick={() => reset()}>Try again</button>\n    </div>\n  )\n}\n```",
+    "preview": "#### [`error`](#error) An instance of an [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error) object forwarded to the `error.js` Client Component. > **Good to know:** During development, the `Error` object forwarded to the client will be serialized and includ",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/error#props-props",
+    "position": 3
+  },
+  {
+    "title": "error.js",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/error#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "error.js",
+    "section": "[Global Error](#global-error)",
+    "section_id": "global-error-global-error",
+    "heading_level": 3,
+    "content": "### [Global Error](#global-error)\n\nWhile less common, you can handle errors in the root layout or template using `global-error.js`, located in the root app directory, even when leveraging [internationalization](/docs/app/building-your-application/routing/internationalization). Global error UI must define its own `<html>` and `<body>` tags. This file replaces the root layout or template when active.\n\napp/global-error.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client' // Error boundaries must be Client Components\n \nexport default function GlobalError({\n  error,\n  reset,\n}: {\n  error: Error & { digest?: string }\n  reset: () => void\n}) {\n  return (\n    // global-error must include html and body tags\n    <html>\n      <body>\n        <h2>Something went wrong!</h2>\n        <button onClick={() => reset()}>Try again</button>\n      </body>\n    </html>\n  )\n}\n```",
+    "preview": "While less common, you can handle errors in the root layout or template using `global-error.js`, located in the root app directory, even when leveraging [internationalization](/docs/app/building-your-application/routing/internationalization). Global error UI must define its own `<html>` and `<body>`",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/error#global-error-global-error",
+    "position": 5
+  },
+  {
+    "title": "error.js",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.2.0` | Also display `global-error` in development. |\n| `v13.1.0` | `global-error` introduced. |\n| `v13.0.0` | `error` introduced. |",
+    "preview": "| Version | Changes | | --- | --- | | `v15.2.0` | Also display `global-error` in development. | | `v13.1.0` | `global-error` introduced. | | `v13.0.0` | `error` introduced. |",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/error#version-history-version-history",
+    "position": 6
+  },
+  {
+    "title": "error.js",
+    "section": "Learn more about error handling",
+    "section_id": "learn-more-about-error-handling",
+    "heading_level": 2,
+    "content": "## Learn more about error handling\n\n[### Error Handling\n\nLearn how to display expected errors and handle uncaught exceptions.](/docs/app/building-your-application/routing/error-handling)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Error Handling Learn how to display expected errors and handle uncaught exceptions.](/docs/app/building-your-application/routing/error-handling) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/error#learn-more-about-error-handling",
+    "position": 7
+  }
+]

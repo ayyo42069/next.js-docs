@@ -1,0 +1,92 @@
+[
+  {
+    "title": "unauthorized",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)unauthorized",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)unauthorized",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unauthorized#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "unauthorized",
+    "section": "unauthorized",
+    "section_id": "unauthorized",
+    "heading_level": 1,
+    "content": "# unauthorized\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nThe `unauthorized` function throws an error that renders a Next.js 401 error page. It's useful for handling authorization errors in your application. You can customize the UI using the [`unauthorized.js` file](/docs/app/api-reference/file-conventions/unauthorized).\n\nTo start using `unauthorized`, enable the experimental [`authInterrupts`](/docs/app/api-reference/config/next-config-js/authInterrupts) configuration option in your `next.config.js` file:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    authInterrupts: true,\n  },\n}\n \nexport default nextConfig\n```\n\n`unauthorized` can be invoked in [Server Components](/docs/app/building-your-application/rendering/server-components), [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations), and [Route Handlers](/docs/app/building-your-application/routing/route-handlers).\n\napp/dashboard/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { verifySession } from '@/app/lib/dal'\nimport { unauthorized } from 'next/navigation'\n \nexport default async function DashboardPage() {\n  const session = await verifySession()\n \n  if (!session) {\n    unauthorized()\n  }\n \n  // Render the dashboard for authenticated users\n  return (\n    <main>\n      <h1>Welcome to the Dashboard</h1>\n      <p>Hi, {session.user.name}.</p>\n    </main>\n  )\n}\n```",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). The `unauthorized` function throws an error that renders a Next.js 401 error page. It's useful for handling au",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unauthorized#unauthorized",
+    "position": 1
+  },
+  {
+    "title": "unauthorized",
+    "section": "[Good to know](#good-to-know)",
+    "section_id": "good-to-know-good-to-know",
+    "heading_level": 2,
+    "content": "## [Good to know](#good-to-know)\n\n* The `unauthorized` function cannot be called in the [root layout](/docs/app/building-your-application/routing/layouts-and-templates#root-layout-required).",
+    "preview": "* The `unauthorized` function cannot be called in the [root layout](/docs/app/building-your-application/routing/layouts-and-templates#root-layout-required).",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unauthorized#good-to-know-good-to-know",
+    "position": 2
+  },
+  {
+    "title": "unauthorized",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unauthorized#examples-examples",
+    "position": 3
+  },
+  {
+    "title": "unauthorized",
+    "section": "[Displaying login UI to unauthenticated users](#displaying-login-ui-to-unauthenticated-users)",
+    "section_id": "displaying-login-ui-to-unauthenticated-users-displaying-login-ui-to-unauthenticated-users",
+    "heading_level": 3,
+    "content": "### [Displaying login UI to unauthenticated users](#displaying-login-ui-to-unauthenticated-users)\n\nYou can use `unauthorized` function to display the `unauthorized.js` file with a login UI.\n\napp/dashboard/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { verifySession } from '@/app/lib/dal'\nimport { unauthorized } from 'next/navigation'\n \nexport default async function DashboardPage() {\n  const session = await verifySession()\n \n  if (!session) {\n    unauthorized()\n  }\n \n  return <div>Dashboard</div>\n}\n```\n\napp/unauthorized.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Login from '@/app/components/Login'\n \nexport default function UnauthorizedPage() {\n  return (\n    <main>\n      <h1>401 - Unauthorized</h1>\n      <p>Please log in to access this page.</p>\n      <Login />\n    </main>\n  )\n}\n```",
+    "preview": "You can use `unauthorized` function to display the `unauthorized.js` file with a login UI. app/dashboard/page.tsx TypeScript JavaScriptTypeScript [Code Block] app/unauthorized.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unauthorized#displaying-login-ui-to-unauthenticated-users-displaying-login-ui-to-unauthenticated-users",
+    "position": 4
+  },
+  {
+    "title": "unauthorized",
+    "section": "[Mutations with Server Actions](#mutations-with-server-actions)",
+    "section_id": "mutations-with-server-actions-mutations-with-server-actions",
+    "heading_level": 3,
+    "content": "### [Mutations with Server Actions](#mutations-with-server-actions)\n\nYou can invoke `unauthorized` in Server Actions to ensure only authenticated users can perform specific mutations.\n\napp/actions/update-profile.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { verifySession } from '@/app/lib/dal'\nimport { unauthorized } from 'next/navigation'\nimport db from '@/app/lib/db'\n \nexport async function updateProfile(data: FormData) {\n  const session = await verifySession()\n \n  // If the user is not authenticated, return a 401\n  if (!session) {\n    unauthorized()\n  }\n \n  // Proceed with mutation\n  // ...\n}\n```",
+    "preview": "You can invoke `unauthorized` in Server Actions to ensure only authenticated users can perform specific mutations. app/actions/update-profile.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unauthorized#mutations-with-server-actions-mutations-with-server-actions",
+    "position": 5
+  },
+  {
+    "title": "unauthorized",
+    "section": "[Fetching data with Route Handlers](#fetching-data-with-route-handlers)",
+    "section_id": "fetching-data-with-route-handlers-fetching-data-with-route-handlers",
+    "heading_level": 3,
+    "content": "### [Fetching data with Route Handlers](#fetching-data-with-route-handlers)\n\nYou can use `unauthorized` in Route Handlers to ensure only authenticated users can access the endpoint.\n\napp/api/profile/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextRequest, NextResponse } from 'next/server'\nimport { verifySession } from '@/app/lib/dal'\nimport { unauthorized } from 'next/navigation'\n \nexport async function GET(req: NextRequest): Promise<NextResponse> {\n  // Verify the user's session\n  const session = await verifySession()\n \n  // If no session exists, return a 401 and render unauthorized.tsx\n  if (!session) {\n    unauthorized()\n  }\n \n  // Fetch data\n  // ...\n}\n```",
+    "preview": "You can use `unauthorized` in Route Handlers to ensure only authenticated users can access the endpoint. app/api/profile/route.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unauthorized#fetching-data-with-route-handlers-fetching-data-with-route-handlers",
+    "position": 6
+  },
+  {
+    "title": "unauthorized",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.1.0` | `unauthorized` introduced. |",
+    "preview": "| Version | Changes | | --- | --- | | `v15.1.0` | `unauthorized` introduced. |",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unauthorized#version-history-version-history",
+    "position": 7
+  },
+  {
+    "title": "unauthorized",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\n[### unauthorized.js\n\nAPI reference for the unauthorized.js special file.](/docs/app/api-reference/file-conventions/unauthorized)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### unauthorized.js API reference for the unauthorized.js special file.](/docs/app/api-reference/file-conventions/unauthorized) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unauthorized#next-steps",
+    "position": 8
+  }
+]

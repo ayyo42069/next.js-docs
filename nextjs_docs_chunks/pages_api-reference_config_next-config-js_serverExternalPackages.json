@@ -1,0 +1,22 @@
+[
+  {
+    "title": "serverExternalPackages",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)serverExternalPackages",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)serverExternalPackages",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "serverExternalPackages",
+    "section": "serverExternalPackages",
+    "section_id": "serverexternalpackages",
+    "heading_level": 1,
+    "content": "# serverExternalPackages\n\nOpt-out specific dependencies from being included in the automatic bundling of the [`bundlePagesRouterDependencies`](/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies) option.\n\nThese pages will then use native Node.js `require` to resolve the dependency.\n\nnext.config.js\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  serverExternalPackages: ['@acme/ui'],\n}\n \nmodule.exports = nextConfig\n```\n\nNext.js includes a [short list of popular packages](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.json) that currently are working on compatibility and automatically opt-ed out:\n\n* `@appsignal/nodejs`\n* `@aws-sdk/client-s3`\n* `@aws-sdk/s3-presigned-post`\n* `@blockfrost/blockfrost-js`\n* `@highlight-run/node`\n* `@huggingface/transformers`\n* `@jpg-store/lucid-cardano`\n* `@libsql/client`\n* `@mikro-orm/core`\n* `@mikro-orm/knex`\n* `@node-rs/argon2`\n* `@node-rs/bcrypt`\n* `@prisma/client`\n* `@react-pdf/renderer`\n* `@sentry/profiling-node`\n* `@sparticuz/chromium`\n* `@swc/core`\n* `@xenova/transformers`\n* `argon2`\n* `autoprefixer`\n* `aws-crt`\n* `bcrypt`\n* `better-sqlite3`\n* `canvas`\n* `chromadb-default-embed`\n* `cpu-features`\n* `cypress`\n* `dd-trace`\n* `eslint`\n* `express`\n* `firebase-admin`\n* `import-in-the-middle`\n* `isolated-vm`\n* `jest`\n* `jsdom`\n* `keyv`\n* `libsql`\n* `mdx-bundler`\n* `mongodb`\n* `mongoose`\n* `newrelic`\n* `next-mdx-remote`\n* `next-seo`\n* `node-cron`\n* `node-pty`\n* `node-web-audio-api`\n* `onnxruntime-node`\n* `oslo`\n* `pg`\n* `playwright`\n* `playwright-core`\n* `postcss`\n* `prettier`\n* `prisma`\n* `puppeteer-core`\n* `puppeteer`\n* `require-in-the-middle`\n* `rimraf`\n* `sharp`\n* `shiki`\n* `sqlite3`\n* `ts-node`\n* `ts-morph`\n* `typescript`\n* `vscode-oniguruma`\n* `webpack`\n* `websocket`\n* `zeromq`\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Opt-out specific dependencies from being included in the automatic bundling of the [`bundlePagesRouterDependencies`](/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies) option. These pages will then use native Node.js `require` to resolve the dependency. next.config.js",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages#serverexternalpackages",
+    "position": 1
+  }
+]

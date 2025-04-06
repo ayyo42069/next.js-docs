@@ -1,0 +1,112 @@
+[
+  {
+    "title": "turbo",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)turbo",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)turbo",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "turbo",
+    "section": "turbo",
+    "section_id": "turbo",
+    "heading_level": 1,
+    "content": "# turbo\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nThe `turbo` option lets you customize [Turbopack](/docs/app/api-reference/turbopack) to transform different files and change how modules are resolved.\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    turbo: {\n      // ...\n    },\n  },\n}\n \nexport default nextConfig\n```\n\n> **Good to know**:\n>\n> * Turbopack for Next.js does not require loaders nor loader configuration for built-in functionality. Turbopack has built-in support for CSS and compiling modern JavaScript, so there's no need for `css-loader`, `postcss-loader`, or `babel-loader` if you're using `@babel/preset-env`.",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). The `turbo` option lets you customize [Turbopack](/docs/app/api-reference/turbopack) to transform different fi",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#turbo",
+    "position": 1
+  },
+  {
+    "title": "turbo",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "turbo",
+    "section": "[Options](#options)",
+    "section_id": "options-options",
+    "heading_level": 3,
+    "content": "### [Options](#options)\n\nThe following options are available for the `turbo` configuration:\n\n| Option | Description |\n| --- | --- |\n| `rules` | List of supported webpack loaders to apply when running with Turbopack. |\n| `resolveAlias` | Map aliased imports to modules to load in their place. |\n| `resolveExtensions` | List of extensions to resolve when importing files. |\n| `moduleIdStrategy` | Assign module IDs |\n| `treeShaking` | Enable tree shaking for the turbopack dev server and build. |\n| `memoryLimit` | A target memory limit for turbo, in bytes. |",
+    "preview": "The following options are available for the `turbo` configuration: | Option | Description | | --- | --- | | `rules` | List of supported webpack loaders to apply when running with Turbopack. | | `resolveAlias` | Map aliased imports to modules to load in their place. | | `resolveExtensions` | List of",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#options-options",
+    "position": 3
+  },
+  {
+    "title": "turbo",
+    "section": "[Supported loaders](#supported-loaders)",
+    "section_id": "supported-loaders-supported-loaders",
+    "heading_level": 3,
+    "content": "### [Supported loaders](#supported-loaders)\n\nThe following loaders have been tested to work with Turbopack's webpack loader implementation:\n\n* [`babel-loader`](https://www.npmjs.com/package/babel-loader)\n* [`@svgr/webpack`](https://www.npmjs.com/package/@svgr/webpack)\n* [`svg-inline-loader`](https://www.npmjs.com/package/svg-inline-loader)\n* [`yaml-loader`](https://www.npmjs.com/package/yaml-loader)\n* [`string-replace-loader`](https://www.npmjs.com/package/string-replace-loader)\n* [`raw-loader`](https://www.npmjs.com/package/raw-loader)\n* [`sass-loader`](https://www.npmjs.com/package/sass-loader)",
+    "preview": "The following loaders have been tested to work with Turbopack's webpack loader implementation: * [`babel-loader`](https://www.npmjs.com/package/babel-loader) * [`@svgr/webpack`](https://www.npmjs.com/package/@svgr/webpack) * [`svg-inline-loader`](https://www.npmjs.com/package/svg-inline-loader) * [",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#supported-loaders-supported-loaders",
+    "position": 4
+  },
+  {
+    "title": "turbo",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#examples-examples",
+    "position": 5
+  },
+  {
+    "title": "turbo",
+    "section": "[Configuring webpack loaders](#configuring-webpack-loaders)",
+    "section_id": "configuring-webpack-loaders-configuring-webpack-loaders",
+    "heading_level": 3,
+    "content": "### [Configuring webpack loaders](#configuring-webpack-loaders)\n\nIf you need loader support beyond what's built in, many webpack loaders already work with Turbopack. There are currently some limitations:\n\n* Only a core subset of the webpack loader API is implemented. Currently, there is enough coverage for some popular loaders, and we'll expand our API support in the future.\n* Only loaders that return JavaScript code are supported. Loaders that transform files like stylesheets or images are not currently supported.\n* Options passed to webpack loaders must be plain JavaScript primitives, objects, and arrays. For example, it's not possible to pass `require()` plugin modules as option values.\n\nTo configure loaders, add the names of the loaders you've installed and any options in `next.config.js`, mapping file extensions to a list of loaders.\n\nHere is an example below using the [`@svgr/webpack`](https://www.npmjs.com/package/@svgr/webpack) loader, which enables importing `.svg` files and rendering them as React components.\n\nnext.config.js\n\n```\nmodule.exports = {\n  experimental: {\n    turbo: {\n      rules: {\n        '*.svg': {\n          loaders: ['@svgr/webpack'],\n          as: '*.js',\n        },\n      },\n    },\n  },\n}\n```\n\n> **Good to know**: Prior to Next.js version 13.4.4, `turbo.rules` was named `turbo.loaders` and only accepted file extensions like `.mdx` instead of `*.mdx`.",
+    "preview": "If you need loader support beyond what's built in, many webpack loaders already work with Turbopack. There are currently some limitations: * Only a core subset of the webpack loader API is implemented. Currently, there is enough coverage for some popular loaders, and we'll expand our API support in",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#configuring-webpack-loaders-configuring-webpack-loaders",
+    "position": 6
+  },
+  {
+    "title": "turbo",
+    "section": "[Resolving aliases](#resolving-aliases)",
+    "section_id": "resolving-aliases-resolving-aliases",
+    "heading_level": 3,
+    "content": "### [Resolving aliases](#resolving-aliases)\n\nTurbopack can be configured to modify module resolution through aliases, similar to webpack's [`resolve.alias`](https://webpack.js.org/configuration/resolve/#resolvealias) configuration.\n\nTo configure resolve aliases, map imported patterns to their new destination in `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  experimental: {\n    turbo: {\n      resolveAlias: {\n        underscore: 'lodash',\n        mocha: { browser: 'mocha/browser-entry.js' },\n      },\n    },\n  },\n}\n```\n\nThis aliases imports of the `underscore` package to the `lodash` package. In other words, `import underscore from 'underscore'` will load the `lodash` module instead of `underscore`.\n\nTurbopack also supports conditional aliasing through this field, similar to Node.js' [conditional exports](https://nodejs.org/docs/latest-v18.x/api/packages.html#conditional-exports). At the moment only the `browser` condition is supported. In the case above, imports of the `mocha` module will be aliased to `mocha/browser-entry.js` when Turbopack targets browser environments.",
+    "preview": "Turbopack can be configured to modify module resolution through aliases, similar to webpack's [`resolve.alias`](https://webpack.js.org/configuration/resolve/#resolvealias) configuration. To configure resolve aliases, map imported patterns to their new destination in `next.config.js`: next.config.j",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#resolving-aliases-resolving-aliases",
+    "position": 7
+  },
+  {
+    "title": "turbo",
+    "section": "[Resolving custom extensions](#resolving-custom-extensions)",
+    "section_id": "resolving-custom-extensions-resolving-custom-extensions",
+    "heading_level": 3,
+    "content": "### [Resolving custom extensions](#resolving-custom-extensions)\n\nTurbopack can be configured to resolve modules with custom extensions, similar to webpack's [`resolve.extensions`](https://webpack.js.org/configuration/resolve/#resolveextensions) configuration.\n\nTo configure resolve extensions, use the `resolveExtensions` field in `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  experimental: {\n    turbo: {\n      resolveExtensions: [\n        '.mdx',\n        '.tsx',\n        '.ts',\n        '.jsx',\n        '.js',\n        '.mjs',\n        '.json',\n      ],\n    },\n  },\n}\n```\n\nThis overwrites the original resolve extensions with the provided list. Make sure to include the default extensions.\n\nFor more information and guidance for how to migrate your app to Turbopack from webpack, see [Turbopack's documentation on webpack compatibility](https://turbo.build/pack/docs/migrating-from-webpack).",
+    "preview": "Turbopack can be configured to resolve modules with custom extensions, similar to webpack's [`resolve.extensions`](https://webpack.js.org/configuration/resolve/#resolveextensions) configuration. To configure resolve extensions, use the `resolveExtensions` field in `next.config.js`: next.config.js",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#resolving-custom-extensions-resolving-custom-extensions",
+    "position": 8
+  },
+  {
+    "title": "turbo",
+    "section": "[Assigning module IDs](#assigning-module-ids)",
+    "section_id": "assigning-module-ids-assigning-module-ids",
+    "heading_level": 3,
+    "content": "### [Assigning module IDs](#assigning-module-ids)\n\nTurbopack currently supports two strategies for assigning module IDs:\n\n* `'named'` assigns readable module IDs based on the module's path and functionality.\n* `'deterministic'` assigns small hashed numeric module IDs, which are mostly consistent between builds and therefore help with long-term caching.\n\nIf not set, Turbopack will use `'named'` for development builds and `'deterministic'` for production builds.\n\nTo configure the module IDs strategy, use the `moduleIdStrategy` field in `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  experimental: {\n    turbo: {\n      moduleIdStrategy: 'deterministic',\n    },\n  },\n}\n```",
+    "preview": "Turbopack currently supports two strategies for assigning module IDs: * `'named'` assigns readable module IDs based on the module's path and functionality. * `'deterministic'` assigns small hashed numeric module IDs, which are mostly consistent between builds and therefore help with long-term cachi",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#assigning-module-ids-assigning-module-ids",
+    "position": 9
+  },
+  {
+    "title": "turbo",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `13.0.0` | `experimental.turbo` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `13.0.0` | `experimental.turbo` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/turbo#version-history-version-history",
+    "position": 10
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "title": "ImageResponse",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)ImageResponse",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)ImageResponse",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/image-response#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "ImageResponse",
+    "section": "ImageResponse",
+    "section_id": "imageresponse",
+    "heading_level": 1,
+    "content": "# ImageResponse\n\nThe `ImageResponse` constructor allows you to generate dynamic images using JSX and CSS. This is useful for generating social media images such as Open Graph images, Twitter cards, and more.\n\nThe following options are available for `ImageResponse`:\n\n```\nimport { ImageResponse } from 'next/og'\n \nnew ImageResponse(\n  element: ReactElement,\n  options: {\n    width?: number = 1200\n    height?: number = 630\n    emoji?: 'twemoji' | 'blobmoji' | 'noto' | 'openmoji' = 'twemoji',\n    fonts?: {\n      name: string,\n      data: ArrayBuffer,\n      weight: number,\n      style: 'normal' | 'italic'\n    }[]\n    debug?: boolean = false\n \n    // Options that will be passed to the HTTP response\n    status?: number = 200\n    statusText?: string\n    headers?: Record<string, string>\n  },\n)\n```",
+    "preview": "The `ImageResponse` constructor allows you to generate dynamic images using JSX and CSS. This is useful for generating social media images such as Open Graph images, Twitter cards, and more. The following options are available for `ImageResponse`: [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/image-response#imageresponse",
+    "position": 1
+  },
+  {
+    "title": "ImageResponse",
+    "section": "[Supported CSS Properties](#supported-css-properties)",
+    "section_id": "supported-css-properties-supported-css-properties",
+    "heading_level": 2,
+    "content": "## [Supported CSS Properties](#supported-css-properties)\n\nPlease refer to [Satori\u2019s documentation](https://github.com/vercel/satori#css) for a list of supported HTML and CSS features.",
+    "preview": "Please refer to [Satori\u2019s documentation](https://github.com/vercel/satori#css) for a list of supported HTML and CSS features.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/image-response#supported-css-properties-supported-css-properties",
+    "position": 2
+  },
+  {
+    "title": "ImageResponse",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v14.0.0` | `ImageResponse` moved from `next/server` to `next/og` |\n| `v13.3.0` | `ImageResponse` can be imported from `next/server`. |\n| `v13.0.0` | `ImageResponse` introduced via `@vercel/og` package. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v14.0.0` | `ImageResponse` moved from `next/server` to `next/og` | | `v13.3.0` | `ImageResponse` can be imported from `next/server`. | | `v13.0.0` | `ImageResponse` introduced via `@vercel/og` package. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/image-response#version-history-version-history",
+    "position": 3
+  }
+]

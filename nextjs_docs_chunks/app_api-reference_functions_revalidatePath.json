@@ -1,0 +1,112 @@
+[
+  {
+    "title": "revalidatePath",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)revalidatePath",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)revalidatePath",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "revalidatePath",
+    "section": "revalidatePath",
+    "section_id": "revalidatepath",
+    "heading_level": 1,
+    "content": "# revalidatePath\n\n`revalidatePath` allows you to purge [cached data](/docs/app/building-your-application/caching) on-demand for a specific path.\n\n> **Good to know**:\n>\n> * `revalidatePath` only invalidates the cache when the included path is next visited. This means calling `revalidatePath` with a dynamic route segment will not immediately trigger many revalidations at once. The invalidation only happens when the path is next visited.\n> * Currently, `revalidatePath` invalidates all the routes in the [client-side Router Cache](/docs/app/building-your-application/caching#client-side-router-cache) when used in a server action. This behavior is temporary and will be updated in the future to apply only to the specific path.\n> * Using `revalidatePath` invalidates **only the specific path** in the [server-side Route Cache](/docs/app/building-your-application/caching#full-route-cache).",
+    "preview": "`revalidatePath` allows you to purge [cached data](/docs/app/building-your-application/caching) on-demand for a specific path. > **Good to know**: > > * `revalidatePath` only invalidates the cache when the included path is next visited. This means calling `revalidatePath` with a dynamic route segme",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#revalidatepath",
+    "position": 1
+  },
+  {
+    "title": "revalidatePath",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\n```\nrevalidatePath(path: string, type?: 'page' | 'layout'): void;\n```\n\n* `path`: Either a string representing the filesystem path associated with the data you want to revalidate (for example, `/product/[slug]/page`), or the literal route segment (for example, `/product/123`). Must be less than 1024 characters. This value is case-sensitive.\n* `type`: (optional) `'page'` or `'layout'` string to change the type of path to revalidate. If `path` contains a dynamic segment (for example, `/product/[slug]/page`), this parameter is required. If path refers to the literal route segment, e.g., `/product/1` for a dynamic page (e.g., `/product/[slug]/page`), you should not provide `type`.",
+    "preview": "[Code Block] * `path`: Either a string representing the filesystem path associated with the data you want to revalidate (for example, `/product/[slug]/page`), or the literal route segment (for example, `/product/123`). Must be less than 1024 characters. This value is case-sensitive. * `type`: (opti",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "revalidatePath",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\n`revalidatePath` does not return a value.",
+    "preview": "`revalidatePath` does not return a value.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "revalidatePath",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "revalidatePath",
+    "section": "[Revalidating A Specific URL](#revalidating-a-specific-url)",
+    "section_id": "revalidating-a-specific-url-revalidating-a-specific-url",
+    "heading_level": 3,
+    "content": "### [Revalidating A Specific URL](#revalidating-a-specific-url)\n\n```\nimport { revalidatePath } from 'next/cache'\nrevalidatePath('/blog/post-1')\n```\n\nThis will revalidate one specific URL on the next page visit.",
+    "preview": "[Code Block] This will revalidate one specific URL on the next page visit.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#revalidating-a-specific-url-revalidating-a-specific-url",
+    "position": 5
+  },
+  {
+    "title": "revalidatePath",
+    "section": "[Revalidating A Page Path](#revalidating-a-page-path)",
+    "section_id": "revalidating-a-page-path-revalidating-a-page-path",
+    "heading_level": 3,
+    "content": "### [Revalidating A Page Path](#revalidating-a-page-path)\n\n```\nimport { revalidatePath } from 'next/cache'\nrevalidatePath('/blog/[slug]', 'page')\n// or with route groups\nrevalidatePath('/(main)/blog/[slug]', 'page')\n```\n\nThis will revalidate any URL that matches the provided `page` file on the next page visit. This will *not* invalidate pages beneath the specific page. For example, `/blog/[slug]` won't invalidate `/blog/[slug]/[author]`.",
+    "preview": "[Code Block] This will revalidate any URL that matches the provided `page` file on the next page visit. This will *not* invalidate pages beneath the specific page. For example, `/blog/[slug]` won't invalidate `/blog/[slug]/[author]`.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#revalidating-a-page-path-revalidating-a-page-path",
+    "position": 6
+  },
+  {
+    "title": "revalidatePath",
+    "section": "[Revalidating A Layout Path](#revalidating-a-layout-path)",
+    "section_id": "revalidating-a-layout-path-revalidating-a-layout-path",
+    "heading_level": 3,
+    "content": "### [Revalidating A Layout Path](#revalidating-a-layout-path)\n\n```\nimport { revalidatePath } from 'next/cache'\nrevalidatePath('/blog/[slug]', 'layout')\n// or with route groups\nrevalidatePath('/(main)/post/[slug]', 'layout')\n```\n\nThis will revalidate any URL that matches the provided `layout` file on the next page visit. This will cause pages beneath with the same layout to revalidate on the next visit. For example, in the above case, `/blog/[slug]/[another]` would also revalidate on the next visit.",
+    "preview": "[Code Block] This will revalidate any URL that matches the provided `layout` file on the next page visit. This will cause pages beneath with the same layout to revalidate on the next visit. For example, in the above case, `/blog/[slug]/[another]` would also revalidate on the next visit.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#revalidating-a-layout-path-revalidating-a-layout-path",
+    "position": 7
+  },
+  {
+    "title": "revalidatePath",
+    "section": "[Revalidating All Data](#revalidating-all-data)",
+    "section_id": "revalidating-all-data-revalidating-all-data",
+    "heading_level": 3,
+    "content": "### [Revalidating All Data](#revalidating-all-data)\n\n```\nimport { revalidatePath } from 'next/cache'\n \nrevalidatePath('/', 'layout')\n```\n\nThis will purge the Client-side Router Cache, and revalidate the Data Cache on the next page visit.",
+    "preview": "[Code Block] This will purge the Client-side Router Cache, and revalidate the Data Cache on the next page visit.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#revalidating-all-data-revalidating-all-data",
+    "position": 8
+  },
+  {
+    "title": "revalidatePath",
+    "section": "[Server Action](#server-action)",
+    "section_id": "server-action-server-action",
+    "heading_level": 3,
+    "content": "### [Server Action](#server-action)\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { revalidatePath } from 'next/cache'\n \nexport default async function submit() {\n  await submitForm()\n  revalidatePath('/')\n}\n```",
+    "preview": "app/actions.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#server-action-server-action",
+    "position": 9
+  },
+  {
+    "title": "revalidatePath",
+    "section": "[Route Handler](#route-handler)",
+    "section_id": "route-handler-route-handler",
+    "heading_level": 3,
+    "content": "### [Route Handler](#route-handler)\n\napp/api/revalidate/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { revalidatePath } from 'next/cache'\nimport type { NextRequest } from 'next/server'\n \nexport async function GET(request: NextRequest) {\n  const path = request.nextUrl.searchParams.get('path')\n \n  if (path) {\n    revalidatePath(path)\n    return Response.json({ revalidated: true, now: Date.now() })\n  }\n \n  return Response.json({\n    revalidated: false,\n    now: Date.now(),\n    message: 'Missing path to revalidate',\n  })\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "app/api/revalidate/route.ts TypeScript JavaScriptTypeScript [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidatePath#route-handler-route-handler",
+    "position": 10
+  }
+]

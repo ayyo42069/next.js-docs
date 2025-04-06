@@ -1,0 +1,32 @@
+[
+  {
+    "title": "reactCompiler",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)reactCompiler",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)reactCompiler",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/reactCompiler#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "reactCompiler",
+    "section": "reactCompiler",
+    "section_id": "reactcompiler",
+    "heading_level": 1,
+    "content": "# reactCompiler\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nNext.js 15 introduced support for the [React Compiler](https://react.dev/learn/react-compiler). The compiler improves performance by automatically optimizing component rendering. This reduces the amount of manual memoization developers have to do through APIs such as `useMemo` and `useCallback`.\n\nTo use it, upgrade to Next.js 15, install the `babel-plugin-react-compiler`:\n\nTerminal\n\n```\nnpm install babel-plugin-react-compiler\n```\n\nThen, add `experimental.reactCompiler` option in `next.config.js`:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    reactCompiler: true,\n  },\n}\n \nexport default nextConfig\n```\n\n> **Note:** The React Compiler is currently only possible to use in Next.js through a Babel plugin. This will opt-out of Next.js's default [Rust-based compiler](/docs/architecture/nextjs-compiler), which could result in slower build times. We are working on support for the React Compiler as our default compiler.",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). Next.js 15 introduced support for the [React Compiler](https://react.dev/learn/react-compiler). The compiler i",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/reactCompiler#reactcompiler",
+    "position": 1
+  },
+  {
+    "title": "reactCompiler",
+    "section": "[Annotations](#annotations)",
+    "section_id": "annotations-annotations",
+    "heading_level": 2,
+    "content": "## [Annotations](#annotations)\n\nYou can configure the compiler to run in \"opt-in\" mode as follows:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    reactCompiler: {\n      compilationMode: 'annotation',\n    },\n  },\n}\n \nexport default nextConfig\n```\n\nThen, you can annotate specific components or hooks with the `\"use memo\"` directive from React to opt-in:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Page() {\n  'use memo'\n  // ...\n}\n```\n\n> **Note:** You can also use the `\"use no memo\"` directive from React for the opposite effect, to opt-out a component or hook.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "You can configure the compiler to run in \"opt-in\" mode as follows: next.config.ts TypeScript JavaScriptTypeScript [Code Block] Then, you can annotate specific components or hooks with the `\"use memo\"` directive from React to opt-in: app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/reactCompiler#annotations-annotations",
+    "position": 2
+  }
+]

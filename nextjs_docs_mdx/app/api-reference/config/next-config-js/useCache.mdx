@@ -1,0 +1,57 @@
+---
+title: "useCache"
+description: "Menu..."
+url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/useCache"
+slug: "/docs/app/api-reference/config/next-config-js/useCache"
+date_crawled: "2025-04-06T12:10:46.772852+00:00"
+---
+
+**Path**: /docs/app/api-reference/config/next-config-js/useCache
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)useCache
+
+# useCache
+
+This feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
+
+The `useCache` flag is an experimental feature in Next.js that enables the [`use cache` directive](/docs/app/api-reference/directives/use-cache) to be used independently of [`dynamicIO`](/docs/app/api-reference/config/next-config-js/dynamicIO). When enabled, you can use `use cache` in your application even if `dynamicIO` is turned off.
+
+## [Usage](#usage)
+
+To enable the `useCache` flag, set it to `true` in the `experimental` section of your `next.config.ts` file:
+
+next.config.ts
+
+```
+import type { NextConfig } from 'next'
+ 
+const nextConfig: NextConfig = {
+  experimental: {
+    useCache: true,
+  },
+}
+ 
+export default nextConfig
+```
+
+When `useCache` is enabled, you can use the following cache functions and configurations:
+
+* The [`use cache` directive](/docs/app/api-reference/directives/use-cache)
+* The [`cacheLife` function](/docs/app/api-reference/config/next-config-js/cacheLife) with `use cache`
+* The [`cacheTag` function](/docs/app/api-reference/functions/cacheTag)
+
+Was this helpful?
+
+supported.
+
+Send

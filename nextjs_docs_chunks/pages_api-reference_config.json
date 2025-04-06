@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Configuration",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Pages Router](/docs/pages)[API Reference](/docs/pages/api-reference)Configuration",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Pages Router](/docs/pages)[API Reference](/docs/pages/api-reference)Configuration",
+    "url": "https://nextjs.org/docs/pages/api-reference/config#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Configuration",
+    "section": "Configuration",
+    "section_id": "configuration",
+    "heading_level": 1,
+    "content": "# Configuration\n\n[### next.config.js Options\n\nLearn about the options available in next.config.js for the Pages Router.](/docs/pages/api-reference/config/next-config-js)[### TypeScript\n\nNext.js provides a TypeScript-first development experience for building your React application.](/docs/pages/api-reference/config/typescript)[### ESLint\n\nNext.js reports ESLint errors and warnings during builds by default. Learn how to opt-out of this behavior here.](/docs/pages/api-reference/config/eslint)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### next.config.js Options Learn about the options available in next.config.js for the Pages Router.](/docs/pages/api-reference/config/next-config-js)[### TypeScript Next.js provides a TypeScript-first development experience for building your React application.](/docs/pages/api-reference/config/t",
+    "url": "https://nextjs.org/docs/pages/api-reference/config#configuration",
+    "position": 1
+  }
+]

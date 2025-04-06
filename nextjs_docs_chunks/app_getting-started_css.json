@@ -1,0 +1,152 @@
+[
+  {
+    "title": "How to use CSS in your application",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Getting Started](/docs/app/getting-started)CSS",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Getting Started](/docs/app/getting-started)CSS",
+    "url": "https://nextjs.org/docs/app/getting-started/css#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "How to use CSS in your application",
+    "section_id": "how-to-use-css-in-your-application",
+    "heading_level": 1,
+    "content": "# How to use CSS in your application\n\nNext.js provides several ways to use CSS in your application, including:\n\n* [CSS Modules](#css-modules)\n* [Global CSS](#global-css)\n* [Tailwind CSS](#tailwind-css)\n* [Sass](#sass)\n* [CSS-in-JS](#css-in-js)\n* [External Stylesheets](#external-stylesheets)\n\nThis page will guide you through how to use each of these approaches.",
+    "preview": "Next.js provides several ways to use CSS in your application, including: * [CSS Modules](#css-modules) * [Global CSS](#global-css) * [Tailwind CSS](#tailwind-css) * [Sass](#sass) * [CSS-in-JS](#css-in-js) * [External Stylesheets](#external-stylesheets) This page will guide you through how to use e",
+    "url": "https://nextjs.org/docs/app/getting-started/css#how-to-use-css-in-your-application",
+    "position": 1
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[CSS Modules](#css-modules)",
+    "section_id": "css-modules-css-modules",
+    "heading_level": 2,
+    "content": "## [CSS Modules](#css-modules)\n\nCSS Modules locally scope CSS by generating unique class names. This allows you to use the same class in different files without worrying about collisions.\n\nTo start using CSS Modules, create a new file with the extension `.module.css` and import it into any component inside the `app` directory:\n\napp/blog/styles.module.css\n\n```\n.blog {\n  padding: 24px;\n}\n```\n\napp/blog/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport styles from './styles.module.css'\n \nexport default function Page({ children }: { children: React.ReactNode }) {\n  return <main className={styles.blog}>{children}</main>\n}\n```",
+    "preview": "CSS Modules locally scope CSS by generating unique class names. This allows you to use the same class in different files without worrying about collisions. To start using CSS Modules, create a new file with the extension `.module.css` and import it into any component inside the `app` directory: ap",
+    "url": "https://nextjs.org/docs/app/getting-started/css#css-modules-css-modules",
+    "position": 2
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[Global CSS](#global-css)",
+    "section_id": "global-css-global-css",
+    "heading_level": 2,
+    "content": "## [Global CSS](#global-css)\n\nYou can use global CSS to apply styles across your application.\n\nTo use global styles, create a new CSS file, for example `app/global.css`:\n\napp/global.css\n\n```\nbody {\n  padding: 20px 20px 60px;\n  max-width: 680px;\n  margin: 0 auto;\n}\n```\n\nImport the file in the root layout (`app/layout.js`) to apply the styles to **every route** in your application:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n// These styles apply to every route in the application\nimport './global.css'\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body>{children}</body>\n    </html>\n  )\n}\n```\n\n> **Good to know:** Global styles can be imported into any layout, page, or component inside the `app` directory. However, since Next.js uses React's built-in support for stylesheets to integrate with Suspense. This built-in support currently does not remove stylesheets as you navigate between routes. Therefore, we recommend using global styles for *truly* global CSS, and [CSS Modules](#css-modules) for scoped CSS.",
+    "preview": "You can use global CSS to apply styles across your application. To use global styles, create a new CSS file, for example `app/global.css`: app/global.css [Code Block] Import the file in the root layout (`app/layout.js`) to apply the styles to **every route** in your application: app/layout.tsx",
+    "url": "https://nextjs.org/docs/app/getting-started/css#global-css-global-css",
+    "position": 3
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[Tailwind CSS](#tailwind-css)",
+    "section_id": "tailwind-css-tailwind-css",
+    "heading_level": 2,
+    "content": "## [Tailwind CSS](#tailwind-css)\n\n[Tailwind CSS](https://tailwindcss.com/) is a utility-first CSS framework that integrates seamlessly with Next.js.",
+    "preview": "[Tailwind CSS](https://tailwindcss.com/) is a utility-first CSS framework that integrates seamlessly with Next.js.",
+    "url": "https://nextjs.org/docs/app/getting-started/css#tailwind-css-tailwind-css",
+    "position": 4
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[Installing Tailwind](#installing-tailwind)",
+    "section_id": "installing-tailwind-installing-tailwind",
+    "heading_level": 3,
+    "content": "### [Installing Tailwind](#installing-tailwind)\n\nTo start using Tailwind, install the necessary Tailwind CSS packages:\n\nTerminal\n\n```\nnpm install -D tailwindcss @tailwindcss/postcss postcss\n```",
+    "preview": "To start using Tailwind, install the necessary Tailwind CSS packages: Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/app/getting-started/css#installing-tailwind-installing-tailwind",
+    "position": 5
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[Configuring Tailwind](#configuring-tailwind)",
+    "section_id": "configuring-tailwind-configuring-tailwind",
+    "heading_level": 3,
+    "content": "### [Configuring Tailwind](#configuring-tailwind)\n\nCreate a `postcss.config.mjs` file in the root of your project and add the `@tailwindcss/postcss` plugin to your PostCSS configuration:\n\npostcss.config.mjs\n\n```\n/** @type {import('tailwindcss').Config} */\nexport default {\n  plugins: {\n    '@tailwindcss/postcss': {},\n  },\n}\n```",
+    "preview": "Create a `postcss.config.mjs` file in the root of your project and add the `@tailwindcss/postcss` plugin to your PostCSS configuration: postcss.config.mjs [Code Block]",
+    "url": "https://nextjs.org/docs/app/getting-started/css#configuring-tailwind-configuring-tailwind",
+    "position": 6
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[Using Tailwind](#using-tailwind)",
+    "section_id": "using-tailwind-using-tailwind",
+    "heading_level": 3,
+    "content": "### [Using Tailwind](#using-tailwind)\n\nAdd the [Tailwind directives](https://tailwindcss.com/docs/functions-and-directives#directives) to your [Global Stylesheet](#global-css):\n\napp/globals.css\n\n```\n@import 'tailwindcss';\n```\n\nThen, import the styles in the [root layout](/docs/app/api-reference/file-conventions/layout#root-layouts):\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \n// These styles apply to every route in the application\nimport './globals.css'\n \nexport const metadata: Metadata = {\n  title: 'Create Next App',\n  description: 'Generated by create next app',\n}\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body>{children}</body>\n    </html>\n  )\n}\n```\n\nLastly, you can start writing Tailwind's utility classes in your application.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Page() {\n  return <h1 className=\"text-3xl font-bold underline\">Hello, Next.js!</h1>\n}\n```",
+    "preview": "Add the [Tailwind directives](https://tailwindcss.com/docs/functions-and-directives#directives) to your [Global Stylesheet](#global-css): app/globals.css [Code Block] Then, import the styles in the [root layout](/docs/app/api-reference/file-conventions/layout#root-layouts): app/layout.tsx TypeS",
+    "url": "https://nextjs.org/docs/app/getting-started/css#using-tailwind-using-tailwind",
+    "position": 7
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[Sass](#sass)",
+    "section_id": "sass-sass",
+    "heading_level": 2,
+    "content": "## [Sass](#sass)\n\nNext.js integrates with [Sass](https://sass-lang.com/) using both the [`.scss`](https://sass-lang.com/documentation/syntax/#scss) and [`.sass`](https://sass-lang.com/documentation/syntax#the-indented-syntax) extensions and syntax.\n\nYou can also use component-level Sass via [CSS Modules](#css-modules) and the `.module.scss`or `.module.sass` extension.",
+    "preview": "Next.js integrates with [Sass](https://sass-lang.com/) using both the [`.scss`](https://sass-lang.com/documentation/syntax/#scss) and [`.sass`](https://sass-lang.com/documentation/syntax#the-indented-syntax) extensions and syntax. You can also use component-level Sass via [CSS Modules](#css-modules",
+    "url": "https://nextjs.org/docs/app/getting-started/css#sass-sass",
+    "position": 8
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[Installing Sass](#installing-sass)",
+    "section_id": "installing-sass-installing-sass",
+    "heading_level": 3,
+    "content": "### [Installing Sass](#installing-sass)\n\nTo start using Sass, install the `sass` package:\n\nTerminal\n\n```\nnpm install --save-dev sass\n```",
+    "preview": "To start using Sass, install the `sass` package: Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/app/getting-started/css#installing-sass-installing-sass",
+    "position": 9
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[Customizing Sass options](#customizing-sass-options)",
+    "section_id": "customizing-sass-options-customizing-sass-options",
+    "heading_level": 3,
+    "content": "### [Customizing Sass options](#customizing-sass-options)\n\nIf you want to configure your Sass options, use the [`sassOptions`](/docs/app/api-reference/config/next-config-js/sassOptions) option in `next.config.js`.\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  sassOptions: {\n    additionalData: `$var: red;`,\n  },\n}\n \nexport default nextConfig\n```",
+    "preview": "If you want to configure your Sass options, use the [`sassOptions`](/docs/app/api-reference/config/next-config-js/sassOptions) option in `next.config.js`. next.config.ts TypeScript JavaScriptTypeScript ``` import type { NextConfig } from 'next' const nextConfig: NextConfig = { sassOptions: {",
+    "url": "https://nextjs.org/docs/app/getting-started/css#customizing-sass-options-customizing-sass-options",
+    "position": 10
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[CSS-in-JS](#css-in-js)",
+    "section_id": "css-in-js-css-in-js",
+    "heading_level": 2,
+    "content": "## [CSS-in-JS](#css-in-js)\n\n> **Warning:** CSS-in-JS libraries which require runtime JavaScript are not currently supported in React Server Components. Using CSS-in-JS with newer React features like Server Components and Streaming requires library authors to support the latest version of React.\n\nThe following libraries are supported in **Client Components** in the `app` directory (alphabetical):\n\n* [`ant-design`](https://ant.design/docs/react/use-with-next#using-app-router)\n* [`chakra-ui`](https://chakra-ui.com/docs/get-started/frameworks/next-app)\n* [`@fluentui/react-components`](https://react.fluentui.dev/?path=/docs/concepts-developer-server-side-rendering-next-js-appdir-setup--page)\n* [`kuma-ui`](https://kuma-ui.com)\n* [`@mui/material`](https://mui.com/material-ui/guides/next-js-app-router/)\n* [`@mui/joy`](https://mui.com/joy-ui/integrations/next-js-app-router/)\n* [`pandacss`](https://panda-css.com)\n* [`styled-jsx`](#styled-jsx)\n* [`styled-components`](#styled-components)\n* [`stylex`](https://stylexjs.com)\n* [`tamagui`](https://tamagui.dev/docs/guides/next-js#server-components)\n* [`tss-react`](https://tss-react.dev/)\n* [`vanilla-extract`](https://vanilla-extract.style)\n\nThe following are currently working on support:\n\n* [`emotion`](https://github.com/emotion-js/emotion/issues/2928)\n\nIf you want to style Server Components, we recommend using [CSS Modules](#css-modules) or other solutions that output CSS files, like [Tailwind CSS](#tailwind-css).",
+    "preview": "> **Warning:** CSS-in-JS libraries which require runtime JavaScript are not currently supported in React Server Components. Using CSS-in-JS with newer React features like Server Components and Streaming requires library authors to support the latest version of React. The following libraries are sup",
+    "url": "https://nextjs.org/docs/app/getting-started/css#css-in-js-css-in-js",
+    "position": 11
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[Configuring CSS-in-JS](#configuring-css-in-js)",
+    "section_id": "configuring-css-in-js-configuring-css-in-js",
+    "heading_level": 3,
+    "content": "### [Configuring CSS-in-JS](#configuring-css-in-js)\n\nTo configure CSS-in-JS, you need to:\n\n1. Create a **style registry** to collect all CSS rules in a render.\n2. Use the `useServerInsertedHTML` hook to inject rules before any content that might use them.\n3. Create a Client Component that wraps your app with the style registry during initial server-side rendering.\n\n#### [`styled-jsx`](#styled-jsx)\n\nTo configure `styled-jsx` for your application, create a new registry:\n\napp/registry.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport React, { useState } from 'react'\nimport { useServerInsertedHTML } from 'next/navigation'\nimport { StyleRegistry, createStyleRegistry } from 'styled-jsx'\n \nexport default function StyledJsxRegistry({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  // Only create stylesheet once with lazy initial state\n  // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state\n  const [jsxStyleRegistry] = useState(() => createStyleRegistry())\n \n  useServerInsertedHTML(() => {\n    const styles = jsxStyleRegistry.styles()\n    jsxStyleRegistry.flush()\n    return <>{styles}</>\n  })\n \n  return <StyleRegistry registry={jsxStyleRegistry}>{children}</StyleRegistry>\n}\n```\n\nThen, wrap your [root layout](/docs/app/api-reference/file-conventions/layout#root-layouts) with the registry:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport StyledJsxRegistry from './registry'\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html>\n      <body>\n        <StyledJsxRegistry>{children}</StyledJsxRegistry>\n      </body>\n    </html>\n  )\n}\n```\n\n#### [`styled-components`](#styled-components)\n\nTo use `styled-components`, enable it in `next.config.js`:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  compiler: {\n    styledComponents: true,\n  },\n}\n \nexport default nextConfig\n```\n\nThen, use the `styled-components` API to create a global registry component to collect all CSS style rules generated during a render, and a function to return those rules. Then use the `useServerInsertedHTML` hook to inject the styles collected in the registry into the `<head>` HTML tag in the root layout.\n\nlib/registry.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport React, { useState } from 'react'\nimport { useServerInsertedHTML } from 'next/navigation'\nimport { ServerStyleSheet, StyleSheetManager } from 'styled-components'\n \nexport default function StyledComponentsRegistry({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  // Only create stylesheet once with lazy initial state\n  // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state\n  const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet())\n \n  useServerInsertedHTML(() => {\n    const styles = styledComponentsStyleSheet.getStyleElement()\n    styledComponentsStyleSheet.instance.clearTag()\n    return <>{styles}</>\n  })\n \n  if (typeof window !== 'undefined') return <>{children}</>\n \n  return (\n    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>\n      {children}\n    </StyleSheetManager>\n  )\n}\n```\n\nWrap the `children` of the root layout with the style registry component:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport StyledComponentsRegistry from './lib/registry'\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html>\n      <body>\n        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>\n      </body>\n    </html>\n  )\n}\n```",
+    "preview": "To configure CSS-in-JS, you need to: 1. Create a **style registry** to collect all CSS rules in a render. 2. Use the `useServerInsertedHTML` hook to inject rules before any content that might use them. 3. Create a Client Component that wraps your app with the style registry during initial server-si",
+    "url": "https://nextjs.org/docs/app/getting-started/css#configuring-css-in-js-configuring-css-in-js",
+    "position": 12
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "[External stylesheets](#external-stylesheets)",
+    "section_id": "external-stylesheets-external-stylesheets",
+    "heading_level": 2,
+    "content": "## [External stylesheets](#external-stylesheets)\n\nStylesheets published by external packages can be imported anywhere in the `app` directory, including colocated components:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport 'bootstrap/dist/css/bootstrap.css'\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body className=\"container\">{children}</body>\n    </html>\n  )\n}\n```\n\nExternal stylesheets must be directly imported from an npm package or downloaded and colocated with your codebase. You cannot use `<link rel=\"stylesheet\" />`.",
+    "preview": "Stylesheets published by external packages can be imported anywhere in the `app` directory, including colocated components: app/layout.tsx TypeScript JavaScriptTypeScript [Code Block] External stylesheets must be directly imported from an npm package or downloaded and colocated with your codeba",
+    "url": "https://nextjs.org/docs/app/getting-started/css#external-stylesheets-external-stylesheets",
+    "position": 13
+  },
+  {
+    "title": "How to use CSS in your application",
+    "section": "API Reference",
+    "section_id": "api-reference",
+    "heading_level": 2,
+    "content": "## API Reference\n\nLearn more about the features mentioned in this page by reading the API Reference.\n\n[### sassOptions\n\nConfigure Sass options.](/docs/app/api-reference/config/next-config-js/sassOptions)[### Next.js Compiler\n\nNext.js Compiler, written in Rust, which transforms and minifies your Next.js application.](/docs/architecture/nextjs-compiler)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn more about the features mentioned in this page by reading the API Reference. [### sassOptions Configure Sass options.](/docs/app/api-reference/config/next-config-js/sassOptions)[### Next.js Compiler Next.js Compiler, written in Rust, which transforms and minifies your Next.js application.](",
+    "url": "https://nextjs.org/docs/app/getting-started/css#api-reference",
+    "position": 14
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "title": "No `styled-jsx` in `_document`",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No `styled-jsx` in `\\_document`",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No `styled-jsx` in `\\_document`",
+    "url": "https://nextjs.org/docs/messages/no-styled-jsx-in-document#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No `styled-jsx` in `_document`",
+    "section": "No `styled-jsx` in `\\_document`",
+    "section_id": "no-styled-jsx-in-document",
+    "heading_level": 1,
+    "content": "# No `styled-jsx` in `\\_document`\n\n> Prevent usage of `styled-jsx` in `pages/_document.js`.",
+    "preview": "> Prevent usage of `styled-jsx` in `pages/_document.js`.",
+    "url": "https://nextjs.org/docs/messages/no-styled-jsx-in-document#no-styled-jsx-in-document",
+    "position": 1
+  },
+  {
+    "title": "No `styled-jsx` in `_document`",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nCustom CSS like `styled-jsx` is not allowed in a [Custom Document](/docs/pages/building-your-application/routing/custom-document).",
+    "preview": "Custom CSS like `styled-jsx` is not allowed in a [Custom Document](/docs/pages/building-your-application/routing/custom-document).",
+    "url": "https://nextjs.org/docs/messages/no-styled-jsx-in-document#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No `styled-jsx` in `_document`",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nIf you need shared CSS for all of your pages, take a look at the [Custom `App`](/docs/pages/building-your-application/routing/custom-app) file or define a custom layout.\n\nFor example, consider the following stylesheet named `styles.css`:\n\nstyles.css\n\n```\nbody {\n  font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',\n    'Arial', sans-serif;\n  padding: 20px 20px 60px;\n  max-width: 680px;\n  margin: 0 auto;\n}\n```\n\nCreate a `pages/_app.{js,tsx}` file if not already present. Then, import the `styles.css` file.\n\npages/\\_app.js\n\n```\nimport '../styles.css'\n \n// This default export is required in a new `pages/_app.js` file.\nexport default function MyApp({ Component, pageProps }) {\n  return <Component {...pageProps} />\n}\n```\n\nThese styles (`styles.css`) will apply to all pages and components in your application.",
+    "preview": "If you need shared CSS for all of your pages, take a look at the [Custom `App`](/docs/pages/building-your-application/routing/custom-app) file or define a custom layout. For example, consider the following stylesheet named `styles.css`: styles.css [Code Block] Create a `pages/_app.{js,tsx}` file",
+    "url": "https://nextjs.org/docs/messages/no-styled-jsx-in-document#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No `styled-jsx` in `_document`",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Custom Document Caveats](/docs/pages/building-your-application/routing/custom-document#caveats)\n* [Layouts](/docs/pages/building-your-application/routing/pages-and-layouts#layout-pattern)\n* [Built in CSS Support](/docs/pages/building-your-application/styling)\n* [Custom `App`](/docs/pages/building-your-application/routing/custom-app)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Custom Document Caveats](/docs/pages/building-your-application/routing/custom-document#caveats) * [Layouts](/docs/pages/building-your-application/routing/pages-and-layouts#layout-pattern) * [Built in CSS Support](/docs/pages/building-your-application/styling) * [Custom `App`](/docs/pages/building",
+    "url": "https://nextjs.org/docs/messages/no-styled-jsx-in-document#useful-links-useful-links",
+    "position": 4
+  }
+]

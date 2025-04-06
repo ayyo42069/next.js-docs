@@ -1,0 +1,152 @@
+[
+  {
+    "title": "ESLint",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[Configuration](/docs/pages/api-reference/config)ESLint",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[Configuration](/docs/pages/api-reference/config)ESLint",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "ESLint",
+    "section": "ESLint",
+    "section_id": "eslint",
+    "heading_level": 1,
+    "content": "# ESLint\n\nNext.js provides an ESLint plugin, [`eslint-plugin-next`](https://www.npmjs.com/package/@next/eslint-plugin-next), already bundled within the base configuration that makes it possible to catch common issues and problems in a Next.js application.",
+    "preview": "Next.js provides an ESLint plugin, [`eslint-plugin-next`](https://www.npmjs.com/package/@next/eslint-plugin-next), already bundled within the base configuration that makes it possible to catch common issues and problems in a Next.js application.",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#eslint",
+    "position": 1
+  },
+  {
+    "title": "ESLint",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)\n\nRecommended rule-sets from the following ESLint plugins are all used within `eslint-config-next`:\n\n* [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-react)\n* [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks)\n* [`eslint-plugin-next`](https://www.npmjs.com/package/@next/eslint-plugin-next)\n\nThis will take precedence over the configuration from `next.config.js`.",
+    "preview": "Recommended rule-sets from the following ESLint plugins are all used within `eslint-config-next`: * [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-react) * [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) * [`eslint-plugin-next`](https://ww",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "ESLint",
+    "section": "[Rules](#rules)",
+    "section_id": "rules-rules",
+    "heading_level": 3,
+    "content": "### [Rules](#rules)\n\nThe full set of rules is as follows:\n\n| Enabled in recommended config | Rule | Description |\n| --- | --- | --- |\n|  | [@next/next/google-font-display](/docs/messages/google-font-display) | Enforce font-display behavior with Google Fonts. |\n|  | [@next/next/google-font-preconnect](/docs/messages/google-font-preconnect) | Ensure `preconnect` is used with Google Fonts. |\n|  | [@next/next/inline-script-id](/docs/messages/inline-script-id) | Enforce `id` attribute on `next/script` components with inline content. |\n|  | [@next/next/next-script-for-ga](/docs/messages/next-script-for-ga) | Prefer `next/script` component when using the inline script for Google Analytics. |\n|  | [@next/next/no-assign-module-variable](/docs/messages/no-assign-module-variable) | Prevent assignment to the `module` variable. |\n|  | [@next/next/no-async-client-component](/docs/messages/no-async-client-component) | Prevent client components from being async functions. |\n|  | [@next/next/no-before-interactive-script-outside-document](/docs/messages/no-before-interactive-script-outside-document) | Prevent usage of `next/script`'s `beforeInteractive` strategy outside of `pages/_document.js`. |\n|  | [@next/next/no-css-tags](/docs/messages/no-css-tags) | Prevent manual stylesheet tags. |\n|  | [@next/next/no-document-import-in-page](/docs/messages/no-document-import-in-page) | Prevent importing `next/document` outside of `pages/_document.js`. |\n|  | [@next/next/no-duplicate-head](/docs/messages/no-duplicate-head) | Prevent duplicate usage of `<Head>` in `pages/_document.js`. |\n|  | [@next/next/no-head-element](/docs/messages/no-head-element) | Prevent usage of `<head>` element. |\n|  | [@next/next/no-head-import-in-document](/docs/messages/no-head-import-in-document) | Prevent usage of `next/head` in `pages/_document.js`. |\n|  | [@next/next/no-html-link-for-pages](/docs/messages/no-html-link-for-pages) | Prevent usage of `<a>` elements to navigate to internal Next.js pages. |\n|  | [@next/next/no-img-element](/docs/messages/no-img-element) | Prevent usage of `<img>` element due to slower LCP and higher bandwidth. |\n|  | [@next/next/no-page-custom-font](/docs/messages/no-page-custom-font) | Prevent page-only custom fonts. |\n|  | [@next/next/no-script-component-in-head](/docs/messages/no-script-component-in-head) | Prevent usage of `next/script` in `next/head` component. |\n|  | [@next/next/no-styled-jsx-in-document](/docs/messages/no-styled-jsx-in-document) | Prevent usage of `styled-jsx` in `pages/_document.js`. |\n|  | [@next/next/no-sync-scripts](/docs/messages/no-sync-scripts) | Prevent synchronous scripts. |\n|  | [@next/next/no-title-in-document-head](/docs/messages/no-title-in-document-head) | Prevent usage of `<title>` with `Head` component from `next/document`. |\n|  | @next/next/no-typos | Prevent common typos in [Next.js's data fetching functions](/docs/pages/building-your-application/data-fetching) |\n|  | [@next/next/no-unwanted-polyfillio](/docs/messages/no-unwanted-polyfillio) | Prevent duplicate polyfills from Polyfill.io. |\n\nWe recommend using an appropriate [integration](https://eslint.org/docs/user-guide/integrations#editors) to view warnings and errors directly in your code editor during development.",
+    "preview": "The full set of rules is as follows: | Enabled in recommended config | Rule | Description | | --- | --- | --- | | | [@next/next/google-font-display](/docs/messages/google-font-display) | Enforce font-display behavior with Google Fonts. | | | [@next/next/google-font-preconnect](/docs/messages/goog",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#rules-rules",
+    "position": 3
+  },
+  {
+    "title": "ESLint",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "ESLint",
+    "section": "[Linting custom directories and files](#linting-custom-directories-and-files)",
+    "section_id": "linting-custom-directories-and-files-linting-custom-directories-and-files",
+    "heading_level": 3,
+    "content": "### [Linting custom directories and files](#linting-custom-directories-and-files)\n\nBy default, Next.js will run ESLint for all files in the `pages/`, `app/`, `components/`, `lib/`, and `src/` directories. However, you can specify which directories using the `dirs` option in the `eslint` config in `next.config.js` for production builds:\n\nnext.config.js\n\n```\nmodule.exports = {\n  eslint: {\n    dirs: ['pages', 'utils'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)\n  },\n}\n```\n\nSimilarly, the `--dir` and `--file` flags can be used for `next lint` to lint specific directories and files:\n\nTerminal\n\n```\nnext lint --dir pages --dir utils --file bar.js\n```",
+    "preview": "By default, Next.js will run ESLint for all files in the `pages/`, `app/`, `components/`, `lib/`, and `src/` directories. However, you can specify which directories using the `dirs` option in the `eslint` config in `next.config.js` for production builds: next.config.js [Code Block] Similarly, the",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#linting-custom-directories-and-files-linting-custom-directories-and-files",
+    "position": 5
+  },
+  {
+    "title": "ESLint",
+    "section": "[Specifying a root directory within a monorepo](#specifying-a-root-directory-within-a-monorepo)",
+    "section_id": "specifying-a-root-directory-within-a-monorepo-specifying-a-root-directory-within-a-monorepo",
+    "heading_level": 3,
+    "content": "### [Specifying a root directory within a monorepo](#specifying-a-root-directory-within-a-monorepo)\n\nIf you're using `eslint-plugin-next` in a project where Next.js isn't installed in your root directory (such as a monorepo), you can tell `eslint-plugin-next` where to find your Next.js application using the `settings` property in your `.eslintrc`:\n\neslint.config.mjs\n\n```\nimport { FlatCompat } from '@eslint/eslintrc'\n\nconst compat = new FlatCompat({\n  // import.meta.dirname is available after Node.js v20.11.0\n  baseDirectory: import.meta.dirname,\n})\n\nconst eslintConfig = [\n  ...compat.config({\n    extends: ['next'],\n    settings: {\n      next: {\n        rootDir: 'packages/my-app/',\n      },\n    },\n  }),\n]\n\nexport default eslintConfig\n```\n\n`rootDir` can be a path (relative or absolute), a glob (i.e. `\"packages/*/\"`), or an array of paths and/or globs.",
+    "preview": "If you're using `eslint-plugin-next` in a project where Next.js isn't installed in your root directory (such as a monorepo), you can tell `eslint-plugin-next` where to find your Next.js application using the `settings` property in your `.eslintrc`: eslint.config.mjs [Code Block] `rootDir` can be",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#specifying-a-root-directory-within-a-monorepo-specifying-a-root-directory-within-a-monorepo",
+    "position": 6
+  },
+  {
+    "title": "ESLint",
+    "section": "[Disabling the cache](#disabling-the-cache)",
+    "section_id": "disabling-the-cache-disabling-the-cache",
+    "heading_level": 3,
+    "content": "### [Disabling the cache](#disabling-the-cache)\n\nTo improve performance, information of files processed by ESLint are cached by default. This is stored in `.next/cache` or in your defined [build directory](/docs/app/api-reference/config/next-config-js/distDir). If you include any ESLint rules that depend on more than the contents of a single source file and need to disable the cache, use the `--no-cache` flag with `next lint`.\n\nTerminal\n\n```\nnext lint --no-cache\n```",
+    "preview": "To improve performance, information of files processed by ESLint are cached by default. This is stored in `.next/cache` or in your defined [build directory](/docs/app/api-reference/config/next-config-js/distDir). If you include any ESLint rules that depend on more than the contents of a single sourc",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#disabling-the-cache-disabling-the-cache",
+    "position": 7
+  },
+  {
+    "title": "ESLint",
+    "section": "[Disabling rules](#disabling-rules)",
+    "section_id": "disabling-rules-disabling-rules",
+    "heading_level": 3,
+    "content": "### [Disabling rules](#disabling-rules)\n\nIf you would like to modify or disable any rules provided by the supported plugins (`react`, `react-hooks`, `next`), you can directly change them using the `rules` property in your `.eslintrc`:\n\neslint.config.mjs\n\n```\nimport { FlatCompat } from '@eslint/eslintrc'\n\nconst compat = new FlatCompat({\n  // import.meta.dirname is available after Node.js v20.11.0\n  baseDirectory: import.meta.dirname,\n})\n\nconst eslintConfig = [\n  ...compat.config({\n    extends: ['next'],\n    rules: {\n      'react/no-unescaped-entities': 'off',\n      '@next/next/no-page-custom-font': 'off',\n    },\n  }),\n]\n\nexport default eslintConfig\n```",
+    "preview": "If you would like to modify or disable any rules provided by the supported plugins (`react`, `react-hooks`, `next`), you can directly change them using the `rules` property in your `.eslintrc`: eslint.config.mjs [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#disabling-rules-disabling-rules",
+    "position": 8
+  },
+  {
+    "title": "ESLint",
+    "section": "[With Core Web Vitals](#with-core-web-vitals)",
+    "section_id": "with-core-web-vitals-with-core-web-vitals",
+    "heading_level": 3,
+    "content": "### [With Core Web Vitals](#with-core-web-vitals)\n\nThe `next/core-web-vitals` rule set is enabled when `next lint` is run for the first time and the **strict** option is selected.\n\neslint.config.mjs\n\n```\nimport { FlatCompat } from '@eslint/eslintrc'\n\nconst compat = new FlatCompat({\n  // import.meta.dirname is available after Node.js v20.11.0\n  baseDirectory: import.meta.dirname,\n})\n\nconst eslintConfig = [\n  ...compat.config({\n    extends: ['next/core-web-vitals'],\n  }),\n]\n\nexport default eslintConfig\n```\n\n`next/core-web-vitals` updates `eslint-plugin-next` to error on a number of rules that are warnings by default if they affect [Core Web Vitals](https://web.dev/vitals/).\n\n> The `next/core-web-vitals` entry point is automatically included for new applications built with [Create Next App](/docs/app/api-reference/cli/create-next-app).",
+    "preview": "The `next/core-web-vitals` rule set is enabled when `next lint` is run for the first time and the **strict** option is selected. eslint.config.mjs [Code Block] `next/core-web-vitals` updates `eslint-plugin-next` to error on a number of rules that are warnings by default if they affect [Core Web V",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#with-core-web-vitals-with-core-web-vitals",
+    "position": 9
+  },
+  {
+    "title": "ESLint",
+    "section": "[With TypeScript](#with-typescript)",
+    "section_id": "with-typescript-with-typescript",
+    "heading_level": 3,
+    "content": "### [With TypeScript](#with-typescript)\n\nIn addition to the Next.js ESLint rules, `create-next-app --typescript` will also add TypeScript-specific lint rules with `next/typescript` to your config:\n\neslint.config.mjs\n\n```\nimport { FlatCompat } from '@eslint/eslintrc'\n\nconst compat = new FlatCompat({\n  // import.meta.dirname is available after Node.js v20.11.0\n  baseDirectory: import.meta.dirname,\n})\n\nconst eslintConfig = [\n  ...compat.config({\n    extends: ['next/core-web-vitals', 'next/typescript'],\n  }),\n]\n\nexport default eslintConfig\n```\n\nThose rules are based on [`plugin:@typescript-eslint/recommended`](https://typescript-eslint.io/linting/configs#recommended).\nSee [typescript-eslint > Configs](https://typescript-eslint.io/linting/configs) for more details.",
+    "preview": "In addition to the Next.js ESLint rules, `create-next-app --typescript` will also add TypeScript-specific lint rules with `next/typescript` to your config: eslint.config.mjs [Code Block] Those rules are based on [`plugin:@typescript-eslint/recommended`](https://typescript-eslint.io/linting/config",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#with-typescript-with-typescript",
+    "position": 10
+  },
+  {
+    "title": "ESLint",
+    "section": "[With Prettier](#with-prettier)",
+    "section_id": "with-prettier-with-prettier",
+    "heading_level": 3,
+    "content": "### [With Prettier](#with-prettier)\n\nESLint also contains code formatting rules, which can conflict with your existing [Prettier](https://prettier.io/) setup. We recommend including [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) in your ESLint config to make ESLint and Prettier work together.\n\nFirst, install the dependency:\n\nTerminal\n\n```\nnpm install --save-dev eslint-config-prettier\n \nyarn add --dev eslint-config-prettier\n \npnpm add --save-dev eslint-config-prettier\n \nbun add --dev eslint-config-prettier\n```\n\nThen, add `prettier` to your existing ESLint config:\n\neslint.config.mjs\n\n```\nimport { FlatCompat } from '@eslint/eslintrc'\n\nconst compat = new FlatCompat({\n  // import.meta.dirname is available after Node.js v20.11.0\n  baseDirectory: import.meta.dirname,\n})\n\nconst eslintConfig = [\n  ...compat.config({\n    extends: ['next', 'prettier'],\n  }),\n]\n\nexport default eslintConfig\n```",
+    "preview": "ESLint also contains code formatting rules, which can conflict with your existing [Prettier](https://prettier.io/) setup. We recommend including [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) in your ESLint config to make ESLint and Prettier work together. First, insta",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#with-prettier-with-prettier",
+    "position": 11
+  },
+  {
+    "title": "ESLint",
+    "section": "[Running lint on staged files](#running-lint-on-staged-files)",
+    "section_id": "running-lint-on-staged-files-running-lint-on-staged-files",
+    "heading_level": 3,
+    "content": "### [Running lint on staged files](#running-lint-on-staged-files)\n\nIf you would like to use `next lint` with [lint-staged](https://github.com/okonet/lint-staged) to run the linter on staged git files, you'll have to add the following to the `.lintstagedrc.js` file in the root of your project in order to specify usage of the `--file` flag.\n\n.lintstagedrc.js\n\n```\nconst path = require('path')\n \nconst buildEslintCommand = (filenames) =>\n  `next lint --fix --file ${filenames\n    .map((f) => path.relative(process.cwd(), f))\n    .join(' --file ')}`\n \nmodule.exports = {\n  '*.{js,jsx,ts,tsx}': [buildEslintCommand],\n}\n```",
+    "preview": "If you would like to use `next lint` with [lint-staged](https://github.com/okonet/lint-staged) to run the linter on staged git files, you'll have to add the following to the `.lintstagedrc.js` file in the root of your project in order to specify usage of the `--file` flag. .lintstagedrc.js ``` con",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#running-lint-on-staged-files-running-lint-on-staged-files",
+    "position": 12
+  },
+  {
+    "title": "ESLint",
+    "section": "[Disabling linting during production builds](#disabling-linting-during-production-builds)",
+    "section_id": "disabling-linting-during-production-builds-disabling-linting-during-production-builds",
+    "heading_level": 2,
+    "content": "## [Disabling linting during production builds](#disabling-linting-during-production-builds)\n\nIf you do not want ESLint to run during `next build`, you can set the `eslint.ignoreDuringBuilds` option in `next.config.js` to `true`:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  eslint: {\n    // Warning: This allows production builds to successfully complete even if\n    // your project has ESLint errors.\n    ignoreDuringBuilds: true,\n  },\n}\n \nexport default nextConfig\n```",
+    "preview": "If you do not want ESLint to run during `next build`, you can set the `eslint.ignoreDuringBuilds` option in `next.config.js` to `true`: next.config.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#disabling-linting-during-production-builds-disabling-linting-during-production-builds",
+    "position": 13
+  },
+  {
+    "title": "ESLint",
+    "section": "[Migrating existing config](#migrating-existing-config)",
+    "section_id": "migrating-existing-config-migrating-existing-config",
+    "heading_level": 3,
+    "content": "### [Migrating existing config](#migrating-existing-config)\n\nIf you already have ESLint configured in your application, we recommend extending from this plugin directly instead of including `eslint-config-next` unless a few conditions are met.\n\n#### [Recommended plugin ruleset](#recommended-plugin-ruleset)\n\nIf the following conditions are true:\n\n* You have one or more of the following plugins already installed (either separately or through a different config such as `airbnb` or `react-app`):\n  + `react`\n  + `react-hooks`\n  + `jsx-a11y`\n  + `import`\n* You've defined specific `parserOptions` that are different from how Babel is configured within Next.js (this is not recommended unless you have [customized your Babel configuration](/docs/pages/building-your-application/configuring/babel))\n* You have `eslint-plugin-import` installed with Node.js and/or TypeScript [resolvers](https://github.com/benmosher/eslint-plugin-import#resolvers) defined to handle imports\n\nThen we recommend either removing these settings if you prefer how these properties have been configured within [`eslint-config-next`](https://github.com/vercel/next.js/blob/canary/packages/eslint-config-next/index.js) or extending directly from the Next.js ESLint plugin instead:\n\n```\nmodule.exports = {\n  extends: [\n    //...\n    'plugin:@next/next/recommended',\n  ],\n}\n```\n\nThe plugin can be installed normally in your project without needing to run `next lint`:\n\nTerminal\n\n```\nnpm install --save-dev @next/eslint-plugin-next\n \nyarn add --dev @next/eslint-plugin-next\n \npnpm add --save-dev @next/eslint-plugin-next\n \nbun add --dev @next/eslint-plugin-next\n```\n\nThis eliminates the risk of collisions or errors that can occur due to importing the same plugin or parser across multiple configurations.\n\n#### [Additional configurations](#additional-configurations)\n\nIf you already use a separate ESLint configuration and want to include `eslint-config-next`, ensure that it is extended last after other configurations. For example:\n\neslint.config.mjs\n\n```\nimport js from '@eslint/js'\nimport { FlatCompat } from '@eslint/eslintrc'\n\nconst compat = new FlatCompat({\n  // import.meta.dirname is available after Node.js v20.11.0\n  baseDirectory: import.meta.dirname,\n  recommendedConfig: js.configs.recommended,\n})\n\nconst eslintConfig = [\n  ...compat.config({\n    extends: ['eslint:recommended', 'next'],\n  }),\n]\n\nexport default eslintConfig\n```\n\nThe `next` configuration already handles setting default values for the `parser`, `plugins` and `settings` properties. There is no need to manually re-declare any of these properties unless you need a different configuration for your use case.\n\nIf you include any other shareable configurations, **you will need to make sure that these properties are not overwritten or modified**. Otherwise, we recommend removing any configurations that share behavior with the `next` configuration or extending directly from the Next.js ESLint plugin as mentioned above.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "If you already have ESLint configured in your application, we recommend extending from this plugin directly instead of including `eslint-config-next` unless a few conditions are met. #### [Recommended plugin ruleset](#recommended-plugin-ruleset) If the following conditions are true: * You have on",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/eslint#migrating-existing-config-migrating-existing-config",
+    "position": 14
+  }
+]

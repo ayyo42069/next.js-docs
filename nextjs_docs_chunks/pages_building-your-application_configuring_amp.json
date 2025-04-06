@@ -1,0 +1,102 @@
+[
+  {
+    "title": "AMP",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Configuring](/docs/pages/building-your-application/configuring)AMP",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Configuring](/docs/pages/building-your-application/configuring)AMP",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/amp#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "AMP",
+    "section": "AMP",
+    "section_id": "amp",
+    "heading_level": 1,
+    "content": "# AMP\n\nExamples\n\n* [AMP](https://github.com/vercel/next.js/tree/canary/examples/amp)\n\nWith Next.js you can turn any React page into an AMP page, with minimal config, and without leaving React.\n\nYou can read more about AMP in the official [amp.dev](https://amp.dev/) site.",
+    "preview": "Examples * [AMP](https://github.com/vercel/next.js/tree/canary/examples/amp) With Next.js you can turn any React page into an AMP page, with minimal config, and without leaving React. You can read more about AMP in the official [amp.dev](https://amp.dev/) site.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/amp#amp",
+    "position": 1
+  },
+  {
+    "title": "AMP",
+    "section": "[Enabling AMP](#enabling-amp)",
+    "section_id": "enabling-amp-enabling-amp",
+    "heading_level": 2,
+    "content": "## [Enabling AMP](#enabling-amp)\n\nTo enable AMP support for a page, and to learn more about the different AMP configs, read the [API documentation for `next/amp`](/docs/pages/building-your-application/configuring/amp).",
+    "preview": "To enable AMP support for a page, and to learn more about the different AMP configs, read the [API documentation for `next/amp`](/docs/pages/building-your-application/configuring/amp).",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/amp#enabling-amp-enabling-amp",
+    "position": 2
+  },
+  {
+    "title": "AMP",
+    "section": "[Caveats](#caveats)",
+    "section_id": "caveats-caveats",
+    "heading_level": 2,
+    "content": "## [Caveats](#caveats)\n\n* Only CSS-in-JS is supported. [CSS Modules](/docs/pages/building-your-application/styling) aren't supported by AMP pages at the moment. You can [contribute CSS Modules support to Next.js](https://github.com/vercel/next.js/issues/10549).",
+    "preview": "* Only CSS-in-JS is supported. [CSS Modules](/docs/pages/building-your-application/styling) aren't supported by AMP pages at the moment. You can [contribute CSS Modules support to Next.js](https://github.com/vercel/next.js/issues/10549).",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/amp#caveats-caveats",
+    "position": 3
+  },
+  {
+    "title": "AMP",
+    "section": "[Adding AMP Components](#adding-amp-components)",
+    "section_id": "adding-amp-components-adding-amp-components",
+    "heading_level": 2,
+    "content": "## [Adding AMP Components](#adding-amp-components)\n\nThe AMP community provides [many components](https://amp.dev/documentation/components/) to make AMP pages more interactive. Next.js will automatically import all components used on a page and there is no need to manually import AMP component scripts:\n\n```\nexport const config = { amp: true }\n \nfunction MyAmpPage() {\n  const date = new Date()\n \n  return (\n    <div>\n      <p>Some time: {date.toJSON()}</p>\n      <amp-timeago\n        width=\"0\"\n        height=\"15\"\n        datetime={date.toJSON()}\n        layout=\"responsive\"\n      >\n        .\n      </amp-timeago>\n    </div>\n  )\n}\n \nexport default MyAmpPage\n```\n\nThe above example uses the [`amp-timeago`](https://amp.dev/documentation/components/amp-timeago/?format=websites) component.\n\nBy default, the latest version of a component is always imported. If you want to customize the version, you can use `next/head`, as in the following example:\n\n```\nimport Head from 'next/head'\n \nexport const config = { amp: true }\n \nfunction MyAmpPage() {\n  const date = new Date()\n \n  return (\n    <div>\n      <Head>\n        <script\n          async\n          key=\"amp-timeago\"\n          custom-element=\"amp-timeago\"\n          src=\"https://cdn.ampproject.org/v0/amp-timeago-0.1.js\"\n        />\n      </Head>\n \n      <p>Some time: {date.toJSON()}</p>\n      <amp-timeago\n        width=\"0\"\n        height=\"15\"\n        datetime={date.toJSON()}\n        layout=\"responsive\"\n      >\n        .\n      </amp-timeago>\n    </div>\n  )\n}\n \nexport default MyAmpPage\n```",
+    "preview": "The AMP community provides [many components](https://amp.dev/documentation/components/) to make AMP pages more interactive. Next.js will automatically import all components used on a page and there is no need to manually import AMP component scripts: [Code Block] The above example uses the [`amp-t",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/amp#adding-amp-components-adding-amp-components",
+    "position": 4
+  },
+  {
+    "title": "AMP",
+    "section": "[AMP Validation](#amp-validation)",
+    "section_id": "amp-validation-amp-validation",
+    "heading_level": 2,
+    "content": "## [AMP Validation](#amp-validation)\n\nAMP pages are automatically validated with [amphtml-validator](https://www.npmjs.com/package/amphtml-validator) during development. Errors and warnings will appear in the terminal where you started Next.js.\n\nPages are also validated during [Static HTML export](/docs/pages/building-your-application/deploying/static-exports) and any warnings / errors will be printed to the terminal. Any AMP errors will cause the export to exit with status code `1` because the export is not valid AMP.",
+    "preview": "AMP pages are automatically validated with [amphtml-validator](https://www.npmjs.com/package/amphtml-validator) during development. Errors and warnings will appear in the terminal where you started Next.js. Pages are also validated during [Static HTML export](/docs/pages/building-your-application/d",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/amp#amp-validation-amp-validation",
+    "position": 5
+  },
+  {
+    "title": "AMP",
+    "section": "[Custom Validators](#custom-validators)",
+    "section_id": "custom-validators-custom-validators",
+    "heading_level": 3,
+    "content": "### [Custom Validators](#custom-validators)\n\nYou can set up custom AMP validator in `next.config.js` as shown below:\n\n```\nmodule.exports = {\n  amp: {\n    validator: './custom_validator.js',\n  },\n}\n```",
+    "preview": "You can set up custom AMP validator in `next.config.js` as shown below: [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/amp#custom-validators-custom-validators",
+    "position": 6
+  },
+  {
+    "title": "AMP",
+    "section": "[Skip AMP Validation](#skip-amp-validation)",
+    "section_id": "skip-amp-validation-skip-amp-validation",
+    "heading_level": 3,
+    "content": "### [Skip AMP Validation](#skip-amp-validation)\n\nTo turn off AMP validation add the following code to `next.config.js`\n\n```\nexperimental: {\n  amp: {\n    skipValidation: true\n  }\n}\n```",
+    "preview": "To turn off AMP validation add the following code to `next.config.js` [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/amp#skip-amp-validation-skip-amp-validation",
+    "position": 7
+  },
+  {
+    "title": "AMP",
+    "section": "[AMP in Static HTML Export](#amp-in-static-html-export)",
+    "section_id": "amp-in-static-html-export-amp-in-static-html-export",
+    "heading_level": 3,
+    "content": "### [AMP in Static HTML Export](#amp-in-static-html-export)\n\nWhen using [Static HTML export](/docs/pages/building-your-application/deploying/static-exports) statically prerender pages, Next.js will detect if the page supports AMP and change the exporting behavior based on that.\n\nFor example, the hybrid AMP page `pages/about.js` would output:\n\n* `out/about.html` - HTML page with client-side React runtime\n* `out/about.amp.html` - AMP page\n\nAnd if `pages/about.js` is an AMP-only page, then it would output:\n\n* `out/about.html` - Optimized AMP page\n\nNext.js will automatically insert a link to the AMP version of your page in the HTML version, so you don't have to, like so:\n\n```\n<link rel=\"amphtml\" href=\"/about.amp.html\" />\n```\n\nAnd the AMP version of your page will include a link to the HTML page:\n\n```\n<link rel=\"canonical\" href=\"/about\" />\n```\n\nWhen [`trailingSlash`](/docs/pages/api-reference/config/next-config-js/trailingSlash) is enabled the exported pages for `pages/about.js` would be:\n\n* `out/about/index.html` - HTML page\n* `out/about.amp/index.html` - AMP page",
+    "preview": "When using [Static HTML export](/docs/pages/building-your-application/deploying/static-exports) statically prerender pages, Next.js will detect if the page supports AMP and change the exporting behavior based on that. For example, the hybrid AMP page `pages/about.js` would output: * `out/about.htm",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/amp#amp-in-static-html-export-amp-in-static-html-export",
+    "position": 8
+  },
+  {
+    "title": "AMP",
+    "section": "[TypeScript](#typescript)",
+    "section_id": "typescript-typescript",
+    "heading_level": 2,
+    "content": "## [TypeScript](#typescript)\n\nAMP currently doesn't have built-in types for TypeScript, but it's in their roadmap ([#13791](https://github.com/ampproject/amphtml/issues/13791)).\n\nAs a workaround you can manually create a file called `amp.d.ts` inside your project and add these [custom types](https://stackoverflow.com/a/50601125).\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "AMP currently doesn't have built-in types for TypeScript, but it's in their roadmap ([#13791](https://github.com/ampproject/amphtml/issues/13791)). As a workaround you can manually create a file called `amp.d.ts` inside your project and add these [custom types](https://stackoverflow.com/a/50601125)",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/amp#typescript-typescript",
+    "position": 9
+  }
+]

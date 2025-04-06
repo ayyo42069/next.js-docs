@@ -1,0 +1,192 @@
+[
+  {
+    "title": "Video Optimization",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Optimizing](/docs/app/building-your-application/optimizing)Videos",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Optimizing](/docs/app/building-your-application/optimizing)Videos",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Video Optimization",
+    "section": "Video Optimization",
+    "section_id": "video-optimization",
+    "heading_level": 1,
+    "content": "# Video Optimization\n\nThis page outlines how to use videos with Next.js applications, showing how to store and display video files without affecting performance.",
+    "preview": "This page outlines how to use videos with Next.js applications, showing how to store and display video files without affecting performance.",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#video-optimization",
+    "position": 1
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Using `<video>` and `<iframe>`](#using-video-and-iframe)",
+    "section_id": "using-video-and-iframe-using-video-and-iframe",
+    "heading_level": 2,
+    "content": "## [Using `<video>` and `<iframe>`](#using-video-and-iframe)\n\nVideos can be embedded on the page using the HTML **`<video>`** tag for direct video files and **`<iframe>`** for external platform-hosted videos.",
+    "preview": "Videos can be embedded on the page using the HTML **`<video>`** tag for direct video files and **`<iframe>`** for external platform-hosted videos.",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#using-video-and-iframe-using-video-and-iframe",
+    "position": 2
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[`<video>`](#video)",
+    "section_id": "video-video",
+    "heading_level": 3,
+    "content": "### [`<video>`](#video)\n\nThe HTML [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) tag can embed self-hosted or directly served video content, allowing full control over the playback and appearance.\n\napp/ui/video.jsx\n\n```\nexport function Video() {\n  return (\n    <video width=\"320\" height=\"240\" controls preload=\"none\">\n      <source src=\"/path/to/video.mp4\" type=\"video/mp4\" />\n      <track\n        src=\"/path/to/captions.vtt\"\n        kind=\"subtitles\"\n        srcLang=\"en\"\n        label=\"English\"\n      />\n      Your browser does not support the video tag.\n    </video>\n  )\n}\n```",
+    "preview": "The HTML [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) tag can embed self-hosted or directly served video content, allowing full control over the playback and appearance. app/ui/video.jsx [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#video-video",
+    "position": 3
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Common `<video>` tag attributes](#common-video-tag-attributes)",
+    "section_id": "common-video-tag-attributes-common-video-tag-attributes",
+    "heading_level": 3,
+    "content": "### [Common `<video>` tag attributes](#common-video-tag-attributes)\n\n| Attribute | Description | Example Value |\n| --- | --- | --- |\n| `src` | Specifies the source of the video file. | `<video src=\"/path/to/video.mp4\" />` |\n| `width` | Sets the width of the video player. | `<video width=\"320\" />` |\n| `height` | Sets the height of the video player. | `<video height=\"240\" />` |\n| `controls` | If present, it displays the default set of playback controls. | `<video controls />` |\n| `autoPlay` | Automatically starts playing the video when the page loads. Note: Autoplay policies vary across browsers. | `<video autoPlay />` |\n| `loop` | Loops the video playback. | `<video loop />` |\n| `muted` | Mutes the audio by default. Often used with `autoPlay`. | `<video muted />` |\n| `preload` | Specifies how the video is preloaded. Values: `none`, `metadata`, `auto`. | `<video preload=\"none\" />` |\n| `playsInline` | Enables inline playback on iOS devices, often necessary for autoplay to work on iOS Safari. | `<video playsInline />` |\n\n> **Good to know**: When using the `autoPlay` attribute, it is important to also include the `muted` attribute to ensure the video plays automatically in most browsers and the `playsInline` attribute for compatibility with iOS devices.\n\nFor a comprehensive list of video attributes, refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#attributes).",
+    "preview": "| Attribute | Description | Example Value | | --- | --- | --- | | `src` | Specifies the source of the video file. | `<video src=\"/path/to/video.mp4\" />` | | `width` | Sets the width of the video player. | `<video width=\"320\" />` | | `height` | Sets the height of the video player. | `<video height=\"2",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#common-video-tag-attributes-common-video-tag-attributes",
+    "position": 4
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Video best practices](#video-best-practices)",
+    "section_id": "video-best-practices-video-best-practices",
+    "heading_level": 3,
+    "content": "### [Video best practices](#video-best-practices)\n\n* **Fallback Content:** When using the `<video>` tag, include fallback content inside the tag for browsers that do not support video playback.\n* **Subtitles or Captions:** Include subtitles or captions for users who are deaf or hard of hearing. Utilize the [`<track>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track) tag with your `<video>` elements to specify caption file sources.\n* **Accessible Controls:** Standard HTML5 video controls are recommended for keyboard navigation and screen reader compatibility. For advanced needs, consider third-party players like [react-player](https://github.com/cookpete/react-player) or [video.js](https://videojs.com/), which offer accessible controls and consistent browser experience.",
+    "preview": "* **Fallback Content:** When using the `<video>` tag, include fallback content inside the tag for browsers that do not support video playback. * **Subtitles or Captions:** Include subtitles or captions for users who are deaf or hard of hearing. Utilize the [`<track>`](https://developer.mozilla.org/e",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#video-best-practices-video-best-practices",
+    "position": 5
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[`<iframe>`](#iframe)",
+    "section_id": "iframe-iframe",
+    "heading_level": 3,
+    "content": "### [`<iframe>`](#iframe)\n\nThe HTML `<iframe>` tag allows you to embed videos from external platforms like YouTube or Vimeo.\n\napp/page.jsx\n\n```\nexport default function Page() {\n  return (\n    <iframe src=\"https://www.youtube.com/embed/19g66ezsKAg\" allowFullScreen />\n  )\n}\n```",
+    "preview": "The HTML `<iframe>` tag allows you to embed videos from external platforms like YouTube or Vimeo. app/page.jsx [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#iframe-iframe",
+    "position": 6
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Common `<iframe>` tag attributes](#common-iframe-tag-attributes)",
+    "section_id": "common-iframe-tag-attributes-common-iframe-tag-attributes",
+    "heading_level": 3,
+    "content": "### [Common `<iframe>` tag attributes](#common-iframe-tag-attributes)\n\n| Attribute | Description | Example Value |\n| --- | --- | --- |\n| `src` | The URL of the page to embed. | `<iframe src=\"https://example.com\" />` |\n| `width` | Sets the width of the iframe. | `<iframe width=\"500\" />` |\n| `height` | Sets the height of the iframe. | `<iframe height=\"300\" />` |\n| `allowFullScreen` | Allows the iframe content to be displayed in full-screen mode. | `<iframe allowFullScreen />` |\n| `sandbox` | Enables an extra set of restrictions on the content within the iframe. | `<iframe sandbox />` |\n| `loading` | Optimize loading behavior (e.g., lazy loading). | `<iframe loading=\"lazy\" />` |\n| `title` | Provides a title for the iframe to support accessibility. | `<iframe title=\"Description\" />` |\n\nFor a comprehensive list of iframe attributes, refer to the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attributes).",
+    "preview": "| Attribute | Description | Example Value | | --- | --- | --- | | `src` | The URL of the page to embed. | `<iframe src=\"https://example.com\" />` | | `width` | Sets the width of the iframe. | `<iframe width=\"500\" />` | | `height` | Sets the height of the iframe. | `<iframe height=\"300\" />` | | `allow",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#common-iframe-tag-attributes-common-iframe-tag-attributes",
+    "position": 7
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Choosing a video embedding method](#choosing-a-video-embedding-method)",
+    "section_id": "choosing-a-video-embedding-method-choosing-a-video-embedding-method",
+    "heading_level": 3,
+    "content": "### [Choosing a video embedding method](#choosing-a-video-embedding-method)\n\nThere are two ways you can embed videos in your Next.js application:\n\n* **Self-hosted or direct video files:** Embed self-hosted videos using the `<video>` tag for scenarios requiring detailed control over the player's functionality and appearance. This integration method within Next.js allows for customization and control of your video content.\n* **Using video hosting services (YouTube, Vimeo, etc.):** For video hosting services like YouTube or Vimeo, you'll embed their iframe-based players using the `<iframe>` tag. While this method limits some control over the player, it offers ease of use and features provided by these platforms.\n\nChoose the embedding method that aligns with your application's requirements and the user experience you aim to deliver.",
+    "preview": "There are two ways you can embed videos in your Next.js application: * **Self-hosted or direct video files:** Embed self-hosted videos using the `<video>` tag for scenarios requiring detailed control over the player's functionality and appearance. This integration method within Next.js allows for c",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#choosing-a-video-embedding-method-choosing-a-video-embedding-method",
+    "position": 8
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Embedding externally hosted videos](#embedding-externally-hosted-videos)",
+    "section_id": "embedding-externally-hosted-videos-embedding-externally-hosted-videos",
+    "heading_level": 3,
+    "content": "### [Embedding externally hosted videos](#embedding-externally-hosted-videos)\n\nTo embed videos from external platforms, you can use Next.js to fetch the video information and React Suspense to handle the fallback state while loading.\n\n**1. Create a Server Component for video embedding**\n\nThe first step is to create a [Server Component](https://nextjs.org/docs/app/building-your-application/rendering/server-components) that generates the appropriate iframe for embedding the video. This component will fetch the source URL for the video and render the iframe.\n\napp/ui/video-component.jsx\n\n```\nexport default async function VideoComponent() {\n  const src = await getVideoSrc()\n \n  return <iframe src={src} allowFullScreen />\n}\n```\n\n**2. Stream the video component using React Suspense**\n\nAfter creating the Server Component to embed the video, the next step is to [stream](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming) the component using [React Suspense](https://react.dev/reference/react/Suspense).\n\napp/page.jsx\n\n```\nimport { Suspense } from 'react'\nimport VideoComponent from '../ui/VideoComponent.jsx'\n \nexport default function Page() {\n  return (\n    <section>\n      <Suspense fallback={<p>Loading video...</p>}>\n        <VideoComponent />\n      </Suspense>\n      {/* Other content of the page */}\n    </section>\n  )\n}\n```\n\n> **Good to know**: When embedding videos from external platforms, consider the following best practices:\n>\n> * Ensure the video embeds are responsive. Use CSS to make the iframe or video player adapt to different screen sizes.\n> * Implement [strategies for loading videos](https://yoast.com/site-speed-tips-for-faster-video/) based on network conditions, especially for users with limited data plans.\n\nThis approach results in a better user experience as it prevents the page from blocking, meaning the user can interact with the page while the video component streams in.\n\nFor a more engaging and informative loading experience, consider using a loading skeleton as the fallback UI. So instead of showing a simple loading message, you can show a skeleton that resembles the video player like this:\n\napp/page.jsx\n\n```\nimport { Suspense } from 'react'\nimport VideoComponent from '../ui/VideoComponent.jsx'\nimport VideoSkeleton from '../ui/VideoSkeleton.jsx'\n \nexport default function Page() {\n  return (\n    <section>\n      <Suspense fallback={<VideoSkeleton />}>\n        <VideoComponent />\n      </Suspense>\n      {/* Other content of the page */}\n    </section>\n  )\n}\n```",
+    "preview": "To embed videos from external platforms, you can use Next.js to fetch the video information and React Suspense to handle the fallback state while loading. **1. Create a Server Component for video embedding** The first step is to create a [Server Component](https://nextjs.org/docs/app/building-your",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#embedding-externally-hosted-videos-embedding-externally-hosted-videos",
+    "position": 9
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Self-hosted videos](#self-hosted-videos)",
+    "section_id": "self-hosted-videos-self-hosted-videos",
+    "heading_level": 2,
+    "content": "## [Self-hosted videos](#self-hosted-videos)\n\nSelf-hosting videos may be preferable for several reasons:\n\n* **Complete control and independence**: Self-hosting gives you direct management over your video content, from playback to appearance, ensuring full ownership and control, free from external platform constraints.\n* **Customization for specific needs**: Ideal for unique requirements, like dynamic background videos, it allows for tailored customization to align with design and functional needs.\n* **Performance and scalability considerations**: Choose storage solutions that are both high-performing and scalable, to support increasing traffic and content size effectively.\n* **Cost and integration**: Balance the costs of storage and bandwidth with the need for easy integration into your Next.js framework and broader tech ecosystem.",
+    "preview": "Self-hosting videos may be preferable for several reasons: * **Complete control and independence**: Self-hosting gives you direct management over your video content, from playback to appearance, ensuring full ownership and control, free from external platform constraints. * **Customization for spec",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#self-hosted-videos-self-hosted-videos",
+    "position": 10
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Using Vercel Blob for video hosting](#using-vercel-blob-for-video-hosting)",
+    "section_id": "using-vercel-blob-for-video-hosting-using-vercel-blob-for-video-hosting",
+    "heading_level": 3,
+    "content": "### [Using Vercel Blob for video hosting](#using-vercel-blob-for-video-hosting)\n\n[Vercel Blob](https://vercel.com/docs/storage/vercel-blob?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) offers an efficient way to host videos, providing a scalable cloud storage solution that works well with Next.js. Here's how you can host a video using Vercel Blob:\n\n**1. Uploading a video to Vercel Blob**\n\nIn your Vercel dashboard, navigate to the \"Storage\" tab and select your [Vercel Blob](https://vercel.com/docs/storage/vercel-blob?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) store. In the Blob table's upper-right corner, find and click the \"Upload\" button. Then, choose the video file you wish to upload. After the upload completes, the video file will appear in the Blob table.\n\nAlternatively, you can upload your video using a server action. For detailed instructions, refer to the Vercel documentation on [server-side uploads](https://vercel.com/docs/storage/vercel-blob/server-upload). Vercel also supports [client-side uploads](https://vercel.com/docs/storage/vercel-blob/client-upload). This method may be preferable for certain use cases.\n\n**2. Displaying the video in Next.js**\n\nOnce the video is uploaded and stored, you can display it in your Next.js application. Here's an example of how to do this using the `<video>` tag and React Suspense:\n\napp/page.jsx\n\n```\nimport { Suspense } from 'react'\nimport { list } from '@vercel/blob'\n \nexport default function Page() {\n  return (\n    <Suspense fallback={<p>Loading video...</p>}>\n      <VideoComponent fileName=\"my-video.mp4\" />\n    </Suspense>\n  )\n}\n \nasync function VideoComponent({ fileName }) {\n  const { blobs } = await list({\n    prefix: fileName,\n    limit: 1,\n  })\n  const { url } = blobs[0]\n \n  return (\n    <video controls preload=\"none\" aria-label=\"Video player\">\n      <source src={url} type=\"video/mp4\" />\n      Your browser does not support the video tag.\n    </video>\n  )\n}\n```\n\nIn this approach, the page uses the video's `@vercel/blob` URL to display the video using the `VideoComponent`. React Suspense is used to show a fallback until the video URL is fetched and the video is ready to be displayed.",
+    "preview": "[Vercel Blob](https://vercel.com/docs/storage/vercel-blob?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) offers an efficient way to host videos, providing a scalable cloud storage solution that works well with Next.js. Here's how you can host a video using Vercel Blob: **1. Uploadi",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#using-vercel-blob-for-video-hosting-using-vercel-blob-for-video-hosting",
+    "position": 11
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Adding subtitles to your video](#adding-subtitles-to-your-video)",
+    "section_id": "adding-subtitles-to-your-video-adding-subtitles-to-your-video",
+    "heading_level": 3,
+    "content": "### [Adding subtitles to your video](#adding-subtitles-to-your-video)\n\nIf you have subtitles for your video, you can easily add them using the `<track>` element inside your `<video>` tag. You can fetch the subtitle file from [Vercel Blob](https://vercel.com/docs/storage/vercel-blob?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) in a similar way as the video file. Here's how you can update the `<VideoComponent>` to include subtitles.\n\napp/page.jsx\n\n```\nasync function VideoComponent({ fileName }) {\n  const { blobs } = await list({\n    prefix: fileName,\n    limit: 2,\n  })\n  const { url } = blobs[0]\n  const { url: captionsUrl } = blobs[1]\n \n  return (\n    <video controls preload=\"none\" aria-label=\"Video player\">\n      <source src={url} type=\"video/mp4\" />\n      <track src={captionsUrl} kind=\"subtitles\" srcLang=\"en\" label=\"English\" />\n      Your browser does not support the video tag.\n    </video>\n  )\n}\n```\n\nBy following this approach, you can effectively self-host and integrate videos into your Next.js applications.",
+    "preview": "If you have subtitles for your video, you can easily add them using the `<track>` element inside your `<video>` tag. You can fetch the subtitle file from [Vercel Blob](https://vercel.com/docs/storage/vercel-blob?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) in a similar way as the",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#adding-subtitles-to-your-video-adding-subtitles-to-your-video",
+    "position": 12
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Resources](#resources)",
+    "section_id": "resources-resources",
+    "heading_level": 2,
+    "content": "## [Resources](#resources)\n\nTo continue learning more about video optimization and best practices, please refer to the following resources:\n\n* **Understanding video formats and codecs**: Choose the right format and codec, like MP4 for compatibility or WebM for web optimization, for your video needs. For more details, see [Mozilla's guide on video codecs](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Video_codecs).\n* **Video compression**: Use tools like FFmpeg to effectively compress videos, balancing quality with file size. Learn about compression techniques at [FFmpeg's official website](https://www.ffmpeg.org/).\n* **Resolution and bitrate adjustment**: Adjust [resolution and bitrate](https://www.dacast.com/blog/bitrate-vs-resolution/#:~:text=The%20two%20measure%20different%20aspects,yield%20different%20qualities%20of%20video) based on the viewing platform, with lower settings for mobile devices.\n* **Content Delivery Networks (CDNs)**: Utilize a CDN to enhance video delivery speed and manage high traffic. When using some storage solutions, such as Vercel Blob, CDN functionality is automatically handled for you. [Learn more](https://vercel.com/docs/edge-network/overview?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) about CDNs and their benefits.\n\nExplore these video streaming platforms for integrating video into your Next.js projects:",
+    "preview": "To continue learning more about video optimization and best practices, please refer to the following resources: * **Understanding video formats and codecs**: Choose the right format and codec, like MP4 for compatibility or WebM for web optimization, for your video needs. For more details, see [Mozi",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#resources-resources",
+    "position": 13
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Open source `next-video` component](#open-source-next-video-component)",
+    "section_id": "open-source-next-video-component-open-source-next-video-component",
+    "heading_level": 3,
+    "content": "### [Open source `next-video` component](#open-source-next-video-component)\n\n* Provides a `<Video>` component for Next.js, compatible with various hosting services including [Vercel Blob](https://vercel.com/docs/storage/vercel-blob?utm_source=next-site&utm_medium=docs&utm_campaign=next-website), S3, Backblaze, and Mux.\n* [Detailed documentation](https://next-video.dev/docs) for using `next-video.dev` with different hosting services.",
+    "preview": "* Provides a `<Video>` component for Next.js, compatible with various hosting services including [Vercel Blob](https://vercel.com/docs/storage/vercel-blob?utm_source=next-site&utm_medium=docs&utm_campaign=next-website), S3, Backblaze, and Mux. * [Detailed documentation](https://next-video.dev/docs)",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#open-source-next-video-component-open-source-next-video-component",
+    "position": 14
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Cloudinary Integration](#cloudinary-integration)",
+    "section_id": "cloudinary-integration-cloudinary-integration",
+    "heading_level": 3,
+    "content": "### [Cloudinary Integration](#cloudinary-integration)\n\n* Official [documentation and integration guide](https://next.cloudinary.dev/) for using Cloudinary with Next.js.\n* Includes a `<CldVideoPlayer>` component for [drop-in video support](https://next.cloudinary.dev/cldvideoplayer/basic-usage).\n* Find [examples](https://github.com/cloudinary-community/cloudinary-examples/?tab=readme-ov-file#nextjs) of integrating Cloudinary with Next.js including [Adaptive Bitrate Streaming](https://github.com/cloudinary-community/cloudinary-examples/tree/main/examples/nextjs-cldvideoplayer-abr).\n* Other [Cloudinary libraries](https://cloudinary.com/documentation) including a Node.js SDK are also available.",
+    "preview": "* Official [documentation and integration guide](https://next.cloudinary.dev/) for using Cloudinary with Next.js. * Includes a `<CldVideoPlayer>` component for [drop-in video support](https://next.cloudinary.dev/cldvideoplayer/basic-usage). * Find [examples](https://github.com/cloudinary-community/c",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#cloudinary-integration-cloudinary-integration",
+    "position": 15
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Mux Video API](#mux-video-api)",
+    "section_id": "mux-video-api-mux-video-api",
+    "heading_level": 3,
+    "content": "### [Mux Video API](#mux-video-api)\n\n* Mux provides a [starter template](https://github.com/muxinc/video-course-starter-kit) for creating a video course with Mux and Next.js.\n* Learn about Mux's recommendations for embedding [high-performance video for your Next.js application](https://www.mux.com/for/nextjs).\n* Explore an [example project](https://with-mux-video.vercel.app/) demonstrating Mux with Next.js.",
+    "preview": "* Mux provides a [starter template](https://github.com/muxinc/video-course-starter-kit) for creating a video course with Mux and Next.js. * Learn about Mux's recommendations for embedding [high-performance video for your Next.js application](https://www.mux.com/for/nextjs). * Explore an [example pro",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#mux-video-api-mux-video-api",
+    "position": 16
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[Fastly](#fastly)",
+    "section_id": "fastly-fastly",
+    "heading_level": 3,
+    "content": "### [Fastly](#fastly)\n\n* Learn more about integrating Fastly's solutions for [video on demand](https://www.fastly.com/products/streaming-media/video-on-demand) and streaming media into Next.js.",
+    "preview": "* Learn more about integrating Fastly's solutions for [video on demand](https://www.fastly.com/products/streaming-media/video-on-demand) and streaming media into Next.js.",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#fastly-fastly",
+    "position": 17
+  },
+  {
+    "title": "Video Optimization",
+    "section": "[ImageKit.io Integration](#imagekitio-integration)",
+    "section_id": "imagekit-io-integration-imagekitio-integration",
+    "heading_level": 3,
+    "content": "### [ImageKit.io Integration](#imagekitio-integration)\n\n* Check out the [official quick start guide](https://imagekit.io/docs/integration/nextjs) for integrating ImageKit with Next.js.\n* The integration provides an `<IKVideo>` component, offering [seamless video support](https://imagekit.io/docs/integration/nextjs#rendering-videos).\n* You can also explore other [ImageKit libraries](https://imagekit.io/docs), such as the Node.js SDK, which is also available.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* Check out the [official quick start guide](https://imagekit.io/docs/integration/nextjs) for integrating ImageKit with Next.js. * The integration provides an `<IKVideo>` component, offering [seamless video support](https://imagekit.io/docs/integration/nextjs#rendering-videos). * You can also explor",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/videos#imagekit-io-integration-imagekitio-integration",
+    "position": 18
+  }
+]

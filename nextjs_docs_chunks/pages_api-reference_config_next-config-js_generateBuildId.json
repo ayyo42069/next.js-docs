@@ -1,0 +1,22 @@
+[
+  {
+    "title": "generateBuildId",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)generateBuildId",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)generateBuildId",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateBuildId#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "generateBuildId",
+    "section": "generateBuildId",
+    "section_id": "generatebuildid",
+    "heading_level": 1,
+    "content": "# generateBuildId\n\nNext.js generates an ID during `next build` to identify which version of your application is being served. The same build should be used and boot up multiple containers.\n\nIf you are rebuilding for each stage of your environment, you will need to generate a consistent build ID to use between containers. Use the `generateBuildId` command in `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  generateBuildId: async () => {\n    // This could be anything, using the latest git hash\n    return process.env.GIT_HASH\n  },\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js generates an ID during `next build` to identify which version of your application is being served. The same build should be used and boot up multiple containers. If you are rebuilding for each stage of your environment, you will need to generate a consistent build ID to use between containe",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateBuildId#generatebuildid",
+    "position": 1
+  }
+]

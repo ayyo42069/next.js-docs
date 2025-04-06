@@ -1,0 +1,32 @@
+[
+  {
+    "title": "pageExtensions",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)pageExtensions",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)pageExtensions",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "pageExtensions",
+    "section": "pageExtensions",
+    "section_id": "pageextensions",
+    "heading_level": 1,
+    "content": "# pageExtensions\n\nYou can extend the default Page extensions (`.tsx`, `.ts`, `.jsx`, `.js`) used by Next.js. Inside `next.config.js`, add the `pageExtensions` config:\n\nnext.config.js\n\n```\nmodule.exports = {\n  pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],\n}\n```\n\nChanging these values affects *all* Next.js pages, including the following:\n\n* [`middleware.js`](/docs/pages/building-your-application/routing/middleware)\n* [`instrumentation.js`](/docs/pages/building-your-application/optimizing/instrumentation)\n* `pages/_document.js`\n* `pages/_app.js`\n* `pages/api/`\n\nFor example, if you reconfigure `.ts` page extensions to `.page.ts`, you would need to rename pages like `middleware.page.ts`, `instrumentation.page.ts`, `_app.page.ts`.",
+    "preview": "You can extend the default Page extensions (`.tsx`, `.ts`, `.jsx`, `.js`) used by Next.js. Inside `next.config.js`, add the `pageExtensions` config: next.config.js [Code Block] Changing these values affects *all* Next.js pages, including the following: * [`middleware.js`](/docs/pages/building-yo",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions#pageextensions",
+    "position": 1
+  },
+  {
+    "title": "pageExtensions",
+    "section": "[Including non-page files in the `pages` directory](#including-non-page-files-in-the-pages-directory)",
+    "section_id": "including-non-page-files-in-the-pages-directory-including-non-page-files-in-the-pages-directory",
+    "heading_level": 2,
+    "content": "## [Including non-page files in the `pages` directory](#including-non-page-files-in-the-pages-directory)\n\nYou can colocate test files or other files used by components in the `pages` directory. Inside `next.config.js`, add the `pageExtensions` config:\n\nnext.config.js\n\n```\nmodule.exports = {\n  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],\n}\n```\n\nThen, rename your pages to have a file extension that includes `.page` (e.g. rename `MyPage.tsx` to `MyPage.page.tsx`). Ensure you rename *all* Next.js pages, including the files mentioned above.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "You can colocate test files or other files used by components in the `pages` directory. Inside `next.config.js`, add the `pageExtensions` config: next.config.js [Code Block] Then, rename your pages to have a file extension that includes `.page` (e.g. rename `MyPage.tsx` to `MyPage.page.tsx`). Ens",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions#including-non-page-files-in-the-pages-directory-including-non-page-files-in-the-pages-directory",
+    "position": 2
+  }
+]

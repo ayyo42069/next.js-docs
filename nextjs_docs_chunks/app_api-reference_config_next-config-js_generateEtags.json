@@ -1,0 +1,22 @@
+[
+  {
+    "title": "generateEtags",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)generateEtags",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)generateEtags",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/generateEtags#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "generateEtags",
+    "section": "generateEtags",
+    "section_id": "generateetags",
+    "heading_level": 1,
+    "content": "# generateEtags\n\nNext.js will generate [etags](https://en.wikipedia.org/wiki/HTTP_ETag) for every page by default. You may want to disable etag generation for HTML pages depending on your cache strategy.\n\nOpen `next.config.js` and disable the `generateEtags` option:\n\nnext.config.js\n\n```\nmodule.exports = {\n  generateEtags: false,\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js will generate [etags](https://en.wikipedia.org/wiki/HTTP_ETag) for every page by default. You may want to disable etag generation for HTML pages depending on your cache strategy. Open `next.config.js` and disable the `generateEtags` option: next.config.js [Code Block] Was this helpful?",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/generateEtags#generateetags",
+    "position": 1
+  }
+]

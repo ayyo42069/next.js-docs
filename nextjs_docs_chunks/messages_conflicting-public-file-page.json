@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Conflicting Public File and Page File",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)Conflicting Public File and Page File",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)Conflicting Public File and Page File",
+    "url": "https://nextjs.org/docs/messages/conflicting-public-file-page#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Conflicting Public File and Page File",
+    "section": "Conflicting Public File and Page File",
+    "section_id": "conflicting-public-file-and-page-file",
+    "heading_level": 1,
+    "content": "# Conflicting Public File and Page File",
+    "preview": "# Conflicting Public File and Page File",
+    "url": "https://nextjs.org/docs/messages/conflicting-public-file-page#conflicting-public-file-and-page-file",
+    "position": 1
+  },
+  {
+    "title": "Conflicting Public File and Page File",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nOne of your public files has the same path as a page file which is not supported. Since only one resource can reside at the URL both public files and page files must be unique.",
+    "preview": "One of your public files has the same path as a page file which is not supported. Since only one resource can reside at the URL both public files and page files must be unique.",
+    "url": "https://nextjs.org/docs/messages/conflicting-public-file-page#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "Conflicting Public File and Page File",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nRename either the public file or page file that is causing the conflict.\n\nExample conflict between public file and page file\n\nFolder structure\n\n```\npublic/\n  hello\npages/\n  hello.js\n```\n\nNon-conflicting public file and page file\n\nFolder structure\n\n```\npublic/\n  hello.txt\npages/\n  hello.js\n```",
+    "preview": "Rename either the public file or page file that is causing the conflict. Example conflict between public file and page file Folder structure [Code Block] Non-conflicting public file and page file Folder structure [Code Block]",
+    "url": "https://nextjs.org/docs/messages/conflicting-public-file-page#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "Conflicting Public File and Page File",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Static file serving docs](/docs/pages/building-your-application/optimizing/static-assets)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Static file serving docs](/docs/pages/building-your-application/optimizing/static-assets) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/conflicting-public-file-page#useful-links-useful-links",
+    "position": 4
+  }
+]

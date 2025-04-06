@@ -1,0 +1,22 @@
+[
+  {
+    "title": "distDir",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)distDir",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)distDir",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/distDir#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "distDir",
+    "section": "distDir",
+    "section_id": "distdir",
+    "heading_level": 1,
+    "content": "# distDir\n\nYou can specify a name to use for a custom build directory to use instead of `.next`.\n\nOpen `next.config.js` and add the `distDir` config:\n\nnext.config.js\n\n```\nmodule.exports = {\n  distDir: 'build',\n}\n```\n\nNow if you run `next build` Next.js will use `build` instead of the default `.next` folder.\n\n> `distDir` **should not** leave your project directory. For example, `../build` is an **invalid** directory.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "You can specify a name to use for a custom build directory to use instead of `.next`. Open `next.config.js` and add the `distDir` config: next.config.js [Code Block] Now if you run `next build` Next.js will use `build` instead of the default `.next` folder. > `distDir` **should not** leave your",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/distDir#distdir",
+    "position": 1
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "title": "ppr",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)ppr",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)ppr",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/ppr#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "ppr",
+    "section": "ppr",
+    "section_id": "ppr",
+    "heading_level": 1,
+    "content": "# ppr\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nPartial Prerendering (PPR) enables you to combine static and dynamic components together in the same route. Learn more about [PPR](/docs/app/building-your-application/rendering/partial-prerendering).",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). Partial Prerendering (PPR) enables you to combine static and dynamic components together in the same route. Le",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/ppr#ppr",
+    "position": 1
+  },
+  {
+    "title": "ppr",
+    "section": "[Using Partial Prerendering](#using-partial-prerendering)",
+    "section_id": "using-partial-prerendering-using-partial-prerendering",
+    "heading_level": 2,
+    "content": "## [Using Partial Prerendering](#using-partial-prerendering)",
+    "preview": "## [Using Partial Prerendering](#using-partial-prerendering)",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/ppr#using-partial-prerendering-using-partial-prerendering",
+    "position": 2
+  },
+  {
+    "title": "ppr",
+    "section": "[Incremental Adoption (Version 15)](#incremental-adoption-version-15)",
+    "section_id": "incremental-adoption-version-15-incremental-adoption-version-15",
+    "heading_level": 3,
+    "content": "### [Incremental Adoption (Version 15)](#incremental-adoption-version-15)\n\nIn Next.js 15, you can incrementally adopt Partial Prerendering in [layouts](/docs/app/building-your-application/routing/layouts-and-templates) and [pages](/docs/app/api-reference/file-conventions/page) by setting the [`ppr`](/docs/app/api-reference/config/next-config-js/ppr) option in `next.config.js` to `incremental`, and exporting the `experimental_ppr` [route config option](/docs/app/api-reference/file-conventions/route-segment-config) at the top of the file:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    ppr: 'incremental',\n  },\n}\n \nexport default nextConfig\n```\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Suspense } from \"react\"\nimport { StaticComponent, DynamicComponent, Fallback } from \"@/app/ui\"\n \nexport const experimental_ppr = true\n \nexport default function Page() {\n  return {\n     <>\n      <StaticComponent />\n      <Suspense fallback={<Fallback />}>\n        <DynamicComponent />\n      </Suspense>\n     </>\n  };\n}\n```\n\n> **Good to know**:\n>\n> * Routes that don't have `experimental_ppr` will default to `false` and will not be prerendered using PPR. You need to explicitly opt-in to PPR for each route.\n> * `experimental_ppr` will apply to all children of the route segment, including nested layouts and pages. You don't have to add it to every file, only the top segment of a route.\n> * To disable PPR for children segments, you can set `experimental_ppr` to `false` in the child segment.\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0` | experimental `incremental` value introduced |\n| `v14.0.0` | experimental `ppr` introduced |",
+    "preview": "In Next.js 15, you can incrementally adopt Partial Prerendering in [layouts](/docs/app/building-your-application/routing/layouts-and-templates) and [pages](/docs/app/api-reference/file-conventions/page) by setting the [`ppr`](/docs/app/api-reference/config/next-config-js/ppr) option in `next.config.",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/ppr#incremental-adoption-version-15-incremental-adoption-version-15",
+    "position": 3
+  },
+  {
+    "title": "ppr",
+    "section": "Learn more about Partial Prerendering",
+    "section_id": "learn-more-about-partial-prerendering",
+    "heading_level": 2,
+    "content": "## Learn more about Partial Prerendering\n\n[### Partial Prerendering\n\nLearn how to combine the benefits of static and dynamic rendering with Partial Prerendering.](/docs/app/building-your-application/rendering/partial-prerendering)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Partial Prerendering Learn how to combine the benefits of static and dynamic rendering with Partial Prerendering.](/docs/app/building-your-application/rendering/partial-prerendering) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/ppr#learn-more-about-partial-prerendering",
+    "position": 4
+  }
+]

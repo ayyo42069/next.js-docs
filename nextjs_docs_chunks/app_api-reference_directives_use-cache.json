@@ -1,0 +1,122 @@
+[
+  {
+    "title": "use cache",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Directives](/docs/app/api-reference/directives)use cache",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Directives](/docs/app/api-reference/directives)use cache",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "use cache",
+    "section": "use cache",
+    "section_id": "use-cache",
+    "heading_level": 1,
+    "content": "# use cache\n\nThis feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nThe `use cache` directive designates a component and/or a function to be cached. It can be used at the top of a file to indicate that all exports in the file are cacheable, or inline at the top of a function or component to inform Next.js the return value should be cached and reused for subsequent requests. This is an experimental Next.js feature, and not a native React feature like [`use client`](/docs/app/api-reference/directives/use-client) or [`use server`](/docs/app/api-reference/directives/use-server).",
+    "preview": "This feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). The `use cache` directive designates a component a",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#use-cache",
+    "position": 1
+  },
+  {
+    "title": "use cache",
+    "section": "[Usage](#usage)",
+    "section_id": "usage-usage",
+    "heading_level": 2,
+    "content": "## [Usage](#usage)\n\nEnable support for the `use cache` directive with the [`useCache`](/docs/app/api-reference/config/next-config-js/useCache) flag in your `next.config.ts` file:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    useCache: true,\n  },\n}\n \nexport default nextConfig\n```\n\nAdditionally, `use cache` directives are also enabled when the [`dynamicIO`](/docs/app/api-reference/config/next-config-js/dynamicIO) flag is set.\n\nThen, you can use the `use cache` directive at the file, component, or function level:\n\n```\n// File level\n'use cache'\n \nexport default async function Page() {\n  // ...\n}\n \n// Component level\nexport async function MyComponent() {\n  'use cache'\n  return <></>\n}\n \n// Function level\nexport async function getData() {\n  'use cache'\n  const data = await fetch('/api/data')\n  return data\n}\n```",
+    "preview": "Enable support for the `use cache` directive with the [`useCache`](/docs/app/api-reference/config/next-config-js/useCache) flag in your `next.config.ts` file: next.config.ts TypeScript JavaScriptTypeScript [Code Block] Additionally, `use cache` directives are also enabled when the [`dynamicIO`]",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#usage-usage",
+    "position": 2
+  },
+  {
+    "title": "use cache",
+    "section": "[Good to know](#good-to-know)",
+    "section_id": "good-to-know-good-to-know",
+    "heading_level": 2,
+    "content": "## [Good to know](#good-to-know)\n\n* `use cache` is an experimental Next.js feature, and not a native React feature like [`use client`](/docs/app/api-reference/directives/use-client) or [`use server`](/docs/app/api-reference/directives/use-server).\n* Any [serializable](https://react.dev/reference/rsc/use-server#serializable-parameters-and-return-values) arguments (or props) passed to the cached function, as well as any serializable values it reads from the parent scope, will be converted to a format like JSON and automatically become a part of the cache key.\n* Any non-serializable arguments, props, or closed-over values will turn into opaque references inside the cached function, and can be only passed through and not inspected nor modified. These non-serializable values will be filled in at the request time and won't become a part of the cache key.\n  + For example, a cached function can take in JSX as a `children` prop and return `<div>{children}</div>`, but it won't be able to introspect the actual `children` object.\n* The return value of the cacheable function must also be serializable. This ensures that the cached data can be stored and retrieved correctly.\n* Functions that use the `use cache` directive must not have any side-effects, such as modifying state, directly manipulating the DOM, or setting timers to execute code at intervals.\n* If used alongside [Partial Prerendering](/docs/app/building-your-application/rendering/partial-prerendering), segments that have `use cache` will be prerendered as part of the static HTML shell.\n* Unlike [`unstable_cache`](/docs/app/api-reference/functions/unstable_cache) which only supports JSON data, `use cache` can cache any serializable data React can render, including the render output of components.",
+    "preview": "* `use cache` is an experimental Next.js feature, and not a native React feature like [`use client`](/docs/app/api-reference/directives/use-client) or [`use server`](/docs/app/api-reference/directives/use-server). * Any [serializable](https://react.dev/reference/rsc/use-server#serializable-parameter",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#good-to-know-good-to-know",
+    "position": 3
+  },
+  {
+    "title": "use cache",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "use cache",
+    "section": "[Caching entire routes with `use cache`](#caching-entire-routes-with-use-cache)",
+    "section_id": "caching-entire-routes-with-use-cache-caching-entire-routes-with-use-cache",
+    "heading_level": 3,
+    "content": "### [Caching entire routes with `use cache`](#caching-entire-routes-with-use-cache)\n\nTo prerender an entire route, add `use cache` to the top of **both** the `layout` and `page` files. Each of these segments are treated as separate entry points in your application, and will be cached independently.\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use cache'\n \nexport default function Layout({ children }: { children: ReactNode }) {\n  return <div>{children}</div>\n}\n```\n\nAny components imported and nested in `page` file will inherit the cache behavior of `page`.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use cache'\n \nasync function Users() {\n  const users = await fetch('/api/users')\n  // loop through users\n}\n \nexport default function Page() {\n  return (\n    <main>\n      <Users />\n    </main>\n  )\n}\n```\n\n> This is recommended for applications that previously used the [`export const dynamic = \"force-static\"`](/docs/app/api-reference/file-conventions/route-segment-config#dynamic) option, and will ensure the entire route is prerendered.",
+    "preview": "To prerender an entire route, add `use cache` to the top of **both** the `layout` and `page` files. Each of these segments are treated as separate entry points in your application, and will be cached independently. app/layout.tsx TypeScript JavaScriptTypeScript [Code Block] Any components impor",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#caching-entire-routes-with-use-cache-caching-entire-routes-with-use-cache",
+    "position": 5
+  },
+  {
+    "title": "use cache",
+    "section": "[Caching component output with `use cache`](#caching-component-output-with-use-cache)",
+    "section_id": "caching-component-output-with-use-cache-caching-component-output-with-use-cache",
+    "heading_level": 3,
+    "content": "### [Caching component output with `use cache`](#caching-component-output-with-use-cache)\n\nYou can use `use cache` at the component level to cache any fetches or computations performed within that component. When you reuse the component throughout your application it can share the same cache entry as long as the props maintain the same structure.\n\nThe props are serialized and form part of the cache key, and the cache entry will be reused as long as the serialized props produce the same value in each instance.\n\napp/components/bookings.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function Bookings({ type = 'haircut' }: BookingsProps) {\n  'use cache'\n  async function getBookingsData() {\n    const data = await fetch(`/api/bookings?type=${encodeURIComponent(type)}`)\n    return data\n  }\n  return //...\n}\n \ninterface BookingsProps {\n  type: string\n}\n```",
+    "preview": "You can use `use cache` at the component level to cache any fetches or computations performed within that component. When you reuse the component throughout your application it can share the same cache entry as long as the props maintain the same structure. The props are serialized and form part of",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#caching-component-output-with-use-cache-caching-component-output-with-use-cache",
+    "position": 6
+  },
+  {
+    "title": "use cache",
+    "section": "[Caching function output with `use cache`](#caching-function-output-with-use-cache)",
+    "section_id": "caching-function-output-with-use-cache-caching-function-output-with-use-cache",
+    "heading_level": 3,
+    "content": "### [Caching function output with `use cache`](#caching-function-output-with-use-cache)\n\nSince you can add `use cache` to any asynchronous function, you aren't limited to caching components or routes only. You might want to cache a network request or database query or compute something that is very slow. By adding `use cache` to a function containing this type of work it becomes cacheable, and when reused, will share the same cache entry.\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function getData() {\n  'use cache'\n \n  const data = await fetch('/api/data')\n  return data\n}\n```",
+    "preview": "Since you can add `use cache` to any asynchronous function, you aren't limited to caching components or routes only. You might want to cache a network request or database query or compute something that is very slow. By adding `use cache` to a function containing this type of work it becomes cacheab",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#caching-function-output-with-use-cache-caching-function-output-with-use-cache",
+    "position": 7
+  },
+  {
+    "title": "use cache",
+    "section": "[Revalidating](#revalidating)",
+    "section_id": "revalidating-revalidating",
+    "heading_level": 3,
+    "content": "### [Revalidating](#revalidating)\n\nBy default, Next.js sets a **[revalidation period](/docs/app/building-your-application/data-fetching/fetching#revalidating-cached-data) of 15 minutes** when you use the `use cache` directive. Next.js sets a near-infinite expiration duration, meaning it's suitable for content that doesn't need frequent updates.\n\nWhile this revalidation period may be useful for content you don't expect to change often, you can use the `cacheLife` and `cacheTag` APIs to configure the cache behavior:\n\n* [`cacheLife`](/docs/app/api-reference/functions/cacheLife): For time-based revalidation periods.\n* [`cacheTag`](/docs/app/api-reference/functions/cacheTag): For tagging cached data.\n\nBoth of these APIs integrate across the client and server caching layers, meaning you can configure your caching semantics in one place and have them apply everywhere.\n\nSee the [`cacheLife`](/docs/app/api-reference/functions/cacheLife) and [`cacheTag`](/docs/app/api-reference/functions/cacheTag) docs for more information.",
+    "preview": "By default, Next.js sets a **[revalidation period](/docs/app/building-your-application/data-fetching/fetching#revalidating-cached-data) of 15 minutes** when you use the `use cache` directive. Next.js sets a near-infinite expiration duration, meaning it's suitable for content that doesn't need freque",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#revalidating-revalidating",
+    "position": 8
+  },
+  {
+    "title": "use cache",
+    "section": "[Invalidating](#invalidating)",
+    "section_id": "invalidating-invalidating",
+    "heading_level": 3,
+    "content": "### [Invalidating](#invalidating)\n\nTo invalidate the cached data, you can use the [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag) function.\n\nSee the [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag) docs for more information.",
+    "preview": "To invalidate the cached data, you can use the [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag) function. See the [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag) docs for more information.",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#invalidating-invalidating",
+    "position": 9
+  },
+  {
+    "title": "use cache",
+    "section": "[Interleaving](#interleaving)",
+    "section_id": "interleaving-interleaving",
+    "heading_level": 3,
+    "content": "### [Interleaving](#interleaving)\n\nIf you need to pass non-serializable arguments to a cacheable function, you can pass them as `children`. This means the `children` reference can change without affecting the cache entry.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page() {\n  const uncachedData = await getData()\n  return (\n    <CacheComponent>\n      <DynamicComponent data={uncachedData} />\n    </CacheComponent>\n  )\n}\n \nasync function CacheComponent({ children }: { children: ReactNode }) {\n  'use cache'\n  const cachedData = await fetch('/api/cached-data')\n  return (\n    <div>\n      <PrerenderedComponent data={cachedData} />\n      {children}\n    </div>\n  )\n}\n```\n\nYou can also pass Server Actions through cached components to Client Components without invoking them inside the cacheable function.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport ClientComponent from './ClientComponent'\n \nexport default async function Page() {\n  const performUpdate = async () => {\n    'use server'\n    // Perform some server-side update\n    await db.update(...)\n  }\n \n  return <CacheComponent performUpdate={performUpdate} />\n}\n \nasync function CachedComponent({\n  performUpdate,\n}: {\n  performUpdate: () => Promise<void>\n}) {\n  'use cache'\n  // Do not call performUpdate here\n  return <ClientComponent action={performUpdate} />\n}\n```\n\napp/ClientComponent.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nexport default function ClientComponent({\n  action,\n}: {\n  action: () => Promise<void>\n}) {\n  return <button onClick={action}>Update</button>\n}\n```",
+    "preview": "If you need to pass non-serializable arguments to a cacheable function, you can pass them as `children`. This means the `children` reference can change without affecting the cache entry. app/page.tsx TypeScript JavaScriptTypeScript [Code Block] You can also pass Server Actions through cached co",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#interleaving-interleaving",
+    "position": 10
+  },
+  {
+    "title": "use cache",
+    "section": "Related",
+    "section_id": "related",
+    "heading_level": 2,
+    "content": "## Related\n\nView related API references.\n\n[### useCache\n\nLearn how to enable the useCache flag in Next.js.](/docs/app/api-reference/config/next-config-js/useCache)[### dynamicIO\n\nLearn how to enable the dynamicIO flag in Next.js.](/docs/app/api-reference/config/next-config-js/dynamicIO)[### cacheLife\n\nLearn how to set up cacheLife configurations in Next.js.](/docs/app/api-reference/config/next-config-js/cacheLife)[### cacheTag\n\nLearn how to use the cacheTag function to manage cache invalidation in your Next.js application.](/docs/app/api-reference/functions/cacheTag)[### cacheLife\n\nLearn how to use the cacheLife function to set the cache expiration time for a cached function or component.](/docs/app/api-reference/functions/cacheLife)[### revalidateTag\n\nAPI Reference for the revalidateTag function.](/docs/app/api-reference/functions/revalidateTag)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "View related API references. [### useCache Learn how to enable the useCache flag in Next.js.](/docs/app/api-reference/config/next-config-js/useCache)[### dynamicIO Learn how to enable the dynamicIO flag in Next.js.](/docs/app/api-reference/config/next-config-js/dynamicIO)[### cacheLife Learn how",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache#related",
+    "position": 11
+  }
+]

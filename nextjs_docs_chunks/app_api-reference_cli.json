@@ -1,0 +1,22 @@
+[
+  {
+    "title": "CLI",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[API Reference](/docs/app/api-reference)CLI",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[API Reference](/docs/app/api-reference)CLI",
+    "url": "https://nextjs.org/docs/app/api-reference/cli#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "CLI",
+    "section": "CLI",
+    "section_id": "cli",
+    "heading_level": 1,
+    "content": "# CLI\n\nNext.js comes with **two** Command Line Interface (CLI) tools:\n\n* **`create-next-app`**: Quickly create a new Next.js application using the default template or an [example](https://github.com/vercel/next.js/tree/canary/examples) from a public GitHub repository.\n* **`next`**: Run the Next.js development server, build your application, and more.\n\n[### create-next-app\n\nCreate Next.js apps using one command with the create-next-app CLI.](/docs/app/api-reference/cli/create-next-app)[### next CLI\n\nLearn how to run and build your application with the Next.js CLI.](/docs/app/api-reference/cli/next)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js comes with **two** Command Line Interface (CLI) tools: * **`create-next-app`**: Quickly create a new Next.js application using the default template or an [example](https://github.com/vercel/next.js/tree/canary/examples) from a public GitHub repository. * **`next`**: Run the Next.js developm",
+    "url": "https://nextjs.org/docs/app/api-reference/cli#cli",
+    "position": 1
+  }
+]

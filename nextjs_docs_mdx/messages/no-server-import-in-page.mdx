@@ -1,0 +1,53 @@
+---
+title: "No Server Import In Page"
+description: "Menu..."
+url: "https://nextjs.org/docs/messages/no-server-import-in-page"
+slug: "/docs/messages/no-server-import-in-page"
+date_crawled: "2025-04-06T12:12:32.773327+00:00"
+---
+
+**Path**: /docs/messages/no-server-import-in-page
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[Docs](/docs)[Errors](/docs)No Server Import In Page
+
+# No Server Import In Page
+
+> Prevent usage of `next/server` outside of `middleware.js`.
+
+## [Why This Error Occurred](#why-this-error-occurred)
+
+`next/server` was imported outside of `middleware.{js,ts}`.
+
+## [Possible Ways to Fix It](#possible-ways-to-fix-it)
+
+Only import and use `next/server` in a file located within the project root directory: `middleware.{js,ts}`.
+
+middleware.ts
+
+```
+import type { NextFetchEvent, NextRequest } from 'next/server'
+ 
+export function middleware(req: NextRequest, ev: NextFetchEvent) {
+  return new Response('Hello, world!')
+}
+```
+
+## [Useful Links](#useful-links)
+
+* [Middleware](/docs/pages/building-your-application/routing/middleware)
+
+Was this helpful?
+
+supported.
+
+Send

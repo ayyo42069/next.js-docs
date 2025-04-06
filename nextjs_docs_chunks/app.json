@@ -1,0 +1,122 @@
+[
+  {
+    "title": "App Router",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Introduction](/docs)App Router",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Introduction](/docs)App Router",
+    "url": "https://nextjs.org/docs/app#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "App Router",
+    "section": "App Router",
+    "section_id": "app-router",
+    "heading_level": 1,
+    "content": "# App Router\n\nThe Next.js App Router introduces a new model for building applications using React's latest features such as [Server Components](/docs/app/building-your-application/rendering/server-components), [Streaming with Suspense](/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense), and [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations).\n\nGet started with the App Router by [creating your first page](/docs/app/building-your-application/routing/layouts-and-templates).",
+    "preview": "The Next.js App Router introduces a new model for building applications using React's latest features such as [Server Components](/docs/app/building-your-application/rendering/server-components), [Streaming with Suspense](/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming",
+    "url": "https://nextjs.org/docs/app#app-router",
+    "position": 1
+  },
+  {
+    "title": "App Router",
+    "section": "[Frequently Asked Questions](#frequently-asked-questions)",
+    "section_id": "frequently-asked-questions-frequently-asked-questions",
+    "heading_level": 2,
+    "content": "## [Frequently Asked Questions](#frequently-asked-questions)",
+    "preview": "## [Frequently Asked Questions](#frequently-asked-questions)",
+    "url": "https://nextjs.org/docs/app#frequently-asked-questions-frequently-asked-questions",
+    "position": 2
+  },
+  {
+    "title": "App Router",
+    "section": "[How can I access the request object in a layout?](#how-can-i-access-the-request-object-in-a-layout)",
+    "section_id": "how-can-i-access-the-request-object-in-a-layout-how-can-i-access-the-request-object-in-a-layout",
+    "heading_level": 3,
+    "content": "### [How can I access the request object in a layout?](#how-can-i-access-the-request-object-in-a-layout)\n\nYou intentionally cannot access the raw request object. However, you can access [`headers`](/docs/app/api-reference/functions/headers) and [`cookies`](/docs/app/api-reference/functions/cookies) through server-only functions. You can also [set cookies](#how-can-i-set-cookies).\n\n[Layouts](/docs/app/building-your-application/routing/layouts-and-templates#layouts) do not rerender. They can be cached and reused to avoid unnecessary computation when navigating between pages. By restricting layouts from accessing the raw request, Next.js can prevent the execution of potentially slow or expensive user code within the layout, which could negatively impact performance.\n\nThis design also enforces consistent and predictable behavior for layouts across different pages, which simplifies development and debugging.\n\nDepending on the UI pattern you're building, [Parallel Routes](/docs/app/building-your-application/routing/parallel-routes) allow you to render multiple pages in the same layout, and pages have access to the route segments as well as the URL search params.",
+    "preview": "You intentionally cannot access the raw request object. However, you can access [`headers`](/docs/app/api-reference/functions/headers) and [`cookies`](/docs/app/api-reference/functions/cookies) through server-only functions. You can also [set cookies](#how-can-i-set-cookies). [Layouts](/docs/app/bu",
+    "url": "https://nextjs.org/docs/app#how-can-i-access-the-request-object-in-a-layout-how-can-i-access-the-request-object-in-a-layout",
+    "position": 3
+  },
+  {
+    "title": "App Router",
+    "section": "[How can I access the URL on a page?](#how-can-i-access-the-url-on-a-page)",
+    "section_id": "how-can-i-access-the-url-on-a-page-how-can-i-access-the-url-on-a-page",
+    "heading_level": 3,
+    "content": "### [How can I access the URL on a page?](#how-can-i-access-the-url-on-a-page)\n\nBy default, pages are Server Components. You can access the route segments through the [`params`](/docs/app/api-reference/file-conventions/page#params-optional) prop and the URL search params through the [`searchParams`](/docs/app/api-reference/file-conventions/page#searchparams-optional) prop for a given page.\n\nIf you are using Client Components, you can use [`usePathname`](/docs/app/api-reference/functions/use-pathname), [`useSelectedLayoutSegment`](/docs/app/api-reference/functions/use-selected-layout-segment), and [`useSelectedLayoutSegments`](/docs/app/api-reference/functions/use-selected-layout-segments) for more complex routes.\n\nFurther, depending on the UI pattern you're building, [Parallel Routes](/docs/app/building-your-application/routing/parallel-routes) allow you to render multiple pages in the same layout, and pages have access to the route segments as well as the URL search params.",
+    "preview": "By default, pages are Server Components. You can access the route segments through the [`params`](/docs/app/api-reference/file-conventions/page#params-optional) prop and the URL search params through the [`searchParams`](/docs/app/api-reference/file-conventions/page#searchparams-optional) prop for a",
+    "url": "https://nextjs.org/docs/app#how-can-i-access-the-url-on-a-page-how-can-i-access-the-url-on-a-page",
+    "position": 4
+  },
+  {
+    "title": "App Router",
+    "section": "[How can I redirect from a Server Component?](#how-can-i-redirect-from-a-server-component)",
+    "section_id": "how-can-i-redirect-from-a-server-component-how-can-i-redirect-from-a-server-component",
+    "heading_level": 3,
+    "content": "### [How can I redirect from a Server Component?](#how-can-i-redirect-from-a-server-component)\n\nYou can use [`redirect`](/docs/app/api-reference/functions/redirect) to redirect from a page to a relative or absolute URL. [`redirect`](/docs/app/api-reference/functions/redirect) is a temporary (307) redirect, while [`permanentRedirect`](/docs/app/api-reference/functions/permanentRedirect) is a permanent (308) redirect. When these functions are used while streaming UI, they will insert a meta tag to emit the redirect on the client side.",
+    "preview": "You can use [`redirect`](/docs/app/api-reference/functions/redirect) to redirect from a page to a relative or absolute URL. [`redirect`](/docs/app/api-reference/functions/redirect) is a temporary (307) redirect, while [`permanentRedirect`](/docs/app/api-reference/functions/permanentRedirect) is a pe",
+    "url": "https://nextjs.org/docs/app#how-can-i-redirect-from-a-server-component-how-can-i-redirect-from-a-server-component",
+    "position": 5
+  },
+  {
+    "title": "App Router",
+    "section": "[How can I handle authentication with the App Router?](#how-can-i-handle-authentication-with-the-app-router)",
+    "section_id": "how-can-i-handle-authentication-with-the-app-router-how-can-i-handle-authentication-with-the-app-router",
+    "heading_level": 3,
+    "content": "### [How can I handle authentication with the App Router?](#how-can-i-handle-authentication-with-the-app-router)\n\nHere are some common authentication solutions that support the App Router:\n\n* [NextAuth.js](https://authjs.dev/getting-started/installation?framework=next.js)\n* [Clerk](https://clerk.com/docs/quickstarts/nextjs)\n* [Stack Auth](https://docs.stack-auth.com/getting-started/setup)\n* [Auth0](https://github.com/auth0/nextjs-auth0#app-router)\n* [Stytch](https://stytch.com/docs/sdks/resources/nextjs)\n* [Kinde](https://docs.kinde.com/developer-tools/sdks/backend/nextjs-sdk/)\n* [WorkOS](https://workos.com/docs/user-management/nextjs)\n* Or manually handling sessions or JWTs",
+    "preview": "Here are some common authentication solutions that support the App Router: * [NextAuth.js](https://authjs.dev/getting-started/installation?framework=next.js) * [Clerk](https://clerk.com/docs/quickstarts/nextjs) * [Stack Auth](https://docs.stack-auth.com/getting-started/setup) * [Auth0](https://gith",
+    "url": "https://nextjs.org/docs/app#how-can-i-handle-authentication-with-the-app-router-how-can-i-handle-authentication-with-the-app-router",
+    "position": 6
+  },
+  {
+    "title": "App Router",
+    "section": "[How can I set cookies?](#how-can-i-set-cookies)",
+    "section_id": "how-can-i-set-cookies-how-can-i-set-cookies",
+    "heading_level": 3,
+    "content": "### [How can I set cookies?](#how-can-i-set-cookies)\n\nYou can set cookies in [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#cookies) or [Route Handlers](/docs/app/building-your-application/routing/route-handlers) using the [`cookies`](/docs/app/api-reference/functions/cookies) function.\n\nSince HTTP does not allow setting cookies after streaming starts, you cannot set cookies from a page or layout directly. You can also set cookies from [Middleware](/docs/app/building-your-application/routing/middleware#using-cookies).",
+    "preview": "You can set cookies in [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#cookies) or [Route Handlers](/docs/app/building-your-application/routing/route-handlers) using the [`cookies`](/docs/app/api-reference/functions/cookies) function. Since HTTP does",
+    "url": "https://nextjs.org/docs/app#how-can-i-set-cookies-how-can-i-set-cookies",
+    "position": 7
+  },
+  {
+    "title": "App Router",
+    "section": "[How can I build multi-tenant apps?](#how-can-i-build-multi-tenant-apps)",
+    "section_id": "how-can-i-build-multi-tenant-apps-how-can-i-build-multi-tenant-apps",
+    "heading_level": 3,
+    "content": "### [How can I build multi-tenant apps?](#how-can-i-build-multi-tenant-apps)\n\nIf you are looking to build a single Next.js application that serves multiple tenants, we have [built an example](https://vercel.com/templates/next.js/platforms-starter-kit) showing our recommended architecture.",
+    "preview": "If you are looking to build a single Next.js application that serves multiple tenants, we have [built an example](https://vercel.com/templates/next.js/platforms-starter-kit) showing our recommended architecture.",
+    "url": "https://nextjs.org/docs/app#how-can-i-build-multi-tenant-apps-how-can-i-build-multi-tenant-apps",
+    "position": 8
+  },
+  {
+    "title": "App Router",
+    "section": "[How can I invalidate the App Router cache?](#how-can-i-invalidate-the-app-router-cache)",
+    "section_id": "how-can-i-invalidate-the-app-router-cache-how-can-i-invalidate-the-app-router-cache",
+    "heading_level": 3,
+    "content": "### [How can I invalidate the App Router cache?](#how-can-i-invalidate-the-app-router-cache)\n\nThere are multiple layers of caching in Next.js, and thus, multiple ways to invalidate different parts of the cache. [Learn more about caching](/docs/app/building-your-application/caching).",
+    "preview": "There are multiple layers of caching in Next.js, and thus, multiple ways to invalidate different parts of the cache. [Learn more about caching](/docs/app/building-your-application/caching).",
+    "url": "https://nextjs.org/docs/app#how-can-i-invalidate-the-app-router-cache-how-can-i-invalidate-the-app-router-cache",
+    "position": 9
+  },
+  {
+    "title": "App Router",
+    "section": "[Are there any comprehensive, open-source applications built on the App Router?](#are-there-any-comprehensive-open-source-applications-built-on-the-app-router)",
+    "section_id": "are-there-any-comprehensive-open-source-applications-built-on-the-app-router-are-there-any-comprehensive-open-source-applications-built-on-the-app-router",
+    "heading_level": 3,
+    "content": "### [Are there any comprehensive, open-source applications built on the App Router?](#are-there-any-comprehensive-open-source-applications-built-on-the-app-router)\n\nYes. You can view [Next.js Commerce](https://vercel.com/templates/next.js/nextjs-commerce) or the [Platforms Starter Kit](https://vercel.com/templates/next.js/platforms-starter-kit) for two larger examples of using the App Router that are open-source.",
+    "preview": "Yes. You can view [Next.js Commerce](https://vercel.com/templates/next.js/nextjs-commerce) or the [Platforms Starter Kit](https://vercel.com/templates/next.js/platforms-starter-kit) for two larger examples of using the App Router that are open-source.",
+    "url": "https://nextjs.org/docs/app#are-there-any-comprehensive-open-source-applications-built-on-the-app-router-are-there-any-comprehensive-open-source-applications-built-on-the-app-router",
+    "position": 10
+  },
+  {
+    "title": "App Router",
+    "section": "[Learn More](#learn-more)",
+    "section_id": "learn-more-learn-more",
+    "heading_level": 2,
+    "content": "## [Learn More](#learn-more)\n\n* [Routing Fundamentals](/docs/app/building-your-application/routing)\n* [Data Fetching and Caching](/docs/app/building-your-application/data-fetching/fetching)\n* [Incremental Static Regeneration](/docs/app/building-your-application/data-fetching/incremental-static-regeneration)\n* [Forms and Mutations](/docs/app/building-your-application/data-fetching/server-actions-and-mutations)\n* [Caching](/docs/app/building-your-application/caching)\n* [Rendering Fundamentals](/docs/app/building-your-application/rendering)\n* [Server Components](/docs/app/building-your-application/rendering/server-components)\n* [Client Components](/docs/app/building-your-application/rendering/client-components)\n\n[### Getting Started\n\nLearn how to create full-stack web applications with the Next.js App Router.](/docs/app/getting-started)[### Guides\n\nLearn how to implement common UI patterns and use cases using Next.js](/docs/app/guides)[### Building Your Application\n\nLearn how to use Next.js features to build your application.](/docs/app/building-your-application)[### Deep Dive\n\nLearn how Next.js works under the hood.](/docs/app/deep-dive)[### API Reference\n\nNext.js API Reference for the App Router.](/docs/app/api-reference)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Routing Fundamentals](/docs/app/building-your-application/routing) * [Data Fetching and Caching](/docs/app/building-your-application/data-fetching/fetching) * [Incremental Static Regeneration](/docs/app/building-your-application/data-fetching/incremental-static-regeneration) * [Forms and Mutation",
+    "url": "https://nextjs.org/docs/app#learn-more-learn-more",
+    "position": 11
+  }
+]

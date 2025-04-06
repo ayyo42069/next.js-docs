@@ -1,0 +1,62 @@
+[
+  {
+    "title": "logging",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)logging",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)logging",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/logging#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "logging",
+    "section": "logging",
+    "section_id": "logging",
+    "heading_level": 1,
+    "content": "# logging",
+    "preview": "# logging",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/logging#logging",
+    "position": 1
+  },
+  {
+    "title": "logging",
+    "section": "[Options](#options)",
+    "section_id": "options-options",
+    "heading_level": 2,
+    "content": "## [Options](#options)",
+    "preview": "## [Options](#options)",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/logging#options-options",
+    "position": 2
+  },
+  {
+    "title": "logging",
+    "section": "[Fetching](#fetching)",
+    "section_id": "fetching-fetching",
+    "heading_level": 3,
+    "content": "### [Fetching](#fetching)\n\nYou can configure the logging level and whether the full URL is logged to the console when running Next.js in development mode.\n\nCurrently, `logging` only applies to data fetching using the `fetch` API. It does not yet apply to other logs inside of Next.js.\n\nnext.config.js\n\n```\nmodule.exports = {\n  logging: {\n    fetches: {\n      fullUrl: true,\n    },\n  },\n}\n```\n\nAny `fetch` requests that are restored from the [Server Components HMR cache](/docs/app/api-reference/config/next-config-js/serverComponentsHmrCache) are not logged by default. However, this can be enabled by setting `logging.fetches.hmrRefreshes` to `true`.\n\nnext.config.js\n\n```\nmodule.exports = {\n  logging: {\n    fetches: {\n      hmrRefreshes: true,\n    },\n  },\n}\n```",
+    "preview": "You can configure the logging level and whether the full URL is logged to the console when running Next.js in development mode. Currently, `logging` only applies to data fetching using the `fetch` API. It does not yet apply to other logs inside of Next.js. next.config.js [Code Block] Any `fetch`",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/logging#fetching-fetching",
+    "position": 3
+  },
+  {
+    "title": "logging",
+    "section": "[Incoming Requests](#incoming-requests)",
+    "section_id": "incoming-requests-incoming-requests",
+    "heading_level": 3,
+    "content": "### [Incoming Requests](#incoming-requests)\n\nBy default all the incoming requests will be logged in the console during development. You can use the `incomingRequests` option to decide which requests to ignore.\nSince this is only logged in development, this option doesn't affect production builds.\n\nnext.config.js\n\n```\nmodule.exports = {\n  logging: {\n    incomingRequests: {\n      ignore: [/\\api\\/v1\\/health/],\n    },\n  },\n}\n```\n\nOr you can disable incoming request logging by setting `incomingRequests` to `false`.\n\nnext.config.js\n\n```\nmodule.exports = {\n  logging: {\n    incomingRequests: false,\n  },\n}\n```",
+    "preview": "By default all the incoming requests will be logged in the console during development. You can use the `incomingRequests` option to decide which requests to ignore. Since this is only logged in development, this option doesn't affect production builds. next.config.js [Code Block] Or you can disab",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/logging#incoming-requests-incoming-requests",
+    "position": 4
+  },
+  {
+    "title": "logging",
+    "section": "[Disabling Logging](#disabling-logging)",
+    "section_id": "disabling-logging-disabling-logging",
+    "heading_level": 3,
+    "content": "### [Disabling Logging](#disabling-logging)\n\nIn addition, you can disable the development logging by setting `logging` to `false`.\n\nnext.config.js\n\n```\nmodule.exports = {\n  logging: false,\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "In addition, you can disable the development logging by setting `logging` to `false`. next.config.js [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/logging#disabling-logging-disabling-logging",
+    "position": 5
+  }
+]

@@ -1,0 +1,104 @@
+---
+title: "reactCompiler"
+description: "Menu..."
+url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/reactCompiler"
+slug: "/docs/app/api-reference/config/next-config-js/reactCompiler"
+date_crawled: "2025-04-06T12:10:38.172735+00:00"
+---
+
+**Path**: /docs/app/api-reference/config/next-config-js/reactCompiler
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)reactCompiler
+
+# reactCompiler
+
+This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
+
+Next.js 15 introduced support for the [React Compiler](https://react.dev/learn/react-compiler). The compiler improves performance by automatically optimizing component rendering. This reduces the amount of manual memoization developers have to do through APIs such as `useMemo` and `useCallback`.
+
+To use it, upgrade to Next.js 15, install the `babel-plugin-react-compiler`:
+
+Terminal
+
+```
+npm install babel-plugin-react-compiler
+```
+
+Then, add `experimental.reactCompiler` option in `next.config.js`:
+
+next.config.ts
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+import type { NextConfig } from 'next'
+ 
+const nextConfig: NextConfig = {
+  experimental: {
+    reactCompiler: true,
+  },
+}
+ 
+export default nextConfig
+```
+
+> **Note:** The React Compiler is currently only possible to use in Next.js through a Babel plugin. This will opt-out of Next.js's default [Rust-based compiler](/docs/architecture/nextjs-compiler), which could result in slower build times. We are working on support for the React Compiler as our default compiler.
+
+## [Annotations](#annotations)
+
+You can configure the compiler to run in "opt-in" mode as follows:
+
+next.config.ts
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+import type { NextConfig } from 'next'
+ 
+const nextConfig: NextConfig = {
+  experimental: {
+    reactCompiler: {
+      compilationMode: 'annotation',
+    },
+  },
+}
+ 
+export default nextConfig
+```
+
+Then, you can annotate specific components or hooks with the `"use memo"` directive from React to opt-in:
+
+app/page.tsx
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+export default function Page() {
+  'use memo'
+  // ...
+}
+```
+
+> **Note:** You can also use the `"use no memo"` directive from React for the opposite effect, to opt-out a component or hook.
+
+Was this helpful?
+
+supported.
+
+Send

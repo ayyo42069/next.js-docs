@@ -1,0 +1,82 @@
+[
+  {
+    "title": "use server",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Directives](/docs/app/api-reference/directives)use server",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Directives](/docs/app/api-reference/directives)use server",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-server#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "use server",
+    "section": "use server",
+    "section_id": "use-server",
+    "heading_level": 1,
+    "content": "# use server\n\nThe `use server` directive designates a function or file to be executed on the **server side**. It can be used at the top of a file to indicate that all functions in the file are server-side, or inline at the top of a function to mark the function as a [Server Function](https://19.react.dev/reference/rsc/server-functions). This is a React feature.",
+    "preview": "The `use server` directive designates a function or file to be executed on the **server side**. It can be used at the top of a file to indicate that all functions in the file are server-side, or inline at the top of a function to mark the function as a [Server Function](https://19.react.dev/referenc",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-server#use-server",
+    "position": 1
+  },
+  {
+    "title": "use server",
+    "section": "[Using `use server` at the top of a file](#using-use-server-at-the-top-of-a-file)",
+    "section_id": "using-use-server-at-the-top-of-a-file-using-use-server-at-the-top-of-a-file",
+    "heading_level": 2,
+    "content": "## [Using `use server` at the top of a file](#using-use-server-at-the-top-of-a-file)\n\nThe following example shows a file with a `use server` directive at the top. All functions in the file are executed on the server.\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\nimport { db } from '@/lib/db' // Your database client\n \nexport async function createUser(data: { name: string; email: string }) {\n  const user = await db.user.create({ data })\n  return user\n}\n```",
+    "preview": "The following example shows a file with a `use server` directive at the top. All functions in the file are executed on the server. app/actions.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-server#using-use-server-at-the-top-of-a-file-using-use-server-at-the-top-of-a-file",
+    "position": 2
+  },
+  {
+    "title": "use server",
+    "section": "[Using Server Functions in a Client Component](#using-server-functions-in-a-client-component)",
+    "section_id": "using-server-functions-in-a-client-component-using-server-functions-in-a-client-component",
+    "heading_level": 3,
+    "content": "### [Using Server Functions in a Client Component](#using-server-functions-in-a-client-component)\n\nTo use Server Functions in Client Components you need to create your Server Functions in a dedicated file using the `use server` directive at the top of the file. These Server Functions can then be imported into Client and Server Components and executed.\n\nAssuming you have a `fetchUsers` Server Function in `actions.ts`:\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\nimport { db } from '@/lib/db' // Your database client\n \nexport async function fetchUsers() {\n  const users = await db.user.findMany()\n  return users\n}\n```\n\nThen you can import the `fetchUsers` Server Function into a Client Component and execute it on the client-side.\n\napp/components/my-button.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\nimport { fetchUsers } from '../actions'\n \nexport default function MyButton() {\n  return <button onClick={() => fetchUsers()}>Fetch Users</button>\n}\n```",
+    "preview": "To use Server Functions in Client Components you need to create your Server Functions in a dedicated file using the `use server` directive at the top of the file. These Server Functions can then be imported into Client and Server Components and executed. Assuming you have a `fetchUsers` Server Func",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-server#using-server-functions-in-a-client-component-using-server-functions-in-a-client-component",
+    "position": 3
+  },
+  {
+    "title": "use server",
+    "section": "[Using `use server` inline](#using-use-server-inline)",
+    "section_id": "using-use-server-inline-using-use-server-inline",
+    "heading_level": 2,
+    "content": "## [Using `use server` inline](#using-use-server-inline)\n\nIn the following example, `use server` is used inline at the top of a function to mark it as a [Server Function](https://19.react.dev/reference/rsc/server-functions):\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { db } from '@/lib/db' // Your database client\n \nexport default function UserList() {\n  async function fetchUsers() {\n    'use server'\n    const users = await db.user.findMany()\n    return users\n  }\n \n  return <button onClick={() => fetchUsers()}>Fetch Users</button>\n}\n```",
+    "preview": "In the following example, `use server` is used inline at the top of a function to mark it as a [Server Function](https://19.react.dev/reference/rsc/server-functions): app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-server#using-use-server-inline-using-use-server-inline",
+    "position": 4
+  },
+  {
+    "title": "use server",
+    "section": "[Security considerations](#security-considerations)",
+    "section_id": "security-considerations-security-considerations",
+    "heading_level": 2,
+    "content": "## [Security considerations](#security-considerations)\n\nWhen using the `use server` directive, it's important to ensure that all server-side logic is secure and that sensitive data remains protected.",
+    "preview": "When using the `use server` directive, it's important to ensure that all server-side logic is secure and that sensitive data remains protected.",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-server#security-considerations-security-considerations",
+    "position": 5
+  },
+  {
+    "title": "use server",
+    "section": "[Authentication and authorization](#authentication-and-authorization)",
+    "section_id": "authentication-and-authorization-authentication-and-authorization",
+    "heading_level": 3,
+    "content": "### [Authentication and authorization](#authentication-and-authorization)\n\nAlways authenticate and authorize users before performing sensitive server-side operations.\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { db } from '@/lib/db' // Your database client\nimport { authenticate } from '@/lib/auth' // Your authentication library\n \nexport async function createUser(\n  data: { name: string; email: string },\n  token: string\n) {\n  const user = authenticate(token)\n  if (!user) {\n    throw new Error('Unauthorized')\n  }\n  const newUser = await db.user.create({ data })\n  return newUser\n}\n```",
+    "preview": "Always authenticate and authorize users before performing sensitive server-side operations. app/actions.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-server#authentication-and-authorization-authentication-and-authorization",
+    "position": 6
+  },
+  {
+    "title": "use server",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)\n\nSee the [React documentation](https://react.dev/reference/rsc/use-server) for more information on `use server`.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "See the [React documentation](https://react.dev/reference/rsc/use-server) for more information on `use server`. Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-server#reference-reference",
+    "position": 7
+  }
+]

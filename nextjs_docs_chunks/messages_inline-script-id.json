@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Inline script id",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)Inline script id",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)Inline script id",
+    "url": "https://nextjs.org/docs/messages/inline-script-id#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Inline script id",
+    "section": "Inline script id",
+    "section_id": "inline-script-id",
+    "heading_level": 1,
+    "content": "# Inline script id\n\n> Enforce `id` attribute on `next/script` components with inline content.",
+    "preview": "> Enforce `id` attribute on `next/script` components with inline content.",
+    "url": "https://nextjs.org/docs/messages/inline-script-id#inline-script-id",
+    "position": 1
+  },
+  {
+    "title": "Inline script id",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\n`next/script` components with inline content require an `id` attribute to be defined to track and optimize the script.",
+    "preview": "`next/script` components with inline content require an `id` attribute to be defined to track and optimize the script.",
+    "url": "https://nextjs.org/docs/messages/inline-script-id#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "Inline script id",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nAdd an `id` attribute to the `next/script` component.\n\npages/\\_app.js\n\n```\nimport Script from 'next/script'\n \nexport default function App({ Component, pageProps }) {\n  return (\n    <>\n      <Script id=\"my-script\">{`console.log('Hello world!');`}</Script>\n      <Component {...pageProps} />\n    </>\n  )\n}\n```",
+    "preview": "Add an `id` attribute to the `next/script` component. pages/\\_app.js ``` import Script from 'next/script' export default function App({ Component, pageProps }) { return ( <> <Script id=\"my-script\">{`console.log('Hello world!');`}</Script> <Component {...pageProps} /> </>",
+    "url": "https://nextjs.org/docs/messages/inline-script-id#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "Inline script id",
+    "section": "[Useful links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful links](#useful-links)\n\n* [Docs for Next.js Script component](/docs/pages/building-your-application/optimizing/scripts)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Docs for Next.js Script component](/docs/pages/building-your-application/optimizing/scripts) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/inline-script-id#useful-links-useful-links",
+    "position": 4
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "title": "File Conventions",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[API Reference](/docs/app/api-reference)File Conventions",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[API Reference](/docs/app/api-reference)File Conventions",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "File Conventions",
+    "section": "File Conventions",
+    "section_id": "file-conventions",
+    "heading_level": 1,
+    "content": "# File Conventions\n\n[### default.js\n\nAPI Reference for the default.js file.](/docs/app/api-reference/file-conventions/default)[### error.js\n\nAPI reference for the error.js special file.](/docs/app/api-reference/file-conventions/error)[### forbidden.js\n\nAPI reference for the forbidden.js special file.](/docs/app/api-reference/file-conventions/forbidden)[### instrumentation.js\n\nAPI reference for the instrumentation.js file.](/docs/app/api-reference/file-conventions/instrumentation)[### instrumentation-client.js\n\nLearn how to add client-side instrumentation to track and monitor your Next.js application's frontend performance.](/docs/app/api-reference/file-conventions/instrumentation-client)[### layout.js\n\nAPI reference for the layout.js file.](/docs/app/api-reference/file-conventions/layout)[### loading.js\n\nAPI reference for the loading.js file.](/docs/app/api-reference/file-conventions/loading)[### mdx-components.js\n\nAPI reference for the mdx-components.js file.](/docs/app/api-reference/file-conventions/mdx-components)[### middleware.js\n\nAPI reference for the middleware.js file.](/docs/app/api-reference/file-conventions/middleware)[### not-found.js\n\nAPI reference for the not-found.js file.](/docs/app/api-reference/file-conventions/not-found)[### page.js\n\nAPI reference for the page.js file.](/docs/app/api-reference/file-conventions/page)[### route.js\n\nAPI reference for the route.js special file.](/docs/app/api-reference/file-conventions/route)[### Route Segment Config\n\nLearn about how to configure options for Next.js route segments.](/docs/app/api-reference/file-conventions/route-segment-config)[### template.js\n\nAPI Reference for the template.js file.](/docs/app/api-reference/file-conventions/template)[### unauthorized.js\n\nAPI reference for the unauthorized.js special file.](/docs/app/api-reference/file-conventions/unauthorized)[### Metadata Files\n\nAPI documentation for the metadata file conventions.](/docs/app/api-reference/file-conventions/metadata)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### default.js API Reference for the default.js file.](/docs/app/api-reference/file-conventions/default)[### error.js API reference for the error.js special file.](/docs/app/api-reference/file-conventions/error)[### forbidden.js API reference for the forbidden.js special file.](/docs/app/api-ref",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions#file-conventions",
+    "position": 1
+  }
+]

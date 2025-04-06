@@ -1,0 +1,52 @@
+[
+  {
+    "title": "template.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)template.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)template.js",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/template#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "template.js",
+    "section": "template.js",
+    "section_id": "template-js",
+    "heading_level": 1,
+    "content": "# template.js\n\nA **template** file is similar to a [layout](/docs/app/building-your-application/routing/layouts-and-templates#layouts) in that it wraps a layout or page. Unlike layouts that persist across routes and maintain state, templates are given a unique key, meaning children Client Components reset their state on navigation.\n\napp/template.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Template({ children }: { children: React.ReactNode }) {\n  return <div>{children}</div>\n}\n```\n\n[Image: template.js special file][Image: template.js special file]\n\nWhile less common, you might choose to use a template over a layout if you want:\n\n* Features that rely on `useEffect` (e.g logging page views) and `useState` (e.g a per-page feedback form).\n* To change the default framework behavior. For example, Suspense Boundaries inside layouts only show the fallback the first time the Layout is loaded and not when switching pages. For templates, the fallback is shown on each navigation.",
+    "preview": "A **template** file is similar to a [layout](/docs/app/building-your-application/routing/layouts-and-templates#layouts) in that it wraps a layout or page. Unlike layouts that persist across routes and maintain state, templates are given a unique key, meaning children Client Components reset their st",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/template#template-js",
+    "position": 1
+  },
+  {
+    "title": "template.js",
+    "section": "[Props](#props)",
+    "section_id": "props-props",
+    "heading_level": 2,
+    "content": "## [Props](#props)",
+    "preview": "## [Props](#props)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/template#props-props",
+    "position": 2
+  },
+  {
+    "title": "template.js",
+    "section": "[`children` (required)](#children-required)",
+    "section_id": "children-required-children-required",
+    "heading_level": 3,
+    "content": "### [`children` (required)](#children-required)\n\nTemplate accepts a `children` prop. For example:\n\nOutput\n\n```\n<Layout>\n  {/* Note that the template is automatically given a unique key. */}\n  <Template key={routeParam}>{children}</Template>\n</Layout>\n```\n\n> **Good to know**:\n>\n> * By default, `template` is a [Server Component](/docs/app/building-your-application/rendering/server-components), but can also be used as a [Client Component](/docs/app/building-your-application/rendering/client-components) through the `\"use client\"` directive.\n> * When a user navigates between routes that share a `template`, a new instance of the component is mounted, DOM elements are recreated, state is **not** preserved in Client Components, and effects are re-synchronized.",
+    "preview": "Template accepts a `children` prop. For example: Output [Code Block] > **Good to know**: > > * By default, `template` is a [Server Component](/docs/app/building-your-application/rendering/server-components), but can also be used as a [Client Component](/docs/app/building-your-application/renderin",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/template#children-required-children-required",
+    "position": 3
+  },
+  {
+    "title": "template.js",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.0.0` | `template` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.0.0` | `template` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/template#version-history-version-history",
+    "position": 4
+  }
+]

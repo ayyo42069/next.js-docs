@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Pages Router",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Introduction](/docs)Pages Router",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Introduction](/docs)Pages Router",
+    "url": "https://nextjs.org/docs/pages#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Pages Router",
+    "section": "Pages Router",
+    "section_id": "pages-router",
+    "heading_level": 1,
+    "content": "# Pages Router\n\nBefore Next.js 13, the Pages Router was the main way to create routes in Next.js. It used an intuitive file-system router to map each file to a route. The Pages Router is still supported in newer versions of Next.js, but we recommend migrating to the new [App Router](/docs/app) to leverage React's latest features.\n\nUse this section of the documentation for existing applications that use the Pages Router.\n\n[### Getting Started\n\nLearn how to create full-stack web applications with Next.js with the Pages Router.](/docs/pages/getting-started)[### Building Your Application\n\nLearn how to use Next.js features to build your application.](/docs/pages/building-your-application)[### API Reference\n\nNext.js API Reference for the Pages Router.](/docs/pages/api-reference)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Before Next.js 13, the Pages Router was the main way to create routes in Next.js. It used an intuitive file-system router to map each file to a route. The Pages Router is still supported in newer versions of Next.js, but we recommend migrating to the new [App Router](/docs/app) to leverage React's l",
+    "url": "https://nextjs.org/docs/pages#pages-router",
+    "position": 1
+  }
+]

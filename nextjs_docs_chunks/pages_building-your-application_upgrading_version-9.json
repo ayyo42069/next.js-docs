@@ -1,0 +1,132 @@
+[
+  {
+    "title": "Upgrading to Version 9",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Upgrading](/docs/pages/building-your-application/upgrading)Version 9",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Upgrading](/docs/pages/building-your-application/upgrading)Version 9",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "Upgrading to Version 9",
+    "section_id": "upgrading-to-version-9",
+    "heading_level": 1,
+    "content": "# Upgrading to Version 9\n\nTo upgrade to version 9, run the following command:\n\nTerminal\n\n```\nnpm i next@9\n```\n\nTerminal\n\n```\nyarn add next@9\n```\n\nTerminal\n\n```\npnpm up next@9\n```\n\nTerminal\n\n```\nbun add next@9\n```\n\n> **Good to know:** If you are using TypeScript, ensure you also upgrade `@types/react` and `@types/react-dom` to their corresponding versions.",
+    "preview": "To upgrade to version 9, run the following command: Terminal [Code Block] Terminal [Code Block] Terminal [Code Block] Terminal [Code Block] > **Good to know:** If you are using TypeScript, ensure you also upgrade `@types/react` and `@types/react-dom` to their corresponding versions.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#upgrading-to-version-9",
+    "position": 1
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[Production Deployment on Vercel](#production-deployment-on-vercel)",
+    "section_id": "production-deployment-on-vercel-production-deployment-on-vercel",
+    "heading_level": 2,
+    "content": "## [Production Deployment on Vercel](#production-deployment-on-vercel)\n\nIf you previously configured `routes` in your `vercel.json` file for dynamic routes, these rules can be removed when leveraging Next.js 9's new [Dynamic Routing feature](/docs/pages/building-your-application/routing/dynamic-routes).\n\nNext.js 9's dynamic routes are **automatically configured on [Vercel](https://vercel.com/)** and do not require any `vercel.json` customization.\n\nYou can read more about [Dynamic Routing here](/docs/pages/building-your-application/routing/dynamic-routes).",
+    "preview": "If you previously configured `routes` in your `vercel.json` file for dynamic routes, these rules can be removed when leveraging Next.js 9's new [Dynamic Routing feature](/docs/pages/building-your-application/routing/dynamic-routes). Next.js 9's dynamic routes are **automatically configured on [Verc",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#production-deployment-on-vercel-production-deployment-on-vercel",
+    "position": 2
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[Check your Custom App File (`pages/_app.js`)](#check-your-custom-app-file-pages_appjs)",
+    "section_id": "check-your-custom-app-file-pages-app-js-check-your-custom-app-file-pages-appjs",
+    "heading_level": 2,
+    "content": "## [Check your Custom App File (`pages/_app.js`)](#check-your-custom-app-file-pages_appjs)\n\nIf you previously copied the [Custom `<App>`](/docs/pages/building-your-application/routing/custom-app) example, you may be able to remove your `getInitialProps`.\n\nRemoving `getInitialProps` from `pages/_app.js` (when possible) is important to leverage new Next.js features!\n\nThe following `getInitialProps` does nothing and may be removed:\n\n```\nclass MyApp extends App {\n  // Remove me, I do nothing!\n  static async getInitialProps({ Component, ctx }) {\n    let pageProps = {}\n \n    if (Component.getInitialProps) {\n      pageProps = await Component.getInitialProps(ctx)\n    }\n \n    return { pageProps }\n  }\n \n  render() {\n    // ... etc\n  }\n}\n```",
+    "preview": "If you previously copied the [Custom `<App>`](/docs/pages/building-your-application/routing/custom-app) example, you may be able to remove your `getInitialProps`. Removing `getInitialProps` from `pages/_app.js` (when possible) is important to leverage new Next.js features! The following `getInitia",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#check-your-custom-app-file-pages-app-js-check-your-custom-app-file-pages-appjs",
+    "position": 3
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[Breaking Changes](#breaking-changes)",
+    "section_id": "breaking-changes-breaking-changes",
+    "heading_level": 2,
+    "content": "## [Breaking Changes](#breaking-changes)",
+    "preview": "## [Breaking Changes](#breaking-changes)",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#breaking-changes-breaking-changes",
+    "position": 4
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[`@zeit/next-typescript` is no longer necessary](#zeitnext-typescript-is-no-longer-necessary)",
+    "section_id": "zeit-next-typescript-is-no-longer-necessary-zeitnext-typescript-is-no-longer-necessary",
+    "heading_level": 3,
+    "content": "### [`@zeit/next-typescript` is no longer necessary](#zeitnext-typescript-is-no-longer-necessary)\n\nNext.js will now ignore usage `@zeit/next-typescript` and warn you to remove it. Please remove this plugin from your `next.config.js`.\n\nRemove references to `@zeit/next-typescript/babel` from your custom `.babelrc` (if present).\n\nThe usage of [`fork-ts-checker-webpack-plugin`](https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues) should also be removed from your `next.config.js`.\n\nTypeScript Definitions are published with the `next` package, so you need to uninstall `@types/next` as they would conflict.\n\nThe following types are different:\n\n> This list was created by the community to help you upgrade, if you find other differences please send a pull-request to this list to help other users.\n\nFrom:\n\n```\nimport { NextContext } from 'next'\nimport { NextAppContext, DefaultAppIProps } from 'next/app'\nimport { NextDocumentContext, DefaultDocumentIProps } from 'next/document'\n```\n\nto\n\n```\nimport { NextPageContext } from 'next'\nimport { AppContext, AppInitialProps } from 'next/app'\nimport { DocumentContext, DocumentInitialProps } from 'next/document'\n```",
+    "preview": "Next.js will now ignore usage `@zeit/next-typescript` and warn you to remove it. Please remove this plugin from your `next.config.js`. Remove references to `@zeit/next-typescript/babel` from your custom `.babelrc` (if present). The usage of [`fork-ts-checker-webpack-plugin`](https://github.com/Rea",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#zeit-next-typescript-is-no-longer-necessary-zeitnext-typescript-is-no-longer-necessary",
+    "position": 5
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[The `config` key is now an export on a page](#the-config-key-is-now-an-export-on-a-page)",
+    "section_id": "the-config-key-is-now-an-export-on-a-page-the-config-key-is-now-an-export-on-a-page",
+    "heading_level": 3,
+    "content": "### [The `config` key is now an export on a page](#the-config-key-is-now-an-export-on-a-page)\n\nYou may no longer export a custom variable named `config` from a page (i.e. `export { config }` / `export const config ...`).\nThis exported variable is now used to specify page-level Next.js configuration like Opt-in AMP and API Route features.\n\nYou must rename a non-Next.js-purposed `config` export to something different.",
+    "preview": "You may no longer export a custom variable named `config` from a page (i.e. `export { config }` / `export const config ...`). This exported variable is now used to specify page-level Next.js configuration like Opt-in AMP and API Route features. You must rename a non-Next.js-purposed `config` export",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#the-config-key-is-now-an-export-on-a-page-the-config-key-is-now-an-export-on-a-page",
+    "position": 6
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[`next/dynamic` no longer renders \"loading...\" by default while loading](#nextdynamic-no-longer-renders-loading-by-default-while-loading)",
+    "section_id": "next-dynamic-no-longer-renders-loading-by-default-while-loading-nextdynamic-no-longer-renders-loading-by-default-while-loading",
+    "heading_level": 3,
+    "content": "### [`next/dynamic` no longer renders \"loading...\" by default while loading](#nextdynamic-no-longer-renders-loading-by-default-while-loading)\n\nDynamic components will not render anything by default while loading. You can still customize this behavior by setting the `loading` property:\n\n```\nimport dynamic from 'next/dynamic'\n \nconst DynamicComponentWithCustomLoading = dynamic(\n  () => import('../components/hello2'),\n  {\n    loading: () => <p>Loading</p>,\n  }\n)\n```",
+    "preview": "Dynamic components will not render anything by default while loading. You can still customize this behavior by setting the `loading` property: [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#next-dynamic-no-longer-renders-loading-by-default-while-loading-nextdynamic-no-longer-renders-loading-by-default-while-loading",
+    "position": 7
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[`withAmp` has been removed in favor of an exported configuration object](#withamp-has-been-removed-in-favor-of-an-exported-configuration-object)",
+    "section_id": "withamp-has-been-removed-in-favor-of-an-exported-configuration-object-withamp-has-been-removed-in-favor-of-an-exported-configuration-object",
+    "heading_level": 3,
+    "content": "### [`withAmp` has been removed in favor of an exported configuration object](#withamp-has-been-removed-in-favor-of-an-exported-configuration-object)\n\nNext.js now has the concept of page-level configuration, so the `withAmp` higher-order component has been removed for consistency.\n\nThis change can be **automatically migrated by running the following commands in the root of your Next.js project:**\n\nTerminal\n\n```\ncurl -L https://github.com/vercel/next-codemod/archive/master.tar.gz | tar -xz --strip=2 next-codemod-master/transforms/withamp-to-config.js npx jscodeshift -t ./withamp-to-config.js pages/**/*.js\n```\n\nTo perform this migration by hand, or view what the codemod will produce, see below:\n\n**Before**\n\n```\nimport { withAmp } from 'next/amp'\n \nfunction Home() {\n  return <h1>My AMP Page</h1>\n}\n \nexport default withAmp(Home)\n// or\nexport default withAmp(Home, { hybrid: true })\n```\n\n**After**\n\n```\nexport default function Home() {\n  return <h1>My AMP Page</h1>\n}\n \nexport const config = {\n  amp: true,\n  // or\n  amp: 'hybrid',\n}\n```",
+    "preview": "Next.js now has the concept of page-level configuration, so the `withAmp` higher-order component has been removed for consistency. This change can be **automatically migrated by running the following commands in the root of your Next.js project:** Terminal [Code Block] To perform this migration",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#withamp-has-been-removed-in-favor-of-an-exported-configuration-object-withamp-has-been-removed-in-favor-of-an-exported-configuration-object",
+    "position": 8
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[`next export` no longer exports pages as `index.html`](#next-export-no-longer-exports-pages-as-indexhtml)",
+    "section_id": "next-export-no-longer-exports-pages-as-index-html-next-export-no-longer-exports-pages-as-indexhtml",
+    "heading_level": 3,
+    "content": "### [`next export` no longer exports pages as `index.html`](#next-export-no-longer-exports-pages-as-indexhtml)\n\nPreviously, exporting `pages/about.js` would result in `out/about/index.html`. This behavior has been changed to result in `out/about.html`.\n\nYou can revert to the previous behavior by creating a `next.config.js` with the following content:\n\nnext.config.js\n\n```\nmodule.exports = {\n  trailingSlash: true,\n}\n```",
+    "preview": "Previously, exporting `pages/about.js` would result in `out/about/index.html`. This behavior has been changed to result in `out/about.html`. You can revert to the previous behavior by creating a `next.config.js` with the following content: next.config.js [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#next-export-no-longer-exports-pages-as-index-html-next-export-no-longer-exports-pages-as-indexhtml",
+    "position": 9
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[`pages/api/` is treated differently](#pagesapi-is-treated-differently)",
+    "section_id": "pages-api-is-treated-differently-pagesapi-is-treated-differently",
+    "heading_level": 3,
+    "content": "### [`pages/api/` is treated differently](#pagesapi-is-treated-differently)\n\nPages in `pages/api/` are now considered [API Routes](https://nextjs.org/blog/next-9#api-routes).\nPages in this directory will no longer contain a client-side bundle.",
+    "preview": "Pages in `pages/api/` are now considered [API Routes](https://nextjs.org/blog/next-9#api-routes). Pages in this directory will no longer contain a client-side bundle.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#pages-api-is-treated-differently-pagesapi-is-treated-differently",
+    "position": 10
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[Deprecated Features](#deprecated-features)",
+    "section_id": "deprecated-features-deprecated-features",
+    "heading_level": 2,
+    "content": "## [Deprecated Features](#deprecated-features)",
+    "preview": "## [Deprecated Features](#deprecated-features)",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#deprecated-features-deprecated-features",
+    "position": 11
+  },
+  {
+    "title": "Upgrading to Version 9",
+    "section": "[`next/dynamic` has deprecated loading multiple modules at once](#nextdynamic-has-deprecated-loading-multiple-modules-at-once)",
+    "section_id": "next-dynamic-has-deprecated-loading-multiple-modules-at-once-nextdynamic-has-deprecated-loading-multiple-modules-at-once",
+    "heading_level": 3,
+    "content": "### [`next/dynamic` has deprecated loading multiple modules at once](#nextdynamic-has-deprecated-loading-multiple-modules-at-once)\n\nThe ability to load multiple modules at once has been deprecated in `next/dynamic` to be closer to React's implementation (`React.lazy` and `Suspense`).\n\nUpdating code that relies on this behavior is relatively straightforward! We've provided an example of a before/after to help you migrate your application:\n\n**Before**\n\n```\nimport dynamic from 'next/dynamic'\n \nconst HelloBundle = dynamic({\n  modules: () => {\n    const components = {\n      Hello1: () => import('../components/hello1').then((m) => m.default),\n      Hello2: () => import('../components/hello2').then((m) => m.default),\n    }\n \n    return components\n  },\n  render: (props, { Hello1, Hello2 }) => (\n    <div>\n      <h1>{props.title}</h1>\n      <Hello1 />\n      <Hello2 />\n    </div>\n  ),\n})\n \nfunction DynamicBundle() {\n  return <HelloBundle title=\"Dynamic Bundle\" />\n}\n \nexport default DynamicBundle\n```\n\n**After**\n\n```\nimport dynamic from 'next/dynamic'\n \nconst Hello1 = dynamic(() => import('../components/hello1'))\nconst Hello2 = dynamic(() => import('../components/hello2'))\n \nfunction HelloBundle({ title }) {\n  return (\n    <div>\n      <h1>{title}</h1>\n      <Hello1 />\n      <Hello2 />\n    </div>\n  )\n}\n \nfunction DynamicBundle() {\n  return <HelloBundle title=\"Dynamic Bundle\" />\n}\n \nexport default DynamicBundle\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The ability to load multiple modules at once has been deprecated in `next/dynamic` to be closer to React's implementation (`React.lazy` and `Suspense`). Updating code that relies on this behavior is relatively straightforward! We've provided an example of a before/after to help you migrate your app",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-9#next-dynamic-has-deprecated-loading-multiple-modules-at-once-nextdynamic-has-deprecated-loading-multiple-modules-at-once",
+    "position": 12
+  }
+]

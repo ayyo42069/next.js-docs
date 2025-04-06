@@ -1,0 +1,52 @@
+[
+  {
+    "title": "No img element",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No img element",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No img element",
+    "url": "https://nextjs.org/docs/messages/no-img-element#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No img element",
+    "section": "No img element",
+    "section_id": "no-img-element",
+    "heading_level": 1,
+    "content": "# No img element\n\n> Prevent usage of `<img>` element due to slower LCP and higher bandwidth.",
+    "preview": "> Prevent usage of `<img>` element due to slower LCP and higher bandwidth.",
+    "url": "https://nextjs.org/docs/messages/no-img-element#no-img-element",
+    "position": 1
+  },
+  {
+    "title": "No img element",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nAn `<img>` element was used to display an image instead of `<Image />` from `next/image`.",
+    "preview": "An `<img>` element was used to display an image instead of `<Image />` from `next/image`.",
+    "url": "https://nextjs.org/docs/messages/no-img-element#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No img element",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\n1. Use [`next/image`](/docs/pages/api-reference/components/image) to improve performance with automatic [Image Optimization](/docs/pages/building-your-application/optimizing/images).\n\n> **Note**: If deploying to a [managed hosting provider](/docs/pages/building-your-application/deploying), remember to check provider pricing since optimized images might be charged differently than the original images.\n>\n> Common image optimization platform pricing:\n>\n> * [Vercel pricing](https://vercel.com/pricing)\n> * [Cloudinary pricing](https://cloudinary.com/pricing)\n> * [imgix pricing](https://imgix.com/pricing)\n\n> **Note**: If self-hosting, remember to install [`sharp`](https://www.npmjs.com/package/sharp) and check if your server has enough storage to cache the optimized images.\n\npages/index.js\n\n```\nimport Image from 'next/image'\n \nfunction Home() {\n  return (\n    <Image\n      src=\"https://example.com/hero.jpg\"\n      alt=\"Landscape picture\"\n      width={800}\n      height={500}\n    />\n  )\n}\n \nexport default Home\n```\n\n2. If you would like to use `next/image` features such as blur-up placeholders but disable Image Optimization, you can do so using [unoptimized](/docs/pages/api-reference/components/image#unoptimized):\n\npages/index.js\n\n```\nimport Image from 'next/image'\n \nconst UnoptimizedImage = (props) => {\n  return <Image {...props} unoptimized />\n}\n```\n\n3. You can also use the `<picture>` element with the nested `<img>` element:\n\npages/index.js\n\n```\nfunction Home() {\n  return (\n    <picture>\n      <source srcSet=\"https://example.com/hero.avif\" type=\"image/avif\" />\n      <source srcSet=\"https://example.com/hero.webp\" type=\"image/webp\" />\n      <img\n        src=\"https://example.com/hero.jpg\"\n        alt=\"Landscape picture\"\n        width={800}\n        height={500}\n      />\n    </picture>\n  )\n}\n```\n\n4. You can use a [custom image loader](/docs/pages/building-your-application/optimizing/images#loaders) to optimize images. Set [loaderFile](/docs/pages/api-reference/components/image#loaderfile) to the path of your custom loader.\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    loader: 'custom',\n    loaderFile: './my/image/loader.js',\n  },\n}\n```",
+    "preview": "1. Use [`next/image`](/docs/pages/api-reference/components/image) to improve performance with automatic [Image Optimization](/docs/pages/building-your-application/optimizing/images). > **Note**: If deploying to a [managed hosting provider](/docs/pages/building-your-application/deploying), remember",
+    "url": "https://nextjs.org/docs/messages/no-img-element#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No img element",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Image Component and Image Optimization](/docs/pages/building-your-application/optimizing/images)\n* [next/image API Reference](/docs/pages/api-reference/components/image)\n* [Largest Contentful Paint (LCP)](/learn/seo/web-performance/lcp)\n* [Next.js config loaderFile option](/docs/pages/api-reference/components/image#loaderfile)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Image Component and Image Optimization](/docs/pages/building-your-application/optimizing/images) * [next/image API Reference](/docs/pages/api-reference/components/image) * [Largest Contentful Paint (LCP)](/learn/seo/web-performance/lcp) * [Next.js config loaderFile option](/docs/pages/api-referen",
+    "url": "https://nextjs.org/docs/messages/no-img-element#useful-links-useful-links",
+    "position": 4
+  }
+]

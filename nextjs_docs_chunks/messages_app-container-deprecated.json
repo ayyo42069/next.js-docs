@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Addressing \"App Container Deprecated\" Error in Next.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)Addressing \"App Container Deprecated\" Error in Next.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)Addressing \"App Container Deprecated\" Error in Next.js",
+    "url": "https://nextjs.org/docs/messages/app-container-deprecated#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Addressing \"App Container Deprecated\" Error in Next.js",
+    "section": "Addressing \"App Container Deprecated\" Error in Next.js",
+    "section_id": "addressing-app-container-deprecated-error-in-next-js",
+    "heading_level": 1,
+    "content": "# Addressing \"App Container Deprecated\" Error in Next.js\n\nThis document guides developers on how to resolve the \"App Container Deprecated\" error in Next.js by updating their custom App component.",
+    "preview": "This document guides developers on how to resolve the \"App Container Deprecated\" error in Next.js by updating their custom App component.",
+    "url": "https://nextjs.org/docs/messages/app-container-deprecated#addressing-app-container-deprecated-error-in-next-js",
+    "position": 1
+  },
+  {
+    "title": "Addressing \"App Container Deprecated\" Error in Next.js",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nThe \"App Container Deprecated\" error usually occurs when you are using the `<Container>` component in your custom `<App>` (`pages/_app.js`). Prior to version `9.0.4` of Next.js, the `<Container>` component was used to handle scrolling to hashes.\n\nFrom version `9.0.4` onwards, this functionality was moved up the component tree, rendering the `<Container>` component unnecessary in your custom `<App>`.",
+    "preview": "The \"App Container Deprecated\" error usually occurs when you are using the `<Container>` component in your custom `<App>` (`pages/_app.js`). Prior to version `9.0.4` of Next.js, the `<Container>` component was used to handle scrolling to hashes. From version `9.0.4` onwards, this functionality was",
+    "url": "https://nextjs.org/docs/messages/app-container-deprecated#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "Addressing \"App Container Deprecated\" Error in Next.js",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nTo resolve this issue, you need to remove the `<Container>` component from your custom `<App>` (`pages/_app.js`).\n\n**Before**\n\npages/\\_app.js\n\n```\nimport React from 'react'\nimport App, { Container } from 'next/app'\n \nclass MyApp extends App {\n  render() {\n    const { Component, pageProps } = this.props\n    return (\n      <Container>\n        <Component {...pageProps} />\n      </Container>\n    )\n  }\n}\n \nexport default MyApp\n```\n\n**After**\n\npages/\\_app.js\n\n```\nimport React from 'react'\nimport App from 'next/app'\n \nclass MyApp extends App {\n  render() {\n    const { Component, pageProps } = this.props\n    return <Component {...pageProps} />\n  }\n}\n \nexport default MyApp\n```\n\nAfter making this change, your custom `<App>` should work as expected without the `<Container>` component.",
+    "preview": "To resolve this issue, you need to remove the `<Container>` component from your custom `<App>` (`pages/_app.js`). **Before** pages/\\_app.js [Code Block] **After** pages/\\_app.js [Code Block] After making this change, your custom `<App>` should work as expected without the `<Container>` compon",
+    "url": "https://nextjs.org/docs/messages/app-container-deprecated#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "Addressing \"App Container Deprecated\" Error in Next.js",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Custom App](/docs/pages/building-your-application/routing/custom-app)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Custom App](/docs/pages/building-your-application/routing/custom-app) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/app-container-deprecated#useful-links-useful-links",
+    "position": 4
+  }
+]

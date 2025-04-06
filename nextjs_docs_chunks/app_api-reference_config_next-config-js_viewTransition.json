@@ -1,0 +1,42 @@
+[
+  {
+    "title": "ViewTransition",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)ViewTransition",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)ViewTransition",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "ViewTransition",
+    "section": "ViewTransition",
+    "section_id": "viewtransition",
+    "heading_level": 1,
+    "content": "# ViewTransition\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\n`viewTransition` is an experimental flag that enables the new experimental [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) in React. This API allows you to leverage the native View Transitions browser API to create seamless transitions between UI states.\n\nTo enable this feature, you need to set the `viewTransition` property to `true` in your `next.config.js` file.\n\nnext.config.js\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  experimental: {\n    viewTransition: true,\n  },\n}\n \nmodule.exports = nextConfig\n```\n\n> Important Notice: This feature is not developed or maintained by the Next.js team \u2014 it is an experimental API from the React team. It is still in **early stages** and **not recommended for production use**. The implementation is still being iterated on, and its behavior may change in future React releases.\n> Enabling this feature requires understanding the experimental nature of the API. To fully grasp its behavior, refer to the [React pull request](https://github.com/facebook/react/pull/31975) and related discussions.",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). `viewTransition` is an experimental flag that enables the new experimental [View Transitions API](https://deve",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition#viewtransition",
+    "position": 1
+  },
+  {
+    "title": "ViewTransition",
+    "section": "[Usage](#usage)",
+    "section_id": "usage-usage",
+    "heading_level": 2,
+    "content": "## [Usage](#usage)\n\nOnce enabled, you can import the `ViewTransition` component from React in your application:\n\n```\nimport { unstable_ViewTransition as ViewTransition } from 'react'\n```\n\nHowever, documentation and examples are currently limited, and you will need to refer directly to React\u2019s source code and discussions to understand how this works.",
+    "preview": "Once enabled, you can import the `ViewTransition` component from React in your application: [Code Block] However, documentation and examples are currently limited, and you will need to refer directly to React\u2019s source code and discussions to understand how this works.",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition#usage-usage",
+    "position": 2
+  },
+  {
+    "title": "ViewTransition",
+    "section": "[Live Demo](#live-demo)",
+    "section_id": "live-demo-live-demo",
+    "heading_level": 3,
+    "content": "### [Live Demo](#live-demo)\n\nCheck out our [Next.js View Transition Demo](https://view-transition-example.vercel.app) to see this feature in action.\n\nAs this API evolves, we will update our documentation and share more examples. However, for now, we strongly advise against using this feature in production.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Check out our [Next.js View Transition Demo](https://view-transition-example.vercel.app) to see this feature in action. As this API evolves, we will update our documentation and share more examples. However, for now, we strongly advise against using this feature in production. Was this helpful? s",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition#live-demo-live-demo",
+    "position": 3
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "title": "draftMode",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)draftMode",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)draftMode",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/draft-mode#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "draftMode",
+    "section": "draftMode",
+    "section_id": "draftmode",
+    "heading_level": 1,
+    "content": "# draftMode\n\n`draftMode` is an **async** function allows you to enable and disable [Draft Mode](/docs/app/building-your-application/configuring/draft-mode), as well as check if Draft Mode is enabled in a [Server Component](/docs/app/building-your-application/rendering/server-components).\n\napp/page.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { draftMode } from 'next/headers'\n \nexport default async function Page() {\n  const { isEnabled } = await draftMode()\n}\n```",
+    "preview": "`draftMode` is an **async** function allows you to enable and disable [Draft Mode](/docs/app/building-your-application/configuring/draft-mode), as well as check if Draft Mode is enabled in a [Server Component](/docs/app/building-your-application/rendering/server-components). app/page.ts TypeScript",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/draft-mode#draftmode",
+    "position": 1
+  },
+  {
+    "title": "draftMode",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)\n\nThe following methods and properties are available:\n\n| Method | Description |\n| --- | --- |\n| `isEnabled` | A boolean value that indicates if Draft Mode is enabled. |\n| `enable()` | Enables Draft Mode in a Route Handler by setting a cookie (`__prerender_bypass`). |\n| `disable()` | Disables Draft Mode in a Route Handler by deleting a cookie. |",
+    "preview": "The following methods and properties are available: | Method | Description | | --- | --- | | `isEnabled` | A boolean value that indicates if Draft Mode is enabled. | | `enable()` | Enables Draft Mode in a Route Handler by setting a cookie (`__prerender_bypass`). | | `disable()` | Disables Draft Mod",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/draft-mode#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "draftMode",
+    "section": "[Good to know](#good-to-know)",
+    "section_id": "good-to-know-good-to-know",
+    "heading_level": 2,
+    "content": "## [Good to know](#good-to-know)\n\n* `draftMode` is an **asynchronous** function that returns a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function.\n  + In version 14 and earlier, `draftMode` was a synchronous function. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.\n* A new bypass cookie value will be generated each time you run `next build`. This ensures that the bypass cookie can\u2019t be guessed.\n* To test Draft Mode locally over HTTP, your browser will need to allow third-party cookies and local storage access.",
+    "preview": "* `draftMode` is an **asynchronous** function that returns a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function. + In version 14 and earlier, `draftMode` was a synchronous function. To help with backwards compatibility, you can still access it sy",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/draft-mode#good-to-know-good-to-know",
+    "position": 3
+  },
+  {
+    "title": "draftMode",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/draft-mode#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "draftMode",
+    "section": "[Enabling Draft Mode](#enabling-draft-mode)",
+    "section_id": "enabling-draft-mode-enabling-draft-mode",
+    "heading_level": 3,
+    "content": "### [Enabling Draft Mode](#enabling-draft-mode)\n\nTo enable Draft Mode, create a new [Route Handler](/docs/app/building-your-application/routing/route-handlers) and call the `enable()` method:\n\napp/draft/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { draftMode } from 'next/headers'\n \nexport async function GET(request: Request) {\n  const draft = await draftMode()\n  draft.enable()\n  return new Response('Draft mode is enabled')\n}\n```",
+    "preview": "To enable Draft Mode, create a new [Route Handler](/docs/app/building-your-application/routing/route-handlers) and call the `enable()` method: app/draft/route.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/draft-mode#enabling-draft-mode-enabling-draft-mode",
+    "position": 5
+  },
+  {
+    "title": "draftMode",
+    "section": "[Disabling Draft Mode](#disabling-draft-mode)",
+    "section_id": "disabling-draft-mode-disabling-draft-mode",
+    "heading_level": 3,
+    "content": "### [Disabling Draft Mode](#disabling-draft-mode)\n\nBy default, the Draft Mode session ends when the browser is closed.\n\nTo disable Draft Mode manually, call the `disable()` method in your [Route Handler](/docs/app/building-your-application/routing/route-handlers):\n\napp/draft/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { draftMode } from 'next/headers'\n \nexport async function GET(request: Request) {\n  const draft = await draftMode()\n  draft.disable()\n  return new Response('Draft mode is disabled')\n}\n```\n\nThen, send a request to invoke the Route Handler. If calling the route using the [`<Link>` component](/docs/app/api-reference/components/link), you must pass `prefetch={false}` to prevent accidentally deleting the cookie on prefetch.",
+    "preview": "By default, the Draft Mode session ends when the browser is closed. To disable Draft Mode manually, call the `disable()` method in your [Route Handler](/docs/app/building-your-application/routing/route-handlers): app/draft/route.ts TypeScript JavaScriptTypeScript [Code Block] Then, send a requ",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/draft-mode#disabling-draft-mode-disabling-draft-mode",
+    "position": 6
+  },
+  {
+    "title": "draftMode",
+    "section": "[Checking if Draft Mode is enabled](#checking-if-draft-mode-is-enabled)",
+    "section_id": "checking-if-draft-mode-is-enabled-checking-if-draft-mode-is-enabled",
+    "heading_level": 3,
+    "content": "### [Checking if Draft Mode is enabled](#checking-if-draft-mode-is-enabled)\n\nYou can check if Draft Mode is enabled in a Server Component with the `isEnabled` property:\n\napp/page.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { draftMode } from 'next/headers'\n \nexport default async function Page() {\n  const { isEnabled } = await draftMode()\n  return (\n    <main>\n      <h1>My Blog Post</h1>\n      <p>Draft Mode is currently {isEnabled ? 'Enabled' : 'Disabled'}</p>\n    </main>\n  )\n}\n```",
+    "preview": "You can check if Draft Mode is enabled in a Server Component with the `isEnabled` property: app/page.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/draft-mode#checking-if-draft-mode-is-enabled-checking-if-draft-mode-is-enabled",
+    "position": 7
+  },
+  {
+    "title": "draftMode",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0-RC` | `draftMode` is now an async function. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available. |\n| `v13.4.0` | `draftMode` introduced. |",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0-RC` | `draftMode` is now an async function. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available. | | `v13.4.0` | `draftMode` introduced. |",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/draft-mode#version-history-version-history",
+    "position": 8
+  },
+  {
+    "title": "draftMode",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nLearn how to use Draft Mode with this step-by-step guide.\n\n[### Draft Mode\n\nNext.js has draft mode to toggle between static and dynamic pages. You can learn how it works with App Router here.](/docs/app/building-your-application/configuring/draft-mode)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn how to use Draft Mode with this step-by-step guide. [### Draft Mode Next.js has draft mode to toggle between static and dynamic pages. You can learn how it works with App Router here.](/docs/app/building-your-application/configuring/draft-mode) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/draft-mode#next-steps",
+    "position": 9
+  }
+]

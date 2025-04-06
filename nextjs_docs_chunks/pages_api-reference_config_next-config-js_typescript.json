@@ -1,0 +1,22 @@
+[
+  {
+    "title": "typescript",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)typescript",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)typescript",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/typescript#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "typescript",
+    "section": "typescript",
+    "section_id": "typescript",
+    "heading_level": 1,
+    "content": "# typescript\n\nNext.js fails your **production build** (`next build`) when TypeScript errors are present in your project.\n\nIf you'd like Next.js to dangerously produce production code even when your application has errors, you can disable the built-in type checking step.\n\nIf disabled, be sure you are running type checks as part of your build or deploy process, otherwise this can be very dangerous.\n\nOpen `next.config.js` and enable the `ignoreBuildErrors` option in the `typescript` config:\n\nnext.config.js\n\n```\nmodule.exports = {\n  typescript: {\n    // !! WARN !!\n    // Dangerously allow production builds to successfully complete even if\n    // your project has type errors.\n    // !! WARN !!\n    ignoreBuildErrors: true,\n  },\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js fails your **production build** (`next build`) when TypeScript errors are present in your project. If you'd like Next.js to dangerously produce production code even when your application has errors, you can disable the built-in type checking step. If disabled, be sure you are running type",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/typescript#typescript",
+    "position": 1
+  }
+]

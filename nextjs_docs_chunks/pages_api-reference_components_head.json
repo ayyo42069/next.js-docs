@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Head",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[Components](/docs/pages/api-reference/components)Head",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[Components](/docs/pages/api-reference/components)Head",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/head#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Head",
+    "section": "Head",
+    "section_id": "head",
+    "heading_level": 1,
+    "content": "# Head\n\nWe expose a built-in component for appending elements to the `head` of the page:\n\n```\nimport Head from 'next/head'\n \nfunction IndexPage() {\n  return (\n    <div>\n      <Head>\n        <title>My page title</title>\n      </Head>\n      <p>Hello world!</p>\n    </div>\n  )\n}\n \nexport default IndexPage\n```",
+    "preview": "We expose a built-in component for appending elements to the `head` of the page: [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/head#head",
+    "position": 1
+  },
+  {
+    "title": "Head",
+    "section": "[Avoid duplicated tags](#avoid-duplicated-tags)",
+    "section_id": "avoid-duplicated-tags-avoid-duplicated-tags",
+    "heading_level": 2,
+    "content": "## [Avoid duplicated tags](#avoid-duplicated-tags)\n\nTo avoid duplicate tags in your `head` you can use the `key` property, which will make sure the tag is only rendered once, as in the following example:\n\n```\nimport Head from 'next/head'\n \nfunction IndexPage() {\n  return (\n    <div>\n      <Head>\n        <title>My page title</title>\n        <meta property=\"og:title\" content=\"My page title\" key=\"title\" />\n      </Head>\n      <Head>\n        <meta property=\"og:title\" content=\"My new title\" key=\"title\" />\n      </Head>\n      <p>Hello world!</p>\n    </div>\n  )\n}\n \nexport default IndexPage\n```\n\nIn this case only the second `<meta property=\"og:title\" />` is rendered. `meta` tags with duplicate `key` attributes are automatically handled.\n\n> **Good to know**: `<title>` and `<base>` tags are automatically checked for duplicates by Next.js, so using key is not necessary for these tags.\n\n> The contents of `head` get cleared upon unmounting the component, so make sure each page completely defines what it needs in `head`, without making assumptions about what other pages added.",
+    "preview": "To avoid duplicate tags in your `head` you can use the `key` property, which will make sure the tag is only rendered once, as in the following example: [Code Block] In this case only the second `<meta property=\"og:title\" />` is rendered. `meta` tags with duplicate `key` attributes are automaticall",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/head#avoid-duplicated-tags-avoid-duplicated-tags",
+    "position": 2
+  },
+  {
+    "title": "Head",
+    "section": "[Use minimal nesting](#use-minimal-nesting)",
+    "section_id": "use-minimal-nesting-use-minimal-nesting",
+    "heading_level": 2,
+    "content": "## [Use minimal nesting](#use-minimal-nesting)\n\n`title`, `meta` or any other elements (e.g. `script`) need to be contained as **direct** children of the `Head` element,\nor wrapped into maximum one level of `<React.Fragment>` or arrays\u2014otherwise the tags won't be correctly picked up on client-side navigations.",
+    "preview": "`title`, `meta` or any other elements (e.g. `script`) need to be contained as **direct** children of the `Head` element, or wrapped into maximum one level of `<React.Fragment>` or arrays\u2014otherwise the tags won't be correctly picked up on client-side navigations.",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/head#use-minimal-nesting-use-minimal-nesting",
+    "position": 3
+  },
+  {
+    "title": "Head",
+    "section": "[Use `next/script` for scripts](#use-nextscript-for-scripts)",
+    "section_id": "use-next-script-for-scripts-use-nextscript-for-scripts",
+    "heading_level": 2,
+    "content": "## [Use `next/script` for scripts](#use-nextscript-for-scripts)\n\nWe recommend using [`next/script`](/docs/pages/building-your-application/optimizing/scripts) in your component instead of manually creating a `<script>` in `next/head`.",
+    "preview": "We recommend using [`next/script`](/docs/pages/building-your-application/optimizing/scripts) in your component instead of manually creating a `<script>` in `next/head`.",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/head#use-next-script-for-scripts-use-nextscript-for-scripts",
+    "position": 4
+  },
+  {
+    "title": "Head",
+    "section": "[No `html` or `body` tags](#no-html-or-body-tags)",
+    "section_id": "no-html-or-body-tags-no-html-or-body-tags",
+    "heading_level": 2,
+    "content": "## [No `html` or `body` tags](#no-html-or-body-tags)\n\nYou **cannot** use `<Head>` to set attributes on `<html>` or `<body>` tags. This will result in an `next-head-count is missing` error. `next/head` can only handle tags inside the HTML `<head>` tag.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "You **cannot** use `<Head>` to set attributes on `<html>` or `<body>` tags. This will result in an `next-head-count is missing` error. `next/head` can only handle tags inside the HTML `<head>` tag. Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/head#no-html-or-body-tags-no-html-or-body-tags",
+    "position": 5
+  }
+]

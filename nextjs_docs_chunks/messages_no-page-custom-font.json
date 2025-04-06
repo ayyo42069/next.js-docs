@@ -1,0 +1,62 @@
+[
+  {
+    "title": "No Page Custom Font",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No Page Custom Font",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No Page Custom Font",
+    "url": "https://nextjs.org/docs/messages/no-page-custom-font#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No Page Custom Font",
+    "section": "No Page Custom Font",
+    "section_id": "no-page-custom-font",
+    "heading_level": 1,
+    "content": "# No Page Custom Font\n\n> Prevent page-only custom fonts.",
+    "preview": "> Prevent page-only custom fonts.",
+    "url": "https://nextjs.org/docs/messages/no-page-custom-font#no-page-custom-font",
+    "position": 1
+  },
+  {
+    "title": "No Page Custom Font",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\n* The custom font you're adding was added to a page - this only adds the font to the specific page and not the entire application.\n* The custom font you're adding was added to a separate component within `pages/_document.js` - this disables automatic font optimization.",
+    "preview": "* The custom font you're adding was added to a page - this only adds the font to the specific page and not the entire application. * The custom font you're adding was added to a separate component within `pages/_document.js` - this disables automatic font optimization.",
+    "url": "https://nextjs.org/docs/messages/no-page-custom-font#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No Page Custom Font",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nCreate the file `./pages/_document.js` and add the font to a custom Document:\n\npages/\\_document.js\n\n```\nimport Document, { Html, Head, Main, NextScript } from 'next/document'\n \nclass MyDocument extends Document {\n  render() {\n    return (\n      <Html>\n        <Head>\n          <link\n            href=\"https://fonts.googleapis.com/css2?family=Inter&display=optional\"\n            rel=\"stylesheet\"\n          />\n        </Head>\n        <body>\n          <Main />\n          <NextScript />\n        </body>\n      </Html>\n    )\n  }\n}\n \nexport default MyDocument\n```\n\nOr as a function component:\n\npages/\\_document.js\n\n```\nimport { Html, Head, Main, NextScript } from 'next/document'\n \nexport default function Document() {\n  return (\n    <Html>\n      <Head>\n        <link\n          href=\"https://fonts.googleapis.com/css2?family=Inter&display=optional\"\n          rel=\"stylesheet\"\n        />\n      </Head>\n      <body>\n        <Main />\n        <NextScript />\n      </body>\n    </Html>\n  )\n}\n```",
+    "preview": "Create the file `./pages/_document.js` and add the font to a custom Document: pages/\\_document.js [Code Block] Or as a function component: pages/\\_document.js [Code Block]",
+    "url": "https://nextjs.org/docs/messages/no-page-custom-font#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No Page Custom Font",
+    "section": "[When Not To Use It](#when-not-to-use-it)",
+    "section_id": "when-not-to-use-it-when-not-to-use-it",
+    "heading_level": 3,
+    "content": "### [When Not To Use It](#when-not-to-use-it)\n\nIf you have a reason to only load a font for a particular page or don't care about font optimization, then you can disable this rule.",
+    "preview": "If you have a reason to only load a font for a particular page or don't care about font optimization, then you can disable this rule.",
+    "url": "https://nextjs.org/docs/messages/no-page-custom-font#when-not-to-use-it-when-not-to-use-it",
+    "position": 4
+  },
+  {
+    "title": "No Page Custom Font",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Custom Document](/docs/pages/building-your-application/routing/custom-document)\n* [Font Optimization](/docs/pages/building-your-application/optimizing/fonts)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Custom Document](/docs/pages/building-your-application/routing/custom-document) * [Font Optimization](/docs/pages/building-your-application/optimizing/fonts) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/no-page-custom-font#useful-links-useful-links",
+    "position": 5
+  }
+]

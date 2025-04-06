@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Fast Refresh",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Introduction](/docs)[Architecture](/docs/architecture)Fast Refresh",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Introduction](/docs)[Architecture](/docs/architecture)Fast Refresh",
+    "url": "https://nextjs.org/docs/architecture/fast-refresh#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Fast Refresh",
+    "section": "Fast Refresh",
+    "section_id": "fast-refresh",
+    "heading_level": 1,
+    "content": "# Fast Refresh\n\nFast refresh is a React feature integrated into Next.js that allows you live reload the browser page while maintaining temporary client-side state when you save changes to a file. It's enabled by default in all Next.js applications on **9.4 or newer**. With Fast Refresh enabled, most edits should be visible within a second.",
+    "preview": "Fast refresh is a React feature integrated into Next.js that allows you live reload the browser page while maintaining temporary client-side state when you save changes to a file. It's enabled by default in all Next.js applications on **9.4 or newer**. With Fast Refresh enabled, most edits should be",
+    "url": "https://nextjs.org/docs/architecture/fast-refresh#fast-refresh",
+    "position": 1
+  },
+  {
+    "title": "Fast Refresh",
+    "section": "[How It Works](#how-it-works)",
+    "section_id": "how-it-works-how-it-works",
+    "heading_level": 2,
+    "content": "## [How It Works](#how-it-works)\n\n* If you edit a file that **only exports React component(s)**, Fast Refresh will\n  update the code only for that file, and re-render your component. You can edit\n  anything in that file, including styles, rendering logic, event handlers, or\n  effects.\n* If you edit a file with exports that *aren't* React components, Fast Refresh\n  will re-run both that file, and the other files importing it. So if both\n  `Button.js` and `Modal.js` import `theme.js`, editing `theme.js` will update\n  both components.\n* Finally, if you **edit a file** that's **imported by files outside of the\n  React tree**, Fast Refresh **will fall back to doing a full reload**. You\n  might have a file which renders a React component but also exports a value\n  that is imported by a **non-React component**. For example, maybe your\n  component also exports a constant, and a non-React utility file imports it. In\n  that case, consider migrating the constant to a separate file and importing it\n  into both files. This will re-enable Fast Refresh to work. Other cases can\n  usually be solved in a similar way.",
+    "preview": "* If you edit a file that **only exports React component(s)**, Fast Refresh will update the code only for that file, and re-render your component. You can edit anything in that file, including styles, rendering logic, event handlers, or effects. * If you edit a file with exports that *aren't*",
+    "url": "https://nextjs.org/docs/architecture/fast-refresh#how-it-works-how-it-works",
+    "position": 2
+  },
+  {
+    "title": "Fast Refresh",
+    "section": "[Error Resilience](#error-resilience)",
+    "section_id": "error-resilience-error-resilience",
+    "heading_level": 2,
+    "content": "## [Error Resilience](#error-resilience)",
+    "preview": "## [Error Resilience](#error-resilience)",
+    "url": "https://nextjs.org/docs/architecture/fast-refresh#error-resilience-error-resilience",
+    "position": 3
+  },
+  {
+    "title": "Fast Refresh",
+    "section": "[Syntax Errors](#syntax-errors)",
+    "section_id": "syntax-errors-syntax-errors",
+    "heading_level": 3,
+    "content": "### [Syntax Errors](#syntax-errors)\n\nIf you make a syntax error during development, you can fix it and save the file\nagain. The error will disappear automatically, so you won't need to reload the\napp. **You will not lose component state**.",
+    "preview": "If you make a syntax error during development, you can fix it and save the file again. The error will disappear automatically, so you won't need to reload the app. **You will not lose component state**.",
+    "url": "https://nextjs.org/docs/architecture/fast-refresh#syntax-errors-syntax-errors",
+    "position": 4
+  },
+  {
+    "title": "Fast Refresh",
+    "section": "[Runtime Errors](#runtime-errors)",
+    "section_id": "runtime-errors-runtime-errors",
+    "heading_level": 3,
+    "content": "### [Runtime Errors](#runtime-errors)\n\nIf you make a mistake that leads to a runtime error inside your component,\nyou'll be greeted with a contextual overlay. Fixing the error will automatically\ndismiss the overlay, without reloading the app.\n\nComponent state will be retained if the error did not occur during rendering. If\nthe error did occur during rendering, React will remount your application using\nthe updated code.\n\nIf you have [error boundaries](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)\nin your app (which is a good idea for graceful failures in production), they\nwill retry rendering on the next edit after a rendering error. This means having\nan error boundary can prevent you from always getting reset to the root app\nstate. However, keep in mind that error boundaries shouldn't be *too* granular.\nThey are used by React in production, and should always be designed\nintentionally.",
+    "preview": "If you make a mistake that leads to a runtime error inside your component, you'll be greeted with a contextual overlay. Fixing the error will automatically dismiss the overlay, without reloading the app. Component state will be retained if the error did not occur during rendering. If the error did",
+    "url": "https://nextjs.org/docs/architecture/fast-refresh#runtime-errors-runtime-errors",
+    "position": 5
+  },
+  {
+    "title": "Fast Refresh",
+    "section": "[Limitations](#limitations)",
+    "section_id": "limitations-limitations",
+    "heading_level": 2,
+    "content": "## [Limitations](#limitations)\n\nFast Refresh tries to preserve local React state in the component you're\nediting, but only if it's safe to do so. Here's a few reasons why you might see\nlocal state being reset on every edit to a file:\n\n* Local state is not preserved for class components (only function components\n  and Hooks preserve state).\n* The file you're editing might have *other* exports in addition to a React\n  component.\n* Sometimes, a file would export the result of calling a higher-order component\n  like `HOC(WrappedComponent)`. If the returned component is a\n  class, its state will be reset.\n* Anonymous arrow functions like `export default () => <div />;` cause Fast Refresh to not preserve local component state. For large codebases you can use our [`name-default-component` codemod](/docs/pages/building-your-application/upgrading/codemods#name-default-component).\n\nAs more of your codebase moves to function components and Hooks, you can expect\nstate to be preserved in more cases.",
+    "preview": "Fast Refresh tries to preserve local React state in the component you're editing, but only if it's safe to do so. Here's a few reasons why you might see local state being reset on every edit to a file: * Local state is not preserved for class components (only function components and Hooks preserv",
+    "url": "https://nextjs.org/docs/architecture/fast-refresh#limitations-limitations",
+    "position": 6
+  },
+  {
+    "title": "Fast Refresh",
+    "section": "[Tips](#tips)",
+    "section_id": "tips-tips",
+    "heading_level": 2,
+    "content": "## [Tips](#tips)\n\n* Fast Refresh preserves React local state in function components (and Hooks) by\n  default.\n* Sometimes you might want to *force* the state to be reset, and a component to\n  be remounted. For example, this can be handy if you're tweaking an animation\n  that only happens on mount. To do this, you can add `// @refresh reset`\n  anywhere in the file you're editing. This directive is local to the file, and\n  instructs Fast Refresh to remount components defined in that file on every\n  edit.\n* You can put `console.log` or `debugger;` into the components you edit during\n  development.\n* Remember that imports are case sensitive. Both fast and full refresh can fail,\n  when your import doesn't match the actual filename.\n  For example, `'./header'` vs `'./Header'`.",
+    "preview": "* Fast Refresh preserves React local state in function components (and Hooks) by default. * Sometimes you might want to *force* the state to be reset, and a component to be remounted. For example, this can be handy if you're tweaking an animation that only happens on mount. To do this, you can",
+    "url": "https://nextjs.org/docs/architecture/fast-refresh#tips-tips",
+    "position": 7
+  },
+  {
+    "title": "Fast Refresh",
+    "section": "[Fast Refresh and Hooks](#fast-refresh-and-hooks)",
+    "section_id": "fast-refresh-and-hooks-fast-refresh-and-hooks",
+    "heading_level": 2,
+    "content": "## [Fast Refresh and Hooks](#fast-refresh-and-hooks)\n\nWhen possible, Fast Refresh attempts to preserve the state of your component\nbetween edits. In particular, `useState` and `useRef` preserve their previous\nvalues as long as you don't change their arguments or the order of the Hook\ncalls.\n\nHooks with dependencies\u2014such as `useEffect`, `useMemo`, and `useCallback`\u2014will\n*always* update during Fast Refresh. Their list of dependencies will be ignored\nwhile Fast Refresh is happening.\n\nFor example, when you edit `useMemo(() => x * 2, [x])` to\n`useMemo(() => x * 10, [x])`, it will re-run even though `x` (the dependency)\nhas not changed. If React didn't do that, your edit wouldn't reflect on the\nscreen!\n\nSometimes, this can lead to unexpected results. For example, even a `useEffect`\nwith an empty array of dependencies would still re-run once during Fast Refresh.\n\nHowever, writing code resilient to occasional re-running of `useEffect` is a good practice even\nwithout Fast Refresh. It will make it easier for you to introduce new dependencies to it later on\nand it's enforced by [React Strict Mode](/docs/pages/api-reference/config/next-config-js/reactStrictMode),\nwhich we highly recommend enabling.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "When possible, Fast Refresh attempts to preserve the state of your component between edits. In particular, `useState` and `useRef` preserve their previous values as long as you don't change their arguments or the order of the Hook calls. Hooks with dependencies\u2014such as `useEffect`, `useMemo`, and `",
+    "url": "https://nextjs.org/docs/architecture/fast-refresh#fast-refresh-and-hooks-fast-refresh-and-hooks",
+    "position": 8
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "title": "`url` is deprecated",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)`url` is deprecated",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)`url` is deprecated",
+    "url": "https://nextjs.org/docs/messages/url-deprecated#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "`url` is deprecated",
+    "section": "`url` is deprecated",
+    "section_id": "url-is-deprecated",
+    "heading_level": 1,
+    "content": "# `url` is deprecated",
+    "preview": "# `url` is deprecated",
+    "url": "https://nextjs.org/docs/messages/url-deprecated#url-is-deprecated",
+    "position": 1
+  },
+  {
+    "title": "`url` is deprecated",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nIn versions prior to 6.x the `url` property got magically injected into every `Page` component (every page inside the `pages` directory).\n\nThe reason this is going away is that we want to make things very predictable and explicit. Having a magical url property coming out of nowhere doesn't aid that goal.\n\n> **Note**: \u26a0\ufe0f In some cases using React Dev Tools may trigger this warning even if you do not reference `url` anywhere in your code. Try temporarily disabling the extension and see if the warning persists.",
+    "preview": "In versions prior to 6.x the `url` property got magically injected into every `Page` component (every page inside the `pages` directory). The reason this is going away is that we want to make things very predictable and explicit. Having a magical url property coming out of nowhere doesn't aid that",
+    "url": "https://nextjs.org/docs/messages/url-deprecated#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "`url` is deprecated",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nSince Next 5 we provide a way to explicitly inject the Next.js router object into pages and all their descending components.\nThe `router` property that is injected will hold the same values as `url`, like `pathname`, `asPath`, and `query`.\n\nHere's an example of using `withRouter`:\n\npages/index.js\n\n```\nimport { withRouter } from 'next/router'\n \nclass Page extends React.Component {\n  render() {\n    const { router } = this.props\n    console.log(router)\n    return <div>{router.pathname}</div>\n  }\n}\n \nexport default withRouter(Page)\n```\n\nWe provide a codemod (a code to code transformation) to automatically change the `url` property usages to `withRouter`.\n\nYou can find this codemod and instructions on how to run it here: [Use `withRouter`](/docs/pages/building-your-application/upgrading/codemods#url-to-withrouter)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Since Next 5 we provide a way to explicitly inject the Next.js router object into pages and all their descending components. The `router` property that is injected will hold the same values as `url`, like `pathname`, `asPath`, and `query`. Here's an example of using `withRouter`: pages/index.js [",
+    "url": "https://nextjs.org/docs/messages/url-deprecated#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  }
+]

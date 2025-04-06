@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Building Your Application",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Introduction](/docs)[Pages Router](/docs/pages)Building Your Application",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Introduction](/docs)[Pages Router](/docs/pages)Building Your Application",
+    "url": "https://nextjs.org/docs/pages/building-your-application#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Building Your Application",
+    "section": "Building Your Application",
+    "section_id": "building-your-application",
+    "heading_level": 1,
+    "content": "# Building Your Application\n\nNext.js provides the building blocks to create flexible, full-stack web applications. The guides in **Building Your Application** explain how to use these features and how to customize your application's behavior.\n\nThe sections and pages are organized sequentially, from basic to advanced, so you can follow them step-by-step when building your Next.js application. However, you can read them in any order or skip to the pages that apply to your use case.\n\nIf you're new to Next.js, we recommend starting with the [Routing](/docs/pages/building-your-application/routing), [Rendering](/docs/pages/building-your-application/rendering), [Data Fetching](/docs/pages/building-your-application/data-fetching) and [Styling](/docs/pages/building-your-application/styling) sections, as they introduce the fundamental Next.js and web concepts to help you get started. Then, you can dive deeper into the other sections such as [Optimizing](/docs/pages/building-your-application/optimizing) and [Configuring](/docs/pages/building-your-application/configuring). Finally, once you're ready, checkout the [Deploying](/docs/pages/building-your-application/deploying) and [Upgrading](/docs/pages/building-your-application/upgrading) sections.\n\n[### Routing\n\nLearn the fundamentals of routing for front-end applications with the Pages Router.](/docs/pages/building-your-application/routing)[### Rendering\n\nLearn the fundamentals of rendering in React and Next.js.](/docs/pages/building-your-application/rendering)[### Data Fetching\n\nNext.js allows you to fetch data in multiple ways, with pre-rendering, server-side rendering or static-site generation, and incremental static regeneration. Learn how to manage your application data in Next.js.](/docs/pages/building-your-application/data-fetching)[### Styling\n\nLearn the different ways you can style your Next.js application.](/docs/pages/building-your-application/styling)[### Optimizing\n\nOptimize your Next.js application for best performance and user experience.](/docs/pages/building-your-application/optimizing)[### Configuring\n\nLearn how to configure your Next.js application.](/docs/pages/building-your-application/configuring)[### Testing\n\nLearn how to set up Next.js with three commonly used testing tools \u2014 Cypress, Playwright, Vitest, and Jest.](/docs/pages/building-your-application/testing)[### Authentication\n\nLearn how to implement authentication in Next.js, covering best practices, securing routes, authorization techniques, and session management.](/docs/pages/building-your-application/authentication)[### Deploying\n\nLearn how to deploy your Next.js app to production, either managed or self-hosted.](/docs/pages/building-your-application/deploying)[### Upgrading\n\nLearn how to upgrade to the latest versions of Next.js.](/docs/pages/building-your-application/upgrading)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js provides the building blocks to create flexible, full-stack web applications. The guides in **Building Your Application** explain how to use these features and how to customize your application's behavior. The sections and pages are organized sequentially, from basic to advanced, so you can",
+    "url": "https://nextjs.org/docs/pages/building-your-application#building-your-application",
+    "position": 1
+  }
+]

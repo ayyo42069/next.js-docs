@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Components",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[API Reference](/docs/app/api-reference)Components",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[API Reference](/docs/app/api-reference)Components",
+    "url": "https://nextjs.org/docs/app/api-reference/components#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Components",
+    "section": "Components",
+    "section_id": "components",
+    "heading_level": 1,
+    "content": "# Components\n\n[### Font\n\nOptimizing loading web fonts with the built-in `next/font` loaders.](/docs/app/api-reference/components/font)[### Form\n\nLearn how to use the `<Form>` component to handle form submissions and search params updates with client-side navigation.](/docs/app/api-reference/components/form)[### Image\n\nOptimize Images in your Next.js Application using the built-in `next/image` Component.](/docs/app/api-reference/components/image)[### Link\n\nEnable fast client-side navigation with the built-in `next/link` component.](/docs/app/api-reference/components/link)[### Script\n\nOptimize third-party scripts in your Next.js application using the built-in `next/script` Component.](/docs/app/api-reference/components/script)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Font Optimizing loading web fonts with the built-in `next/font` loaders.](/docs/app/api-reference/components/font)[### Form Learn how to use the `<Form>` component to handle form submissions and search params updates with client-side navigation.](/docs/app/api-reference/components/form)[### I",
+    "url": "https://nextjs.org/docs/app/api-reference/components#components",
+    "position": 1
+  }
+]

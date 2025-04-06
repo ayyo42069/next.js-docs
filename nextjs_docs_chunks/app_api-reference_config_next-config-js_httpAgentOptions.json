@@ -1,0 +1,22 @@
+[
+  {
+    "title": "httpAgentOptions",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)httpAgentOptions",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)httpAgentOptions",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/httpAgentOptions#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "httpAgentOptions",
+    "section": "httpAgentOptions",
+    "section_id": "httpagentoptions",
+    "heading_level": 1,
+    "content": "# httpAgentOptions\n\nIn Node.js versions prior to 18, Next.js automatically polyfills `fetch()` with [undici](/docs/architecture/supported-browsers#polyfills) and enables [HTTP Keep-Alive](https://developer.mozilla.org/docs/Web/HTTP/Headers/Keep-Alive) by default.\n\nTo disable HTTP Keep-Alive for all `fetch()` calls on the server-side, open `next.config.js` and add the `httpAgentOptions` config:\n\nnext.config.js\n\n```\nmodule.exports = {\n  httpAgentOptions: {\n    keepAlive: false,\n  },\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "In Node.js versions prior to 18, Next.js automatically polyfills `fetch()` with [undici](/docs/architecture/supported-browsers#polyfills) and enables [HTTP Keep-Alive](https://developer.mozilla.org/docs/Web/HTTP/Headers/Keep-Alive) by default. To disable HTTP Keep-Alive for all `fetch()` calls on t",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/httpAgentOptions#httpagentoptions",
+    "position": 1
+  }
+]

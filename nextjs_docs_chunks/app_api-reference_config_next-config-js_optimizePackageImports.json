@@ -1,0 +1,22 @@
+[
+  {
+    "title": "optimizePackageImports",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)optimizePackageImports",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)optimizePackageImports",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "optimizePackageImports",
+    "section": "optimizePackageImports",
+    "section_id": "optimizepackageimports",
+    "heading_level": 1,
+    "content": "# optimizePackageImports\n\nSome packages can export hundreds or thousands of modules, which can cause performance issues in development and production.\n\nAdding a package to `experimental.optimizePackageImports` will only load the modules you are actually using, while still giving you the convenience of writing import statements with many named exports.\n\nnext.config.js\n\n```\nmodule.exports = {\n  experimental: {\n    optimizePackageImports: ['package-name'],\n  },\n}\n```\n\nThe following libraries are optimized by default:\n\n* `lucide-react`\n* `date-fns`\n* `lodash-es`\n* `ramda`\n* `antd`\n* `react-bootstrap`\n* `ahooks`\n* `@ant-design/icons`\n* `@headlessui/react`\n* `@headlessui-float/react`\n* `@heroicons/react/20/solid`\n* `@heroicons/react/24/solid`\n* `@heroicons/react/24/outline`\n* `@visx/visx`\n* `@tremor/react`\n* `rxjs`\n* `@mui/material`\n* `@mui/icons-material`\n* `recharts`\n* `react-use`\n* `@material-ui/core`\n* `@material-ui/icons`\n* `@tabler/icons-react`\n* `mui-core`\n* `react-icons/*`\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Some packages can export hundreds or thousands of modules, which can cause performance issues in development and production. Adding a package to `experimental.optimizePackageImports` will only load the modules you are actually using, while still giving you the convenience of writing import statemen",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports#optimizepackageimports",
+    "position": 1
+  }
+]

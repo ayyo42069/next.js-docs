@@ -1,0 +1,52 @@
+[
+  {
+    "title": "CSS-in-JS",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Styling](/docs/app/building-your-application/styling)CSS-in-JS",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Styling](/docs/app/building-your-application/styling)CSS-in-JS",
+    "url": "https://nextjs.org/docs/app/building-your-application/styling/css-in-js#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "CSS-in-JS",
+    "section": "CSS-in-JS",
+    "section_id": "css-in-js",
+    "heading_level": 1,
+    "content": "# CSS-in-JS\n\n> **Warning:** Using CSS-in-JS with newer React features like Server Components and Streaming requires library authors to support the latest version of React, including [concurrent rendering](https://react.dev/blog/2022/03/29/react-v18#what-is-concurrent-react).\n\nThe following libraries are supported in Client Components in the `app` directory (alphabetical):\n\n* [`ant-design`](https://ant.design/docs/react/use-with-next#using-app-router)\n* [`chakra-ui`](https://chakra-ui.com/getting-started/nextjs-app-guide)\n* [`@fluentui/react-components`](https://react.fluentui.dev/?path=/docs/concepts-developer-server-side-rendering-next-js-appdir-setup--page)\n* [`kuma-ui`](https://kuma-ui.com)\n* [`@mui/material`](https://mui.com/material-ui/guides/next-js-app-router/)\n* [`@mui/joy`](https://mui.com/joy-ui/integrations/next-js-app-router/)\n* [`pandacss`](https://panda-css.com)\n* [`styled-jsx`](#styled-jsx)\n* [`styled-components`](#styled-components)\n* [`stylex`](https://stylexjs.com)\n* [`tamagui`](https://tamagui.dev/docs/guides/next-js#server-components)\n* [`tss-react`](https://tss-react.dev/)\n* [`vanilla-extract`](https://vanilla-extract.style)\n\nThe following are currently working on support:\n\n* [`emotion`](https://github.com/emotion-js/emotion/issues/2928)\n\n> **Good to know**: We're testing out different CSS-in-JS libraries and we'll be adding more examples for libraries that support React 18 features and/or the `app` directory.\n\nIf you want to style Server Components, we recommend using [CSS Modules](/docs/app/building-your-application/styling/css) or other solutions that output CSS files, like PostCSS or [Tailwind CSS](/docs/app/building-your-application/styling/tailwind-css).",
+    "preview": "> **Warning:** Using CSS-in-JS with newer React features like Server Components and Streaming requires library authors to support the latest version of React, including [concurrent rendering](https://react.dev/blog/2022/03/29/react-v18#what-is-concurrent-react). The following libraries are supporte",
+    "url": "https://nextjs.org/docs/app/building-your-application/styling/css-in-js#css-in-js",
+    "position": 1
+  },
+  {
+    "title": "CSS-in-JS",
+    "section": "[Configuring CSS-in-JS in `app`](#configuring-css-in-js-in-app)",
+    "section_id": "configuring-css-in-js-in-app-configuring-css-in-js-in-app",
+    "heading_level": 2,
+    "content": "## [Configuring CSS-in-JS in `app`](#configuring-css-in-js-in-app)\n\nConfiguring CSS-in-JS is a three-step opt-in process that involves:\n\n1. A **style registry** to collect all CSS rules in a render.\n2. The new `useServerInsertedHTML` hook to inject rules before any content that might use them.\n3. A Client Component that wraps your app with the style registry during initial server-side rendering.",
+    "preview": "Configuring CSS-in-JS is a three-step opt-in process that involves: 1. A **style registry** to collect all CSS rules in a render. 2. The new `useServerInsertedHTML` hook to inject rules before any content that might use them. 3. A Client Component that wraps your app with the style registry during",
+    "url": "https://nextjs.org/docs/app/building-your-application/styling/css-in-js#configuring-css-in-js-in-app-configuring-css-in-js-in-app",
+    "position": 2
+  },
+  {
+    "title": "CSS-in-JS",
+    "section": "[`styled-jsx`](#styled-jsx)",
+    "section_id": "styled-jsx-styled-jsx",
+    "heading_level": 3,
+    "content": "### [`styled-jsx`](#styled-jsx)\n\nUsing `styled-jsx` in Client Components requires using `v5.1.0`. First, create a new registry:\n\napp/registry.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport React, { useState } from 'react'\nimport { useServerInsertedHTML } from 'next/navigation'\nimport { StyleRegistry, createStyleRegistry } from 'styled-jsx'\n \nexport default function StyledJsxRegistry({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  // Only create stylesheet once with lazy initial state\n  // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state\n  const [jsxStyleRegistry] = useState(() => createStyleRegistry())\n \n  useServerInsertedHTML(() => {\n    const styles = jsxStyleRegistry.styles()\n    jsxStyleRegistry.flush()\n    return <>{styles}</>\n  })\n \n  return <StyleRegistry registry={jsxStyleRegistry}>{children}</StyleRegistry>\n}\n```\n\nThen, wrap your [root layout](/docs/app/building-your-application/routing/layouts-and-templates#root-layout-required) with the registry:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport StyledJsxRegistry from './registry'\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html>\n      <body>\n        <StyledJsxRegistry>{children}</StyledJsxRegistry>\n      </body>\n    </html>\n  )\n}\n```\n\n[View an example here](https://github.com/vercel/app-playground/tree/main/app/styling/styled-jsx).",
+    "preview": "Using `styled-jsx` in Client Components requires using `v5.1.0`. First, create a new registry: app/registry.tsx TypeScript JavaScriptTypeScript [Code Block] Then, wrap your [root layout](/docs/app/building-your-application/routing/layouts-and-templates#root-layout-required) with the registry:",
+    "url": "https://nextjs.org/docs/app/building-your-application/styling/css-in-js#styled-jsx-styled-jsx",
+    "position": 3
+  },
+  {
+    "title": "CSS-in-JS",
+    "section": "[Styled Components](#styled-components)",
+    "section_id": "styled-components-styled-components",
+    "heading_level": 3,
+    "content": "### [Styled Components](#styled-components)\n\nBelow is an example of how to configure `styled-components@6` or newer:\n\nFirst, enable styled-components in `next.config.js`.\n\nnext.config.js\n\n```\nmodule.exports = {\n  compiler: {\n    styledComponents: true,\n  },\n}\n```\n\nThen, use the `styled-components` API to create a global registry component to collect all CSS style rules generated during a render, and a function to return those rules. Then use the `useServerInsertedHTML` hook to inject the styles collected in the registry into the `<head>` HTML tag in the root layout.\n\nlib/registry.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport React, { useState } from 'react'\nimport { useServerInsertedHTML } from 'next/navigation'\nimport { ServerStyleSheet, StyleSheetManager } from 'styled-components'\n \nexport default function StyledComponentsRegistry({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  // Only create stylesheet once with lazy initial state\n  // x-ref: https://reactjs.org/docs/hooks-reference.html#lazy-initial-state\n  const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet())\n \n  useServerInsertedHTML(() => {\n    const styles = styledComponentsStyleSheet.getStyleElement()\n    styledComponentsStyleSheet.instance.clearTag()\n    return <>{styles}</>\n  })\n \n  if (typeof window !== 'undefined') return <>{children}</>\n \n  return (\n    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>\n      {children}\n    </StyleSheetManager>\n  )\n}\n```\n\nWrap the `children` of the root layout with the style registry component:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport StyledComponentsRegistry from './lib/registry'\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html>\n      <body>\n        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>\n      </body>\n    </html>\n  )\n}\n```\n\n[View an example here](https://github.com/vercel/app-playground/tree/main/app/styling/styled-components).\n\n> **Good to know**:\n>\n> * During server rendering, styles will be extracted to a global registry and flushed to the `<head>` of your HTML. This ensures the style rules are placed before any content that might use them. In the future, we may use an upcoming React feature to determine where to inject the styles.\n> * During streaming, styles from each chunk will be collected and appended to existing styles. After client-side hydration is complete, `styled-components` will take over as usual and inject any further dynamic styles.\n> * We specifically use a Client Component at the top level of the tree for the style registry because it's more efficient to extract CSS rules this way. It avoids re-generating styles on subsequent server renders, and prevents them from being sent in the Server Component payload.\n> * For advanced use cases where you need to configure individual properties of styled-components compilation, you can read our [Next.js styled-components API reference](/docs/architecture/nextjs-compiler#styled-components) to learn more.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Below is an example of how to configure `styled-components@6` or newer: First, enable styled-components in `next.config.js`. next.config.js [Code Block] Then, use the `styled-components` API to create a global registry component to collect all CSS style rules generated during a render, and a fun",
+    "url": "https://nextjs.org/docs/app/building-your-application/styling/css-in-js#styled-components-styled-components",
+    "position": 4
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "title": "urlImports",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)urlImports",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)urlImports",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "urlImports",
+    "section": "urlImports",
+    "section_id": "urlimports",
+    "heading_level": 1,
+    "content": "# urlImports\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nURL imports are an experimental feature that allows you to import modules directly from external servers (instead of from the local disk).\n\n> **Warning**: Only use domains that you trust to download and execute on your machine. Please exercise discretion, and caution until the feature is flagged as stable.\n\nTo opt-in, add the allowed URL prefixes inside `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  experimental: {\n    urlImports: ['https://example.com/assets/', 'https://cdn.skypack.dev'],\n  },\n}\n```\n\nThen, you can import modules directly from URLs:\n\n```\nimport { a, b, c } from 'https://example.com/assets/some/module.js'\n```\n\nURL Imports can be used everywhere normal package imports can be used.",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). URL imports are an experimental feature that allows you to import modules directly from external servers (inst",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#urlimports",
+    "position": 1
+  },
+  {
+    "title": "urlImports",
+    "section": "[Security Model](#security-model)",
+    "section_id": "security-model-security-model",
+    "heading_level": 2,
+    "content": "## [Security Model](#security-model)\n\nThis feature is being designed with **security as the top priority**. To start, we added an experimental flag forcing you to explicitly allow the domains you accept URL imports from. We're working to take this further by limiting URL imports to execute in the browser sandbox using the [Edge Runtime](/docs/app/api-reference/edge).",
+    "preview": "This feature is being designed with **security as the top priority**. To start, we added an experimental flag forcing you to explicitly allow the domains you accept URL imports from. We're working to take this further by limiting URL imports to execute in the browser sandbox using the [Edge Runtime]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#security-model-security-model",
+    "position": 2
+  },
+  {
+    "title": "urlImports",
+    "section": "[Lockfile](#lockfile)",
+    "section_id": "lockfile-lockfile",
+    "heading_level": 2,
+    "content": "## [Lockfile](#lockfile)\n\nWhen using URL imports, Next.js will create a `next.lock` directory containing a lockfile and fetched assets.\nThis directory **must be committed to Git**, not ignored by `.gitignore`.\n\n* When running `next dev`, Next.js will download and add all newly discovered URL Imports to your lockfile.\n* When running `next build`, Next.js will use only the lockfile to build the application for production.\n\nTypically, no network requests are needed and any outdated lockfile will cause the build to fail.\nOne exception is resources that respond with `Cache-Control: no-cache`.\nThese resources will have a `no-cache` entry in the lockfile and will always be fetched from the network on each build.",
+    "preview": "When using URL imports, Next.js will create a `next.lock` directory containing a lockfile and fetched assets. This directory **must be committed to Git**, not ignored by `.gitignore`. * When running `next dev`, Next.js will download and add all newly discovered URL Imports to your lockfile. * When",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#lockfile-lockfile",
+    "position": 3
+  },
+  {
+    "title": "urlImports",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "urlImports",
+    "section": "[Skypack](#skypack)",
+    "section_id": "skypack-skypack",
+    "heading_level": 3,
+    "content": "### [Skypack](#skypack)\n\n```\nimport confetti from 'https://cdn.skypack.dev/canvas-confetti'\nimport { useEffect } from 'react'\n \nexport default () => {\n  useEffect(() => {\n    confetti()\n  })\n  return <p>Hello</p>\n}\n```",
+    "preview": "[Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#skypack-skypack",
+    "position": 5
+  },
+  {
+    "title": "urlImports",
+    "section": "[Static Image Imports](#static-image-imports)",
+    "section_id": "static-image-imports-static-image-imports",
+    "heading_level": 3,
+    "content": "### [Static Image Imports](#static-image-imports)\n\n```\nimport Image from 'next/image'\nimport logo from 'https://example.com/assets/logo.png'\n \nexport default () => (\n  <div>\n    <Image src={logo} placeholder=\"blur\" />\n  </div>\n)\n```",
+    "preview": "[Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#static-image-imports-static-image-imports",
+    "position": 6
+  },
+  {
+    "title": "urlImports",
+    "section": "[URLs in CSS](#urls-in-css)",
+    "section_id": "urls-in-css-urls-in-css",
+    "heading_level": 3,
+    "content": "### [URLs in CSS](#urls-in-css)\n\n```\n.className {\n  background: url('https://example.com/assets/hero.jpg');\n}\n```",
+    "preview": "[Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#urls-in-css-urls-in-css",
+    "position": 7
+  },
+  {
+    "title": "urlImports",
+    "section": "[Asset Imports](#asset-imports)",
+    "section_id": "asset-imports-asset-imports",
+    "heading_level": 3,
+    "content": "### [Asset Imports](#asset-imports)\n\n```\nconst logo = new URL('https://example.com/assets/file.txt', import.meta.url)\n \nconsole.log(logo.pathname)\n \n// prints \"/_next/static/media/file.a9727b5d.txt\"\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/urlImports#asset-imports-asset-imports",
+    "position": 8
+  }
+]

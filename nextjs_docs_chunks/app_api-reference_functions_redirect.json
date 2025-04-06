@@ -1,0 +1,112 @@
+[
+  {
+    "title": "redirect",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)redirect",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)redirect",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "redirect",
+    "section": "redirect",
+    "section_id": "redirect",
+    "heading_level": 1,
+    "content": "# redirect\n\nThe `redirect` function allows you to redirect the user to another URL. `redirect` can be used in [Server Components](/docs/app/building-your-application/rendering/server-components), [Route Handlers](/docs/app/building-your-application/routing/route-handlers), and [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations).\n\nWhen used in a [streaming context](/docs/app/building-your-application/routing/loading-ui-and-streaming#what-is-streaming), this will insert a meta tag to emit the redirect on the client side. When used in a server action, it will serve a 303 HTTP redirect response to the caller. Otherwise, it will serve a 307 HTTP redirect response to the caller.\n\nIf a resource doesn't exist, you can use the [`notFound` function](/docs/app/api-reference/functions/not-found) instead.\n\n> **Good to know**:\n>\n> * In Server Actions and Route Handlers, `redirect` should be called after the `try/catch` block.\n> * If you prefer to return a 308 (Permanent) HTTP redirect instead of 307 (Temporary), you can use the [`permanentRedirect` function](/docs/app/api-reference/functions/permanentRedirect) instead.",
+    "preview": "The `redirect` function allows you to redirect the user to another URL. `redirect` can be used in [Server Components](/docs/app/building-your-application/rendering/server-components), [Route Handlers](/docs/app/building-your-application/routing/route-handlers), and [Server Actions](/docs/app/buildin",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#redirect",
+    "position": 1
+  },
+  {
+    "title": "redirect",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\nThe `redirect` function accepts two arguments:\n\n```\nredirect(path, type)\n```\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `path` | `string` | The URL to redirect to. Can be a relative or absolute path. |\n| `type` | `'replace'` (default) or `'push'` (default in Server Actions) | The type of redirect to perform. |\n\nBy default, `redirect` will use `push` (adding a new entry to the browser history stack) in [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) and `replace` (replacing the current URL in the browser history stack) everywhere else. You can override this behavior by specifying the `type` parameter.\n\nThe `type` parameter has no effect when used in Server Components.",
+    "preview": "The `redirect` function accepts two arguments: [Code Block] | Parameter | Type | Description | | --- | --- | --- | | `path` | `string` | The URL to redirect to. Can be a relative or absolute path. | | `type` | `'replace'` (default) or `'push'` (default in Server Actions) | The type of redirect to",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "redirect",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\n`redirect` does not return a value.",
+    "preview": "`redirect` does not return a value.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "redirect",
+    "section": "[Example](#example)",
+    "section_id": "example-example",
+    "heading_level": 2,
+    "content": "## [Example](#example)",
+    "preview": "## [Example](#example)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#example-example",
+    "position": 4
+  },
+  {
+    "title": "redirect",
+    "section": "[Server Component](#server-component)",
+    "section_id": "server-component-server-component",
+    "heading_level": 3,
+    "content": "### [Server Component](#server-component)\n\nInvoking the `redirect()` function throws a `NEXT_REDIRECT` error and terminates rendering of the route segment in which it was thrown.\n\napp/team/[id]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { redirect } from 'next/navigation'\n \nasync function fetchTeam(id: string) {\n  const res = await fetch('https://...')\n  if (!res.ok) return undefined\n  return res.json()\n}\n \nexport default async function Profile({\n  params,\n}: {\n  params: Promise<{ id: string }>\n}) {\n  const { id } = await params\n  const team = await fetchTeam(id)\n \n  if (!team) {\n    redirect('/login')\n  }\n \n  // ...\n}\n```\n\n> **Good to know**: `redirect` does not require you to use `return redirect()` as it uses the TypeScript [`never`](https://www.typescriptlang.org/docs/handbook/2/functions.html#never) type.",
+    "preview": "Invoking the `redirect()` function throws a `NEXT_REDIRECT` error and terminates rendering of the route segment in which it was thrown. app/team/[id]/page.tsx TypeScript JavaScriptTypeScript [Code Block] > **Good to know**: `redirect` does not require you to use `return redirect()` as it uses t",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#server-component-server-component",
+    "position": 5
+  },
+  {
+    "title": "redirect",
+    "section": "[Client Component](#client-component)",
+    "section_id": "client-component-client-component",
+    "heading_level": 3,
+    "content": "### [Client Component](#client-component)\n\n`redirect` can be directly used in a Client Component.\n\ncomponents/client-redirect.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { redirect, usePathname } from 'next/navigation'\n \nexport function ClientRedirect() {\n  const pathname = usePathname()\n \n  if (pathname.startsWith('/admin') && !pathname.includes('/login')) {\n    redirect('/admin/login')\n  }\n \n  return <div>Login Page</div>\n}\n```\n\n> **Good to know**: When using `redirect` in a Client Component on initial page load during Server-Side Rendering (SSR), it will perform a server-side redirect.\n\n`redirect` can be used in a Client Component through a Server Action. If you need to use an event handler to redirect the user, you can use the [`useRouter`](/docs/app/api-reference/functions/use-router) hook.\n\napp/client-redirect.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { navigate } from './actions'\n \nexport function ClientRedirect() {\n  return (\n    <form action={navigate}>\n      <input type=\"text\" name=\"id\" />\n      <button>Submit</button>\n    </form>\n  )\n}\n```\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { redirect } from 'next/navigation'\n \nexport async function navigate(data: FormData) {\n  redirect(`/posts/${data.get('id')}`)\n}\n```",
+    "preview": "`redirect` can be directly used in a Client Component. components/client-redirect.tsx TypeScript JavaScriptTypeScript [Code Block] > **Good to know**: When using `redirect` in a Client Component on initial page load during Server-Side Rendering (SSR), it will perform a server-side redirect. `r",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#client-component-client-component",
+    "position": 6
+  },
+  {
+    "title": "redirect",
+    "section": "[FAQ](#faq)",
+    "section_id": "faq-faq",
+    "heading_level": 2,
+    "content": "## [FAQ](#faq)",
+    "preview": "## [FAQ](#faq)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#faq-faq",
+    "position": 7
+  },
+  {
+    "title": "redirect",
+    "section": "[Why does `redirect` use 307 and 308?](#why-does-redirect-use-307-and-308)",
+    "section_id": "why-does-redirect-use-307-and-308-why-does-redirect-use-307-and-308",
+    "heading_level": 3,
+    "content": "### [Why does `redirect` use 307 and 308?](#why-does-redirect-use-307-and-308)\n\nWhen using `redirect()` you may notice that the status codes used are `307` for a temporary redirect, and `308` for a permanent redirect. While traditionally a `302` was used for a temporary redirect, and a `301` for a permanent redirect, many browsers changed the request method of the redirect, from a `POST` to `GET` request when using a `302`, regardless of the origins request method.\n\nTaking the following example of a redirect from `/users` to `/people`, if you make a `POST` request to `/users` to create a new user, and are conforming to a `302` temporary redirect, the request method will be changed from a `POST` to a `GET` request. This doesn't make sense, as to create a new user, you should be making a `POST` request to `/people`, and not a `GET` request.\n\nThe introduction of the `307` status code means that the request method is preserved as `POST`.\n\n* `302` - Temporary redirect, will change the request method from `POST` to `GET`\n* `307` - Temporary redirect, will preserve the request method as `POST`\n\nThe `redirect()` method uses a `307` by default, instead of a `302` temporary redirect, meaning your requests will *always* be preserved as `POST` requests.\n\n[Learn more](https://developer.mozilla.org/docs/Web/HTTP/Redirections) about HTTP Redirects.",
+    "preview": "When using `redirect()` you may notice that the status codes used are `307` for a temporary redirect, and `308` for a permanent redirect. While traditionally a `302` was used for a temporary redirect, and a `301` for a permanent redirect, many browsers changed the request method of the redirect, fro",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#why-does-redirect-use-307-and-308-why-does-redirect-use-307-and-308",
+    "position": 8
+  },
+  {
+    "title": "redirect",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.0.0` | `redirect` introduced. |",
+    "preview": "| Version | Changes | | --- | --- | | `v13.0.0` | `redirect` introduced. |",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#version-history-version-history",
+    "position": 9
+  },
+  {
+    "title": "redirect",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\n[### permanentRedirect\n\nAPI Reference for the permanentRedirect function.](/docs/app/api-reference/functions/permanentRedirect)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### permanentRedirect API Reference for the permanentRedirect function.](/docs/app/api-reference/functions/permanentRedirect) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/redirect#next-steps",
+    "position": 10
+  }
+]

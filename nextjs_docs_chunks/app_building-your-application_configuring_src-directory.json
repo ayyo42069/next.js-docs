@@ -1,0 +1,32 @@
+[
+  {
+    "title": "src Directory",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Configuring](/docs/app/building-your-application/configuring)src Directory",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Configuring](/docs/app/building-your-application/configuring)src Directory",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/src-directory#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "src Directory",
+    "section": "src Directory",
+    "section_id": "src-directory",
+    "heading_level": 1,
+    "content": "# src Directory\n\nAs an alternative to having the special Next.js `app` or `pages` directories in the root of your project, Next.js also supports the common pattern of placing application code under the `src` directory.\n\nThis separates application code from project configuration files which mostly live in the root of a project, which is preferred by some individuals and teams.\n\nTo use the `src` directory, move the `app` Router folder or `pages` Router folder to `src/app` or `src/pages` respectively.\n\n[Image: An example folder structure with the `src` directory][Image: An example folder structure with the `src` directory]\n> **Good to know**:\n>\n> * The `/public` directory should remain in the root of your project.\n> * Config files like `package.json`, `next.config.js` and `tsconfig.json` should remain in the root of your project.\n> * `.env.*` files should remain in the root of your project.\n> * `src/app` or `src/pages` will be ignored if `app` or `pages` are present in the root directory.\n> * If you're using `src`, you'll probably also move other application folders such as `/components` or `/lib`.\n> * If you're using Middleware, ensure it is placed inside the `src` directory.\n> * If you're using Tailwind CSS, you'll need to add the `/src` prefix to the `tailwind.config.js` file in the [content section](https://tailwindcss.com/docs/content-configuration).\n> * If you are using TypeScript paths for imports such as `@/*`, you should update the `paths` object in `tsconfig.json` to include `src/`.",
+    "preview": "As an alternative to having the special Next.js `app` or `pages` directories in the root of your project, Next.js also supports the common pattern of placing application code under the `src` directory. This separates application code from project configuration files which mostly live in the root of",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/src-directory#src-directory",
+    "position": 1
+  },
+  {
+    "title": "src Directory",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\n[### Project Structure\n\nAn overview of the folder and file conventions in Next.js, and how to organize your project.](/docs/app/getting-started/project-structure)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Project Structure An overview of the folder and file conventions in Next.js, and how to organize your project.](/docs/app/getting-started/project-structure) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/src-directory#next-steps",
+    "position": 2
+  }
+]

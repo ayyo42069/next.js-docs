@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Tailwind CSS",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Styling](/docs/pages/building-your-application/styling)Tailwind CSS",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Styling](/docs/pages/building-your-application/styling)Tailwind CSS",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/tailwind-css#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Tailwind CSS",
+    "section": "Tailwind CSS",
+    "section_id": "tailwind-css",
+    "heading_level": 1,
+    "content": "# Tailwind CSS\n\n[Tailwind CSS](https://tailwindcss.com/) is a utility-first CSS framework that is fully compatible with Next.js.",
+    "preview": "[Tailwind CSS](https://tailwindcss.com/) is a utility-first CSS framework that is fully compatible with Next.js.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/tailwind-css#tailwind-css",
+    "position": 1
+  },
+  {
+    "title": "Tailwind CSS",
+    "section": "[Installing Tailwind](#installing-tailwind)",
+    "section_id": "installing-tailwind-installing-tailwind",
+    "heading_level": 2,
+    "content": "## [Installing Tailwind](#installing-tailwind)\n\nInstall the necessary Tailwind CSS packages:\n\nTerminal\n\n```\nnpm install -D tailwindcss @tailwindcss/postcss postcss\n```",
+    "preview": "Install the necessary Tailwind CSS packages: Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/tailwind-css#installing-tailwind-installing-tailwind",
+    "position": 2
+  },
+  {
+    "title": "Tailwind CSS",
+    "section": "[Configuring Tailwind](#configuring-tailwind)",
+    "section_id": "configuring-tailwind-configuring-tailwind",
+    "heading_level": 2,
+    "content": "## [Configuring Tailwind](#configuring-tailwind)\n\nCreate a `postcss.config.mjs` file in the root of your project and add the `@tailwindcss/postcss` plugin to your PostCSS configuration:\n\npostcss.config.mjs\n\n```\n/** @type {import('tailwindcss').Config} */\nexport default {\n  plugins: {\n    '@tailwindcss/postcss': {},\n  },\n}\n```\n\nAs of [Tailwind v4](https://tailwindcss.com/blog/tailwindcss-v4), there is zero configuration required by default. If you do need to configure Tailwind, you can follow the [official documentation](https://tailwindcss.com/blog/tailwindcss-v4#css-first-configuration) for configuring the global CSS file.\n\nThere is also an [upgrade CLI](https://tailwindcss.com/docs/upgrade-guide) and [guide](https://tailwindcss.com/docs/upgrade-guide) if you have an existing Tailwind v3 project.",
+    "preview": "Create a `postcss.config.mjs` file in the root of your project and add the `@tailwindcss/postcss` plugin to your PostCSS configuration: postcss.config.mjs [Code Block] As of [Tailwind v4](https://tailwindcss.com/blog/tailwindcss-v4), there is zero configuration required by default. If you do need",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/tailwind-css#configuring-tailwind-configuring-tailwind",
+    "position": 3
+  },
+  {
+    "title": "Tailwind CSS",
+    "section": "[Importing Styles](#importing-styles-1)",
+    "section_id": "importing-styles-importing-styles-1",
+    "heading_level": 2,
+    "content": "## [Importing Styles](#importing-styles-1)\n\nAdd the [Tailwind CSS directives](https://tailwindcss.com/docs/functions-and-directives#directives) that Tailwind will use to inject its generated styles to a [Global Stylesheet](/docs/pages/building-your-application/styling/css#global-styles) in your application, for example:\n\nstyles/globals.css\n\n```\n@import 'tailwindcss';\n```\n\nInside the [custom app file](/docs/pages/building-your-application/routing/custom-app) (`pages/_app.js`), import the `globals.css` stylesheet to apply the styles to every route in your application.\n\npages/\\_app.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n// These styles apply to every route in the application\nimport '@/styles/globals.css'\nimport type { AppProps } from 'next/app'\n \nexport default function App({ Component, pageProps }: AppProps) {\n  return <Component {...pageProps} />\n}\n```",
+    "preview": "Add the [Tailwind CSS directives](https://tailwindcss.com/docs/functions-and-directives#directives) that Tailwind will use to inject its generated styles to a [Global Stylesheet](/docs/pages/building-your-application/styling/css#global-styles) in your application, for example: styles/globals.css [",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/tailwind-css#importing-styles-importing-styles-1",
+    "position": 4
+  },
+  {
+    "title": "Tailwind CSS",
+    "section": "[Using Classes](#using-classes-1)",
+    "section_id": "using-classes-using-classes-1",
+    "heading_level": 2,
+    "content": "## [Using Classes](#using-classes-1)\n\nAfter installing Tailwind CSS and adding the global styles, you can use Tailwind's utility classes in your application.\n\npages/index.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Page() {\n  return <h1 className=\"text-3xl font-bold underline\">Hello, Next.js!</h1>\n}\n```",
+    "preview": "After installing Tailwind CSS and adding the global styles, you can use Tailwind's utility classes in your application. pages/index.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/tailwind-css#using-classes-using-classes-1",
+    "position": 5
+  },
+  {
+    "title": "Tailwind CSS",
+    "section": "[Usage with Turbopack](#usage-with-turbopack)",
+    "section_id": "usage-with-turbopack-usage-with-turbopack",
+    "heading_level": 2,
+    "content": "## [Usage with Turbopack](#usage-with-turbopack)\n\nAs of Next.js 13.1, Tailwind CSS and PostCSS are supported with [Turbopack](https://turbo.build/pack/docs/features/css#tailwind-css).\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "As of Next.js 13.1, Tailwind CSS and PostCSS are supported with [Turbopack](https://turbo.build/pack/docs/features/css#tailwind-css). Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/tailwind-css#usage-with-turbopack-usage-with-turbopack",
+    "position": 6
+  }
+]

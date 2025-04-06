@@ -1,0 +1,42 @@
+[
+  {
+    "title": "htmlLimitedBots",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)htmlLimitedBots",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)htmlLimitedBots",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "htmlLimitedBots",
+    "section": "htmlLimitedBots",
+    "section_id": "htmllimitedbots",
+    "heading_level": 1,
+    "content": "# htmlLimitedBots\n\nThe `htmlLimitedBots` config allows you to specify a list of user agents that should receive blocking metadata instead of [streaming metadata](/docs/app/api-reference/functions/generate-metadata#streaming-metadata).\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst config: NextConfig = {\n  htmlLimitedBots: 'MySpecialBot|MyAnotherSpecialBot|SimpleCrawler',\n}\n \nexport default config\n```",
+    "preview": "The `htmlLimitedBots` config allows you to specify a list of user agents that should receive blocking metadata instead of [streaming metadata](/docs/app/api-reference/functions/generate-metadata#streaming-metadata). next.config.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots#htmllimitedbots",
+    "position": 1
+  },
+  {
+    "title": "htmlLimitedBots",
+    "section": "[Default list](#default-list)",
+    "section_id": "default-list-default-list",
+    "heading_level": 2,
+    "content": "## [Default list](#default-list)\n\nNext.js includes [a default list of HTML limited bots](https://github.com/vercel/next.js/blob/canary/packages/next/src/shared/lib/router/utils/html-bots.ts).\n\nSpecifying a `htmlLimitedBots` config will override the Next.js' default list, allowing you full control over what user agents should opt into this behavior. However, this is advanced behavior, and the default should be sufficient for most cases.",
+    "preview": "Next.js includes [a default list of HTML limited bots](https://github.com/vercel/next.js/blob/canary/packages/next/src/shared/lib/router/utils/html-bots.ts). Specifying a `htmlLimitedBots` config will override the Next.js' default list, allowing you full control over what user agents should opt int",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots#default-list-default-list",
+    "position": 2
+  },
+  {
+    "title": "htmlLimitedBots",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| 15.2.0 | `htmlLimitedBots` option introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | 15.2.0 | `htmlLimitedBots` option introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots#version-history-version-history",
+    "position": 3
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "title": "reactMaxHeadersLength",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)reactMaxHeadersLength",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)reactMaxHeadersLength",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/reactMaxHeadersLength#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "reactMaxHeadersLength",
+    "section": "reactMaxHeadersLength",
+    "section_id": "reactmaxheaderslength",
+    "heading_level": 1,
+    "content": "# reactMaxHeadersLength\n\nDuring static rendering, React can emit headers that can be added to the response. These can be used to improve performance by allowing the browser to preload resources like fonts, scripts, and stylesheets. The default value is `6000`, but you can override this value by configuring the `reactMaxHeadersLength` option in `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  reactMaxHeadersLength: 1000,\n}\n```\n\n> **Good to know**: This option is only available in App Router.\n\nDepending on the type of proxy between the browser and the server, the headers can be truncated. For example, if you are using a reverse proxy that doesn't support long headers, you should set a lower value to ensure that the headers are not truncated.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "During static rendering, React can emit headers that can be added to the response. These can be used to improve performance by allowing the browser to preload resources like fonts, scripts, and stylesheets. The default value is `6000`, but you can override this value by configuring the `reactMaxHead",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/reactMaxHeadersLength#reactmaxheaderslength",
+    "position": 1
+  }
+]

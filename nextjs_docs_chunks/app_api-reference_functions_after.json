@@ -1,0 +1,92 @@
+[
+  {
+    "title": "after",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)after",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)after",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/after#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "after",
+    "section": "after",
+    "section_id": "after",
+    "heading_level": 1,
+    "content": "# after\n\n`after` allows you to schedule work to be executed after a response (or prerender) is finished. This is useful for tasks and other side effects that should not block the response, such as logging and analytics.\n\nIt can be used in [Server Components](/docs/app/building-your-application/rendering/server-components) (including [`generateMetadata`](https://nextjs.org/docs/app/api-reference/functions/generate-metadata)), [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations), [Route Handlers](/docs/app/building-your-application/routing/route-handlers), and [Middleware](/docs/app/building-your-application/routing/middleware).\n\nThe function accepts a callback that will be executed after the response (or prerender) is finished:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { after } from 'next/server'\n// Custom logging function\nimport { log } from '@/app/utils'\n \nexport default function Layout({ children }: { children: React.ReactNode }) {\n  after(() => {\n    // Execute after the layout is rendered and sent to the user\n    log()\n  })\n  return <>{children}</>\n}\n```\n\n> **Good to know:** `after` is not a [Dynamic API](/docs/app/building-your-application/rendering/server-components#dynamic-apis) and calling it does not cause a route to become dynamic. If it's used within a static page, the callback will execute at build time, or whenever a page is revalidated.",
+    "preview": "`after` allows you to schedule work to be executed after a response (or prerender) is finished. This is useful for tasks and other side effects that should not block the response, such as logging and analytics. It can be used in [Server Components](/docs/app/building-your-application/rendering/serv",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/after#after",
+    "position": 1
+  },
+  {
+    "title": "after",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/after#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "after",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 3,
+    "content": "### [Parameters](#parameters)\n\n* A callback function which will be executed after the response (or prerender) is finished.",
+    "preview": "* A callback function which will be executed after the response (or prerender) is finished.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/after#parameters-parameters",
+    "position": 3
+  },
+  {
+    "title": "after",
+    "section": "[Duration](#duration)",
+    "section_id": "duration-duration",
+    "heading_level": 3,
+    "content": "### [Duration](#duration)\n\n`after` will run for the platform's default or configured max duration of your route. If your platform supports it, you can configure the timeout limit using the [`maxDuration`](/docs/app/api-reference/file-conventions/route-segment-config#maxduration) route segment config.",
+    "preview": "`after` will run for the platform's default or configured max duration of your route. If your platform supports it, you can configure the timeout limit using the [`maxDuration`](/docs/app/api-reference/file-conventions/route-segment-config#maxduration) route segment config.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/after#duration-duration",
+    "position": 4
+  },
+  {
+    "title": "after",
+    "section": "[Good to know](#good-to-know)",
+    "section_id": "good-to-know-good-to-know",
+    "heading_level": 2,
+    "content": "## [Good to know](#good-to-know)\n\n* `after` will be executed even if the response didn't complete successfully. Including when an error is thrown or when `notFound` or `redirect` is called.\n* You can use React `cache` to deduplicate functions called inside `after`.\n* `after` can be nested inside other `after` calls, for example, you can create utility functions that wrap `after` calls to add additional functionality.",
+    "preview": "* `after` will be executed even if the response didn't complete successfully. Including when an error is thrown or when `notFound` or `redirect` is called. * You can use React `cache` to deduplicate functions called inside `after`. * `after` can be nested inside other `after` calls, for example, you",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/after#good-to-know-good-to-know",
+    "position": 5
+  },
+  {
+    "title": "after",
+    "section": "[Alternatives](#alternatives)",
+    "section_id": "alternatives-alternatives",
+    "heading_level": 2,
+    "content": "## [Alternatives](#alternatives)\n\nThe use case for `after` is to process secondary tasks without blocking the primary response. It's similar to using the platform's [`waitUntil()`](https://vercel.com/docs/functions/functions-api-reference) or removing `await` from a promise, but with the following differences:\n\n* **`waitUntil()`**: accepts a promise and enqueues a task to be executed during the lifecycle of the request, whereas `after` accepts a callback that will be executed **after** the response is finished.\n* **Removing `await`**: starts executing during the response, which uses resources. It's also not reliable in serverless environments as the function stops computation immediately after the response is sent, potentially interrupting the task.\n\nWe recommend using `after` as it has been designed to consider other Next.js APIs and contexts.",
+    "preview": "The use case for `after` is to process secondary tasks without blocking the primary response. It's similar to using the platform's [`waitUntil()`](https://vercel.com/docs/functions/functions-api-reference) or removing `await` from a promise, but with the following differences: * **`waitUntil()`**:",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/after#alternatives-alternatives",
+    "position": 6
+  },
+  {
+    "title": "after",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/after#examples-examples",
+    "position": 7
+  },
+  {
+    "title": "after",
+    "section": "[With request APIs](#with-request-apis)",
+    "section_id": "with-request-apis-with-request-apis",
+    "heading_level": 3,
+    "content": "### [With request APIs](#with-request-apis)\n\nYou can use request APIs such as [`cookies`](/docs/app/api-reference/functions/cookies) and [`headers`](/docs/app/api-reference/functions/headers) inside `after` in [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) and [Route Handlers](/docs/app/api-reference/file-conventions/route). This is useful for logging activity after a mutation. For example:\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { after } from 'next/server'\nimport { cookies, headers } from 'next/headers'\nimport { logUserAction } from '@/app/utils'\n \nexport async function POST(request: Request) {\n  // Perform mutation\n  // ...\n \n  // Log user activity for analytics\n  after(async () => {\n    const userAgent = (await headers().get('user-agent')) || 'unknown'\n    const sessionCookie =\n      (await cookies().get('session-id'))?.value || 'anonymous'\n \n    logUserAction({ sessionCookie, userAgent })\n  })\n \n  return new Response(JSON.stringify({ status: 'success' }), {\n    status: 200,\n    headers: { 'Content-Type': 'application/json' },\n  })\n}\n```\n\nHowever, you cannot use these request APIs inside `after` in [Server Components](/docs/app/building-your-application/rendering/server-components). This is because Next.js needs to know which part of the tree access the request APIs to support [Partial Prerendering](/docs/app/building-your-application/rendering/partial-prerendering), but `after` runs after React's rendering lifecycle.\n\n| Version History | Description |\n| --- | --- |\n| `v15.1.0` | `after` became stable. |\n| `v15.0.0-rc` | `unstable_after` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "You can use request APIs such as [`cookies`](/docs/app/api-reference/functions/cookies) and [`headers`](/docs/app/api-reference/functions/headers) inside `after` in [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) and [Route Handlers](/docs/app/api-ref",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/after#with-request-apis-with-request-apis",
+    "position": 8
+  }
+]

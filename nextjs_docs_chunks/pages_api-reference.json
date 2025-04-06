@@ -1,0 +1,22 @@
+[
+  {
+    "title": "API Reference",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Introduction](/docs)[Pages Router](/docs/pages)API Reference",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Introduction](/docs)[Pages Router](/docs/pages)API Reference",
+    "url": "https://nextjs.org/docs/pages/api-reference#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "API Reference",
+    "section": "API Reference",
+    "section_id": "api-reference",
+    "heading_level": 1,
+    "content": "# API Reference\n\n[### Components\n\nAPI Reference for Next.js built-in components in the Pages Router.](/docs/pages/api-reference/components)[### Functions\n\nAPI Reference for Functions and Hooks in Pages Router.](/docs/pages/api-reference/functions)[### Configuration\n\nLearn how to configure your Next.js application.](/docs/pages/api-reference/config)[### CLI\n\nAPI Reference for the Next.js Command Line Interface (CLI) tools.](/docs/pages/api-reference/cli)[### Edge Runtime\n\nAPI Reference for the Edge Runtime.](/docs/pages/api-reference/edge)[### Turbopack\n\nTurbopack is an incremental bundler optimized for JavaScript and TypeScript, written in Rust, and built into Next.js.](/docs/pages/api-reference/turbopack)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Components API Reference for Next.js built-in components in the Pages Router.](/docs/pages/api-reference/components)[### Functions API Reference for Functions and Hooks in Pages Router.](/docs/pages/api-reference/functions)[### Configuration Learn how to configure your Next.js application.](",
+    "url": "https://nextjs.org/docs/pages/api-reference#api-reference",
+    "position": 1
+  }
+]

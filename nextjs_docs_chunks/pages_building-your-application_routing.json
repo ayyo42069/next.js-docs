@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Routing",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Pages Router](/docs/pages)[Building Your Application](/docs/pages/building-your-application)Routing",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Pages Router](/docs/pages)[Building Your Application](/docs/pages/building-your-application)Routing",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Routing",
+    "section": "Routing",
+    "section_id": "routing",
+    "heading_level": 1,
+    "content": "# Routing\n\nThe Pages Router has a file-system based router built on concepts of pages. When a file is added to the `pages` directory it's automatically available as a route. Learn more about routing in the Pages Router:\n\n[### Pages and Layouts\n\nCreate your first page and shared layout with the Pages Router.](/docs/pages/building-your-application/routing/pages-and-layouts)[### Dynamic Routes\n\nDynamic Routes are pages that allow you to add custom params to your URLs. Start creating Dynamic Routes and learn more here.](/docs/pages/building-your-application/routing/dynamic-routes)[### Linking and Navigating\n\nLearn how navigation works in Next.js, and how to use the Link Component and `useRouter` hook.](/docs/pages/building-your-application/routing/linking-and-navigating)[### Redirecting\n\nLearn the different ways to handle redirects in Next.js.](/docs/pages/building-your-application/routing/redirecting)[### Custom App\n\nControl page initialization and add a layout that persists for all pages by overriding the default App component used by Next.js.](/docs/pages/building-your-application/routing/custom-app)[### Custom Document\n\nExtend the default document markup added by Next.js.](/docs/pages/building-your-application/routing/custom-document)[### API Routes\n\nNext.js supports API Routes, which allow you to build your API without leaving your Next.js app. Learn how it works here.](/docs/pages/building-your-application/routing/api-routes)[### Custom Errors\n\nOverride and extend the built-in Error page to handle custom errors.](/docs/pages/building-your-application/routing/custom-error)[### Internationalization\n\nNext.js has built-in support for internationalized routing and language detection. Learn more here.](/docs/pages/building-your-application/routing/internationalization)[### Middleware\n\nLearn how to use Middleware to run code before a request is completed.](/docs/pages/building-your-application/routing/middleware)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The Pages Router has a file-system based router built on concepts of pages. When a file is added to the `pages` directory it's automatically available as a route. Learn more about routing in the Pages Router: [### Pages and Layouts Create your first page and shared layout with the Pages Router.](/",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing#routing",
+    "position": 1
+  }
+]

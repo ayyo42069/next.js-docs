@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Client Components",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Rendering](/docs/app/building-your-application/rendering)Client Components",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Rendering](/docs/app/building-your-application/rendering)Client Components",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/client-components#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Client Components",
+    "section": "Client Components",
+    "section_id": "client-components",
+    "heading_level": 1,
+    "content": "# Client Components\n\nClient Components allow you to write interactive UI that is [prerendered on the server](https://github.com/reactwg/server-components/discussions/4) and can use client JavaScript to run in the browser.\n\nThis page will go through how Client Components work, how they're rendered, and when you might use them.",
+    "preview": "Client Components allow you to write interactive UI that is [prerendered on the server](https://github.com/reactwg/server-components/discussions/4) and can use client JavaScript to run in the browser. This page will go through how Client Components work, how they're rendered, and when you might use",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/client-components#client-components",
+    "position": 1
+  },
+  {
+    "title": "Client Components",
+    "section": "[Benefits of Client Rendering](#benefits-of-client-rendering)",
+    "section_id": "benefits-of-client-rendering-benefits-of-client-rendering",
+    "heading_level": 2,
+    "content": "## [Benefits of Client Rendering](#benefits-of-client-rendering)\n\nThere are a couple of benefits to doing the rendering work on the client, including:\n\n* **Interactivity**: Client Components can use state, effects, and event listeners, meaning they can provide immediate feedback to the user and update the UI.\n* **Browser APIs**: Client Components have access to browser APIs, like [geolocation](https://developer.mozilla.org/docs/Web/API/Geolocation_API) or [localStorage](https://developer.mozilla.org/docs/Web/API/Window/localStorage).",
+    "preview": "There are a couple of benefits to doing the rendering work on the client, including: * **Interactivity**: Client Components can use state, effects, and event listeners, meaning they can provide immediate feedback to the user and update the UI. * **Browser APIs**: Client Components have access to br",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/client-components#benefits-of-client-rendering-benefits-of-client-rendering",
+    "position": 2
+  },
+  {
+    "title": "Client Components",
+    "section": "[Using Client Components in Next.js](#using-client-components-in-nextjs)",
+    "section_id": "using-client-components-in-next-js-using-client-components-in-nextjs",
+    "heading_level": 2,
+    "content": "## [Using Client Components in Next.js](#using-client-components-in-nextjs)\n\nTo use Client Components, you can add the React [`\"use client\"` directive](https://react.dev/reference/react/use-client) at the top of a file, above your imports.\n\n`\"use client\"` is used to declare a [boundary](/docs/app/building-your-application/rendering#network-boundary) between a Server and Client Component modules. This means that by defining a `\"use client\"` in a file, all other modules imported into it, including child components, are considered part of the client bundle.\n\napp/counter.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useState } from 'react'\n \nexport default function Counter() {\n  const [count, setCount] = useState(0)\n \n  return (\n    <div>\n      <p>You clicked {count} times</p>\n      <button onClick={() => setCount(count + 1)}>Click me</button>\n    </div>\n  )\n}\n```\n\nThe diagram below shows that using `onClick` and `useState` in a nested component (`toggle.js`) will cause an error if the `\"use client\"` directive is not defined. This is because, by default, all components in the App Router are Server Components where these APIs are not available. By defining the `\"use client\"` directive in `toggle.js`, you can tell React to enter the client boundary where these APIs are available.\n\n[Image: Use Client Directive and Network Boundary][Image: Use Client Directive and Network Boundary]\n> **Defining multiple `use client` entry points**:\n>\n> You can define multiple \"use client\" entry points in your React Component tree. This allows you to split your application into multiple client bundles.\n>\n> However, `\"use client\"` doesn't need to be defined in every component that needs to be rendered on the client. Once you define the boundary, all child components and modules imported into it are considered part of the client bundle.",
+    "preview": "To use Client Components, you can add the React [`\"use client\"` directive](https://react.dev/reference/react/use-client) at the top of a file, above your imports. `\"use client\"` is used to declare a [boundary](/docs/app/building-your-application/rendering#network-boundary) between a Server and Clie",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/client-components#using-client-components-in-next-js-using-client-components-in-nextjs",
+    "position": 3
+  },
+  {
+    "title": "Client Components",
+    "section": "[How are Client Components Rendered?](#how-are-client-components-rendered)",
+    "section_id": "how-are-client-components-rendered-how-are-client-components-rendered",
+    "heading_level": 2,
+    "content": "## [How are Client Components Rendered?](#how-are-client-components-rendered)\n\nIn Next.js, Client Components are rendered differently depending on whether the request is part of a full page load (an initial visit to your application or a page reload triggered by a browser refresh) or a subsequent navigation.",
+    "preview": "In Next.js, Client Components are rendered differently depending on whether the request is part of a full page load (an initial visit to your application or a page reload triggered by a browser refresh) or a subsequent navigation.",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/client-components#how-are-client-components-rendered-how-are-client-components-rendered",
+    "position": 4
+  },
+  {
+    "title": "Client Components",
+    "section": "[Full page load](#full-page-load)",
+    "section_id": "full-page-load-full-page-load",
+    "heading_level": 3,
+    "content": "### [Full page load](#full-page-load)\n\nTo optimize the initial page load, Next.js will use React's APIs to render a static HTML preview on the server for both Client and Server Components. This means, when the user first visits your application, they will see the content of the page immediately, without having to wait for the client to download, parse, and execute the Client Component JavaScript bundle.\n\nOn the server:\n\n1. React renders Server Components into a special data format called the [**React Server Component Payload (RSC Payload)**](/docs/app/building-your-application/rendering/server-components#what-is-the-react-server-component-payload-rsc), which includes references to Client Components.\n2. Next.js uses the RSC Payload and Client Component JavaScript instructions to render **HTML** for the route on the server.\n\nThen, on the client:\n\n1. The HTML is used to immediately show a fast non-interactive initial preview of the route.\n2. The React Server Components Payload is used to reconcile the Client and Server Component trees, and update the DOM.\n3. The JavaScript instructions are used to [hydrate](https://react.dev/reference/react-dom/client/hydrateRoot) Client Components and make their UI interactive.\n\n> **What is hydration?**\n>\n> Hydration is the process of attaching event listeners to the DOM, to make the static HTML interactive. Behind the scenes, hydration is done with the [`hydrateRoot`](https://react.dev/reference/react-dom/client/hydrateRoot) React API.",
+    "preview": "To optimize the initial page load, Next.js will use React's APIs to render a static HTML preview on the server for both Client and Server Components. This means, when the user first visits your application, they will see the content of the page immediately, without having to wait for the client to d",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/client-components#full-page-load-full-page-load",
+    "position": 5
+  },
+  {
+    "title": "Client Components",
+    "section": "[Subsequent Navigations](#subsequent-navigations)",
+    "section_id": "subsequent-navigations-subsequent-navigations",
+    "heading_level": 3,
+    "content": "### [Subsequent Navigations](#subsequent-navigations)\n\nOn subsequent navigations, Client Components are rendered entirely on the client, without the server-rendered HTML.\n\nThis means the Client Component JavaScript bundle is downloaded and parsed. Once the bundle is ready, React will use the [RSC Payload](/docs/app/building-your-application/rendering/server-components#what-is-the-react-server-component-payload-rsc) to reconcile the Client and Server Component trees, and update the DOM.",
+    "preview": "On subsequent navigations, Client Components are rendered entirely on the client, without the server-rendered HTML. This means the Client Component JavaScript bundle is downloaded and parsed. Once the bundle is ready, React will use the [RSC Payload](/docs/app/building-your-application/rendering/se",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/client-components#subsequent-navigations-subsequent-navigations",
+    "position": 6
+  },
+  {
+    "title": "Client Components",
+    "section": "[Going back to the Server Environment](#going-back-to-the-server-environment)",
+    "section_id": "going-back-to-the-server-environment-going-back-to-the-server-environment",
+    "heading_level": 2,
+    "content": "## [Going back to the Server Environment](#going-back-to-the-server-environment)\n\nSometimes, after you've declared the `\"use client\"` boundary, you may want to go back to the server environment. For example, you may want to reduce the client bundle size, fetch data on the server, or use an API that is only available on the server.\n\nYou can keep code on the server even though it's theoretically nested inside Client Components by interleaving Client and Server Components and [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations). See the [Composition Patterns](/docs/app/building-your-application/rendering/composition-patterns) page for more information.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Sometimes, after you've declared the `\"use client\"` boundary, you may want to go back to the server environment. For example, you may want to reduce the client bundle size, fetch data on the server, or use an API that is only available on the server. You can keep code on the server even though it's",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/client-components#going-back-to-the-server-environment-going-back-to-the-server-environment",
+    "position": 7
+  }
+]

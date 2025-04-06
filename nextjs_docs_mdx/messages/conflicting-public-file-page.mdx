@@ -1,0 +1,63 @@
+---
+title: "Conflicting Public File and Page File"
+description: "Menu..."
+url: "https://nextjs.org/docs/messages/conflicting-public-file-page"
+slug: "/docs/messages/conflicting-public-file-page"
+date_crawled: "2025-04-06T12:12:21.772716+00:00"
+---
+
+**Path**: /docs/messages/conflicting-public-file-page
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[Docs](/docs)[Errors](/docs)Conflicting Public File and Page File
+
+# Conflicting Public File and Page File
+
+## [Why This Error Occurred](#why-this-error-occurred)
+
+One of your public files has the same path as a page file which is not supported. Since only one resource can reside at the URL both public files and page files must be unique.
+
+## [Possible Ways to Fix It](#possible-ways-to-fix-it)
+
+Rename either the public file or page file that is causing the conflict.
+
+Example conflict between public file and page file
+
+Folder structure
+
+```
+public/
+  hello
+pages/
+  hello.js
+```
+
+Non-conflicting public file and page file
+
+Folder structure
+
+```
+public/
+  hello.txt
+pages/
+  hello.js
+```
+
+## [Useful Links](#useful-links)
+
+* [Static file serving docs](/docs/pages/building-your-application/optimizing/static-assets)
+
+Was this helpful?
+
+supported.
+
+Send

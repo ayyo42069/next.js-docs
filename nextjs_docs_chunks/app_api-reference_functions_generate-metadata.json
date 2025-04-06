@@ -1,0 +1,382 @@
+[
+  {
+    "title": "generateMetadata",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)generateMetadata",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)generateMetadata",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "generateMetadata",
+    "section": "generateMetadata",
+    "section_id": "generatemetadata",
+    "heading_level": 1,
+    "content": "# generateMetadata\n\nThis page covers all **Config-based Metadata** options with `generateMetadata` and the static metadata object.\n\nlayout.tsx | page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \n// either Static metadata\nexport const metadata: Metadata = {\n  title: '...',\n}\n \n// or Dynamic metadata\nexport async function generateMetadata({ params }) {\n  return {\n    title: '...',\n  }\n}\n```\n\n> **Good to know**:\n>\n> * The `metadata` object and `generateMetadata` function exports are **only supported in Server Components**.\n> * You cannot export both the `metadata` object and `generateMetadata` function from the same route segment.",
+    "preview": "This page covers all **Config-based Metadata** options with `generateMetadata` and the static metadata object. layout.tsx | page.tsx TypeScript JavaScriptTypeScript [Code Block] > **Good to know**: > > * The `metadata` object and `generateMetadata` function exports are **only supported in Serve",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata",
+    "position": 1
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[The `metadata` object](#the-metadata-object)",
+    "section_id": "the-metadata-object-the-metadata-object",
+    "heading_level": 2,
+    "content": "## [The `metadata` object](#the-metadata-object)\n\nTo define static metadata, export a [`Metadata` object](#metadata-fields) from a `layout.js` or `page.js` file.\n\nlayout.tsx | page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  title: '...',\n  description: '...',\n}\n \nexport default function Page() {}\n```\n\nSee the [Metadata Fields](#metadata-fields) for a complete list of supported options.",
+    "preview": "To define static metadata, export a [`Metadata` object](#metadata-fields) from a `layout.js` or `page.js` file. layout.tsx | page.tsx TypeScript JavaScriptTypeScript [Code Block] See the [Metadata Fields](#metadata-fields) for a complete list of supported options.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#the-metadata-object-the-metadata-object",
+    "position": 2
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`generateMetadata` function](#generatemetadata-function)",
+    "section_id": "generatemetadata-function-generatemetadata-function",
+    "heading_level": 2,
+    "content": "## [`generateMetadata` function](#generatemetadata-function)\n\nDynamic metadata depends on **dynamic information**, such as the current route parameters, external data, or `metadata` in parent segments, can be set by exporting a `generateMetadata` function that returns a [`Metadata` object](#metadata-fields).\n\napp/products/[id]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata, ResolvingMetadata } from 'next'\n \ntype Props = {\n  params: Promise<{ id: string }>\n  searchParams: Promise<{ [key: string]: string | string[] | undefined }>\n}\n \nexport async function generateMetadata(\n  { params, searchParams }: Props,\n  parent: ResolvingMetadata\n): Promise<Metadata> {\n  // read route params\n  const { id } = await params\n \n  // fetch data\n  const product = await fetch(`https://.../${id}`).then((res) => res.json())\n \n  // optionally access and extend (rather than replace) parent metadata\n  const previousImages = (await parent).openGraph?.images || []\n \n  return {\n    title: product.title,\n    openGraph: {\n      images: ['/some-specific-page-image.jpg', ...previousImages],\n    },\n  }\n}\n \nexport default function Page({ params, searchParams }: Props) {}\n```",
+    "preview": "Dynamic metadata depends on **dynamic information**, such as the current route parameters, external data, or `metadata` in parent segments, can be set by exporting a `generateMetadata` function that returns a [`Metadata` object](#metadata-fields). app/products/[id]/page.tsx TypeScript JavaScriptT",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function-generatemetadata-function",
+    "position": 3
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 3,
+    "content": "### [Parameters](#parameters)\n\n`generateMetadata` function accepts the following parameters:\n\n* `props` - An object containing the parameters of the current route:\n\n  + `params` - An object containing the [dynamic route parameters](/docs/app/building-your-application/routing/dynamic-routes) object from the root segment down to the segment `generateMetadata` is called from. Examples:\n\n    | Route | URL | `params` |\n    | --- | --- | --- |\n    | `app/shop/[slug]/page.js` | `/shop/1` | `{ slug: '1' }` |\n    | `app/shop/[tag]/[item]/page.js` | `/shop/1/2` | `{ tag: '1', item: '2' }` |\n    | `app/shop/[...slug]/page.js` | `/shop/1/2` | `{ slug: ['1', '2'] }` |\n  + `searchParams` - An object containing the current URL's [search params](https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL#parameters). Examples:\n\n    | URL | `searchParams` |\n    | --- | --- |\n    | `/shop?a=1` | `{ a: '1' }` |\n    | `/shop?a=1&b=2` | `{ a: '1', b: '2' }` |\n    | `/shop?a=1&a=2` | `{ a: ['1', '2'] }` |\n* `parent` - A promise of the resolved metadata from parent route segments.",
+    "preview": "`generateMetadata` function accepts the following parameters: * `props` - An object containing the parameters of the current route: + `params` - An object containing the [dynamic route parameters](/docs/app/building-your-application/routing/dynamic-routes) object from the root segment down to th",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#parameters-parameters",
+    "position": 4
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 3,
+    "content": "### [Returns](#returns)\n\n`generateMetadata` should return a [`Metadata` object](#metadata-fields) containing one or more metadata fields.\n\n> **Good to know**:\n>\n> * If metadata doesn't depend on runtime information, it should be defined using the static [`metadata` object](#the-metadata-object) rather than `generateMetadata`.\n> * `fetch` requests are automatically [memoized](/docs/app/building-your-application/caching#request-memoization) for the same data across `generateMetadata`, `generateStaticParams`, Layouts, Pages, and Server Components. React [`cache` can be used](/docs/app/building-your-application/caching#react-cache-function) if `fetch` is unavailable.\n> * `searchParams` are only available in `page.js` segments.\n> * The [`redirect()`](/docs/app/api-reference/functions/redirect) and [`notFound()`](/docs/app/api-reference/functions/not-found) Next.js methods can also be used inside `generateMetadata`.",
+    "preview": "`generateMetadata` should return a [`Metadata` object](#metadata-fields) containing one or more metadata fields. > **Good to know**: > > * If metadata doesn't depend on runtime information, it should be defined using the static [`metadata` object](#the-metadata-object) rather than `generateMetadata",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#returns-returns",
+    "position": 5
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[Metadata Fields](#metadata-fields)",
+    "section_id": "metadata-fields-metadata-fields",
+    "heading_level": 2,
+    "content": "## [Metadata Fields](#metadata-fields)",
+    "preview": "## [Metadata Fields](#metadata-fields)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-fields-metadata-fields",
+    "position": 6
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`title`](#title)",
+    "section_id": "title-title",
+    "heading_level": 3,
+    "content": "### [`title`](#title)\n\nThe `title` attribute is used to set the title of the document. It can be defined as a simple [string](#string) or an optional [template object](#template-object).\n\n#### [String](#string)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  title: 'Next.js',\n}\n```\n\n<head> output\n\n```\n<title>Next.js</title>\n```\n\n#### [Template object](#template-object)\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  title: {\n    template: '...',\n    default: '...',\n    absolute: '...',\n  },\n}\n```\n\n##### [Default](#default)\n\n`title.default` can be used to provide a **fallback title** to child route segments that don't define a `title`.\n\napp/layout.tsx\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  title: {\n    default: 'Acme',\n  },\n}\n```\n\napp/about/page.tsx\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {}\n \n// Output: <title>Acme</title>\n```\n\n##### [Template](#template)\n\n`title.template` can be used to add a prefix or a suffix to `titles` defined in **child** route segments.\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  title: {\n    template: '%s | Acme',\n    default: 'Acme', // a default is required when creating a template\n  },\n}\n```\n\napp/about/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  title: 'About',\n}\n \n// Output: <title>About | Acme</title>\n```\n\n> **Good to know**:\n>\n> * `title.template` applies to **child** route segments and **not** the segment it's defined in. This means:\n>\n>   + `title.default` is **required** when you add a `title.template`.\n>   + `title.template` defined in `layout.js` will not apply to a `title` defined in a `page.js` of the same route segment.\n>   + `title.template` defined in `page.js` has no effect because a page is always the terminating segment (it doesn't have any children route segments).\n> * `title.template` has **no effect** if a route has not defined a `title` or `title.default`.\n\n##### [Absolute](#absolute)\n\n`title.absolute` can be used to provide a title that **ignores** `title.template` set in parent segments.\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  title: {\n    template: '%s | Acme',\n  },\n}\n```\n\napp/about/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  title: {\n    absolute: 'About',\n  },\n}\n \n// Output: <title>About</title>\n```\n\n> **Good to know**:\n>\n> * `layout.js`\n>\n>   + `title` (string) and `title.default` define the default title for child segments (that do not define their own `title`). It will augment `title.template` from the closest parent segment if it exists.\n>   + `title.absolute` defines the default title for child segments. It ignores `title.template` from parent segments.\n>   + `title.template` defines a new title template for child segments.\n> * `page.js`\n>\n>   + If a page does not define its own title the closest parents resolved title will be used.\n>   + `title` (string) defines the routes title. It will augment `title.template` from the closest parent segment if it exists.\n>   + `title.absolute` defines the route title. It ignores `title.template` from parent segments.\n>   + `title.template` has no effect in `page.js` because a page is always the terminating segment of a route.",
+    "preview": "The `title` attribute is used to set the title of the document. It can be defined as a simple [string](#string) or an optional [template object](#template-object). #### [String](#string) layout.js | page.js [Code Block] <head> output [Code Block] #### [Template object](#template-object) app/l",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#title-title",
+    "position": 7
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`description`](#description)",
+    "section_id": "description-description",
+    "heading_level": 3,
+    "content": "### [`description`](#description)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  description: 'The React Framework for the Web',\n}\n```\n\n<head> output\n\n```\n<meta name=\"description\" content=\"The React Framework for the Web\" />\n```",
+    "preview": "layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#description-description",
+    "position": 8
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[Basic Fields](#basic-fields)",
+    "section_id": "basic-fields-basic-fields",
+    "heading_level": 3,
+    "content": "### [Basic Fields](#basic-fields)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  generator: 'Next.js',\n  applicationName: 'Next.js',\n  referrer: 'origin-when-cross-origin',\n  keywords: ['Next.js', 'React', 'JavaScript'],\n  authors: [{ name: 'Seb' }, { name: 'Josh', url: 'https://nextjs.org' }],\n  creator: 'Jiachi Liu',\n  publisher: 'Sebastian Markb\u00e5ge',\n  formatDetection: {\n    email: false,\n    address: false,\n    telephone: false,\n  },\n}\n```\n\n<head> output\n\n```\n<meta name=\"application-name\" content=\"Next.js\" />\n<meta name=\"author\" content=\"Seb\" />\n<link rel=\"author\" href=\"https://nextjs.org\" />\n<meta name=\"author\" content=\"Josh\" />\n<meta name=\"generator\" content=\"Next.js\" />\n<meta name=\"keywords\" content=\"Next.js,React,JavaScript\" />\n<meta name=\"referrer\" content=\"origin-when-cross-origin\" />\n<meta name=\"color-scheme\" content=\"dark\" />\n<meta name=\"creator\" content=\"Jiachi Liu\" />\n<meta name=\"publisher\" content=\"Sebastian Markb\u00e5ge\" />\n<meta name=\"format-detection\" content=\"telephone=no, address=no, email=no\" />\n```",
+    "preview": "layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#basic-fields-basic-fields",
+    "position": 9
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`metadataBase`](#metadatabase)",
+    "section_id": "metadatabase-metadatabase",
+    "heading_level": 3,
+    "content": "### [`metadataBase`](#metadatabase)\n\n`metadataBase` is a convenience option to set a base URL prefix for `metadata` fields that require a fully qualified URL.\n\n* `metadataBase` allows URL-based `metadata` fields defined in the **current route segment and below** to use a **relative path** instead of an otherwise required absolute URL.\n* The field's relative path will be composed with `metadataBase` to form a fully qualified URL.\n* If not configured, `metadataBase` is **automatically populated** with a [default value](#default-value).\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  metadataBase: new URL('https://acme.com'),\n  alternates: {\n    canonical: '/',\n    languages: {\n      'en-US': '/en-US',\n      'de-DE': '/de-DE',\n    },\n  },\n  openGraph: {\n    images: '/og-image.png',\n  },\n}\n```\n\n<head> output\n\n```\n<link rel=\"canonical\" href=\"https://acme.com\" />\n<link rel=\"alternate\" hreflang=\"en-US\" href=\"https://acme.com/en-US\" />\n<link rel=\"alternate\" hreflang=\"de-DE\" href=\"https://acme.com/de-DE\" />\n<meta property=\"og:image\" content=\"https://acme.com/og-image.png\" />\n```\n\n> **Good to know**:\n>\n> * `metadataBase` is typically set in root `app/layout.js` to apply to URL-based `metadata` fields across all routes.\n> * All URL-based `metadata` fields that require absolute URLs can be configured with a `metadataBase` option.\n> * `metadataBase` can contain a subdomain e.g. `https://app.acme.com` or base path e.g. `https://acme.com/start/from/here`\n> * If a `metadata` field provides an absolute URL, `metadataBase` will be ignored.\n> * Using a relative path in a URL-based `metadata` field without configuring a `metadataBase` will cause a build error.\n> * Next.js will normalize duplicate slashes between `metadataBase` (e.g. `https://acme.com/`) and a relative field (e.g. `/path`) to a single slash (e.g. `https://acme.com/path`)\n\n#### [Default value](#default-value)\n\nIf not configured, `metadataBase` has a **default value**.\n\n> On Vercel:\n>\n> * For production deployments, `VERCEL_PROJECT_PRODUCTION_URL` will be used.\n> * For preview deployments, `VERCEL_BRANCH_URL` will take priority, and fallback to `VERCEL_URL` if it's not present.\n>\n> If these values are present they will be used as the **default value** of `metadataBase`, otherwise it falls back to `http://localhost:${process.env.PORT || 3000}`. This allows Open Graph images to work on both local build and Vercel preview and production deployments. When overriding the default, we recommend using environment variables to compute the URL. This allows configuring a URL for local development, staging, and production environments.\n>\n> See more details about these environment variables in the [System Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables/system-environment-variables) docs.\n\n#### [URL Composition](#url-composition)\n\nURL composition favors developer intent over default directory traversal semantics.\n\n* Trailing slashes between `metadataBase` and `metadata` fields are normalized.\n* An \"absolute\" path in a `metadata` field (that typically would replace the whole URL path) is treated as a \"relative\" path (starting from the end of `metadataBase`).\n\nFor example, given the following `metadataBase`:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  metadataBase: new URL('https://acme.com'),\n}\n```\n\nAny `metadata` fields that inherit the above `metadataBase` and set their own value will be resolved as follows:\n\n| `metadata` field | Resolved URL |\n| --- | --- |\n| `/` | `https://acme.com` |\n| `./` | `https://acme.com` |\n| `payments` | `https://acme.com/payments` |\n| `/payments` | `https://acme.com/payments` |\n| `./payments` | `https://acme.com/payments` |\n| `../payments` | `https://acme.com/payments` |\n| `https://beta.acme.com/payments` | `https://beta.acme.com/payments` |",
+    "preview": "`metadataBase` is a convenience option to set a base URL prefix for `metadata` fields that require a fully qualified URL. * `metadataBase` allows URL-based `metadata` fields defined in the **current route segment and below** to use a **relative path** instead of an otherwise required absolute URL.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase-metadatabase",
+    "position": 10
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`openGraph`](#opengraph)",
+    "section_id": "opengraph-opengraph",
+    "heading_level": 3,
+    "content": "### [`openGraph`](#opengraph)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  openGraph: {\n    title: 'Next.js',\n    description: 'The React Framework for the Web',\n    url: 'https://nextjs.org',\n    siteName: 'Next.js',\n    images: [\n      {\n        url: 'https://nextjs.org/og.png', // Must be an absolute URL\n        width: 800,\n        height: 600,\n      },\n      {\n        url: 'https://nextjs.org/og-alt.png', // Must be an absolute URL\n        width: 1800,\n        height: 1600,\n        alt: 'My custom alt',\n      },\n    ],\n    videos: [\n      {\n        url: 'https://nextjs.org/video.mp4', // Must be an absolute URL\n        width: 800,\n        height: 600,\n      },\n    ],\n    audio: [\n      {\n        url: 'https://nextjs.org/audio.mp3', // Must be an absolute URL\n      },\n    ],\n    locale: 'en_US',\n    type: 'website',\n  },\n}\n```\n\n<head> output\n\n```\n<meta property=\"og:title\" content=\"Next.js\" />\n<meta property=\"og:description\" content=\"The React Framework for the Web\" />\n<meta property=\"og:url\" content=\"https://nextjs.org/\" />\n<meta property=\"og:site_name\" content=\"Next.js\" />\n<meta property=\"og:locale\" content=\"en_US\" />\n<meta property=\"og:image\" content=\"https://nextjs.org/og.png\" />\n<meta property=\"og:image:width\" content=\"800\" />\n<meta property=\"og:image:height\" content=\"600\" />\n<meta property=\"og:image\" content=\"https://nextjs.org/og-alt.png\" />\n<meta property=\"og:image:width\" content=\"1800\" />\n<meta property=\"og:image:height\" content=\"1600\" />\n<meta property=\"og:image:alt\" content=\"My custom alt\" />\n<meta property=\"og:video\" content=\"https://nextjs.org/video.mp4\" />\n<meta property=\"og:video:width\" content=\"800\" />\n<meta property=\"og:video:height\" content=\"600\" />\n<meta property=\"og:audio\" content=\"https://nextjs.org/audio.mp3\" />\n<meta property=\"og:type\" content=\"website\" />\n```\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  openGraph: {\n    title: 'Next.js',\n    description: 'The React Framework for the Web',\n    type: 'article',\n    publishedTime: '2023-01-01T00:00:00.000Z',\n    authors: ['Seb', 'Josh'],\n  },\n}\n```\n\n<head> output\n\n```\n<meta property=\"og:title\" content=\"Next.js\" />\n<meta property=\"og:description\" content=\"The React Framework for the Web\" />\n<meta property=\"og:type\" content=\"article\" />\n<meta property=\"article:published_time\" content=\"2023-01-01T00:00:00.000Z\" />\n<meta property=\"article:author\" content=\"Seb\" />\n<meta property=\"article:author\" content=\"Josh\" />\n```\n\n> **Good to know**:\n>\n> * It may be more convenient to use the [file-based Metadata API](/docs/app/api-reference/file-conventions/metadata/opengraph-image#image-files-jpg-png-gif) for Open Graph images. Rather than having to sync the config export with actual files, the file-based API will automatically generate the correct metadata for you.",
+    "preview": "layout.js | page.js [Code Block] <head> output [Code Block] layout.js | page.js [Code Block] <head> output [Code Block] > **Good to know**: > > * It may be more convenient to use the [file-based Metadata API](/docs/app/api-reference/file-conventions/metadata/opengraph-image#image-files-jpg-p",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#opengraph-opengraph",
+    "position": 11
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`robots`](#robots)",
+    "section_id": "robots-robots",
+    "heading_level": 3,
+    "content": "### [`robots`](#robots)\n\nlayout.tsx | page.tsx\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  robots: {\n    index: true,\n    follow: true,\n    nocache: false,\n    googleBot: {\n      index: true,\n      follow: true,\n      noimageindex: false,\n      'max-video-preview': -1,\n      'max-image-preview': 'large',\n      'max-snippet': -1,\n    },\n  },\n}\n```\n\n<head> output\n\n```\n<meta name=\"robots\" content=\"index, follow\" />\n<meta\n  name=\"googlebot\"\n  content=\"index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1\"\n/>\n```",
+    "preview": "layout.tsx | page.tsx [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#robots-robots",
+    "position": 12
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`icons`](#icons)",
+    "section_id": "icons-icons",
+    "heading_level": 3,
+    "content": "### [`icons`](#icons)\n\n> **Good to know**: We recommend using the [file-based Metadata API](/docs/app/api-reference/file-conventions/metadata/app-icons#image-files-ico-jpg-png) for icons where possible. Rather than having to sync the config export with actual files, the file-based API will automatically generate the correct metadata for you.\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  icons: {\n    icon: '/icon.png',\n    shortcut: '/shortcut-icon.png',\n    apple: '/apple-icon.png',\n    other: {\n      rel: 'apple-touch-icon-precomposed',\n      url: '/apple-touch-icon-precomposed.png',\n    },\n  },\n}\n```\n\n<head> output\n\n```\n<link rel=\"shortcut icon\" href=\"/shortcut-icon.png\" />\n<link rel=\"icon\" href=\"/icon.png\" />\n<link rel=\"apple-touch-icon\" href=\"/apple-icon.png\" />\n<link\n  rel=\"apple-touch-icon-precomposed\"\n  href=\"/apple-touch-icon-precomposed.png\"\n/>\n```\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  icons: {\n    icon: [\n      { url: '/icon.png' },\n      new URL('/icon.png', 'https://example.com'),\n      { url: '/icon-dark.png', media: '(prefers-color-scheme: dark)' },\n    ],\n    shortcut: ['/shortcut-icon.png'],\n    apple: [\n      { url: '/apple-icon.png' },\n      { url: '/apple-icon-x3.png', sizes: '180x180', type: 'image/png' },\n    ],\n    other: [\n      {\n        rel: 'apple-touch-icon-precomposed',\n        url: '/apple-touch-icon-precomposed.png',\n      },\n    ],\n  },\n}\n```\n\n<head> output\n\n```\n<link rel=\"shortcut icon\" href=\"/shortcut-icon.png\" />\n<link rel=\"icon\" href=\"/icon.png\" />\n<link rel=\"icon\" href=\"https://example.com/icon.png\" />\n<link rel=\"icon\" href=\"/icon-dark.png\" media=\"(prefers-color-scheme: dark)\" />\n<link rel=\"apple-touch-icon\" href=\"/apple-icon.png\" />\n<link\n  rel=\"apple-touch-icon-precomposed\"\n  href=\"/apple-touch-icon-precomposed.png\"\n/>\n<link\n  rel=\"apple-touch-icon\"\n  href=\"/apple-icon-x3.png\"\n  sizes=\"180x180\"\n  type=\"image/png\"\n/>\n```\n\n> **Good to know**: The `msapplication-*` meta tags are no longer supported in Chromium builds of Microsoft Edge, and thus no longer needed.",
+    "preview": "> **Good to know**: We recommend using the [file-based Metadata API](/docs/app/api-reference/file-conventions/metadata/app-icons#image-files-ico-jpg-png) for icons where possible. Rather than having to sync the config export with actual files, the file-based API will automatically generate the corre",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#icons-icons",
+    "position": 13
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`themeColor`](#themecolor)",
+    "section_id": "themecolor-themecolor",
+    "heading_level": 3,
+    "content": "### [`themeColor`](#themecolor)\n\n> **Deprecated**: The `themeColor` option in `metadata` is deprecated as of Next.js 14. Please use the [`viewport` configuration](/docs/app/api-reference/functions/generate-viewport) instead.",
+    "preview": "> **Deprecated**: The `themeColor` option in `metadata` is deprecated as of Next.js 14. Please use the [`viewport` configuration](/docs/app/api-reference/functions/generate-viewport) instead.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#themecolor-themecolor",
+    "position": 14
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`colorScheme`](#colorscheme)",
+    "section_id": "colorscheme-colorscheme",
+    "heading_level": 3,
+    "content": "### [`colorScheme`](#colorscheme)\n\n> **Deprecated**: The `colorScheme` option in `metadata` is deprecated as of Next.js 14. Please use the [`viewport` configuration](/docs/app/api-reference/functions/generate-viewport) instead.",
+    "preview": "> **Deprecated**: The `colorScheme` option in `metadata` is deprecated as of Next.js 14. Please use the [`viewport` configuration](/docs/app/api-reference/functions/generate-viewport) instead.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#colorscheme-colorscheme",
+    "position": 15
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`manifest`](#manifest)",
+    "section_id": "manifest-manifest",
+    "heading_level": 3,
+    "content": "### [`manifest`](#manifest)\n\nA web application manifest, as defined in the [Web Application Manifest specification](https://developer.mozilla.org/docs/Web/Manifest).\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  manifest: 'https://nextjs.org/manifest.json',\n}\n```\n\n<head> output\n\n```\n<link rel=\"manifest\" href=\"https://nextjs.org/manifest.json\" />\n```",
+    "preview": "A web application manifest, as defined in the [Web Application Manifest specification](https://developer.mozilla.org/docs/Web/Manifest). layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#manifest-manifest",
+    "position": 16
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`twitter`](#twitter)",
+    "section_id": "twitter-twitter",
+    "heading_level": 3,
+    "content": "### [`twitter`](#twitter)\n\nThe Twitter specification is (surprisingly) used for more than just X (formerly known as Twitter).\n\nLearn more about the [Twitter Card markup reference](https://developer.x.com/en/docs/twitter-for-websites/cards/overview/markup).\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  twitter: {\n    card: 'summary_large_image',\n    title: 'Next.js',\n    description: 'The React Framework for the Web',\n    siteId: '1467726470533754880',\n    creator: '@nextjs',\n    creatorId: '1467726470533754880',\n    images: ['https://nextjs.org/og.png'], // Must be an absolute URL\n  },\n}\n```\n\n<head> output\n\n```\n<meta name=\"twitter:card\" content=\"summary_large_image\" />\n<meta name=\"twitter:site:id\" content=\"1467726470533754880\" />\n<meta name=\"twitter:creator\" content=\"@nextjs\" />\n<meta name=\"twitter:creator:id\" content=\"1467726470533754880\" />\n<meta name=\"twitter:title\" content=\"Next.js\" />\n<meta name=\"twitter:description\" content=\"The React Framework for the Web\" />\n<meta name=\"twitter:image\" content=\"https://nextjs.org/og.png\" />\n```\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  twitter: {\n    card: 'app',\n    title: 'Next.js',\n    description: 'The React Framework for the Web',\n    siteId: '1467726470533754880',\n    creator: '@nextjs',\n    creatorId: '1467726470533754880',\n    images: {\n      url: 'https://nextjs.org/og.png',\n      alt: 'Next.js Logo',\n    },\n    app: {\n      name: 'twitter_app',\n      id: {\n        iphone: 'twitter_app://iphone',\n        ipad: 'twitter_app://ipad',\n        googleplay: 'twitter_app://googleplay',\n      },\n      url: {\n        iphone: 'https://iphone_url',\n        ipad: 'https://ipad_url',\n      },\n    },\n  },\n}\n```\n\n<head> output\n\n```\n<meta name=\"twitter:site:id\" content=\"1467726470533754880\" />\n<meta name=\"twitter:creator\" content=\"@nextjs\" />\n<meta name=\"twitter:creator:id\" content=\"1467726470533754880\" />\n<meta name=\"twitter:title\" content=\"Next.js\" />\n<meta name=\"twitter:description\" content=\"The React Framework for the Web\" />\n<meta name=\"twitter:card\" content=\"app\" />\n<meta name=\"twitter:image\" content=\"https://nextjs.org/og.png\" />\n<meta name=\"twitter:image:alt\" content=\"Next.js Logo\" />\n<meta name=\"twitter:app:name:iphone\" content=\"twitter_app\" />\n<meta name=\"twitter:app:id:iphone\" content=\"twitter_app://iphone\" />\n<meta name=\"twitter:app:id:ipad\" content=\"twitter_app://ipad\" />\n<meta name=\"twitter:app:id:googleplay\" content=\"twitter_app://googleplay\" />\n<meta name=\"twitter:app:url:iphone\" content=\"https://iphone_url\" />\n<meta name=\"twitter:app:url:ipad\" content=\"https://ipad_url\" />\n<meta name=\"twitter:app:name:ipad\" content=\"twitter_app\" />\n<meta name=\"twitter:app:name:googleplay\" content=\"twitter_app\" />\n```",
+    "preview": "The Twitter specification is (surprisingly) used for more than just X (formerly known as Twitter). Learn more about the [Twitter Card markup reference](https://developer.x.com/en/docs/twitter-for-websites/cards/overview/markup). layout.js | page.js [Code Block] <head> output [Code Block] layou",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#twitter-twitter",
+    "position": 17
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`viewport`](#viewport)",
+    "section_id": "viewport-viewport",
+    "heading_level": 3,
+    "content": "### [`viewport`](#viewport)\n\n> **Deprecated**: The `viewport` option in `metadata` is deprecated as of Next.js 14. Please use the [`viewport` configuration](/docs/app/api-reference/functions/generate-viewport) instead.",
+    "preview": "> **Deprecated**: The `viewport` option in `metadata` is deprecated as of Next.js 14. Please use the [`viewport` configuration](/docs/app/api-reference/functions/generate-viewport) instead.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#viewport-viewport",
+    "position": 18
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`verification`](#verification)",
+    "section_id": "verification-verification",
+    "heading_level": 3,
+    "content": "### [`verification`](#verification)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  verification: {\n    google: 'google',\n    yandex: 'yandex',\n    yahoo: 'yahoo',\n    other: {\n      me: ['my-email', 'my-link'],\n    },\n  },\n}\n```\n\n<head> output\n\n```\n<meta name=\"google-site-verification\" content=\"google\" />\n<meta name=\"y_key\" content=\"yahoo\" />\n<meta name=\"yandex-verification\" content=\"yandex\" />\n<meta name=\"me\" content=\"my-email\" />\n<meta name=\"me\" content=\"my-link\" />\n```",
+    "preview": "layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#verification-verification",
+    "position": 19
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`appleWebApp`](#applewebapp)",
+    "section_id": "applewebapp-applewebapp",
+    "heading_level": 3,
+    "content": "### [`appleWebApp`](#applewebapp)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  itunes: {\n    appId: 'myAppStoreID',\n    appArgument: 'myAppArgument',\n  },\n  appleWebApp: {\n    title: 'Apple Web App',\n    statusBarStyle: 'black-translucent',\n    startupImage: [\n      '/assets/startup/apple-touch-startup-image-768x1004.png',\n      {\n        url: '/assets/startup/apple-touch-startup-image-1536x2008.png',\n        media: '(device-width: 768px) and (device-height: 1024px)',\n      },\n    ],\n  },\n}\n```\n\n<head> output\n\n```\n<meta\n  name=\"apple-itunes-app\"\n  content=\"app-id=myAppStoreID, app-argument=myAppArgument\"\n/>\n<meta name=\"mobile-web-app-capable\" content=\"yes\" />\n<meta name=\"apple-mobile-web-app-title\" content=\"Apple Web App\" />\n<link\n  href=\"/assets/startup/apple-touch-startup-image-768x1004.png\"\n  rel=\"apple-touch-startup-image\"\n/>\n<link\n  href=\"/assets/startup/apple-touch-startup-image-1536x2008.png\"\n  media=\"(device-width: 768px) and (device-height: 1024px)\"\n  rel=\"apple-touch-startup-image\"\n/>\n<meta\n  name=\"apple-mobile-web-app-status-bar-style\"\n  content=\"black-translucent\"\n/>\n```",
+    "preview": "layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#applewebapp-applewebapp",
+    "position": 20
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`alternates`](#alternates)",
+    "section_id": "alternates-alternates",
+    "heading_level": 3,
+    "content": "### [`alternates`](#alternates)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  alternates: {\n    canonical: 'https://nextjs.org',\n    languages: {\n      'en-US': 'https://nextjs.org/en-US',\n      'de-DE': 'https://nextjs.org/de-DE',\n    },\n    media: {\n      'only screen and (max-width: 600px)': 'https://nextjs.org/mobile',\n    },\n    types: {\n      'application/rss+xml': 'https://nextjs.org/rss',\n    },\n  },\n}\n```\n\n<head> output\n\n```\n<link rel=\"canonical\" href=\"https://nextjs.org\" />\n<link rel=\"alternate\" hreflang=\"en-US\" href=\"https://nextjs.org/en-US\" />\n<link rel=\"alternate\" hreflang=\"de-DE\" href=\"https://nextjs.org/de-DE\" />\n<link\n  rel=\"alternate\"\n  media=\"only screen and (max-width: 600px)\"\n  href=\"https://nextjs.org/mobile\"\n/>\n<link\n  rel=\"alternate\"\n  type=\"application/rss+xml\"\n  href=\"https://nextjs.org/rss\"\n/>\n```",
+    "preview": "layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#alternates-alternates",
+    "position": 21
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`appLinks`](#applinks)",
+    "section_id": "applinks-applinks",
+    "heading_level": 3,
+    "content": "### [`appLinks`](#applinks)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  appLinks: {\n    ios: {\n      url: 'https://nextjs.org/ios',\n      app_store_id: 'app_store_id',\n    },\n    android: {\n      package: 'com.example.android/package',\n      app_name: 'app_name_android',\n    },\n    web: {\n      url: 'https://nextjs.org/web',\n      should_fallback: true,\n    },\n  },\n}\n```\n\n<head> output\n\n```\n<meta property=\"al:ios:url\" content=\"https://nextjs.org/ios\" />\n<meta property=\"al:ios:app_store_id\" content=\"app_store_id\" />\n<meta property=\"al:android:package\" content=\"com.example.android/package\" />\n<meta property=\"al:android:app_name\" content=\"app_name_android\" />\n<meta property=\"al:web:url\" content=\"https://nextjs.org/web\" />\n<meta property=\"al:web:should_fallback\" content=\"true\" />\n```",
+    "preview": "layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#applinks-applinks",
+    "position": 22
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`archives`](#archives)",
+    "section_id": "archives-archives",
+    "heading_level": 3,
+    "content": "### [`archives`](#archives)\n\nDescribes a collection of records, documents, or other materials of historical interest ([source](https://www.w3.org/TR/2011/WD-html5-20110113/links.html#rel-archives)).\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  archives: ['https://nextjs.org/13'],\n}\n```\n\n<head> output\n\n```\n<link rel=\"archives\" href=\"https://nextjs.org/13\" />\n```",
+    "preview": "Describes a collection of records, documents, or other materials of historical interest ([source](https://www.w3.org/TR/2011/WD-html5-20110113/links.html#rel-archives)). layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#archives-archives",
+    "position": 23
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`assets`](#assets)",
+    "section_id": "assets-assets",
+    "heading_level": 3,
+    "content": "### [`assets`](#assets)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  assets: ['https://nextjs.org/assets'],\n}\n```\n\n<head> output\n\n```\n<link rel=\"assets\" href=\"https://nextjs.org/assets\" />\n```",
+    "preview": "layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#assets-assets",
+    "position": 24
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`bookmarks`](#bookmarks)",
+    "section_id": "bookmarks-bookmarks",
+    "heading_level": 3,
+    "content": "### [`bookmarks`](#bookmarks)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  bookmarks: ['https://nextjs.org/13'],\n}\n```\n\n<head> output\n\n```\n<link rel=\"bookmarks\" href=\"https://nextjs.org/13\" />\n```",
+    "preview": "layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#bookmarks-bookmarks",
+    "position": 25
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`category`](#category)",
+    "section_id": "category-category",
+    "heading_level": 3,
+    "content": "### [`category`](#category)\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  category: 'technology',\n}\n```\n\n<head> output\n\n```\n<meta name=\"category\" content=\"technology\" />\n```",
+    "preview": "layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#category-category",
+    "position": 26
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`facebook`](#facebook)",
+    "section_id": "facebook-facebook",
+    "heading_level": 3,
+    "content": "### [`facebook`](#facebook)\n\nYou can connect a Facebook app or Facebook account to you webpage for certain Facebook Social Plugins [Facebook Documentation](https://developers.facebook.com/docs/plugins/comments/#moderation-setup-instructions)\n\n> **Good to know**: You can specify either appId or admins, but not both.\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  facebook: {\n    appId: '12345678',\n  },\n}\n```\n\n<head> output\n\n```\n<meta property=\"fb:app_id\" content=\"12345678\" />\n```\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  facebook: {\n    admins: '12345678',\n  },\n}\n```\n\n<head> output\n\n```\n<meta property=\"fb:admins\" content=\"12345678\" />\n```\n\nIf you want to generate multiple fb:admins meta tags you can use array value.\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  facebook: {\n    admins: ['12345678', '87654321'],\n  },\n}\n```\n\n<head> output\n\n```\n<meta property=\"fb:admins\" content=\"12345678\" />\n<meta property=\"fb:admins\" content=\"87654321\" />\n```",
+    "preview": "You can connect a Facebook app or Facebook account to you webpage for certain Facebook Social Plugins [Facebook Documentation](https://developers.facebook.com/docs/plugins/comments/#moderation-setup-instructions) > **Good to know**: You can specify either appId or admins, but not both. layout.js |",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#facebook-facebook",
+    "position": 27
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`pinterest`](#pinterest)",
+    "section_id": "pinterest-pinterest",
+    "heading_level": 3,
+    "content": "### [`pinterest`](#pinterest)\n\nYou can enable or disable [Pinterest Rich Pins](https://developers.pinterest.com/docs/web-features/rich-pins-overview/) on your webpage.\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  pinterest: {\n    richPin: true,\n  },\n}\n```\n\n<head> output\n\n```\n<meta name=\"pinterest-rich-pin\" content=\"true\" />\n```",
+    "preview": "You can enable or disable [Pinterest Rich Pins](https://developers.pinterest.com/docs/web-features/rich-pins-overview/) on your webpage. layout.js | page.js [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#pinterest-pinterest",
+    "position": 28
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`other`](#other)",
+    "section_id": "other-other",
+    "heading_level": 3,
+    "content": "### [`other`](#other)\n\nAll metadata options should be covered using the built-in support. However, there may be custom metadata tags specific to your site, or brand new metadata tags just released. You can use the `other` option to render any custom metadata tag.\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  other: {\n    custom: 'meta',\n  },\n}\n```\n\n<head> output\n\n```\n<meta name=\"custom\" content=\"meta\" />\n```\n\nIf you want to generate multiple same key meta tags you can use array value.\n\nlayout.js | page.js\n\n```\nexport const metadata = {\n  other: {\n    custom: ['meta1', 'meta2'],\n  },\n}\n```\n\n<head> output\n\n```\n<meta name=\"custom\" content=\"meta1\" /> <meta name=\"custom\" content=\"meta2\" />\n```",
+    "preview": "All metadata options should be covered using the built-in support. However, there may be custom metadata tags specific to your site, or brand new metadata tags just released. You can use the `other` option to render any custom metadata tag. layout.js | page.js [Code Block] <head> output [Code Bl",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#other-other",
+    "position": 29
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[Unsupported Metadata](#unsupported-metadata)",
+    "section_id": "unsupported-metadata-unsupported-metadata",
+    "heading_level": 2,
+    "content": "## [Unsupported Metadata](#unsupported-metadata)\n\nThe following metadata types do not currently have built-in support. However, they can still be rendered in the layout or page itself.\n\n| Metadata | Recommendation |\n| --- | --- |\n| `<meta http-equiv=\"...\">` | Use appropriate HTTP Headers via [`redirect()`](/docs/app/api-reference/functions/redirect), [Middleware](/docs/app/building-your-application/routing/middleware#nextresponse), [Security Headers](/docs/app/api-reference/config/next-config-js/headers) |\n| `<base>` | Render the tag in the layout or page itself. |\n| `<noscript>` | Render the tag in the layout or page itself. |\n| `<style>` | Learn more about [styling in Next.js](/docs/app/building-your-application/styling/css). |\n| `<script>` | Learn more about [using scripts](/docs/app/building-your-application/optimizing/scripts). |\n| `<link rel=\"stylesheet\" />` | `import` stylesheets directly in the layout or page itself. |\n| `<link rel=\"preload />` | Use [ReactDOM preload method](#link-relpreload) |\n| `<link rel=\"preconnect\" />` | Use [ReactDOM preconnect method](#link-relpreconnect) |\n| `<link rel=\"dns-prefetch\" />` | Use [ReactDOM prefetchDNS method](#link-reldns-prefetch) |",
+    "preview": "The following metadata types do not currently have built-in support. However, they can still be rendered in the layout or page itself. | Metadata | Recommendation | | --- | --- | | `<meta http-equiv=\"...\">` | Use appropriate HTTP Headers via [`redirect()`](/docs/app/api-reference/functions/redirect",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#unsupported-metadata-unsupported-metadata",
+    "position": 30
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[Resource hints](#resource-hints)",
+    "section_id": "resource-hints-resource-hints",
+    "heading_level": 3,
+    "content": "### [Resource hints](#resource-hints)\n\nThe `<link>` element has a number of `rel` keywords that can be used to hint to the browser that an external resource is likely to be needed. The browser uses this information to apply preloading optimizations depending on the keyword.\n\nWhile the Metadata API doesn't directly support these hints, you can use new [`ReactDOM` methods](https://github.com/facebook/react/pull/26237) to safely insert them into the `<head>` of the document.\n\napp/preload-resources.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport ReactDOM from 'react-dom'\n \nexport function PreloadResources() {\n  ReactDOM.preload('...', { as: '...' })\n  ReactDOM.preconnect('...', { crossOrigin: '...' })\n  ReactDOM.prefetchDNS('...')\n \n  return '...'\n}\n```\n\n##### [`<link rel=\"preload\">`](#link-relpreload)\n\nStart loading a resource early in the page rendering (browser) lifecycle. [MDN Docs](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/preload).\n\n```\nReactDOM.preload(href: string, options: { as: string })\n```\n\n<head> output\n\n```\n<link rel=\"preload\" href=\"...\" as=\"...\" />\n```\n\n##### [`<link rel=\"preconnect\">`](#link-relpreconnect)\n\nPreemptively initiate a connection to an origin. [MDN Docs](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/preconnect).\n\n```\nReactDOM.preconnect(href: string, options?: { crossOrigin?: string })\n```\n\n<head> output\n\n```\n<link rel=\"preconnect\" href=\"...\" crossorigin />\n```\n\n##### [`<link rel=\"dns-prefetch\">`](#link-reldns-prefetch)\n\nAttempt to resolve a domain name before resources get requested. [MDN Docs](https://developer.mozilla.org/docs/Web/HTML/Attributes/rel/dns-prefetch).\n\n```\nReactDOM.prefetchDNS(href: string)\n```\n\n<head> output\n\n```\n<link rel=\"dns-prefetch\" href=\"...\" />\n```\n\n> **Good to know**:\n>\n> * These methods are currently only supported in Client Components, which are still Server Side Rendered on initial page load.\n> * Next.js in-built features such as `next/font`, `next/image` and `next/script` automatically handle relevant resource hints.",
+    "preview": "The `<link>` element has a number of `rel` keywords that can be used to hint to the browser that an external resource is likely to be needed. The browser uses this information to apply preloading optimizations depending on the keyword. While the Metadata API doesn't directly support these hints, yo",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#resource-hints-resource-hints",
+    "position": 31
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[Types](#types)",
+    "section_id": "types-types",
+    "heading_level": 2,
+    "content": "## [Types](#types)\n\nYou can add type safety to your metadata by using the `Metadata` type. If you are using the [built-in TypeScript plugin](/docs/app/api-reference/config/typescript) in your IDE, you do not need to manually add the type, but you can still explicitly add it if you want.",
+    "preview": "You can add type safety to your metadata by using the `Metadata` type. If you are using the [built-in TypeScript plugin](/docs/app/api-reference/config/typescript) in your IDE, you do not need to manually add the type, but you can still explicitly add it if you want.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#types-types",
+    "position": 32
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`metadata` object](#metadata-object)",
+    "section_id": "metadata-object-metadata-object",
+    "heading_level": 3,
+    "content": "### [`metadata` object](#metadata-object)\n\nlayout.tsx | page.tsx\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  title: 'Next.js',\n}\n```",
+    "preview": "layout.tsx | page.tsx [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadata-object-metadata-object",
+    "position": 33
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[`generateMetadata` function](#generatemetadata-function-1)",
+    "section_id": "generatemetadata-function-generatemetadata-function-1",
+    "heading_level": 3,
+    "content": "### [`generateMetadata` function](#generatemetadata-function-1)\n\n#### [Regular function](#regular-function)\n\nlayout.tsx | page.tsx\n\n```\nimport type { Metadata } from 'next'\n \nexport function generateMetadata(): Metadata {\n  return {\n    title: 'Next.js',\n  }\n}\n```\n\n#### [Async function](#async-function)\n\nlayout.tsx | page.tsx\n\n```\nimport type { Metadata } from 'next'\n \nexport async function generateMetadata(): Promise<Metadata> {\n  return {\n    title: 'Next.js',\n  }\n}\n```\n\n#### [With segment props](#with-segment-props)\n\nlayout.tsx | page.tsx\n\n```\nimport type { Metadata } from 'next'\n \ntype Props = {\n  params: Promise<{ id: string }>\n  searchParams: Promise<{ [key: string]: string | string[] | undefined }>\n}\n \nexport function generateMetadata({ params, searchParams }: Props): Metadata {\n  return {\n    title: 'Next.js',\n  }\n}\n \nexport default function Page({ params, searchParams }: Props) {}\n```\n\n#### [With parent metadata](#with-parent-metadata)\n\nlayout.tsx | page.tsx\n\n```\nimport type { Metadata, ResolvingMetadata } from 'next'\n \nexport async function generateMetadata(\n  { params, searchParams }: Props,\n  parent: ResolvingMetadata\n): Promise<Metadata> {\n  return {\n    title: 'Next.js',\n  }\n}\n```\n\n#### [JavaScript Projects](#javascript-projects)\n\nFor JavaScript projects, you can use JSDoc to add type safety.\n\nlayout.js | page.js\n\n```\n/** @type {import(\"next\").Metadata} */\nexport const metadata = {\n  title: 'Next.js',\n}\n```",
+    "preview": "#### [Regular function](#regular-function) layout.tsx | page.tsx [Code Block] #### [Async function](#async-function) layout.tsx | page.tsx [Code Block] #### [With segment props](#with-segment-props) layout.tsx | page.tsx [Code Block] #### [With parent metadata](#with-parent-metadata) layou",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function-generatemetadata-function-1",
+    "position": 34
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[Streaming metadata](#streaming-metadata)",
+    "section_id": "streaming-metadata-streaming-metadata",
+    "heading_level": 2,
+    "content": "## [Streaming metadata](#streaming-metadata)\n\nMetadata returned by `generateMetadata` is streamed to the client. This allows Next.js to inject metadata into the HTML as soon as it's resolved.\n\nSince page metadata primarily targets bots and crawlers, Next.js will stream metadata for bots that can execute JavaScript and inspect the full page DOM (e.g. `Googlebot`). However, metadata will continue blocking the render of the page for **HTML-limited** bots (e.g. `Twitterbot`) as these cannot execute JavaScript while crawling.\n\nNext.js automatically detects the user agent of incoming requests to determine whether to serve streaming metadata or fallback to blocking metadata.\n\nIf you need to customize this list, you can define them manually using the `htmlLimitedBots` option in `next.config.js`. Next.js will ensure user agents matching this regex receive blocking metadata when requesting your web page.\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst config: NextConfig = {\n  htmlLimitedBots: 'MySpecialBot|MyAnotherSpecialBot|SimpleCrawler',\n}\n \nexport default config\n```\n\nSpecifying a `htmlLimitedBots` config will override the Next.js' default list, allowing you full control over what user agents should opt into this behavior. This is advanced behavior, and the default should be sufficient for most cases.",
+    "preview": "Metadata returned by `generateMetadata` is streamed to the client. This allows Next.js to inject metadata into the HTML as soon as it's resolved. Since page metadata primarily targets bots and crawlers, Next.js will stream metadata for bots that can execute JavaScript and inspect the full page DOM",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#streaming-metadata-streaming-metadata",
+    "position": 35
+  },
+  {
+    "title": "generateMetadata",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.2.0` | Introduced streaming support to `generateMetadata`. |\n| `v13.2.0` | `viewport`, `themeColor`, and `colorScheme` deprecated in favor of the [`viewport` configuration](/docs/app/api-reference/functions/generate-viewport). |\n| `v13.2.0` | `metadata` and `generateMetadata` introduced. |",
+    "preview": "| Version | Changes | | --- | --- | | `v15.2.0` | Introduced streaming support to `generateMetadata`. | | `v13.2.0` | `viewport`, `themeColor`, and `colorScheme` deprecated in favor of the [`viewport` configuration](/docs/app/api-reference/functions/generate-viewport). | | `v13.2.0` | `metadata` and",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#version-history-version-history",
+    "position": 36
+  },
+  {
+    "title": "generateMetadata",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nView all the Metadata API options.\n\n[### Metadata Files\n\nAPI documentation for the metadata file conventions.](/docs/app/api-reference/file-conventions/metadata)[### generateViewport\n\nAPI Reference for the generateViewport function.](/docs/app/api-reference/functions/generate-viewport)[### Metadata\n\nUse the Metadata API to define metadata in any layout or page.](/docs/app/building-your-application/optimizing/metadata)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "View all the Metadata API options. [### Metadata Files API documentation for the metadata file conventions.](/docs/app/api-reference/file-conventions/metadata)[### generateViewport API Reference for the generateViewport function.](/docs/app/api-reference/functions/generate-viewport)[### Metadata",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata#next-steps",
+    "position": 37
+  }
+]

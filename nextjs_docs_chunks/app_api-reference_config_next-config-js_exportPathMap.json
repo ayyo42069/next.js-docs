@@ -1,0 +1,42 @@
+[
+  {
+    "title": "exportPathMap",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)exportPathMap",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)exportPathMap",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "exportPathMap",
+    "section": "exportPathMap",
+    "section_id": "exportpathmap",
+    "heading_level": 1,
+    "content": "# exportPathMap\n\nThis is a legacy API and no longer recommended. It's still supported for backward compatibility.\n\n> This feature is exclusive to `next export` and currently **deprecated** in favor of `getStaticPaths` with `pages` or `generateStaticParams` with `app`.\n\n`exportPathMap` allows you to specify a mapping of request paths to page destinations, to be used during export. Paths defined in `exportPathMap` will also be available when using [`next dev`](/docs/app/api-reference/cli/next#next-dev-options).\n\nLet's start with an example, to create a custom `exportPathMap` for an app with the following pages:\n\n* `pages/index.js`\n* `pages/about.js`\n* `pages/post.js`\n\nOpen `next.config.js` and add the following `exportPathMap` config:\n\nnext.config.js\n\n```\nmodule.exports = {\n  exportPathMap: async function (\n    defaultPathMap,\n    { dev, dir, outDir, distDir, buildId }\n  ) {\n    return {\n      '/': { page: '/' },\n      '/about': { page: '/about' },\n      '/p/hello-nextjs': { page: '/post', query: { title: 'hello-nextjs' } },\n      '/p/learn-nextjs': { page: '/post', query: { title: 'learn-nextjs' } },\n      '/p/deploy-nextjs': { page: '/post', query: { title: 'deploy-nextjs' } },\n    }\n  },\n}\n```\n\n> **Good to know**: the `query` field in `exportPathMap` cannot be used with [automatically statically optimized pages](/docs/pages/building-your-application/rendering/automatic-static-optimization) or [`getStaticProps` pages](/docs/pages/building-your-application/data-fetching/get-static-props) as they are rendered to HTML files at build-time and additional query information cannot be provided during `next export`.\n\nThe pages will then be exported as HTML files, for example, `/about` will become `/about.html`.\n\n`exportPathMap` is an `async` function that receives 2 arguments: the first one is `defaultPathMap`, which is the default map used by Next.js. The second argument is an object with:\n\n* `dev` - `true` when `exportPathMap` is being called in development. `false` when running `next export`. In development `exportPathMap` is used to define routes.\n* `dir` - Absolute path to the project directory\n* `outDir` - Absolute path to the `out/` directory ([configurable with `-o`](#customizing-the-output-directory)). When `dev` is `true` the value of `outDir` will be `null`.\n* `distDir` - Absolute path to the `.next/` directory (configurable with the [`distDir`](/docs/pages/api-reference/config/next-config-js/distDir) config)\n* `buildId` - The generated build id\n\nThe returned object is a map of pages where the `key` is the `pathname` and the `value` is an object that accepts the following fields:\n\n* `page`: `String` - the page inside the `pages` directory to render\n* `query`: `Object` - the `query` object passed to `getInitialProps` when prerendering. Defaults to `{}`\n\n> The exported `pathname` can also be a filename (for example, `/readme.md`), but you may need to set the `Content-Type` header to `text/html` when serving its content if it is different than `.html`.",
+    "preview": "This is a legacy API and no longer recommended. It's still supported for backward compatibility. > This feature is exclusive to `next export` and currently **deprecated** in favor of `getStaticPaths` with `pages` or `generateStaticParams` with `app`. `exportPathMap` allows you to specify a mapping",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap#exportpathmap",
+    "position": 1
+  },
+  {
+    "title": "exportPathMap",
+    "section": "[Adding a trailing slash](#adding-a-trailing-slash)",
+    "section_id": "adding-a-trailing-slash-adding-a-trailing-slash",
+    "heading_level": 2,
+    "content": "## [Adding a trailing slash](#adding-a-trailing-slash)\n\nIt is possible to configure Next.js to export pages as `index.html` files and require trailing slashes, `/about` becomes `/about/index.html` and is routable via `/about/`. This was the default behavior prior to Next.js 9.\n\nTo switch back and add a trailing slash, open `next.config.js` and enable the `trailingSlash` config:\n\nnext.config.js\n\n```\nmodule.exports = {\n  trailingSlash: true,\n}\n```",
+    "preview": "It is possible to configure Next.js to export pages as `index.html` files and require trailing slashes, `/about` becomes `/about/index.html` and is routable via `/about/`. This was the default behavior prior to Next.js 9. To switch back and add a trailing slash, open `next.config.js` and enable the",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap#adding-a-trailing-slash-adding-a-trailing-slash",
+    "position": 2
+  },
+  {
+    "title": "exportPathMap",
+    "section": "[Customizing the output directory](#customizing-the-output-directory)",
+    "section_id": "customizing-the-output-directory-customizing-the-output-directory",
+    "heading_level": 2,
+    "content": "## [Customizing the output directory](#customizing-the-output-directory)\n\n[`next export`](/docs/app/building-your-application/deploying/static-exports) will use `out` as the default output directory, you can customize this using the `-o` argument, like so:\n\nTerminal\n\n```\nnext export -o outdir\n```\n\n> **Warning**: Using `exportPathMap` is deprecated and is overridden by `getStaticPaths` inside `pages`. We don't recommend using them together.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[`next export`](/docs/app/building-your-application/deploying/static-exports) will use `out` as the default output directory, you can customize this using the `-o` argument, like so: Terminal [Code Block] > **Warning**: Using `exportPathMap` is deprecated and is overridden by `getStaticPaths` ins",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap#customizing-the-output-directory-customizing-the-output-directory",
+    "position": 3
+  }
+]

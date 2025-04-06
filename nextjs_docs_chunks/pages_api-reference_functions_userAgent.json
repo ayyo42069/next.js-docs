@@ -1,0 +1,82 @@
+[
+  {
+    "title": "userAgent",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[Functions](/docs/pages/api-reference/functions)userAgent",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[Functions](/docs/pages/api-reference/functions)userAgent",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/userAgent#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "userAgent",
+    "section": "userAgent",
+    "section_id": "useragent",
+    "heading_level": 1,
+    "content": "# userAgent\n\nThe `userAgent` helper extends the [Web Request API](https://developer.mozilla.org/docs/Web/API/Request) with additional properties and methods to interact with the user agent object from the request.\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextRequest, NextResponse, userAgent } from 'next/server'\n \nexport function middleware(request: NextRequest) {\n  const url = request.nextUrl\n  const { device } = userAgent(request)\n  const viewport = device.type === 'mobile' ? 'mobile' : 'desktop'\n  url.searchParams.set('viewport', viewport)\n  return NextResponse.rewrite(url)\n}\n```",
+    "preview": "The `userAgent` helper extends the [Web Request API](https://developer.mozilla.org/docs/Web/API/Request) with additional properties and methods to interact with the user agent object from the request. middleware.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/userAgent#useragent",
+    "position": 1
+  },
+  {
+    "title": "userAgent",
+    "section": "[`isBot`](#isbot)",
+    "section_id": "isbot-isbot",
+    "heading_level": 2,
+    "content": "## [`isBot`](#isbot)\n\nA boolean indicating whether the request comes from a known bot.",
+    "preview": "A boolean indicating whether the request comes from a known bot.",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/userAgent#isbot-isbot",
+    "position": 2
+  },
+  {
+    "title": "userAgent",
+    "section": "[`browser`](#browser)",
+    "section_id": "browser-browser",
+    "heading_level": 2,
+    "content": "## [`browser`](#browser)\n\nAn object containing information about the browser used in the request.\n\n* `name`: A string representing the browser's name, or `undefined` if not identifiable.\n* `version`: A string representing the browser's version, or `undefined`.",
+    "preview": "An object containing information about the browser used in the request. * `name`: A string representing the browser's name, or `undefined` if not identifiable. * `version`: A string representing the browser's version, or `undefined`.",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/userAgent#browser-browser",
+    "position": 3
+  },
+  {
+    "title": "userAgent",
+    "section": "[`device`](#device)",
+    "section_id": "device-device",
+    "heading_level": 2,
+    "content": "## [`device`](#device)\n\nAn object containing information about the device used in the request.\n\n* `model`: A string representing the model of the device, or `undefined`.\n* `type`: A string representing the type of the device, such as `console`, `mobile`, `tablet`, `smarttv`, `wearable`, `embedded`, or `undefined`.\n* `vendor`: A string representing the vendor of the device, or `undefined`.",
+    "preview": "An object containing information about the device used in the request. * `model`: A string representing the model of the device, or `undefined`. * `type`: A string representing the type of the device, such as `console`, `mobile`, `tablet`, `smarttv`, `wearable`, `embedded`, or `undefined`. * `vendo",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/userAgent#device-device",
+    "position": 4
+  },
+  {
+    "title": "userAgent",
+    "section": "[`engine`](#engine)",
+    "section_id": "engine-engine",
+    "heading_level": 2,
+    "content": "## [`engine`](#engine)\n\nAn object containing information about the browser's engine.\n\n* `name`: A string representing the engine's name. Possible values include: `Amaya`, `Blink`, `EdgeHTML`, `Flow`, `Gecko`, `Goanna`, `iCab`, `KHTML`, `Links`, `Lynx`, `NetFront`, `NetSurf`, `Presto`, `Tasman`, `Trident`, `w3m`, `WebKit` or `undefined`.\n* `version`: A string representing the engine's version, or `undefined`.",
+    "preview": "An object containing information about the browser's engine. * `name`: A string representing the engine's name. Possible values include: `Amaya`, `Blink`, `EdgeHTML`, `Flow`, `Gecko`, `Goanna`, `iCab`, `KHTML`, `Links`, `Lynx`, `NetFront`, `NetSurf`, `Presto`, `Tasman`, `Trident`, `w3m`, `WebKit` o",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/userAgent#engine-engine",
+    "position": 5
+  },
+  {
+    "title": "userAgent",
+    "section": "[`os`](#os)",
+    "section_id": "os-os",
+    "heading_level": 2,
+    "content": "## [`os`](#os)\n\nAn object containing information about the operating system.\n\n* `name`: A string representing the name of the OS, or `undefined`.\n* `version`: A string representing the version of the OS, or `undefined`.",
+    "preview": "An object containing information about the operating system. * `name`: A string representing the name of the OS, or `undefined`. * `version`: A string representing the version of the OS, or `undefined`.",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/userAgent#os-os",
+    "position": 6
+  },
+  {
+    "title": "userAgent",
+    "section": "[`cpu`](#cpu)",
+    "section_id": "cpu-cpu",
+    "heading_level": 2,
+    "content": "## [`cpu`](#cpu)\n\nAn object containing information about the CPU architecture.\n\n* `architecture`: A string representing the architecture of the CPU. Possible values include: `68k`, `amd64`, `arm`, `arm64`, `armhf`, `avr`, `ia32`, `ia64`, `irix`, `irix64`, `mips`, `mips64`, `pa-risc`, `ppc`, `sparc`, `sparc64` or `undefined`\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "An object containing information about the CPU architecture. * `architecture`: A string representing the architecture of the CPU. Possible values include: `68k`, `amd64`, `arm`, `arm64`, `armhf`, `avr`, `ia32`, `ia64`, `irix`, `irix64`, `mips`, `mips64`, `pa-risc`, `ppc`, `sparc`, `sparc64` or `und",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/userAgent#cpu-cpu",
+    "position": 7
+  }
+]

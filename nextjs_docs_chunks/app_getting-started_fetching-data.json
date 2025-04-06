@@ -1,0 +1,102 @@
+[
+  {
+    "title": "How to fetch data and stream",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Getting Started](/docs/app/getting-started)Fetching Data",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Getting Started](/docs/app/getting-started)Fetching Data",
+    "url": "https://nextjs.org/docs/app/getting-started/fetching-data#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "How to fetch data and stream",
+    "section": "How to fetch data and stream",
+    "section_id": "how-to-fetch-data-and-stream",
+    "heading_level": 1,
+    "content": "# How to fetch data and stream\n\nThis page will walk you through how you can fetch data in [Server Components](#server-components) and [Client Components](#client-components). As well as how to [stream](#streaming) content that depends on data.",
+    "preview": "This page will walk you through how you can fetch data in [Server Components](#server-components) and [Client Components](#client-components). As well as how to [stream](#streaming) content that depends on data.",
+    "url": "https://nextjs.org/docs/app/getting-started/fetching-data#how-to-fetch-data-and-stream",
+    "position": 1
+  },
+  {
+    "title": "How to fetch data and stream",
+    "section": "[Fetching data](#fetching-data)",
+    "section_id": "fetching-data-fetching-data",
+    "heading_level": 2,
+    "content": "## [Fetching data](#fetching-data)",
+    "preview": "## [Fetching data](#fetching-data)",
+    "url": "https://nextjs.org/docs/app/getting-started/fetching-data#fetching-data-fetching-data",
+    "position": 2
+  },
+  {
+    "title": "How to fetch data and stream",
+    "section": "[Server Components](#server-components)",
+    "section_id": "server-components-server-components",
+    "heading_level": 3,
+    "content": "### [Server Components](#server-components)\n\nYou can fetch data in Server Components using:\n\n1. The [`fetch` API](#with-the-fetch-api)\n2. An [ORM or database](#with-an-orm-or-database)\n\n#### [With the `fetch` API](#with-the-fetch-api)\n\nTo fetch data with the `fetch` API, turn your component into an asynchronous function, and await the `fetch` call. For example:\n\napp/blog/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page() {\n  const data = await fetch('https://api.vercel.app/blog')\n  const posts = await data.json()\n  return (\n    <ul>\n      {posts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```\n\n#### [With an ORM or database](#with-an-orm-or-database)\n\nYou can fetch data with an ORM or database by turning your component into an asynchronous function, and awaiting the call:\n\napp/blog/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { db, posts } from '@/lib/db'\n \nexport default async function Page() {\n  const allPosts = await db.select().from(posts)\n  return (\n    <ul>\n      {allPosts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```",
+    "preview": "You can fetch data in Server Components using: 1. The [`fetch` API](#with-the-fetch-api) 2. An [ORM or database](#with-an-orm-or-database) #### [With the `fetch` API](#with-the-fetch-api) To fetch data with the `fetch` API, turn your component into an asynchronous function, and await the `fetch`",
+    "url": "https://nextjs.org/docs/app/getting-started/fetching-data#server-components-server-components",
+    "position": 3
+  },
+  {
+    "title": "How to fetch data and stream",
+    "section": "[Client Components](#client-components)",
+    "section_id": "client-components-client-components",
+    "heading_level": 3,
+    "content": "### [Client Components](#client-components)\n\nThere are two ways to fetch data in Client Components, using:\n\n1. React's [`use` hook](https://react.dev/reference/react/use)\n2. A community library like [SWR](https://swr.vercel.app/) or [React Query](https://tanstack.com/query/latest)\n\n#### [With the `use` hook](#with-the-use-hook)\n\nYou can use React's [`use` hook](https://react.dev/reference/react/use) to [stream](#streaming) data from the server to client. Start by fetching data in your Server component, and pass the promise to your Client Component as prop:\n\napp/blog/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Posts from '@/app/ui/posts\nimport { Suspense } from 'react'\n \nexport default function Page() {\n  // Don't await the data fetching function\n  const posts = getPosts()\n \n  return (\n    <Suspense fallback={<div>Loading...</div>}>\n      <Posts posts={posts} />\n    </Suspense>\n  )\n}\n```\n\nThen, in your Client Component, use the `use` hook to read the promise:\n\napp/ui/posts.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\nimport { use } from 'react'\n \nexport default function Posts({\n  posts,\n}: {\n  posts: Promise<{ id: string; title: string }[]>\n}) {\n  const allPosts = use(posts)\n \n  return (\n    <ul>\n      {allPosts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```\n\nIn the example above, you need to wrap the `<Posts />` component in a [`<Suspense>` boundary](https://react.dev/reference/react/Suspense). This means the fallback will be shown while the promise is being resolved. Learn more about [streaming](#streaming).\n\n#### [Community libraries](#community-libraries)\n\nYou can use a community library like [SWR](https://swr.vercel.app/) or [React Query](https://tanstack.com/query/latest) to fetch data in Client Components. These libraries have their own semantics for caching, streaming, and other features. For example, with SWR:\n\napp/blog/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\nimport useSWR from 'swr'\n \nconst fetcher = (url) => fetch(url).then((r) => r.json())\n \nexport default function BlogPage() {\n  const { data, error, isLoading } = useSWR(\n    'https://api.vercel.app/blog',\n    fetcher\n  )\n \n  if (isLoading) return <div>Loading...</div>\n  if (error) return <div>Error: {error.message}</div>\n \n  return (\n    <ul>\n      {data.map((post: { id: string; title: string }) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```",
+    "preview": "There are two ways to fetch data in Client Components, using: 1. React's [`use` hook](https://react.dev/reference/react/use) 2. A community library like [SWR](https://swr.vercel.app/) or [React Query](https://tanstack.com/query/latest) #### [With the `use` hook](#with-the-use-hook) You can use Re",
+    "url": "https://nextjs.org/docs/app/getting-started/fetching-data#client-components-client-components",
+    "position": 4
+  },
+  {
+    "title": "How to fetch data and stream",
+    "section": "[Streaming](#streaming)",
+    "section_id": "streaming-streaming",
+    "heading_level": 2,
+    "content": "## [Streaming](#streaming)\n\n> **Warning:** The content below assumes the [`dynamicIO` config option](/docs/app/api-reference/config/next-config-js/dynamicIO) is enabled in your application. The flag was introduced in Next.js 15 canary.\n\nWhen using `async/await` in Server Components, Next.js will opt into **dynamic rendering**. This means the data will be fetched and rendered on the server for every user request. If there are any slow data requests, the whole route will be blocked from rendering.\n\nTo improve the initial load time and user experience, you can use streaming to break up the page's HTML into smaller chunks and progressively send those chunks from the server to the client.\n\n[Image: How Server Rendering with Streaming Works][Image: How Server Rendering with Streaming Works]\n\nThere are two ways you can implement streaming in your application:\n\n1. With the [`loading.js` file](#with-loadingjs)\n2. With React's [`<Suspense>` component](#with-suspense)",
+    "preview": "> **Warning:** The content below assumes the [`dynamicIO` config option](/docs/app/api-reference/config/next-config-js/dynamicIO) is enabled in your application. The flag was introduced in Next.js 15 canary. When using `async/await` in Server Components, Next.js will opt into **dynamic rendering**.",
+    "url": "https://nextjs.org/docs/app/getting-started/fetching-data#streaming-streaming",
+    "position": 5
+  },
+  {
+    "title": "How to fetch data and stream",
+    "section": "[With `loading.js`](#with-loadingjs)",
+    "section_id": "with-loading-js-with-loadingjs",
+    "heading_level": 3,
+    "content": "### [With `loading.js`](#with-loadingjs)\n\nYou can create a `loading.js` file in the same folder as your page to stream the **entire page** while the data is being fetched. For example, to stream `app/blog/page.js`, add the file inside the `app/blog` folder.\n\n[Image: Blog folder structure with loading.js file][Image: Blog folder structure with loading.js file]\n\napp/blog/loading.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Loading() {\n  // Define the Loading UI here\n  return <div>Loading...</div>\n}\n```\n\nOn navigation, the user will immediately see the layout and a [loading state](#creating-meaningful-loading-states) while the page is being rendered. The new content will then be automatically swapped in once rendering is complete.\n\n[Image: Loading UI][Image: Loading UI]\n\nBehind-the-scenes, `loading.js` will be nested inside `layout.js`, and will automatically wrap the `page.js` file and any children below in a `<Suspense>` boundary.\n\n[Image: loading.js overview][Image: loading.js overview]\n\nThis approach works well for route segments (layouts and pages), but for more granular streaming, you can use `<Suspense>`.",
+    "preview": "You can create a `loading.js` file in the same folder as your page to stream the **entire page** while the data is being fetched. For example, to stream `app/blog/page.js`, add the file inside the `app/blog` folder. [Image: Blog folder structure with loading.js file][Image: Blog folder structure wi",
+    "url": "https://nextjs.org/docs/app/getting-started/fetching-data#with-loading-js-with-loadingjs",
+    "position": 6
+  },
+  {
+    "title": "How to fetch data and stream",
+    "section": "[With `<Suspense>`](#with-suspense)",
+    "section_id": "with-suspense-with-suspense",
+    "heading_level": 3,
+    "content": "### [With `<Suspense>`](#with-suspense)\n\n`<Suspense>` allows you to be more granular about what parts of the page to stream. For example, you can immediately show any page content that falls outside of the `<Suspense>` boundary, and stream in the list of blog posts inside the boundary.\n\napp/blog/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Suspense } from 'react'\nimport BlogList from '@/components/BlogList'\nimport BlogListSkeleton from '@/components/BlogListSkeleton'\n \nexport default function BlogPage() {\n  return (\n    <div>\n      {/* This content will be sent to the client immediately */}\n      <header>\n        <h1>Welcome to the Blog</h1>\n        <p>Read the latest posts below.</p>\n      </header>\n      <main>\n        {/* Any content wrapped in a <Suspense> boundary will be streamed */}\n        <Suspense fallback={<BlogListSkeleton />}>\n          <BlogList />\n        </Suspense>\n      </main>\n    </div>\n  )\n}\n```",
+    "preview": "`<Suspense>` allows you to be more granular about what parts of the page to stream. For example, you can immediately show any page content that falls outside of the `<Suspense>` boundary, and stream in the list of blog posts inside the boundary. app/blog/page.tsx TypeScript JavaScriptTypeScript",
+    "url": "https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense-with-suspense",
+    "position": 7
+  },
+  {
+    "title": "How to fetch data and stream",
+    "section": "[Creating meaningful loading states](#creating-meaningful-loading-states)",
+    "section_id": "creating-meaningful-loading-states-creating-meaningful-loading-states",
+    "heading_level": 3,
+    "content": "### [Creating meaningful loading states](#creating-meaningful-loading-states)\n\nAn instant loading state is fallback UI that is shown immediately to the user after navigation. For the best user experience, we recommend designing loading states that are meaningful and help users understand the app is responding. For example, you can use skeletons and spinners, or a small but meaningful part of future screens such as a cover photo, title, etc.\n\nIn development, you can preview and inspect the loading state of your components using the [React Devtools](https://react.dev/learn/react-developer-tools).",
+    "preview": "An instant loading state is fallback UI that is shown immediately to the user after navigation. For the best user experience, we recommend designing loading states that are meaningful and help users understand the app is responding. For example, you can use skeletons and spinners, or a small but mea",
+    "url": "https://nextjs.org/docs/app/getting-started/fetching-data#creating-meaningful-loading-states-creating-meaningful-loading-states",
+    "position": 8
+  },
+  {
+    "title": "How to fetch data and stream",
+    "section": "API Reference",
+    "section_id": "api-reference",
+    "heading_level": 2,
+    "content": "## API Reference\n\nLearn more about the features mentioned in this page by reading the API Reference.\n\n[### fetch\n\nAPI reference for the extended fetch function.](/docs/app/api-reference/functions/fetch)[### loading.js\n\nAPI reference for the loading.js file.](/docs/app/api-reference/file-conventions/loading)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn more about the features mentioned in this page by reading the API Reference. [### fetch API reference for the extended fetch function.](/docs/app/api-reference/functions/fetch)[### loading.js API reference for the loading.js file.](/docs/app/api-reference/file-conventions/loading) Was this",
+    "url": "https://nextjs.org/docs/app/getting-started/fetching-data#api-reference",
+    "position": 9
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "title": "How to create layouts and pages",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Getting Started](/docs/app/getting-started)Layouts and Pages",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Getting Started](/docs/app/getting-started)Layouts and Pages",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "How to create layouts and pages",
+    "section": "How to create layouts and pages",
+    "section_id": "how-to-create-layouts-and-pages",
+    "heading_level": 1,
+    "content": "# How to create layouts and pages\n\nNext.js uses **file-system based routing**, meaning you can use folders and files to define routes. This page will guide you through how to create layouts and pages, and link between them.",
+    "preview": "Next.js uses **file-system based routing**, meaning you can use folders and files to define routes. This page will guide you through how to create layouts and pages, and link between them.",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates#how-to-create-layouts-and-pages",
+    "position": 1
+  },
+  {
+    "title": "How to create layouts and pages",
+    "section": "[Creating a page](#creating-a-page)",
+    "section_id": "creating-a-page-creating-a-page",
+    "heading_level": 2,
+    "content": "## [Creating a page](#creating-a-page)\n\nA **page** is UI that is rendered on a specific route. To create a page, add a [`page` file](/docs/app/api-reference/file-conventions/page) inside the `app` directory and default export a React component. For example, to create an index page (`/`):\n\n[Image: page.js special file][Image: page.js special file]\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Page() {\n  return <h1>Hello Next.js!</h1>\n}\n```",
+    "preview": "A **page** is UI that is rendered on a specific route. To create a page, add a [`page` file](/docs/app/api-reference/file-conventions/page) inside the `app` directory and default export a React component. For example, to create an index page (`/`): [Image: page.js special file][Image: page.js speci",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates#creating-a-page-creating-a-page",
+    "position": 2
+  },
+  {
+    "title": "How to create layouts and pages",
+    "section": "[Creating a layout](#creating-a-layout)",
+    "section_id": "creating-a-layout-creating-a-layout",
+    "heading_level": 2,
+    "content": "## [Creating a layout](#creating-a-layout)\n\nA layout is UI that is **shared** between multiple pages. On navigation, layouts preserve state, remain interactive, and do not rerender.\n\nYou can define a layout by default exporting a React component from a [`layout` file](/docs/app/api-reference/file-conventions/layout). The component should accept a `children` prop which can be a page or another [layout](#nesting-layouts).\n\nFor example, to create a layout that accepts your index page as child, add a `layout` file inside the `app` directory:\n\n[Image: layout.js special file][Image: layout.js special file]\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function DashboardLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body>\n        {/* Layout UI */}\n        {/* Place children where you want to render a page or nested layout */}\n        <main>{children}</main>\n      </body>\n    </html>\n  )\n}\n```\n\nThe layout above is called a [root layout](/docs/app/api-reference/file-conventions/layout#root-layouts) because it's defined at the root of the `app` directory. The root layout is **required** and must contain `html` and `body` tags.",
+    "preview": "A layout is UI that is **shared** between multiple pages. On navigation, layouts preserve state, remain interactive, and do not rerender. You can define a layout by default exporting a React component from a [`layout` file](/docs/app/api-reference/file-conventions/layout). The component should acce",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates#creating-a-layout-creating-a-layout",
+    "position": 3
+  },
+  {
+    "title": "How to create layouts and pages",
+    "section": "[Creating a nested route](#creating-a-nested-route)",
+    "section_id": "creating-a-nested-route-creating-a-nested-route",
+    "heading_level": 2,
+    "content": "## [Creating a nested route](#creating-a-nested-route)\n\nA nested route is a route composed of multiple URL segments. For example, the `/blog/[slug]` route is composed of three segments:\n\n* `/` (Root Segment)\n* `blog` (Segment)\n* `[slug]` (Leaf Segment)\n\nIn Next.js:\n\n* **Folders** are used to define the route segments that map to URL segments.\n* **Files** (like `page` and `layout`) are used to create UI that is shown for a segment.\n\nTo create nested routes, you can nest folders inside each other. For example, to add a route for `/blog`, create a folder called `blog` in the `app` directory. Then, to make `/blog` publicly accessible, add a `page` file:\n\n[Image: File hierarchy showing blog folder and a page.js file][Image: File hierarchy showing blog folder and a page.js file]\n\napp/blog/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { getPosts } from '@/lib/posts'\nimport { Post } from '@/ui/post'\n \nexport default async function Page() {\n  const posts = await getPosts()\n \n  return (\n    <ul>\n      {posts.map((post) => (\n        <Post key={post.id} post={post} />\n      ))}\n    </ul>\n  )\n}\n```\n\nYou can continue nesting folders to create nested routes. For example, to create a route for a specific blog post, create a new `[slug]` folder inside `blog` and add a `page` file:\n\n[Image: File hierarchy showing blog folder with a nested slug folder and a page.js file][Image: File hierarchy showing blog folder with a nested slug folder and a page.js file]\n\napp/blog/[slug]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nfunction generateStaticParams() {}\n \nexport default function Page() {\n  return <h1>Hello, Blog Post Page!</h1>\n}\n```\n\n> **Good to know**: Wrapping a folder name in square brackets (e.g. `[slug]`) creates a special [dynamic route segment](/docs/app/building-your-application/routing/dynamic-routes) used to generate multiple pages from data. This is useful for blog posts, product pages, etc.",
+    "preview": "A nested route is a route composed of multiple URL segments. For example, the `/blog/[slug]` route is composed of three segments: * `/` (Root Segment) * `blog` (Segment) * `[slug]` (Leaf Segment) In Next.js: * **Folders** are used to define the route segments that map to URL segments. * **Files**",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates#creating-a-nested-route-creating-a-nested-route",
+    "position": 4
+  },
+  {
+    "title": "How to create layouts and pages",
+    "section": "[Nesting layouts](#nesting-layouts)",
+    "section_id": "nesting-layouts-nesting-layouts",
+    "heading_level": 2,
+    "content": "## [Nesting layouts](#nesting-layouts)\n\nBy default, layouts in the folder hierarchy are also nested, which means they wrap child layouts via their `children` prop. You can nest layouts by adding `layout` inside specific route segments (folders).\n\nFor example, to create a layout for the `/blog` route, add a new `layout` file inside the `blog` folder.\n\n[Image: File hierarchy showing root layout wrapping the blog layout][Image: File hierarchy showing root layout wrapping the blog layout]\n\napp/blog/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function BlogLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return <section>{children}</section>\n}\n```\n\nIf you were to combine the two layouts above, the root layout (`app/layout.js`) would wrap the blog layout (`app/blog/layout.js`), which would wrap the blog (`app/blog/page.js`) and blog post page (`app/blog/[slug]/page.js`).",
+    "preview": "By default, layouts in the folder hierarchy are also nested, which means they wrap child layouts via their `children` prop. You can nest layouts by adding `layout` inside specific route segments (folders). For example, to create a layout for the `/blog` route, add a new `layout` file inside the `bl",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates#nesting-layouts-nesting-layouts",
+    "position": 5
+  },
+  {
+    "title": "How to create layouts and pages",
+    "section": "[Linking between pages](#linking-between-pages)",
+    "section_id": "linking-between-pages-linking-between-pages",
+    "heading_level": 2,
+    "content": "## [Linking between pages](#linking-between-pages)\n\nYou can use the [`<Link>` component](/docs/app/api-reference/components/link) to navigate between routes. `<Link>` is a built-in Next.js component that extends the HTML `<a>` tag to provide prefetching and client-side navigation.\n\nFor example, to generate a list of blog posts, import `<Link>` from `next/link` and pass a `href` prop to the component:\n\napp/ui/post.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Link from 'next/link'\n \nexport default async function Post({ post }) {\n  const posts = await getPosts()\n \n  return (\n    <ul>\n      {posts.map((post) => (\n        <li key={post.slug}>\n          <Link href={`/blog/${post.slug}`}>{post.title}</Link>\n        </li>\n      ))}\n    </ul>\n  )\n}\n```\n\n`<Link>` is the primary and recommended way to navigate between routes in your Next.js application. However, you can also use the [`useRouter` hook](/docs/app/api-reference/functions/use-router) for more advanced navigation.",
+    "preview": "You can use the [`<Link>` component](/docs/app/api-reference/components/link) to navigate between routes. `<Link>` is a built-in Next.js component that extends the HTML `<a>` tag to provide prefetching and client-side navigation. For example, to generate a list of blog posts, import `<Link>` from `",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates#linking-between-pages-linking-between-pages",
+    "position": 6
+  },
+  {
+    "title": "How to create layouts and pages",
+    "section": "API Reference",
+    "section_id": "api-reference",
+    "heading_level": 2,
+    "content": "## API Reference\n\nLearn more about the features mentioned in this page by reading the API Reference.\n\n[### layout.js\n\nAPI reference for the layout.js file.](/docs/app/api-reference/file-conventions/layout)[### page.js\n\nAPI reference for the page.js file.](/docs/app/api-reference/file-conventions/page)[### Link\n\nEnable fast client-side navigation with the built-in `next/link` component.](/docs/app/api-reference/components/link)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn more about the features mentioned in this page by reading the API Reference. [### layout.js API reference for the layout.js file.](/docs/app/api-reference/file-conventions/layout)[### page.js API reference for the page.js file.](/docs/app/api-reference/file-conventions/page)[### Link Enabl",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates#api-reference",
+    "position": 7
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "title": "route.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)route.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)route.js",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "route.js",
+    "section": "route.js",
+    "section_id": "route-js",
+    "heading_level": 1,
+    "content": "# route.js\n\nRoute Handlers allow you to create custom request handlers for a given route using the Web [Request](https://developer.mozilla.org/docs/Web/API/Request) and [Response](https://developer.mozilla.org/docs/Web/API/Response) APIs.\n\nroute.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function GET() {\n  return Response.json({ message: 'Hello World' })\n}\n```",
+    "preview": "Route Handlers allow you to create custom request handlers for a given route using the Web [Request](https://developer.mozilla.org/docs/Web/API/Request) and [Response](https://developer.mozilla.org/docs/Web/API/Response) APIs. route.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route#route-js",
+    "position": 1
+  },
+  {
+    "title": "route.js",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "route.js",
+    "section": "[HTTP Methods](#http-methods)",
+    "section_id": "http-methods-http-methods",
+    "heading_level": 3,
+    "content": "### [HTTP Methods](#http-methods)\n\nA **route** file allows you to create custom request handlers for a given route. The following [HTTP methods](https://developer.mozilla.org/docs/Web/HTTP/Methods) are supported: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, and `OPTIONS`.\n\nroute.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function GET(request: Request) {}\n \nexport async function HEAD(request: Request) {}\n \nexport async function POST(request: Request) {}\n \nexport async function PUT(request: Request) {}\n \nexport async function DELETE(request: Request) {}\n \nexport async function PATCH(request: Request) {}\n \n// If `OPTIONS` is not defined, Next.js will automatically implement `OPTIONS` and set the appropriate Response `Allow` header depending on the other methods defined in the Route Handler.\nexport async function OPTIONS(request: Request) {}\n```",
+    "preview": "A **route** file allows you to create custom request handlers for a given route. The following [HTTP methods](https://developer.mozilla.org/docs/Web/HTTP/Methods) are supported: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, and `OPTIONS`. route.ts TypeScript JavaScriptTypeScript ``` export as",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route#http-methods-http-methods",
+    "position": 3
+  },
+  {
+    "title": "route.js",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 3,
+    "content": "### [Parameters](#parameters)\n\n#### [`request` (optional)](#request-optional)\n\nThe `request` object is a [NextRequest](/docs/app/api-reference/functions/next-request) object, which is an extension of the Web [Request](https://developer.mozilla.org/docs/Web/API/Request) API. `NextRequest` gives you further control over the incoming request, including easily accessing `cookies` and an extended, parsed, URL object `nextUrl`.\n\nroute.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextRequest } from 'next/server'\n \nexport async function GET(request: NextRequest) {\n  const url = request.nextUrl\n}\n```\n\n#### [`context` (optional)](#context-optional)\n\n* **`params`**: a promise that resolves to an object containing the [dynamic route parameters](/docs/app/building-your-application/routing/dynamic-routes) for the current route.\n\napp/dashboard/[team]/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function GET(\n  request: Request,\n  { params }: { params: Promise<{ team: string }> }\n) {\n  const { team } = await params\n}\n```\n\n| Example | URL | `params` |\n| --- | --- | --- |\n| `app/dashboard/[team]/route.js` | `/dashboard/1` | `Promise<{ team: '1' }>` |\n| `app/shop/[tag]/[item]/route.js` | `/shop/1/2` | `Promise<{ tag: '1', item: '2' }>` |\n| `app/blog/[...slug]/route.js` | `/blog/1/2` | `Promise<{ slug: ['1', '2'] }>` |",
+    "preview": "#### [`request` (optional)](#request-optional) The `request` object is a [NextRequest](/docs/app/api-reference/functions/next-request) object, which is an extension of the Web [Request](https://developer.mozilla.org/docs/Web/API/Request) API. `NextRequest` gives you further control over the incomin",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route#parameters-parameters",
+    "position": 4
+  },
+  {
+    "title": "route.js",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route#examples-examples",
+    "position": 5
+  },
+  {
+    "title": "route.js",
+    "section": "[Handling cookies](#handling-cookies)",
+    "section_id": "handling-cookies-handling-cookies",
+    "heading_level": 3,
+    "content": "### [Handling cookies](#handling-cookies)\n\nroute.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { cookies } from 'next/headers'\n \nexport async function GET(request: NextRequest) {\n  const cookieStore = await cookies()\n \n  const a = cookieStore.get('a')\n  const b = cookieStore.set('b', '1')\n  const c = cookieStore.delete('c')\n}\n```",
+    "preview": "route.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route#handling-cookies-handling-cookies",
+    "position": 6
+  },
+  {
+    "title": "route.js",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0-RC` | `context.params` is now a promise. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available |\n| `v15.0.0-RC` | The default caching for `GET` handlers was changed from static to dynamic |\n| `v13.2.0` | Route Handlers are introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0-RC` | `context.params` is now a promise. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available | | `v15.0.0-RC` | The default caching for `GET` handlers was changed from static to dynamic | | `v13.2.0` | Route Handlers are",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route#version-history-version-history",
+    "position": 7
+  }
+]

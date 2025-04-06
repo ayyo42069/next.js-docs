@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Upgrade",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Getting Started](/docs/app/getting-started)Upgrade",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Getting Started](/docs/app/getting-started)Upgrade",
+    "url": "https://nextjs.org/docs/app/getting-started/upgrading#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Upgrade",
+    "section": "Upgrade",
+    "section_id": "upgrade",
+    "heading_level": 1,
+    "content": "# Upgrade",
+    "preview": "# Upgrade",
+    "url": "https://nextjs.org/docs/app/getting-started/upgrading#upgrade",
+    "position": 1
+  },
+  {
+    "title": "Upgrade",
+    "section": "[Latest version](#latest-version)",
+    "section_id": "latest-version-latest-version",
+    "heading_level": 2,
+    "content": "## [Latest version](#latest-version)\n\nTo update to the latest version of Next.js, you can use the `upgrade` codemod:\n\nTerminal\n\n```\nnpx @next/codemod@canary upgrade latest\n```\n\nIf you prefer to upgrade manually, install the latest Next.js and React versions:\n\nTerminal\n\n```\nnpm i next@latest react@latest react-dom@latest eslint-config-next@latest\n```",
+    "preview": "To update to the latest version of Next.js, you can use the `upgrade` codemod: Terminal [Code Block] If you prefer to upgrade manually, install the latest Next.js and React versions: Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/app/getting-started/upgrading#latest-version-latest-version",
+    "position": 2
+  },
+  {
+    "title": "Upgrade",
+    "section": "[Canary version](#canary-version)",
+    "section_id": "canary-version-canary-version",
+    "heading_level": 2,
+    "content": "## [Canary version](#canary-version)\n\nTo update to the latest canary, make sure you're on the latest version of Next.js and everything is working as expected. Then, run the following command:\n\nTerminal\n\n```\nnpm i next@canary\n```",
+    "preview": "To update to the latest canary, make sure you're on the latest version of Next.js and everything is working as expected. Then, run the following command: Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/app/getting-started/upgrading#canary-version-canary-version",
+    "position": 3
+  },
+  {
+    "title": "Upgrade",
+    "section": "Version guides",
+    "section_id": "version-guides",
+    "heading_level": 2,
+    "content": "## Version guides\n\nSee the version guides for in-depth upgrade instructions.\n\n[### Canary\n\nUpgrade your Next.js Application to canary and try out new features.](/docs/app/building-your-application/upgrading/canary)[### Version 15\n\nUpgrade your Next.js Application from Version 14 to 15.](/docs/app/building-your-application/upgrading/version-15)[### Version 14\n\nUpgrade your Next.js Application from Version 13 to 14.](/docs/app/building-your-application/upgrading/version-14)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "See the version guides for in-depth upgrade instructions. [### Canary Upgrade your Next.js Application to canary and try out new features.](/docs/app/building-your-application/upgrading/canary)[### Version 15 Upgrade your Next.js Application from Version 14 to 15.](/docs/app/building-your-applica",
+    "url": "https://nextjs.org/docs/app/getting-started/upgrading#version-guides",
+    "position": 4
+  }
+]

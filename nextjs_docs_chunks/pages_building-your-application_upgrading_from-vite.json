@@ -1,0 +1,232 @@
+[
+  {
+    "title": "Migrating from Vite",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Upgrading](/docs/pages/building-your-application/upgrading)Migrating from Vite",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Upgrading](/docs/pages/building-your-application/upgrading)Migrating from Vite",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "Migrating from Vite",
+    "section_id": "migrating-from-vite",
+    "heading_level": 1,
+    "content": "# Migrating from Vite\n\nThis guide will help you migrate an existing Vite application to Next.js.",
+    "preview": "This guide will help you migrate an existing Vite application to Next.js.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#migrating-from-vite",
+    "position": 1
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Why Switch?](#why-switch)",
+    "section_id": "why-switch-why-switch",
+    "heading_level": 2,
+    "content": "## [Why Switch?](#why-switch)\n\nThere are several reasons why you might want to switch from Vite to Next.js:",
+    "preview": "There are several reasons why you might want to switch from Vite to Next.js:",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#why-switch-why-switch",
+    "position": 2
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Slow initial page loading time](#slow-initial-page-loading-time)",
+    "section_id": "slow-initial-page-loading-time-slow-initial-page-loading-time",
+    "heading_level": 3,
+    "content": "### [Slow initial page loading time](#slow-initial-page-loading-time)\n\nIf you have built your application with the [default Vite plugin for React](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react), your application is a purely client-side application. Client-side only applications, also known as single-page applications (SPAs), often experience slow initial page loading time. This happens due to a couple of reasons:\n\n1. The browser needs to wait for the React code and your entire application bundle to download and run before your code is able to send requests to load some data.\n2. Your application code grows with every new feature and extra dependency you add.",
+    "preview": "If you have built your application with the [default Vite plugin for React](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react), your application is a purely client-side application. Client-side only applications, also known as single-page applications (SPAs), often experien",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#slow-initial-page-loading-time-slow-initial-page-loading-time",
+    "position": 3
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[No automatic code splitting](#no-automatic-code-splitting)",
+    "section_id": "no-automatic-code-splitting-no-automatic-code-splitting",
+    "heading_level": 3,
+    "content": "### [No automatic code splitting](#no-automatic-code-splitting)\n\nThe previous issue of slow loading times can be somewhat managed with code splitting. However, if you try to do code splitting manually, you'll often make performance worse. It's easy to inadvertently introduce network waterfalls when code-splitting manually. Next.js provides automatic code splitting built into its router.",
+    "preview": "The previous issue of slow loading times can be somewhat managed with code splitting. However, if you try to do code splitting manually, you'll often make performance worse. It's easy to inadvertently introduce network waterfalls when code-splitting manually. Next.js provides automatic code splittin",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#no-automatic-code-splitting-no-automatic-code-splitting",
+    "position": 4
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Network waterfalls](#network-waterfalls)",
+    "section_id": "network-waterfalls-network-waterfalls",
+    "heading_level": 3,
+    "content": "### [Network waterfalls](#network-waterfalls)\n\nA common cause of poor performance occurs when applications make sequential client-server requests to fetch data. One common pattern for data fetching in an SPA is to initially render a placeholder, and then fetch data after the component has mounted. Unfortunately, this means that a child component that fetches data can't start fetching until the parent component has finished loading its own data.\n\nWhile fetching data on the client is supported with Next.js, it also gives you the option to shift data fetching to the server, which can eliminate client-server waterfalls.",
+    "preview": "A common cause of poor performance occurs when applications make sequential client-server requests to fetch data. One common pattern for data fetching in an SPA is to initially render a placeholder, and then fetch data after the component has mounted. Unfortunately, this means that a child component",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#network-waterfalls-network-waterfalls",
+    "position": 5
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Fast and intentional loading states](#fast-and-intentional-loading-states)",
+    "section_id": "fast-and-intentional-loading-states-fast-and-intentional-loading-states",
+    "heading_level": 3,
+    "content": "### [Fast and intentional loading states](#fast-and-intentional-loading-states)\n\nWith built-in support for [streaming through React Suspense](/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense), you can be more intentional about which parts of your UI you want to load first and in what order without introducing network waterfalls.\n\nThis enables you to build pages that are faster to load and eliminate [layout shifts](https://vercel.com/blog/how-core-web-vitals-affect-seo).",
+    "preview": "With built-in support for [streaming through React Suspense](/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense), you can be more intentional about which parts of your UI you want to load first and in what order without introducing network waterfalls. This",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#fast-and-intentional-loading-states-fast-and-intentional-loading-states",
+    "position": 6
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Choose the data fetching strategy](#choose-the-data-fetching-strategy)",
+    "section_id": "choose-the-data-fetching-strategy-choose-the-data-fetching-strategy",
+    "heading_level": 3,
+    "content": "### [Choose the data fetching strategy](#choose-the-data-fetching-strategy)\n\nDepending on your needs, Next.js allows you to choose your data fetching strategy on a page and component basis. You can decide to fetch at build time, at request time on the server, or on the client. For example, you can fetch data from your CMS and render your blog posts at build time, which can then be efficiently cached on a CDN.",
+    "preview": "Depending on your needs, Next.js allows you to choose your data fetching strategy on a page and component basis. You can decide to fetch at build time, at request time on the server, or on the client. For example, you can fetch data from your CMS and render your blog posts at build time, which can t",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#choose-the-data-fetching-strategy-choose-the-data-fetching-strategy",
+    "position": 7
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Middleware](#middleware)",
+    "section_id": "middleware-middleware",
+    "heading_level": 3,
+    "content": "### [Middleware](#middleware)\n\n[Next.js Middleware](/docs/app/building-your-application/routing/middleware) allows you to run code on the server before a request is completed. This is especially useful to avoid having a flash of unauthenticated content when the user visits an authenticated-only page by redirecting the user to a login page. The middleware is also useful for experimentation and [internationalization](/docs/app/building-your-application/routing/internationalization).",
+    "preview": "[Next.js Middleware](/docs/app/building-your-application/routing/middleware) allows you to run code on the server before a request is completed. This is especially useful to avoid having a flash of unauthenticated content when the user visits an authenticated-only page by redirecting the user to a l",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#middleware-middleware",
+    "position": 8
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Built-in Optimizations](#built-in-optimizations)",
+    "section_id": "built-in-optimizations-built-in-optimizations",
+    "heading_level": 3,
+    "content": "### [Built-in Optimizations](#built-in-optimizations)\n\n[Images](/docs/app/building-your-application/optimizing/images), [fonts](/docs/app/building-your-application/optimizing/fonts), and [third-party scripts](/docs/app/building-your-application/optimizing/scripts) often have significant impact on an application's performance. Next.js comes with built-in components that automatically optimize those for you.",
+    "preview": "[Images](/docs/app/building-your-application/optimizing/images), [fonts](/docs/app/building-your-application/optimizing/fonts), and [third-party scripts](/docs/app/building-your-application/optimizing/scripts) often have significant impact on an application's performance. Next.js comes with built-in",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#built-in-optimizations-built-in-optimizations",
+    "position": 9
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Migration Steps](#migration-steps)",
+    "section_id": "migration-steps-migration-steps",
+    "heading_level": 2,
+    "content": "## [Migration Steps](#migration-steps)\n\nOur goal with this migration is to get a working Next.js application as quickly as possible, so that\nyou can then adopt Next.js features incrementally. To begin with, we'll keep it as a purely\nclient-side application (SPA) without migrating your existing router. This helps minimize the\nchances of encountering issues during the migration process and reduces merge conflicts.",
+    "preview": "Our goal with this migration is to get a working Next.js application as quickly as possible, so that you can then adopt Next.js features incrementally. To begin with, we'll keep it as a purely client-side application (SPA) without migrating your existing router. This helps minimize the chances of en",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#migration-steps-migration-steps",
+    "position": 10
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Step 1: Install the Next.js Dependency](#step-1-install-the-nextjs-dependency)",
+    "section_id": "step-1-install-the-next-js-dependency-step-1-install-the-nextjs-dependency",
+    "heading_level": 3,
+    "content": "### [Step 1: Install the Next.js Dependency](#step-1-install-the-nextjs-dependency)\n\nThe first thing you need to do is to install `next` as a dependency:\n\nTerminal\n\n```\nnpm install next@latest\n```",
+    "preview": "The first thing you need to do is to install `next` as a dependency: Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#step-1-install-the-next-js-dependency-step-1-install-the-nextjs-dependency",
+    "position": 11
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Step 2: Create the Next.js Configuration File](#step-2-create-the-nextjs-configuration-file)",
+    "section_id": "step-2-create-the-next-js-configuration-file-step-2-create-the-nextjs-configuration-file",
+    "heading_level": 3,
+    "content": "### [Step 2: Create the Next.js Configuration File](#step-2-create-the-nextjs-configuration-file)\n\nCreate a `next.config.mjs` at the root of your project. This file will hold your\n[Next.js configuration options](/docs/app/api-reference/config/next-config-js).\n\nnext.config.mjs\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  output: 'export', // Outputs a Single-Page Application (SPA).\n  distDir: './dist', // Changes the build output directory to `./dist/`.\n}\n \nexport default nextConfig\n```\n\n> **Good to know:** You can use either `.js` or `.mjs` for your Next.js configuration file.",
+    "preview": "Create a `next.config.mjs` at the root of your project. This file will hold your [Next.js configuration options](/docs/app/api-reference/config/next-config-js). next.config.mjs ``` /** @type {import('next').NextConfig} */ const nextConfig = { output: 'export', // Outputs a Single-Page Applicatio",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#step-2-create-the-next-js-configuration-file-step-2-create-the-nextjs-configuration-file",
+    "position": 12
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Step 3: Update TypeScript Configuration](#step-3-update-typescript-configuration)",
+    "section_id": "step-3-update-typescript-configuration-step-3-update-typescript-configuration",
+    "heading_level": 3,
+    "content": "### [Step 3: Update TypeScript Configuration](#step-3-update-typescript-configuration)\n\nIf you're using TypeScript, you need to update your `tsconfig.json` file with the following changes\nto make it compatible with Next.js. If you're not using TypeScript, you can skip this step.\n\n1. Remove the [project reference](https://www.typescriptlang.org/tsconfig#references) to `tsconfig.node.json`\n2. Add `./dist/types/**/*.ts` and `./next-env.d.ts` to the [`include` array](https://www.typescriptlang.org/tsconfig#include)\n3. Add `./node_modules` to the [`exclude` array](https://www.typescriptlang.org/tsconfig#exclude)\n4. Add `{ \"name\": \"next\" }` to the [`plugins` array in `compilerOptions`](https://www.typescriptlang.org/tsconfig#plugins): `\"plugins\": [{ \"name\": \"next\" }]`\n5. Set [`esModuleInterop`](https://www.typescriptlang.org/tsconfig#esModuleInterop) to `true`: `\"esModuleInterop\": true`\n6. Set [`jsx`](https://www.typescriptlang.org/tsconfig#jsx) to `preserve`: `\"jsx\": \"preserve\"`\n7. Set [`allowJs`](https://www.typescriptlang.org/tsconfig#allowJs) to `true`: `\"allowJs\": true`\n8. Set [`forceConsistentCasingInFileNames`](https://www.typescriptlang.org/tsconfig#forceConsistentCasingInFileNames) to `true`: `\"forceConsistentCasingInFileNames\": true`\n9. Set [`incremental`](https://www.typescriptlang.org/tsconfig#incremental) to `true`: `\"incremental\": true`\n\nHere's an example of a working `tsconfig.json` with those changes:\n\ntsconfig.json\n\n```\n{\n  \"compilerOptions\": {\n    \"target\": \"ES2020\",\n    \"useDefineForClassFields\": true,\n    \"lib\": [\"ES2020\", \"DOM\", \"DOM.Iterable\"],\n    \"module\": \"ESNext\",\n    \"esModuleInterop\": true,\n    \"skipLibCheck\": true,\n    \"moduleResolution\": \"bundler\",\n    \"allowImportingTsExtensions\": true,\n    \"resolveJsonModule\": true,\n    \"isolatedModules\": true,\n    \"noEmit\": true,\n    \"jsx\": \"preserve\",\n    \"strict\": true,\n    \"noUnusedLocals\": true,\n    \"noUnusedParameters\": true,\n    \"noFallthroughCasesInSwitch\": true,\n    \"allowJs\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"incremental\": true,\n    \"plugins\": [{ \"name\": \"next\" }]\n  },\n  \"include\": [\"./src\", \"./dist/types/**/*.ts\", \"./next-env.d.ts\"],\n  \"exclude\": [\"./node_modules\"]\n}\n```\n\nYou can find more information about configuring TypeScript on the\n[Next.js docs](/docs/app/api-reference/config/typescript#ide-plugin).",
+    "preview": "If you're using TypeScript, you need to update your `tsconfig.json` file with the following changes to make it compatible with Next.js. If you're not using TypeScript, you can skip this step. 1. Remove the [project reference](https://www.typescriptlang.org/tsconfig#references) to `tsconfig.node.jso",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#step-3-update-typescript-configuration-step-3-update-typescript-configuration",
+    "position": 13
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Step 4: Create the Root Layout](#step-4-create-the-root-layout)",
+    "section_id": "step-4-create-the-root-layout-step-4-create-the-root-layout",
+    "heading_level": 3,
+    "content": "### [Step 4: Create the Root Layout](#step-4-create-the-root-layout)\n\nA Next.js [App Router](/docs/app) application must include a\n[root layout](/docs/app/building-your-application/routing/layouts-and-templates#root-layout-required)\nfile, which is a [React Server Component](/docs/app/building-your-application/rendering/server-components)\nthat will wrap all pages in your application. This file is defined at the top level of the `app`\ndirectory.\n\nThe closest equivalent to the root layout file in a Vite application is the\n[`index.html` file](https://vitejs.dev/guide/#index-html-and-project-root), which contains your\n`<html>`, `<head>`, and `<body>` tags.\n\nIn this step, you'll convert your `index.html` file into a root layout file:\n\n1. Create a new `app` directory in your `src` directory.\n2. Create a new `layout.tsx` file inside that `app` directory:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return '...'\n}\n```\n\n> **Good to know**: `.js`, `.jsx`, or `.tsx` extensions can be used for Layout files.\n\n3. Copy the content of your `index.html` file into the previously created `<RootLayout>` component while\n   replacing the `body.div#root` and `body.script` tags with `<div id=\"root\">{children}</div>`:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <head>\n        <meta charset=\"UTF-8\" />\n        <link rel=\"icon\" type=\"image/svg+xml\" href=\"/icon.svg\" />\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n        <title>My App</title>\n        <meta name=\"description\" content=\"My App is a...\" />\n      </head>\n      <body>\n        <div id=\"root\">{children}</div>\n      </body>\n    </html>\n  )\n}\n```\n\n4. Next.js already includes by default the\n   [meta charset](https://developer.mozilla.org/docs/Web/HTML/Element/meta#charset) and\n   [meta viewport](https://developer.mozilla.org/docs/Web/HTML/Viewport_meta_tag) tags, so you\n   can safely remove those from your `<head>`:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <head>\n        <link rel=\"icon\" type=\"image/svg+xml\" href=\"/icon.svg\" />\n        <title>My App</title>\n        <meta name=\"description\" content=\"My App is a...\" />\n      </head>\n      <body>\n        <div id=\"root\">{children}</div>\n      </body>\n    </html>\n  )\n}\n```\n\n5. Any [metadata files](/docs/app/building-your-application/optimizing/metadata#file-based-metadata)\n   such as `favicon.ico`, `icon.png`, `robots.txt` are automatically added to the application\n   `<head>` tag as long as you have them placed into the top level of the `app` directory. After\n   moving\n   [all supported files](/docs/app/building-your-application/optimizing/metadata#file-based-metadata)\n   into the `app` directory you can safely delete their `<link>` tags:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <head>\n        <title>My App</title>\n        <meta name=\"description\" content=\"My App is a...\" />\n      </head>\n      <body>\n        <div id=\"root\">{children}</div>\n      </body>\n    </html>\n  )\n}\n```\n\n6. Finally, Next.js can manage your last `<head>` tags with the\n   [Metadata API](/docs/app/building-your-application/optimizing/metadata). Move your final metadata\n   info into an exported\n   [`metadata` object](/docs/app/api-reference/functions/generate-metadata#metadata-object):\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  title: 'My App',\n  description: 'My App is a...',\n}\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body>\n        <div id=\"root\">{children}</div>\n      </body>\n    </html>\n  )\n}\n```\n\nWith the above changes, you shifted from declaring everything in your `index.html` to using Next.js'\nconvention-based approach built into the framework\n([Metadata API](/docs/app/building-your-application/optimizing/metadata)). This approach enables you\nto more easily improve your SEO and web shareability of your pages.",
+    "preview": "A Next.js [App Router](/docs/app) application must include a [root layout](/docs/app/building-your-application/routing/layouts-and-templates#root-layout-required) file, which is a [React Server Component](/docs/app/building-your-application/rendering/server-components) that will wrap all pages in yo",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#step-4-create-the-root-layout-step-4-create-the-root-layout",
+    "position": 14
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Step 5: Create the Entrypoint Page](#step-5-create-the-entrypoint-page)",
+    "section_id": "step-5-create-the-entrypoint-page-step-5-create-the-entrypoint-page",
+    "heading_level": 3,
+    "content": "### [Step 5: Create the Entrypoint Page](#step-5-create-the-entrypoint-page)\n\nOn Next.js you declare an entrypoint for your application by creating a `page.tsx` file. The\nclosest equivalent of this file on Vite is your `main.tsx` file. In this step, you\u2019ll set up the\nentrypoint of your application.\n\n1. **Create a `[[...slug]]` directory in your `app` directory.**\n\nSince in this guide we're aiming first to set up our Next.js as an SPA (Single Page Application), you need your page entrypoint to catch all possible routes of your application. For that, create a new `[[...slug]]` directory in your `app` directory.\n\nThis directory is what is called an [optional catch-all route segment](/docs/app/building-your-application/routing/dynamic-routes#optional-catch-all-segments). Next.js uses a file-system based router where folders are used to define routes. This special directory will make sure that all routes of your application will be directed to its containing `page.tsx` file.\n\n2. **Create a new `page.tsx` file inside the `app/[[...slug]]` directory with the following content:**\n\napp/[[...slug]]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport '../../index.css'\n \nexport function generateStaticParams() {\n  return [{ slug: [''] }]\n}\n \nexport default function Page() {\n  return '...' // We'll update this\n}\n```\n\n> **Good to know**: `.js`, `.jsx`, or `.tsx` extensions can be used for Page files.\n\nThis file is a [Server Component](/docs/app/building-your-application/rendering/server-components). When you run `next build`, the file is prerendered into a static asset. It does *not* require any dynamic code.\n\nThis file imports our global CSS and tells [`generateStaticParams`](/docs/app/api-reference/functions/generate-static-params) we are only going to generate one route, the index route at `/`.\n\nNow, let's move the rest of our Vite application which will run client-only.\n\napp/[[...slug]]/client.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport React from 'react'\nimport dynamic from 'next/dynamic'\n \nconst App = dynamic(() => import('../../App'), { ssr: false })\n \nexport function ClientOnly() {\n  return <App />\n}\n```\n\nThis file is a [Client Component](/docs/app/building-your-application/rendering/client-components), defined by the `'use client'`\ndirective. Client Components are still [prerendered to HTML](/docs/app/building-your-application/rendering/client-components#how-are-client-components-rendered) on the server before being sent to the client.\n\nSince we want a client-only application to start, we can configure Next.js to disable prerendering from the `App` component down.\n\n```\nconst App = dynamic(() => import('../../App'), { ssr: false })\n```\n\nNow, update your entrypoint page to use the new component:\n\napp/[[...slug]]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport '../../index.css'\nimport { ClientOnly } from './client'\n \nexport function generateStaticParams() {\n  return [{ slug: [''] }]\n}\n \nexport default function Page() {\n  return <ClientOnly />\n}\n```",
+    "preview": "On Next.js you declare an entrypoint for your application by creating a `page.tsx` file. The closest equivalent of this file on Vite is your `main.tsx` file. In this step, you\u2019ll set up the entrypoint of your application. 1. **Create a `[[...slug]]` directory in your `app` directory.** Since in th",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#step-5-create-the-entrypoint-page-step-5-create-the-entrypoint-page",
+    "position": 15
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Step 6: Update Static Image Imports](#step-6-update-static-image-imports)",
+    "section_id": "step-6-update-static-image-imports-step-6-update-static-image-imports",
+    "heading_level": 3,
+    "content": "### [Step 6: Update Static Image Imports](#step-6-update-static-image-imports)\n\nNext.js handles static image imports slightly different from Vite. With Vite, importing an image\nfile will return its public URL as a string:\n\nApp.tsx\n\n```\nimport image from './img.png' // `image` will be '/assets/img.2d8efhg.png' in production\n \nexport default function App() {\n  return <img src={image} />\n}\n```\n\nWith Next.js, static image imports return an object. The object can then be used directly with the\nNext.js [`<Image>` component](/docs/app/api-reference/components/image), or you can use the object's\n`src` property with your existing `<img>` tag.\n\nThe `<Image>` component has the added benefits of\n[automatic image optimization](/docs/app/building-your-application/optimizing/images). The `<Image>`\ncomponent automatically sets the `width` and `height` attributes of the resulting `<img>` based on\nthe image's dimensions. This prevents layout shifts when the image loads. However, this can cause\nissues if your app contains images with only one of their dimensions being styled without the other\nstyled to `auto`. When not styled to `auto`, the dimension will default to the `<img>` dimension\nattribute's value, which can cause the image to appear distorted.\n\nKeeping the `<img>` tag will reduce the amount of changes in your application and prevent the above\nissues. You can then optionally later migrate to the `<Image>` component to take advantage of optimizing images by [configuring a loader](/docs/app/building-your-application/optimizing/images#loaders), or moving to the default Next.js server which has automatic image optimization.\n\n1. **Convert absolute import paths for images imported from `/public` into relative imports:**\n\n```\n// Before\nimport logo from '/logo.png'\n \n// After\nimport logo from '../public/logo.png'\n```\n\n2. **Pass the image `src` property instead of the whole image object to your `<img>` tag:**\n\n```\n// Before\n<img src={logo} />\n \n// After\n<img src={logo.src} />\n```\n\nAlternatively, you can reference the public URL for the image asset based on the filename. For example, `public/logo.png` will serve the image at `/logo.png` for your application, which would be the `src` value.\n\n> **Warning:** If you're using TypeScript, you might encounter type errors when accessing the `src`\n> property. You can safely ignore those for now. They will be fixed by the end of this guide.",
+    "preview": "Next.js handles static image imports slightly different from Vite. With Vite, importing an image file will return its public URL as a string: App.tsx ``` import image from './img.png' // `image` will be '/assets/img.2d8efhg.png' in production export default function App() { return <img src={im",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#step-6-update-static-image-imports-step-6-update-static-image-imports",
+    "position": 16
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Step 7: Migrate the Environment Variables](#step-7-migrate-the-environment-variables)",
+    "section_id": "step-7-migrate-the-environment-variables-step-7-migrate-the-environment-variables",
+    "heading_level": 3,
+    "content": "### [Step 7: Migrate the Environment Variables](#step-7-migrate-the-environment-variables)\n\nNext.js has support for `.env`\n[environment variables](/docs/app/building-your-application/configuring/environment-variables)\nsimilar to Vite. The main difference is the prefix used to expose environment variables on the\nclient-side.\n\n* Change all environment variables with the `VITE_` prefix to `NEXT_PUBLIC_`.\n\nVite exposes a few built-in environment variables on the special `import.meta.env` object which\naren\u2019t supported by Next.js. You need to update their usage as follows:\n\n* `import.meta.env.MODE` \u21d2 `process.env.NODE_ENV`\n* `import.meta.env.PROD` \u21d2 `process.env.NODE_ENV === 'production'`\n* `import.meta.env.DEV` \u21d2 `process.env.NODE_ENV !== 'production'`\n* `import.meta.env.SSR` \u21d2 `typeof window !== 'undefined'`\n\nNext.js also doesn't provide a built-in `BASE_URL` environment variable. However, you can still\nconfigure one, if you need it:\n\n1. **Add the following to your `.env` file:**\n\n.env\n\n```",
+    "preview": "Next.js has support for `.env` [environment variables](/docs/app/building-your-application/configuring/environment-variables) similar to Vite. The main difference is the prefix used to expose environment variables on the client-side. * Change all environment variables with the `VITE_` prefix to `NE",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#step-7-migrate-the-environment-variables-step-7-migrate-the-environment-variables",
+    "position": 17
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "...",
+    "section_id": "",
+    "heading_level": 1,
+    "content": "# ...\nNEXT_PUBLIC_BASE_PATH=\"/some-base-path\"\n```\n\n2. **Set [`basePath`](/docs/app/api-reference/config/next-config-js/basePath) to `process.env.NEXT_PUBLIC_BASE_PATH` in your `next.config.mjs` file:**\n\nnext.config.mjs\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  output: 'export', // Outputs a Single-Page Application (SPA).\n  distDir: './dist', // Changes the build output directory to `./dist/`.\n  basePath: process.env.NEXT_PUBLIC_BASE_PATH, // Sets the base path to `/some-base-path`.\n}\n \nexport default nextConfig\n```\n\n3. **Update `import.meta.env.BASE_URL` usages to `process.env.NEXT_PUBLIC_BASE_PATH`**",
+    "preview": "NEXT_PUBLIC_BASE_PATH=\"/some-base-path\" ``` 2. **Set [`basePath`](/docs/app/api-reference/config/next-config-js/basePath) to `process.env.NEXT_PUBLIC_BASE_PATH` in your `next.config.mjs` file:** next.config.mjs ``` /** @type {import('next').NextConfig} */ const nextConfig = { output: 'export',",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#",
+    "position": 18
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Step 8: Update Scripts in `package.json`](#step-8-update-scripts-in-packagejson)",
+    "section_id": "step-8-update-scripts-in-package-json-step-8-update-scripts-in-packagejson",
+    "heading_level": 3,
+    "content": "### [Step 8: Update Scripts in `package.json`](#step-8-update-scripts-in-packagejson)\n\nYou should now be able to run your application to test if you successfully migrated to Next.js. But\nbefore that, you need to update your `scripts` in your `package.json` with Next.js related commands,\nand add `.next` and `next-env.d.ts` to your `.gitignore`:\n\npackage.json\n\n```\n{\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\"\n  }\n}\n```\n\n.gitignore\n\n```",
+    "preview": "You should now be able to run your application to test if you successfully migrated to Next.js. But before that, you need to update your `scripts` in your `package.json` with Next.js related commands, and add `.next` and `next-env.d.ts` to your `.gitignore`: package.json [Code Block] .gitignore",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#step-8-update-scripts-in-package-json-step-8-update-scripts-in-packagejson",
+    "position": 19
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "...",
+    "section_id": "",
+    "heading_level": 1,
+    "content": "# ...\n.next\nnext-env.d.ts\ndist\n```\n\nNow run `npm run dev`, and open [`http://localhost:3000`](http://localhost:3000). You should see your application now running on Next.js.\n\n> **Example:** Check out [this pull request](https://github.com/inngest/vite-to-nextjs/pull/1) for a\n> working example of a Vite application migrated to Next.js.",
+    "preview": ".next next-env.d.ts dist ``` Now run `npm run dev`, and open [`http://localhost:3000`](http://localhost:3000). You should see your application now running on Next.js. > **Example:** Check out [this pull request](https://github.com/inngest/vite-to-nextjs/pull/1) for a > working example of a Vite ap",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#",
+    "position": 20
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Step 9: Clean Up](#step-9-clean-up)",
+    "section_id": "step-9-clean-up-step-9-clean-up",
+    "heading_level": 3,
+    "content": "### [Step 9: Clean Up](#step-9-clean-up)\n\nYou can now clean up your codebase from Vite related artifacts:\n\n* Delete `main.tsx`\n* Delete `index.html`\n* Delete `vite-env.d.ts`\n* Delete `tsconfig.node.json`\n* Delete `vite.config.ts`\n* Uninstall Vite dependencies",
+    "preview": "You can now clean up your codebase from Vite related artifacts: * Delete `main.tsx` * Delete `index.html` * Delete `vite-env.d.ts` * Delete `tsconfig.node.json` * Delete `vite.config.ts` * Uninstall Vite dependencies",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#step-9-clean-up-step-9-clean-up",
+    "position": 21
+  },
+  {
+    "title": "Migrating from Vite",
+    "section": "[Next Steps](#next-steps)",
+    "section_id": "next-steps-next-steps",
+    "heading_level": 2,
+    "content": "## [Next Steps](#next-steps)\n\nIf everything went according to plan, you now have a functioning Next.js application running as a\nsingle-page application. However, you aren't yet taking advantage of most of Next.js' benefits, but\nyou can now start making incremental changes to reap all the benefits. Here's what you might want to\ndo next:\n\n* Migrate from React Router to the [Next.js App Router](/docs/app/building-your-application/routing) to get:\n  + Automatic code splitting\n  + [Streaming Server-Rendering](/docs/app/building-your-application/routing/loading-ui-and-streaming)\n  + [React Server Components](/docs/app/building-your-application/rendering/server-components)\n* [Optimize images with the `<Image>` component](/docs/app/building-your-application/optimizing/images)\n* [Optimize fonts with `next/font`](/docs/app/building-your-application/optimizing/fonts)\n* [Optimize third-party scripts with the `<Script>` component](/docs/app/building-your-application/optimizing/scripts)\n* [Update your ESLint configuration to support Next.js rules](/docs/app/api-reference/config/eslint)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "If everything went according to plan, you now have a functioning Next.js application running as a single-page application. However, you aren't yet taking advantage of most of Next.js' benefits, but you can now start making incremental changes to reap all the benefits. Here's what you might want to d",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/from-vite#next-steps-next-steps",
+    "position": 22
+  }
+]

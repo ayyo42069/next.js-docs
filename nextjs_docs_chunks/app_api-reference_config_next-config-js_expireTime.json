@@ -1,0 +1,22 @@
+[
+  {
+    "title": "expireTime",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)expireTime",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)expireTime",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/expireTime#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "expireTime",
+    "section": "expireTime",
+    "section_id": "expiretime",
+    "heading_level": 1,
+    "content": "# expireTime\n\nYou can specify a custom `stale-while-revalidate` expire time for CDNs to consume in the `Cache-Control` header for ISR enabled pages.\n\nOpen `next.config.js` and add the `expireTime` config:\n\nnext.config.js\n\n```\nmodule.exports = {\n  // one hour in seconds\n  expireTime: 3600,\n}\n```\n\nNow when sending the `Cache-Control` header the expire time will be calculated depending on the specific revalidate period.\n\nFor example, if you have a revalidate of 15 minutes on a path and the expire time is one hour the generated `Cache-Control` header will be `s-maxage=900, stale-while-revalidate=2700` so that it can stay stale for 15 minutes less than the configured expire time.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "You can specify a custom `stale-while-revalidate` expire time for CDNs to consume in the `Cache-Control` header for ISR enabled pages. Open `next.config.js` and add the `expireTime` config: next.config.js [Code Block] Now when sending the `Cache-Control` header the expire time will be calculated",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/expireTime#expiretime",
+    "position": 1
+  }
+]

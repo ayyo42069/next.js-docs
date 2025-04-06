@@ -1,0 +1,82 @@
+[
+  {
+    "title": "useRouter",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)useRouter",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)useRouter",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-router#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "useRouter",
+    "section": "useRouter",
+    "section_id": "userouter",
+    "heading_level": 1,
+    "content": "# useRouter\n\nThe `useRouter` hook allows you to programmatically change routes inside [Client Components](/docs/app/building-your-application/rendering/client-components).\n\n> **Recommendation:** Use the [`<Link>` component](/docs/app/building-your-application/routing/linking-and-navigating#link-component) for navigation unless you have a specific requirement for using `useRouter`.\n\napp/example-client-component.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useRouter } from 'next/navigation'\n \nexport default function Page() {\n  const router = useRouter()\n \n  return (\n    <button type=\"button\" onClick={() => router.push('/dashboard')}>\n      Dashboard\n    </button>\n  )\n}\n```",
+    "preview": "The `useRouter` hook allows you to programmatically change routes inside [Client Components](/docs/app/building-your-application/rendering/client-components). > **Recommendation:** Use the [`<Link>` component](/docs/app/building-your-application/routing/linking-and-navigating#link-component) for na",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-router#userouter",
+    "position": 1
+  },
+  {
+    "title": "useRouter",
+    "section": "[`useRouter()`](#userouter)",
+    "section_id": "userouter-userouter",
+    "heading_level": 2,
+    "content": "## [`useRouter()`](#userouter)\n\n* `router.push(href: string, { scroll: boolean })`: Perform a client-side navigation to the provided route. Adds a new entry into the [browser\u2019s history](https://developer.mozilla.org/docs/Web/API/History_API) stack.\n* `router.replace(href: string, { scroll: boolean })`: Perform a client-side navigation to the provided route without adding a new entry into the [browser\u2019s history stack](https://developer.mozilla.org/docs/Web/API/History_API).\n* `router.refresh()`: Refresh the current route. Making a new request to the server, re-fetching data requests, and re-rendering Server Components. The client will merge the updated React Server Component payload without losing unaffected client-side React (e.g. `useState`) or browser state (e.g. scroll position).\n* `router.prefetch(href: string)`: [Prefetch](/docs/app/building-your-application/routing/linking-and-navigating#2-prefetching) the provided route for faster client-side transitions.\n* `router.back()`: Navigate back to the previous route in the browser\u2019s history stack.\n* `router.forward()`: Navigate forwards to the next page in the browser\u2019s history stack.\n\n> **Good to know**:\n>\n> * You must not send untrusted or unsanitized URLs to `router.push` or `router.replace`, as this can open your site to cross-site scripting (XSS) vulnerabilities. For example, `javascript:` URLs sent to `router.push` or `router.replace` will be executed in the context of your page.\n> * The `<Link>` component automatically prefetch routes as they become visible in the viewport.\n> * `refresh()` could re-produce the same result if fetch requests are cached. Other Dynamic APIs like `cookies` and `headers` could also change the response.",
+    "preview": "* `router.push(href: string, { scroll: boolean })`: Perform a client-side navigation to the provided route. Adds a new entry into the [browser\u2019s history](https://developer.mozilla.org/docs/Web/API/History_API) stack. * `router.replace(href: string, { scroll: boolean })`: Perform a client-side naviga",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-router#userouter-userouter",
+    "position": 2
+  },
+  {
+    "title": "useRouter",
+    "section": "[Migrating from `next/router`](#migrating-from-nextrouter)",
+    "section_id": "migrating-from-next-router-migrating-from-nextrouter",
+    "heading_level": 3,
+    "content": "### [Migrating from `next/router`](#migrating-from-nextrouter)\n\n* The `useRouter` hook should be imported from `next/navigation` and not `next/router` when using the App Router\n* The `pathname` string has been removed and is replaced by [`usePathname()`](/docs/app/api-reference/functions/use-pathname)\n* The `query` object has been removed and is replaced by [`useSearchParams()`](/docs/app/api-reference/functions/use-search-params)\n* `router.events` has been replaced. [See below.](#router-events)\n\n[View the full migration guide](/docs/app/building-your-application/upgrading/app-router-migration).",
+    "preview": "* The `useRouter` hook should be imported from `next/navigation` and not `next/router` when using the App Router * The `pathname` string has been removed and is replaced by [`usePathname()`](/docs/app/api-reference/functions/use-pathname) * The `query` object has been removed and is replaced by [`us",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-router#migrating-from-next-router-migrating-from-nextrouter",
+    "position": 3
+  },
+  {
+    "title": "useRouter",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-router#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "useRouter",
+    "section": "[Router events](#router-events)",
+    "section_id": "router-events-router-events",
+    "heading_level": 3,
+    "content": "### [Router events](#router-events)\n\nYou can listen for page changes by composing other Client Component hooks like `usePathname` and `useSearchParams`.\n\napp/components/navigation-events.js\n\n```\n'use client'\n \nimport { useEffect } from 'react'\nimport { usePathname, useSearchParams } from 'next/navigation'\n \nexport function NavigationEvents() {\n  const pathname = usePathname()\n  const searchParams = useSearchParams()\n \n  useEffect(() => {\n    const url = `${pathname}?${searchParams}`\n    console.log(url)\n    // You can now use the current URL\n    // ...\n  }, [pathname, searchParams])\n \n  return '...'\n}\n```\n\nWhich can be imported into a layout.\n\napp/layout.js\n\n```\nimport { Suspense } from 'react'\nimport { NavigationEvents } from './components/navigation-events'\n \nexport default function Layout({ children }) {\n  return (\n    <html lang=\"en\">\n      <body>\n        {children}\n \n        <Suspense fallback={null}>\n          <NavigationEvents />\n        </Suspense>\n      </body>\n    </html>\n  )\n}\n```\n\n> **Good to know**: `<NavigationEvents>` is wrapped in a [`Suspense` boundary](/docs/app/building-your-application/routing/loading-ui-and-streaming#example) because[`useSearchParams()`](/docs/app/api-reference/functions/use-search-params) causes client-side rendering up to the closest `Suspense` boundary during [static rendering](/docs/app/building-your-application/rendering/server-components#static-rendering-default). [Learn more](/docs/app/api-reference/functions/use-search-params#behavior).",
+    "preview": "You can listen for page changes by composing other Client Component hooks like `usePathname` and `useSearchParams`. app/components/navigation-events.js ``` 'use client' import { useEffect } from 'react' import { usePathname, useSearchParams } from 'next/navigation' export function NavigationEv",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-router#router-events-router-events",
+    "position": 5
+  },
+  {
+    "title": "useRouter",
+    "section": "[Disabling scroll to top](#disabling-scroll-to-top)",
+    "section_id": "disabling-scroll-to-top-disabling-scroll-to-top",
+    "heading_level": 3,
+    "content": "### [Disabling scroll to top](#disabling-scroll-to-top)\n\nBy default, Next.js will scroll to the top of the page when navigating to a new route. You can disable this behavior by passing `scroll: false` to `router.push()` or `router.replace()`.\n\napp/example-client-component.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useRouter } from 'next/navigation'\n \nexport default function Page() {\n  const router = useRouter()\n \n  return (\n    <button\n      type=\"button\"\n      onClick={() => router.push('/dashboard', { scroll: false })}\n    >\n      Dashboard\n    </button>\n  )\n}\n```",
+    "preview": "By default, Next.js will scroll to the top of the page when navigating to a new route. You can disable this behavior by passing `scroll: false` to `router.push()` or `router.replace()`. app/example-client-component.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-router#disabling-scroll-to-top-disabling-scroll-to-top",
+    "position": 6
+  },
+  {
+    "title": "useRouter",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.0.0` | `useRouter` from `next/navigation` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.0.0` | `useRouter` from `next/navigation` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-router#version-history-version-history",
+    "position": 7
+  }
+]

@@ -1,0 +1,172 @@
+[
+  {
+    "title": "API Routes",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Routing](/docs/pages/building-your-application/routing)API Routes",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Routing](/docs/pages/building-your-application/routing)API Routes",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "API Routes",
+    "section": "API Routes",
+    "section_id": "api-routes",
+    "heading_level": 1,
+    "content": "# API Routes\n\nExamples\n\n* [API Routes Request Helpers](https://github.com/vercel/next.js/tree/canary/examples/api-routes-middleware)\n* [API Routes with GraphQL](https://github.com/vercel/next.js/tree/canary/examples/api-routes-graphql)\n* [API Routes with REST](https://github.com/vercel/next.js/tree/canary/examples/api-routes-rest)\n* [API Routes with CORS](https://github.com/vercel/next.js/tree/canary/examples/api-routes-cors)\n> **Good to know**: If you are using the App Router, you can use [Server Components](/docs/app/building-your-application/rendering/server-components) or [Route Handlers](/docs/app/building-your-application/routing/route-handlers) instead of API Routes.\n\nAPI routes provide a solution to build a **public API** with Next.js.\n\nAny file inside the folder `pages/api` is mapped to `/api/*` and will be treated as an API endpoint instead of a `page`. They are server-side only bundles and won't increase your client-side bundle size.\n\nFor example, the following API route returns a JSON response with a status code of `200`:\n\npages/api/hello.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \ntype ResponseData = {\n  message: string\n}\n \nexport default function handler(\n  req: NextApiRequest,\n  res: NextApiResponse<ResponseData>\n) {\n  res.status(200).json({ message: 'Hello from Next.js!' })\n}\n```\n\n> **Good to know**:\n>\n> * API Routes [do not specify CORS headers](https://developer.mozilla.org/docs/Web/HTTP/CORS), meaning they are **same-origin only** by default. You can customize such behavior by wrapping the request handler with the [CORS request helpers](https://github.com/vercel/next.js/tree/canary/examples/api-routes-cors).\n\n* API Routes can't be used with [static exports](/docs/pages/building-your-application/deploying/static-exports). However, [Route Handlers](/docs/app/building-your-application/routing/route-handlers) in the App Router can.\n  > + API Routes will be affected by [`pageExtensions` configuration](/docs/pages/api-reference/config/next-config-js/pageExtensions) in `next.config.js`.",
+    "preview": "Examples * [API Routes Request Helpers](https://github.com/vercel/next.js/tree/canary/examples/api-routes-middleware) * [API Routes with GraphQL](https://github.com/vercel/next.js/tree/canary/examples/api-routes-graphql) * [API Routes with REST](https://github.com/vercel/next.js/tree/canary/example",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#api-routes",
+    "position": 1
+  },
+  {
+    "title": "API Routes",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\n```\nexport default function handler(req: NextApiRequest, res: NextApiResponse) {\n  // ...\n}\n```\n\n* `req`: An instance of [http.IncomingMessage](https://nodejs.org/api/http.html#class-httpincomingmessage)\n* `res`: An instance of [http.ServerResponse](https://nodejs.org/api/http.html#class-httpserverresponse)",
+    "preview": "[Code Block] * `req`: An instance of [http.IncomingMessage](https://nodejs.org/api/http.html#class-httpincomingmessage) * `res`: An instance of [http.ServerResponse](https://nodejs.org/api/http.html#class-httpserverresponse)",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "API Routes",
+    "section": "[HTTP Methods](#http-methods)",
+    "section_id": "http-methods-http-methods",
+    "heading_level": 2,
+    "content": "## [HTTP Methods](#http-methods)\n\nTo handle different HTTP methods in an API route, you can use `req.method` in your request handler, like so:\n\npages/api/hello.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default function handler(req: NextApiRequest, res: NextApiResponse) {\n  if (req.method === 'POST') {\n    // Process a POST request\n  } else {\n    // Handle any other HTTP method\n  }\n}\n```",
+    "preview": "To handle different HTTP methods in an API route, you can use `req.method` in your request handler, like so: pages/api/hello.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#http-methods-http-methods",
+    "position": 3
+  },
+  {
+    "title": "API Routes",
+    "section": "[Request Helpers](#request-helpers)",
+    "section_id": "request-helpers-request-helpers",
+    "heading_level": 2,
+    "content": "## [Request Helpers](#request-helpers)\n\nAPI Routes provide built-in request helpers which parse the incoming request (`req`):\n\n* `req.cookies` - An object containing the cookies sent by the request. Defaults to `{}`\n* `req.query` - An object containing the [query string](https://en.wikipedia.org/wiki/Query_string). Defaults to `{}`\n* `req.body` - An object containing the body parsed by `content-type`, or `null` if no body was sent",
+    "preview": "API Routes provide built-in request helpers which parse the incoming request (`req`): * `req.cookies` - An object containing the cookies sent by the request. Defaults to `{}` * `req.query` - An object containing the [query string](https://en.wikipedia.org/wiki/Query_string). Defaults to `{}` * `req",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#request-helpers-request-helpers",
+    "position": 4
+  },
+  {
+    "title": "API Routes",
+    "section": "[Custom config](#custom-config)",
+    "section_id": "custom-config-custom-config",
+    "heading_level": 3,
+    "content": "### [Custom config](#custom-config)\n\nEvery API Route can export a `config` object to change the default configuration, which is the following:\n\n```\nexport const config = {\n  api: {\n    bodyParser: {\n      sizeLimit: '1mb',\n    },\n  },\n  // Specifies the maximum allowed duration for this function to execute (in seconds)\n  maxDuration: 5,\n}\n```\n\n`bodyParser` is automatically enabled. If you want to consume the body as a `Stream` or with [`raw-body`](https://www.npmjs.com/package/raw-body), you can set this to `false`.\n\nOne use case for disabling the automatic `bodyParsing` is to allow you to verify the raw body of a **webhook** request, for example [from GitHub](https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks#validating-payloads-from-github).\n\n```\nexport const config = {\n  api: {\n    bodyParser: false,\n  },\n}\n```\n\n`bodyParser.sizeLimit` is the maximum size allowed for the parsed body, in any format supported by [bytes](https://github.com/visionmedia/bytes.js), like so:\n\n```\nexport const config = {\n  api: {\n    bodyParser: {\n      sizeLimit: '500kb',\n    },\n  },\n}\n```\n\n`externalResolver` is an explicit flag that tells the server that this route is being handled by an external resolver like *express* or *connect*. Enabling this option disables warnings for unresolved requests.\n\n```\nexport const config = {\n  api: {\n    externalResolver: true,\n  },\n}\n```\n\n`responseLimit` is automatically enabled, warning when an API Routes' response body is over 4MB.\n\nIf you are not using Next.js in a serverless environment, and understand the performance implications of not using a CDN or dedicated media host, you can set this limit to `false`.\n\n```\nexport const config = {\n  api: {\n    responseLimit: false,\n  },\n}\n```\n\n`responseLimit` can also take the number of bytes or any string format supported by `bytes`, for example `1000`, `'500kb'` or `'3mb'`.\nThis value will be the maximum response size before a warning is displayed. Default is 4MB. (see above)\n\n```\nexport const config = {\n  api: {\n    responseLimit: '8mb',\n  },\n}\n```",
+    "preview": "Every API Route can export a `config` object to change the default configuration, which is the following: [Code Block] `bodyParser` is automatically enabled. If you want to consume the body as a `Stream` or with [`raw-body`](https://www.npmjs.com/package/raw-body), you can set this to `false`. On",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#custom-config-custom-config",
+    "position": 5
+  },
+  {
+    "title": "API Routes",
+    "section": "[Response Helpers](#response-helpers)",
+    "section_id": "response-helpers-response-helpers",
+    "heading_level": 2,
+    "content": "## [Response Helpers](#response-helpers)\n\nThe [Server Response object](https://nodejs.org/api/http.html#http_class_http_serverresponse), (often abbreviated as `res`) includes a set of Express.js-like helper methods to improve the developer experience and increase the speed of creating new API endpoints.\n\nThe included helpers are:\n\n* `res.status(code)` - A function to set the status code. `code` must be a valid [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)\n* `res.json(body)` - Sends a JSON response. `body` must be a [serializable object](https://developer.mozilla.org/docs/Glossary/Serialization)\n* `res.send(body)` - Sends the HTTP response. `body` can be a `string`, an `object` or a `Buffer`\n* `res.redirect([status,] path)` - Redirects to a specified path or URL. `status` must be a valid [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). If not specified, `status` defaults to \"307\" \"Temporary redirect\".\n* `res.revalidate(urlPath)` - [Revalidate a page on demand](/docs/pages/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation-with-revalidatepath) using `getStaticProps`. `urlPath` must be a `string`.",
+    "preview": "The [Server Response object](https://nodejs.org/api/http.html#http_class_http_serverresponse), (often abbreviated as `res`) includes a set of Express.js-like helper methods to improve the developer experience and increase the speed of creating new API endpoints. The included helpers are: * `res.st",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#response-helpers-response-helpers",
+    "position": 6
+  },
+  {
+    "title": "API Routes",
+    "section": "[Setting the status code of a response](#setting-the-status-code-of-a-response)",
+    "section_id": "setting-the-status-code-of-a-response-setting-the-status-code-of-a-response",
+    "heading_level": 3,
+    "content": "### [Setting the status code of a response](#setting-the-status-code-of-a-response)\n\nWhen sending a response back to the client, you can set the status code of the response.\n\nThe following example sets the status code of the response to `200` (`OK`) and returns a `message` property with the value of `Hello from Next.js!` as a JSON response:\n\npages/api/hello.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \ntype ResponseData = {\n  message: string\n}\n \nexport default function handler(\n  req: NextApiRequest,\n  res: NextApiResponse<ResponseData>\n) {\n  res.status(200).json({ message: 'Hello from Next.js!' })\n}\n```",
+    "preview": "When sending a response back to the client, you can set the status code of the response. The following example sets the status code of the response to `200` (`OK`) and returns a `message` property with the value of `Hello from Next.js!` as a JSON response: pages/api/hello.ts TypeScript JavaScrip",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#setting-the-status-code-of-a-response-setting-the-status-code-of-a-response",
+    "position": 7
+  },
+  {
+    "title": "API Routes",
+    "section": "[Sending a JSON response](#sending-a-json-response)",
+    "section_id": "sending-a-json-response-sending-a-json-response",
+    "heading_level": 3,
+    "content": "### [Sending a JSON response](#sending-a-json-response)\n\nWhen sending a response back to the client you can send a JSON response, this must be a [serializable object](https://developer.mozilla.org/docs/Glossary/Serialization).\nIn a real world application you might want to let the client know the status of the request depending on the result of the requested endpoint.\n\nThe following example sends a JSON response with the status code `200` (`OK`) and the result of the async operation. It's contained in a try catch block to handle any errors that may occur, with the appropriate status code and error message caught and sent back to the client:\n\npages/api/hello.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  try {\n    const result = await someAsyncOperation()\n    res.status(200).json({ result })\n  } catch (err) {\n    res.status(500).json({ error: 'failed to load data' })\n  }\n}\n```",
+    "preview": "When sending a response back to the client you can send a JSON response, this must be a [serializable object](https://developer.mozilla.org/docs/Glossary/Serialization). In a real world application you might want to let the client know the status of the request depending on the result of the request",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#sending-a-json-response-sending-a-json-response",
+    "position": 8
+  },
+  {
+    "title": "API Routes",
+    "section": "[Sending a HTTP response](#sending-a-http-response)",
+    "section_id": "sending-a-http-response-sending-a-http-response",
+    "heading_level": 3,
+    "content": "### [Sending a HTTP response](#sending-a-http-response)\n\nSending an HTTP response works the same way as when sending a JSON response. The only difference is that the response body can be a `string`, an `object` or a `Buffer`.\n\nThe following example sends a HTTP response with the status code `200` (`OK`) and the result of the async operation.\n\npages/api/hello.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  try {\n    const result = await someAsyncOperation()\n    res.status(200).send({ result })\n  } catch (err) {\n    res.status(500).send({ error: 'failed to fetch data' })\n  }\n}\n```",
+    "preview": "Sending an HTTP response works the same way as when sending a JSON response. The only difference is that the response body can be a `string`, an `object` or a `Buffer`. The following example sends a HTTP response with the status code `200` (`OK`) and the result of the async operation. pages/api/he",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#sending-a-http-response-sending-a-http-response",
+    "position": 9
+  },
+  {
+    "title": "API Routes",
+    "section": "[Redirects to a specified path or URL](#redirects-to-a-specified-path-or-url)",
+    "section_id": "redirects-to-a-specified-path-or-url-redirects-to-a-specified-path-or-url",
+    "heading_level": 3,
+    "content": "### [Redirects to a specified path or URL](#redirects-to-a-specified-path-or-url)\n\nTaking a form as an example, you may want to redirect your client to a specified path or URL once they have submitted the form.\n\nThe following example redirects the client to the `/` path if the form is successfully submitted:\n\npages/api/hello.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  const { name, message } = req.body\n \n  try {\n    await handleFormInputAsync({ name, message })\n    res.redirect(307, '/')\n  } catch (err) {\n    res.status(500).send({ error: 'Failed to fetch data' })\n  }\n}\n```",
+    "preview": "Taking a form as an example, you may want to redirect your client to a specified path or URL once they have submitted the form. The following example redirects the client to the `/` path if the form is successfully submitted: pages/api/hello.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#redirects-to-a-specified-path-or-url-redirects-to-a-specified-path-or-url",
+    "position": 10
+  },
+  {
+    "title": "API Routes",
+    "section": "[Adding TypeScript types](#adding-typescript-types)",
+    "section_id": "adding-typescript-types-adding-typescript-types",
+    "heading_level": 3,
+    "content": "### [Adding TypeScript types](#adding-typescript-types)\n\nYou can make your API Routes more type-safe by importing the `NextApiRequest` and `NextApiResponse` types from `next`, in addition to those, you can also type your response data:\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \ntype ResponseData = {\n  message: string\n}\n \nexport default function handler(\n  req: NextApiRequest,\n  res: NextApiResponse<ResponseData>\n) {\n  res.status(200).json({ message: 'Hello from Next.js!' })\n}\n```\n\n> **Good to know**: The body of `NextApiRequest` is `any` because the client may include any payload. You should validate the type/shape of the body at runtime before using it.",
+    "preview": "You can make your API Routes more type-safe by importing the `NextApiRequest` and `NextApiResponse` types from `next`, in addition to those, you can also type your response data: [Code Block] > **Good to know**: The body of `NextApiRequest` is `any` because the client may include any payload. You",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#adding-typescript-types-adding-typescript-types",
+    "position": 11
+  },
+  {
+    "title": "API Routes",
+    "section": "[Dynamic API Routes](#dynamic-api-routes)",
+    "section_id": "dynamic-api-routes-dynamic-api-routes",
+    "heading_level": 2,
+    "content": "## [Dynamic API Routes](#dynamic-api-routes)\n\nAPI Routes support [dynamic routes](/docs/pages/building-your-application/routing/dynamic-routes), and follow the same file naming rules used for `pages/`.\n\npages/api/post/[pid].ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default function handler(req: NextApiRequest, res: NextApiResponse) {\n  const { pid } = req.query\n  res.end(`Post: ${pid}`)\n}\n```\n\nNow, a request to `/api/post/abc` will respond with the text: `Post: abc`.",
+    "preview": "API Routes support [dynamic routes](/docs/pages/building-your-application/routing/dynamic-routes), and follow the same file naming rules used for `pages/`. pages/api/post/[pid].ts TypeScript JavaScriptTypeScript ``` import type { NextApiRequest, NextApiResponse } from 'next' export default fun",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#dynamic-api-routes-dynamic-api-routes",
+    "position": 12
+  },
+  {
+    "title": "API Routes",
+    "section": "[Catch all API routes](#catch-all-api-routes)",
+    "section_id": "catch-all-api-routes-catch-all-api-routes",
+    "heading_level": 3,
+    "content": "### [Catch all API routes](#catch-all-api-routes)\n\nAPI Routes can be extended to catch all paths by adding three dots (`...`) inside the brackets. For example:\n\n* `pages/api/post/[...slug].js` matches `/api/post/a`, but also `/api/post/a/b`, `/api/post/a/b/c` and so on.\n\n> **Good to know**: You can use names other than `slug`, such as: `[...param]`\n\nMatched parameters will be sent as a query parameter (`slug` in the example) to the page, and it will always be an array, so, the path `/api/post/a` will have the following `query` object:\n\n```\n{ \"slug\": [\"a\"] }\n```\n\nAnd in the case of `/api/post/a/b`, and any other matching path, new parameters will be added to the array, like so:\n\n```\n{ \"slug\": [\"a\", \"b\"] }\n```\n\nFor example:\n\npages/api/post/[...slug].ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default function handler(req: NextApiRequest, res: NextApiResponse) {\n  const { slug } = req.query\n  res.end(`Post: ${slug.join(', ')}`)\n}\n```\n\nNow, a request to `/api/post/a/b/c` will respond with the text: `Post: a, b, c`.",
+    "preview": "API Routes can be extended to catch all paths by adding three dots (`...`) inside the brackets. For example: * `pages/api/post/[...slug].js` matches `/api/post/a`, but also `/api/post/a/b`, `/api/post/a/b/c` and so on. > **Good to know**: You can use names other than `slug`, such as: `[...param]`",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#catch-all-api-routes-catch-all-api-routes",
+    "position": 13
+  },
+  {
+    "title": "API Routes",
+    "section": "[Optional catch all API routes](#optional-catch-all-api-routes)",
+    "section_id": "optional-catch-all-api-routes-optional-catch-all-api-routes",
+    "heading_level": 3,
+    "content": "### [Optional catch all API routes](#optional-catch-all-api-routes)\n\nCatch all routes can be made optional by including the parameter in double brackets (`[[...slug]]`).\n\nFor example, `pages/api/post/[[...slug]].js` will match `/api/post`, `/api/post/a`, `/api/post/a/b`, and so on.\n\nThe main difference between catch all and optional catch all routes is that with optional, the route without the parameter is also matched (`/api/post` in the example above).\n\nThe `query` objects are as follows:\n\n```\n{ } // GET `/api/post` (empty object)\n{ \"slug\": [\"a\"] } // `GET /api/post/a` (single-element array)\n{ \"slug\": [\"a\", \"b\"] } // `GET /api/post/a/b` (multi-element array)\n```",
+    "preview": "Catch all routes can be made optional by including the parameter in double brackets (`[[...slug]]`). For example, `pages/api/post/[[...slug]].js` will match `/api/post`, `/api/post/a`, `/api/post/a/b`, and so on. The main difference between catch all and optional catch all routes is that with opti",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#optional-catch-all-api-routes-optional-catch-all-api-routes",
+    "position": 14
+  },
+  {
+    "title": "API Routes",
+    "section": "[Caveats](#caveats)",
+    "section_id": "caveats-caveats",
+    "heading_level": 3,
+    "content": "### [Caveats](#caveats)\n\n* Predefined API routes take precedence over dynamic API routes, and dynamic API routes over catch all API routes. Take a look at the following examples:\n  + `pages/api/post/create.js` - Will match `/api/post/create`\n  + `pages/api/post/[pid].js` - Will match `/api/post/1`, `/api/post/abc`, etc. But not `/api/post/create`\n  + `pages/api/post/[...slug].js` - Will match `/api/post/1/2`, `/api/post/a/b/c`, etc. But not `/api/post/create`, `/api/post/abc`",
+    "preview": "* Predefined API routes take precedence over dynamic API routes, and dynamic API routes over catch all API routes. Take a look at the following examples: + `pages/api/post/create.js` - Will match `/api/post/create` + `pages/api/post/[pid].js` - Will match `/api/post/1`, `/api/post/abc`, etc. But",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#caveats-caveats",
+    "position": 15
+  },
+  {
+    "title": "API Routes",
+    "section": "[Edge API Routes](#edge-api-routes)",
+    "section_id": "edge-api-routes-edge-api-routes",
+    "heading_level": 2,
+    "content": "## [Edge API Routes](#edge-api-routes)\n\nIf you would like to use API Routes with the Edge Runtime, we recommend incrementally adopting the App Router and using [Route Handlers](/docs/app/building-your-application/routing/route-handlers) instead.\n\nThe Route Handlers function signature is isomorphic, meaning you can use the same function for both Edge and Node.js runtimes.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "If you would like to use API Routes with the Edge Runtime, we recommend incrementally adopting the App Router and using [Route Handlers](/docs/app/building-your-application/routing/route-handlers) instead. The Route Handlers function signature is isomorphic, meaning you can use the same function fo",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/api-routes#edge-api-routes-edge-api-routes",
+    "position": 16
+  }
+]

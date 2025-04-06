@@ -1,0 +1,42 @@
+[
+  {
+    "title": "`next/dynamic` has deprecated loading multiple modules at once",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)`next/dynamic` has deprecated loading multiple modules at once",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)`next/dynamic` has deprecated loading multiple modules at once",
+    "url": "https://nextjs.org/docs/messages/next-dynamic-modules#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "`next/dynamic` has deprecated loading multiple modules at once",
+    "section": "`next/dynamic` has deprecated loading multiple modules at once",
+    "section_id": "next-dynamic-has-deprecated-loading-multiple-modules-at-once",
+    "heading_level": 1,
+    "content": "# `next/dynamic` has deprecated loading multiple modules at once",
+    "preview": "# `next/dynamic` has deprecated loading multiple modules at once",
+    "url": "https://nextjs.org/docs/messages/next-dynamic-modules#next-dynamic-has-deprecated-loading-multiple-modules-at-once",
+    "position": 1
+  },
+  {
+    "title": "`next/dynamic` has deprecated loading multiple modules at once",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nThe ability to load multiple modules at once has been deprecated in `next/dynamic` to be closer to React's implementation (`React.lazy` and `Suspense`).\n\nUpdating code that relies on this behavior is relatively straightforward! We've provided an example of a before/after to help you migrate your application:",
+    "preview": "The ability to load multiple modules at once has been deprecated in `next/dynamic` to be closer to React's implementation (`React.lazy` and `Suspense`). Updating code that relies on this behavior is relatively straightforward! We've provided an example of a before/after to help you migrate your app",
+    "url": "https://nextjs.org/docs/messages/next-dynamic-modules#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "`next/dynamic` has deprecated loading multiple modules at once",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nMigrate to using separate dynamic calls for each module.\n\n**Before**\n\nexample.js\n\n```\nimport dynamic from 'next/dynamic'\n \nconst HelloBundle = dynamic({\n  modules: () => {\n    const components = {\n      Hello1: () => import('../components/hello1').then((m) => m.default),\n      Hello2: () => import('../components/hello2').then((m) => m.default),\n    }\n \n    return components\n  },\n  render: (props, { Hello1, Hello2 }) => (\n    <div>\n      <h1>{props.title}</h1>\n      <Hello1 />\n      <Hello2 />\n    </div>\n  ),\n})\n \nfunction DynamicBundle() {\n  return <HelloBundle title=\"Dynamic Bundle\" />\n}\n \nexport default DynamicBundle\n```\n\n**After**\n\nexample.js\n\n```\nimport dynamic from 'next/dynamic'\n \nconst Hello1 = dynamic(() => import('../components/hello1'))\nconst Hello2 = dynamic(() => import('../components/hello2'))\n \nfunction HelloBundle({ title }) {\n  return (\n    <div>\n      <h1>{title}</h1>\n      <Hello1 />\n      <Hello2 />\n    </div>\n  )\n}\n \nfunction DynamicBundle() {\n  return <HelloBundle title=\"Dynamic Bundle\" />\n}\n \nexport default DynamicBundle\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Migrate to using separate dynamic calls for each module. **Before** example.js [Code Block] **After** example.js [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/next-dynamic-modules#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  }
+]

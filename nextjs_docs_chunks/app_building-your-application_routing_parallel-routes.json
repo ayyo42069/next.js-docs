@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Parallel Routes",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Routing](/docs/app/building-your-application/routing)Parallel Routes",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Routing](/docs/app/building-your-application/routing)Parallel Routes",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "Parallel Routes",
+    "section_id": "parallel-routes",
+    "heading_level": 1,
+    "content": "# Parallel Routes\n\nParallel Routes allows you to simultaneously or conditionally render one or more pages within the same layout. They are useful for highly dynamic sections of an app, such as dashboards and feeds on social sites.\n\nFor example, considering a dashboard, you can use parallel routes to simultaneously render the `team` and `analytics` pages:\n\n[Image: Parallel Routes Diagram][Image: Parallel Routes Diagram]",
+    "preview": "Parallel Routes allows you to simultaneously or conditionally render one or more pages within the same layout. They are useful for highly dynamic sections of an app, such as dashboards and feeds on social sites. For example, considering a dashboard, you can use parallel routes to simultaneously ren",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#parallel-routes",
+    "position": 1
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "[Slots](#slots)",
+    "section_id": "slots-slots",
+    "heading_level": 2,
+    "content": "## [Slots](#slots)\n\nParallel routes are created using named **slots**. Slots are defined with the `@folder` convention. For example, the following file structure defines two slots: `@analytics` and `@team`:\n\n[Image: Parallel Routes File-system Structure][Image: Parallel Routes File-system Structure]\n\nSlots are passed as props to the shared parent layout. For the example above, the component in `app/layout.js` now accepts the `@analytics` and `@team` slots props, and can render them in parallel alongside the `children` prop:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Layout({\n  children,\n  team,\n  analytics,\n}: {\n  children: React.ReactNode\n  analytics: React.ReactNode\n  team: React.ReactNode\n}) {\n  return (\n    <>\n      {children}\n      {team}\n      {analytics}\n    </>\n  )\n}\n```\n\nHowever, slots are **not** route segments and do not affect the URL structure. For example, for `/@analytics/views`, the URL will be `/views` since `@analytics` is a slot. Slots are combined with the regular [Page](/docs/app/api-reference/file-conventions/page) component to form the final page associated with the route segment. Because of this, you cannot have separate [static](/docs/app/building-your-application/rendering/server-components#static-rendering-default) and [dynamic](/docs/app/building-your-application/rendering/server-components#dynamic-rendering) slots at the same route segment level. If one slot is dynamic, all slots at that level must be dynamic.\n\n> **Good to know**:\n>\n> * The `children` prop is an implicit slot that does not need to be mapped to a folder. This means `app/page.js` is equivalent to `app/@children/page.js`.",
+    "preview": "Parallel routes are created using named **slots**. Slots are defined with the `@folder` convention. For example, the following file structure defines two slots: `@analytics` and `@team`: [Image: Parallel Routes File-system Structure][Image: Parallel Routes File-system Structure] Slots are passed a",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#slots-slots",
+    "position": 2
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "[Active state and navigation](#active-state-and-navigation)",
+    "section_id": "active-state-and-navigation-active-state-and-navigation",
+    "heading_level": 2,
+    "content": "## [Active state and navigation](#active-state-and-navigation)\n\nBy default, Next.js keeps track of the active *state* (or subpage) for each slot. However, the content rendered within a slot will depend on the type of navigation:\n\n* [**Soft Navigation**](/docs/app/building-your-application/routing/linking-and-navigating#5-soft-navigation): During client-side navigation, Next.js will perform a [partial render](/docs/app/building-your-application/routing/linking-and-navigating#4-partial-rendering), changing the subpage within the slot, while maintaining the other slot's active subpages, even if they don't match the current URL.\n* **Hard Navigation**: After a full-page load (browser refresh), Next.js cannot determine the active state for the slots that don't match the current URL. Instead, it will render a [`default.js`](#defaultjs) file for the unmatched slots, or `404` if `default.js` doesn't exist.\n\n> **Good to know**:\n>\n> * The `404` for unmatched routes helps ensure that you don't accidentally render a parallel route on a page that it was not intended for.",
+    "preview": "By default, Next.js keeps track of the active *state* (or subpage) for each slot. However, the content rendered within a slot will depend on the type of navigation: * [**Soft Navigation**](/docs/app/building-your-application/routing/linking-and-navigating#5-soft-navigation): During client-side navi",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#active-state-and-navigation-active-state-and-navigation",
+    "position": 3
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "[`default.js`](#defaultjs)",
+    "section_id": "default-js-defaultjs",
+    "heading_level": 3,
+    "content": "### [`default.js`](#defaultjs)\n\nYou can define a `default.js` file to render as a fallback for unmatched slots during the initial load or full-page reload.\n\nConsider the following folder structure. The `@team` slot has a `/settings` page, but `@analytics` does not.\n\n[Image: Parallel Routes unmatched routes][Image: Parallel Routes unmatched routes]\n\nWhen navigating to `/settings`, the `@team` slot will render the `/settings` page while maintaining the currently active page for the `@analytics` slot.\n\nOn refresh, Next.js will render a `default.js` for `@analytics`. If `default.js` doesn't exist, a `404` is rendered instead.\n\nAdditionally, since `children` is an implicit slot, you also need to create a `default.js` file to render a fallback for `children` when Next.js cannot recover the active state of the parent page.",
+    "preview": "You can define a `default.js` file to render as a fallback for unmatched slots during the initial load or full-page reload. Consider the following folder structure. The `@team` slot has a `/settings` page, but `@analytics` does not. [Image: Parallel Routes unmatched routes][Image: Parallel Routes",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#default-js-defaultjs",
+    "position": 4
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "[`useSelectedLayoutSegment(s)`](#useselectedlayoutsegments)",
+    "section_id": "useselectedlayoutsegment-s-useselectedlayoutsegments",
+    "heading_level": 3,
+    "content": "### [`useSelectedLayoutSegment(s)`](#useselectedlayoutsegments)\n\nBoth [`useSelectedLayoutSegment`](/docs/app/api-reference/functions/use-selected-layout-segment) and [`useSelectedLayoutSegments`](/docs/app/api-reference/functions/use-selected-layout-segments) accept a `parallelRoutesKey` parameter, which allows you to read the active route segment within a slot.\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useSelectedLayoutSegment } from 'next/navigation'\n \nexport default function Layout({ auth }: { auth: React.ReactNode }) {\n  const loginSegment = useSelectedLayoutSegment('auth')\n  // ...\n}\n```\n\nWhen a user navigates to `app/@auth/login` (or `/login` in the URL bar), `loginSegment` will be equal to the string `\"login\"`.",
+    "preview": "Both [`useSelectedLayoutSegment`](/docs/app/api-reference/functions/use-selected-layout-segment) and [`useSelectedLayoutSegments`](/docs/app/api-reference/functions/use-selected-layout-segments) accept a `parallelRoutesKey` parameter, which allows you to read the active route segment within a slot.",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#useselectedlayoutsegment-s-useselectedlayoutsegments",
+    "position": 5
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#examples-examples",
+    "position": 6
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "[Conditional Routes](#conditional-routes)",
+    "section_id": "conditional-routes-conditional-routes",
+    "heading_level": 3,
+    "content": "### [Conditional Routes](#conditional-routes)\n\nYou can use Parallel Routes to conditionally render routes based on certain conditions, such as user role. For example, to render a different dashboard page for the `/admin` or `/user` roles:\n\n[Image: Conditional routes diagram][Image: Conditional routes diagram]\n\napp/dashboard/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { checkUserRole } from '@/lib/auth'\n \nexport default function Layout({\n  user,\n  admin,\n}: {\n  user: React.ReactNode\n  admin: React.ReactNode\n}) {\n  const role = checkUserRole()\n  return role === 'admin' ? admin : user\n}\n```",
+    "preview": "You can use Parallel Routes to conditionally render routes based on certain conditions, such as user role. For example, to render a different dashboard page for the `/admin` or `/user` roles: [Image: Conditional routes diagram][Image: Conditional routes diagram] app/dashboard/layout.tsx TypeScrip",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#conditional-routes-conditional-routes",
+    "position": 7
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "[Tab Groups](#tab-groups)",
+    "section_id": "tab-groups-tab-groups",
+    "heading_level": 3,
+    "content": "### [Tab Groups](#tab-groups)\n\nYou can add a `layout` inside a slot to allow users to navigate the slot independently. This is useful for creating tabs.\n\nFor example, the `@analytics` slot has two subpages: `/page-views` and `/visitors`.\n\n[Image: Analytics slot with two subpages and a layout][Image: Analytics slot with two subpages and a layout]\n\nWithin `@analytics`, create a [`layout`](/docs/app/building-your-application/routing/layouts-and-templates) file to share the tabs between the two pages:\n\napp/@analytics/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Link from 'next/link'\n \nexport default function Layout({ children }: { children: React.ReactNode }) {\n  return (\n    <>\n      <nav>\n        <Link href=\"/page-views\">Page Views</Link>\n        <Link href=\"/visitors\">Visitors</Link>\n      </nav>\n      <div>{children}</div>\n    </>\n  )\n}\n```",
+    "preview": "You can add a `layout` inside a slot to allow users to navigate the slot independently. This is useful for creating tabs. For example, the `@analytics` slot has two subpages: `/page-views` and `/visitors`. [Image: Analytics slot with two subpages and a layout][Image: Analytics slot with two subpag",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#tab-groups-tab-groups",
+    "position": 8
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "[Modals](#modals)",
+    "section_id": "modals-modals",
+    "heading_level": 3,
+    "content": "### [Modals](#modals)\n\nParallel Routes can be used together with [Intercepting Routes](/docs/app/building-your-application/routing/intercepting-routes) to create modals that support deep linking. This allows you to solve common challenges when building modals, such as:\n\n* Making the modal content **shareable through a URL**.\n* **Preserving context** when the page is refreshed, instead of closing the modal.\n* **Closing the modal on backwards navigation** rather than going to the previous route.\n* **Reopening the modal on forwards navigation**.\n\nConsider the following UI pattern, where a user can open a login modal from a layout using client-side navigation, or access a separate `/login` page:\n\n[Image: Parallel Routes Diagram][Image: Parallel Routes Diagram]\n\nTo implement this pattern, start by creating a `/login` route that renders your **main** login page.\n\n[Image: Parallel Routes Diagram][Image: Parallel Routes Diagram]\n\napp/login/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Login } from '@/app/ui/login'\n \nexport default function Page() {\n  return <Login />\n}\n```\n\nThen, inside the `@auth` slot, add [`default.js`](/docs/app/api-reference/file-conventions/default) file that returns `null`. This ensures that the modal is not rendered when it's not active.\n\napp/@auth/default.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Default() {\n  return null\n}\n```\n\nInside your `@auth` slot, intercept the `/login` route by updating the `/(.)login` folder. Import the `<Modal>` component and its children into the `/(.)login/page.tsx` file:\n\napp/@auth/(.)login/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Modal } from '@/app/ui/modal'\nimport { Login } from '@/app/ui/login'\n \nexport default function Page() {\n  return (\n    <Modal>\n      <Login />\n    </Modal>\n  )\n}\n```\n\n> **Good to know:**\n>\n> * The convention used to intercept the route, e.g. `(.)`, depends on your file-system structure. See [Intercepting Routes convention](/docs/app/building-your-application/routing/intercepting-routes#convention).\n> * By separating the `<Modal>` functionality from the modal content (`<Login>`), you can ensure any content inside the modal, e.g. [forms](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#forms), are Server Components. See [Interleaving Client and Server Components](/docs/app/building-your-application/rendering/composition-patterns#supported-pattern-passing-server-components-to-client-components-as-props) for more information.\n\n#### [Opening the modal](#opening-the-modal)\n\nNow, you can leverage the Next.js router to open and close the modal. This ensures the URL is correctly updated when the modal is open, and when navigating backwards and forwards.\n\nTo open the modal, pass the `@auth` slot as a prop to the parent layout and render it alongside the `children` prop.\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Link from 'next/link'\n \nexport default function Layout({\n  auth,\n  children,\n}: {\n  auth: React.ReactNode\n  children: React.ReactNode\n}) {\n  return (\n    <>\n      <nav>\n        <Link href=\"/login\">Open modal</Link>\n      </nav>\n      <div>{auth}</div>\n      <div>{children}</div>\n    </>\n  )\n}\n```\n\nWhen the user clicks the `<Link>`, the modal will open instead of navigating to the `/login` page. However, on refresh or initial load, navigating to `/login` will take the user to the main login page.\n\n#### [Closing the modal](#closing-the-modal)\n\nYou can close the modal by calling `router.back()` or by using the `Link` component.\n\napp/ui/modal.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useRouter } from 'next/navigation'\n \nexport function Modal({ children }: { children: React.ReactNode }) {\n  const router = useRouter()\n \n  return (\n    <>\n      <button\n        onClick={() => {\n          router.back()\n        }}\n      >\n        Close modal\n      </button>\n      <div>{children}</div>\n    </>\n  )\n}\n```\n\nWhen using the `Link` component to navigate away from a page that shouldn't render the `@auth` slot anymore, we need to make sure the parallel route matches to a component that returns `null`. For example, when navigating back to the root page, we create a `@auth/page.tsx` component:\n\napp/ui/modal.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Link from 'next/link'\n \nexport function Modal({ children }: { children: React.ReactNode }) {\n  return (\n    <>\n      <Link href=\"/\">Close modal</Link>\n      <div>{children}</div>\n    </>\n  )\n}\n```\n\napp/@auth/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Page() {\n  return null\n}\n```\n\nOr if navigating to any other page (such as `/foo`, `/foo/bar`, etc), you can use a catch-all slot:\n\napp/@auth/[...catchAll]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function CatchAll() {\n  return null\n}\n```\n\n> **Good to know:**\n>\n> * We use a catch-all route in our `@auth` slot to close the modal because of the behavior described in [Active state and navigation](#active-state-and-navigation). Since client-side navigations to a route that no longer match the slot will remain visible, we need to match the slot to a route that returns `null` to close the modal.\n> * Other examples could include opening a photo modal in a gallery while also having a dedicated `/photo/[id]` page, or opening a shopping cart in a side modal.\n> * [View an example](https://github.com/vercel-labs/nextgram) of modals with Intercepted and Parallel Routes.",
+    "preview": "Parallel Routes can be used together with [Intercepting Routes](/docs/app/building-your-application/routing/intercepting-routes) to create modals that support deep linking. This allows you to solve common challenges when building modals, such as: * Making the modal content **shareable through a URL",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#modals-modals",
+    "position": 9
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "[Loading and Error UI](#loading-and-error-ui)",
+    "section_id": "loading-and-error-ui-loading-and-error-ui",
+    "heading_level": 3,
+    "content": "### [Loading and Error UI](#loading-and-error-ui)\n\nParallel Routes can be streamed independently, allowing you to define independent error and loading states for each route:\n\n[Image: Parallel routes enable custom error and loading states][Image: Parallel routes enable custom error and loading states]\n\nSee the [Loading UI](/docs/app/building-your-application/routing/loading-ui-and-streaming) and [Error Handling](/docs/app/building-your-application/routing/error-handling) documentation for more information.",
+    "preview": "Parallel Routes can be streamed independently, allowing you to define independent error and loading states for each route: [Image: Parallel routes enable custom error and loading states][Image: Parallel routes enable custom error and loading states] See the [Loading UI](/docs/app/building-your-app",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#loading-and-error-ui-loading-and-error-ui",
+    "position": 10
+  },
+  {
+    "title": "Parallel Routes",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\n[### default.js\n\nAPI Reference for the default.js file.](/docs/app/api-reference/file-conventions/default)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### default.js API Reference for the default.js file.](/docs/app/api-reference/file-conventions/default) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#next-steps",
+    "position": 11
+  }
+]

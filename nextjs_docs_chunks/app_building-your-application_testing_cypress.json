@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Testing](/docs/app/building-your-application/testing)Cypress",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Testing](/docs/app/building-your-application/testing)Cypress",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "Setting up Cypress with Next.js",
+    "section_id": "setting-up-cypress-with-next-js",
+    "heading_level": 1,
+    "content": "# Setting up Cypress with Next.js\n\n[Cypress](https://www.cypress.io/) is a test runner used for **End-to-End (E2E)** and **Component Testing**. This page will show you how to set up Cypress with Next.js and write your first tests.\n\n> **Warning:**\n>\n> * Cypress versions below 13.6.3 do not support [TypeScript version 5](https://github.com/cypress-io/cypress/issues/27731) with `moduleResolution:\"bundler\"`. However, this issue has been resolved in Cypress version 13.6.3 and later. [cypress v13.6.3](https://docs.cypress.io/guides/references/changelog#13-6-3)",
+    "preview": "[Cypress](https://www.cypress.io/) is a test runner used for **End-to-End (E2E)** and **Component Testing**. This page will show you how to set up Cypress with Next.js and write your first tests. > **Warning:** > > * Cypress versions below 13.6.3 do not support [TypeScript version 5](https://github",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#setting-up-cypress-with-next-js",
+    "position": 1
+  },
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "[Quickstart](#quickstart)",
+    "section_id": "quickstart-quickstart",
+    "heading_level": 2,
+    "content": "## [Quickstart](#quickstart)\n\nYou can use `create-next-app` with the [with-cypress example](https://github.com/vercel/next.js/tree/canary/examples/with-cypress) to quickly get started.\n\nTerminal\n\n```\nnpx create-next-app@latest --example with-cypress with-cypress-app\n```",
+    "preview": "You can use `create-next-app` with the [with-cypress example](https://github.com/vercel/next.js/tree/canary/examples/with-cypress) to quickly get started. Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#quickstart-quickstart",
+    "position": 2
+  },
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "[Manual setup](#manual-setup)",
+    "section_id": "manual-setup-manual-setup",
+    "heading_level": 2,
+    "content": "## [Manual setup](#manual-setup)\n\nTo manually set up Cypress, install `cypress` as a dev dependency:\n\nTerminal\n\n```\nnpm install -D cypress",
+    "preview": "To manually set up Cypress, install `cypress` as a dev dependency: Terminal ``` npm install -D cypress",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#manual-setup-manual-setup",
+    "position": 3
+  },
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "or",
+    "section_id": "or",
+    "heading_level": 1,
+    "content": "# or\nyarn add -D cypress",
+    "preview": "yarn add -D cypress",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#or",
+    "position": 4
+  },
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "or",
+    "section_id": "or",
+    "heading_level": 1,
+    "content": "# or\npnpm install -D cypress\n```\n\nAdd the Cypress `open` command to the `package.json` scripts field:\n\npackage.json\n\n```\n{\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"next lint\",\n    \"cypress:open\": \"cypress open\"\n  }\n}\n```\n\nRun Cypress for the first time to open the Cypress testing suite:\n\nTerminal\n\n```\nnpm run cypress:open\n```\n\nYou can choose to configure **E2E Testing** and/or **Component Testing**. Selecting any of these options will automatically create a `cypress.config.js` file and a `cypress` folder in your project.",
+    "preview": "pnpm install -D cypress ``` Add the Cypress `open` command to the `package.json` scripts field: package.json [Code Block] Run Cypress for the first time to open the Cypress testing suite: Terminal [Code Block] You can choose to configure **E2E Testing** and/or **Component Testing**. Selecting",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#or",
+    "position": 5
+  },
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "[Creating your first Cypress E2E test](#creating-your-first-cypress-e2e-test)",
+    "section_id": "creating-your-first-cypress-e2e-test-creating-your-first-cypress-e2e-test",
+    "heading_level": 2,
+    "content": "## [Creating your first Cypress E2E test](#creating-your-first-cypress-e2e-test)\n\nEnsure your `cypress.config` file has the following configuration:\n\ncypress.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { defineConfig } from 'cypress'\n \nexport default defineConfig({\n  e2e: {\n    setupNodeEvents(on, config) {},\n  },\n})\n```\n\nThen, create two new Next.js files:\n\napp/page.js\n\n```\nimport Link from 'next/link'\n \nexport default function Page() {\n  return (\n    <div>\n      <h1>Home</h1>\n      <Link href=\"/about\">About</Link>\n    </div>\n  )\n}\n```\n\napp/about/page.js\n\n```\nimport Link from 'next/link'\n \nexport default function Page() {\n  return (\n    <div>\n      <h1>About</h1>\n      <Link href=\"/\">Home</Link>\n    </div>\n  )\n}\n```\n\nAdd a test to check your navigation is working correctly:\n\ncypress/e2e/app.cy.js\n\n```\ndescribe('Navigation', () => {\n  it('should navigate to the about page', () => {\n    // Start from the index page\n    cy.visit('http://localhost:3000/')\n \n    // Find a link with an href attribute containing \"about\" and click it\n    cy.get('a[href*=\"about\"]').click()\n \n    // The new url should include \"/about\"\n    cy.url().should('include', '/about')\n \n    // The new page should contain an h1 with \"About\"\n    cy.get('h1').contains('About')\n  })\n})\n```",
+    "preview": "Ensure your `cypress.config` file has the following configuration: cypress.config.ts TypeScript JavaScriptTypeScript [Code Block] Then, create two new Next.js files: app/page.js [Code Block] app/about/page.js [Code Block] Add a test to check your navigation is working correctly: cypress/e",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#creating-your-first-cypress-e2e-test-creating-your-first-cypress-e2e-test",
+    "position": 6
+  },
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "[Running E2E Tests](#running-e2e-tests)",
+    "section_id": "running-e2e-tests-running-e2e-tests",
+    "heading_level": 3,
+    "content": "### [Running E2E Tests](#running-e2e-tests)\n\nCypress will simulate a user navigating your application, this requires your Next.js server to be running. We recommend running your tests against your production code to more closely resemble how your application will behave.\n\nRun `npm run build && npm run start` to build your Next.js application, then run `npm run cypress:open` in another terminal window to start Cypress and run your E2E Testing suite.\n\n> **Good to know:**\n>\n> * You can use `cy.visit(\"/\")` instead of `cy.visit(\"http://localhost:3000/\")` by adding `baseUrl: 'http://localhost:3000'` to the `cypress.config.js` configuration file.\n> * Alternatively, you can install the [`start-server-and-test`](https://www.npmjs.com/package/start-server-and-test) package to run the Next.js production server in conjunction with Cypress. After installation, add `\"test\": \"start-server-and-test start http://localhost:3000 cypress\"` to your `package.json` scripts field. Remember to rebuild your application after new changes.",
+    "preview": "Cypress will simulate a user navigating your application, this requires your Next.js server to be running. We recommend running your tests against your production code to more closely resemble how your application will behave. Run `npm run build && npm run start` to build your Next.js application,",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#running-e2e-tests-running-e2e-tests",
+    "position": 7
+  },
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "[Creating your first Cypress component test](#creating-your-first-cypress-component-test)",
+    "section_id": "creating-your-first-cypress-component-test-creating-your-first-cypress-component-test",
+    "heading_level": 2,
+    "content": "## [Creating your first Cypress component test](#creating-your-first-cypress-component-test)\n\nComponent tests build and mount a specific component without having to bundle your whole application or start a server.\n\nSelect **Component Testing** in the Cypress app, then select **Next.js** as your front-end framework. A `cypress/component` folder will be created in your project, and a `cypress.config.js` file will be updated to enable Component Testing.\n\nEnsure your `cypress.config` file has the following configuration:\n\ncypress.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { defineConfig } from 'cypress'\n \nexport default defineConfig({\n  component: {\n    devServer: {\n      framework: 'next',\n      bundler: 'webpack',\n    },\n  },\n})\n```\n\nAssuming the same components from the previous section, add a test to validate a component is rendering the expected output:\n\ncypress/component/about.cy.tsx\n\n```\nimport Page from '../../app/page'\n \ndescribe('<Page />', () => {\n  it('should render and display expected content', () => {\n    // Mount the React component for the Home page\n    cy.mount(<Page />)\n \n    // The new page should contain an h1 with \"Home\"\n    cy.get('h1').contains('Home')\n \n    // Validate that a link with the expected URL is present\n    // Following the link is better suited to an E2E test\n    cy.get('a[href=\"/about\"]').should('be.visible')\n  })\n})\n```\n\n> **Good to know**:\n>\n> * Cypress currently doesn't support Component Testing for `async` Server Components. We recommend using E2E testing.\n> * Since component tests do not require a Next.js server, features like `<Image />` that rely on a server being available may not function out-of-the-box.",
+    "preview": "Component tests build and mount a specific component without having to bundle your whole application or start a server. Select **Component Testing** in the Cypress app, then select **Next.js** as your front-end framework. A `cypress/component` folder will be created in your project, and a `cypress.",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#creating-your-first-cypress-component-test-creating-your-first-cypress-component-test",
+    "position": 8
+  },
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "[Running Component Tests](#running-component-tests)",
+    "section_id": "running-component-tests-running-component-tests",
+    "heading_level": 3,
+    "content": "### [Running Component Tests](#running-component-tests)\n\nRun `npm run cypress:open` in your terminal to start Cypress and run your Component Testing suite.",
+    "preview": "Run `npm run cypress:open` in your terminal to start Cypress and run your Component Testing suite.",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#running-component-tests-running-component-tests",
+    "position": 9
+  },
+  {
+    "title": "Setting up Cypress with Next.js",
+    "section": "[Continuous Integration (CI)](#continuous-integration-ci)",
+    "section_id": "continuous-integration-ci-continuous-integration-ci",
+    "heading_level": 2,
+    "content": "## [Continuous Integration (CI)](#continuous-integration-ci)\n\nIn addition to interactive testing, you can also run Cypress headlessly using the `cypress run` command, which is better suited for CI environments:\n\npackage.json\n\n```\n{\n  \"scripts\": {\n    //...\n    \"e2e\": \"start-server-and-test dev http://localhost:3000 \\\"cypress open --e2e\\\"\",\n    \"e2e:headless\": \"start-server-and-test dev http://localhost:3000 \\\"cypress run --e2e\\\"\",\n    \"component\": \"cypress open --component\",\n    \"component:headless\": \"cypress run --component\"\n  }\n}\n```\n\nYou can learn more about Cypress and Continuous Integration from these resources:\n\n* [Next.js with Cypress example](https://github.com/vercel/next.js/tree/canary/examples/with-cypress)\n* [Cypress Continuous Integration Docs](https://docs.cypress.io/guides/continuous-integration/introduction)\n* [Cypress GitHub Actions Guide](https://on.cypress.io/github-actions)\n* [Official Cypress GitHub Action](https://github.com/cypress-io/github-action)\n* [Cypress Discord](https://discord.com/invite/cypress)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "In addition to interactive testing, you can also run Cypress headlessly using the `cypress run` command, which is better suited for CI environments: package.json [Code Block] You can learn more about Cypress and Continuous Integration from these resources: * [Next.js with Cypress example](https:",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/cypress#continuous-integration-ci-continuous-integration-ci",
+    "position": 10
+  }
+]

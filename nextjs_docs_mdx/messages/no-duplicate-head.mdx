@@ -1,0 +1,69 @@
+---
+title: "No Duplicate Head"
+description: "Menu..."
+url: "https://nextjs.org/docs/messages/no-duplicate-head"
+slug: "/docs/messages/no-duplicate-head"
+date_crawled: "2025-04-06T12:12:28.971458+00:00"
+---
+
+**Path**: /docs/messages/no-duplicate-head
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[Docs](/docs)[Errors](/docs)No Duplicate Head
+
+# No Duplicate Head
+
+> Prevent duplicate usage of `<Head>` in `pages/_document.js`.
+
+## [Why This Error Occurred](#why-this-error-occurred)
+
+More than a single instance of the `<Head />` component was used in a single custom document. This can cause unexpected behavior in your application.
+
+## [Possible Ways to Fix It](#possible-ways-to-fix-it)
+
+Only use a single `<Head />` component in your custom document in `pages/_document.js`.
+
+pages/\_document.js
+
+```
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+ 
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    //...
+  }
+ 
+  render() {
+    return (
+      <Html>
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
+ 
+export default MyDocument
+```
+
+## [Useful Links](#useful-links)
+
+* [Custom Document](/docs/pages/building-your-application/routing/custom-document)
+
+Was this helpful?
+
+supported.
+
+Send

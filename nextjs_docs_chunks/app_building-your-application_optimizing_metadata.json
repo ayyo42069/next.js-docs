@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Metadata",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Optimizing](/docs/app/building-your-application/optimizing)Metadata",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Optimizing](/docs/app/building-your-application/optimizing)Metadata",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Metadata",
+    "section": "Metadata",
+    "section_id": "metadata",
+    "heading_level": 1,
+    "content": "# Metadata\n\nNext.js has a Metadata API that can be used to define your application metadata (e.g. `meta` and `link` tags inside your HTML `head` element) for improved SEO and web shareability.\n\nThere are two ways you can add metadata to your application:\n\n* **Config-based Metadata**: Export a [static `metadata` object](/docs/app/api-reference/functions/generate-metadata#metadata-object) or a dynamic [`generateMetadata` function](/docs/app/api-reference/functions/generate-metadata#generatemetadata-function) in a `layout.js` or `page.js` file.\n* **File-based Metadata**: Add static or dynamically generated special files to route segments.\n\nWith both these options, Next.js will automatically generate the relevant `<head>` elements for your pages. You can also create dynamic OG images using the [`ImageResponse`](/docs/app/api-reference/functions/image-response) constructor.",
+    "preview": "Next.js has a Metadata API that can be used to define your application metadata (e.g. `meta` and `link` tags inside your HTML `head` element) for improved SEO and web shareability. There are two ways you can add metadata to your application: * **Config-based Metadata**: Export a [static `metadata`",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#metadata",
+    "position": 1
+  },
+  {
+    "title": "Metadata",
+    "section": "[Static Metadata](#static-metadata)",
+    "section_id": "static-metadata-static-metadata",
+    "heading_level": 2,
+    "content": "## [Static Metadata](#static-metadata)\n\nTo define static metadata, export a [`Metadata` object](/docs/app/api-reference/functions/generate-metadata#metadata-object) from a `layout.js` or static `page.js` file.\n\nlayout.tsx | page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata } from 'next'\n \nexport const metadata: Metadata = {\n  title: '...',\n  description: '...',\n}\n \nexport default function Page() {}\n```\n\nFor all the available options, see the [API Reference](/docs/app/api-reference/functions/generate-metadata).",
+    "preview": "To define static metadata, export a [`Metadata` object](/docs/app/api-reference/functions/generate-metadata#metadata-object) from a `layout.js` or static `page.js` file. layout.tsx | page.tsx TypeScript JavaScriptTypeScript [Code Block] For all the available options, see the [API Reference](/do",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#static-metadata-static-metadata",
+    "position": 2
+  },
+  {
+    "title": "Metadata",
+    "section": "[Dynamic Metadata](#dynamic-metadata)",
+    "section_id": "dynamic-metadata-dynamic-metadata",
+    "heading_level": 2,
+    "content": "## [Dynamic Metadata](#dynamic-metadata)\n\nYou can use `generateMetadata` function to `fetch` metadata that requires dynamic values.\n\napp/products/[id]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Metadata, ResolvingMetadata } from 'next'\n \ntype Props = {\n  params: Promise<{ id: string }>\n  searchParams: Promise<{ [key: string]: string | string[] | undefined }>\n}\n \nexport async function generateMetadata(\n  { params, searchParams }: Props,\n  parent: ResolvingMetadata\n): Promise<Metadata> {\n  // read route params\n  const { id } = await params\n \n  // fetch data\n  const product = await fetch(`https://.../${id}`).then((res) => res.json())\n \n  // optionally access and extend (rather than replace) parent metadata\n  const previousImages = (await parent).openGraph?.images || []\n \n  return {\n    title: product.title,\n    openGraph: {\n      images: ['/some-specific-page-image.jpg', ...previousImages],\n    },\n  }\n}\n \nexport default function Page({ params, searchParams }: Props) {}\n```\n\nFor all the available params, see the [API Reference](/docs/app/api-reference/functions/generate-metadata).\n\n> **Good to know**:\n>\n> * Both static and dynamic metadata through `generateMetadata` are **only supported in Server Components**.\n> * `fetch` requests are automatically [memoized](/docs/app/building-your-application/caching#request-memoization) for the same data across `generateMetadata`, `generateStaticParams`, Layouts, Pages, and Server Components. React [`cache` can be used](/docs/app/building-your-application/caching#react-cache-function) if `fetch` is unavailable.\n> * Next.js will wait for data fetching inside `generateMetadata` to complete before streaming UI to the client. This guarantees the first part of a [streamed response](/docs/app/building-your-application/routing/loading-ui-and-streaming) includes `<head>` tags.",
+    "preview": "You can use `generateMetadata` function to `fetch` metadata that requires dynamic values. app/products/[id]/page.tsx TypeScript JavaScriptTypeScript ``` import type { Metadata, ResolvingMetadata } from 'next' type Props = { params: Promise<{ id: string }> searchParams: Promise<{ [key: stri",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#dynamic-metadata-dynamic-metadata",
+    "position": 3
+  },
+  {
+    "title": "Metadata",
+    "section": "[File-based metadata](#file-based-metadata)",
+    "section_id": "file-based-metadata-file-based-metadata",
+    "heading_level": 2,
+    "content": "## [File-based metadata](#file-based-metadata)\n\nThese special files are available for metadata:\n\n* [favicon.ico, apple-icon.jpg, and icon.jpg](/docs/app/api-reference/file-conventions/metadata/app-icons)\n* [opengraph-image.jpg and twitter-image.jpg](/docs/app/api-reference/file-conventions/metadata/opengraph-image)\n* [robots.txt](/docs/app/api-reference/file-conventions/metadata/robots)\n* [sitemap.xml](/docs/app/api-reference/file-conventions/metadata/sitemap)\n\nYou can use these for static metadata, or you can programmatically generate these files with code.\n\nFor implementation and examples, see the [Metadata Files](/docs/app/api-reference/file-conventions/metadata) API Reference and [Dynamic Image Generation](#dynamic-image-generation).",
+    "preview": "These special files are available for metadata: * [favicon.ico, apple-icon.jpg, and icon.jpg](/docs/app/api-reference/file-conventions/metadata/app-icons) * [opengraph-image.jpg and twitter-image.jpg](/docs/app/api-reference/file-conventions/metadata/opengraph-image) * [robots.txt](/docs/app/api-re",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#file-based-metadata-file-based-metadata",
+    "position": 4
+  },
+  {
+    "title": "Metadata",
+    "section": "[Behavior](#behavior)",
+    "section_id": "behavior-behavior",
+    "heading_level": 2,
+    "content": "## [Behavior](#behavior)\n\nFile-based metadata has the higher priority and will override any config-based metadata.",
+    "preview": "File-based metadata has the higher priority and will override any config-based metadata.",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#behavior-behavior",
+    "position": 5
+  },
+  {
+    "title": "Metadata",
+    "section": "[Default Fields](#default-fields)",
+    "section_id": "default-fields-default-fields",
+    "heading_level": 3,
+    "content": "### [Default Fields](#default-fields)\n\nThere are two default `meta` tags that are always added even if a route doesn't define metadata:\n\n* The [meta charset tag](https://developer.mozilla.org/docs/Web/HTML/Element/meta#attr-charset) sets the character encoding for the website.\n* The [meta viewport tag](https://developer.mozilla.org/docs/Web/HTML/Viewport_meta_tag) sets the viewport width and scale for the website to adjust for different devices.\n\n```\n<meta charset=\"utf-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n```\n\n> **Good to know**: You can overwrite the default [`viewport`](/docs/app/api-reference/functions/generate-metadata#viewport) meta tag.",
+    "preview": "There are two default `meta` tags that are always added even if a route doesn't define metadata: * The [meta charset tag](https://developer.mozilla.org/docs/Web/HTML/Element/meta#attr-charset) sets the character encoding for the website. * The [meta viewport tag](https://developer.mozilla.org/docs/",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#default-fields-default-fields",
+    "position": 6
+  },
+  {
+    "title": "Metadata",
+    "section": "[Ordering](#ordering)",
+    "section_id": "ordering-ordering",
+    "heading_level": 3,
+    "content": "### [Ordering](#ordering)\n\nMetadata is evaluated in order, starting from the root segment down to the segment closest to the final `page.js` segment. For example:\n\n1. `app/layout.tsx` (Root Layout)\n2. `app/blog/layout.tsx` (Nested Blog Layout)\n3. `app/blog/[slug]/page.tsx` (Blog Page)",
+    "preview": "Metadata is evaluated in order, starting from the root segment down to the segment closest to the final `page.js` segment. For example: 1. `app/layout.tsx` (Root Layout) 2. `app/blog/layout.tsx` (Nested Blog Layout) 3. `app/blog/[slug]/page.tsx` (Blog Page)",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#ordering-ordering",
+    "position": 7
+  },
+  {
+    "title": "Metadata",
+    "section": "[Merging](#merging)",
+    "section_id": "merging-merging",
+    "heading_level": 3,
+    "content": "### [Merging](#merging)\n\nFollowing the [evaluation order](#ordering), Metadata objects exported from multiple segments in the same route are **shallowly** merged together to form the final metadata output of a route. Duplicate keys are **replaced** based on their ordering.\n\nThis means metadata with nested fields such as [`openGraph`](/docs/app/api-reference/functions/generate-metadata#opengraph) and [`robots`](/docs/app/api-reference/functions/generate-metadata#robots) that are defined in an earlier segment are **overwritten** by the last segment to define them.\n\n#### [Overwriting fields](#overwriting-fields)\n\napp/layout.js\n\n```\nexport const metadata = {\n  title: 'Acme',\n  openGraph: {\n    title: 'Acme',\n    description: 'Acme is a...',\n  },\n}\n```\n\napp/blog/page.js\n\n```\nexport const metadata = {\n  title: 'Blog',\n  openGraph: {\n    title: 'Blog',\n  },\n}\n \n// Output:\n// <title>Blog</title>\n// <meta property=\"og:title\" content=\"Blog\" />\n```\n\nIn the example above:\n\n* `title` from `app/layout.js` is **replaced** by `title` in `app/blog/page.js`.\n* All `openGraph` fields from `app/layout.js` are **replaced** in `app/blog/page.js` because `app/blog/page.js` sets `openGraph` metadata. Note the absence of `openGraph.description`.\n\nIf you'd like to share some nested fields between segments while overwriting others, you can pull them out into a separate variable:\n\napp/shared-metadata.js\n\n```\nexport const openGraphImage = { images: ['http://...'] }\n```\n\napp/page.js\n\n```\nimport { openGraphImage } from './shared-metadata'\n \nexport const metadata = {\n  openGraph: {\n    ...openGraphImage,\n    title: 'Home',\n  },\n}\n```\n\napp/about/page.js\n\n```\nimport { openGraphImage } from '../shared-metadata'\n \nexport const metadata = {\n  openGraph: {\n    ...openGraphImage,\n    title: 'About',\n  },\n}\n```\n\nIn the example above, the OG image is shared between `app/layout.js` and `app/about/page.js` while the titles are different.\n\n#### [Inheriting fields](#inheriting-fields)\n\napp/layout.js\n\n```\nexport const metadata = {\n  title: 'Acme',\n  openGraph: {\n    title: 'Acme',\n    description: 'Acme is a...',\n  },\n}\n```\n\napp/about/page.js\n\n```\nexport const metadata = {\n  title: 'About',\n}\n \n// Output:\n// <title>About</title>\n// <meta property=\"og:title\" content=\"Acme\" />\n// <meta property=\"og:description\" content=\"Acme is a...\" />\n```\n\n**Notes**\n\n* `title` from `app/layout.js` is **replaced** by `title` in `app/about/page.js`.\n* All `openGraph` fields from `app/layout.js` are **inherited** in `app/about/page.js` because `app/about/page.js` doesn't set `openGraph` metadata.",
+    "preview": "Following the [evaluation order](#ordering), Metadata objects exported from multiple segments in the same route are **shallowly** merged together to form the final metadata output of a route. Duplicate keys are **replaced** based on their ordering. This means metadata with nested fields such as [`o",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#merging-merging",
+    "position": 8
+  },
+  {
+    "title": "Metadata",
+    "section": "[Dynamic Image Generation](#dynamic-image-generation)",
+    "section_id": "dynamic-image-generation-dynamic-image-generation",
+    "heading_level": 2,
+    "content": "## [Dynamic Image Generation](#dynamic-image-generation)\n\nThe `ImageResponse` constructor allows you to generate dynamic images using JSX and CSS. This is useful for creating social media images such as Open Graph images, Twitter cards, and more.\n\nTo use it, you can import `ImageResponse` from `next/og`:\n\napp/about/route.js\n\n```\nimport { ImageResponse } from 'next/og'\n \nexport async function GET() {\n  return new ImageResponse(\n    (\n      <div\n        style={{\n          fontSize: 128,\n          background: 'white',\n          width: '100%',\n          height: '100%',\n          display: 'flex',\n          textAlign: 'center',\n          alignItems: 'center',\n          justifyContent: 'center',\n        }}\n      >\n        Hello world!\n      </div>\n    ),\n    {\n      width: 1200,\n      height: 600,\n    }\n  )\n}\n```\n\n`ImageResponse` integrates well with other Next.js APIs, including [Route Handlers](/docs/app/building-your-application/routing/route-handlers) and file-based Metadata. For example, you can use `ImageResponse` in a `opengraph-image.tsx` file to generate Open Graph images at build time or dynamically at request time.\n\n`ImageResponse` supports common CSS properties including flexbox and absolute positioning, custom fonts, text wrapping, centering, and nested images. [See the full list of supported CSS properties](/docs/app/api-reference/functions/image-response).\n\n> **Good to know**:\n>\n> * Examples are available in the [Vercel OG Playground](https://og-playground.vercel.app/).\n> * `ImageResponse` uses [@vercel/og](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation), [Satori](https://github.com/vercel/satori), and Resvg to convert HTML and CSS into PNG.\n> * Only flexbox and a subset of CSS properties are supported. Advanced layouts (e.g. `display: grid`) will not work.\n> * Maximum bundle size of `500KB`. The bundle size includes your JSX, CSS, fonts, images, and any other assets. If you exceed the limit, consider reducing the size of any assets or fetching at runtime.\n> * Only `ttf`, `otf`, and `woff` font formats are supported. To maximize the font parsing speed, `ttf` or `otf` are preferred over `woff`.",
+    "preview": "The `ImageResponse` constructor allows you to generate dynamic images using JSX and CSS. This is useful for creating social media images such as Open Graph images, Twitter cards, and more. To use it, you can import `ImageResponse` from `next/og`: app/about/route.js [Code Block] `ImageResponse` i",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#dynamic-image-generation-dynamic-image-generation",
+    "position": 9
+  },
+  {
+    "title": "Metadata",
+    "section": "[JSON-LD](#json-ld)",
+    "section_id": "json-ld-json-ld",
+    "heading_level": 2,
+    "content": "## [JSON-LD](#json-ld)\n\n[JSON-LD](https://json-ld.org/) is a format for structured data that can be used by search engines to understand your content. For example, you can use it to describe a person, an event, an organization, a movie, a book, a recipe, and many other types of entities.\n\nOur current recommendation for JSON-LD is to render structured data as a `<script>` tag in your `layout.js` or `page.js` components. For example:\n\napp/products/[id]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page({ params }) {\n  const { id } = await params\n  const product = await getProduct(id)\n \n  const jsonLd = {\n    '@context': 'https://schema.org',\n    '@type': 'Product',\n    name: product.name,\n    image: product.image,\n    description: product.description,\n  }\n \n  return (\n    <section>\n      {/* Add JSON-LD to your page */}\n      <script\n        type=\"application/ld+json\"\n        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}\n      />\n      {/* ... */}\n    </section>\n  )\n}\n```\n\nYou can validate and test your structured data with the [Rich Results Test](https://search.google.com/test/rich-results) for Google or the generic [Schema Markup Validator](https://validator.schema.org/).\n\nYou can type your JSON-LD with TypeScript using community packages like [`schema-dts`](https://www.npmjs.com/package/schema-dts):\n\n```\nimport { Product, WithContext } from 'schema-dts'\n \nconst jsonLd: WithContext<Product> = {\n  '@context': 'https://schema.org',\n  '@type': 'Product',\n  name: 'Next.js Sticker',\n  image: 'https://nextjs.org/imgs/sticker.png',\n  description: 'Dynamic at the speed of static.',\n}\n```",
+    "preview": "[JSON-LD](https://json-ld.org/) is a format for structured data that can be used by search engines to understand your content. For example, you can use it to describe a person, an event, an organization, a movie, a book, a recipe, and many other types of entities. Our current recommendation for JSO",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#json-ld-json-ld",
+    "position": 10
+  },
+  {
+    "title": "Metadata",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nView all the Metadata API options.\n\n[### generateMetadata\n\nLearn how to add Metadata to your Next.js application for improved search engine optimization (SEO) and web shareability.](/docs/app/api-reference/functions/generate-metadata)[### Metadata Files\n\nAPI documentation for the metadata file conventions.](/docs/app/api-reference/file-conventions/metadata)[### generateViewport\n\nAPI Reference for the generateViewport function.](/docs/app/api-reference/functions/generate-viewport)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "View all the Metadata API options. [### generateMetadata Learn how to add Metadata to your Next.js application for improved search engine optimization (SEO) and web shareability.](/docs/app/api-reference/functions/generate-metadata)[### Metadata Files API documentation for the metadata file conve",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/metadata#next-steps",
+    "position": 11
+  }
+]

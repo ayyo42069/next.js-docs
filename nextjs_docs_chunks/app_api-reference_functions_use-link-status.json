@@ -1,0 +1,62 @@
+[
+  {
+    "title": "useLinkStatus",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)useLinkStatus",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)useLinkStatus",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-link-status#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "useLinkStatus",
+    "section": "useLinkStatus",
+    "section_id": "uselinkstatus",
+    "heading_level": 1,
+    "content": "# useLinkStatus\n\n`useLinkStatus` is a **Client Component** hook that lets you track the loading state of a `Link` component during navigation. It can be used to show loading indicators during page transitions, especially when [prefetching](/docs/app/building-your-application/routing/linking-and-navigating#2-prefetching) is disabled, or the linked route does not have any loading states.\n\napp/loading-indicator.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useLinkStatus } from 'next/navigation'\n \nexport default function LoadingIndicator() {\n  const { pending } = useLinkStatus()\n  return pending ? <span>\u231b</span> : null\n}\n```\n\napp/header.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Link from 'next/link'\nimport LoadingIndicator from './loading-indicator'\n \nexport default function Header() {\n  return (\n    <header>\n      <Link href=\"/dashboard\" prefetch={false}>\n        Dashboard <LoadingIndicator />\n      </Link>\n    </header>\n  )\n}\n```\n\n> **Good to know**:\n>\n> * `useLinkStatus` must be used within a descendant component of a `Link` component\n> * The hook is most useful when `prefetch={false}` is set on the `Link` component\n> * If the linked route has been prefetched, the pending state will be skipped\n> * When clicking multiple links in quick succession, only the last link's pending state is shown\n> * This hook is not supported in the Pages Router and will always return `{ pending: false }`",
+    "preview": "`useLinkStatus` is a **Client Component** hook that lets you track the loading state of a `Link` component during navigation. It can be used to show loading indicators during page transitions, especially when [prefetching](/docs/app/building-your-application/routing/linking-and-navigating#2-prefetch",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-link-status#uselinkstatus",
+    "position": 1
+  },
+  {
+    "title": "useLinkStatus",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\n```\nconst { pending } = useLinkStatus()\n```\n\n`useLinkStatus` does not take any parameters.",
+    "preview": "[Code Block] `useLinkStatus` does not take any parameters.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-link-status#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "useLinkStatus",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\n`useLinkStatus` returns an object with a single property:\n\n| Property | Type | Description |\n| --- | --- | --- |\n| pending | boolean | `true` before history updates, `false` after |",
+    "preview": "`useLinkStatus` returns an object with a single property: | Property | Type | Description | | --- | --- | --- | | pending | boolean | `true` before history updates, `false` after |",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-link-status#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "useLinkStatus",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-link-status#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "useLinkStatus",
+    "section": "[Improving the user experience when navigating with new query parameters](#improving-the-user-experience-when-navigating-with-new-query-parameters)",
+    "section_id": "improving-the-user-experience-when-navigating-with-new-query-parameters-improving-the-user-experience-when-navigating-with-new-query-parameters",
+    "heading_level": 3,
+    "content": "### [Improving the user experience when navigating with new query parameters](#improving-the-user-experience-when-navigating-with-new-query-parameters)\n\nIn this example, navigating between categories updates the query string (e.g. ?category=books). However, the page may appear unresponsive because the `<PageSkeleton />` fallback won't replace the existing content (see [preventing unwanted loading indicators](https://react.dev/reference/react/useTransition#preventing-unwanted-loading-indicators)).\n\nYou can use the `useLinkStatus` hook to render a lightweight loading indicator next to the active link and provide immediate feedback to the user while the data is being fetched.\n\napp/components/loading-indicator.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useLinkStatus } from 'next/navigation'\n \nexport default function LoadingIndicator() {\n  const { pending } = useLinkStatus()\n  return pending ? <span>\u231b</span> : null\n}\n```\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { useSearchParams } from 'next/navigation'\nimport Link from 'next/link'\nimport { Suspense } from 'react'\nimport LoadingIndicator from './loading-indicator'\n \nfunction MenuBar() {\n  return (\n    <div>\n      <Link href=\"?category=electronics\">\n        Electronics <LoadingIndicator />\n      </Link>\n      <Link href=\"?category=clothing\">\n        Clothing <LoadingIndicator />\n      </Link>\n      <Link href=\"?category=books\">\n        Books <LoadingIndicator />\n      </Link>\n    </div>\n  )\n}\n \nasync function ProductList({ category }: { category: string }) {\n  const products = await fetchProducts(category)\n \n  return (\n    <ul>\n      {products.map((product) => (\n        <li key={product}>{product}</li>\n      ))}\n    </ul>\n  )\n}\n \nexport default async function ProductCategories({\n  searchParams,\n}: {\n  searchParams: Promise<{\n    category: string\n  }>\n}) {\n  const { category } = await searchParams\n \n  return (\n    <Suspense fallback={<PageSkeleton />}>\n      <MenuBar />\n      <ProductList category={category} />\n    </Suspense>\n  )\n}\n```\n\n| Version | Changes |\n| --- | --- |\n| `v15.3.0` | `useLinkStatus` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "In this example, navigating between categories updates the query string (e.g. ?category=books). However, the page may appear unresponsive because the `<PageSkeleton />` fallback won't replace the existing content (see [preventing unwanted loading indicators](https://react.dev/reference/react/useTran",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-link-status#improving-the-user-experience-when-navigating-with-new-query-parameters-improving-the-user-experience-when-navigating-with-new-query-parameters",
+    "position": 5
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Redirecting",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Routing](/docs/pages/building-your-application/routing)Redirecting",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Routing](/docs/pages/building-your-application/routing)Redirecting",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/redirecting#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Redirecting",
+    "section": "Redirecting",
+    "section_id": "redirecting",
+    "heading_level": 1,
+    "content": "# Redirecting\n\nThere are a few ways you can handle redirects in Next.js. This page will go through each available option, use cases, and how to manage large numbers of redirects.\n\n| API | Purpose | Where | Status Code |\n| --- | --- | --- | --- |\n| [`useRouter`](#userouter-hook) | Perform a client-side navigation | Components | N/A |\n| [`redirects` in `next.config.js`](#redirects-in-nextconfigjs) | Redirect an incoming request based on a path | `next.config.js` file | 307 (Temporary) or 308 (Permanent) |\n| [`NextResponse.redirect`](#nextresponseredirect-in-middleware) | Redirect an incoming request based on a condition | Middleware | Any |",
+    "preview": "There are a few ways you can handle redirects in Next.js. This page will go through each available option, use cases, and how to manage large numbers of redirects. | API | Purpose | Where | Status Code | | --- | --- | --- | --- | | [`useRouter`](#userouter-hook) | Perform a client-side navigation |",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/redirecting#redirecting",
+    "position": 1
+  },
+  {
+    "title": "Redirecting",
+    "section": "[`useRouter()` hook](#userouter-hook)",
+    "section_id": "userouter-hook-userouter-hook",
+    "heading_level": 2,
+    "content": "## [`useRouter()` hook](#userouter-hook)\n\nIf you need to redirect inside a component, you can use the `push` method from the `useRouter` hook. For example:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { useRouter } from 'next/router'\n \nexport default function Page() {\n  const router = useRouter()\n \n  return (\n    <button type=\"button\" onClick={() => router.push('/dashboard')}>\n      Dashboard\n    </button>\n  )\n}\n```\n\n> **Good to know**:\n>\n> * If you don't need to programmatically navigate a user, you should use a [`<Link>`](/docs/app/api-reference/components/link) component.\n\nSee the [`useRouter` API reference](/docs/pages/api-reference/functions/use-router) for more information.",
+    "preview": "If you need to redirect inside a component, you can use the `push` method from the `useRouter` hook. For example: app/page.tsx TypeScript JavaScriptTypeScript [Code Block] > **Good to know**: > > * If you don't need to programmatically navigate a user, you should use a [`<Link>`](/docs/app/api-",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/redirecting#userouter-hook-userouter-hook",
+    "position": 2
+  },
+  {
+    "title": "Redirecting",
+    "section": "[`redirects` in `next.config.js`](#redirects-in-nextconfigjs)",
+    "section_id": "redirects-in-next-config-js-redirects-in-nextconfigjs",
+    "heading_level": 2,
+    "content": "## [`redirects` in `next.config.js`](#redirects-in-nextconfigjs)\n\nThe `redirects` option in the `next.config.js` file allows you to redirect an incoming request path to a different destination path. This is useful when you change the URL structure of pages or have a list of redirects that are known ahead of time.\n\n`redirects` supports [path](/docs/app/api-reference/config/next-config-js/redirects#path-matching), [header, cookie, and query matching](/docs/app/api-reference/config/next-config-js/redirects#header-cookie-and-query-matching), giving you the flexibility to redirect users based on an incoming request.\n\nTo use `redirects`, add the option to your `next.config.js` file:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  async redirects() {\n    return [\n      // Basic redirect\n      {\n        source: '/about',\n        destination: '/',\n        permanent: true,\n      },\n      // Wildcard path matching\n      {\n        source: '/blog/:slug',\n        destination: '/news/:slug',\n        permanent: true,\n      },\n    ]\n  },\n}\n \nexport default nextConfig\n```\n\nSee the [`redirects` API reference](/docs/app/api-reference/config/next-config-js/redirects) for more information.\n\n> **Good to know**:\n>\n> * `redirects` can return a 307 (Temporary Redirect) or 308 (Permanent Redirect) status code with the `permanent` option.\n> * `redirects` may have a limit on platforms. For example, on Vercel, there's a limit of 1,024 redirects. To manage a large number of redirects (1000+), consider creating a custom solution using [Middleware](/docs/app/building-your-application/routing/middleware). See [managing redirects at scale](#managing-redirects-at-scale-advanced) for more.\n> * `redirects` runs **before** Middleware.",
+    "preview": "The `redirects` option in the `next.config.js` file allows you to redirect an incoming request path to a different destination path. This is useful when you change the URL structure of pages or have a list of redirects that are known ahead of time. `redirects` supports [path](/docs/app/api-referenc",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/redirecting#redirects-in-next-config-js-redirects-in-nextconfigjs",
+    "position": 3
+  },
+  {
+    "title": "Redirecting",
+    "section": "[`NextResponse.redirect` in Middleware](#nextresponseredirect-in-middleware)",
+    "section_id": "nextresponse-redirect-in-middleware-nextresponseredirect-in-middleware",
+    "heading_level": 2,
+    "content": "## [`NextResponse.redirect` in Middleware](#nextresponseredirect-in-middleware)\n\nMiddleware allows you to run code before a request is completed. Then, based on the incoming request, redirect to a different URL using `NextResponse.redirect`. This is useful if you want to redirect users based on a condition (e.g. authentication, session management, etc) or have [a large number of redirects](#managing-redirects-at-scale-advanced).\n\nFor example, to redirect the user to a `/login` page if they are not authenticated:\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextResponse, NextRequest } from 'next/server'\nimport { authenticate } from 'auth-provider'\n \nexport function middleware(request: NextRequest) {\n  const isAuthenticated = authenticate(request)\n \n  // If the user is authenticated, continue as normal\n  if (isAuthenticated) {\n    return NextResponse.next()\n  }\n \n  // Redirect to login page if not authenticated\n  return NextResponse.redirect(new URL('/login', request.url))\n}\n \nexport const config = {\n  matcher: '/dashboard/:path*',\n}\n```\n\n> **Good to know**:\n>\n> * Middleware runs **after** `redirects` in `next.config.js` and **before** rendering.\n\nSee the [Middleware](/docs/app/building-your-application/routing/middleware) documentation for more information.",
+    "preview": "Middleware allows you to run code before a request is completed. Then, based on the incoming request, redirect to a different URL using `NextResponse.redirect`. This is useful if you want to redirect users based on a condition (e.g. authentication, session management, etc) or have [a large number of",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/redirecting#nextresponse-redirect-in-middleware-nextresponseredirect-in-middleware",
+    "position": 4
+  },
+  {
+    "title": "Redirecting",
+    "section": "[Managing redirects at scale (advanced)](#managing-redirects-at-scale-advanced)",
+    "section_id": "managing-redirects-at-scale-advanced-managing-redirects-at-scale-advanced",
+    "heading_level": 2,
+    "content": "## [Managing redirects at scale (advanced)](#managing-redirects-at-scale-advanced)\n\nTo manage a large number of redirects (1000+), you may consider creating a custom solution using Middleware. This allows you to handle redirects programmatically without having to redeploy your application.\n\nTo do this, you'll need to consider:\n\n1. Creating and storing a redirect map.\n2. Optimizing data lookup performance.\n\n> **Next.js Example**: See our [Middleware with Bloom filter](https://redirects-bloom-filter.vercel.app/) example for an implementation of the recommendations below.",
+    "preview": "To manage a large number of redirects (1000+), you may consider creating a custom solution using Middleware. This allows you to handle redirects programmatically without having to redeploy your application. To do this, you'll need to consider: 1. Creating and storing a redirect map. 2. Optimizing",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/redirecting#managing-redirects-at-scale-advanced-managing-redirects-at-scale-advanced",
+    "position": 5
+  },
+  {
+    "title": "Redirecting",
+    "section": "[1. Creating and storing a redirect map](#1-creating-and-storing-a-redirect-map)",
+    "section_id": "1-creating-and-storing-a-redirect-map-1-creating-and-storing-a-redirect-map",
+    "heading_level": 3,
+    "content": "### [1. Creating and storing a redirect map](#1-creating-and-storing-a-redirect-map)\n\nA redirect map is a list of redirects that you can store in a database (usually a key-value store) or JSON file.\n\nConsider the following data structure:\n\n```\n{\n  \"/old\": {\n    \"destination\": \"/new\",\n    \"permanent\": true\n  },\n  \"/blog/post-old\": {\n    \"destination\": \"/blog/post-new\",\n    \"permanent\": true\n  }\n}\n```\n\nIn [Middleware](/docs/app/building-your-application/routing/middleware), you can read from a database such as Vercel's [Edge Config](https://vercel.com/docs/storage/edge-config/get-started?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) or [Redis](https://vercel.com/docs/storage/vercel-kv?utm_source=next-site&utm_medium=docs&utm_campaign=next-website), and redirect the user based on the incoming request:\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextResponse, NextRequest } from 'next/server'\nimport { get } from '@vercel/edge-config'\n \ntype RedirectEntry = {\n  destination: string\n  permanent: boolean\n}\n \nexport async function middleware(request: NextRequest) {\n  const pathname = request.nextUrl.pathname\n  const redirectData = await get(pathname)\n \n  if (redirectData && typeof redirectData === 'string') {\n    const redirectEntry: RedirectEntry = JSON.parse(redirectData)\n    const statusCode = redirectEntry.permanent ? 308 : 307\n    return NextResponse.redirect(redirectEntry.destination, statusCode)\n  }\n \n  // No redirect found, continue without redirecting\n  return NextResponse.next()\n}\n```",
+    "preview": "A redirect map is a list of redirects that you can store in a database (usually a key-value store) or JSON file. Consider the following data structure: [Code Block] In [Middleware](/docs/app/building-your-application/routing/middleware), you can read from a database such as Vercel's [Edge Config]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/redirecting#1-creating-and-storing-a-redirect-map-1-creating-and-storing-a-redirect-map",
+    "position": 6
+  },
+  {
+    "title": "Redirecting",
+    "section": "[2. Optimizing data lookup performance](#2-optimizing-data-lookup-performance)",
+    "section_id": "2-optimizing-data-lookup-performance-2-optimizing-data-lookup-performance",
+    "heading_level": 3,
+    "content": "### [2. Optimizing data lookup performance](#2-optimizing-data-lookup-performance)\n\nReading a large dataset for every incoming request can be slow and expensive. There are two ways you can optimize data lookup performance:\n\n* Use a database that is optimized for fast reads, such as [Vercel Edge Config](https://vercel.com/docs/storage/edge-config/get-started?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) or [Redis](https://vercel.com/docs/storage/vercel-kv?utm_source=next-site&utm_medium=docs&utm_campaign=next-website).\n* Use a data lookup strategy such as a [Bloom filter](https://en.wikipedia.org/wiki/Bloom_filter) to efficiently check if a redirect exists **before** reading the larger redirects file or database.\n\nConsidering the previous example, you can import a generated bloom filter file into Middleware, then, check if the incoming request pathname exists in the bloom filter.\n\nIf it does, forward the request to a  [API Routes](/docs/pages/building-your-application/routing/api-routes) which will check the actual file and redirect the user to the appropriate URL. This avoids importing a large redirects file into Middleware, which can slow down every incoming request.\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextResponse, NextRequest } from 'next/server'\nimport { ScalableBloomFilter } from 'bloom-filters'\nimport GeneratedBloomFilter from './redirects/bloom-filter.json'\n \ntype RedirectEntry = {\n  destination: string\n  permanent: boolean\n}\n \n// Initialize bloom filter from a generated JSON file\nconst bloomFilter = ScalableBloomFilter.fromJSON(GeneratedBloomFilter as any)\n \nexport async function middleware(request: NextRequest) {\n  // Get the path for the incoming request\n  const pathname = request.nextUrl.pathname\n \n  // Check if the path is in the bloom filter\n  if (bloomFilter.has(pathname)) {\n    // Forward the pathname to the Route Handler\n    const api = new URL(\n      `/api/redirects?pathname=${encodeURIComponent(request.nextUrl.pathname)}`,\n      request.nextUrl.origin\n    )\n \n    try {\n      // Fetch redirect data from the Route Handler\n      const redirectData = await fetch(api)\n \n      if (redirectData.ok) {\n        const redirectEntry: RedirectEntry | undefined =\n          await redirectData.json()\n \n        if (redirectEntry) {\n          // Determine the status code\n          const statusCode = redirectEntry.permanent ? 308 : 307\n \n          // Redirect to the destination\n          return NextResponse.redirect(redirectEntry.destination, statusCode)\n        }\n      }\n    } catch (error) {\n      console.error(error)\n    }\n  }\n \n  // No redirect found, continue the request without redirecting\n  return NextResponse.next()\n}\n```\n\n\n\nThen, in the API Route:\n\npages/api/redirects.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\nimport redirects from '@/app/redirects/redirects.json'\n \ntype RedirectEntry = {\n  destination: string\n  permanent: boolean\n}\n \nexport default function handler(req: NextApiRequest, res: NextApiResponse) {\n  const pathname = req.query.pathname\n  if (!pathname) {\n    return res.status(400).json({ message: 'Bad Request' })\n  }\n \n  // Get the redirect entry from the redirects.json file\n  const redirect = (redirects as Record<string, RedirectEntry>)[pathname]\n \n  // Account for bloom filter false positives\n  if (!redirect) {\n    return res.status(400).json({ message: 'No redirect' })\n  }\n \n  // Return the redirect entry\n  return res.json(redirect)\n}\n```\n\n> **Good to know:**\n>\n> * To generate a bloom filter, you can use a library like [`bloom-filters`](https://www.npmjs.com/package/bloom-filters).\n> * You should validate requests made to your Route Handler to prevent malicious requests.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Reading a large dataset for every incoming request can be slow and expensive. There are two ways you can optimize data lookup performance: * Use a database that is optimized for fast reads, such as [Vercel Edge Config](https://vercel.com/docs/storage/edge-config/get-started?utm_source=next-site&utm",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/redirecting#2-optimizing-data-lookup-performance-2-optimizing-data-lookup-performance",
+    "position": 7
+  }
+]

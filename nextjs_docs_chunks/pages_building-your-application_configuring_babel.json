@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Babel",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Configuring](/docs/pages/building-your-application/configuring)Babel",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Configuring](/docs/pages/building-your-application/configuring)Babel",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/babel#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Babel",
+    "section": "Babel",
+    "section_id": "babel",
+    "heading_level": 1,
+    "content": "# Babel\n\nExamples\n\n* [Customizing babel configuration](https://github.com/vercel/next.js/tree/canary/examples/with-custom-babel-config)\n\nNext.js includes the `next/babel` preset to your app, which includes everything needed to compile React applications and server-side code. But if you want to extend the default Babel configs, it's also possible.",
+    "preview": "Examples * [Customizing babel configuration](https://github.com/vercel/next.js/tree/canary/examples/with-custom-babel-config) Next.js includes the `next/babel` preset to your app, which includes everything needed to compile React applications and server-side code. But if you want to extend the def",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/babel#babel",
+    "position": 1
+  },
+  {
+    "title": "Babel",
+    "section": "[Adding Presets and Plugins](#adding-presets-and-plugins)",
+    "section_id": "adding-presets-and-plugins-adding-presets-and-plugins",
+    "heading_level": 2,
+    "content": "## [Adding Presets and Plugins](#adding-presets-and-plugins)\n\nTo start, you only need to define a `.babelrc` file (or `babel.config.js`) in the root directory of your project. If such a file is found, it will be considered as the *source of truth*, and therefore it needs to define what Next.js needs as well, which is the `next/babel` preset.\n\nHere's an example `.babelrc` file:\n\n.babelrc\n\n```\n{\n  \"presets\": [\"next/babel\"],\n  \"plugins\": []\n}\n```\n\nYou can [take a look at this file](https://github.com/vercel/next.js/blob/canary/packages/next/src/build/babel/preset.ts) to learn about the presets included by `next/babel`.\n\nTo add presets/plugins **without configuring them**, you can do it this way:\n\n.babelrc\n\n```\n{\n  \"presets\": [\"next/babel\"],\n  \"plugins\": [\"@babel/plugin-proposal-do-expressions\"]\n}\n```",
+    "preview": "To start, you only need to define a `.babelrc` file (or `babel.config.js`) in the root directory of your project. If such a file is found, it will be considered as the *source of truth*, and therefore it needs to define what Next.js needs as well, which is the `next/babel` preset. Here's an example",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/babel#adding-presets-and-plugins-adding-presets-and-plugins",
+    "position": 2
+  },
+  {
+    "title": "Babel",
+    "section": "[Customizing Presets and Plugins](#customizing-presets-and-plugins)",
+    "section_id": "customizing-presets-and-plugins-customizing-presets-and-plugins",
+    "heading_level": 2,
+    "content": "## [Customizing Presets and Plugins](#customizing-presets-and-plugins)\n\nTo add presets/plugins **with custom configuration**, do it on the `next/babel` preset like so:\n\n.babelrc\n\n```\n{\n  \"presets\": [\n    [\n      \"next/babel\",\n      {\n        \"preset-env\": {},\n        \"transform-runtime\": {},\n        \"styled-jsx\": {},\n        \"class-properties\": {}\n      }\n    ]\n  ],\n  \"plugins\": []\n}\n```\n\nTo learn more about the available options for each config, visit babel's [documentation](https://babeljs.io/docs/) site.\n\n> **Good to know**:\n>\n> * Next.js uses the [**current** Node.js version](https://github.com/nodejs/release#release-schedule) for server-side compilations.\n> * The `modules` option on `\"preset-env\"` should be kept to `false`, otherwise webpack code splitting is turned off.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "To add presets/plugins **with custom configuration**, do it on the `next/babel` preset like so: .babelrc [Code Block] To learn more about the available options for each config, visit babel's [documentation](https://babeljs.io/docs/) site. > **Good to know**: > > * Next.js uses the [**current** N",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/babel#customizing-presets-and-plugins-customizing-presets-and-plugins",
+    "position": 3
+  }
+]

@@ -1,0 +1,142 @@
+[
+  {
+    "title": "cookies",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)cookies",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)cookies",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "cookies",
+    "section": "cookies",
+    "section_id": "cookies",
+    "heading_level": 1,
+    "content": "# cookies\n\n`cookies` is an **async** function that allows you to read the HTTP incoming request cookies in [Server Components](/docs/app/building-your-application/rendering/server-components), and read/write outgoing request cookies in [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) or [Route Handlers](/docs/app/building-your-application/routing/route-handlers).\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { cookies } from 'next/headers'\n \nexport default async function Page() {\n  const cookieStore = await cookies()\n  const theme = cookieStore.get('theme')\n  return '...'\n}\n```",
+    "preview": "`cookies` is an **async** function that allows you to read the HTTP incoming request cookies in [Server Components](/docs/app/building-your-application/rendering/server-components), and read/write outgoing request cookies in [Server Actions](/docs/app/building-your-application/data-fetching/server-a",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#cookies",
+    "position": 1
+  },
+  {
+    "title": "cookies",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "cookies",
+    "section": "[Methods](#methods)",
+    "section_id": "methods-methods",
+    "heading_level": 3,
+    "content": "### [Methods](#methods)\n\nThe following methods are available:\n\n| Method | Return Type | Description |\n| --- | --- | --- |\n| `get('name')` | Object | Accepts a cookie name and returns an object with the name and value. |\n| `getAll()` | Array of objects | Returns a list of all the cookies with a matching name. |\n| `has('name')` | Boolean | Accepts a cookie name and returns a boolean based on if the cookie exists. |\n| `set(name, value, options)` | - | Accepts a cookie name, value, and options and sets the outgoing request cookie. |\n| `delete(name)` | - | Accepts a cookie name and deletes the cookie. |\n| `clear()` | - | Deletes all cookies. |\n| `toString()` | String | Returns a string representation of the cookies. |",
+    "preview": "The following methods are available: | Method | Return Type | Description | | --- | --- | --- | | `get('name')` | Object | Accepts a cookie name and returns an object with the name and value. | | `getAll()` | Array of objects | Returns a list of all the cookies with a matching name. | | `has('name'",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#methods-methods",
+    "position": 3
+  },
+  {
+    "title": "cookies",
+    "section": "[Options](#options)",
+    "section_id": "options-options",
+    "heading_level": 3,
+    "content": "### [Options](#options)\n\nWhen setting a cookie, the following properties from the `options` object are supported:\n\n| Option | Type | Description |\n| --- | --- | --- |\n| `name` | String | Specifies the name of the cookie. |\n| `value` | String | Specifies the value to be stored in the cookie. |\n| `expires` | Date | Defines the exact date when the cookie will expire. |\n| `maxAge` | Number | Sets the cookie\u2019s lifespan in seconds. |\n| `domain` | String | Specifies the domain where the cookie is available. |\n| `path` | String, default: `'/'` | Limits the cookie's scope to a specific path within the domain. |\n| `secure` | Boolean | Ensures the cookie is sent only over HTTPS connections for added security. |\n| `httpOnly` | Boolean | Restricts the cookie to HTTP requests, preventing client-side access. |\n| `sameSite` | Boolean, `'lax'`, `'strict'`, `'none'` | Controls the cookie's cross-site request behavior. |\n| `priority` | String (`\"low\"`, `\"medium\"`, `\"high\"`) | Specifies the cookie's priority |\n| `encode('value')` | Function | Specifies a function that will be used to encode a cookie's value. |\n| `partitioned` | Boolean | Indicates whether the cookie is [partitioned](https://github.com/privacycg/CHIPS). |\n\nThe only option with a default value is `path`.\n\nTo learn more about these options, see the [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies).",
+    "preview": "When setting a cookie, the following properties from the `options` object are supported: | Option | Type | Description | | --- | --- | --- | | `name` | String | Specifies the name of the cookie. | | `value` | String | Specifies the value to be stored in the cookie. | | `expires` | Date | Defines th",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#options-options",
+    "position": 4
+  },
+  {
+    "title": "cookies",
+    "section": "[Good to know](#good-to-know)",
+    "section_id": "good-to-know-good-to-know",
+    "heading_level": 2,
+    "content": "## [Good to know](#good-to-know)\n\n* `cookies` is an **asynchronous** function that returns a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function to access cookies.\n  + In version 14 and earlier, `cookies` was a synchronous function. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.\n* `cookies` is a [Dynamic API](/docs/app/building-your-application/rendering/server-components#dynamic-apis) whose returned values cannot be known ahead of time. Using it in a layout or page will opt a route into [dynamic rendering](/docs/app/building-your-application/rendering/server-components#dynamic-rendering).\n* The `.delete` method can only be called:\n  + In a [Server Action](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) or [Route Handler](/docs/app/building-your-application/routing/route-handlers).\n  + If it belongs to the same domain from which `.set` is called. For wildcard domains, the specific subdomain must be an exact match. Additionally, the code must be executed on the same protocol (HTTP or HTTPS) as the cookie you want to delete.\n* HTTP does not allow setting cookies after streaming starts, so you must use `.set` in a [Server Action](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) or [Route Handler](/docs/app/building-your-application/routing/route-handlers).",
+    "preview": "* `cookies` is an **asynchronous** function that returns a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function to access cookies. + In version 14 and earlier, `cookies` was a synchronous function. To help with backwards compatibility, you can stil",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#good-to-know-good-to-know",
+    "position": 5
+  },
+  {
+    "title": "cookies",
+    "section": "[Understanding Cookie Behavior in Server Components](#understanding-cookie-behavior-in-server-components)",
+    "section_id": "understanding-cookie-behavior-in-server-components-understanding-cookie-behavior-in-server-components",
+    "heading_level": 2,
+    "content": "## [Understanding Cookie Behavior in Server Components](#understanding-cookie-behavior-in-server-components)\n\nWhen working with cookies in Server Components, it's important to understand that cookies are fundamentally a client-side storage mechanism:\n\n* **Reading cookies** works in Server Components because you're accessing the cookie data that the client's browser sends to the server in the HTTP request headers.\n* **Setting cookies** cannot be done directly in a Server Component, even when using a Route Handler or Server Action. This is because cookies are actually stored by the browser, not the server.\n\nThe server can only send instructions (via `Set-Cookie` headers) to tell the browser to store cookies - the actual storage happens on the client side. This is why cookie operations that modify state (`.set`, `.delete`, `.clear`) must be performed in a Route Handler or Server Action where the response headers can be properly set.",
+    "preview": "When working with cookies in Server Components, it's important to understand that cookies are fundamentally a client-side storage mechanism: * **Reading cookies** works in Server Components because you're accessing the cookie data that the client's browser sends to the server in the HTTP request he",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#understanding-cookie-behavior-in-server-components-understanding-cookie-behavior-in-server-components",
+    "position": 6
+  },
+  {
+    "title": "cookies",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#examples-examples",
+    "position": 7
+  },
+  {
+    "title": "cookies",
+    "section": "[Getting a cookie](#getting-a-cookie)",
+    "section_id": "getting-a-cookie-getting-a-cookie",
+    "heading_level": 3,
+    "content": "### [Getting a cookie](#getting-a-cookie)\n\nYou can use the `(await cookies()).get('name')` method to get a single cookie:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { cookies } from 'next/headers'\n \nexport default async function Page() {\n  const cookieStore = await cookies()\n  const theme = cookieStore.get('theme')\n  return '...'\n}\n```",
+    "preview": "You can use the `(await cookies()).get('name')` method to get a single cookie: app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#getting-a-cookie-getting-a-cookie",
+    "position": 8
+  },
+  {
+    "title": "cookies",
+    "section": "[Getting all cookies](#getting-all-cookies)",
+    "section_id": "getting-all-cookies-getting-all-cookies",
+    "heading_level": 3,
+    "content": "### [Getting all cookies](#getting-all-cookies)\n\nYou can use the `(await cookies()).getAll()` method to get all cookies with a matching name. If `name` is unspecified, it returns all the available cookies.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { cookies } from 'next/headers'\n \nexport default async function Page() {\n  const cookieStore = await cookies()\n  return cookieStore.getAll().map((cookie) => (\n    <div key={cookie.name}>\n      <p>Name: {cookie.name}</p>\n      <p>Value: {cookie.value}</p>\n    </div>\n  ))\n}\n```",
+    "preview": "You can use the `(await cookies()).getAll()` method to get all cookies with a matching name. If `name` is unspecified, it returns all the available cookies. app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#getting-all-cookies-getting-all-cookies",
+    "position": 9
+  },
+  {
+    "title": "cookies",
+    "section": "[Setting a cookie](#setting-a-cookie)",
+    "section_id": "setting-a-cookie-setting-a-cookie",
+    "heading_level": 3,
+    "content": "### [Setting a cookie](#setting-a-cookie)\n\nYou can use the `(await cookies()).set(name, value, options)` method in a [Server Action](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) or [Route Handler](/docs/app/building-your-application/routing/route-handlers) to set a cookie. The [`options` object](#options) is optional.\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { cookies } from 'next/headers'\n \nexport async function create(data) {\n  const cookieStore = await cookies()\n \n  cookieStore.set('name', 'lee')\n  // or\n  cookieStore.set('name', 'lee', { secure: true })\n  // or\n  cookieStore.set({\n    name: 'name',\n    value: 'lee',\n    httpOnly: true,\n    path: '/',\n  })\n}\n```",
+    "preview": "You can use the `(await cookies()).set(name, value, options)` method in a [Server Action](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) or [Route Handler](/docs/app/building-your-application/routing/route-handlers) to set a cookie. The [`options` object](#options) i",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#setting-a-cookie-setting-a-cookie",
+    "position": 10
+  },
+  {
+    "title": "cookies",
+    "section": "[Checking if a cookie exists](#checking-if-a-cookie-exists)",
+    "section_id": "checking-if-a-cookie-exists-checking-if-a-cookie-exists",
+    "heading_level": 3,
+    "content": "### [Checking if a cookie exists](#checking-if-a-cookie-exists)\n\nYou can use the `(await cookies()).has(name)` method to check if a cookie exists:\n\napp/page.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { cookies } from 'next/headers'\n \nexport default async function Page() {\n  const cookieStore = await cookies()\n  const hasCookie = cookieStore.has('theme')\n  return '...'\n}\n```",
+    "preview": "You can use the `(await cookies()).has(name)` method to check if a cookie exists: app/page.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#checking-if-a-cookie-exists-checking-if-a-cookie-exists",
+    "position": 11
+  },
+  {
+    "title": "cookies",
+    "section": "[Deleting cookies](#deleting-cookies)",
+    "section_id": "deleting-cookies-deleting-cookies",
+    "heading_level": 3,
+    "content": "### [Deleting cookies](#deleting-cookies)\n\nThere are three ways you can delete a cookie.\n\nUsing the `delete()` method:\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { cookies } from 'next/headers'\n \nexport async function delete(data) {\n  (await cookies()).delete('name')\n}\n```\n\nSetting a new cookie with the same name and an empty value:\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { cookies } from 'next/headers'\n \nexport async function delete(data) {\n  (await cookies()).set('name', '')\n}\n```\n\nSetting the `maxAge` to 0 will immediately expire a cookie. `maxAge` accepts a value in seconds.\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { cookies } from 'next/headers'\n \nexport async function delete(data) {\n  (await cookies()).set('name', 'value', { maxAge: 0 })\n}\n```",
+    "preview": "There are three ways you can delete a cookie. Using the `delete()` method: app/actions.ts TypeScript JavaScriptTypeScript [Code Block] Setting a new cookie with the same name and an empty value: app/actions.ts TypeScript JavaScriptTypeScript [Code Block] Setting the `maxAge` to 0 will imm",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#deleting-cookies-deleting-cookies",
+    "position": 12
+  },
+  {
+    "title": "cookies",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0-RC` | `cookies` is now an async function. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available. |\n| `v13.0.0` | `cookies` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0-RC` | `cookies` is now an async function. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available. | | `v13.0.0` | `cookies` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cookies#version-history-version-history",
+    "position": 13
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "title": "devIndicators",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)devIndicators",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)devIndicators",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "devIndicators",
+    "section": "devIndicators",
+    "section_id": "devindicators",
+    "heading_level": 1,
+    "content": "# devIndicators\n\n`devIndicators` allows you to configure the on-screen indicator that gives context about the current route you're viewing during development.\n\nTypes\n\n```\n  devIndicators: false | {\n    position?: 'bottom-right'\n    | 'bottom-left'\n    | 'top-right'\n    | 'top-left', // defaults to 'bottom-left',\n  },\n```\n\nSetting `devIndicators` to `false` will hide the indicator, however Next.js will continue to surface any build or runtime errors that were encountered.",
+    "preview": "`devIndicators` allows you to configure the on-screen indicator that gives context about the current route you're viewing during development. Types [Code Block] Setting `devIndicators` to `false` will hide the indicator, however Next.js will continue to surface any build or runtime errors that we",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators#devindicators",
+    "position": 1
+  },
+  {
+    "title": "devIndicators",
+    "section": "[Troubleshooting](#troubleshooting)",
+    "section_id": "troubleshooting-troubleshooting",
+    "heading_level": 2,
+    "content": "## [Troubleshooting](#troubleshooting)",
+    "preview": "## [Troubleshooting](#troubleshooting)",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators#troubleshooting-troubleshooting",
+    "position": 2
+  },
+  {
+    "title": "devIndicators",
+    "section": "[Indicator not marking a route as static](#indicator-not-marking-a-route-as-static)",
+    "section_id": "indicator-not-marking-a-route-as-static-indicator-not-marking-a-route-as-static",
+    "heading_level": 3,
+    "content": "### [Indicator not marking a route as static](#indicator-not-marking-a-route-as-static)\n\nIf you expect a route to be static and the indicator has marked it as dynamic, it's likely the route has opted out of static rendering.\n\nYou can confirm if a route is [static](/docs/app/building-your-application/rendering/server-components#static-rendering-default) or [dynamic](/docs/app/building-your-application/rendering/server-components#dynamic-rendering) by building your application using `next build --debug`, and checking the output in your terminal. Static (or prerendered) routes will display a `\u25cb` symbol, whereas dynamic routes will display a `\u0192` symbol. For example:\n\nBuild Output\n\n```\nRoute (app)                              Size     First Load JS\n\u250c \u25cb /_not-found                          0 B               0 kB\n\u2514 \u0192 /products/[id]                       0 B               0 kB\n \n\u25cb  (Static)   prerendered as static content\n\u0192  (Dynamic)  server-rendered on demand\n```\n\nThere are two reasons a route might opt out of static rendering:\n\n* The presence of [Dynamic APIs](/docs/app/building-your-application/rendering/server-components#dynamic-apis) which rely on runtime information.\n* An [uncached data request](/docs/app/building-your-application/data-fetching/fetching), like a call to an ORM or database driver.\n\nCheck your route for any of these conditions, and if you are not able to statically render the route, then consider using [`loading.js`](/docs/app/api-reference/file-conventions/loading) or [`<Suspense />`](https://react.dev/reference/react/Suspense) to leverage [streaming](/docs/app/building-your-application/routing/loading-ui-and-streaming#what-is-streaming).",
+    "preview": "If you expect a route to be static and the indicator has marked it as dynamic, it's likely the route has opted out of static rendering. You can confirm if a route is [static](/docs/app/building-your-application/rendering/server-components#static-rendering-default) or [dynamic](/docs/app/building-yo",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators#indicator-not-marking-a-route-as-static-indicator-not-marking-a-route-as-static",
+    "position": 3
+  },
+  {
+    "title": "devIndicators",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.2.0` | Improved on-screen indicator with new `position` option. `appIsrStatus`, `buildActivity`, and `buildActivityPosition` options have been deprecated. |\n| `v15.0.0` | Static on-screen indicator added with `appIsrStatus` option. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.2.0` | Improved on-screen indicator with new `position` option. `appIsrStatus`, `buildActivity`, and `buildActivityPosition` options have been deprecated. | | `v15.0.0` | Static on-screen indicator added with `appIsrStatus` option. | Was this helpful? sup",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators#version-history-version-history",
+    "position": 4
+  }
+]

@@ -1,0 +1,192 @@
+[
+  {
+    "title": "images",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)images",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)images",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "images",
+    "section": "images",
+    "section_id": "images",
+    "heading_level": 1,
+    "content": "# images\n\nIf you want to use a cloud provider to optimize images instead of using the Next.js built-in Image Optimization API, you can configure `next.config.js` with the following:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    loader: 'custom',\n    loaderFile: './my/image/loader.js',\n  },\n}\n```\n\nThis `loaderFile` must point to a file relative to the root of your Next.js application. The file must export a default function that returns a string, for example:\n\nmy/image/loader.js\n\n```\nexport default function myImageLoader({ src, width, quality }) {\n  return `https://example.com/${src}?w=${width}&q=${quality || 75}`\n}\n```\n\nAlternatively, you can use the [`loader` prop](/docs/pages/api-reference/components/image#loader) to pass the function to each instance of `next/image`.\n\nTo learn more about configuring the behavior of the built-in [Image Optimization API](/docs/pages/building-your-application/optimizing/images) and the [Image Component](/docs/pages/api-reference/components/image), see [Image Configuration Options](/docs/pages/api-reference/components/image#configuration-options) for available options.",
+    "preview": "If you want to use a cloud provider to optimize images instead of using the Next.js built-in Image Optimization API, you can configure `next.config.js` with the following: next.config.js [Code Block] This `loaderFile` must point to a file relative to the root of your Next.js application. The file",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#images",
+    "position": 1
+  },
+  {
+    "title": "images",
+    "section": "[Example Loader Configuration](#example-loader-configuration)",
+    "section_id": "example-loader-configuration-example-loader-configuration",
+    "heading_level": 2,
+    "content": "## [Example Loader Configuration](#example-loader-configuration)\n\n* [Akamai](#akamai)\n* [AWS CloudFront](#aws-cloudfront)\n* [Cloudinary](#cloudinary)\n* [Cloudflare](#cloudflare)\n* [Contentful](#contentful)\n* [Fastly](#fastly)\n* [Gumlet](#gumlet)\n* [ImageEngine](#imageengine)\n* [Imgix](#imgix)\n* [PixelBin](#pixelbin)\n* [Sanity](#sanity)\n* [Sirv](#sirv)\n* [Supabase](#supabase)\n* [Thumbor](#thumbor)\n* [Imagekit](#imagekitio)\n* [Nitrogen AIO](#nitrogen-aio)",
+    "preview": "* [Akamai](#akamai) * [AWS CloudFront](#aws-cloudfront) * [Cloudinary](#cloudinary) * [Cloudflare](#cloudflare) * [Contentful](#contentful) * [Fastly](#fastly) * [Gumlet](#gumlet) * [ImageEngine](#imageengine) * [Imgix](#imgix) * [PixelBin](#pixelbin) * [Sanity](#sanity) * [Sirv](#sirv) * [Supabase]",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#example-loader-configuration-example-loader-configuration",
+    "position": 2
+  },
+  {
+    "title": "images",
+    "section": "[Akamai](#akamai)",
+    "section_id": "akamai-akamai",
+    "heading_level": 3,
+    "content": "### [Akamai](#akamai)\n\n```\n// Docs: https://techdocs.akamai.com/ivm/reference/test-images-on-demand\nexport default function akamaiLoader({ src, width, quality }) {\n  return `https://example.com/${src}?imwidth=${width}`\n}\n```",
+    "preview": "``` // Docs: https://techdocs.akamai.com/ivm/reference/test-images-on-demand export default function akamaiLoader({ src, width, quality }) { return `https://example.com/${src}?imwidth=${width}` } ```",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#akamai-akamai",
+    "position": 3
+  },
+  {
+    "title": "images",
+    "section": "[AWS CloudFront](#aws-cloudfront)",
+    "section_id": "aws-cloudfront-aws-cloudfront",
+    "heading_level": 3,
+    "content": "### [AWS CloudFront](#aws-cloudfront)\n\n```\n// Docs: https://aws.amazon.com/developer/application-security-performance/articles/image-optimization\nexport default function cloudfrontLoader({ src, width, quality }) {\n  const url = new URL(`https://example.com${src}`)\n  url.searchParams.set('format', 'auto')\n  url.searchParams.set('width', width.toString())\n  url.searchParams.set('quality', (quality || 75).toString())\n  return url.href\n}\n```",
+    "preview": "``` // Docs: https://aws.amazon.com/developer/application-security-performance/articles/image-optimization export default function cloudfrontLoader({ src, width, quality }) { const url = new URL(`https://example.com${src}`) url.searchParams.set('format', 'auto') url.searchParams.set('width', w",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#aws-cloudfront-aws-cloudfront",
+    "position": 4
+  },
+  {
+    "title": "images",
+    "section": "[Cloudinary](#cloudinary)",
+    "section_id": "cloudinary-cloudinary",
+    "heading_level": 3,
+    "content": "### [Cloudinary](#cloudinary)\n\n```\n// Demo: https://res.cloudinary.com/demo/image/upload/w_300,c_limit,q_auto/turtles.jpg\nexport default function cloudinaryLoader({ src, width, quality }) {\n  const params = ['f_auto', 'c_limit', `w_${width}`, `q_${quality || 'auto'}`]\n  return `https://example.com/${params.join(',')}${src}`\n}\n```",
+    "preview": "``` // Demo: https://res.cloudinary.com/demo/image/upload/w_300,c_limit,q_auto/turtles.jpg export default function cloudinaryLoader({ src, width, quality }) { const params = ['f_auto', 'c_limit', `w_${width}`, `q_${quality || 'auto'}`] return `https://example.com/${params.join(',')}${src}` } ```",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#cloudinary-cloudinary",
+    "position": 5
+  },
+  {
+    "title": "images",
+    "section": "[Cloudflare](#cloudflare)",
+    "section_id": "cloudflare-cloudflare",
+    "heading_level": 3,
+    "content": "### [Cloudflare](#cloudflare)\n\n```\n// Docs: https://developers.cloudflare.com/images/transform-images\nexport default function cloudflareLoader({ src, width, quality }) {\n  const params = [`width=${width}`, `quality=${quality || 75}`, 'format=auto']\n  return `https://example.com/cdn-cgi/image/${params.join(',')}/${src}`\n}\n```",
+    "preview": "``` // Docs: https://developers.cloudflare.com/images/transform-images export default function cloudflareLoader({ src, width, quality }) { const params = [`width=${width}`, `quality=${quality || 75}`, 'format=auto'] return `https://example.com/cdn-cgi/image/${params.join(',')}/${src}` } ```",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#cloudflare-cloudflare",
+    "position": 6
+  },
+  {
+    "title": "images",
+    "section": "[Contentful](#contentful)",
+    "section_id": "contentful-contentful",
+    "heading_level": 3,
+    "content": "### [Contentful](#contentful)\n\n```\n// Docs: https://www.contentful.com/developers/docs/references/images-api/\nexport default function contentfulLoader({ src, width, quality }) {\n  const url = new URL(`https://example.com${src}`)\n  url.searchParams.set('fm', 'webp')\n  url.searchParams.set('w', width.toString())\n  url.searchParams.set('q', (quality || 75).toString())\n  return url.href\n}\n```",
+    "preview": "``` // Docs: https://www.contentful.com/developers/docs/references/images-api/ export default function contentfulLoader({ src, width, quality }) { const url = new URL(`https://example.com${src}`) url.searchParams.set('fm', 'webp') url.searchParams.set('w', width.toString()) url.searchParams.",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#contentful-contentful",
+    "position": 7
+  },
+  {
+    "title": "images",
+    "section": "[Fastly](#fastly)",
+    "section_id": "fastly-fastly",
+    "heading_level": 3,
+    "content": "### [Fastly](#fastly)\n\n```\n// Docs: https://developer.fastly.com/reference/io/\nexport default function fastlyLoader({ src, width, quality }) {\n  const url = new URL(`https://example.com${src}`)\n  url.searchParams.set('auto', 'webp')\n  url.searchParams.set('width', width.toString())\n  url.searchParams.set('quality', (quality || 75).toString())\n  return url.href\n}\n```",
+    "preview": "``` // Docs: https://developer.fastly.com/reference/io/ export default function fastlyLoader({ src, width, quality }) { const url = new URL(`https://example.com${src}`) url.searchParams.set('auto', 'webp') url.searchParams.set('width', width.toString()) url.searchParams.set('quality', (quali",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#fastly-fastly",
+    "position": 8
+  },
+  {
+    "title": "images",
+    "section": "[Gumlet](#gumlet)",
+    "section_id": "gumlet-gumlet",
+    "heading_level": 3,
+    "content": "### [Gumlet](#gumlet)\n\n```\n// Docs: https://docs.gumlet.com/reference/image-transform-size\nexport default function gumletLoader({ src, width, quality }) {\n  const url = new URL(`https://example.com${src}`)\n  url.searchParams.set('format', 'auto')\n  url.searchParams.set('w', width.toString())\n  url.searchParams.set('q', (quality || 75).toString())\n  return url.href\n}\n```",
+    "preview": "``` // Docs: https://docs.gumlet.com/reference/image-transform-size export default function gumletLoader({ src, width, quality }) { const url = new URL(`https://example.com${src}`) url.searchParams.set('format', 'auto') url.searchParams.set('w', width.toString()) url.searchParams.set('q', (q",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#gumlet-gumlet",
+    "position": 9
+  },
+  {
+    "title": "images",
+    "section": "[ImageEngine](#imageengine)",
+    "section_id": "imageengine-imageengine",
+    "heading_level": 3,
+    "content": "### [ImageEngine](#imageengine)\n\n```\n// Docs: https://support.imageengine.io/hc/en-us/articles/360058880672-Directives\nexport default function imageengineLoader({ src, width, quality }) {\n  const compression = 100 - (quality || 50)\n  const params = [`w_${width}`, `cmpr_${compression}`)]\n  return `https://example.com${src}?imgeng=/${params.join('/')`\n}\n```",
+    "preview": "``` // Docs: https://support.imageengine.io/hc/en-us/articles/360058880672-Directives export default function imageengineLoader({ src, width, quality }) { const compression = 100 - (quality || 50) const params = [`w_${width}`, `cmpr_${compression}`)] return `https://example.com${src}?imgeng=/$",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#imageengine-imageengine",
+    "position": 10
+  },
+  {
+    "title": "images",
+    "section": "[Imgix](#imgix)",
+    "section_id": "imgix-imgix",
+    "heading_level": 3,
+    "content": "### [Imgix](#imgix)\n\n```\n// Demo: https://static.imgix.net/daisy.png?format=auto&fit=max&w=300\nexport default function imgixLoader({ src, width, quality }) {\n  const url = new URL(`https://example.com${src}`)\n  const params = url.searchParams\n  params.set('auto', params.getAll('auto').join(',') || 'format')\n  params.set('fit', params.get('fit') || 'max')\n  params.set('w', params.get('w') || width.toString())\n  params.set('q', (quality || 50).toString())\n  return url.href\n}\n```",
+    "preview": "``` // Demo: https://static.imgix.net/daisy.png?format=auto&fit=max&w=300 export default function imgixLoader({ src, width, quality }) { const url = new URL(`https://example.com${src}`) const params = url.searchParams params.set('auto', params.getAll('auto').join(',') || 'format') params.set",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#imgix-imgix",
+    "position": 11
+  },
+  {
+    "title": "images",
+    "section": "[PixelBin](#pixelbin)",
+    "section_id": "pixelbin-pixelbin",
+    "heading_level": 3,
+    "content": "### [PixelBin](#pixelbin)\n\n```\n// Doc (Resize): https://www.pixelbin.io/docs/transformations/basic/resize/#width-w\n// Doc (Optimise): https://www.pixelbin.io/docs/optimizations/quality/#image-quality-when-delivering\n// Doc (Auto Format Delivery): https://www.pixelbin.io/docs/optimizations/format/#automatic-format-selection-with-f_auto-url-parameter\nexport default function pixelBinLoader({ src, width, quality }) {\n  const name = '<your-cloud-name>'\n  const opt = `t.resize(w:${width})~t.compress(q:${quality || 75})`\n  return `https://cdn.pixelbin.io/v2/${name}/${opt}/${src}?f_auto=true`\n}\n```",
+    "preview": "``` // Doc (Resize): https://www.pixelbin.io/docs/transformations/basic/resize/#width-w // Doc (Optimise): https://www.pixelbin.io/docs/optimizations/quality/#image-quality-when-delivering // Doc (Auto Format Delivery): https://www.pixelbin.io/docs/optimizations/format/#automatic-format-selection-wi",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#pixelbin-pixelbin",
+    "position": 12
+  },
+  {
+    "title": "images",
+    "section": "[Sanity](#sanity)",
+    "section_id": "sanity-sanity",
+    "heading_level": 3,
+    "content": "### [Sanity](#sanity)\n\n```\n// Docs: https://www.sanity.io/docs/image-urls\nexport default function sanityLoader({ src, width, quality }) {\n  const prj = 'zp7mbokg'\n  const dataset = 'production'\n  const url = new URL(`https://cdn.sanity.io/images/${prj}/${dataset}${src}`)\n  url.searchParams.set('auto', 'format')\n  url.searchParams.set('fit', 'max')\n  url.searchParams.set('w', width.toString())\n  if (quality) {\n    url.searchParams.set('q', quality.toString())\n  }\n  return url.href\n}\n```",
+    "preview": "``` // Docs: https://www.sanity.io/docs/image-urls export default function sanityLoader({ src, width, quality }) { const prj = 'zp7mbokg' const dataset = 'production' const url = new URL(`https://cdn.sanity.io/images/${prj}/${dataset}${src}`) url.searchParams.set('auto', 'format') url.sear",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#sanity-sanity",
+    "position": 13
+  },
+  {
+    "title": "images",
+    "section": "[Sirv](#sirv)",
+    "section_id": "sirv-sirv",
+    "heading_level": 3,
+    "content": "### [Sirv](#sirv)\n\n```\n// Docs: https://sirv.com/help/articles/dynamic-imaging/\nexport default function sirvLoader({ src, width, quality }) {\n  const url = new URL(`https://example.com${src}`)\n  const params = url.searchParams\n  params.set('format', params.getAll('format').join(',') || 'optimal')\n  params.set('w', params.get('w') || width.toString())\n  params.set('q', (quality || 85).toString())\n  return url.href\n}\n```",
+    "preview": "``` // Docs: https://sirv.com/help/articles/dynamic-imaging/ export default function sirvLoader({ src, width, quality }) { const url = new URL(`https://example.com${src}`) const params = url.searchParams params.set('format', params.getAll('format').join(',') || 'optimal') params.set('w', par",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#sirv-sirv",
+    "position": 14
+  },
+  {
+    "title": "images",
+    "section": "[Supabase](#supabase)",
+    "section_id": "supabase-supabase",
+    "heading_level": 3,
+    "content": "### [Supabase](#supabase)\n\n```\n// Docs: https://supabase.com/docs/guides/storage/image-transformations#nextjs-loader\nexport default function supabaseLoader({ src, width, quality }) {\n  const url = new URL(`https://example.com${src}`)\n  url.searchParams.set('width', width.toString())\n  url.searchParams.set('quality', (quality || 75).toString())\n  return url.href\n}\n```",
+    "preview": "``` // Docs: https://supabase.com/docs/guides/storage/image-transformations#nextjs-loader export default function supabaseLoader({ src, width, quality }) { const url = new URL(`https://example.com${src}`) url.searchParams.set('width', width.toString()) url.searchParams.set('quality', (quality",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#supabase-supabase",
+    "position": 15
+  },
+  {
+    "title": "images",
+    "section": "[Thumbor](#thumbor)",
+    "section_id": "thumbor-thumbor",
+    "heading_level": 3,
+    "content": "### [Thumbor](#thumbor)\n\n```\n// Docs: https://thumbor.readthedocs.io/en/latest/\nexport default function thumborLoader({ src, width, quality }) {\n  const params = [`${width}x0`, `filters:quality(${quality || 75})`]\n  return `https://example.com${params.join('/')}${src}`\n}\n```",
+    "preview": "``` // Docs: https://thumbor.readthedocs.io/en/latest/ export default function thumborLoader({ src, width, quality }) { const params = [`${width}x0`, `filters:quality(${quality || 75})`] return `https://example.com${params.join('/')}${src}` } ```",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#thumbor-thumbor",
+    "position": 16
+  },
+  {
+    "title": "images",
+    "section": "[ImageKit.io](#imagekitio)",
+    "section_id": "imagekit-io-imagekitio",
+    "heading_level": 3,
+    "content": "### [ImageKit.io](#imagekitio)\n\n```\n// Docs: https://imagekit.io/docs/image-transformation\nexport default function imageKitLoader({ src, width, quality }) {\n  const params = [`w-${width}`, `q-${quality || 80}`]\n  return `https://ik.imagekit.io/your_imagekit_id/${src}?tr=${params.join(',')}`\n}\n```",
+    "preview": "``` // Docs: https://imagekit.io/docs/image-transformation export default function imageKitLoader({ src, width, quality }) { const params = [`w-${width}`, `q-${quality || 80}`] return `https://ik.imagekit.io/your_imagekit_id/${src}?tr=${params.join(',')}` } ```",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#imagekit-io-imagekitio",
+    "position": 17
+  },
+  {
+    "title": "images",
+    "section": "[Nitrogen AIO](#nitrogen-aio)",
+    "section_id": "nitrogen-aio-nitrogen-aio",
+    "heading_level": 3,
+    "content": "### [Nitrogen AIO](#nitrogen-aio)\n\n```\n// Docs: https://docs.n7.io/aio/intergrations/\nexport default function aioLoader({ src, width, quality }) {\n  const url = new URL(src, window.location.href)\n  const params = url.searchParams\n  const aioParams = params.getAll('aio')\n  aioParams.push(`w-${width}`)\n  if (quality) {\n    aioParams.push(`q-${quality.toString()}`)\n  }\n  params.set('aio', aioParams.join(';'))\n  return url.href\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "``` // Docs: https://docs.n7.io/aio/intergrations/ export default function aioLoader({ src, width, quality }) { const url = new URL(src, window.location.href) const params = url.searchParams const aioParams = params.getAll('aio') aioParams.push(`w-${width}`) if (quality) { aioParams.pu",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/images#nitrogen-aio-nitrogen-aio",
+    "position": 18
+  }
+]

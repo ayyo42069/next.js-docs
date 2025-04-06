@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Server Components",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Rendering](/docs/app/building-your-application/rendering)Server Components",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Rendering](/docs/app/building-your-application/rendering)Server Components",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Server Components",
+    "section": "Server Components",
+    "section_id": "server-components",
+    "heading_level": 1,
+    "content": "# Server Components\n\nReact Server Components allow you to write UI that can be rendered and optionally cached on the server. In Next.js, the rendering work is further split by route segments to enable streaming and partial rendering, and there are three different server rendering strategies:\n\n* [Static Rendering](#static-rendering-default)\n* [Dynamic Rendering](#dynamic-rendering)\n* [Streaming](#streaming)\n\nThis page will go through how Server Components work, when you might use them, and the different server rendering strategies.",
+    "preview": "React Server Components allow you to write UI that can be rendered and optionally cached on the server. In Next.js, the rendering work is further split by route segments to enable streaming and partial rendering, and there are three different server rendering strategies: * [Static Rendering](#stati",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#server-components",
+    "position": 1
+  },
+  {
+    "title": "Server Components",
+    "section": "[Benefits of Server Rendering](#benefits-of-server-rendering)",
+    "section_id": "benefits-of-server-rendering-benefits-of-server-rendering",
+    "heading_level": 2,
+    "content": "## [Benefits of Server Rendering](#benefits-of-server-rendering)\n\nThere are a couple of benefits to doing the rendering work on the server, including:\n\n* **Data Fetching**: Server Components allow you to move data fetching to the server, closer to your data source. This can improve performance by reducing time it takes to fetch data needed for rendering, and the number of requests the client needs to make.\n* **Security**: Server Components allow you to keep sensitive data and logic on the server, such as tokens and API keys, without the risk of exposing them to the client.\n* **Caching**: By rendering on the server, the result can be cached and reused on subsequent requests and across users. This can improve performance and reduce cost by reducing the amount of rendering and data fetching done on each request.\n* **Performance**: Server Components give you additional tools to optimize performance from the baseline. For example, if you start with an app composed of entirely Client Components, moving non-interactive pieces of your UI to Server Components can reduce the amount of client-side JavaScript needed. This is beneficial for users with slower internet or less powerful devices, as the browser has less client-side JavaScript to download, parse, and execute.\n* **Initial Page Load and [First Contentful Paint (FCP)](https://web.dev/fcp/)**: On the server, we can generate HTML to allow users to view the page immediately, without waiting for the client to download, parse and execute the JavaScript needed to render the page.\n* **Search Engine Optimization and Social Network Shareability**: The rendered HTML can be used by search engine bots to index your pages and social network bots to generate social card previews for your pages.\n* **Streaming**: Server Components allow you to split the rendering work into chunks and stream them to the client as they become ready. This allows the user to see parts of the page earlier without having to wait for the entire page to be rendered on the server.",
+    "preview": "There are a couple of benefits to doing the rendering work on the server, including: * **Data Fetching**: Server Components allow you to move data fetching to the server, closer to your data source. This can improve performance by reducing time it takes to fetch data needed for rendering, and the n",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#benefits-of-server-rendering-benefits-of-server-rendering",
+    "position": 2
+  },
+  {
+    "title": "Server Components",
+    "section": "[Using Server Components in Next.js](#using-server-components-in-nextjs)",
+    "section_id": "using-server-components-in-next-js-using-server-components-in-nextjs",
+    "heading_level": 2,
+    "content": "## [Using Server Components in Next.js](#using-server-components-in-nextjs)\n\nBy default, Next.js uses Server Components. This allows you to automatically implement server rendering with no additional configuration, and you can opt into using Client Components when needed, see [Client Components](/docs/app/building-your-application/rendering/client-components).",
+    "preview": "By default, Next.js uses Server Components. This allows you to automatically implement server rendering with no additional configuration, and you can opt into using Client Components when needed, see [Client Components](/docs/app/building-your-application/rendering/client-components).",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#using-server-components-in-next-js-using-server-components-in-nextjs",
+    "position": 3
+  },
+  {
+    "title": "Server Components",
+    "section": "[How are Server Components rendered?](#how-are-server-components-rendered)",
+    "section_id": "how-are-server-components-rendered-how-are-server-components-rendered",
+    "heading_level": 2,
+    "content": "## [How are Server Components rendered?](#how-are-server-components-rendered)\n\nOn the server, Next.js uses React's APIs to orchestrate rendering. The rendering work is split into chunks: by individual route segments and [Suspense Boundaries](https://react.dev/reference/react/Suspense).\n\nEach chunk is rendered in two steps:\n\n1. React renders Server Components into a special data format called the **React Server Component Payload (RSC Payload)**.\n2. Next.js uses the RSC Payload and Client Component JavaScript instructions to render **HTML** on the server.\n\nThen, on the client:\n\n1. The HTML is used to immediately show a fast non-interactive preview of the route - this is for the initial page load only.\n2. The React Server Components Payload is used to reconcile the Client and Server Component trees, and update the DOM.\n3. The JavaScript instructions are used to [hydrate](https://react.dev/reference/react-dom/client/hydrateRoot) Client Components and make the application interactive.\n\n> #### [What is the React Server Component Payload (RSC)?](#what-is-the-react-server-component-payload-rsc)\n>\n> The RSC Payload is a compact binary representation of the rendered React Server Components tree. It's used by React on the client to update the browser's DOM. The RSC Payload contains:\n>\n> * The rendered result of Server Components\n> * Placeholders for where Client Components should be rendered and references to their JavaScript files\n> * Any props passed from a Server Component to a Client Component",
+    "preview": "On the server, Next.js uses React's APIs to orchestrate rendering. The rendering work is split into chunks: by individual route segments and [Suspense Boundaries](https://react.dev/reference/react/Suspense). Each chunk is rendered in two steps: 1. React renders Server Components into a special dat",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#how-are-server-components-rendered-how-are-server-components-rendered",
+    "position": 4
+  },
+  {
+    "title": "Server Components",
+    "section": "[Server Rendering Strategies](#server-rendering-strategies)",
+    "section_id": "server-rendering-strategies-server-rendering-strategies",
+    "heading_level": 2,
+    "content": "## [Server Rendering Strategies](#server-rendering-strategies)\n\nThere are three subsets of server rendering: Static, Dynamic, and Streaming.",
+    "preview": "There are three subsets of server rendering: Static, Dynamic, and Streaming.",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#server-rendering-strategies-server-rendering-strategies",
+    "position": 5
+  },
+  {
+    "title": "Server Components",
+    "section": "[Static Rendering (Default)](#static-rendering-default)",
+    "section_id": "static-rendering-default-static-rendering-default",
+    "heading_level": 3,
+    "content": "### [Static Rendering (Default)](#static-rendering-default)\n\nWith Static Rendering, routes are rendered at **build time**, or in the background after [data revalidation](/docs/app/building-your-application/data-fetching/incremental-static-regeneration). The result is cached and can be pushed to a [Content Delivery Network (CDN)](https://developer.mozilla.org/docs/Glossary/CDN). This optimization allows you to share the result of the rendering work between users and server requests.\n\nStatic rendering is useful when a route has data that is not personalized to the user and can be known at build time, such as a static blog post or a product page.",
+    "preview": "With Static Rendering, routes are rendered at **build time**, or in the background after [data revalidation](/docs/app/building-your-application/data-fetching/incremental-static-regeneration). The result is cached and can be pushed to a [Content Delivery Network (CDN)](https://developer.mozilla.org/",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#static-rendering-default-static-rendering-default",
+    "position": 6
+  },
+  {
+    "title": "Server Components",
+    "section": "[Dynamic Rendering](#dynamic-rendering)",
+    "section_id": "dynamic-rendering-dynamic-rendering",
+    "heading_level": 3,
+    "content": "### [Dynamic Rendering](#dynamic-rendering)\n\nWith Dynamic Rendering, routes are rendered for each user at **request time**.\n\nDynamic rendering is useful when a route has data that is personalized to the user or has information that can only be known at request time, such as cookies or the URL's search params.\n\n> **Dynamic Routes with Cached Data**\n>\n> In most websites, routes are not fully static or fully dynamic - it's a spectrum. For example, you can have an e-commerce page that uses cached product data that's revalidated at an interval, but also has uncached, personalized customer data.\n>\n> In Next.js, you can have dynamically rendered routes that have both cached and uncached data. This is because the RSC Payload and data are cached separately. This allows you to opt into dynamic rendering without worrying about the performance impact of fetching all the data at request time.\n>\n> Learn more about the [full-route cache](/docs/app/building-your-application/caching#full-route-cache) and [Data Cache](/docs/app/building-your-application/caching#data-cache).\n\n#### [Switching to Dynamic Rendering](#switching-to-dynamic-rendering)\n\nDuring rendering, if a [Dynamic API](#dynamic-apis) or a [fetch](/docs/app/api-reference/functions/fetch) option of `{ cache: 'no-store' }` is discovered, Next.js will switch to dynamically rendering the whole route. This table summarizes how Dynamic APIs and data caching affect whether a route is statically or dynamically rendered:\n\n| Dynamic APIs | Data | Route |\n| --- | --- | --- |\n| No | Cached | Statically Rendered |\n| Yes | Cached | Dynamically Rendered |\n| No | Not Cached | Dynamically Rendered |\n| Yes | Not Cached | Dynamically Rendered |\n\nIn the table above, for a route to be fully static, all data must be cached. However, you can have a dynamically rendered route that uses both cached and uncached data fetches.\n\nAs a developer, you do not need to choose between static and dynamic rendering as Next.js will automatically choose the best rendering strategy for each route based on the features and APIs used. Instead, you choose when to [cache](/docs/app/building-your-application/data-fetching/fetching) or [revalidate specific data](/docs/app/building-your-application/data-fetching/incremental-static-regeneration), and you may choose to [stream](#streaming) parts of your UI.",
+    "preview": "With Dynamic Rendering, routes are rendered for each user at **request time**. Dynamic rendering is useful when a route has data that is personalized to the user or has information that can only be known at request time, such as cookies or the URL's search params. > **Dynamic Routes with Cached Da",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#dynamic-rendering-dynamic-rendering",
+    "position": 7
+  },
+  {
+    "title": "Server Components",
+    "section": "[Dynamic APIs](#dynamic-apis)",
+    "section_id": "dynamic-apis-dynamic-apis",
+    "heading_level": 3,
+    "content": "### [Dynamic APIs](#dynamic-apis)\n\nDynamic APIs rely on information that can only be known at request time (and not ahead of time during prerendering). Using any of these APIs signals the developer's intention and will opt the whole route into dynamic rendering at the request time. These APIs include:\n\n* [`cookies`](/docs/app/api-reference/functions/cookies)\n* [`headers`](/docs/app/api-reference/functions/headers)\n* [`connection`](/docs/app/api-reference/functions/connection)\n* [`draftMode`](/docs/app/api-reference/functions/draft-mode)\n* [`searchParams` prop](/docs/app/api-reference/file-conventions/page#searchparams-optional)\n* [`unstable_noStore`](/docs/app/api-reference/functions/unstable_noStore)",
+    "preview": "Dynamic APIs rely on information that can only be known at request time (and not ahead of time during prerendering). Using any of these APIs signals the developer's intention and will opt the whole route into dynamic rendering at the request time. These APIs include: * [`cookies`](/docs/app/api-ref",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#dynamic-apis-dynamic-apis",
+    "position": 8
+  },
+  {
+    "title": "Server Components",
+    "section": "[Streaming](#streaming)",
+    "section_id": "streaming-streaming",
+    "heading_level": 3,
+    "content": "### [Streaming](#streaming)\n\n[Image: Diagram showing parallelization of route segments during streaming, showing data fetching, rendering, and hydration of individual chunks.][Image: Diagram showing parallelization of route segments during streaming, showing data fetching, rendering, and hydration of individual chunks.]\n\nStreaming enables you to progressively render UI from the server. Work is split into chunks and streamed to the client as it becomes ready. This allows the user to see parts of the page immediately, before the entire content has finished rendering.\n\n[Image: Diagram showing partially rendered page on the client, with loading UI for chunks that are being streamed.][Image: Diagram showing partially rendered page on the client, with loading UI for chunks that are being streamed.]\n\nStreaming is built into the Next.js App Router by default. This helps improve both the initial page loading performance, as well as UI that depends on slower data fetches that would block rendering the whole route. For example, reviews on a product page.\n\nYou can start streaming route segments using `loading.js` and UI components with [React Suspense](/docs/app/building-your-application/routing/loading-ui-and-streaming). See the [Loading UI and Streaming](/docs/app/building-your-application/routing/loading-ui-and-streaming) section for more information.",
+    "preview": "[Image: Diagram showing parallelization of route segments during streaming, showing data fetching, rendering, and hydration of individual chunks.][Image: Diagram showing parallelization of route segments during streaming, showing data fetching, rendering, and hydration of individual chunks.] Stream",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#streaming-streaming",
+    "position": 9
+  },
+  {
+    "title": "Server Components",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nLearn how Next.js caches data and the result of static rendering.\n\n[### Caching\n\nAn overview of caching mechanisms in Next.js.](/docs/app/building-your-application/caching)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn how Next.js caches data and the result of static rendering. [### Caching An overview of caching mechanisms in Next.js.](/docs/app/building-your-application/caching) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/server-components#next-steps",
+    "position": 10
+  }
+]

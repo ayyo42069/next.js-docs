@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Dynamic Routes",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Routing](/docs/app/building-your-application/routing)Dynamic Routes",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Routing](/docs/app/building-your-application/routing)Dynamic Routes",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "Dynamic Routes",
+    "section_id": "dynamic-routes",
+    "heading_level": 1,
+    "content": "# Dynamic Routes\n\nWhen you don't know the exact segment names ahead of time and want to create routes from dynamic data, you can use Dynamic Segments that are filled in at request time or [prerendered](#generating-static-params) at build time.",
+    "preview": "When you don't know the exact segment names ahead of time and want to create routes from dynamic data, you can use Dynamic Segments that are filled in at request time or [prerendered](#generating-static-params) at build time.",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#dynamic-routes",
+    "position": 1
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[Convention](#convention)",
+    "section_id": "convention-convention",
+    "heading_level": 2,
+    "content": "## [Convention](#convention)\n\nA Dynamic Segment can be created by wrapping a folder's name in square brackets: `[folderName]`. For example, `[id]` or `[slug]`.\n\nDynamic Segments are passed as the `params` prop to [`layout`](/docs/app/api-reference/file-conventions/layout), [`page`](/docs/app/api-reference/file-conventions/page), [`route`](/docs/app/building-your-application/routing/route-handlers), and [`generateMetadata`](/docs/app/api-reference/functions/generate-metadata#generatemetadata-function) functions.",
+    "preview": "A Dynamic Segment can be created by wrapping a folder's name in square brackets: `[folderName]`. For example, `[id]` or `[slug]`. Dynamic Segments are passed as the `params` prop to [`layout`](/docs/app/api-reference/file-conventions/layout), [`page`](/docs/app/api-reference/file-conventions/page),",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#convention-convention",
+    "position": 2
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[Example](#example)",
+    "section_id": "example-example",
+    "heading_level": 2,
+    "content": "## [Example](#example)\n\nFor example, a blog could include the following route `app/blog/[slug]/page.js` where `[slug]` is the Dynamic Segment for blog posts.\n\napp/blog/[slug]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page({\n  params,\n}: {\n  params: Promise<{ slug: string }>\n}) {\n  const { slug } = await params\n  return <div>My Post: {slug}</div>\n}\n```\n\n| Route | Example URL | `params` |\n| --- | --- | --- |\n| `app/blog/[slug]/page.js` | `/blog/a` | `{ slug: 'a' }` |\n| `app/blog/[slug]/page.js` | `/blog/b` | `{ slug: 'b' }` |\n| `app/blog/[slug]/page.js` | `/blog/c` | `{ slug: 'c' }` |\n\nSee the [generateStaticParams()](#generating-static-params) page to learn how to generate the params for the segment.",
+    "preview": "For example, a blog could include the following route `app/blog/[slug]/page.js` where `[slug]` is the Dynamic Segment for blog posts. app/blog/[slug]/page.tsx TypeScript JavaScriptTypeScript [Code Block] | Route | Example URL | `params` | | --- | --- | --- | | `app/blog/[slug]/page.js` | `/blog",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#example-example",
+    "position": 3
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[Good to know](#good-to-know)",
+    "section_id": "good-to-know-good-to-know",
+    "heading_level": 2,
+    "content": "## [Good to know](#good-to-know)\n\n* Since the `params` prop is a promise. You must use async/await or React's use function to access the values.\n  + In version 14 and earlier, `params` was a synchronous prop. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.\n* Dynamic Segments are equivalent to [Dynamic Routes](/docs/pages/building-your-application/routing/dynamic-routes) in the `pages` directory.",
+    "preview": "* Since the `params` prop is a promise. You must use async/await or React's use function to access the values. + In version 14 and earlier, `params` was a synchronous prop. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecat",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#good-to-know-good-to-know",
+    "position": 4
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[Generating Static Params](#generating-static-params)",
+    "section_id": "generating-static-params-generating-static-params",
+    "heading_level": 2,
+    "content": "## [Generating Static Params](#generating-static-params)\n\nThe `generateStaticParams` function can be used in combination with [dynamic route segments](/docs/app/building-your-application/routing/dynamic-routes) to [**statically generate**](/docs/app/building-your-application/rendering/server-components#static-rendering-default) routes at build time instead of on-demand at request time.\n\napp/blog/[slug]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function generateStaticParams() {\n  const posts = await fetch('https://.../posts').then((res) => res.json())\n \n  return posts.map((post) => ({\n    slug: post.slug,\n  }))\n}\n```\n\nThe primary benefit of the `generateStaticParams` function is its smart retrieval of data. If content is fetched within the `generateStaticParams` function using a `fetch` request, the requests are [automatically memoized](/docs/app/building-your-application/caching#request-memoization). This means a `fetch` request with the same arguments across multiple `generateStaticParams`, Layouts, and Pages will only be made once, which decreases build times.\n\nUse the [migration guide](/docs/app/building-your-application/upgrading/app-router-migration#dynamic-paths-getstaticpaths) if you are migrating from the `pages` directory.\n\nSee [`generateStaticParams` server function documentation](/docs/app/api-reference/functions/generate-static-params) for more information and advanced use cases.",
+    "preview": "The `generateStaticParams` function can be used in combination with [dynamic route segments](/docs/app/building-your-application/routing/dynamic-routes) to [**statically generate**](/docs/app/building-your-application/rendering/server-components#static-rendering-default) routes at build time instead",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#generating-static-params-generating-static-params",
+    "position": 5
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[Catch-all Segments](#catch-all-segments)",
+    "section_id": "catch-all-segments-catch-all-segments",
+    "heading_level": 2,
+    "content": "## [Catch-all Segments](#catch-all-segments)\n\nDynamic Segments can be extended to **catch-all** subsequent segments by adding an ellipsis inside the brackets `[...folderName]`.\n\nFor example, `app/shop/[...slug]/page.js` will match `/shop/clothes`, but also `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts`, and so on.\n\n| Route | Example URL | `params` |\n| --- | --- | --- |\n| `app/shop/[...slug]/page.js` | `/shop/a` | `{ slug: ['a'] }` |\n| `app/shop/[...slug]/page.js` | `/shop/a/b` | `{ slug: ['a', 'b'] }` |\n| `app/shop/[...slug]/page.js` | `/shop/a/b/c` | `{ slug: ['a', 'b', 'c'] }` |",
+    "preview": "Dynamic Segments can be extended to **catch-all** subsequent segments by adding an ellipsis inside the brackets `[...folderName]`. For example, `app/shop/[...slug]/page.js` will match `/shop/clothes`, but also `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts`, and so on. | Route | Example URL |",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#catch-all-segments-catch-all-segments",
+    "position": 6
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[Optional Catch-all Segments](#optional-catch-all-segments)",
+    "section_id": "optional-catch-all-segments-optional-catch-all-segments",
+    "heading_level": 2,
+    "content": "## [Optional Catch-all Segments](#optional-catch-all-segments)\n\nCatch-all Segments can be made **optional** by including the parameter in double square brackets: `[[...folderName]]`.\n\nFor example, `app/shop/[[...slug]]/page.js` will **also** match `/shop`, in addition to `/shop/clothes`, `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts`.\n\nThe difference between **catch-all** and **optional catch-all** segments is that with optional, the route without the parameter is also matched (`/shop` in the example above).\n\n| Route | Example URL | `params` |\n| --- | --- | --- |\n| `app/shop/[[...slug]]/page.js` | `/shop` | `{ slug: undefined }` |\n| `app/shop/[[...slug]]/page.js` | `/shop/a` | `{ slug: ['a'] }` |\n| `app/shop/[[...slug]]/page.js` | `/shop/a/b` | `{ slug: ['a', 'b'] }` |\n| `app/shop/[[...slug]]/page.js` | `/shop/a/b/c` | `{ slug: ['a', 'b', 'c'] }` |",
+    "preview": "Catch-all Segments can be made **optional** by including the parameter in double square brackets: `[[...folderName]]`. For example, `app/shop/[[...slug]]/page.js` will **also** match `/shop`, in addition to `/shop/clothes`, `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts`. The difference betwee",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#optional-catch-all-segments-optional-catch-all-segments",
+    "position": 7
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[TypeScript](#typescript)",
+    "section_id": "typescript-typescript",
+    "heading_level": 2,
+    "content": "## [TypeScript](#typescript)\n\nWhen using TypeScript, you can add types for `params` depending on your configured route segment.\n\napp/blog/[slug]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page({\n  params,\n}: {\n  params: Promise<{ slug: string }>\n}) {\n  return <h1>My Page</h1>\n}\n```\n\n| Route | `params` Type Definition |\n| --- | --- |\n| `app/blog/[slug]/page.js` | `{ slug: string }` |\n| `app/shop/[...slug]/page.js` | `{ slug: string[] }` |\n| `app/shop/[[...slug]]/page.js` | `{ slug?: string[] }` |\n| `app/[categoryId]/[itemId]/page.js` | `{ categoryId: string, itemId: string }` |\n\n> **Good to know**: This may be done automatically by the [TypeScript plugin](/docs/app/api-reference/config/typescript#ide-plugin) in the future.",
+    "preview": "When using TypeScript, you can add types for `params` depending on your configured route segment. app/blog/[slug]/page.tsx TypeScript JavaScriptTypeScript [Code Block] | Route | `params` Type Definition | | --- | --- | | `app/blog/[slug]/page.js` | `{ slug: string }` | | `app/shop/[...slug]/pag",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#typescript-typescript",
+    "position": 8
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nFor more information on what to do next, we recommend the following sections\n\n[### Linking and Navigating\n\nLearn how navigation works in Next.js, and how to use the Link Component and `useRouter` hook.](/docs/app/building-your-application/routing/linking-and-navigating)[### generateStaticParams\n\nAPI reference for the generateStaticParams function.](/docs/app/api-reference/functions/generate-static-params)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "For more information on what to do next, we recommend the following sections [### Linking and Navigating Learn how navigation works in Next.js, and how to use the Link Component and `useRouter` hook.](/docs/app/building-your-application/routing/linking-and-navigating)[### generateStaticParams API",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes#next-steps",
+    "position": 9
+  }
+]

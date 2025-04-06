@@ -1,0 +1,32 @@
+[
+  {
+    "title": "bundlePagesRouterDependencies",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)bundlePagesRouterDependencies",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)bundlePagesRouterDependencies",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "bundlePagesRouterDependencies",
+    "section": "bundlePagesRouterDependencies",
+    "section_id": "bundlepagesrouterdependencies",
+    "heading_level": 1,
+    "content": "# bundlePagesRouterDependencies\n\nEnable automatic server-side dependency bundling for Pages Router applications. Matches the automatic dependency bundling in App Router.\n\nnext.config.js\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  bundlePagesRouterDependencies: true,\n}\n \nmodule.exports = nextConfig\n```\n\nExplicitly opt-out certain packages from being bundled using the [`serverExternalPackages`](/docs/pages/api-reference/config/next-config-js/serverExternalPackages) option.",
+    "preview": "Enable automatic server-side dependency bundling for Pages Router applications. Matches the automatic dependency bundling in App Router. next.config.js [Code Block] Explicitly opt-out certain packages from being bundled using the [`serverExternalPackages`](/docs/pages/api-reference/config/next-co",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies#bundlepagesrouterdependencies",
+    "position": 1
+  },
+  {
+    "title": "bundlePagesRouterDependencies",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0` | Moved from experimental to stable. Renamed from `bundlePagesExternals` to `bundlePagesRouterDependencies` |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0` | Moved from experimental to stable. Renamed from `bundlePagesExternals` to `bundlePagesRouterDependencies` | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies#version-history-version-history",
+    "position": 2
+  }
+]

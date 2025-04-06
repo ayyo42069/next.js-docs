@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Testing](/docs/app/building-your-application/testing)Vitest",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Testing](/docs/app/building-your-application/testing)Vitest",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "Setting up Vitest with Next.js",
+    "section_id": "setting-up-vitest-with-next-js",
+    "heading_level": 1,
+    "content": "# Setting up Vitest with Next.js\n\nVite and React Testing Library are frequently used together for **Unit Testing**. This guide will show you how to setup Vitest with Next.js and write your first tests.\n\n> **Good to know:** Since `async` Server Components are new to the React ecosystem, Vitest currently does not support them. While you can still run **unit tests** for synchronous Server and Client Components, we recommend using an **E2E tests** for `async` components.",
+    "preview": "Vite and React Testing Library are frequently used together for **Unit Testing**. This guide will show you how to setup Vitest with Next.js and write your first tests. > **Good to know:** Since `async` Server Components are new to the React ecosystem, Vitest currently does not support them. While y",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#setting-up-vitest-with-next-js",
+    "position": 1
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "[Quickstart](#quickstart)",
+    "section_id": "quickstart-quickstart",
+    "heading_level": 2,
+    "content": "## [Quickstart](#quickstart)\n\nYou can use `create-next-app` with the Next.js [with-vitest](https://github.com/vercel/next.js/tree/canary/examples/with-vitest) example to quickly get started:\n\nTerminal\n\n```\nnpx create-next-app@latest --example with-vitest with-vitest-app\n```",
+    "preview": "You can use `create-next-app` with the Next.js [with-vitest](https://github.com/vercel/next.js/tree/canary/examples/with-vitest) example to quickly get started: Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#quickstart-quickstart",
+    "position": 2
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "[Manual Setup](#manual-setup)",
+    "section_id": "manual-setup-manual-setup",
+    "heading_level": 2,
+    "content": "## [Manual Setup](#manual-setup)\n\nTo manually set up Vitest, install `vitest` and the following packages as dev dependencies:\n\nTerminal\n\n```",
+    "preview": "To manually set up Vitest, install `vitest` and the following packages as dev dependencies: Terminal ```",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#manual-setup-manual-setup",
+    "position": 3
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "Using TypeScript",
+    "section_id": "using-typescript",
+    "heading_level": 1,
+    "content": "# Using TypeScript\nnpm install -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom vite-tsconfig-paths",
+    "preview": "npm install -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom vite-tsconfig-paths",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#using-typescript",
+    "position": 4
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "Using JavaScript",
+    "section_id": "using-javascript",
+    "heading_level": 1,
+    "content": "# Using JavaScript\nnpm install -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom\n```\n\nCreate a `vitest.config.mts|js` file in the root of your project, and add the following options:\n\nvitest.config.mts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { defineConfig } from 'vitest/config'\nimport react from '@vitejs/plugin-react'\nimport tsconfigPaths from 'vite-tsconfig-paths'\n \nexport default defineConfig({\n  plugins: [tsconfigPaths(), react()],\n  test: {\n    environment: 'jsdom',\n  },\n})\n```\n\nFor more information on configuring Vitest, please refer to the [Vitest Configuration](https://vitest.dev/config/#configuration) docs.\n\nThen, add a `test` script to your `package.json`:\n\npackage.json\n\n```\n{\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"test\": \"vitest\"\n  }\n}\n```\n\nWhen you run `npm run test`, Vitest will **watch** for changes in your project by default.",
+    "preview": "npm install -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom ``` Create a `vitest.config.mts|js` file in the root of your project, and add the following options: vitest.config.mts TypeScript JavaScriptTypeScript [Code Block] For more information on configuring V",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#using-javascript",
+    "position": 5
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "[Creating your first Vitest Unit Test](#creating-your-first-vitest-unit-test)",
+    "section_id": "creating-your-first-vitest-unit-test-creating-your-first-vitest-unit-test",
+    "heading_level": 2,
+    "content": "## [Creating your first Vitest Unit Test](#creating-your-first-vitest-unit-test)\n\nCheck that everything is working by creating a test to check if the `<Page />` component successfully renders a heading:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Link from 'next/link'\n \nexport default function Page() {\n  return (\n    <div>\n      <h1>Home</h1>\n      <Link href=\"/about\">About</Link>\n    </div>\n  )\n}\n```\n\n\\_\\_tests\\_\\_/page.test.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { expect, test } from 'vitest'\nimport { render, screen } from '@testing-library/react'\nimport Page from '../app/page'\n \ntest('Page', () => {\n  render(<Page />)\n  expect(screen.getByRole('heading', { level: 1, name: 'Home' })).toBeDefined()\n})\n```\n\n> **Good to know**: The example above uses the common `__tests__` convention, but test files can also be colocated inside the `app` router.",
+    "preview": "Check that everything is working by creating a test to check if the `<Page />` component successfully renders a heading: app/page.tsx TypeScript JavaScriptTypeScript [Code Block] \\_\\_tests\\_\\_/page.test.tsx TypeScript JavaScriptTypeScript [Code Block] > **Good to know**: The example above u",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#creating-your-first-vitest-unit-test-creating-your-first-vitest-unit-test",
+    "position": 6
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "[Running your tests](#running-your-tests)",
+    "section_id": "running-your-tests-running-your-tests",
+    "heading_level": 2,
+    "content": "## [Running your tests](#running-your-tests)\n\nThen, run the following command to run your tests:\n\nTerminal\n\n```\nnpm run test",
+    "preview": "Then, run the following command to run your tests: Terminal ``` npm run test",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#running-your-tests-running-your-tests",
+    "position": 7
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "or",
+    "section_id": "or",
+    "heading_level": 1,
+    "content": "# or\nyarn test",
+    "preview": "yarn test",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#or",
+    "position": 8
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "or",
+    "section_id": "or",
+    "heading_level": 1,
+    "content": "# or\npnpm test",
+    "preview": "pnpm test",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#or",
+    "position": 9
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "or",
+    "section_id": "or",
+    "heading_level": 1,
+    "content": "# or\nbun test\n```",
+    "preview": "bun test ```",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#or",
+    "position": 10
+  },
+  {
+    "title": "Setting up Vitest with Next.js",
+    "section": "[Additional Resources](#additional-resources)",
+    "section_id": "additional-resources-additional-resources",
+    "heading_level": 2,
+    "content": "## [Additional Resources](#additional-resources)\n\nYou may find these resources helpful:\n\n* [Next.js with Vitest example](https://github.com/vercel/next.js/tree/canary/examples/with-vitest)\n* [Vitest Docs](https://vitest.dev/guide/)\n* [React Testing Library Docs](https://testing-library.com/docs/react-testing-library/intro/)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "You may find these resources helpful: * [Next.js with Vitest example](https://github.com/vercel/next.js/tree/canary/examples/with-vitest) * [Vitest Docs](https://vitest.dev/guide/) * [React Testing Library Docs](https://testing-library.com/docs/react-testing-library/intro/) Was this helpful? supp",
+    "url": "https://nextjs.org/docs/app/building-your-application/testing/vitest#additional-resources-additional-resources",
+    "position": 11
+  }
+]

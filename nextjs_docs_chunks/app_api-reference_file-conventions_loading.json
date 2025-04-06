@@ -1,0 +1,32 @@
+[
+  {
+    "title": "loading.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)loading.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)loading.js",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/loading#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "loading.js",
+    "section": "loading.js",
+    "section_id": "loading-js",
+    "heading_level": 1,
+    "content": "# loading.js\n\nA **loading** file can create instant loading states built on [Suspense](/docs/app/building-your-application/routing/loading-ui-and-streaming).\n\nBy default, this file is a [Server Component](/docs/app/building-your-application/rendering/server-components) - but can also be used as a Client Component through the `\"use client\"` directive.\n\napp/feed/loading.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Loading() {\n  // Or a custom loading skeleton component\n  return <p>Loading...</p>\n}\n```\n\nLoading UI components do not accept any parameters.\n\n> **Good to know**:\n>\n> * While designing loading UI, you may find it helpful to use the [React Developer Tools](https://react.dev/learn/react-developer-tools) to manually toggle Suspense boundaries.",
+    "preview": "A **loading** file can create instant loading states built on [Suspense](/docs/app/building-your-application/routing/loading-ui-and-streaming). By default, this file is a [Server Component](/docs/app/building-your-application/rendering/server-components) - but can also be used as a Client Component",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/loading#loading-js",
+    "position": 1
+  },
+  {
+    "title": "loading.js",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.0.0` | `loading` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.0.0` | `loading` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/loading#version-history-version-history",
+    "position": 2
+  }
+]

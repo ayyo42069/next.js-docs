@@ -1,0 +1,42 @@
+[
+  {
+    "title": "cacheLife",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)cacheLife",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)cacheLife",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "cacheLife",
+    "section": "cacheLife",
+    "section_id": "cachelife",
+    "heading_level": 1,
+    "content": "# cacheLife\n\nThis feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nThe `cacheLife` option allows you to define **custom cache profiles** when using the [`cacheLife`](/docs/app/api-reference/functions/cacheLife) function inside components or functions, and within the scope of the [`use cache` directive](/docs/app/api-reference/directives/use-cache).",
+    "preview": "This feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). The `cacheLife` option allows you to define **cust",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife#cachelife",
+    "position": 1
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Usage](#usage)",
+    "section_id": "usage-usage",
+    "heading_level": 2,
+    "content": "## [Usage](#usage)\n\nTo define a profile, enable the [`dynamicIO` flag](/docs/app/api-reference/config/next-config-js/dynamicIO) and add the cache profile in the `cacheLife` object in the `next.config.js` file. For example, a `blog` profile:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    dynamicIO: true,\n    cacheLife: {\n      blog: {\n        stale: 3600, // 1 hour\n        revalidate: 900, // 15 minutes\n        expire: 86400, // 1 day\n      },\n    },\n  },\n}\n \nexport default nextConfig\n```\n\nYou can now use this custom `blog` configuration in your component or function as follows:\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { unstable_cacheLife as cacheLife } from 'next/cache'\n \nexport async function getCachedData() {\n  'use cache'\n  cacheLife('blog')\n  const data = await fetch('/api/data')\n  return data\n}\n```",
+    "preview": "To define a profile, enable the [`dynamicIO` flag](/docs/app/api-reference/config/next-config-js/dynamicIO) and add the cache profile in the `cacheLife` object in the `next.config.js` file. For example, a `blog` profile: next.config.ts TypeScript JavaScriptTypeScript [Code Block] You can now us",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife#usage-usage",
+    "position": 2
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)\n\nThe configuration object has key values with the following format:\n\n| **Property** | **Value** | **Description** | **Requirement** |\n| --- | --- | --- | --- |\n| `stale` | `number` | Duration the client should cache a value without checking the server. | Optional |\n| `revalidate` | `number` | Frequency at which the cache should refresh on the server; stale values may be served while revalidating. | Optional |\n| `expire` | `number` | Maximum duration for which a value can remain stale before switching to dynamic. | Optional - Must be longer than `revalidate` |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The configuration object has key values with the following format: | **Property** | **Value** | **Description** | **Requirement** | | --- | --- | --- | --- | | `stale` | `number` | Duration the client should cache a value without checking the server. | Optional | | `revalidate` | `number` | Frequen",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife#reference-reference",
+    "position": 3
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "title": "generateViewport",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)generateViewport",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)generateViewport",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "generateViewport",
+    "section": "generateViewport",
+    "section_id": "generateviewport",
+    "heading_level": 1,
+    "content": "# generateViewport\n\nYou can customize the initial viewport of the page with the static `viewport` object or the dynamic `generateViewport` function.\n\n> **Good to know**:\n>\n> * The `viewport` object and `generateViewport` function exports are **only supported in Server Components**.\n> * You cannot export both the `viewport` object and `generateViewport` function from the same route segment.\n> * If you're coming from migrating `metadata` exports, you can use [metadata-to-viewport-export codemod](/docs/app/building-your-application/upgrading/codemods#metadata-to-viewport-export) to update your changes.",
+    "preview": "You can customize the initial viewport of the page with the static `viewport` object or the dynamic `generateViewport` function. > **Good to know**: > > * The `viewport` object and `generateViewport` function exports are **only supported in Server Components**. > * You cannot export both the `viewp",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#generateviewport",
+    "position": 1
+  },
+  {
+    "title": "generateViewport",
+    "section": "[The `viewport` object](#the-viewport-object)",
+    "section_id": "the-viewport-object-the-viewport-object",
+    "heading_level": 2,
+    "content": "## [The `viewport` object](#the-viewport-object)\n\nTo define the viewport options, export a `viewport` object from a `layout.jsx` or `page.jsx` file.\n\nlayout.tsx | page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Viewport } from 'next'\n \nexport const viewport: Viewport = {\n  themeColor: 'black',\n}\n \nexport default function Page() {}\n```",
+    "preview": "To define the viewport options, export a `viewport` object from a `layout.jsx` or `page.jsx` file. layout.tsx | page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#the-viewport-object-the-viewport-object",
+    "position": 2
+  },
+  {
+    "title": "generateViewport",
+    "section": "[`generateViewport` function](#generateviewport-function)",
+    "section_id": "generateviewport-function-generateviewport-function",
+    "heading_level": 2,
+    "content": "## [`generateViewport` function](#generateviewport-function)\n\n`generateViewport` should return a [`Viewport` object](#viewport-fields) containing one or more viewport fields.\n\nlayout.tsx | page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport function generateViewport({ params }) {\n  return {\n    themeColor: '...',\n  }\n}\n```\n\n> **Good to know**:\n>\n> * If the viewport doesn't depend on runtime information, it should be defined using the static [`viewport` object](#the-viewport-object) rather than `generateViewport`.",
+    "preview": "`generateViewport` should return a [`Viewport` object](#viewport-fields) containing one or more viewport fields. layout.tsx | page.tsx TypeScript JavaScriptTypeScript [Code Block] > **Good to know**: > > * If the viewport doesn't depend on runtime information, it should be defined using the sta",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#generateviewport-function-generateviewport-function",
+    "position": 3
+  },
+  {
+    "title": "generateViewport",
+    "section": "[Viewport Fields](#viewport-fields)",
+    "section_id": "viewport-fields-viewport-fields",
+    "heading_level": 2,
+    "content": "## [Viewport Fields](#viewport-fields)",
+    "preview": "## [Viewport Fields](#viewport-fields)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#viewport-fields-viewport-fields",
+    "position": 4
+  },
+  {
+    "title": "generateViewport",
+    "section": "[`themeColor`](#themecolor)",
+    "section_id": "themecolor-themecolor",
+    "heading_level": 3,
+    "content": "### [`themeColor`](#themecolor)\n\nLearn more about [`theme-color`](https://developer.mozilla.org/docs/Web/HTML/Element/meta/name/theme-color).\n\n**Simple theme color**\n\nlayout.tsx | page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Viewport } from 'next'\n \nexport const viewport: Viewport = {\n  themeColor: 'black',\n}\n```\n\n<head> output\n\n```\n<meta name=\"theme-color\" content=\"black\" />\n```\n\n**With media attribute**\n\nlayout.tsx | page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Viewport } from 'next'\n \nexport const viewport: Viewport = {\n  themeColor: [\n    { media: '(prefers-color-scheme: light)', color: 'cyan' },\n    { media: '(prefers-color-scheme: dark)', color: 'black' },\n  ],\n}\n```\n\n<head> output\n\n```\n<meta name=\"theme-color\" media=\"(prefers-color-scheme: light)\" content=\"cyan\" />\n<meta name=\"theme-color\" media=\"(prefers-color-scheme: dark)\" content=\"black\" />\n```",
+    "preview": "Learn more about [`theme-color`](https://developer.mozilla.org/docs/Web/HTML/Element/meta/name/theme-color). **Simple theme color** layout.tsx | page.tsx TypeScript JavaScriptTypeScript [Code Block] <head> output [Code Block] **With media attribute** layout.tsx | page.tsx TypeScript JavaS",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#themecolor-themecolor",
+    "position": 5
+  },
+  {
+    "title": "generateViewport",
+    "section": "[`width`, `initialScale`, `maximumScale` and `userScalable`](#width-initialscale-maximumscale-and-userscalable)",
+    "section_id": "width-initialscale-maximumscale-and-userscalable-width-initialscale-maximumscale-and-userscalable",
+    "heading_level": 3,
+    "content": "### [`width`, `initialScale`, `maximumScale` and `userScalable`](#width-initialscale-maximumscale-and-userscalable)\n\n> **Good to know**: The `viewport` meta tag is automatically set, and manual configuration is usually unnecessary as the default is sufficient. However, the information is provided for completeness.\n\nlayout.tsx | page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Viewport } from 'next'\n \nexport const viewport: Viewport = {\n  width: 'device-width',\n  initialScale: 1,\n  maximumScale: 1,\n  userScalable: false,\n  // Also supported but less commonly used\n  // interactiveWidget: 'resizes-visual',\n}\n```\n\n<head> output\n\n```\n<meta\n  name=\"viewport\"\n  content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\"\n/>\n```",
+    "preview": "> **Good to know**: The `viewport` meta tag is automatically set, and manual configuration is usually unnecessary as the default is sufficient. However, the information is provided for completeness. layout.tsx | page.tsx TypeScript JavaScriptTypeScript [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#width-initialscale-maximumscale-and-userscalable-width-initialscale-maximumscale-and-userscalable",
+    "position": 6
+  },
+  {
+    "title": "generateViewport",
+    "section": "[`colorScheme`](#colorscheme)",
+    "section_id": "colorscheme-colorscheme",
+    "heading_level": 3,
+    "content": "### [`colorScheme`](#colorscheme)\n\nLearn more about [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name#:~:text=color%2Dscheme%3A%20specifies,of%20the%20following%3A).\n\nlayout.tsx | page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { Viewport } from 'next'\n \nexport const viewport: Viewport = {\n  colorScheme: 'dark',\n}\n```\n\n<head> output\n\n```\n<meta name=\"color-scheme\" content=\"dark\" />\n```",
+    "preview": "Learn more about [`color-scheme`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name#:~:text=color%2Dscheme%3A%20specifies,of%20the%20following%3A). layout.tsx | page.tsx TypeScript JavaScriptTypeScript [Code Block] <head> output [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#colorscheme-colorscheme",
+    "position": 7
+  },
+  {
+    "title": "generateViewport",
+    "section": "[Types](#types)",
+    "section_id": "types-types",
+    "heading_level": 2,
+    "content": "## [Types](#types)\n\nYou can add type safety to your viewport object by using the `Viewport` type. If you are using the [built-in TypeScript plugin](/docs/app/api-reference/config/typescript) in your IDE, you do not need to manually add the type, but you can still explicitly add it if you want.",
+    "preview": "You can add type safety to your viewport object by using the `Viewport` type. If you are using the [built-in TypeScript plugin](/docs/app/api-reference/config/typescript) in your IDE, you do not need to manually add the type, but you can still explicitly add it if you want.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#types-types",
+    "position": 8
+  },
+  {
+    "title": "generateViewport",
+    "section": "[`viewport` object](#viewport-object)",
+    "section_id": "viewport-object-viewport-object",
+    "heading_level": 3,
+    "content": "### [`viewport` object](#viewport-object)\n\n```\nimport type { Viewport } from 'next'\n \nexport const viewport: Viewport = {\n  themeColor: 'black',\n}\n```",
+    "preview": "[Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#viewport-object-viewport-object",
+    "position": 9
+  },
+  {
+    "title": "generateViewport",
+    "section": "[`generateViewport` function](#generateviewport-function-1)",
+    "section_id": "generateviewport-function-generateviewport-function-1",
+    "heading_level": 3,
+    "content": "### [`generateViewport` function](#generateviewport-function-1)\n\n#### [Regular function](#regular-function)\n\n```\nimport type { Viewport } from 'next'\n \nexport function generateViewport(): Viewport {\n  return {\n    themeColor: 'black',\n  }\n}\n```\n\n#### [With segment props](#with-segment-props)\n\n```\nimport type { Viewport } from 'next'\n \ntype Props = {\n  params: Promise<{ id: string }>\n  searchParams: Promise<{ [key: string]: string | string[] | undefined }>\n}\n \nexport function generateViewport({ params, searchParams }: Props): Viewport {\n  return {\n    themeColor: 'black',\n  }\n}\n \nexport default function Page({ params, searchParams }: Props) {}\n```\n\n#### [JavaScript Projects](#javascript-projects)\n\nFor JavaScript projects, you can use JSDoc to add type safety.\n\n```\n/** @type {import(\"next\").Viewport} */\nexport const viewport = {\n  themeColor: 'black',\n}\n```",
+    "preview": "#### [Regular function](#regular-function) [Code Block] #### [With segment props](#with-segment-props) [Code Block] #### [JavaScript Projects](#javascript-projects) For JavaScript projects, you can use JSDoc to add type safety. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#generateviewport-function-generateviewport-function-1",
+    "position": 10
+  },
+  {
+    "title": "generateViewport",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v14.0.0` | `viewport` and `generateViewport` introduced. |",
+    "preview": "| Version | Changes | | --- | --- | | `v14.0.0` | `viewport` and `generateViewport` introduced. |",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#version-history-version-history",
+    "position": 11
+  },
+  {
+    "title": "generateViewport",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nView all the Metadata API options.\n\n[### Metadata Files\n\nAPI documentation for the metadata file conventions.](/docs/app/api-reference/file-conventions/metadata)[### Metadata\n\nUse the Metadata API to define metadata in any layout or page.](/docs/app/building-your-application/optimizing/metadata)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "View all the Metadata API options. [### Metadata Files API documentation for the metadata file conventions.](/docs/app/api-reference/file-conventions/metadata)[### Metadata Use the Metadata API to define metadata in any layout or page.](/docs/app/building-your-application/optimizing/metadata) Wa",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-viewport#next-steps",
+    "position": 12
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Google Font Preconnect",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)Google Font Preconnect",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)Google Font Preconnect",
+    "url": "https://nextjs.org/docs/messages/google-font-preconnect#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Google Font Preconnect",
+    "section": "Google Font Preconnect",
+    "section_id": "google-font-preconnect",
+    "heading_level": 1,
+    "content": "# Google Font Preconnect\n\n> **Note**: Next.js automatically adds `<link rel=\"preconnect\" />` after version `12.0.1`.\n\n> Ensure `preconnect` is used with Google Fonts.",
+    "preview": "> **Note**: Next.js automatically adds `<link rel=\"preconnect\" />` after version `12.0.1`. > Ensure `preconnect` is used with Google Fonts.",
+    "url": "https://nextjs.org/docs/messages/google-font-preconnect#google-font-preconnect",
+    "position": 1
+  },
+  {
+    "title": "Google Font Preconnect",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nA preconnect resource hint was not used with a request to the Google Fonts domain. Adding `preconnect` is recommended to initiate an early connection to the origin.",
+    "preview": "A preconnect resource hint was not used with a request to the Google Fonts domain. Adding `preconnect` is recommended to initiate an early connection to the origin.",
+    "url": "https://nextjs.org/docs/messages/google-font-preconnect#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "Google Font Preconnect",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nAdd `rel=\"preconnect\"` to the Google Font domain `<link>` tag:\n\npages/\\_document.js\n\n```\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" />\n```\n\n> **Note**: a **separate** link with `dns-prefetch` can be used as a fallback for browsers that don't support `preconnect` although this is not required.",
+    "preview": "Add `rel=\"preconnect\"` to the Google Font domain `<link>` tag: pages/\\_document.js [Code Block] > **Note**: a **separate** link with `dns-prefetch` can be used as a fallback for browsers that don't support `preconnect` although this is not required.",
+    "url": "https://nextjs.org/docs/messages/google-font-preconnect#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "Google Font Preconnect",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Preconnect to required origins](https://web.dev/uses-rel-preconnect/)\n* [Preconnect and dns-prefetch](https://web.dev/preconnect-and-dns-prefetch/#resolve-domain-name-early-with-reldns-prefetch)\n* [Next.js Font Optimization](/docs/pages/building-your-application/optimizing/fonts)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Preconnect to required origins](https://web.dev/uses-rel-preconnect/) * [Preconnect and dns-prefetch](https://web.dev/preconnect-and-dns-prefetch/#resolve-domain-name-early-with-reldns-prefetch) * [Next.js Font Optimization](/docs/pages/building-your-application/optimizing/fonts) Was this helpfu",
+    "url": "https://nextjs.org/docs/messages/google-font-preconnect#useful-links-useful-links",
+    "position": 4
+  }
+]

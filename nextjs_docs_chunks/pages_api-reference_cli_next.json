@@ -1,0 +1,152 @@
+[
+  {
+    "title": "next CLI",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[CLI](/docs/pages/api-reference/cli)next CLI",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[CLI](/docs/pages/api-reference/cli)next CLI",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "next CLI",
+    "section": "next CLI",
+    "section_id": "next-cli",
+    "heading_level": 1,
+    "content": "# next CLI\n\nThe Next.js CLI allows you to develop, build, start your application, and more.\n\nBasic usage:\n\nTerminal\n\n```\nnpx next [command] [options]\n```",
+    "preview": "The Next.js CLI allows you to develop, build, start your application, and more. Basic usage: Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#next-cli",
+    "position": 1
+  },
+  {
+    "title": "next CLI",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)\n\nThe following options are available:\n\n| Options | Description |\n| --- | --- |\n| `-h` or `--help` | Shows all available options |\n| `-v` or `--version` | Outputs the Next.js version number |",
+    "preview": "The following options are available: | Options | Description | | --- | --- | | `-h` or `--help` | Shows all available options | | `-v` or `--version` | Outputs the Next.js version number |",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "next CLI",
+    "section": "[Commands](#commands)",
+    "section_id": "commands-commands",
+    "heading_level": 3,
+    "content": "### [Commands](#commands)\n\nThe following commands are available:\n\n| Command | Description |\n| --- | --- |\n| [`dev`](#next-dev-options) | Starts Next.js in development mode with Hot Module Reloading, error reporting, and more. |\n| [`build`](#next-build-options) | Creates an optimized production build of your application. Displaying information about each route. |\n| [`start`](#next-start-options) | Starts Next.js in production mode. The application should be compiled with `next build` first. |\n| [`info`](#next-info-options) | Prints relevant details about the current system which can be used to report Next.js bugs. |\n| [`lint`](#next-lint-options) | Runs ESLint for all files in the `/src`, `/app`, `/pages`, `/components`, and `/lib` directories. It also provides a guided setup to install any required dependencies if ESLint it is not already configured in your application. |\n| [`telemetry`](#next-telemetry-options) | Allows you to enable or disable Next.js' completely anonymous telemetry collection. |\n\n> **Good to know**: Running `next` without a command is an alias for `next dev`.",
+    "preview": "The following commands are available: | Command | Description | | --- | --- | | [`dev`](#next-dev-options) | Starts Next.js in development mode with Hot Module Reloading, error reporting, and more. | | [`build`](#next-build-options) | Creates an optimized production build of your application. Displ",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#commands-commands",
+    "position": 3
+  },
+  {
+    "title": "next CLI",
+    "section": "[`next dev` options](#next-dev-options)",
+    "section_id": "next-dev-options-next-dev-options",
+    "heading_level": 3,
+    "content": "### [`next dev` options](#next-dev-options)\n\n`next dev` starts the application in development mode with Hot Module Reloading (HMR), error reporting, and more. The following options are available when running `next dev`:\n\n| Option | Description |\n| --- | --- |\n| `-h, --help` | Show all available options. |\n| `[directory]` | A directory in which to build the application. If not provided, current directory is used. |\n| `--turbopack` | Starts development mode using [Turbopack](/docs/app/api-reference/turbopack). |\n| `-p` or `--port <port>` | Specify a port number on which to start the application. Default: 3000, env: PORT |\n| `-H`or `--hostname <hostname>` | Specify a hostname on which to start the application. Useful for making the application available for other devices on the network. Default: 0.0.0.0 |\n| `--experimental-https` | Starts the server with HTTPS and generates a self-signed certificate. |\n| `--experimental-https-key <path>` | Path to a HTTPS key file. |\n| `--experimental-https-cert <path>` | Path to a HTTPS certificate file. |\n| `--experimental-https-ca <path>` | Path to a HTTPS certificate authority file. |\n| `--experimental-upload-trace <traceUrl>` | Reports a subset of the debugging trace to a remote HTTP URL. |",
+    "preview": "`next dev` starts the application in development mode with Hot Module Reloading (HMR), error reporting, and more. The following options are available when running `next dev`: | Option | Description | | --- | --- | | `-h, --help` | Show all available options. | | `[directory]` | A directory in which",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#next-dev-options-next-dev-options",
+    "position": 4
+  },
+  {
+    "title": "next CLI",
+    "section": "[`next build` options](#next-build-options)",
+    "section_id": "next-build-options-next-build-options",
+    "heading_level": 3,
+    "content": "### [`next build` options](#next-build-options)\n\n`next build` creates an optimized production build of your application. The output displays information about each route. For example:\n\nTerminal\n\n```\nRoute (app)                              Size     First Load JS\n\u250c \u25cb /_not-found                          0 B               0 kB\n\u2514 \u0192 /products/[id]                       0 B               0 kB\n \n\u25cb  (Static)   prerendered as static content\n\u0192  (Dynamic)  server-rendered on demand\n```\n\n* **Size**: The size of assets downloaded when navigating to the page client-side. The size for each route only includes its dependencies.\n* **First Load JS**: The size of assets downloaded when visiting the page from the server. The amount of JS shared by all is shown as a separate metric.\n\nBoth of these values are [**compressed with gzip**](/docs/app/api-reference/config/next-config-js/compress). The first load is indicated by green, yellow, or red. Aim for green for performant applications.\n\nThe following options are available for the `next build` command:\n\n| Option | Description |\n| --- | --- |\n| `-h, --help` | Show all available options. |\n| `[directory]` | A directory on which to build the application. If not provided, the current directory will be used. |\n| `-d` or `--debug` | Enables a more verbose build output. With this flag enabled additional build output like rewrites, redirects, and headers will be shown. |\n|  |  |\n| `--profile` | Enables production [profiling for React](https://react.dev/reference/react/Profiler). |\n| `--no-lint` | Disables linting. |\n| `--no-mangling` | Disables [mangling](https://en.wikipedia.org/wiki/Name_mangling). This may affect performance and should only be used for debugging purposes. |\n| `--experimental-app-only` | Builds only App Router routes. |\n| `--experimental-build-mode [mode]` | Uses an experimental build mode. (choices: \"compile\", \"generate\", default: \"default\") |",
+    "preview": "`next build` creates an optimized production build of your application. The output displays information about each route. For example: Terminal [Code Block] * **Size**: The size of assets downloaded when navigating to the page client-side. The size for each route only includes its dependencies. *",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#next-build-options-next-build-options",
+    "position": 5
+  },
+  {
+    "title": "next CLI",
+    "section": "[`next start` options](#next-start-options)",
+    "section_id": "next-start-options-next-start-options",
+    "heading_level": 3,
+    "content": "### [`next start` options](#next-start-options)\n\n`next start` starts the application in production mode. The application should be compiled with [`next build`](#next-build-options) first.\n\nThe following options are available for the `next start` command:\n\n| Option | Description |\n| --- | --- |\n| `-h` or `--help` | Show all available options. |\n| `[directory]` | A directory on which to start the application. If no directory is provided, the current directory will be used. |\n| `-p` or `--port <port>` | Specify a port number on which to start the application. (default: 3000, env: PORT) |\n| `-H` or `--hostname <hostname>` | Specify a hostname on which to start the application (default: 0.0.0.0). |\n| `--keepAliveTimeout <keepAliveTimeout>` | Specify the maximum amount of milliseconds to wait before closing the inactive connections. |",
+    "preview": "`next start` starts the application in production mode. The application should be compiled with [`next build`](#next-build-options) first. The following options are available for the `next start` command: | Option | Description | | --- | --- | | `-h` or `--help` | Show all available options. | | `",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#next-start-options-next-start-options",
+    "position": 6
+  },
+  {
+    "title": "next CLI",
+    "section": "[`next info` options](#next-info-options)",
+    "section_id": "next-info-options-next-info-options",
+    "heading_level": 3,
+    "content": "### [`next info` options](#next-info-options)\n\n`next info` prints relevant details about the current system which can be used to report Next.js bugs when opening a [GitHub issue](https://github.com/vercel/next.js/issues). This information includes Operating System platform/arch/version, Binaries (Node.js, npm, Yarn, pnpm), package versions (`next`, `react`, `react-dom`), and more.\n\nThe output should look like this:\n\nTerminal\n\n```\nOperating System:\n  Platform: darwin\n  Arch: arm64\n  Version: Darwin Kernel Version 23.6.0\n  Available memory (MB): 65536\n  Available CPU cores: 10\nBinaries:\n  Node: 20.12.0\n  npm: 10.5.0\n  Yarn: 1.22.19\n  pnpm: 9.6.0\nRelevant Packages:\n  next: 15.0.0-canary.115 // Latest available version is detected (15.0.0-canary.115).\n  eslint-config-next: 14.2.5\n  react: 19.0.0-rc\n  react-dom: 19.0.0\n  typescript: 5.5.4\nNext.js Config:\n  output: N/A\n```\n\nThe following options are available for the `next info` command:\n\n| Option | Description |\n| --- | --- |\n| `-h` or `--help` | Show all available options |\n| `--verbose` | Collects additional information for debugging. |",
+    "preview": "`next info` prints relevant details about the current system which can be used to report Next.js bugs when opening a [GitHub issue](https://github.com/vercel/next.js/issues). This information includes Operating System platform/arch/version, Binaries (Node.js, npm, Yarn, pnpm), package versions (`nex",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#next-info-options-next-info-options",
+    "position": 7
+  },
+  {
+    "title": "next CLI",
+    "section": "[`next lint` options](#next-lint-options)",
+    "section_id": "next-lint-options-next-lint-options",
+    "heading_level": 3,
+    "content": "### [`next lint` options](#next-lint-options)\n\n`next lint` runs ESLint for all files in the `pages/`, `app/`, `components/`, `lib/`, and `src/` directories. It also provides a guided setup to install any required dependencies if ESLint is not already configured in your application.\n\nThe following options are available for the `next lint` command:\n\n| Option | Description |\n| --- | --- |\n| `[directory]` | A base directory on which to lint the application. If not provided, the current directory will be used. |\n| `-d, --dir, <dirs...>` | Include directory, or directories, to run ESLint. |\n| `--file, <files...>` | Include file, or files, to run ESLint. |\n| `--ext, [exts...]` | Specify JavaScript file extensions. (default: [\".js\", \".mjs\", \".cjs\", \".jsx\", \".ts\", \".mts\", \".cts\", \".tsx\"]) |\n| `-c, --config, <config>` | Uses this configuration file, overriding all other configuration options. |\n| `--resolve-plugins-relative-to, <rprt>` | Specify a directory where plugins should be resolved from. |\n| `--strict` | Creates a `.eslintrc.json` file using the Next.js strict configuration. |\n| `--rulesdir, <rulesdir...>` | Uses additional rules from this directory(s). |\n| `--fix` | Automatically fix linting issues. |\n| `--fix-type <fixType>` | Specify the types of fixes to apply (e.g., problem, suggestion, layout). |\n| `--ignore-path <path>` | Specify a file to ignore. |\n| `--no-ignore <path>` | Disables the `--ignore-path` option. |\n| `--quiet` | Reports errors only. |\n| `--max-warnings [maxWarnings]` | Specify the number of warnings before triggering a non-zero exit code. (default: -1) |\n| `-o, --output-file, <outputFile>` | Specify a file to write report to. |\n| `-f, --format, <format>` | Uses a specific output format. |\n| `--no-inline-config` | Prevents comments from changing config or rules. |\n| `--report-unused-disable-directives-severity <level>` | Specify severity level for unused eslint-disable directives. (choices: \"error\", \"off\", \"warn\") |\n| `--no-cache` | Disables caching. |\n| `--cache-location, <cacheLocation>` | Specify a location for cache. |\n| `--cache-strategy, [cacheStrategy]` | Specify a strategy to use for detecting changed files in the cache. (default: \"metadata\") |\n| `--error-on-unmatched-pattern` | Reports errors when any file patterns are unmatched. |\n| `-h, --help` | Displays this message. |",
+    "preview": "`next lint` runs ESLint for all files in the `pages/`, `app/`, `components/`, `lib/`, and `src/` directories. It also provides a guided setup to install any required dependencies if ESLint is not already configured in your application. The following options are available for the `next lint` command",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#next-lint-options-next-lint-options",
+    "position": 8
+  },
+  {
+    "title": "next CLI",
+    "section": "[`next telemetry` options](#next-telemetry-options)",
+    "section_id": "next-telemetry-options-next-telemetry-options",
+    "heading_level": 3,
+    "content": "### [`next telemetry` options](#next-telemetry-options)\n\nNext.js collects **completely anonymous** telemetry data about general usage. Participation in this anonymous program is optional, and you can opt-out if you prefer not to share information.\n\nThe following options are available for the `next telemetry` command:\n\n| Option | Description |\n| --- | --- |\n| `-h, --help` | Show all available options. |\n| `--enable` | Enables Next.js' telemetry collection. |\n| `--disable` | Disables Next.js' telemetry collection. |\n\nLearn more about [Telemetry](/telemetry).",
+    "preview": "Next.js collects **completely anonymous** telemetry data about general usage. Participation in this anonymous program is optional, and you can opt-out if you prefer not to share information. The following options are available for the `next telemetry` command: | Option | Description | | --- | ---",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#next-telemetry-options-next-telemetry-options",
+    "position": 9
+  },
+  {
+    "title": "next CLI",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#examples-examples",
+    "position": 10
+  },
+  {
+    "title": "next CLI",
+    "section": "[Changing the default port](#changing-the-default-port)",
+    "section_id": "changing-the-default-port-changing-the-default-port",
+    "heading_level": 3,
+    "content": "### [Changing the default port](#changing-the-default-port)\n\nBy default, Next.js uses `http://localhost:3000` during development and with `next start`. The default port can be changed with the `-p` option, like so:\n\nTerminal\n\n```\nnext dev -p 4000\n```\n\nOr using the `PORT` environment variable:\n\nTerminal\n\n```\nPORT=4000 next dev\n```\n\n> **Good to know**: `PORT` cannot be set in `.env` as booting up the HTTP server happens before any other code is initialized.",
+    "preview": "By default, Next.js uses `http://localhost:3000` during development and with `next start`. The default port can be changed with the `-p` option, like so: Terminal [Code Block] Or using the `PORT` environment variable: Terminal [Code Block] > **Good to know**: `PORT` cannot be set in `.env` as",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#changing-the-default-port-changing-the-default-port",
+    "position": 11
+  },
+  {
+    "title": "next CLI",
+    "section": "[Using HTTPS during development](#using-https-during-development)",
+    "section_id": "using-https-during-development-using-https-during-development",
+    "heading_level": 3,
+    "content": "### [Using HTTPS during development](#using-https-during-development)\n\nFor certain use cases like webhooks or authentication, you can use [HTTPS](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS) to have a secure environment on `localhost`. Next.js can generate a self-signed certificate with `next dev` using the `--experimental-https` flag:\n\nTerminal\n\n```\nnext dev --experimental-https\n```\n\nWith the generated certificate, the Next.js development server will exist at `https://localhost:3000`. The default port `3000` is used unless a port is specified with `-p`, `--port`, or `PORT`.\n\nYou can also provide a custom certificate and key with `--experimental-https-key` and `--experimental-https-cert`. Optionally, you can provide a custom CA certificate with `--experimental-https-ca` as well.\n\nTerminal\n\n```\nnext dev --experimental-https --experimental-https-key ./certificates/localhost-key.pem --experimental-https-cert ./certificates/localhost.pem\n```\n\n`next dev --experimental-https` is only intended for development and creates a locally trusted certificate with [`mkcert`](https://github.com/FiloSottile/mkcert). In production, use properly issued certificates from trusted authorities.\n\n> **Good to know**: When deploying to Vercel, HTTPS is [automatically configured](https://vercel.com/docs/security/encryption) for your Next.js application.",
+    "preview": "For certain use cases like webhooks or authentication, you can use [HTTPS](https://developer.mozilla.org/en-US/docs/Glossary/HTTPS) to have a secure environment on `localhost`. Next.js can generate a self-signed certificate with `next dev` using the `--experimental-https` flag: Terminal [Code Bloc",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#using-https-during-development-using-https-during-development",
+    "position": 12
+  },
+  {
+    "title": "next CLI",
+    "section": "[Configuring a timeout for downstream proxies](#configuring-a-timeout-for-downstream-proxies)",
+    "section_id": "configuring-a-timeout-for-downstream-proxies-configuring-a-timeout-for-downstream-proxies",
+    "heading_level": 3,
+    "content": "### [Configuring a timeout for downstream proxies](#configuring-a-timeout-for-downstream-proxies)\n\nWhen deploying Next.js behind a downstream proxy (e.g. a load-balancer like AWS ELB/ALB), it's important to configure Next's underlying HTTP server with [keep-alive timeouts](https://nodejs.org/api/http.html#http_server_keepalivetimeout) that are *larger* than the downstream proxy's timeouts. Otherwise, once a keep-alive timeout is reached for a given TCP connection, Node.js will immediately terminate that connection without notifying the downstream proxy. This results in a proxy error whenever it attempts to reuse a connection that Node.js has already terminated.\n\nTo configure the timeout values for the production Next.js server, pass `--keepAliveTimeout` (in milliseconds) to `next start`, like so:\n\nTerminal\n\n```\nnext start --keepAliveTimeout 70000\n```",
+    "preview": "When deploying Next.js behind a downstream proxy (e.g. a load-balancer like AWS ELB/ALB), it's important to configure Next's underlying HTTP server with [keep-alive timeouts](https://nodejs.org/api/http.html#http_server_keepalivetimeout) that are *larger* than the downstream proxy's timeouts. Otherw",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#configuring-a-timeout-for-downstream-proxies-configuring-a-timeout-for-downstream-proxies",
+    "position": 13
+  },
+  {
+    "title": "next CLI",
+    "section": "[Passing Node.js arguments](#passing-nodejs-arguments)",
+    "section_id": "passing-node-js-arguments-passing-nodejs-arguments",
+    "heading_level": 3,
+    "content": "### [Passing Node.js arguments](#passing-nodejs-arguments)\n\nYou can pass any [node arguments](https://nodejs.org/api/cli.html#cli_node_options_options) to `next` commands. For example:\n\nTerminal\n\n```\nNODE_OPTIONS='--throw-deprecation' next\nNODE_OPTIONS='-r esm' next\nNODE_OPTIONS='--inspect' next\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "You can pass any [node arguments](https://nodejs.org/api/cli.html#cli_node_options_options) to `next` commands. For example: Terminal [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/api-reference/cli/next#passing-node-js-arguments-passing-nodejs-arguments",
+    "position": 14
+  }
+]

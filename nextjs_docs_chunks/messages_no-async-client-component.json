@@ -1,0 +1,72 @@
+[
+  {
+    "title": "No async client component",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No async client component",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No async client component",
+    "url": "https://nextjs.org/docs/messages/no-async-client-component#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No async client component",
+    "section": "No async client component",
+    "section_id": "no-async-client-component",
+    "heading_level": 1,
+    "content": "# No async client component\n\n> Client components cannot be async functions.",
+    "preview": "> Client components cannot be async functions.",
+    "url": "https://nextjs.org/docs/messages/no-async-client-component#no-async-client-component",
+    "position": 1
+  },
+  {
+    "title": "No async client component",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nThe error occurs when you try to define a client component as an async function. React client components [do not support](https://github.com/acdlite/rfcs/blob/first-class-promises/text/0000-first-class-support-for-promises.md#why-cant-client-components-be-async-functions) async functions. For example:\n\n```\n'use client'\n \n// This will cause an error\nasync function ClientComponent() {\n  // ...\n}\n```",
+    "preview": "The error occurs when you try to define a client component as an async function. React client components [do not support](https://github.com/acdlite/rfcs/blob/first-class-promises/text/0000-first-class-support-for-promises.md#why-cant-client-components-be-async-functions) async functions. For exampl",
+    "url": "https://nextjs.org/docs/messages/no-async-client-component#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No async client component",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\n1. **Convert to a Server Component**: If possible, convert your client component to a server component. This allows you to use `async`/`await` directly in your component.\n2. **Remove the `async` keyword**: If you need to keep it as a client component, remove the `async` keyword and handle data fetching differently.\n3. **Use React hooks for data fetching**: Utilize hooks like `useEffect` for client-side data fetching, or use third-party libraries.\n4. **Leverage the `use` hook with a Context Provider**: Pass promises to child components using context, then resolve them with the `use` hook.",
+    "preview": "1. **Convert to a Server Component**: If possible, convert your client component to a server component. This allows you to use `async`/`await` directly in your component. 2. **Remove the `async` keyword**: If you need to keep it as a client component, remove the `async` keyword and handle data fetch",
+    "url": "https://nextjs.org/docs/messages/no-async-client-component#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No async client component",
+    "section": "[Recommended: Server-side data fetching](#recommended-server-side-data-fetching)",
+    "section_id": "recommended-server-side-data-fetching-recommended-server-side-data-fetching",
+    "heading_level": 3,
+    "content": "### [Recommended: Server-side data fetching](#recommended-server-side-data-fetching)\n\nWe recommend fetching data on the server. For example:\n\napp/page.tsx\n\n```\nexport default async function Page() {\n  const data = await fetch('https://api.vercel.app/blog')\n  const posts = await data.json()\n  return (\n    <ul>\n      {posts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```",
+    "preview": "We recommend fetching data on the server. For example: app/page.tsx [Code Block]",
+    "url": "https://nextjs.org/docs/messages/no-async-client-component#recommended-server-side-data-fetching-recommended-server-side-data-fetching",
+    "position": 4
+  },
+  {
+    "title": "No async client component",
+    "section": "[Using `use` with Context Provider](#using-use-with-context-provider)",
+    "section_id": "using-use-with-context-provider-using-use-with-context-provider",
+    "heading_level": 3,
+    "content": "### [Using `use` with Context Provider](#using-use-with-context-provider)\n\nAnother pattern to explore is using the React `use` hook with a Context Provider. This allows you to pass Promises to child components and resolve them using the `use` hook . Here's an example:\n\nFirst, let's create a separate file for the context provider:\n\napp/context.tsx\n\n```\n'use client'\n \nimport { createContext, useContext } from 'react'\n \nexport const BlogContext = createContext<Promise<any> | null>(null)\n \nexport function BlogProvider({\n  children,\n  blogPromise,\n}: {\n  children: React.ReactNode\n  blogPromise: Promise<any>\n}) {\n  return (\n    <BlogContext.Provider value={blogPromise}>{children}</BlogContext.Provider>\n  )\n}\n \nexport function useBlogContext() {\n  const context = useContext(BlogContext)\n  if (!context) {\n    throw new Error('useBlogContext must be used within a BlogProvider')\n  }\n  return context\n}\n```\n\nNow, let's create the Promise in a Server Component and stream it to the client:\n\napp/page.tsx\n\n```\nimport { BlogProvider } from './context'\n \nexport default function Page() {\n  const blogPromise = fetch('https://api.vercel.app/blog').then((res) =>\n    res.json()\n  )\n \n  return (\n    <BlogProvider blogPromise={blogPromise}>\n      <BlogPosts />\n    </BlogProvider>\n  )\n}\n```\n\nHere is the blog posts component:\n\napp/blog-posts.tsx\n\n```\n'use client'\n \nimport { use } from 'react'\nimport { useBlogContext } from './context'\n \nexport function BlogPosts() {\n  const blogPromise = useBlogContext()\n  const posts = use(blogPromise)\n \n  return <div>{posts.length} blog posts</div>\n}\n```\n\nThis pattern allows you to start data fetching early and pass the Promise down to child components, which can then use the `use` hook to access the data when it's ready.",
+    "preview": "Another pattern to explore is using the React `use` hook with a Context Provider. This allows you to pass Promises to child components and resolve them using the `use` hook . Here's an example: First, let's create a separate file for the context provider: app/context.tsx [Code Block] Now, let's",
+    "url": "https://nextjs.org/docs/messages/no-async-client-component#using-use-with-context-provider-using-use-with-context-provider",
+    "position": 5
+  },
+  {
+    "title": "No async client component",
+    "section": "[Client-side data fetching](#client-side-data-fetching)",
+    "section_id": "client-side-data-fetching-client-side-data-fetching",
+    "heading_level": 3,
+    "content": "### [Client-side data fetching](#client-side-data-fetching)\n\nIn scenarios where client fetching is needed, you can call `fetch` in `useEffect` (not recommended), or lean on popular React libraries in the community (such as [SWR](https://swr.vercel.app/) or [React Query](https://tanstack.com/query/latest)) for client fetching.\n\napp/page.tsx\n\n```\n'use client'\n \nimport { useState, useEffect } from 'react'\n \nexport function Posts() {\n  const [posts, setPosts] = useState(null)\n \n  useEffect(() => {\n    async function fetchPosts() {\n      const res = await fetch('https://api.vercel.app/blog')\n      const data = await res.json()\n      setPosts(data)\n    }\n    fetchPosts()\n  }, [])\n \n  if (!posts) return <div>Loading...</div>\n \n  return (\n    <ul>\n      {posts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "In scenarios where client fetching is needed, you can call `fetch` in `useEffect` (not recommended), or lean on popular React libraries in the community (such as [SWR](https://swr.vercel.app/) or [React Query](https://tanstack.com/query/latest)) for client fetching. app/page.tsx [Code Block] Was",
+    "url": "https://nextjs.org/docs/messages/no-async-client-component#client-side-data-fetching-client-side-data-fetching",
+    "position": 6
+  }
+]

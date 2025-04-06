@@ -1,0 +1,22 @@
+[
+  {
+    "title": "useLightningcss",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)useLightningcss",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)useLightningcss",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/useLightningcss#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "useLightningcss",
+    "section": "useLightningcss",
+    "section_id": "uselightningcss",
+    "heading_level": 1,
+    "content": "# useLightningcss\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nExperimental support for using [Lightning CSS](https://lightningcss.dev), a fast CSS bundler and minifier, written in Rust.\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    useLightningcss: true,\n  },\n}\n \nexport default nextConfig\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). Experimental support for using [Lightning CSS](https://lightningcss.dev), a fast CSS bundler and minifier, wri",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/useLightningcss#uselightningcss",
+    "position": 1
+  }
+]

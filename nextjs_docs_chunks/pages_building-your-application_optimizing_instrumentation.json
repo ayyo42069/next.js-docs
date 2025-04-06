@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Instrumentation",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Optimizing](/docs/pages/building-your-application/optimizing)Instrumentation",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Optimizing](/docs/pages/building-your-application/optimizing)Instrumentation",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/instrumentation#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Instrumentation",
+    "section": "Instrumentation",
+    "section_id": "instrumentation",
+    "heading_level": 1,
+    "content": "# Instrumentation\n\nInstrumentation is the process of using code to integrate monitoring and logging tools into your application. This allows you to track the performance and behavior of your application, and to debug issues in production.",
+    "preview": "Instrumentation is the process of using code to integrate monitoring and logging tools into your application. This allows you to track the performance and behavior of your application, and to debug issues in production.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/instrumentation#instrumentation",
+    "position": 1
+  },
+  {
+    "title": "Instrumentation",
+    "section": "[Convention](#convention)",
+    "section_id": "convention-convention",
+    "heading_level": 2,
+    "content": "## [Convention](#convention)\n\nTo set up instrumentation, create `instrumentation.ts|js` file in the **root directory** of your project (or inside the [`src`](/docs/app/building-your-application/configuring/src-directory) folder if using one).\n\nThen, export a `register` function in the file. This function will be called **once** when a new Next.js server instance is initiated.\n\nFor example, to use Next.js with [OpenTelemetry](https://opentelemetry.io/) and [@vercel/otel](https://vercel.com/docs/observability/otel-overview):\n\ninstrumentation.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { registerOTel } from '@vercel/otel'\n \nexport function register() {\n  registerOTel('next-app')\n}\n```\n\nSee the [Next.js with OpenTelemetry example](https://github.com/vercel/next.js/tree/canary/examples/with-opentelemetry) for a complete implementation.\n\n> **Good to know**:\n>\n> * The `instrumentation` file should be in the root of your project and not inside the `app` or `pages` directory. If you're using the `src` folder, then place the file inside `src` alongside `pages` and `app`.\n> * If you use the [`pageExtensions` config option](/docs/app/api-reference/config/next-config-js/pageExtensions) to add a suffix, you will also need to update the `instrumentation` filename to match.",
+    "preview": "To set up instrumentation, create `instrumentation.ts|js` file in the **root directory** of your project (or inside the [`src`](/docs/app/building-your-application/configuring/src-directory) folder if using one). Then, export a `register` function in the file. This function will be called **once**",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/instrumentation#convention-convention",
+    "position": 2
+  },
+  {
+    "title": "Instrumentation",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/instrumentation#examples-examples",
+    "position": 3
+  },
+  {
+    "title": "Instrumentation",
+    "section": "[Importing files with side effects](#importing-files-with-side-effects)",
+    "section_id": "importing-files-with-side-effects-importing-files-with-side-effects",
+    "heading_level": 3,
+    "content": "### [Importing files with side effects](#importing-files-with-side-effects)\n\nSometimes, it may be useful to import a file in your code because of the side effects it will cause. For example, you might import a file that defines a set of global variables, but never explicitly use the imported file in your code. You would still have access to the global variables the package has declared.\n\nWe recommend importing files using JavaScript `import` syntax within your `register` function. The following example demonstrates a basic usage of `import` in a `register` function:\n\ninstrumentation.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function register() {\n  await import('package-with-side-effect')\n}\n```\n\n> **Good to know:**\n>\n> We recommend importing the file from within the `register` function, rather than at the top of the file. By doing this, you can colocate all of your side effects in one place in your code, and avoid any unintended consequences from importing globally at the top of the file.",
+    "preview": "Sometimes, it may be useful to import a file in your code because of the side effects it will cause. For example, you might import a file that defines a set of global variables, but never explicitly use the imported file in your code. You would still have access to the global variables the package h",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/instrumentation#importing-files-with-side-effects-importing-files-with-side-effects",
+    "position": 4
+  },
+  {
+    "title": "Instrumentation",
+    "section": "[Importing runtime-specific code](#importing-runtime-specific-code)",
+    "section_id": "importing-runtime-specific-code-importing-runtime-specific-code",
+    "heading_level": 3,
+    "content": "### [Importing runtime-specific code](#importing-runtime-specific-code)\n\nNext.js calls `register` in all environments, so it's important to conditionally import any code that doesn't support specific runtimes (e.g. [Edge or Node.js](/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes)). You can use the `NEXT_RUNTIME` environment variable to get the current environment:\n\ninstrumentation.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function register() {\n  if (process.env.NEXT_RUNTIME === 'nodejs') {\n    await import('./instrumentation-node')\n  }\n \n  if (process.env.NEXT_RUNTIME === 'edge') {\n    await import('./instrumentation-edge')\n  }\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js calls `register` in all environments, so it's important to conditionally import any code that doesn't support specific runtimes (e.g. [Edge or Node.js](/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes)). You can use the `NEXT_RUNTIME` environment variable to get the cur",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/instrumentation#importing-runtime-specific-code-importing-runtime-specific-code",
+    "position": 5
+  }
+]

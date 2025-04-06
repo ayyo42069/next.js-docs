@@ -1,0 +1,82 @@
+[
+  {
+    "title": "connection",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)connection",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)connection",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/connection#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "connection",
+    "section": "connection",
+    "section_id": "connection",
+    "heading_level": 1,
+    "content": "# connection\n\nThe `connection()` function allows you to indicate rendering should wait for an incoming user request before continuing.\n\nIt's useful when a component doesn\u2019t use [Dynamic APIs](/docs/app/building-your-application/rendering/server-components#dynamic-apis), but you want it to be dynamically rendered at runtime and not statically rendered at build time. This usually occurs when you access external information that you intentionally want to change the result of a render, such as `Math.random()` or `new Date()`.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { connection } from 'next/server'\n \nexport default async function Page() {\n  await connection()\n  // Everything below will be excluded from prerendering\n  const rand = Math.random()\n  return <span>{rand}</span>\n}\n```",
+    "preview": "The `connection()` function allows you to indicate rendering should wait for an incoming user request before continuing. It's useful when a component doesn\u2019t use [Dynamic APIs](/docs/app/building-your-application/rendering/server-components#dynamic-apis), but you want it to be dynamically rendered",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/connection#connection",
+    "position": 1
+  },
+  {
+    "title": "connection",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/connection#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "connection",
+    "section": "[Type](#type)",
+    "section_id": "type-type",
+    "heading_level": 3,
+    "content": "### [Type](#type)\n\n```\nfunction connection(): Promise<void>\n```",
+    "preview": "[Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/connection#type-type",
+    "position": 3
+  },
+  {
+    "title": "connection",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 3,
+    "content": "### [Parameters](#parameters)\n\n* The function does not accept any parameters.",
+    "preview": "* The function does not accept any parameters.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/connection#parameters-parameters",
+    "position": 4
+  },
+  {
+    "title": "connection",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 3,
+    "content": "### [Returns](#returns)\n\n* The function returns a `void` Promise. It is not meant to be consumed.",
+    "preview": "* The function returns a `void` Promise. It is not meant to be consumed.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/connection#returns-returns",
+    "position": 5
+  },
+  {
+    "title": "connection",
+    "section": "[Good to know](#good-to-know)",
+    "section_id": "good-to-know-good-to-know",
+    "heading_level": 2,
+    "content": "## [Good to know](#good-to-know)\n\n* `connection` replaces [`unstable_noStore`](/docs/app/api-reference/functions/unstable_noStore) to better align with the future of Next.js.\n* The function is only necessary when dynamic rendering is required and common Dynamic APIs are not used.",
+    "preview": "* `connection` replaces [`unstable_noStore`](/docs/app/api-reference/functions/unstable_noStore) to better align with the future of Next.js. * The function is only necessary when dynamic rendering is required and common Dynamic APIs are not used.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/connection#good-to-know-good-to-know",
+    "position": 6
+  },
+  {
+    "title": "connection",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 3,
+    "content": "### [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0` | `connection`\u00a0stabilized. |\n| `v15.0.0-RC` | `connection`\u00a0introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0` | `connection` stabilized. | | `v15.0.0-RC` | `connection` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/connection#version-history-version-history",
+    "position": 7
+  }
+]

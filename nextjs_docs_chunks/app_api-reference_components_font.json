@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Font Module",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Components](/docs/app/api-reference/components)Font",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Components](/docs/app/api-reference/components)Font",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Font Module",
+    "section": "Font Module",
+    "section_id": "font-module",
+    "heading_level": 1,
+    "content": "# Font Module\n\nThis API reference will help you understand how to use [`next/font/google`](/docs/app/building-your-application/optimizing/fonts#google-fonts) and [`next/font/local`](/docs/app/building-your-application/optimizing/fonts#local-fonts). For features and usage, please see the [Optimizing Fonts](/docs/app/building-your-application/optimizing/fonts) page.",
+    "preview": "This API reference will help you understand how to use [`next/font/google`](/docs/app/building-your-application/optimizing/fonts#google-fonts) and [`next/font/local`](/docs/app/building-your-application/optimizing/fonts#local-fonts). For features and usage, please see the [Optimizing Fonts](/docs/ap",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#font-module",
+    "position": 1
+  },
+  {
+    "title": "Font Module",
+    "section": "[Font Function Arguments](#font-function-arguments)",
+    "section_id": "font-function-arguments-font-function-arguments",
+    "heading_level": 3,
+    "content": "### [Font Function Arguments](#font-function-arguments)\n\nFor usage, review [Google Fonts](/docs/app/building-your-application/optimizing/fonts#google-fonts) and [Local Fonts](/docs/app/building-your-application/optimizing/fonts#local-fonts).\n\n| Key | `font/google` | `font/local` | Type | Required |\n| --- | --- | --- | --- | --- |\n| [`src`](#src) |  |  | String or Array of Objects | Yes |\n| [`weight`](#weight) |  |  | String or Array | Required/Optional |\n| [`style`](#style) |  |  | String or Array | - |\n| [`subsets`](#subsets) |  |  | Array of Strings | - |\n| [`axes`](#axes) |  |  | Array of Strings | - |\n| [`display`](#display) |  |  | String | - |\n| [`preload`](#preload) |  |  | Boolean | - |\n| [`fallback`](#fallback) |  |  | Array of Strings | - |\n| [`adjustFontFallback`](#adjustfontfallback) |  |  | Boolean or String | - |\n| [`variable`](#variable) |  |  | String | - |\n| [`declarations`](#declarations) |  |  | Array of Objects | - |",
+    "preview": "For usage, review [Google Fonts](/docs/app/building-your-application/optimizing/fonts#google-fonts) and [Local Fonts](/docs/app/building-your-application/optimizing/fonts#local-fonts). | Key | `font/google` | `font/local` | Type | Required | | --- | --- | --- | --- | --- | | [`src`](#src) | | | S",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#font-function-arguments-font-function-arguments",
+    "position": 2
+  },
+  {
+    "title": "Font Module",
+    "section": "[`src`](#src)",
+    "section_id": "src-src",
+    "heading_level": 3,
+    "content": "### [`src`](#src)\n\nThe path of the font file as a string or an array of objects (with type `Array<{path: string, weight?: string, style?: string}>`) relative to the directory where the font loader function is called.\n\nUsed in `next/font/local`\n\n* Required\n\nExamples:\n\n* `src:'./fonts/my-font.woff2'` where `my-font.woff2` is placed in a directory named `fonts` inside the `app` directory\n* `src:[{path: './inter/Inter-Thin.ttf', weight: '100',},{path: './inter/Inter-Regular.ttf',weight: '400',},{path: './inter/Inter-Bold-Italic.ttf', weight: '700',style: 'italic',},]`\n* if the font loader function is called in `app/page.tsx` using `src:'../styles/fonts/my-font.ttf'`, then `my-font.ttf` is placed in `styles/fonts` at the root of the project",
+    "preview": "The path of the font file as a string or an array of objects (with type `Array<{path: string, weight?: string, style?: string}>`) relative to the directory where the font loader function is called. Used in `next/font/local` * Required Examples: * `src:'./fonts/my-font.woff2'` where `my-font.woff",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#src-src",
+    "position": 3
+  },
+  {
+    "title": "Font Module",
+    "section": "[`weight`](#weight)",
+    "section_id": "weight-weight",
+    "heading_level": 3,
+    "content": "### [`weight`](#weight)\n\nThe font [`weight`](https://fonts.google.com/knowledge/glossary/weight) with the following possibilities:\n\n* A string with possible values of the weights available for the specific font or a range of values if it's a [variable](https://fonts.google.com/variablefonts) font\n* An array of weight values if the font is not a [variable google font](https://fonts.google.com/variablefonts). It applies to `next/font/google` only.\n\nUsed in `next/font/google` and `next/font/local`\n\n* Required if the font being used is **not** [variable](https://fonts.google.com/variablefonts)\n\nExamples:\n\n* `weight: '400'`: A string for a single weight value - for the font [`Inter`](https://fonts.google.com/specimen/Inter?query=inter), the possible values are `'100'`, `'200'`, `'300'`, `'400'`, `'500'`, `'600'`, `'700'`, `'800'`, `'900'` or `'variable'` where `'variable'` is the default)\n* `weight: '100 900'`: A string for the range between `100` and `900` for a variable font\n* `weight: ['100','400','900']`: An array of 3 possible values for a non variable font",
+    "preview": "The font [`weight`](https://fonts.google.com/knowledge/glossary/weight) with the following possibilities: * A string with possible values of the weights available for the specific font or a range of values if it's a [variable](https://fonts.google.com/variablefonts) font * An array of weight values",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#weight-weight",
+    "position": 4
+  },
+  {
+    "title": "Font Module",
+    "section": "[`style`](#style)",
+    "section_id": "style-style",
+    "heading_level": 3,
+    "content": "### [`style`](#style)\n\nThe font [`style`](https://developer.mozilla.org/docs/Web/CSS/font-style) with the following possibilities:\n\n* A string [value](https://developer.mozilla.org/docs/Web/CSS/font-style#values) with default value of `'normal'`\n* An array of style values if the font is not a [variable google font](https://fonts.google.com/variablefonts). It applies to `next/font/google` only.\n\nUsed in `next/font/google` and `next/font/local`\n\n* Optional\n\nExamples:\n\n* `style: 'italic'`: A string - it can be `normal` or `italic` for `next/font/google`\n* `style: 'oblique'`: A string - it can take any value for `next/font/local` but is expected to come from [standard font styles](https://developer.mozilla.org/docs/Web/CSS/font-style)\n* `style: ['italic','normal']`: An array of 2 values for `next/font/google` - the values are from `normal` and `italic`",
+    "preview": "The font [`style`](https://developer.mozilla.org/docs/Web/CSS/font-style) with the following possibilities: * A string [value](https://developer.mozilla.org/docs/Web/CSS/font-style#values) with default value of `'normal'` * An array of style values if the font is not a [variable google font](https:",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#style-style",
+    "position": 5
+  },
+  {
+    "title": "Font Module",
+    "section": "[`subsets`](#subsets)",
+    "section_id": "subsets-subsets",
+    "heading_level": 3,
+    "content": "### [`subsets`](#subsets)\n\nThe font [`subsets`](https://fonts.google.com/knowledge/glossary/subsetting) defined by an array of string values with the names of each subset you would like to be [preloaded](/docs/app/building-your-application/optimizing/fonts#specifying-a-subset). Fonts specified via `subsets` will have a link preload tag injected into the head when the [`preload`](#preload) option is true, which is the default.\n\nUsed in `next/font/google`\n\n* Optional\n\nExamples:\n\n* `subsets: ['latin']`: An array with the subset `latin`\n\nYou can find a list of all subsets on the Google Fonts page for your font.",
+    "preview": "The font [`subsets`](https://fonts.google.com/knowledge/glossary/subsetting) defined by an array of string values with the names of each subset you would like to be [preloaded](/docs/app/building-your-application/optimizing/fonts#specifying-a-subset). Fonts specified via `subsets` will have a link p",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#subsets-subsets",
+    "position": 6
+  },
+  {
+    "title": "Font Module",
+    "section": "[`axes`](#axes)",
+    "section_id": "axes-axes",
+    "heading_level": 3,
+    "content": "### [`axes`](#axes)\n\nSome variable fonts have extra `axes` that can be included. By default, only the font weight is included to keep the file size down. The possible values of `axes` depend on the specific font.\n\nUsed in `next/font/google`\n\n* Optional\n\nExamples:\n\n* `axes: ['slnt']`: An array with value `slnt` for the `Inter` variable font which has `slnt` as additional `axes` as shown [here](https://fonts.google.com/variablefonts?vfquery=inter#font-families). You can find the possible `axes` values for your font by using the filter on the [Google variable fonts page](https://fonts.google.com/variablefonts#font-families) and looking for axes other than `wght`",
+    "preview": "Some variable fonts have extra `axes` that can be included. By default, only the font weight is included to keep the file size down. The possible values of `axes` depend on the specific font. Used in `next/font/google` * Optional Examples: * `axes: ['slnt']`: An array with value `slnt` for the `",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#axes-axes",
+    "position": 7
+  },
+  {
+    "title": "Font Module",
+    "section": "[`display`](#display)",
+    "section_id": "display-display",
+    "heading_level": 3,
+    "content": "### [`display`](#display)\n\nThe font [`display`](https://developer.mozilla.org/docs/Web/CSS/@font-face/font-display) with possible string [values](https://developer.mozilla.org/docs/Web/CSS/@font-face/font-display#values) of `'auto'`, `'block'`, `'swap'`, `'fallback'` or `'optional'` with default value of `'swap'`.\n\nUsed in `next/font/google` and `next/font/local`\n\n* Optional\n\nExamples:\n\n* `display: 'optional'`: A string assigned to the `optional` value",
+    "preview": "The font [`display`](https://developer.mozilla.org/docs/Web/CSS/@font-face/font-display) with possible string [values](https://developer.mozilla.org/docs/Web/CSS/@font-face/font-display#values) of `'auto'`, `'block'`, `'swap'`, `'fallback'` or `'optional'` with default value of `'swap'`. Used in `n",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#display-display",
+    "position": 8
+  },
+  {
+    "title": "Font Module",
+    "section": "[`preload`](#preload)",
+    "section_id": "preload-preload",
+    "heading_level": 3,
+    "content": "### [`preload`](#preload)\n\nA boolean value that specifies whether the font should be [preloaded](/docs/app/building-your-application/optimizing/fonts#preloading) or not. The default is `true`.\n\nUsed in `next/font/google` and `next/font/local`\n\n* Optional\n\nExamples:\n\n* `preload: false`",
+    "preview": "A boolean value that specifies whether the font should be [preloaded](/docs/app/building-your-application/optimizing/fonts#preloading) or not. The default is `true`. Used in `next/font/google` and `next/font/local` * Optional Examples: * `preload: false`",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#preload-preload",
+    "position": 9
+  },
+  {
+    "title": "Font Module",
+    "section": "[`fallback`](#fallback)",
+    "section_id": "fallback-fallback",
+    "heading_level": 3,
+    "content": "### [`fallback`](#fallback)\n\nThe fallback font to use if the font cannot be loaded. An array of strings of fallback fonts with no default.\n\n* Optional\n\nUsed in `next/font/google` and `next/font/local`\n\nExamples:\n\n* `fallback: ['system-ui', 'arial']`: An array setting the fallback fonts to `system-ui` or `arial`",
+    "preview": "The fallback font to use if the font cannot be loaded. An array of strings of fallback fonts with no default. * Optional Used in `next/font/google` and `next/font/local` Examples: * `fallback: ['system-ui', 'arial']`: An array setting the fallback fonts to `system-ui` or `arial`",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#fallback-fallback",
+    "position": 10
+  },
+  {
+    "title": "Font Module",
+    "section": "[`adjustFontFallback`](#adjustfontfallback)",
+    "section_id": "adjustfontfallback-adjustfontfallback",
+    "heading_level": 3,
+    "content": "### [`adjustFontFallback`](#adjustfontfallback)\n\n* For `next/font/google`: A boolean value that sets whether an automatic fallback font should be used to reduce [Cumulative Layout Shift](https://web.dev/cls/). The default is `true`.\n* For `next/font/local`: A string or boolean `false` value that sets whether an automatic fallback font should be used to reduce [Cumulative Layout Shift](https://web.dev/cls/). The possible values are `'Arial'`, `'Times New Roman'` or `false`. The default is `'Arial'`.\n\nUsed in `next/font/google` and `next/font/local`\n\n* Optional\n\nExamples:\n\n* `adjustFontFallback: false`: for `next/font/google`\n* `adjustFontFallback: 'Times New Roman'`: for `next/font/local`",
+    "preview": "* For `next/font/google`: A boolean value that sets whether an automatic fallback font should be used to reduce [Cumulative Layout Shift](https://web.dev/cls/). The default is `true`. * For `next/font/local`: A string or boolean `false` value that sets whether an automatic fallback font should be us",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#adjustfontfallback-adjustfontfallback",
+    "position": 11
+  },
+  {
+    "title": "Font Module",
+    "section": "[`variable`](#variable)",
+    "section_id": "variable-variable",
+    "heading_level": 3,
+    "content": "### [`variable`](#variable)\n\nA string value to define the CSS variable name to be used if the style is applied with the [CSS variable method](#css-variables).\n\nUsed in `next/font/google` and `next/font/local`\n\n* Optional\n\nExamples:\n\n* `variable: '--my-font'`: The CSS variable `--my-font` is declared",
+    "preview": "A string value to define the CSS variable name to be used if the style is applied with the [CSS variable method](#css-variables). Used in `next/font/google` and `next/font/local` * Optional Examples: * `variable: '--my-font'`: The CSS variable `--my-font` is declared",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#variable-variable",
+    "position": 12
+  },
+  {
+    "title": "Font Module",
+    "section": "[`declarations`](#declarations)",
+    "section_id": "declarations-declarations",
+    "heading_level": 3,
+    "content": "### [`declarations`](#declarations)\n\nAn array of font face [descriptor](https://developer.mozilla.org/docs/Web/CSS/@font-face#descriptors) key-value pairs that define the generated `@font-face` further.\n\nUsed in `next/font/local`\n\n* Optional\n\nExamples:\n\n* `declarations: [{ prop: 'ascent-override', value: '90%' }]`",
+    "preview": "An array of font face [descriptor](https://developer.mozilla.org/docs/Web/CSS/@font-face#descriptors) key-value pairs that define the generated `@font-face` further. Used in `next/font/local` * Optional Examples: * `declarations: [{ prop: 'ascent-override', value: '90%' }]`",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#declarations-declarations",
+    "position": 13
+  },
+  {
+    "title": "Font Module",
+    "section": "[Applying Styles](#applying-styles)",
+    "section_id": "applying-styles-applying-styles",
+    "heading_level": 2,
+    "content": "## [Applying Styles](#applying-styles)\n\nYou can apply the font styles in three ways:\n\n* [`className`](#classname)\n* [`style`](#style-1)\n* [CSS Variables](#css-variables)",
+    "preview": "You can apply the font styles in three ways: * [`className`](#classname) * [`style`](#style-1) * [CSS Variables](#css-variables)",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#applying-styles-applying-styles",
+    "position": 14
+  },
+  {
+    "title": "Font Module",
+    "section": "[`className`](#classname)",
+    "section_id": "classname-classname",
+    "heading_level": 3,
+    "content": "### [`className`](#classname)\n\nReturns a read-only CSS `className` for the loaded font to be passed to an HTML element.\n\n```\n<p className={inter.className}>Hello, Next.js!</p>\n```",
+    "preview": "Returns a read-only CSS `className` for the loaded font to be passed to an HTML element. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#classname-classname",
+    "position": 15
+  },
+  {
+    "title": "Font Module",
+    "section": "[`style`](#style-1)",
+    "section_id": "style-style-1",
+    "heading_level": 3,
+    "content": "### [`style`](#style-1)\n\nReturns a read-only CSS `style` object for the loaded font to be passed to an HTML element, including `style.fontFamily` to access the font family name and fallback fonts.\n\n```\n<p style={inter.style}>Hello World</p>\n```",
+    "preview": "Returns a read-only CSS `style` object for the loaded font to be passed to an HTML element, including `style.fontFamily` to access the font family name and fallback fonts. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#style-style-1",
+    "position": 16
+  },
+  {
+    "title": "Font Module",
+    "section": "[CSS Variables](#css-variables)",
+    "section_id": "css-variables-css-variables",
+    "heading_level": 3,
+    "content": "### [CSS Variables](#css-variables)\n\nIf you would like to set your styles in an external style sheet and specify additional options there, use the CSS variable method.\n\nIn addition to importing the font, also import the CSS file where the CSS variable is defined and set the variable option of the font loader object as follows:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Inter } from 'next/font/google'\nimport styles from '../styles/component.module.css'\n \nconst inter = Inter({\n  variable: '--font-inter',\n})\n```\n\nTo use the font, set the `className` of the parent container of the text you would like to style to the font loader's `variable` value and the `className` of the text to the `styles` property from the external CSS file.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n<main className={inter.variable}>\n  <p className={styles.text}>Hello World</p>\n</main>\n```\n\nDefine the `text` selector class in the `component.module.css` CSS file as follows:\n\nstyles/component.module.css\n\n```\n.text {\n  font-family: var(--font-inter);\n  font-weight: 200;\n  font-style: italic;\n}\n```\n\nIn the example above, the text `Hello World` is styled using the `Inter` font and the generated font fallback with `font-weight: 200` and `font-style: italic`.",
+    "preview": "If you would like to set your styles in an external style sheet and specify additional options there, use the CSS variable method. In addition to importing the font, also import the CSS file where the CSS variable is defined and set the variable option of the font loader object as follows: app/pag",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#css-variables-css-variables",
+    "position": 17
+  },
+  {
+    "title": "Font Module",
+    "section": "[Using a font definitions file](#using-a-font-definitions-file)",
+    "section_id": "using-a-font-definitions-file-using-a-font-definitions-file",
+    "heading_level": 2,
+    "content": "## [Using a font definitions file](#using-a-font-definitions-file)\n\nEvery time you call the `localFont` or Google font function, that font will be hosted as one instance in your application. Therefore, if you need to use the same font in multiple places, you should load it in one place and import the related font object where you need it. This is done using a font definitions file.\n\nFor example, create a `fonts.ts` file in a `styles` folder at the root of your app directory.\n\nThen, specify your font definitions as follows:\n\nstyles/fonts.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Inter, Lora, Source_Sans_3 } from 'next/font/google'\nimport localFont from 'next/font/local'\n \n// define your variable fonts\nconst inter = Inter()\nconst lora = Lora()\n// define 2 weights of a non-variable font\nconst sourceCodePro400 = Source_Sans_3({ weight: '400' })\nconst sourceCodePro700 = Source_Sans_3({ weight: '700' })\n// define a custom local font where GreatVibes-Regular.ttf is stored in the styles folder\nconst greatVibes = localFont({ src: './GreatVibes-Regular.ttf' })\n \nexport { inter, lora, sourceCodePro400, sourceCodePro700, greatVibes }\n```\n\nYou can now use these definitions in your code as follows:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { inter, lora, sourceCodePro700, greatVibes } from '../styles/fonts'\n \nexport default function Page() {\n  return (\n    <div>\n      <p className={inter.className}>Hello world using Inter font</p>\n      <p style={lora.style}>Hello world using Lora font</p>\n      <p className={sourceCodePro700.className}>\n        Hello world using Source_Sans_3 font with weight 700\n      </p>\n      <p className={greatVibes.className}>My title in Great Vibes font</p>\n    </div>\n  )\n}\n```\n\nTo make it easier to access the font definitions in your code, you can define a path alias in your `tsconfig.json` or `jsconfig.json` files as follows:\n\ntsconfig.json\n\n```\n{\n  \"compilerOptions\": {\n    \"paths\": {\n      \"@/fonts\": [\"./styles/fonts\"]\n    }\n  }\n}\n```\n\nYou can now import any font definition as follows:\n\napp/about/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { greatVibes, sourceCodePro400 } from '@/fonts'\n```",
+    "preview": "Every time you call the `localFont` or Google font function, that font will be hosted as one instance in your application. Therefore, if you need to use the same font in multiple places, you should load it in one place and import the related font object where you need it. This is done using a font d",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#using-a-font-definitions-file-using-a-font-definitions-file",
+    "position": 18
+  },
+  {
+    "title": "Font Module",
+    "section": "[Version Changes](#version-changes)",
+    "section_id": "version-changes-version-changes",
+    "heading_level": 2,
+    "content": "## [Version Changes](#version-changes)\n\n| Version | Changes |\n| --- | --- |\n| `v13.2.0` | `@next/font` renamed to `next/font`. Installation no longer required. |\n| `v13.0.0` | `@next/font` was added. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.2.0` | `@next/font` renamed to `next/font`. Installation no longer required. | | `v13.0.0` | `@next/font` was added. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/components/font#version-changes-version-changes",
+    "position": 19
+  }
+]

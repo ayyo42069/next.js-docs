@@ -1,0 +1,42 @@
+[
+  {
+    "title": "No Cache Detected",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No Cache Detected",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No Cache Detected",
+    "url": "https://nextjs.org/docs/messages/no-cache#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No Cache Detected",
+    "section": "No Cache Detected",
+    "section_id": "no-cache-detected",
+    "heading_level": 1,
+    "content": "# No Cache Detected",
+    "preview": "# No Cache Detected",
+    "url": "https://nextjs.org/docs/messages/no-cache#no-cache-detected",
+    "position": 1
+  },
+  {
+    "title": "No Cache Detected",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nA Next.js build was triggered in a continuous integration environment, but no cache was detected.\n\nThis results in slower builds and can hurt Next.js' persistent caching of client-side bundles across builds.",
+    "preview": "A Next.js build was triggered in a continuous integration environment, but no cache was detected. This results in slower builds and can hurt Next.js' persistent caching of client-side bundles across builds.",
+    "url": "https://nextjs.org/docs/messages/no-cache#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No Cache Detected",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\n> **Note**: If this is a new project, or being built for the first time in your CI, you can ignore this error.\n> However, you'll want to make sure it doesn't continue to happen and fix it if it does!\n\nFollow the instructions in [CI Build Caching](/docs/pages/building-your-application/deploying/ci-build-caching) to ensure your Next.js cache is persisted between builds.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "> **Note**: If this is a new project, or being built for the first time in your CI, you can ignore this error. > However, you'll want to make sure it doesn't continue to happen and fix it if it does! Follow the instructions in [CI Build Caching](/docs/pages/building-your-application/deploying/ci-bu",
+    "url": "https://nextjs.org/docs/messages/no-cache#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  }
+]

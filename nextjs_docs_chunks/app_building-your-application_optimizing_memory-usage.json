@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Memory Usage",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Optimizing](/docs/app/building-your-application/optimizing)Memory Usage",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Optimizing](/docs/app/building-your-application/optimizing)Memory Usage",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Memory Usage",
+    "section": "Memory Usage",
+    "section_id": "memory-usage",
+    "heading_level": 1,
+    "content": "# Memory Usage\n\nAs applications grow and become more feature rich, they can demand more resources when developing locally or creating production builds.\n\nLet's explore some strategies and techniques to optimize memory and address common memory issues in Next.js.",
+    "preview": "As applications grow and become more feature rich, they can demand more resources when developing locally or creating production builds. Let's explore some strategies and techniques to optimize memory and address common memory issues in Next.js.",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#memory-usage",
+    "position": 1
+  },
+  {
+    "title": "Memory Usage",
+    "section": "[Reduce number of dependencies](#reduce-number-of-dependencies)",
+    "section_id": "reduce-number-of-dependencies-reduce-number-of-dependencies",
+    "heading_level": 2,
+    "content": "## [Reduce number of dependencies](#reduce-number-of-dependencies)\n\nApplications with a large amount of dependencies will use more memory.\n\nThe [Bundle Analyzer](/docs/app/building-your-application/optimizing/package-bundling) can help you investigate large dependencies in your application that may be able to be removed to improve performance and memory usage.",
+    "preview": "Applications with a large amount of dependencies will use more memory. The [Bundle Analyzer](/docs/app/building-your-application/optimizing/package-bundling) can help you investigate large dependencies in your application that may be able to be removed to improve performance and memory usage.",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#reduce-number-of-dependencies-reduce-number-of-dependencies",
+    "position": 2
+  },
+  {
+    "title": "Memory Usage",
+    "section": "[Try `experimental.webpackMemoryOptimizations`](#try-experimentalwebpackmemoryoptimizations)",
+    "section_id": "try-experimental-webpackmemoryoptimizations-try-experimentalwebpackmemoryoptimizations",
+    "heading_level": 2,
+    "content": "## [Try `experimental.webpackMemoryOptimizations`](#try-experimentalwebpackmemoryoptimizations)\n\nStarting in `v15.0.0`, you can add `experimental.webpackMemoryOptimizations: true` to your `next.config.js` file to change behavior in Webpack that reduces max memory usage but may increase compilation times by a slight amount.\n\n> **Good to know**: This feature is currently experimental to test on more projects first, but it is considered to be low-risk.",
+    "preview": "Starting in `v15.0.0`, you can add `experimental.webpackMemoryOptimizations: true` to your `next.config.js` file to change behavior in Webpack that reduces max memory usage but may increase compilation times by a slight amount. > **Good to know**: This feature is currently experimental to test on m",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#try-experimental-webpackmemoryoptimizations-try-experimentalwebpackmemoryoptimizations",
+    "position": 3
+  },
+  {
+    "title": "Memory Usage",
+    "section": "[Run `next build` with `--experimental-debug-memory-usage`](#run-next-build-with---experimental-debug-memory-usage)",
+    "section_id": "run-next-build-with-experimental-debug-memory-usage-run-next-build-with-experimental-debug-memory-usage",
+    "heading_level": 2,
+    "content": "## [Run `next build` with `--experimental-debug-memory-usage`](#run-next-build-with---experimental-debug-memory-usage)\n\nStarting in `14.2.0`, you can run `next build --experimental-debug-memory-usage` to run the build in a mode where Next.js will print out information about memory usage continuously throughout the build, such as heap usage and garbage collection statistics. Heap snapshots will also be taken automatically when memory usage gets close to the configured limit.\n\n> **Good to know**: This feature is not compatible with the Webpack build worker option which is auto-enabled unless you have custom webpack config.",
+    "preview": "Starting in `14.2.0`, you can run `next build --experimental-debug-memory-usage` to run the build in a mode where Next.js will print out information about memory usage continuously throughout the build, such as heap usage and garbage collection statistics. Heap snapshots will also be taken automatic",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#run-next-build-with-experimental-debug-memory-usage-run-next-build-with-experimental-debug-memory-usage",
+    "position": 4
+  },
+  {
+    "title": "Memory Usage",
+    "section": "[Record a heap profile](#record-a-heap-profile)",
+    "section_id": "record-a-heap-profile-record-a-heap-profile",
+    "heading_level": 2,
+    "content": "## [Record a heap profile](#record-a-heap-profile)\n\nTo look for memory issues, you can record a heap profile from Node.js and load it in Chrome DevTools to identify potential sources of memory leaks.\n\nIn your terminal, pass the `--heap-prof` flag to Node.js when starting your Next.js build:\n\n```\nnode --heap-prof node_modules/next/dist/bin/next build\n```\n\nAt the end of the build, a `.heapprofile` file will be created by Node.js.\n\nIn Chrome DevTools, you can open the Memory tab and click on the \"Load Profile\" button to visualize the file.",
+    "preview": "To look for memory issues, you can record a heap profile from Node.js and load it in Chrome DevTools to identify potential sources of memory leaks. In your terminal, pass the `--heap-prof` flag to Node.js when starting your Next.js build: [Code Block] At the end of the build, a `.heapprofile` fil",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#record-a-heap-profile-record-a-heap-profile",
+    "position": 5
+  },
+  {
+    "title": "Memory Usage",
+    "section": "[Analyze a snapshot of the heap](#analyze-a-snapshot-of-the-heap)",
+    "section_id": "analyze-a-snapshot-of-the-heap-analyze-a-snapshot-of-the-heap",
+    "heading_level": 2,
+    "content": "## [Analyze a snapshot of the heap](#analyze-a-snapshot-of-the-heap)\n\nYou can use an inspector tool to analyze the memory usage of the application.\n\nWhen running the `next build` or `next dev` command, add `NODE_OPTIONS=--inspect` to the beginning of the command. This will expose the inspector agent on the default port.\nIf you wish to break before any user code starts, you can pass `--inspect-brk` instead. While the process is running, you can use a tool such as Chrome DevTools to connect to the debugging port to record and analyze a snapshot of the heap to see what memory is being retained.\n\nStarting in `14.2.0`, you can also run `next build` with the `--experimental-debug-memory-usage` flag to make it easier to take heap snapshots.\n\nWhile running in this mode, you can send a `SIGUSR2` signal to the process at any point, and the process will take a heap snapshot.\n\nThe heap snapshot will be saved to the project root of the Next.js application and can be loaded in any heap analyzer, such as Chrome DevTools, to see what memory is retained. This mode is not yet compatible with Webpack build workers.\n\nSee [how to record and analyze heap snapshots](https://developer.chrome.com/docs/devtools/memory-problems/heap-snapshots) for more information.",
+    "preview": "You can use an inspector tool to analyze the memory usage of the application. When running the `next build` or `next dev` command, add `NODE_OPTIONS=--inspect` to the beginning of the command. This will expose the inspector agent on the default port. If you wish to break before any user code starts",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#analyze-a-snapshot-of-the-heap-analyze-a-snapshot-of-the-heap",
+    "position": 6
+  },
+  {
+    "title": "Memory Usage",
+    "section": "[Webpack build worker](#webpack-build-worker)",
+    "section_id": "webpack-build-worker-webpack-build-worker",
+    "heading_level": 2,
+    "content": "## [Webpack build worker](#webpack-build-worker)\n\nThe Webpack build worker allows you to run Webpack compilations inside a separate Node.js worker which will decrease memory usage of your application during builds.\n\nThis option is enabled by default if your application does not have a custom Webpack configuration starting in `v14.1.0`.\n\nIf you are using an older version of Next.js or you have a custom Webpack configuration, you can enable this option by setting `experimental.webpackBuildWorker: true` inside your `next.config.js`.\n\n> **Good to know**: This feature may not be compatible with all custom Webpack plugins.",
+    "preview": "The Webpack build worker allows you to run Webpack compilations inside a separate Node.js worker which will decrease memory usage of your application during builds. This option is enabled by default if your application does not have a custom Webpack configuration starting in `v14.1.0`. If you are",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#webpack-build-worker-webpack-build-worker",
+    "position": 7
+  },
+  {
+    "title": "Memory Usage",
+    "section": "[Disable Webpack cache](#disable-webpack-cache)",
+    "section_id": "disable-webpack-cache-disable-webpack-cache",
+    "heading_level": 2,
+    "content": "## [Disable Webpack cache](#disable-webpack-cache)\n\nThe [Webpack cache](https://webpack.js.org/configuration/cache/) saves generated Webpack modules in memory and/or to disk to improve the speed of builds. This can\nhelp with performance, but it will also increase the memory usage of your application to store the cached data.\n\nYou can disable this behavior by adding a [custom Webpack configuration](/docs/app/api-reference/config/next-config-js/webpack) to your application:\n\nnext.config.mjs\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  webpack: (\n    config,\n    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }\n  ) => {\n    if (config.cache && !dev) {\n      config.cache = Object.freeze({\n        type: 'memory',\n      })\n    }\n    // Important: return the modified config\n    return config\n  },\n}\n \nexport default nextConfig\n```",
+    "preview": "The [Webpack cache](https://webpack.js.org/configuration/cache/) saves generated Webpack modules in memory and/or to disk to improve the speed of builds. This can help with performance, but it will also increase the memory usage of your application to store the cached data. You can disable this beh",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#disable-webpack-cache-disable-webpack-cache",
+    "position": 8
+  },
+  {
+    "title": "Memory Usage",
+    "section": "[Disable static analysis](#disable-static-analysis)",
+    "section_id": "disable-static-analysis-disable-static-analysis",
+    "heading_level": 2,
+    "content": "## [Disable static analysis](#disable-static-analysis)\n\nTypechecking and linting may require a lot of memory, especially in large projects.\nHowever, most projects have a dedicated CI runner that already handles these tasks.\nWhen the build produces out-of-memory issues during the \"Linting and checking validity of types\" step, you can disable these task during builds:\n\nnext.config.mjs\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  eslint: {\n    // Warning: This allows production builds to successfully complete even if\n    // your project has ESLint errors.\n    ignoreDuringBuilds: true,\n  },\n  typescript: {\n    // !! WARN !!\n    // Dangerously allow production builds to successfully complete even if\n    // your project has type errors.\n    // !! WARN !!\n    ignoreBuildErrors: true,\n  },\n}\n \nexport default nextConfig\n```\n\n* [Ignoring TypeScript Errors](/docs/app/api-reference/config/typescript#disabling-typescript-errors-in-production)\n* [ESLint in Next.js config](/docs/pages/api-reference/config/next-config-js/eslint)\n\nKeep in mind that this may produce faulty deploys due to type errors or linting issues.\nWe strongly recommend only promoting builds to production after static analysis has completed.\nIf you deploy to Vercel, you can check out the [guide for staging deployments](https://vercel.com/docs/deployments/managing-deployments#staging-and-promoting-a-production-deployment) to learn how to promote builds to production after custom tasks have succeeded.",
+    "preview": "Typechecking and linting may require a lot of memory, especially in large projects. However, most projects have a dedicated CI runner that already handles these tasks. When the build produces out-of-memory issues during the \"Linting and checking validity of types\" step, you can disable these task du",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#disable-static-analysis-disable-static-analysis",
+    "position": 9
+  },
+  {
+    "title": "Memory Usage",
+    "section": "[Disable source maps](#disable-source-maps)",
+    "section_id": "disable-source-maps-disable-source-maps",
+    "heading_level": 2,
+    "content": "## [Disable source maps](#disable-source-maps)\n\nGenerating source maps consumes extra memory during the build process.\n\nYou can disable source map generation by adding `productionBrowserSourceMaps: false` and `experimental.serverSourceMaps: false` to your Next.js configuration.\n\n> **Good to know**: Some plugins may turn on source maps and may require custom configuration to disable.",
+    "preview": "Generating source maps consumes extra memory during the build process. You can disable source map generation by adding `productionBrowserSourceMaps: false` and `experimental.serverSourceMaps: false` to your Next.js configuration. > **Good to know**: Some plugins may turn on source maps and may req",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#disable-source-maps-disable-source-maps",
+    "position": 10
+  },
+  {
+    "title": "Memory Usage",
+    "section": "[Edge memory issues](#edge-memory-issues)",
+    "section_id": "edge-memory-issues-edge-memory-issues",
+    "heading_level": 2,
+    "content": "## [Edge memory issues](#edge-memory-issues)\n\nNext.js `v14.1.3` fixed a memory issue when using the Edge runtime. Please update to this version (or later) to see if it addresses your issue.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js `v14.1.3` fixed a memory issue when using the Edge runtime. Please update to this version (or later) to see if it addresses your issue. Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/memory-usage#edge-memory-issues-edge-memory-issues",
+    "position": 11
+  }
+]

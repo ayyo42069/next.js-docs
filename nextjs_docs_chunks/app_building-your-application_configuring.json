@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Configuring",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Building Your Application](/docs/app/building-your-application)Configuring",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Building Your Application](/docs/app/building-your-application)Configuring",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Configuring",
+    "section": "Configuring",
+    "section_id": "configuring",
+    "heading_level": 1,
+    "content": "# Configuring\n\nNext.js allows you to customize your project to meet specific requirements. This includes integrations with TypeScript, ESlint, and more, as well as internal configuration options such as Absolute Imports and Environment Variables.\n\n[### Environment Variables\n\nLearn to add and access environment variables in your Next.js application.](/docs/app/building-your-application/configuring/environment-variables)[### MDX\n\nLearn how to configure MDX and use it in your Next.js apps.](/docs/app/building-your-application/configuring/mdx)[### src Directory\n\nSave pages under the `src` directory as an alternative to the root `pages` directory.](/docs/app/building-your-application/configuring/src-directory)[### Custom Server\n\nStart a Next.js app programmatically using a custom server.](/docs/app/building-your-application/configuring/custom-server)[### Draft Mode\n\nNext.js has draft mode to toggle between static and dynamic pages. You can learn how it works with App Router here.](/docs/app/building-your-application/configuring/draft-mode)[### Content Security Policy\n\nLearn how to set a Content Security Policy (CSP) for your Next.js application.](/docs/app/building-your-application/configuring/content-security-policy)[### Debugging\n\nLearn how to debug your Next.js application with VS Code, Chrome DevTools, or Firefox DevTools.](/docs/app/building-your-application/configuring/debugging)[### Progressive Web Applications (PWA)\n\nLearn how to build a Progressive Web Application (PWA) with Next.js.](/docs/app/building-your-application/configuring/progressive-web-apps)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js allows you to customize your project to meet specific requirements. This includes integrations with TypeScript, ESlint, and more, as well as internal configuration options such as Absolute Imports and Environment Variables. [### Environment Variables Learn to add and access environment var",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring#configuring",
+    "position": 1
+  }
+]

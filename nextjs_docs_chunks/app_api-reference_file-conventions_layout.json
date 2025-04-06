@@ -1,0 +1,122 @@
+[
+  {
+    "title": "layout.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)layout.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)layout.js",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "layout.js",
+    "section": "layout.js",
+    "section_id": "layout-js",
+    "heading_level": 1,
+    "content": "# layout.js\n\nThe `layout` file is used to define a layout in your Next.js application.\n\napp/dashboard/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function DashboardLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return <section>{children}</section>\n}\n```\n\nA **root layout** is the top-most layout in the root `app` directory. It is used to define the `<html>` and `<body>` tags and other globally shared UI.\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body>{children}</body>\n    </html>\n  )\n}\n```",
+    "preview": "The `layout` file is used to define a layout in your Next.js application. app/dashboard/layout.tsx TypeScript JavaScriptTypeScript [Code Block] A **root layout** is the top-most layout in the root `app` directory. It is used to define the `<html>` and `<body>` tags and other globally shared UI.",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#layout-js",
+    "position": 1
+  },
+  {
+    "title": "layout.js",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "layout.js",
+    "section": "[Props](#props)",
+    "section_id": "props-props",
+    "heading_level": 3,
+    "content": "### [Props](#props)\n\n#### [`children` (required)](#children-required)\n\nLayout components should accept and use a `children` prop. During rendering, `children` will be populated with the route segments the layout is wrapping. These will primarily be the component of a child [Layout](/docs/app/api-reference/file-conventions/page) (if it exists) or [Page](/docs/app/api-reference/file-conventions/page), but could also be other special files like [Loading](/docs/app/building-your-application/routing/loading-ui-and-streaming) or [Error](/docs/app/building-your-application/routing/error-handling) when applicable.\n\n#### [`params` (optional)](#params-optional)\n\nA promise that resolves to an object containing the [dynamic route parameters](/docs/app/building-your-application/routing/dynamic-routes) object from the root segment down to that layout.\n\napp/dashboard/[team]/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Layout({\n  params,\n}: {\n  params: Promise<{ team: string }>\n}) {\n  const { team } = await params\n}\n```\n\n| Example Route | URL | `params` |\n| --- | --- | --- |\n| `app/dashboard/[team]/layout.js` | `/dashboard/1` | `Promise<{ team: '1' }>` |\n| `app/shop/[tag]/[item]/layout.js` | `/shop/1/2` | `Promise<{ tag: '1', item: '2' }>` |\n| `app/blog/[...slug]/layout.js` | `/blog/1/2` | `Promise<{ slug: ['1', '2'] }>` |\n\n* Since the `params` prop is a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function to access the values.\n  + In version 14 and earlier, `params` was a synchronous prop. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.",
+    "preview": "#### [`children` (required)](#children-required) Layout components should accept and use a `children` prop. During rendering, `children` will be populated with the route segments the layout is wrapping. These will primarily be the component of a child [Layout](/docs/app/api-reference/file-conventio",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#props-props",
+    "position": 3
+  },
+  {
+    "title": "layout.js",
+    "section": "[Root Layouts](#root-layouts)",
+    "section_id": "root-layouts-root-layouts",
+    "heading_level": 3,
+    "content": "### [Root Layouts](#root-layouts)\n\nThe `app` directory **must** include a root `app/layout.js`.\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html>\n      <body>{children}</body>\n    </html>\n  )\n}\n```\n\n* The root layout **must** define `<html>` and `<body>` tags.\n  + You should **not** manually add `<head>` tags such as `<title>` and `<meta>` to root layouts. Instead, you should use the [Metadata API](/docs/app/building-your-application/optimizing/metadata) which automatically handles advanced requirements such as streaming and de-duplicating `<head>` elements.\n* You can use [route groups](/docs/app/building-your-application/routing/route-groups) to create multiple root layouts.\n  + Navigating **across multiple root layouts** will cause a **full page load** (as opposed to a client-side navigation). For example, navigating from `/cart` that uses `app/(shop)/layout.js` to `/blog` that uses `app/(marketing)/layout.js` will cause a full page load. This **only** applies to multiple root layouts.",
+    "preview": "The `app` directory **must** include a root `app/layout.js`. app/layout.tsx TypeScript JavaScriptTypeScript [Code Block] * The root layout **must** define `<html>` and `<body>` tags. + You should **not** manually add `<head>` tags such as `<title>` and `<meta>` to root layouts. Instead, you s",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layouts-root-layouts",
+    "position": 4
+  },
+  {
+    "title": "layout.js",
+    "section": "[Caveats](#caveats)",
+    "section_id": "caveats-caveats",
+    "heading_level": 2,
+    "content": "## [Caveats](#caveats)",
+    "preview": "## [Caveats](#caveats)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#caveats-caveats",
+    "position": 5
+  },
+  {
+    "title": "layout.js",
+    "section": "[Layouts do not receive `searchParams`](#layouts-do-not-receive-searchparams)",
+    "section_id": "layouts-do-not-receive-searchparams-layouts-do-not-receive-searchparams",
+    "heading_level": 3,
+    "content": "### [Layouts do not receive `searchParams`](#layouts-do-not-receive-searchparams)\n\nUnlike [Pages](/docs/app/api-reference/file-conventions/page), Layout components **do not** receive the `searchParams` prop. This is because a shared layout is [not re-rendered during navigation](/docs/app/building-your-application/routing/linking-and-navigating#4-partial-rendering) which could lead to stale `searchParams` between navigations.\n\nWhen using client-side navigation, Next.js automatically only renders the part of the page below the common layout between two routes.\n\nFor example, in the following directory structure, `dashboard/layout.tsx` is the common layout for both `/dashboard/settings` and `/dashboard/analytics`:\n\n[Image: File structure showing a dashboard folder nesting a layout.tsx file, and settings and analytics folders with their own pages][Image: File structure showing a dashboard folder nesting a layout.tsx file, and settings and analytics folders with their own pages]\n\nWhen navigating from `/dashboard/settings` to `/dashboard/analytics`, `page.tsx` in `/dashboard/analytics` will rerender on the server, while `dashboard/layout.tsx` will **not** rerender because it's a common UI shared between the two routes.\n\nThis performance optimization allows navigation between pages that share a layout to be quicker as only the data fetching and rendering for the page has to run, instead of the entire route that could include shared layouts that fetch their own data.\n\nBecause `dashboard/layout.tsx` doesn't re-render, the `searchParams` prop in the layout Server Component might become **stale** after navigation.\n\nInstead, use the Page [`searchParams`](/docs/app/api-reference/file-conventions/page#searchparams-optional) prop or the [`useSearchParams`](/docs/app/api-reference/functions/use-search-params) hook in a Client Component within the layout, which is rerendered on the client with the latest `searchParams`.",
+    "preview": "Unlike [Pages](/docs/app/api-reference/file-conventions/page), Layout components **do not** receive the `searchParams` prop. This is because a shared layout is [not re-rendered during navigation](/docs/app/building-your-application/routing/linking-and-navigating#4-partial-rendering) which could lead",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#layouts-do-not-receive-searchparams-layouts-do-not-receive-searchparams",
+    "position": 6
+  },
+  {
+    "title": "layout.js",
+    "section": "[Layouts cannot access `pathname`](#layouts-cannot-access-pathname)",
+    "section_id": "layouts-cannot-access-pathname-layouts-cannot-access-pathname",
+    "heading_level": 3,
+    "content": "### [Layouts cannot access `pathname`](#layouts-cannot-access-pathname)\n\nLayouts cannot access `pathname`. This is because layouts are Server Components by default, and [don't rerender during client-side navigation](/docs/app/building-your-application/routing/linking-and-navigating#4-partial-rendering), which could lead to `pathname` becoming stale between navigations. To prevent staleness, Next.js would need to refetch all segments of a route, losing the benefits of caching and increasing the [RSC payload](/docs/app/building-your-application/rendering/server-components#what-is-the-react-server-component-payload-rsc) size on navigation.\n\nInstead, you can extract the logic that depends on pathname into a Client Component and import it into your layouts. Since Client Components rerender (but are not refetched) during navigation, you can use Next.js hooks such as [`usePathname`](https://nextjs.org/docs/app/api-reference/functions/use-pathname) to access the current pathname and prevent staleness.\n\napp/dashboard/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { ClientComponent } from '@/app/ui/ClientComponent'\n \nexport default function Layout({ children }: { children: React.ReactNode }) {\n  return (\n    <>\n      <ClientComponent />\n      {/* Other Layout UI */}\n      <main>{children}</main>\n    </>\n  )\n}\n```\n\nCommon `pathname` patterns can also be implemented with [`params`](#params-optional) prop.\n\nSee the [examples](/docs/app/building-your-application/routing/layouts-and-templates#examples) section for more information.",
+    "preview": "Layouts cannot access `pathname`. This is because layouts are Server Components by default, and [don't rerender during client-side navigation](/docs/app/building-your-application/routing/linking-and-navigating#4-partial-rendering), which could lead to `pathname` becoming stale between navigations. T",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#layouts-cannot-access-pathname-layouts-cannot-access-pathname",
+    "position": 7
+  },
+  {
+    "title": "layout.js",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#examples-examples",
+    "position": 8
+  },
+  {
+    "title": "layout.js",
+    "section": "[Displaying content based on `params`](#displaying-content-based-on-params)",
+    "section_id": "displaying-content-based-on-params-displaying-content-based-on-params",
+    "heading_level": 3,
+    "content": "### [Displaying content based on `params`](#displaying-content-based-on-params)\n\nUsing [dynamic route segments](/docs/app/building-your-application/routing/dynamic-routes), you can display or fetch specific content based on the `params` prop.\n\napp/dashboard/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function DashboardLayout({\n  children,\n  params,\n}: {\n  children: React.ReactNode\n  params: Promise<{ team: string }>\n}) {\n  const { team } = await params\n \n  return (\n    <section>\n      <header>\n        <h1>Welcome to {team}'s Dashboard</h1>\n      </header>\n      <main>{children}</main>\n    </section>\n  )\n}\n```",
+    "preview": "Using [dynamic route segments](/docs/app/building-your-application/routing/dynamic-routes), you can display or fetch specific content based on the `params` prop. app/dashboard/layout.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#displaying-content-based-on-params-displaying-content-based-on-params",
+    "position": 9
+  },
+  {
+    "title": "layout.js",
+    "section": "[Reading `params` in Client Components](#reading-params-in-client-components)",
+    "section_id": "reading-params-in-client-components-reading-params-in-client-components",
+    "heading_level": 3,
+    "content": "### [Reading `params` in Client Components](#reading-params-in-client-components)\n\nTo use `params` in a Client Component (which cannot be `async`), you can use React's [`use`](https://react.dev/reference/react/use) function to read the promise:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { use } from 'react'\n \nexport default function Page({\n  params,\n}: {\n  params: Promise<{ slug: string }>\n}) {\n  const { slug } = use(params)\n}\n```",
+    "preview": "To use `params` in a Client Component (which cannot be `async`), you can use React's [`use`](https://react.dev/reference/react/use) function to read the promise: app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#reading-params-in-client-components-reading-params-in-client-components",
+    "position": 10
+  },
+  {
+    "title": "layout.js",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0-RC` | `params` is now a promise. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available. |\n| `v13.0.0` | `layout` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0-RC` | `params` is now a promise. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available. | | `v13.0.0` | `layout` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#version-history-version-history",
+    "position": 11
+  }
+]

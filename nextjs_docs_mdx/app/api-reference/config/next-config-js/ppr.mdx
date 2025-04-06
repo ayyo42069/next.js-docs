@@ -1,0 +1,98 @@
+---
+title: "ppr"
+description: "Menu..."
+url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/ppr"
+slug: "/docs/app/api-reference/config/next-config-js/ppr"
+date_crawled: "2025-04-06T12:10:37.012744+00:00"
+---
+
+**Path**: /docs/app/api-reference/config/next-config-js/ppr
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)ppr
+
+# ppr
+
+This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
+
+Partial Prerendering (PPR) enables you to combine static and dynamic components together in the same route. Learn more about [PPR](/docs/app/building-your-application/rendering/partial-prerendering).
+
+## [Using Partial Prerendering](#using-partial-prerendering)
+
+### [Incremental Adoption (Version 15)](#incremental-adoption-version-15)
+
+In Next.js 15, you can incrementally adopt Partial Prerendering in [layouts](/docs/app/building-your-application/routing/layouts-and-templates) and [pages](/docs/app/api-reference/file-conventions/page) by setting the [`ppr`](/docs/app/api-reference/config/next-config-js/ppr) option in `next.config.js` to `incremental`, and exporting the `experimental_ppr` [route config option](/docs/app/api-reference/file-conventions/route-segment-config) at the top of the file:
+
+next.config.ts
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+import type { NextConfig } from 'next'
+ 
+const nextConfig: NextConfig = {
+  experimental: {
+    ppr: 'incremental',
+  },
+}
+ 
+export default nextConfig
+```
+
+app/page.tsx
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+import { Suspense } from "react"
+import { StaticComponent, DynamicComponent, Fallback } from "@/app/ui"
+ 
+export const experimental_ppr = true
+ 
+export default function Page() {
+  return {
+     <>
+      <StaticComponent />
+      <Suspense fallback={<Fallback />}>
+        <DynamicComponent />
+      </Suspense>
+     </>
+  };
+}
+```
+
+> **Good to know**:
+>
+> * Routes that don't have `experimental_ppr` will default to `false` and will not be prerendered using PPR. You need to explicitly opt-in to PPR for each route.
+> * `experimental_ppr` will apply to all children of the route segment, including nested layouts and pages. You don't have to add it to every file, only the top segment of a route.
+> * To disable PPR for children segments, you can set `experimental_ppr` to `false` in the child segment.
+
+| Version | Changes |
+| --- | --- |
+| `v15.0.0` | experimental `incremental` value introduced |
+| `v14.0.0` | experimental `ppr` introduced |
+
+## Learn more about Partial Prerendering
+
+[### Partial Prerendering
+
+Learn how to combine the benefits of static and dynamic rendering with Partial Prerendering.](/docs/app/building-your-application/rendering/partial-prerendering)
+
+Was this helpful?
+
+supported.
+
+Send

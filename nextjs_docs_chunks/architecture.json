@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Architecture",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Introduction](/docs)Architecture",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Introduction](/docs)Architecture",
+    "url": "https://nextjs.org/docs/architecture#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Architecture",
+    "section": "Architecture",
+    "section_id": "architecture",
+    "heading_level": 1,
+    "content": "# Architecture\n\nLearn about the Next.js architecture and how it works under the hood.\n\n[### Accessibility\n\nThe built-in accessibility features of Next.js.](/docs/architecture/accessibility)[### Fast Refresh\n\nFast Refresh is a hot module reloading experience that gives you instantaneous feedback on edits made to your React components.](/docs/architecture/fast-refresh)[### Next.js Compiler\n\nNext.js Compiler, written in Rust, which transforms and minifies your Next.js application.](/docs/architecture/nextjs-compiler)[### Supported Browsers\n\nBrowser support and which JavaScript features are supported by Next.js.](/docs/architecture/supported-browsers)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn about the Next.js architecture and how it works under the hood. [### Accessibility The built-in accessibility features of Next.js.](/docs/architecture/accessibility)[### Fast Refresh Fast Refresh is a hot module reloading experience that gives you instantaneous feedback on edits made to you",
+    "url": "https://nextjs.org/docs/architecture#architecture",
+    "position": 1
+  }
+]

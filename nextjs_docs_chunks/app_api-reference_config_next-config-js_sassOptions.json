@@ -1,0 +1,22 @@
+[
+  {
+    "title": "sassOptions",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)sassOptions",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)sassOptions",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/sassOptions#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "sassOptions",
+    "section": "sassOptions",
+    "section_id": "sassoptions",
+    "heading_level": 1,
+    "content": "# sassOptions\n\n`sassOptions` allow you to configure the Sass compiler.\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst sassOptions = {\n  additionalData: `\n    $var: red;\n  `,\n}\n \nconst nextConfig: NextConfig = {\n  sassOptions: {\n    ...sassOptions,\n    implementation: 'sass-embedded',\n  },\n}\n \nexport default nextConfig\n```\n\n> **Good to know:** `sassOptions` are not typed outside of `implementation` because Next.js does not maintain the other possible properties.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "`sassOptions` allow you to configure the Sass compiler. next.config.ts TypeScript JavaScriptTypeScript ``` import type { NextConfig } from 'next' const sassOptions = { additionalData: ` $var: red; `, } const nextConfig: NextConfig = { sassOptions: { ...sassOptions, implemen",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/sassOptions#sassoptions",
+    "position": 1
+  }
+]

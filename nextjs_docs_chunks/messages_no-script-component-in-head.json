@@ -1,0 +1,52 @@
+[
+  {
+    "title": "No Script Component in Head",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No Script Component in Head",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No Script Component in Head",
+    "url": "https://nextjs.org/docs/messages/no-script-component-in-head#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No Script Component in Head",
+    "section": "No Script Component in Head",
+    "section_id": "no-script-component-in-head",
+    "heading_level": 1,
+    "content": "# No Script Component in Head\n\n> Prevent usage of `next/script` in `next/head` component.",
+    "preview": "> Prevent usage of `next/script` in `next/head` component.",
+    "url": "https://nextjs.org/docs/messages/no-script-component-in-head#no-script-component-in-head",
+    "position": 1
+  },
+  {
+    "title": "No Script Component in Head",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nThe `next/script` component should not be used in a `next/head` component.",
+    "preview": "The `next/script` component should not be used in a `next/head` component.",
+    "url": "https://nextjs.org/docs/messages/no-script-component-in-head#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No Script Component in Head",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nMove the `<Script />` component outside of `<Head>` instead.\n\n**Before**\n\npages/index.js\n\n```\nimport Script from 'next/script'\nimport Head from 'next/head'\n \nexport default function Index() {\n  return (\n    <Head>\n      <title>Next.js</title>\n      <Script src=\"/my-script.js\" />\n    </Head>\n  )\n}\n```\n\n**After**\n\npages/index.js\n\n```\nimport Script from 'next/script'\nimport Head from 'next/head'\n \nexport default function Index() {\n  return (\n    <>\n      <Head>\n        <title>Next.js</title>\n      </Head>\n      <Script src=\"/my-script.js\" />\n    </>\n  )\n}\n```",
+    "preview": "Move the `<Script />` component outside of `<Head>` instead. **Before** pages/index.js [Code Block] **After** pages/index.js [Code Block]",
+    "url": "https://nextjs.org/docs/messages/no-script-component-in-head#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No Script Component in Head",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [next/head](/docs/pages/api-reference/components/head)\n* [next/script](/docs/pages/building-your-application/optimizing/scripts)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [next/head](/docs/pages/api-reference/components/head) * [next/script](/docs/pages/building-your-application/optimizing/scripts) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/no-script-component-in-head#useful-links-useful-links",
+    "position": 4
+  }
+]

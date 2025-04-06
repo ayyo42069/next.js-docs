@@ -1,0 +1,22 @@
+[
+  {
+    "title": "appDir",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)appDir",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)appDir",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/appDir#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "appDir",
+    "section": "appDir",
+    "section_id": "appdir",
+    "heading_level": 1,
+    "content": "# appDir\n\n> **Good to know**: This option is **no longer** needed as of Next.js 13.4. The App Router is now stable.\n\nThe App Router ([`app` directory](/docs/app/building-your-application/routing)) enables support for [layouts](/docs/app/building-your-application/routing/layouts-and-templates), [Server Components](/docs/app/building-your-application/rendering/server-components), [streaming](/docs/app/building-your-application/routing/loading-ui-and-streaming), and [colocated data fetching](/docs/app/building-your-application/data-fetching).\n\nUsing the `app` directory will automatically enable [React Strict Mode](https://react.dev/reference/react/StrictMode). Learn how to [incrementally adopt `app`](/docs/app/building-your-application/upgrading/app-router-migration#migrating-from-pages-to-app).\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "> **Good to know**: This option is **no longer** needed as of Next.js 13.4. The App Router is now stable. The App Router ([`app` directory](/docs/app/building-your-application/routing)) enables support for [layouts](/docs/app/building-your-application/routing/layouts-and-templates), [Server Compone",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/appDir#appdir",
+    "position": 1
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Setting up Playwright with Next.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Testing](/docs/pages/building-your-application/testing)Playwright",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Testing](/docs/pages/building-your-application/testing)Playwright",
+    "url": "https://nextjs.org/docs/pages/building-your-application/testing/playwright#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Setting up Playwright with Next.js",
+    "section": "Setting up Playwright with Next.js",
+    "section_id": "setting-up-playwright-with-next-js",
+    "heading_level": 1,
+    "content": "# Setting up Playwright with Next.js\n\nPlaywright is a testing framework that lets you automate Chromium, Firefox, and WebKit with a single API. You can use it to write **End-to-End (E2E)** testing. This guide will show you how to set up Playwright with Next.js and write your first tests.",
+    "preview": "Playwright is a testing framework that lets you automate Chromium, Firefox, and WebKit with a single API. You can use it to write **End-to-End (E2E)** testing. This guide will show you how to set up Playwright with Next.js and write your first tests.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/testing/playwright#setting-up-playwright-with-next-js",
+    "position": 1
+  },
+  {
+    "title": "Setting up Playwright with Next.js",
+    "section": "[Quickstart](#quickstart)",
+    "section_id": "quickstart-quickstart",
+    "heading_level": 2,
+    "content": "## [Quickstart](#quickstart)\n\nThe fastest way to get started is to use `create-next-app` with the [with-playwright example](https://github.com/vercel/next.js/tree/canary/examples/with-playwright). This will create a Next.js project complete with Playwright configured.\n\nTerminal\n\n```\nnpx create-next-app@latest --example with-playwright with-playwright-app\n```",
+    "preview": "The fastest way to get started is to use `create-next-app` with the [with-playwright example](https://github.com/vercel/next.js/tree/canary/examples/with-playwright). This will create a Next.js project complete with Playwright configured. Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/testing/playwright#quickstart-quickstart",
+    "position": 2
+  },
+  {
+    "title": "Setting up Playwright with Next.js",
+    "section": "[Manual setup](#manual-setup)",
+    "section_id": "manual-setup-manual-setup",
+    "heading_level": 2,
+    "content": "## [Manual setup](#manual-setup)\n\nTo install Playwright, run the following command:\n\nTerminal\n\n```\nnpm init playwright",
+    "preview": "To install Playwright, run the following command: Terminal ``` npm init playwright",
+    "url": "https://nextjs.org/docs/pages/building-your-application/testing/playwright#manual-setup-manual-setup",
+    "position": 3
+  },
+  {
+    "title": "Setting up Playwright with Next.js",
+    "section": "or",
+    "section_id": "or",
+    "heading_level": 1,
+    "content": "# or\nyarn create playwright",
+    "preview": "yarn create playwright",
+    "url": "https://nextjs.org/docs/pages/building-your-application/testing/playwright#or",
+    "position": 4
+  },
+  {
+    "title": "Setting up Playwright with Next.js",
+    "section": "or",
+    "section_id": "or",
+    "heading_level": 1,
+    "content": "# or\npnpm create playwright\n```\n\nThis will take you through a series of prompts to setup and configure Playwright for your project, including adding a `playwright.config.ts` file. Please refer to the [Playwright installation guide](https://playwright.dev/docs/intro#installation) for the step-by-step guide.",
+    "preview": "pnpm create playwright ``` This will take you through a series of prompts to setup and configure Playwright for your project, including adding a `playwright.config.ts` file. Please refer to the [Playwright installation guide](https://playwright.dev/docs/intro#installation) for the step-by-step guid",
+    "url": "https://nextjs.org/docs/pages/building-your-application/testing/playwright#or",
+    "position": 5
+  },
+  {
+    "title": "Setting up Playwright with Next.js",
+    "section": "[Creating your first Playwright E2E test](#creating-your-first-playwright-e2e-test)",
+    "section_id": "creating-your-first-playwright-e2e-test-creating-your-first-playwright-e2e-test",
+    "heading_level": 2,
+    "content": "## [Creating your first Playwright E2E test](#creating-your-first-playwright-e2e-test)\n\nCreate two new Next.js pages:\n\npages/index.ts\n\n```\nimport Link from 'next/link'\n \nexport default function Home() {\n  return (\n    <div>\n      <h1>Home</h1>\n      <Link href=\"/about\">About</Link>\n    </div>\n  )\n}\n```\n\npages/about.ts\n\n```\nimport Link from 'next/link'\n \nexport default function About() {\n  return (\n    <div>\n      <h1>About</h1>\n      <Link href=\"/\">Home</Link>\n    </div>\n  )\n}\n```\n\nThen, add a test to verify that your navigation is working correctly:\n\ntests/example.spec.ts\n\n```\nimport { test, expect } from '@playwright/test'\n \ntest('should navigate to the about page', async ({ page }) => {\n  // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)\n  await page.goto('http://localhost:3000/')\n  // Find an element with the text 'About' and click on it\n  await page.click('text=About')\n  // The new URL should be \"/about\" (baseURL is used there)\n  await expect(page).toHaveURL('http://localhost:3000/about')\n  // The new page should contain an h1 with \"About\"\n  await expect(page.locator('h1')).toContainText('About')\n})\n```\n\n> **Good to know**: You can use `page.goto(\"/\")` instead of `page.goto(\"http://localhost:3000/\")`, if you add [`\"baseURL\": \"http://localhost:3000\"`](https://playwright.dev/docs/api/class-testoptions#test-options-base-url) to the `playwright.config.ts` [configuration file](https://playwright.dev/docs/test-configuration).",
+    "preview": "Create two new Next.js pages: pages/index.ts [Code Block] pages/about.ts [Code Block] Then, add a test to verify that your navigation is working correctly: tests/example.spec.ts [Code Block] > **Good to know**: You can use `page.goto(\"/\")` instead of `page.goto(\"http://localhost:3000/\")`, if",
+    "url": "https://nextjs.org/docs/pages/building-your-application/testing/playwright#creating-your-first-playwright-e2e-test-creating-your-first-playwright-e2e-test",
+    "position": 6
+  },
+  {
+    "title": "Setting up Playwright with Next.js",
+    "section": "[Running your Playwright tests](#running-your-playwright-tests)",
+    "section_id": "running-your-playwright-tests-running-your-playwright-tests",
+    "heading_level": 3,
+    "content": "### [Running your Playwright tests](#running-your-playwright-tests)\n\nPlaywright will simulate a user navigating your application using three browsers: Chromium, Firefox and Webkit, this requires your Next.js server to be running. We recommend running your tests against your production code to more closely resemble how your application will behave.\n\nRun `npm run build` and `npm run start`, then run `npx playwright test` in another terminal window to run the Playwright tests.\n\n> **Good to know**: Alternatively, you can use the [`webServer`](https://playwright.dev/docs/test-webserver/) feature to let Playwright start the development server and wait until it's fully available.",
+    "preview": "Playwright will simulate a user navigating your application using three browsers: Chromium, Firefox and Webkit, this requires your Next.js server to be running. We recommend running your tests against your production code to more closely resemble how your application will behave. Run `npm run build",
+    "url": "https://nextjs.org/docs/pages/building-your-application/testing/playwright#running-your-playwright-tests-running-your-playwright-tests",
+    "position": 7
+  },
+  {
+    "title": "Setting up Playwright with Next.js",
+    "section": "[Running Playwright on Continuous Integration (CI)](#running-playwright-on-continuous-integration-ci)",
+    "section_id": "running-playwright-on-continuous-integration-ci-running-playwright-on-continuous-integration-ci",
+    "heading_level": 3,
+    "content": "### [Running Playwright on Continuous Integration (CI)](#running-playwright-on-continuous-integration-ci)\n\nPlaywright will by default run your tests in the [headless mode](https://playwright.dev/docs/ci#running-headed). To install all the Playwright dependencies, run `npx playwright install-deps`.\n\nYou can learn more about Playwright and Continuous Integration from these resources:\n\n* [Next.js with Playwright example](https://github.com/vercel/next.js/tree/canary/examples/with-playwright)\n* [Playwright on your CI provider](https://playwright.dev/docs/ci)\n* [Playwright Discord](https://discord.com/invite/playwright-807756831384403968)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Playwright will by default run your tests in the [headless mode](https://playwright.dev/docs/ci#running-headed). To install all the Playwright dependencies, run `npx playwright install-deps`. You can learn more about Playwright and Continuous Integration from these resources: * [Next.js with Playw",
+    "url": "https://nextjs.org/docs/pages/building-your-application/testing/playwright#running-playwright-on-continuous-integration-ci-running-playwright-on-continuous-integration-ci",
+    "position": 8
+  }
+]

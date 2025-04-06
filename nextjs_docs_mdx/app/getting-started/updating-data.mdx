@@ -1,0 +1,278 @@
+---
+title: "How to update data"
+description: "Menu..."
+url: "https://nextjs.org/docs/app/getting-started/updating-data"
+slug: "/docs/app/getting-started/updating-data"
+date_crawled: "2025-04-06T12:12:15.903141+00:00"
+---
+
+**Path**: /docs/app/getting-started/updating-data
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[App Router](/docs/app)[Getting Started](/docs/app/getting-started)Updating Data
+
+# How to update data
+
+You can update data in Next.js using React's [Server Functions](https://react.dev/reference/rsc/server-functions). This page will go through how you can [create](#creating-server-functions) and [invoke](#invoking-server-functions) Server Functions.
+
+## [Creating Server Functions](#creating-server-functions)
+
+A Server Function can be defined by using the [`use server`](https://react.dev/reference/rsc/use-server) directive. You can place the directive at the top of an **asynchronous** function to mark the function as a Server Function, or at the top of a separate file to mark all exports of that file. We recommend using a separate file in most instances.
+
+app/lib/actions.ts
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+'use server'
+ 
+export async function createPost(formData: FormData) {}
+ 
+export async function deletePost(formData: FormData) {}
+```
+
+### [Server Components](#server-components)
+
+Server Functions can be inlined in Server Components by adding the `"use server"` directive to the top of the function body:
+
+app/page.tsx
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+export default function Page() {
+  // Server Action
+  async function createPost() {
+    'use server'
+    // Update data
+    // ...
+  }
+ 
+  return <></>
+}
+```
+
+### [Client Components](#client-components)
+
+It's not possible to define Server Functions in Client Components. However, you can invoke them in Client Components by importing them from a file that has the `"use server"` directive at the top of it:
+
+app/actions.ts
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+'use server'
+ 
+export async function createPost() {}
+```
+
+app/ui/button.tsx
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+'use client'
+ 
+import { createPost } from '@/app/actions'
+ 
+export function Button() {
+  return <button formAction={createPost}>Create</button>
+}
+```
+
+## [Invoking Server Functions](#invoking-server-functions)
+
+There are two main ways you can invoke a Server Function:
+
+1. [Forms](#forms) in Server and Client Components
+2. [Event Handlers](#event-handlers) in Client Components
+
+### [Forms](#forms)
+
+React extends the HTML [`<form>`](https://react.dev/reference/react-dom/components/form) element to allow Server Function to be invoked with the HTML `action` prop.
+
+When invoked in a form, the function automatically receives the [`FormData`](https://developer.mozilla.org/docs/Web/API/FormData/FormData) object. You can extract the data using the native [`FormData` methods](https://developer.mozilla.org/en-US/docs/Web/API/FormData#instance_methods):
+
+app/ui/form.tsx
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+import { createPost } from '@/app/actions'
+ 
+export function Form() {
+  return (
+    <form action={createPost}>
+      <input type="text" name="title" />
+      <input type="text" name="content" />
+      <button type="submit">Create</button>
+    </form>
+  )
+}
+```
+
+app/actions.ts
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+'use server'
+ 
+export async function createPost(formData: FormData) {
+  const title = formData.get('title')
+  const content = formData.get('content')
+ 
+  // Update data
+  // Revalidate cache
+}
+```
+
+> **Good to know:** When passed to the `action` prop, Server Functions are also known as *Server Actions*.
+
+### [Event Handlers](#event-handlers)
+
+You can invoke a Server Function in a Client Component by using event handlers such as `onClick`.
+
+app/like-button.tsx
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+'use client'
+ 
+import { incrementLike } from './actions'
+import { useState } from 'react'
+ 
+export default function LikeButton({ initialLikes }: { initialLikes: number }) {
+  const [likes, setLikes] = useState(initialLikes)
+ 
+  return (
+    <>
+      <p>Total Likes: {likes}</p>
+      <button
+        onClick={async () => {
+          const updatedLikes = await incrementLike()
+          setLikes(updatedLikes)
+        }}
+      >
+        Like
+      </button>
+    </>
+  )
+}
+```
+
+### [Showing a pending state](#showing-a-pending-state)
+
+While executing a Server Function, you can show a loading indicator with React's [`useActionState`](https://react.dev/reference/react/useActionState) hook. This hook returns a `pending` boolean:
+
+app/ui/button.tsx
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+'use client'
+ 
+import { useActionState } from 'react'
+import { createPost } from '@/app/actions'
+import { LoadingSpinner } from '@/app/ui/loading-spinner'
+ 
+export function Button() {
+  const [state, action, pending] = useActionState(createPost, false)
+ 
+  return (
+    <button onClick={async () => action()}>
+      {pending ? <LoadingSpinner /> : 'Create Post'}
+    </button>
+  )
+}
+```
+
+### [Revalidating the cache](#revalidating-the-cache)
+
+After performing an update, you can revalidate the Next.js cache and show the updated data by calling [`revalidatePath`](/docs/app/api-reference/functions/revalidatePath) or [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag) within the Server Function:
+
+app/lib/actions.ts
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+'use server'
+ 
+import { revalidatePath } from 'next/cache'
+ 
+export async function createPost(formData: FormData) {
+  // Update data
+  // ...
+ 
+  revalidatePath('/posts')
+}
+```
+
+### [Redirecting](#redirecting)
+
+You may want to redirect the user to a different page after performing an update. You can do this by calling [`redirect`](/docs/app/api-reference/functions/redirect) within the Server Function:
+
+app/lib/actions.ts
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+'use server'
+ 
+import { redirect } from 'next/navigation'
+ 
+export async function createPost(formData: FormData) {
+  // Update data
+  // ...
+ 
+  redirect('/posts')
+}
+```
+
+## API Reference
+
+Learn more about the features mentioned in this page by reading the API Reference.
+
+[### revalidatePath
+
+API Reference for the revalidatePath function.](/docs/app/api-reference/functions/revalidatePath)[### revalidateTag
+
+API Reference for the revalidateTag function.](/docs/app/api-reference/functions/revalidateTag)[### redirect
+
+API Reference for the redirect function.](/docs/app/api-reference/functions/redirect)
+
+Was this helpful?
+
+supported.
+
+Send

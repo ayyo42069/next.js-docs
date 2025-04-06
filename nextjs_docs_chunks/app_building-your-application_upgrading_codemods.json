@@ -1,0 +1,132 @@
+[
+  {
+    "title": "Codemods",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Upgrading](/docs/app/building-your-application/upgrading)Codemods",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Upgrading](/docs/app/building-your-application/upgrading)Codemods",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Codemods",
+    "section": "Codemods",
+    "section_id": "codemods",
+    "heading_level": 1,
+    "content": "# Codemods\n\nCodemods are transformations that run on your codebase programmatically. This allows a large number of changes to be programmatically applied without having to manually go through every file.\n\nNext.js provides Codemod transformations to help upgrade your Next.js codebase when an API is updated or deprecated.",
+    "preview": "Codemods are transformations that run on your codebase programmatically. This allows a large number of changes to be programmatically applied without having to manually go through every file. Next.js provides Codemod transformations to help upgrade your Next.js codebase when an API is updated or de",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#codemods",
+    "position": 1
+  },
+  {
+    "title": "Codemods",
+    "section": "[Usage](#usage)",
+    "section_id": "usage-usage",
+    "heading_level": 2,
+    "content": "## [Usage](#usage)\n\nIn your terminal, navigate (`cd`) into your project's folder, then run:\n\nTerminal\n\n```\nnpx @next/codemod <transform> <path>\n```\n\nReplacing `<transform>` and `<path>` with appropriate values.\n\n* `transform` - name of transform\n* `path` - files or directory to transform\n* `--dry` Do a dry-run, no code will be edited\n* `--print` Prints the changed output for comparison",
+    "preview": "In your terminal, navigate (`cd`) into your project's folder, then run: Terminal [Code Block] Replacing `<transform>` and `<path>` with appropriate values. * `transform` - name of transform * `path` - files or directory to transform * `--dry` Do a dry-run, no code will be edited * `--print` Prin",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#usage-usage",
+    "position": 2
+  },
+  {
+    "title": "Codemods",
+    "section": "[Codemods](#codemods)",
+    "section_id": "codemods-codemods",
+    "heading_level": 2,
+    "content": "## [Codemods](#codemods)",
+    "preview": "## [Codemods](#codemods)",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#codemods-codemods",
+    "position": 3
+  },
+  {
+    "title": "Codemods",
+    "section": "[15.0](#150)",
+    "section_id": "15-0-150",
+    "heading_level": 3,
+    "content": "### [15.0](#150)\n\n#### [Transform App Router Route Segment Config `runtime` value from `experimental-edge` to `edge`](#transform-app-router-route-segment-config-runtime-value-from-experimental-edge-to-edge)\n\n##### [`app-dir-runtime-config-experimental-edge`](#app-dir-runtime-config-experimental-edge)\n\n> **Note**: This codemod is App Router specific.\n\nTerminal\n\n```\nnpx @next/codemod@latest app-dir-runtime-config-experimental-edge .\n```\n\nThis codemod transforms [Route Segment Config `runtime`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#runtime) value `experimental-edge` to `edge`.\n\nFor example:\n\n```\nexport const runtime = 'experimental-edge'\n```\n\nTransforms into:\n\n```\nexport const runtime = 'edge'\n```\n\n#### [Migrate to async Dynamic APIs](#migrate-to-async-dynamic-apis)\n\nAPIs that opted into dynamic rendering that previously supported synchronous access are now asynchronous. You can read more about this breaking change in the [upgrade guide](/docs/app/building-your-application/upgrading/version-15).\n\n##### [`next-async-request-api`](#next-async-request-api)\n\nTerminal\n\n```\nnpx @next/codemod@latest next-async-request-api .\n```\n\nThis codemod will transform dynamic APIs (`cookies()`, `headers()` and `draftMode()` from `next/headers`) that are now asynchronous to be properly awaited or wrapped with `React.use()` if applicable.\nWhen an automatic migration isn't possible, the codemod will either add a typecast (if a TypeScript file) or a comment to inform the user that it needs to be manually reviewed & updated.\n\nFor example:\n\n```\nimport { cookies, headers } from 'next/headers'\nconst token = cookies().get('token')\n \nfunction useToken() {\n  const token = cookies().get('token')\n  return token\n}\n \nexport default function Page() {\n  const name = cookies().get('name')\n}\n \nfunction getHeader() {\n  return headers().get('x-foo')\n}\n```\n\nTransforms into:\n\n```\nimport { use } from 'react'\nimport {\n  cookies,\n  headers,\n  type UnsafeUnwrappedCookies,\n  type UnsafeUnwrappedHeaders,\n} from 'next/headers'\nconst token = (cookies() as unknown as UnsafeUnwrappedCookies).get('token')\n \nfunction useToken() {\n  const token = use(cookies()).get('token')\n  return token\n}\n \nexport default async function Page() {\n  const name = (await cookies()).get('name')\n}\n \nfunction getHeader() {\n  return (headers() as unknown as UnsafeUnwrappedHeaders).get('x-foo')\n}\n```\n\nWhen we detect property access on the `params` or `searchParams` props in the page / route entries (`page.js`, `layout.js`, `route.js`, or `default.js`) or the `generateMetadata` / `generateViewport` APIs,\nit will attempt to transform the callsite from a sync to an async function, and await the property access. If it can't be made async (such as with a client component), it will use `React.use` to unwrap the promise .\n\nFor example:\n\n```\n// page.tsx\nexport default function Page({\n  params,\n  searchParams,\n}: {\n  params: { slug: string }\n  searchParams: { [key: string]: string | string[] | undefined }\n}) {\n  const { value } = searchParams\n  if (value === 'foo') {\n    // ...\n  }\n}\n \nexport function generateMetadata({ params }: { params: { slug: string } }) {\n  const { slug } = params\n  return {\n    title: `My Page - ${slug}`,\n  }\n}\n```\n\nTransforms into:\n\n```\n// page.tsx\nexport default async function Page(props: {\n  params: Promise<{ slug: string }>\n  searchParams: Promise<{ [key: string]: string | string[] | undefined }>\n}) {\n  const searchParams = await props.searchParams\n  const { value } = searchParams\n  if (value === 'foo') {\n    // ...\n  }\n}\n \nexport async function generateMetadata(props: {\n  params: Promise<{ slug: string }>\n}) {\n  const params = await props.params\n  const { slug } = params\n  return {\n    title: `My Page - ${slug}`,\n  }\n}\n```\n\n> **Good to know:** When this codemod identifies a spot that might require manual intervention, but we aren't able to determine the exact fix, it will add a comment or typecast to the code to inform the user that it needs to be manually updated. These comments are prefixed with **@next/codemod**, and typecasts are prefixed with `UnsafeUnwrapped`.\n> Your build will error until these comments are explicitly removed. [Read more](/docs/messages/sync-dynamic-apis).\n\n#### [Replace `geo` and `ip` properties of `NextRequest` with `@vercel/functions`](#replace-geo-and-ip-properties-of-nextrequest-with-vercelfunctions)\n\n##### [`next-request-geo-ip`](#next-request-geo-ip)\n\nTerminal\n\n```\nnpx @next/codemod@latest next-request-geo-ip .\n```\n\nThis codemod installs `@vercel/functions` and transforms `geo` and `ip` properties of `NextRequest` with corresponding `@vercel/functions` features.\n\nFor example:\n\n```\nimport type { NextRequest } from 'next/server'\n \nexport function GET(req: NextRequest) {\n  const { geo, ip } = req\n}\n```\n\nTransforms into:\n\n```\nimport type { NextRequest } from 'next/server'\nimport { geolocation, ipAddress } from '@vercel/functions'\n \nexport function GET(req: NextRequest) {\n  const geo = geolocation(req)\n  const ip = ipAddress(req)\n}\n```",
+    "preview": "#### [Transform App Router Route Segment Config `runtime` value from `experimental-edge` to `edge`](#transform-app-router-route-segment-config-runtime-value-from-experimental-edge-to-edge) ##### [`app-dir-runtime-config-experimental-edge`](#app-dir-runtime-config-experimental-edge) > **Note**: Thi",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#15-0-150",
+    "position": 4
+  },
+  {
+    "title": "Codemods",
+    "section": "[14.0](#140)",
+    "section_id": "14-0-140",
+    "heading_level": 3,
+    "content": "### [14.0](#140)\n\n#### [Migrate `ImageResponse` imports](#migrate-imageresponse-imports)\n\n##### [`next-og-import`](#next-og-import)\n\nTerminal\n\n```\nnpx @next/codemod@latest next-og-import .\n```\n\nThis codemod moves transforms imports from `next/server` to `next/og` for usage of [Dynamic OG Image Generation](/docs/app/building-your-application/optimizing/metadata#dynamic-image-generation).\n\nFor example:\n\n```\nimport { ImageResponse } from 'next/server'\n```\n\nTransforms into:\n\n```\nimport { ImageResponse } from 'next/og'\n```\n\n#### [Use `viewport` export](#use-viewport-export)\n\n##### [`metadata-to-viewport-export`](#metadata-to-viewport-export)\n\nTerminal\n\n```\nnpx @next/codemod@latest metadata-to-viewport-export .\n```\n\nThis codemod migrates certain viewport metadata to `viewport` export.\n\nFor example:\n\n```\nexport const metadata = {\n  title: 'My App',\n  themeColor: 'dark',\n  viewport: {\n    width: 1,\n  },\n}\n```\n\nTransforms into:\n\n```\nexport const metadata = {\n  title: 'My App',\n}\n \nexport const viewport = {\n  width: 1,\n  themeColor: 'dark',\n}\n```",
+    "preview": "#### [Migrate `ImageResponse` imports](#migrate-imageresponse-imports) ##### [`next-og-import`](#next-og-import) Terminal [Code Block] This codemod moves transforms imports from `next/server` to `next/og` for usage of [Dynamic OG Image Generation](/docs/app/building-your-application/optimizing/m",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#14-0-140",
+    "position": 5
+  },
+  {
+    "title": "Codemods",
+    "section": "[13.2](#132)",
+    "section_id": "13-2-132",
+    "heading_level": 3,
+    "content": "### [13.2](#132)\n\n#### [Use Built-in Font](#use-built-in-font)\n\n##### [`built-in-next-font`](#built-in-next-font)\n\nTerminal\n\n```\nnpx @next/codemod@latest built-in-next-font .\n```\n\nThis codemod uninstalls the `@next/font` package and transforms `@next/font` imports into the built-in `next/font`.\n\nFor example:\n\n```\nimport { Inter } from '@next/font/google'\n```\n\nTransforms into:\n\n```\nimport { Inter } from 'next/font/google'\n```",
+    "preview": "#### [Use Built-in Font](#use-built-in-font) ##### [`built-in-next-font`](#built-in-next-font) Terminal [Code Block] This codemod uninstalls the `@next/font` package and transforms `@next/font` imports into the built-in `next/font`. For example: [Code Block] Transforms into: [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#13-2-132",
+    "position": 6
+  },
+  {
+    "title": "Codemods",
+    "section": "[13.0](#130)",
+    "section_id": "13-0-130",
+    "heading_level": 3,
+    "content": "### [13.0](#130)\n\n#### [Rename Next Image Imports](#rename-next-image-imports)\n\n##### [`next-image-to-legacy-image`](#next-image-to-legacy-image)\n\nTerminal\n\n```\nnpx @next/codemod@latest next-image-to-legacy-image .\n```\n\nSafely renames `next/image` imports in existing Next.js 10, 11, or 12 applications to `next/legacy/image` in Next.js 13. Also renames `next/future/image` to `next/image`.\n\nFor example:\n\npages/index.js\n\n```\nimport Image1 from 'next/image'\nimport Image2 from 'next/future/image'\n \nexport default function Home() {\n  return (\n    <div>\n      <Image1 src=\"/test.jpg\" width=\"200\" height=\"300\" />\n      <Image2 src=\"/test.png\" width=\"500\" height=\"400\" />\n    </div>\n  )\n}\n```\n\nTransforms into:\n\npages/index.js\n\n```\n// 'next/image' becomes 'next/legacy/image'\nimport Image1 from 'next/legacy/image'\n// 'next/future/image' becomes 'next/image'\nimport Image2 from 'next/image'\n \nexport default function Home() {\n  return (\n    <div>\n      <Image1 src=\"/test.jpg\" width=\"200\" height=\"300\" />\n      <Image2 src=\"/test.png\" width=\"500\" height=\"400\" />\n    </div>\n  )\n}\n```\n\n#### [Migrate to the New Image Component](#migrate-to-the-new-image-component)\n\n##### [`next-image-experimental`](#next-image-experimental)\n\nTerminal\n\n```\nnpx @next/codemod@latest next-image-experimental .\n```\n\nDangerously migrates from `next/legacy/image` to the new `next/image` by adding inline styles and removing unused props.\n\n* Removes `layout` prop and adds `style`.\n* Removes `objectFit` prop and adds `style`.\n* Removes `objectPosition` prop and adds `style`.\n* Removes `lazyBoundary` prop.\n* Removes `lazyRoot` prop.\n\n#### [Remove `<a>` Tags From Link Components](#remove-a-tags-from-link-components)\n\n##### [`new-link`](#new-link)\n\nTerminal\n\n```\nnpx @next/codemod@latest new-link .\n```\n\nRemove `<a>` tags inside [Link Components](/docs/app/api-reference/components/link), or add a `legacyBehavior` prop to Links that cannot be auto-fixed.\n\nFor example:\n\n```\n<Link href=\"/about\">\n  <a>About</a>\n</Link>\n// transforms into\n<Link href=\"/about\">\n  About\n</Link>\n \n<Link href=\"/about\">\n  <a onClick={() => console.log('clicked')}>About</a>\n</Link>\n// transforms into\n<Link href=\"/about\" onClick={() => console.log('clicked')}>\n  About\n</Link>\n```\n\nIn cases where auto-fixing can't be applied, the `legacyBehavior` prop is added. This allows your app to keep functioning using the old behavior for that particular link.\n\n```\nconst Component = () => <a>About</a>\n \n<Link href=\"/about\">\n  <Component />\n</Link>\n// becomes\n<Link href=\"/about\" legacyBehavior>\n  <Component />\n</Link>\n```",
+    "preview": "#### [Rename Next Image Imports](#rename-next-image-imports) ##### [`next-image-to-legacy-image`](#next-image-to-legacy-image) Terminal [Code Block] Safely renames `next/image` imports in existing Next.js 10, 11, or 12 applications to `next/legacy/image` in Next.js 13. Also renames `next/future/",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#13-0-130",
+    "position": 7
+  },
+  {
+    "title": "Codemods",
+    "section": "[11](#11)",
+    "section_id": "11-11",
+    "heading_level": 3,
+    "content": "### [11](#11)\n\n#### [Migrate from CRA](#migrate-from-cra)\n\n##### [`cra-to-next`](#cra-to-next)\n\nTerminal\n\n```\nnpx @next/codemod cra-to-next\n```\n\nMigrates a Create React App project to Next.js; creating a Pages Router and necessary config to match behavior. Client-side only rendering is leveraged initially to prevent breaking compatibility due to `window` usage during SSR and can be enabled seamlessly to allow the gradual adoption of Next.js specific features.\n\nPlease share any feedback related to this transform [in this discussion](https://github.com/vercel/next.js/discussions/25858).",
+    "preview": "#### [Migrate from CRA](#migrate-from-cra) ##### [`cra-to-next`](#cra-to-next) Terminal [Code Block] Migrates a Create React App project to Next.js; creating a Pages Router and necessary config to match behavior. Client-side only rendering is leveraged initially to prevent breaking compatibility",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#11-11",
+    "position": 8
+  },
+  {
+    "title": "Codemods",
+    "section": "[10](#10)",
+    "section_id": "10-10",
+    "heading_level": 3,
+    "content": "### [10](#10)\n\n#### [Add React imports](#add-react-imports)\n\n##### [`add-missing-react-import`](#add-missing-react-import)\n\nTerminal\n\n```\nnpx @next/codemod add-missing-react-import\n```\n\nTransforms files that do not import `React` to include the import in order for the new [React JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) to work.\n\nFor example:\n\nmy-component.js\n\n```\nexport default class Home extends React.Component {\n  render() {\n    return <div>Hello World</div>\n  }\n}\n```\n\nTransforms into:\n\nmy-component.js\n\n```\nimport React from 'react'\nexport default class Home extends React.Component {\n  render() {\n    return <div>Hello World</div>\n  }\n}\n```",
+    "preview": "#### [Add React imports](#add-react-imports) ##### [`add-missing-react-import`](#add-missing-react-import) Terminal [Code Block] Transforms files that do not import `React` to include the import in order for the new [React JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-js",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#10-10",
+    "position": 9
+  },
+  {
+    "title": "Codemods",
+    "section": "[9](#9)",
+    "section_id": "9-9",
+    "heading_level": 3,
+    "content": "### [9](#9)\n\n#### [Transform Anonymous Components into Named Components](#transform-anonymous-components-into-named-components)\n\n##### [`name-default-component`](#name-default-component)\n\nTerminal\n\n```\nnpx @next/codemod name-default-component\n```\n\n**Versions 9 and above.**\n\nTransforms anonymous components into named components to make sure they work with [Fast Refresh](https://nextjs.org/blog/next-9-4#fast-refresh).\n\nFor example:\n\nmy-component.js\n\n```\nexport default function () {\n  return <div>Hello World</div>\n}\n```\n\nTransforms into:\n\nmy-component.js\n\n```\nexport default function MyComponent() {\n  return <div>Hello World</div>\n}\n```\n\nThe component will have a camel-cased name based on the name of the file, and it also works with arrow functions.",
+    "preview": "#### [Transform Anonymous Components into Named Components](#transform-anonymous-components-into-named-components) ##### [`name-default-component`](#name-default-component) Terminal [Code Block] **Versions 9 and above.** Transforms anonymous components into named components to make sure they wo",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#9-9",
+    "position": 10
+  },
+  {
+    "title": "Codemods",
+    "section": "[8](#8)",
+    "section_id": "8-8",
+    "heading_level": 3,
+    "content": "### [8](#8)\n\n#### [Transform AMP HOC into page config](#transform-amp-hoc-into-page-config)\n\n##### [`withamp-to-config`](#withamp-to-config)\n\nTerminal\n\n```\nnpx @next/codemod withamp-to-config\n```\n\nTransforms the `withAmp` HOC into Next.js 9 page configuration.\n\nFor example:\n\n```\n// Before\nimport { withAmp } from 'next/amp'\n \nfunction Home() {\n  return <h1>My AMP Page</h1>\n}\n \nexport default withAmp(Home)\n```\n\n```\n// After\nexport default function Home() {\n  return <h1>My AMP Page</h1>\n}\n \nexport const config = {\n  amp: true,\n}\n```",
+    "preview": "#### [Transform AMP HOC into page config](#transform-amp-hoc-into-page-config) ##### [`withamp-to-config`](#withamp-to-config) Terminal [Code Block] Transforms the `withAmp` HOC into Next.js 9 page configuration. For example: [Code Block] [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#8-8",
+    "position": 11
+  },
+  {
+    "title": "Codemods",
+    "section": "[6](#6)",
+    "section_id": "6-6",
+    "heading_level": 3,
+    "content": "### [6](#6)\n\n#### [Use `withRouter`](#use-withrouter)\n\n##### [`url-to-withrouter`](#url-to-withrouter)\n\nTerminal\n\n```\nnpx @next/codemod url-to-withrouter\n```\n\nTransforms the deprecated automatically injected `url` property on top level pages to using `withRouter` and the `router` property it injects. Read more here: [https://nextjs.org/docs/messages/url-deprecated](/docs/messages/url-deprecated)\n\nFor example:\n\nFrom\n\n```\nimport React from 'react'\nexport default class extends React.Component {\n  render() {\n    const { pathname } = this.props.url\n    return <div>Current pathname: {pathname}</div>\n  }\n}\n```\n\nTo\n\n```\nimport React from 'react'\nimport { withRouter } from 'next/router'\nexport default withRouter(\n  class extends React.Component {\n    render() {\n      const { pathname } = this.props.router\n      return <div>Current pathname: {pathname}</div>\n    }\n  }\n)\n```\n\nThis is one case. All the cases that are transformed (and tested) can be found in the [`__testfixtures__` directory](https://github.com/vercel/next.js/tree/canary/packages/next-codemod/transforms/__testfixtures__/url-to-withrouter).\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "#### [Use `withRouter`](#use-withrouter) ##### [`url-to-withrouter`](#url-to-withrouter) Terminal [Code Block] Transforms the deprecated automatically injected `url` property on top level pages to using `withRouter` and the `router` property it injects. Read more here: [https://nextjs.org/docs/m",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/codemods#6-6",
+    "position": 12
+  }
+]

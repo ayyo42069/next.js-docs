@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Guides",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Introduction](/docs)[App Router](/docs/app)Guides",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Introduction](/docs)[App Router](/docs/app)Guides",
+    "url": "https://nextjs.org/docs/app/guides#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Guides",
+    "section": "Guides",
+    "section_id": "guides",
+    "heading_level": 1,
+    "content": "# Guides",
+    "preview": "# Guides",
+    "url": "https://nextjs.org/docs/app/guides#guides",
+    "position": 1
+  },
+  {
+    "title": "Guides",
+    "section": "[Data Fetching](#data-fetching)",
+    "section_id": "data-fetching-data-fetching",
+    "heading_level": 3,
+    "content": "### [Data Fetching](#data-fetching)\n\n* [Using the `fetch` API](/docs/app/building-your-application/data-fetching/fetching#fetching-data-on-the-server-with-the-fetch-api)\n* [Using an ORM or database client](/docs/app/building-your-application/data-fetching/fetching#fetching-data-on-the-server-with-an-orm-or-database)\n* [Reading search params on the server](/docs/app/api-reference/file-conventions/page)\n* [Reading search params on the client](/docs/app/api-reference/functions/use-search-params)",
+    "preview": "* [Using the `fetch` API](/docs/app/building-your-application/data-fetching/fetching#fetching-data-on-the-server-with-the-fetch-api) * [Using an ORM or database client](/docs/app/building-your-application/data-fetching/fetching#fetching-data-on-the-server-with-an-orm-or-database) * [Reading search p",
+    "url": "https://nextjs.org/docs/app/guides#data-fetching-data-fetching",
+    "position": 2
+  },
+  {
+    "title": "Guides",
+    "section": "[Revalidating Data](#revalidating-data)",
+    "section_id": "revalidating-data-revalidating-data",
+    "heading_level": 3,
+    "content": "### [Revalidating Data](#revalidating-data)\n\n* [Using ISR to revalidate data after a certain time](/docs/app/building-your-application/data-fetching/incremental-static-regeneration#time-based-revalidation)\n* [Using ISR to revalidate data on-demand](/docs/app/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation-with-revalidatepath)",
+    "preview": "* [Using ISR to revalidate data after a certain time](/docs/app/building-your-application/data-fetching/incremental-static-regeneration#time-based-revalidation) * [Using ISR to revalidate data on-demand](/docs/app/building-your-application/data-fetching/incremental-static-regeneration#on-demand-reva",
+    "url": "https://nextjs.org/docs/app/guides#revalidating-data-revalidating-data",
+    "position": 3
+  },
+  {
+    "title": "Guides",
+    "section": "[Forms](#forms)",
+    "section_id": "forms-forms",
+    "heading_level": 3,
+    "content": "### [Forms](#forms)\n\n* [Showing a pending state while submitting a form](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#pending-states)\n* [Server-side form validation](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#server-side-form-validation)\n* [Handling expected errors](/docs/app/building-your-application/routing/error-handling#handling-expected-errors-from-server-actions)\n* [Handling unexpected exceptions](/docs/app/building-your-application/routing/error-handling#uncaught-exceptions)\n* [Showing optimistic UI updates](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#optimistic-updates)\n* [Programmatic form submission](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#programmatic-form-submission)",
+    "preview": "* [Showing a pending state while submitting a form](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#pending-states) * [Server-side form validation](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#server-side-form-validation) * [Handling e",
+    "url": "https://nextjs.org/docs/app/guides#forms-forms",
+    "position": 4
+  },
+  {
+    "title": "Guides",
+    "section": "[Server Actions](#server-actions)",
+    "section_id": "server-actions-server-actions",
+    "heading_level": 3,
+    "content": "### [Server Actions](#server-actions)\n\n* [Passing additional values](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#passing-additional-arguments)\n* [Revalidating data](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#revalidating-data)\n* [Redirecting](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#redirecting)\n* [Setting cookies](/docs/app/api-reference/functions/cookies#setting-a-cookie)\n* [Deleting cookies](/docs/app/api-reference/functions/cookies#deleting-cookies)",
+    "preview": "* [Passing additional values](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#passing-additional-arguments) * [Revalidating data](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#revalidating-data) * [Redirecting](/docs/app/building-your-a",
+    "url": "https://nextjs.org/docs/app/guides#server-actions-server-actions",
+    "position": 5
+  },
+  {
+    "title": "Guides",
+    "section": "[Metadata](#metadata)",
+    "section_id": "metadata-metadata",
+    "heading_level": 3,
+    "content": "### [Metadata](#metadata)\n\n* [Creating an RSS feed](/docs/app/building-your-application/routing/route-handlers#non-ui-responses)\n* [Creating an Open Graph image](/docs/app/api-reference/file-conventions/metadata/opengraph-image)\n* [Creating a sitemap](/docs/app/api-reference/file-conventions/metadata/sitemap)\n* [Creating a robots.txt file](/docs/app/api-reference/file-conventions/metadata/robots)\n* [Creating a custom 404 page](/docs/app/api-reference/file-conventions/not-found)\n* [Creating a custom 500 page](/docs/app/api-reference/file-conventions/error)",
+    "preview": "* [Creating an RSS feed](/docs/app/building-your-application/routing/route-handlers#non-ui-responses) * [Creating an Open Graph image](/docs/app/api-reference/file-conventions/metadata/opengraph-image) * [Creating a sitemap](/docs/app/api-reference/file-conventions/metadata/sitemap) * [Creating a ro",
+    "url": "https://nextjs.org/docs/app/guides#metadata-metadata",
+    "position": 6
+  },
+  {
+    "title": "Guides",
+    "section": "[Auth](#auth)",
+    "section_id": "auth-auth",
+    "heading_level": 3,
+    "content": "### [Auth](#auth)\n\n* [Creating a sign-up form](/docs/app/building-your-application/authentication#sign-up-and-login-functionality)\n* [Stateless, cookie-based session management](/docs/app/building-your-application/authentication#stateless-sessions)\n* [Stateful, database-backed session management](/docs/app/building-your-application/authentication#database-sessions)\n* [Managing authorization](/docs/app/building-your-application/authentication#authorization)",
+    "preview": "* [Creating a sign-up form](/docs/app/building-your-application/authentication#sign-up-and-login-functionality) * [Stateless, cookie-based session management](/docs/app/building-your-application/authentication#stateless-sessions) * [Stateful, database-backed session management](/docs/app/building-yo",
+    "url": "https://nextjs.org/docs/app/guides#auth-auth",
+    "position": 7
+  },
+  {
+    "title": "Guides",
+    "section": "[Testing](#testing)",
+    "section_id": "testing-testing",
+    "heading_level": 3,
+    "content": "### [Testing](#testing)\n\n* [Vitest](/docs/app/building-your-application/testing/vitest)\n* [Jest](/docs/app/building-your-application/testing/jest)\n* [Playwright](/docs/app/building-your-application/testing/playwright)\n* [Cypress](/docs/app/building-your-application/testing/cypress)",
+    "preview": "* [Vitest](/docs/app/building-your-application/testing/vitest) * [Jest](/docs/app/building-your-application/testing/jest) * [Playwright](/docs/app/building-your-application/testing/playwright) * [Cypress](/docs/app/building-your-application/testing/cypress)",
+    "url": "https://nextjs.org/docs/app/guides#testing-testing",
+    "position": 8
+  },
+  {
+    "title": "Guides",
+    "section": "[Deployment](#deployment)",
+    "section_id": "deployment-deployment",
+    "heading_level": 3,
+    "content": "### [Deployment](#deployment)\n\n* [Creating a Dockerfile](/docs/app/building-your-application/deploying#docker-image)\n* [Creating a static export (SPA)](/docs/app/building-your-application/deploying/static-exports)\n* [Configuring caching when self-hosting](/docs/app/building-your-application/deploying#configuring-caching)\n* [Configuring Image Optimization when self-hosting](/docs/app/building-your-application/deploying#image-optimization)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Creating a Dockerfile](/docs/app/building-your-application/deploying#docker-image) * [Creating a static export (SPA)](/docs/app/building-your-application/deploying/static-exports) * [Configuring caching when self-hosting](/docs/app/building-your-application/deploying#configuring-caching) * [Confi",
+    "url": "https://nextjs.org/docs/app/guides#deployment-deployment",
+    "position": 9
+  }
+]

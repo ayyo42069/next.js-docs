@@ -1,0 +1,62 @@
+[
+  {
+    "title": "output",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)output",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)output",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/output#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "output",
+    "section": "output",
+    "section_id": "output",
+    "heading_level": 1,
+    "content": "# output\n\nDuring a build, Next.js will automatically trace each page and its dependencies to determine all of the files that are needed for deploying a production version of your application.\n\nThis feature helps reduce the size of deployments drastically. Previously, when deploying with Docker you would need to have all files from your package's `dependencies` installed to run `next start`. Starting with Next.js 12, you can leverage Output File Tracing in the `.next/` directory to only include the necessary files.\n\nFurthermore, this removes the need for the deprecated `serverless` target which can cause various issues and also creates unnecessary duplication.",
+    "preview": "During a build, Next.js will automatically trace each page and its dependencies to determine all of the files that are needed for deploying a production version of your application. This feature helps reduce the size of deployments drastically. Previously, when deploying with Docker you would need",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/output#output",
+    "position": 1
+  },
+  {
+    "title": "output",
+    "section": "[How it Works](#how-it-works)",
+    "section_id": "how-it-works-how-it-works",
+    "heading_level": 2,
+    "content": "## [How it Works](#how-it-works)\n\nDuring `next build`, Next.js will use [`@vercel/nft`](https://github.com/vercel/nft) to statically analyze `import`, `require`, and `fs` usage to determine all files that a page might load.\n\nNext.js' production server is also traced for its needed files and output at `.next/next-server.js.nft.json` which can be leveraged in production.\n\nTo leverage the `.nft.json` files emitted to the `.next` output directory, you can read the list of files in each trace that are relative to the `.nft.json` file and then copy them to your deployment location.",
+    "preview": "During `next build`, Next.js will use [`@vercel/nft`](https://github.com/vercel/nft) to statically analyze `import`, `require`, and `fs` usage to determine all files that a page might load. Next.js' production server is also traced for its needed files and output at `.next/next-server.js.nft.json`",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/output#how-it-works-how-it-works",
+    "position": 2
+  },
+  {
+    "title": "output",
+    "section": "[Automatically Copying Traced Files](#automatically-copying-traced-files)",
+    "section_id": "automatically-copying-traced-files-automatically-copying-traced-files",
+    "heading_level": 2,
+    "content": "## [Automatically Copying Traced Files](#automatically-copying-traced-files)\n\nNext.js can automatically create a `standalone` folder that copies only the necessary files for a production deployment including select files in `node_modules`.\n\nTo leverage this automatic copying you can enable it in your `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  output: 'standalone',\n}\n```\n\nThis will create a folder at `.next/standalone` which can then be deployed on its own without installing `node_modules`.\n\nAdditionally, a minimal `server.js` file is also output which can be used instead of `next start`. This minimal server does not copy the `public` or `.next/static` folders by default as these should ideally be handled by a CDN instead, although these folders can be copied to the `standalone/public` and `standalone/.next/static` folders manually, after which `server.js` file will serve these automatically.\n\nTo copy these manually, you can use the `cp` command-line tool after you `next build`:\n\nTerminal\n\n```\ncp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/\n```\n\nTo start your minimal `server.js` file locally, run the following command:\n\nTerminal\n\n```\nnode .next/standalone/server.js\n```\n\n> **Good to know**:\n>\n> * If your project needs to listen to a specific port or hostname, you can define `PORT` or `HOSTNAME` environment variables before running `server.js`. For example, run `PORT=8080 HOSTNAME=0.0.0.0 node server.js` to start the server on `http://0.0.0.0:8080`.",
+    "preview": "Next.js can automatically create a `standalone` folder that copies only the necessary files for a production deployment including select files in `node_modules`. To leverage this automatic copying you can enable it in your `next.config.js`: next.config.js [Code Block] This will create a folder a",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/output#automatically-copying-traced-files-automatically-copying-traced-files",
+    "position": 3
+  },
+  {
+    "title": "output",
+    "section": "[Caveats](#caveats)",
+    "section_id": "caveats-caveats",
+    "heading_level": 2,
+    "content": "## [Caveats](#caveats)\n\n* While tracing in monorepo setups, the project directory is used for tracing by default. For `next build packages/web-app`, `packages/web-app` would be the tracing root and any files outside of that folder will not be included. To include files outside of this folder you can set `outputFileTracingRoot` in your `next.config.js`.\n\npackages/web-app/next.config.js\n\n```\nmodule.exports = {\n  // this includes files from the monorepo base two directories up\n  outputFileTracingRoot: path.join(__dirname, '../../'),\n}\n```\n\n* There are some cases in which Next.js might fail to include required files, or might incorrectly include unused files. In those cases, you can leverage `outputFileTracingExcludes` and `outputFileTracingIncludes` respectively in `next.config.js`. Each config accepts an object with [minimatch globs](https://www.npmjs.com/package/minimatch) for the key to match specific pages and a value of an array with globs relative to the project's root to either include or exclude in the trace.\n\nnext.config.js\n\n```\nmodule.exports = {\n  outputFileTracingExcludes: {\n    '/api/hello': ['./un-necessary-folder/**/*'],\n  },\n  outputFileTracingIncludes: {\n    '/api/another': ['./necessary-folder/**/*'],\n    '/api/login/\\\\[\\\\[\\\\.\\\\.\\\\.slug\\\\]\\\\]': [\n      './node_modules/aws-crt/dist/bin/**/*',\n    ],\n  },\n}\n```\n\n**Note:** The key of `outputFileTracingIncludes`/`outputFileTracingExcludes` is a [glob](https://www.npmjs.com/package/picomatch#basic-globbing), so special characters need to be escaped.\n\n* Currently, Next.js does not do anything with the emitted `.nft.json` files. The files must be read by your deployment platform, for example [Vercel](https://vercel.com), to create a minimal deployment. In a future release, a new command is planned to utilize these `.nft.json` files.",
+    "preview": "* While tracing in monorepo setups, the project directory is used for tracing by default. For `next build packages/web-app`, `packages/web-app` would be the tracing root and any files outside of that folder will not be included. To include files outside of this folder you can set `outputFileTracingR",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats-caveats",
+    "position": 4
+  },
+  {
+    "title": "output",
+    "section": "[Experimental `turbotrace`](#experimental-turbotrace)",
+    "section_id": "experimental-turbotrace-experimental-turbotrace",
+    "heading_level": 2,
+    "content": "## [Experimental `turbotrace`](#experimental-turbotrace)\n\nTracing dependencies can be slow because it requires very complex computations and analysis. We created `turbotrace` in Rust as a faster and smarter alternative to the JavaScript implementation.\n\nTo enable it, you can add the following configuration to your `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  experimental: {\n    turbotrace: {\n      // control the log level of the turbotrace, default is `error`\n      logLevel?:\n      | 'bug'\n      | 'fatal'\n      | 'error'\n      | 'warning'\n      | 'hint'\n      | 'note'\n      | 'suggestions'\n      | 'info',\n      // control if the log of turbotrace should contain the details of the analysis, default is `false`\n      logDetail?: boolean\n      // show all log messages without limit\n      // turbotrace only show 1 log message for each categories by default\n      logAll?: boolean\n      // control the context directory of the turbotrace\n      // files outside of the context directory will not be traced\n      // set the `outputFileTracingRoot` has the same effect\n      // if the `outputFileTracingRoot` and this option are both set, the `experimental.turbotrace.contextDirectory` will be used\n      contextDirectory?: string\n      // if there is `process.cwd()` expression in your code, you can set this option to tell `turbotrace` the value of `process.cwd()` while tracing.\n      // for example the require(process.cwd() + '/package.json') will be traced as require('/path/to/cwd/package.json')\n      processCwd?: string\n      // control the maximum memory usage of the `turbotrace`, in `MB`, default is `6000`.\n      memoryLimit?: number\n    },\n  },\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Tracing dependencies can be slow because it requires very complex computations and analysis. We created `turbotrace` in Rust as a faster and smarter alternative to the JavaScript implementation. To enable it, you can add the following configuration to your `next.config.js`: next.config.js ``` mod",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/output#experimental-turbotrace-experimental-turbotrace",
+    "position": 5
+  }
+]

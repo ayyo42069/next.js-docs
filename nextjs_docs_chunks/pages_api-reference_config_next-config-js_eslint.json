@@ -1,0 +1,22 @@
+[
+  {
+    "title": "eslint",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)eslint",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)eslint",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/eslint#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "eslint",
+    "section": "eslint",
+    "section_id": "eslint",
+    "heading_level": 1,
+    "content": "# eslint\n\nWhen ESLint is detected in your project, Next.js fails your **production build** (`next build`) when errors are present.\n\nIf you'd like Next.js to produce production code even when your application has ESLint errors, you can disable the built-in linting step completely. This is not recommended unless you already have ESLint configured to run in a separate part of your workflow (for example, in CI or a pre-commit hook).\n\nOpen `next.config.js` and enable the `ignoreDuringBuilds` option in the `eslint` config:\n\nnext.config.js\n\n```\nmodule.exports = {\n  eslint: {\n    // Warning: This allows production builds to successfully complete even if\n    // your project has ESLint errors.\n    ignoreDuringBuilds: true,\n  },\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "When ESLint is detected in your project, Next.js fails your **production build** (`next build`) when errors are present. If you'd like Next.js to produce production code even when your application has ESLint errors, you can disable the built-in linting step completely. This is not recommended unles",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/eslint#eslint",
+    "position": 1
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Sass",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Styling](/docs/pages/building-your-application/styling)Sass",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Styling](/docs/pages/building-your-application/styling)Sass",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/sass#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Sass",
+    "section": "Sass",
+    "section_id": "sass",
+    "heading_level": 1,
+    "content": "# Sass\n\nNext.js has built-in support for integrating with Sass after the package is installed using both the `.scss` and `.sass` extensions. You can use component-level Sass via CSS Modules and the `.module.scss`or `.module.sass` extension.\n\nFirst, install [`sass`](https://github.com/sass/sass):\n\nTerminal\n\n```\nnpm install --save-dev sass\n```\n\n> **Good to know**:\n>\n> Sass supports [two different syntaxes](https://sass-lang.com/documentation/syntax), each with their own extension.\n> The `.scss` extension requires you use the [SCSS syntax](https://sass-lang.com/documentation/syntax#scss),\n> while the `.sass` extension requires you use the [Indented Syntax (\"Sass\")](https://sass-lang.com/documentation/syntax#the-indented-syntax).\n>\n> If you're not sure which to choose, start with the `.scss` extension which is a superset of CSS, and doesn't require you learn the\n> Indented Syntax (\"Sass\").",
+    "preview": "Next.js has built-in support for integrating with Sass after the package is installed using both the `.scss` and `.sass` extensions. You can use component-level Sass via CSS Modules and the `.module.scss`or `.module.sass` extension. First, install [`sass`](https://github.com/sass/sass): Terminal",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/sass#sass",
+    "position": 1
+  },
+  {
+    "title": "Sass",
+    "section": "[Customizing Sass Options](#customizing-sass-options)",
+    "section_id": "customizing-sass-options-customizing-sass-options",
+    "heading_level": 3,
+    "content": "### [Customizing Sass Options](#customizing-sass-options)\n\nIf you want to configure your Sass options, use `sassOptions` in `next.config`.\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  sassOptions: {\n    additionalData: `$var: red;`,\n  },\n}\n \nexport default nextConfig\n```\n\n#### [Implementation](#implementation)\n\nYou can use the `implementation` property to specify the Sass implementation to use. By default, Next.js uses the [`sass`](https://www.npmjs.com/package/sass) package.\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  sassOptions: {\n    implementation: 'sass-embedded',\n  },\n}\n \nexport default nextConfig\n```",
+    "preview": "If you want to configure your Sass options, use `sassOptions` in `next.config`. next.config.ts TypeScript JavaScriptTypeScript ``` import type { NextConfig } from 'next' const nextConfig: NextConfig = { sassOptions: { additionalData: `$var: red;`, }, } export default nextConfig ```",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/sass#customizing-sass-options-customizing-sass-options",
+    "position": 2
+  },
+  {
+    "title": "Sass",
+    "section": "[Sass Variables](#sass-variables)",
+    "section_id": "sass-variables-sass-variables",
+    "heading_level": 3,
+    "content": "### [Sass Variables](#sass-variables)\n\nNext.js supports Sass variables exported from CSS Module files.\n\nFor example, using the exported `primaryColor` Sass variable:\n\napp/variables.module.scss\n\n```\n$primary-color: #64ff00;\n \n:export {\n  primaryColor: $primary-color;\n}\n```\n\npages/\\_app.js\n\n```\nimport variables from '../styles/variables.module.scss'\n \nexport default function MyApp({ Component, pageProps }) {\n  return (\n    <Layout color={variables.primaryColor}>\n      <Component {...pageProps} />\n    </Layout>\n  )\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js supports Sass variables exported from CSS Module files. For example, using the exported `primaryColor` Sass variable: app/variables.module.scss [Code Block] pages/\\_app.js [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/sass#sass-variables-sass-variables",
+    "position": 3
+  }
+]

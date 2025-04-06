@@ -1,0 +1,72 @@
+[
+  {
+    "title": "revalidateTag",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)revalidateTag",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)revalidateTag",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidateTag#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "revalidateTag",
+    "section": "revalidateTag",
+    "section_id": "revalidatetag",
+    "heading_level": 1,
+    "content": "# revalidateTag\n\n`revalidateTag` allows you to purge [cached data](/docs/app/building-your-application/caching) on-demand for a specific cache tag.\n\n> **Good to know**:\n>\n> * `revalidateTag` only invalidates the cache when the path is next visited. This means calling `revalidateTag` with a dynamic route segment will not immediately trigger many revalidations at once. The invalidation only happens when the path is next visited.",
+    "preview": "`revalidateTag` allows you to purge [cached data](/docs/app/building-your-application/caching) on-demand for a specific cache tag. > **Good to know**: > > * `revalidateTag` only invalidates the cache when the path is next visited. This means calling `revalidateTag` with a dynamic route segment will",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidateTag#revalidatetag",
+    "position": 1
+  },
+  {
+    "title": "revalidateTag",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\n```\nrevalidateTag(tag: string): void;\n```\n\n* `tag`: A string representing the cache tag associated with the data you want to revalidate. Must be less than or equal to 256 characters. This value is case-sensitive.\n\nYou can add tags to `fetch` as follows:\n\n```\nfetch(url, { next: { tags: [...] } });\n```",
+    "preview": "[Code Block] * `tag`: A string representing the cache tag associated with the data you want to revalidate. Must be less than or equal to 256 characters. This value is case-sensitive. You can add tags to `fetch` as follows: [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidateTag#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "revalidateTag",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\n`revalidateTag` does not return a value.",
+    "preview": "`revalidateTag` does not return a value.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidateTag#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "revalidateTag",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidateTag#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "revalidateTag",
+    "section": "[Server Action](#server-action)",
+    "section_id": "server-action-server-action",
+    "heading_level": 3,
+    "content": "### [Server Action](#server-action)\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { revalidateTag } from 'next/cache'\n \nexport default async function submit() {\n  await addPost()\n  revalidateTag('posts')\n}\n```",
+    "preview": "app/actions.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidateTag#server-action-server-action",
+    "position": 5
+  },
+  {
+    "title": "revalidateTag",
+    "section": "[Route Handler](#route-handler)",
+    "section_id": "route-handler-route-handler",
+    "heading_level": 3,
+    "content": "### [Route Handler](#route-handler)\n\napp/api/revalidate/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextRequest } from 'next/server'\nimport { revalidateTag } from 'next/cache'\n \nexport async function GET(request: NextRequest) {\n  const tag = request.nextUrl.searchParams.get('tag')\n  revalidateTag(tag)\n  return Response.json({ revalidated: true, now: Date.now() })\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "app/api/revalidate/route.ts TypeScript JavaScriptTypeScript [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/revalidateTag#route-handler-route-handler",
+    "position": 6
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "title": "not-found.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)not-found.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)not-found.js",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/not-found#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "not-found.js",
+    "section": "not-found.js",
+    "section_id": "not-found-js",
+    "heading_level": 1,
+    "content": "# not-found.js\n\nThe **not-found** file is used to render UI when the [`notFound`](/docs/app/api-reference/functions/not-found) function is thrown within a route segment. Along with serving a custom UI, Next.js will return a `200` HTTP status code for streamed responses, and `404` for non-streamed responses.\n\napp/not-found.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Link from 'next/link'\n \nexport default function NotFound() {\n  return (\n    <div>\n      <h2>Not Found</h2>\n      <p>Could not find requested resource</p>\n      <Link href=\"/\">Return Home</Link>\n    </div>\n  )\n}\n```",
+    "preview": "The **not-found** file is used to render UI when the [`notFound`](/docs/app/api-reference/functions/not-found) function is thrown within a route segment. Along with serving a custom UI, Next.js will return a `200` HTTP status code for streamed responses, and `404` for non-streamed responses. app/no",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/not-found#not-found-js",
+    "position": 1
+  },
+  {
+    "title": "not-found.js",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/not-found#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "not-found.js",
+    "section": "[Props](#props)",
+    "section_id": "props-props",
+    "heading_level": 3,
+    "content": "### [Props](#props)\n\n`not-found.js` components do not accept any props.\n\n> **Good to know**: In addition to catching expected `notFound()` errors, the root `app/not-found.js` file also handles any unmatched URLs for your whole application. This means users that visit a URL that is not handled by your app will be shown the UI exported by the `app/not-found.js` file.",
+    "preview": "`not-found.js` components do not accept any props. > **Good to know**: In addition to catching expected `notFound()` errors, the root `app/not-found.js` file also handles any unmatched URLs for your whole application. This means users that visit a URL that is not handled by your app will be shown t",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/not-found#props-props",
+    "position": 3
+  },
+  {
+    "title": "not-found.js",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/not-found#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "not-found.js",
+    "section": "[Data Fetching](#data-fetching)",
+    "section_id": "data-fetching-data-fetching",
+    "heading_level": 3,
+    "content": "### [Data Fetching](#data-fetching)\n\nBy default, `not-found` is a Server Component. You can mark it as `async` to fetch and display data:\n\napp/not-found.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Link from 'next/link'\nimport { headers } from 'next/headers'\n \nexport default async function NotFound() {\n  const headersList = await headers()\n  const domain = headersList.get('host')\n  const data = await getSiteData(domain)\n  return (\n    <div>\n      <h2>Not Found: {data.name}</h2>\n      <p>Could not find requested resource</p>\n      <p>\n        View <Link href=\"/blog\">all posts</Link>\n      </p>\n    </div>\n  )\n}\n```\n\nIf you need to use Client Component hooks like `usePathname` to display content based on the path, you must fetch data on the client-side instead.",
+    "preview": "By default, `not-found` is a Server Component. You can mark it as `async` to fetch and display data: app/not-found.tsx TypeScript JavaScriptTypeScript [Code Block] If you need to use Client Component hooks like `usePathname` to display content based on the path, you must fetch data on the clien",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/not-found#data-fetching-data-fetching",
+    "position": 5
+  },
+  {
+    "title": "not-found.js",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.3.0` | Root `app/not-found` handles global unmatched URLs. |\n| `v13.0.0` | `not-found` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.3.0` | Root `app/not-found` handles global unmatched URLs. | | `v13.0.0` | `not-found` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/not-found#version-history-version-history",
+    "position": 6
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Getting Started - Pages Router",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Introduction](/docs)[Pages Router](/docs/pages)Getting Started",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Introduction](/docs)[Pages Router](/docs/pages)Getting Started",
+    "url": "https://nextjs.org/docs/pages/getting-started#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Getting Started - Pages Router",
+    "section": "Getting Started - Pages Router",
+    "section_id": "getting-started-pages-router",
+    "heading_level": 1,
+    "content": "# Getting Started - Pages Router\n\n[### Installation\n\nHow to create a new Next.js application with `create-next-app`. Set up TypeScript, ESLint,and configure your `next.config.js` file.](/docs/pages/getting-started/installation)[### Project Structure\n\nLearn about the folder and file conventions in a Next.js project, and how to organize your project.](/docs/pages/getting-started/project-structure)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Installation How to create a new Next.js application with `create-next-app`. Set up TypeScript, ESLint,and configure your `next.config.js` file.](/docs/pages/getting-started/installation)[### Project Structure Learn about the folder and file conventions in a Next.js project, and how to organi",
+    "url": "https://nextjs.org/docs/pages/getting-started#getting-started-pages-router",
+    "position": 1
+  }
+]

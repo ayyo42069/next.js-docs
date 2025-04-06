@@ -1,0 +1,94 @@
+---
+title: "mdx-components.js"
+description: "Menu..."
+url: "https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components"
+slug: "/docs/app/api-reference/file-conventions/mdx-components"
+date_crawled: "2025-04-06T12:10:57.991377+00:00"
+---
+
+**Path**: /docs/app/api-reference/file-conventions/mdx-components
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)mdx-components.js
+
+# mdx-components.js
+
+The `mdx-components.js|tsx` file is **required** to use [`@next/mdx` with App Router](/docs/app/building-your-application/configuring/mdx) and will not work without it. Additionally, you can use it to [customize styles](/docs/app/building-your-application/configuring/mdx#using-custom-styles-and-components).
+
+Use the file `mdx-components.tsx` (or `.js`) in the root of your project to define MDX Components. For example, at the same level as `pages` or `app`, or inside `src` if applicable.
+
+mdx-components.tsx
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+import type { MDXComponents } from 'mdx/types'
+ 
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...components,
+  }
+}
+```
+
+## [Exports](#exports)
+
+### [`useMDXComponents` function](#usemdxcomponents-function)
+
+The file must export a single function, either as a default export or named `useMDXComponents`.
+
+mdx-components.tsx
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+import type { MDXComponents } from 'mdx/types'
+ 
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...components,
+  }
+}
+```
+
+## [Params](#params)
+
+### [`components`](#components)
+
+When defining MDX Components, the export function accepts a single parameter, `components`. This parameter is an instance of `MDXComponents`.
+
+* The key is the name of the HTML element to override.
+* The value is the component to render instead.
+
+> **Good to know**: Remember to pass all other components (i.e. `...components`) that do not have overrides.
+
+## [Version History](#version-history)
+
+| Version | Changes |
+| --- | --- |
+| `v13.1.2` | MDX Components added |
+
+## Learn more about MDX Components
+
+[### MDX
+
+Learn how to configure MDX and use it in your Next.js apps.](/docs/app/building-your-application/configuring/mdx)
+
+Was this helpful?
+
+supported.
+
+Send

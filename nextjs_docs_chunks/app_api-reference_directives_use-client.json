@@ -1,0 +1,52 @@
+[
+  {
+    "title": "use client",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Directives](/docs/app/api-reference/directives)use client",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Directives](/docs/app/api-reference/directives)use client",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-client#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "use client",
+    "section": "use client",
+    "section_id": "use-client",
+    "heading_level": 1,
+    "content": "# use client\n\nThe `use client` directive designates a component to be rendered on the **client side** and should be used when creating interactive user interfaces (UI) that require client-side JavaScript capabilities, such as state management, event handling, and access to browser APIs. This is a React feature.",
+    "preview": "The `use client` directive designates a component to be rendered on the **client side** and should be used when creating interactive user interfaces (UI) that require client-side JavaScript capabilities, such as state management, event handling, and access to browser APIs. This is a React feature.",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-client#use-client",
+    "position": 1
+  },
+  {
+    "title": "use client",
+    "section": "[Usage](#usage)",
+    "section_id": "usage-usage",
+    "heading_level": 2,
+    "content": "## [Usage](#usage)\n\nTo designate a component as a Client Component, add the `use client` directive **at the top of the file**, before any imports:\n\napp/components/counter.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useState } from 'react'\n \nexport default function Counter() {\n  const [count, setCount] = useState(0)\n \n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>Increment</button>\n    </div>\n  )\n}\n```",
+    "preview": "To designate a component as a Client Component, add the `use client` directive **at the top of the file**, before any imports: app/components/counter.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-client#usage-usage",
+    "position": 2
+  },
+  {
+    "title": "use client",
+    "section": "[Nesting Client Components within Server Components](#nesting-client-components-within-server-components)",
+    "section_id": "nesting-client-components-within-server-components-nesting-client-components-within-server-components",
+    "heading_level": 2,
+    "content": "## [Nesting Client Components within Server Components](#nesting-client-components-within-server-components)\n\nCombining Server and Client Components allows you to build applications that are both performant and interactive:\n\n1. **Server Components**: Use for static content, data fetching, and SEO-friendly elements.\n2. **Client Components**: Use for interactive elements that require state, effects, or browser APIs.\n3. **Component composition**: Nest Client Components within Server Components as needed for a clear separation of server and client logic.\n\nIn the following example:\n\n* `Header` is a Server Component handling static content.\n* `Counter` is a Client Component enabling interactivity within the page.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Header from './header'\nimport Counter from './counter' // This is a Client Component\n \nexport default function Page() {\n  return (\n    <div>\n      <Header />\n      <Counter />\n    </div>\n  )\n}\n```",
+    "preview": "Combining Server and Client Components allows you to build applications that are both performant and interactive: 1. **Server Components**: Use for static content, data fetching, and SEO-friendly elements. 2. **Client Components**: Use for interactive elements that require state, effects, or browse",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-client#nesting-client-components-within-server-components-nesting-client-components-within-server-components",
+    "position": 3
+  },
+  {
+    "title": "use client",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)\n\nSee the [React documentation](https://react.dev/reference/rsc/use-client) for more information on `use client`.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "See the [React documentation](https://react.dev/reference/rsc/use-client) for more information on `use client`. Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/directives/use-client#reference-reference",
+    "position": 4
+  }
+]

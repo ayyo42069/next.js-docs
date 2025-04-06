@@ -1,0 +1,72 @@
+[
+  {
+    "title": "robots.txt",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[File Conventions](/docs/app/api-reference/file-conventions)[Metadata Files](/docs/app/api-reference/file-conventions/metadata)robots.txt",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [File Conventions](/docs/app/api-reference/file-conventions)[Metadata Files](/docs/app/api-reference/file-conventions/metadata)robots.txt",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "robots.txt",
+    "section": "robots.txt",
+    "section_id": "robots-txt",
+    "heading_level": 1,
+    "content": "# robots.txt\n\nAdd or generate a `robots.txt` file that matches the [Robots Exclusion Standard](https://en.wikipedia.org/wiki/Robots.txt#Standard) in the **root** of `app` directory to tell search engine crawlers which URLs they can access on your site.",
+    "preview": "Add or generate a `robots.txt` file that matches the [Robots Exclusion Standard](https://en.wikipedia.org/wiki/Robots.txt#Standard) in the **root** of `app` directory to tell search engine crawlers which URLs they can access on your site.",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#robots-txt",
+    "position": 1
+  },
+  {
+    "title": "robots.txt",
+    "section": "[Static `robots.txt`](#static-robotstxt)",
+    "section_id": "static-robots-txt-static-robotstxt",
+    "heading_level": 2,
+    "content": "## [Static `robots.txt`](#static-robotstxt)\n\napp/robots.txt\n\n```\nUser-Agent: *\nAllow: /\nDisallow: /private/\n\nSitemap: https://acme.com/sitemap.xml\n```",
+    "preview": "app/robots.txt [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#static-robots-txt-static-robotstxt",
+    "position": 2
+  },
+  {
+    "title": "robots.txt",
+    "section": "[Generate a Robots file](#generate-a-robots-file)",
+    "section_id": "generate-a-robots-file-generate-a-robots-file",
+    "heading_level": 2,
+    "content": "## [Generate a Robots file](#generate-a-robots-file)\n\nAdd a `robots.js` or `robots.ts` file that returns a [`Robots` object](#robots-object).\n\n> **Good to know**: `robots.js` is a special Route Handlers that is cached by default unless it uses a [Dynamic API](/docs/app/building-your-application/caching#dynamic-apis) or [dynamic config](/docs/app/building-your-application/caching#segment-config-options) option.\n\napp/robots.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MetadataRoute } from 'next'\n \nexport default function robots(): MetadataRoute.Robots {\n  return {\n    rules: {\n      userAgent: '*',\n      allow: '/',\n      disallow: '/private/',\n    },\n    sitemap: 'https://acme.com/sitemap.xml',\n  }\n}\n```\n\nOutput:\n\n```\nUser-Agent: *\nAllow: /\nDisallow: /private/\n\nSitemap: https://acme.com/sitemap.xml\n```",
+    "preview": "Add a `robots.js` or `robots.ts` file that returns a [`Robots` object](#robots-object). > **Good to know**: `robots.js` is a special Route Handlers that is cached by default unless it uses a [Dynamic API](/docs/app/building-your-application/caching#dynamic-apis) or [dynamic config](/docs/app/buildi",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#generate-a-robots-file-generate-a-robots-file",
+    "position": 3
+  },
+  {
+    "title": "robots.txt",
+    "section": "[Customizing specific user agents](#customizing-specific-user-agents)",
+    "section_id": "customizing-specific-user-agents-customizing-specific-user-agents",
+    "heading_level": 3,
+    "content": "### [Customizing specific user agents](#customizing-specific-user-agents)\n\nYou can customise how individual search engine bots crawl your site by passing an array of user agents to the `rules` property. For example:\n\napp/robots.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MetadataRoute } from 'next'\n \nexport default function robots(): MetadataRoute.Robots {\n  return {\n    rules: [\n      {\n        userAgent: 'Googlebot',\n        allow: ['/'],\n        disallow: '/private/',\n      },\n      {\n        userAgent: ['Applebot', 'Bingbot'],\n        disallow: ['/'],\n      },\n    ],\n    sitemap: 'https://acme.com/sitemap.xml',\n  }\n}\n```\n\nOutput:\n\n```\nUser-Agent: Googlebot\nAllow: /\nDisallow: /private/\n\nUser-Agent: Applebot\nDisallow: /\n\nUser-Agent: Bingbot\nDisallow: /\n\nSitemap: https://acme.com/sitemap.xml\n```",
+    "preview": "You can customise how individual search engine bots crawl your site by passing an array of user agents to the `rules` property. For example: app/robots.ts TypeScript JavaScriptTypeScript [Code Block] Output: [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#customizing-specific-user-agents-customizing-specific-user-agents",
+    "position": 4
+  },
+  {
+    "title": "robots.txt",
+    "section": "[Robots object](#robots-object)",
+    "section_id": "robots-object-robots-object",
+    "heading_level": 3,
+    "content": "### [Robots object](#robots-object)\n\n```\ntype Robots = {\n  rules:\n    | {\n        userAgent?: string | string[]\n        allow?: string | string[]\n        disallow?: string | string[]\n        crawlDelay?: number\n      }\n    | Array<{\n        userAgent: string | string[]\n        allow?: string | string[]\n        disallow?: string | string[]\n        crawlDelay?: number\n      }>\n  sitemap?: string | string[]\n  host?: string\n}\n```",
+    "preview": "[Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#robots-object-robots-object",
+    "position": 5
+  },
+  {
+    "title": "robots.txt",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.3.0` | `robots` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.3.0` | `robots` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots#version-history-version-history",
+    "position": 6
+  }
+]

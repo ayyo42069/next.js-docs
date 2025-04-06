@@ -1,0 +1,82 @@
+[
+  {
+    "title": "CSS",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Styling](/docs/pages/building-your-application/styling)CSS",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Styling](/docs/pages/building-your-application/styling)CSS",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "CSS",
+    "section": "CSS",
+    "section_id": "css",
+    "heading_level": 1,
+    "content": "# CSS\n\nExamples\n\n* [Basic CSS Example](https://github.com/vercel/next.js/tree/canary/examples/basic-css)\n\nNext.js supports multiple ways of handling CSS, including:\n\n* [CSS Modules](#css-modules)\n* [Global Styles](#global-styles)\n* [External Stylesheets](#external-stylesheets)",
+    "preview": "Examples * [Basic CSS Example](https://github.com/vercel/next.js/tree/canary/examples/basic-css) Next.js supports multiple ways of handling CSS, including: * [CSS Modules](#css-modules) * [Global Styles](#global-styles) * [External Stylesheets](#external-stylesheets)",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css#css",
+    "position": 1
+  },
+  {
+    "title": "CSS",
+    "section": "[CSS Modules](#css-modules)",
+    "section_id": "css-modules-css-modules",
+    "heading_level": 2,
+    "content": "## [CSS Modules](#css-modules)\n\nNext.js has built-in support for CSS Modules using the `.module.css` extension.\n\nCSS Modules locally scope CSS by automatically creating a unique class name. This allows you to use the same class name in different files without worrying about collisions. This behavior makes CSS Modules the ideal way to include component-level CSS.",
+    "preview": "Next.js has built-in support for CSS Modules using the `.module.css` extension. CSS Modules locally scope CSS by automatically creating a unique class name. This allows you to use the same class name in different files without worrying about collisions. This behavior makes CSS Modules the ideal way",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css#css-modules-css-modules",
+    "position": 2
+  },
+  {
+    "title": "CSS",
+    "section": "[Example](#example)",
+    "section_id": "example-example",
+    "heading_level": 3,
+    "content": "### [Example](#example)\n\nFor example, consider a reusable `Button` component in the `components/` folder:\n\nFirst, create `components/Button.module.css` with the following content:\n\nButton.module.css\n\n```\n/*\nYou do not need to worry about .error {} colliding with any other `.css` or\n`.module.css` files!\n*/\n.error {\n  color: white;\n  background-color: red;\n}\n```\n\nThen, create `components/Button.js`, importing and using the above CSS file:\n\ncomponents/Button.js\n\n```\nimport styles from './Button.module.css'\n \nexport function Button() {\n  return (\n    <button\n      type=\"button\"\n      // Note how the \"error\" class is accessed as a property on the imported\n      // `styles` object.\n      className={styles.error}\n    >\n      Destroy\n    </button>\n  )\n}\n```\n\nCSS Modules are **only enabled for files with the `.module.css` and `.module.sass` extensions**.\n\nIn production, all CSS Module files will be automatically concatenated into **many minified and code-split** `.css` files.\nThese `.css` files represent hot execution paths in your application, ensuring the minimal amount of CSS is loaded for your application to paint.",
+    "preview": "For example, consider a reusable `Button` component in the `components/` folder: First, create `components/Button.module.css` with the following content: Button.module.css ``` /* You do not need to worry about .error {} colliding with any other `.css` or `.module.css` files! */ .error { color:",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css#example-example",
+    "position": 3
+  },
+  {
+    "title": "CSS",
+    "section": "[Global Styles](#global-styles)",
+    "section_id": "global-styles-global-styles",
+    "heading_level": 2,
+    "content": "## [Global Styles](#global-styles)\n\nTo add a stylesheet to your application, import the CSS file within `pages/_app.js`.\n\nFor example, consider the following stylesheet named `styles.css`:\n\nstyles.css\n\n```\nbody {\n  font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',\n    'Arial', sans-serif;\n  padding: 20px 20px 60px;\n  max-width: 680px;\n  margin: 0 auto;\n}\n```\n\nCreate a [`pages/_app.js` file](/docs/pages/building-your-application/routing/custom-app) if not already present.\nThen, [`import`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import) the `styles.css` file.\n\npages/\\_app.js\n\n```\nimport '../styles.css'\n \n// This default export is required in a new `pages/_app.js` file.\nexport default function MyApp({ Component, pageProps }) {\n  return <Component {...pageProps} />\n}\n```\n\nThese styles (`styles.css`) will apply to all pages and components in your application.\nDue to the global nature of stylesheets, and to avoid conflicts, you may **only import them inside [`pages/_app.js`](/docs/pages/building-your-application/routing/custom-app)**.\n\nIn development, expressing stylesheets this way allows your styles to be hot reloaded as you edit them\u2014meaning you can keep application state.\n\nIn production, all CSS files will be automatically concatenated into a single minified `.css` file. The order that the CSS is concatenated will match the order the CSS is imported into the `_app.js` file. Pay special attention to imported JS modules that include their own CSS; the JS module's CSS will be concatenated following the same ordering rules as imported CSS files. For example:\n\n```\nimport '../styles.css'\n// The CSS in ErrorBoundary depends on the global CSS in styles.css,\n// so we import it after styles.css.\nimport ErrorBoundary from '../components/ErrorBoundary'\n \nexport default function MyApp({ Component, pageProps }) {\n  return (\n    <ErrorBoundary>\n      <Component {...pageProps} />\n    </ErrorBoundary>\n  )\n}\n```",
+    "preview": "To add a stylesheet to your application, import the CSS file within `pages/_app.js`. For example, consider the following stylesheet named `styles.css`: styles.css [Code Block] Create a [`pages/_app.js` file](/docs/pages/building-your-application/routing/custom-app) if not already present. Then,",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css#global-styles-global-styles",
+    "position": 4
+  },
+  {
+    "title": "CSS",
+    "section": "[External Stylesheets](#external-stylesheets)",
+    "section_id": "external-stylesheets-external-stylesheets",
+    "heading_level": 2,
+    "content": "## [External Stylesheets](#external-stylesheets)\n\nNext.js allows you to import CSS files from a JavaScript file.\nThis is possible because Next.js extends the concept of [`import`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import) beyond JavaScript.",
+    "preview": "Next.js allows you to import CSS files from a JavaScript file. This is possible because Next.js extends the concept of [`import`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import) beyond JavaScript.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css#external-stylesheets-external-stylesheets",
+    "position": 5
+  },
+  {
+    "title": "CSS",
+    "section": "[Import styles from `node_modules`](#import-styles-from-node_modules)",
+    "section_id": "import-styles-from-node-modules-import-styles-from-node-modules",
+    "heading_level": 3,
+    "content": "### [Import styles from `node_modules`](#import-styles-from-node_modules)\n\nSince Next.js **9.5.4**, importing a CSS file from `node_modules` is permitted anywhere in your application.\n\nFor global stylesheets, like `bootstrap` or `nprogress`, you should import the file inside `pages/_app.js`.\nFor example:\n\npages/\\_app.js\n\n```\nimport 'bootstrap/dist/css/bootstrap.css'\n \nexport default function MyApp({ Component, pageProps }) {\n  return <Component {...pageProps} />\n}\n```\n\nFor importing CSS required by a third-party component, you can do so in your component. For example:\n\ncomponents/example-dialog.js\n\n```\nimport { useState } from 'react'\nimport { Dialog } from '@reach/dialog'\nimport VisuallyHidden from '@reach/visually-hidden'\nimport '@reach/dialog/styles.css'\n \nfunction ExampleDialog(props) {\n  const [showDialog, setShowDialog] = useState(false)\n  const open = () => setShowDialog(true)\n  const close = () => setShowDialog(false)\n \n  return (\n    <div>\n      <button onClick={open}>Open Dialog</button>\n      <Dialog isOpen={showDialog} onDismiss={close}>\n        <button className=\"close-button\" onClick={close}>\n          <VisuallyHidden>Close</VisuallyHidden>\n          <span aria-hidden>\u00d7</span>\n        </button>\n        <p>Hello there. I am a dialog</p>\n      </Dialog>\n    </div>\n  )\n}\n```",
+    "preview": "Since Next.js **9.5.4**, importing a CSS file from `node_modules` is permitted anywhere in your application. For global stylesheets, like `bootstrap` or `nprogress`, you should import the file inside `pages/_app.js`. For example: pages/\\_app.js [Code Block] For importing CSS required by a third-",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css#import-styles-from-node-modules-import-styles-from-node-modules",
+    "position": 6
+  },
+  {
+    "title": "CSS",
+    "section": "[Additional Features](#additional-features)",
+    "section_id": "additional-features-additional-features",
+    "heading_level": 2,
+    "content": "## [Additional Features](#additional-features)\n\nNext.js includes additional features to improve the authoring experience of adding styles:\n\n* When running locally with `next dev`, local stylesheets (either global or CSS modules) will take advantage of [Fast Refresh](/docs/architecture/fast-refresh) to instantly reflect changes as edits are saved.\n* When building for production with `next build`, CSS files will be bundled into fewer minified `.css` files to reduce the number of network requests needed to retrieve styles.\n* If you disable JavaScript, styles will still be loaded in the production build (`next start`). However, JavaScript is still required for `next dev` to enable [Fast Refresh](/docs/architecture/fast-refresh).\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js includes additional features to improve the authoring experience of adding styles: * When running locally with `next dev`, local stylesheets (either global or CSS modules) will take advantage of [Fast Refresh](/docs/architecture/fast-refresh) to instantly reflect changes as edits are saved.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css#additional-features-additional-features",
+    "position": 7
+  }
+]

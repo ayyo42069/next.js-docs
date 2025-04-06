@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Script",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Components](/docs/app/api-reference/components)Script",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Components](/docs/app/api-reference/components)Script",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Script",
+    "section": "Script",
+    "section_id": "script",
+    "heading_level": 1,
+    "content": "# Script\n\nThis API reference will help you understand how to use [props](#props) available for the Script Component. For features and usage, please see the [Optimizing Scripts](/docs/app/building-your-application/optimizing/scripts) page.\n\napp/dashboard/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Script from 'next/script'\n \nexport default function Dashboard() {\n  return (\n    <>\n      <Script src=\"https://example.com/script.js\" />\n    </>\n  )\n}\n```",
+    "preview": "This API reference will help you understand how to use [props](#props) available for the Script Component. For features and usage, please see the [Optimizing Scripts](/docs/app/building-your-application/optimizing/scripts) page. app/dashboard/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#script",
+    "position": 1
+  },
+  {
+    "title": "Script",
+    "section": "[Props](#props)",
+    "section_id": "props-props",
+    "heading_level": 2,
+    "content": "## [Props](#props)\n\nHere's a summary of the props available for the Script Component:\n\n| Prop | Example | Type | Required |\n| --- | --- | --- | --- |\n| [`src`](#src) | `src=\"http://example.com/script\"` | String | Required unless inline script is used |\n| [`strategy`](#strategy) | `strategy=\"lazyOnload\"` | String | - |\n| [`onLoad`](#onload) | `onLoad={onLoadFunc}` | Function | - |\n| [`onReady`](#onready) | `onReady={onReadyFunc}` | Function | - |\n| [`onError`](#onerror) | `onError={onErrorFunc}` | Function | - |",
+    "preview": "Here's a summary of the props available for the Script Component: | Prop | Example | Type | Required | | --- | --- | --- | --- | | [`src`](#src) | `src=\"http://example.com/script\"` | String | Required unless inline script is used | | [`strategy`](#strategy) | `strategy=\"lazyOnload\"` | String | - |",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#props-props",
+    "position": 2
+  },
+  {
+    "title": "Script",
+    "section": "[Required Props](#required-props)",
+    "section_id": "required-props-required-props",
+    "heading_level": 2,
+    "content": "## [Required Props](#required-props)\n\nThe `<Script />` component requires the following properties.",
+    "preview": "The `<Script />` component requires the following properties.",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#required-props-required-props",
+    "position": 3
+  },
+  {
+    "title": "Script",
+    "section": "[`src`](#src)",
+    "section_id": "src-src",
+    "heading_level": 3,
+    "content": "### [`src`](#src)\n\nA path string specifying the URL of an external script. This can be either an absolute external URL or an internal path. The `src` property is required unless an inline script is used.",
+    "preview": "A path string specifying the URL of an external script. This can be either an absolute external URL or an internal path. The `src` property is required unless an inline script is used.",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#src-src",
+    "position": 4
+  },
+  {
+    "title": "Script",
+    "section": "[Optional Props](#optional-props)",
+    "section_id": "optional-props-optional-props",
+    "heading_level": 2,
+    "content": "## [Optional Props](#optional-props)\n\nThe `<Script />` component accepts a number of additional properties beyond those which are required.",
+    "preview": "The `<Script />` component accepts a number of additional properties beyond those which are required.",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#optional-props-optional-props",
+    "position": 5
+  },
+  {
+    "title": "Script",
+    "section": "[`strategy`](#strategy)",
+    "section_id": "strategy-strategy",
+    "heading_level": 3,
+    "content": "### [`strategy`](#strategy)\n\nThe loading strategy of the script. There are four different strategies that can be used:\n\n* `beforeInteractive`: Load before any Next.js code and before any page hydration occurs.\n* `afterInteractive`: (**default**) Load early but after some hydration on the page occurs.\n* `lazyOnload`: Load during browser idle time.\n* `worker`: (experimental) Load in a web worker.",
+    "preview": "The loading strategy of the script. There are four different strategies that can be used: * `beforeInteractive`: Load before any Next.js code and before any page hydration occurs. * `afterInteractive`: (**default**) Load early but after some hydration on the page occurs. * `lazyOnload`: Load during",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#strategy-strategy",
+    "position": 6
+  },
+  {
+    "title": "Script",
+    "section": "[`beforeInteractive`](#beforeinteractive)",
+    "section_id": "beforeinteractive-beforeinteractive",
+    "heading_level": 3,
+    "content": "### [`beforeInteractive`](#beforeinteractive)\n\nScripts that load with the `beforeInteractive` strategy are injected into the initial HTML from the server, downloaded before any Next.js module, and executed in the order they are placed.\n\nScripts denoted with this strategy are preloaded and fetched before any first-party code, but their execution **does not block page hydration from occurring**.\n\n`beforeInteractive` scripts must be placed inside the root layout (`app/layout.tsx`) and are designed to load scripts that are needed by the entire site (i.e. the script will load when any page in the application has been loaded server-side).\n\n**This strategy should only be used for critical scripts that need to be fetched as soon as possible.**\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Script from 'next/script'\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body>\n        {children}\n        <Script\n          src=\"https://example.com/script.js\"\n          strategy=\"beforeInteractive\"\n        />\n      </body>\n    </html>\n  )\n}\n```\n\n> **Good to know**: Scripts with `beforeInteractive` will always be injected inside the `head` of the HTML document regardless of where it's placed in the component.\n\nSome examples of scripts that should be fetched as soon as possible with `beforeInteractive` include:\n\n* Bot detectors\n* Cookie consent managers",
+    "preview": "Scripts that load with the `beforeInteractive` strategy are injected into the initial HTML from the server, downloaded before any Next.js module, and executed in the order they are placed. Scripts denoted with this strategy are preloaded and fetched before any first-party code, but their execution",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#beforeinteractive-beforeinteractive",
+    "position": 7
+  },
+  {
+    "title": "Script",
+    "section": "[`afterInteractive`](#afterinteractive)",
+    "section_id": "afterinteractive-afterinteractive",
+    "heading_level": 3,
+    "content": "### [`afterInteractive`](#afterinteractive)\n\nScripts that use the `afterInteractive` strategy are injected into the HTML client-side and will load after some (or all) hydration occurs on the page. **This is the default strategy** of the Script component and should be used for any script that needs to load as soon as possible but not before any first-party Next.js code.\n\n`afterInteractive` scripts can be placed inside of any page or layout and will only load and execute when that page (or group of pages) is opened in the browser.\n\napp/page.js\n\n```\nimport Script from 'next/script'\n \nexport default function Page() {\n  return (\n    <>\n      <Script src=\"https://example.com/script.js\" strategy=\"afterInteractive\" />\n    </>\n  )\n}\n```\n\nSome examples of scripts that are good candidates for `afterInteractive` include:\n\n* Tag managers\n* Analytics",
+    "preview": "Scripts that use the `afterInteractive` strategy are injected into the HTML client-side and will load after some (or all) hydration occurs on the page. **This is the default strategy** of the Script component and should be used for any script that needs to load as soon as possible but not before any",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#afterinteractive-afterinteractive",
+    "position": 8
+  },
+  {
+    "title": "Script",
+    "section": "[`lazyOnload`](#lazyonload)",
+    "section_id": "lazyonload-lazyonload",
+    "heading_level": 3,
+    "content": "### [`lazyOnload`](#lazyonload)\n\nScripts that use the `lazyOnload` strategy are injected into the HTML client-side during browser idle time and will load after all resources on the page have been fetched. This strategy should be used for any background or low priority scripts that do not need to load early.\n\n`lazyOnload` scripts can be placed inside of any page or layout and will only load and execute when that page (or group of pages) is opened in the browser.\n\napp/page.js\n\n```\nimport Script from 'next/script'\n \nexport default function Page() {\n  return (\n    <>\n      <Script src=\"https://example.com/script.js\" strategy=\"lazyOnload\" />\n    </>\n  )\n}\n```\n\nExamples of scripts that do not need to load immediately and can be fetched with `lazyOnload` include:\n\n* Chat support plugins\n* Social media widgets",
+    "preview": "Scripts that use the `lazyOnload` strategy are injected into the HTML client-side during browser idle time and will load after all resources on the page have been fetched. This strategy should be used for any background or low priority scripts that do not need to load early. `lazyOnload` scripts ca",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#lazyonload-lazyonload",
+    "position": 9
+  },
+  {
+    "title": "Script",
+    "section": "[`worker`](#worker)",
+    "section_id": "worker-worker",
+    "heading_level": 3,
+    "content": "### [`worker`](#worker)\n\n> **Warning:** The `worker` strategy is not yet stable and does not yet work with the App Router. Use with caution.\n\nScripts that use the `worker` strategy are off-loaded to a web worker in order to free up the main thread and ensure that only critical, first-party resources are processed on it. While this strategy can be used for any script, it is an advanced use case that is not guaranteed to support all third-party scripts.\n\nTo use `worker` as a strategy, the `nextScriptWorkers` flag must be enabled in `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  experimental: {\n    nextScriptWorkers: true,\n  },\n}\n```\n\n`worker` scripts can **only currently be used in the `pages/` directory**:\n\npages/home.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Script from 'next/script'\n \nexport default function Home() {\n  return (\n    <>\n      <Script src=\"https://example.com/script.js\" strategy=\"worker\" />\n    </>\n  )\n}\n```",
+    "preview": "> **Warning:** The `worker` strategy is not yet stable and does not yet work with the App Router. Use with caution. Scripts that use the `worker` strategy are off-loaded to a web worker in order to free up the main thread and ensure that only critical, first-party resources are processed on it. Whi",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#worker-worker",
+    "position": 10
+  },
+  {
+    "title": "Script",
+    "section": "[`onLoad`](#onload)",
+    "section_id": "onload-onload",
+    "heading_level": 3,
+    "content": "### [`onLoad`](#onload)\n\n> **Warning:** `onLoad` does not yet work with Server Components and can only be used in Client Components. Further, `onLoad` can't be used with `beforeInteractive` \u2013 consider using `onReady` instead.\n\nSome third-party scripts require users to run JavaScript code once after the script has finished loading in order to instantiate content or call a function. If you are loading a script with either `afterInteractive` or `lazyOnload` as a loading strategy, you can execute code after it has loaded using the `onLoad` property.\n\nHere's an example of executing a lodash method only after the library has been loaded.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport Script from 'next/script'\n \nexport default function Page() {\n  return (\n    <>\n      <Script\n        src=\"https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js\"\n        onLoad={() => {\n          console.log(_.sample([1, 2, 3, 4]))\n        }}\n      />\n    </>\n  )\n}\n```",
+    "preview": "> **Warning:** `onLoad` does not yet work with Server Components and can only be used in Client Components. Further, `onLoad` can't be used with `beforeInteractive` \u2013 consider using `onReady` instead. Some third-party scripts require users to run JavaScript code once after the script has finished l",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#onload-onload",
+    "position": 11
+  },
+  {
+    "title": "Script",
+    "section": "[`onReady`](#onready)",
+    "section_id": "onready-onready",
+    "heading_level": 3,
+    "content": "### [`onReady`](#onready)\n\n> **Warning:** `onReady` does not yet work with Server Components and can only be used in Client Components.\n\nSome third-party scripts require users to run JavaScript code after the script has finished loading and every time the component is mounted (after a route navigation for example). You can execute code after the script's load event when it first loads and then after every subsequent component re-mount using the `onReady` property.\n\nHere's an example of how to re-instantiate a Google Maps JS embed every time the component is mounted:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useRef } from 'react'\nimport Script from 'next/script'\n \nexport default function Page() {\n  const mapRef = useRef()\n \n  return (\n    <>\n      <div ref={mapRef}></div>\n      <Script\n        id=\"google-maps\"\n        src=\"https://maps.googleapis.com/maps/api/js\"\n        onReady={() => {\n          new google.maps.Map(mapRef.current, {\n            center: { lat: -34.397, lng: 150.644 },\n            zoom: 8,\n          })\n        }}\n      />\n    </>\n  )\n}\n```",
+    "preview": "> **Warning:** `onReady` does not yet work with Server Components and can only be used in Client Components. Some third-party scripts require users to run JavaScript code after the script has finished loading and every time the component is mounted (after a route navigation for example). You can ex",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#onready-onready",
+    "position": 12
+  },
+  {
+    "title": "Script",
+    "section": "[`onError`](#onerror)",
+    "section_id": "onerror-onerror",
+    "heading_level": 3,
+    "content": "### [`onError`](#onerror)\n\n> **Warning:** `onError` does not yet work with Server Components and can only be used in Client Components. `onError` cannot be used with the `beforeInteractive` loading strategy.\n\nSometimes it is helpful to catch when a script fails to load. These errors can be handled with the `onError` property:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport Script from 'next/script'\n \nexport default function Page() {\n  return (\n    <>\n      <Script\n        src=\"https://example.com/script.js\"\n        onError={(e: Error) => {\n          console.error('Script failed to load', e)\n        }}\n      />\n    </>\n  )\n}\n```",
+    "preview": "> **Warning:** `onError` does not yet work with Server Components and can only be used in Client Components. `onError` cannot be used with the `beforeInteractive` loading strategy. Sometimes it is helpful to catch when a script fails to load. These errors can be handled with the `onError` property:",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#onerror-onerror",
+    "position": 13
+  },
+  {
+    "title": "Script",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.0.0` | `beforeInteractive` and `afterInteractive` is modified to support `app`. |\n| `v12.2.4` | `onReady` prop added. |\n| `v12.2.2` | Allow `next/script` with `beforeInteractive` to be placed in `_document`. |\n| `v11.0.0` | `next/script` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.0.0` | `beforeInteractive` and `afterInteractive` is modified to support `app`. | | `v12.2.4` | `onReady` prop added. | | `v12.2.2` | Allow `next/script` with `beforeInteractive` to be placed in `_document`. | | `v11.0.0` | `next/script` introduced. | Was",
+    "url": "https://nextjs.org/docs/app/api-reference/components/script#version-history-version-history",
+    "position": 14
+  }
+]

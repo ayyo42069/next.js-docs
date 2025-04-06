@@ -1,0 +1,292 @@
+[
+  {
+    "title": "Docs Contribution Guide",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Version 14\n\n14.2.26\n\n[Introduction](/docs/14)[Community](/docs/14/community)Contribution Guide\n\nYou are currently viewing documentation for version 14 of Next.js.",
+    "preview": "Menu Using App Router Features available in /app Using Version 14 14.2.26 [Introduction](/docs/14)[Community](/docs/14/community)Contribution Guide You are currently viewing documentation for version 14 of Next.js.",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "Docs Contribution Guide",
+    "section_id": "docs-contribution-guide",
+    "heading_level": 1,
+    "content": "# Docs Contribution Guide\n\nWelcome to the Next.js Docs Contribution Guide! We're excited to have you here.\n\nThis page provides instructions on how to edit the Next.js documentation. Our goal is to ensure that everyone in the community feels empowered to contribute and improve our docs.",
+    "preview": "Welcome to the Next.js Docs Contribution Guide! We're excited to have you here. This page provides instructions on how to edit the Next.js documentation. Our goal is to ensure that everyone in the community feels empowered to contribute and improve our docs.",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#docs-contribution-guide",
+    "position": 1
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Why Contribute?](#why-contribute)",
+    "section_id": "why-contribute-why-contribute",
+    "heading_level": 2,
+    "content": "## [Why Contribute?](#why-contribute)\n\nOpen-source work is never done, and neither is documentation. Contributing to docs is a good way for beginners to get involved in open-source and for experienced developers to clarify more complex topics while sharing their knowledge with the community.\n\nBy contributing to the Next.js docs, you're helping us build a more robust learning resource for all developers. Whether you've found a typo, a confusing section, or you've realized that a particular topic is missing, your contributions are welcomed and appreciated.",
+    "preview": "Open-source work is never done, and neither is documentation. Contributing to docs is a good way for beginners to get involved in open-source and for experienced developers to clarify more complex topics while sharing their knowledge with the community. By contributing to the Next.js docs, you're h",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#why-contribute-why-contribute",
+    "position": 2
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[How to Contribute](#how-to-contribute)",
+    "section_id": "how-to-contribute-how-to-contribute",
+    "heading_level": 2,
+    "content": "## [How to Contribute](#how-to-contribute)\n\nThe docs content can be found on the [Next.js repo](https://github.com/vercel/next.js/tree/canary/docs). To contribute, you can edit the files directly on GitHub or clone the repo and edit the files locally.",
+    "preview": "The docs content can be found on the [Next.js repo](https://github.com/vercel/next.js/tree/canary/docs). To contribute, you can edit the files directly on GitHub or clone the repo and edit the files locally.",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#how-to-contribute-how-to-contribute",
+    "position": 3
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[GitHub Workflow](#github-workflow)",
+    "section_id": "github-workflow-github-workflow",
+    "heading_level": 3,
+    "content": "### [GitHub Workflow](#github-workflow)\n\nIf you're new to GitHub, we recommend reading the [GitHub Open Source Guide](https://opensource.guide/how-to-contribute/#opening-a-pull-request) to learn how to fork a repository, create a branch, and submit a pull request.\n\n> **Good to know**: The underlying docs code lives in a private codebase that is synced to the Next.js public repo. This means that you can't preview the docs locally. However, you'll see your changes on [nextjs.org](https://nextjs.org/docs) after merging a pull request.",
+    "preview": "If you're new to GitHub, we recommend reading the [GitHub Open Source Guide](https://opensource.guide/how-to-contribute/#opening-a-pull-request) to learn how to fork a repository, create a branch, and submit a pull request. > **Good to know**: The underlying docs code lives in a private codebase th",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#github-workflow-github-workflow",
+    "position": 4
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Writing MDX](#writing-mdx)",
+    "section_id": "writing-mdx-writing-mdx",
+    "heading_level": 3,
+    "content": "### [Writing MDX](#writing-mdx)\n\nThe docs are written in [MDX](https://mdxjs.com/), a markdown format that supports JSX syntax. This allows us to embed React components in the docs. See the [GitHub Markdown Guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) for a quick overview of markdown syntax.",
+    "preview": "The docs are written in [MDX](https://mdxjs.com/), a markdown format that supports JSX syntax. This allows us to embed React components in the docs. See the [GitHub Markdown Guide](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-wr",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#writing-mdx-writing-mdx",
+    "position": 5
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[VSCode](#vscode)",
+    "section_id": "vscode-vscode",
+    "heading_level": 3,
+    "content": "### [VSCode](#vscode)\n\n#### [Previewing Changes Locally](#previewing-changes-locally)\n\nVSCode has a built-in markdown previewer that you can use to see your edits locally. To enable the previewer for MDX files, you'll need to add a configuration option to your user settings.\n\nOpen the command palette (`\u2318 + \u21e7 + P` on Mac or `Ctrl + Shift + P` on Windows) and search from `Preferences: Open User Settings (JSON)`.\n\nThen, add the following line to your `settings.json` file:\n\nsettings.json\n\n```\n{\n  \"files.associations\": {\n    \"*.mdx\": \"markdown\"\n  }\n}\n```\n\nNext, open the command palette again, and search for `Markdown: Preview File` or `Markdown: Open Preview to the Side`. This will open a preview window where you can see your formatted changes.\n\n#### [Extensions](#extensions)\n\nWe also recommend the following extensions for VSCode users:\n\n* [MDX](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx): Intellisense and syntax highlighting for MDX.\n* [Grammarly](https://marketplace.visualstudio.com/items?itemName=znck.grammarly): Grammar and spell checker.\n* [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): Format MDX files on save.",
+    "preview": "#### [Previewing Changes Locally](#previewing-changes-locally) VSCode has a built-in markdown previewer that you can use to see your edits locally. To enable the previewer for MDX files, you'll need to add a configuration option to your user settings. Open the command palette (`\u2318 + \u21e7 + P` on Mac o",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#vscode-vscode",
+    "position": 6
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Review Process](#review-process)",
+    "section_id": "review-process-review-process",
+    "heading_level": 3,
+    "content": "### [Review Process](#review-process)\n\nOnce you've submitted your contribution, the Next.js or Developer Experience teams will review your changes, provide feedback, and merge the pull request when it's ready.\n\nPlease let us know if you have any questions or need further assistance in your PR's comments. Thank you for contributing to the Next.js docs and being a part of our community!\n\n> **Tip:** Run `pnpm prettier-fix` to run Prettier before submitting your PR.",
+    "preview": "Once you've submitted your contribution, the Next.js or Developer Experience teams will review your changes, provide feedback, and merge the pull request when it's ready. Please let us know if you have any questions or need further assistance in your PR's comments. Thank you for contributing to the",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#review-process-review-process",
+    "position": 7
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[File Structure](#file-structure)",
+    "section_id": "file-structure-file-structure",
+    "heading_level": 2,
+    "content": "## [File Structure](#file-structure)\n\nThe docs use **file-system routing**. Each folder and files inside [`/docs`](https://github.com/vercel/next.js/tree/canary/docs) represent a route segment. These segments are used to generate the URL paths, navigation, and breadcrumbs.\n\nThe file structure reflects the navigation that you see on the site, and by default, navigation items are sorted alphabetically. However, we can change the order of the items by prepending a two-digit number (`00-`) to the folder or file name.\n\nFor example, in the [functions API Reference](/docs/14/app/api-reference/functions), the pages are sorted alphabetically because it makes it easier for developers to find a specific function:\n\n```\n03-functions\n\u251c\u2500\u2500 cookies.mdx\n\u251c\u2500\u2500 draft-mode.mdx\n\u251c\u2500\u2500 fetch.mdx\n\u2514\u2500\u2500 ...\n```\n\nBut, in the [routing section](/docs/14/app/building-your-application/routing), the files are prefixed with a two-digit number, sorted in the order developers should learn these concepts:\n\n```\n02-routing\n\u251c\u2500\u2500 01-defining-routes.mdx\n\u251c\u2500\u2500 02-pages-and-layouts.mdx\n\u251c\u2500\u2500 03-linking-and-navigating.mdx\n\u2514\u2500\u2500 ...\n```\n\nTo quickly find a page, you can use `\u2318 + P` (Mac) or `Ctrl + P` (Windows) to open the search bar on VSCode. Then, type the slug of the page you're looking for. E.g. `defining-routes`\n\n> **Why not use a manifest?**\n>\n> We considered using a manifest file (another popular way to generate the docs navigation), but we found that a manifest would quickly get out of sync with the files. File-system routing forces us to think about the structure of the docs and feels more native to Next.js.",
+    "preview": "The docs use **file-system routing**. Each folder and files inside [`/docs`](https://github.com/vercel/next.js/tree/canary/docs) represent a route segment. These segments are used to generate the URL paths, navigation, and breadcrumbs. The file structure reflects the navigation that you see on the",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#file-structure-file-structure",
+    "position": 8
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Metadata](#metadata)",
+    "section_id": "metadata-metadata",
+    "heading_level": 2,
+    "content": "## [Metadata](#metadata)\n\nEach page has a metadata block at the top of the file separated by three dashes.",
+    "preview": "Each page has a metadata block at the top of the file separated by three dashes.",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#metadata-metadata",
+    "position": 9
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Required Fields](#required-fields)",
+    "section_id": "required-fields-required-fields",
+    "heading_level": 3,
+    "content": "### [Required Fields](#required-fields)\n\nThe following fields are **required**:\n\n| Field | Description |\n| --- | --- |\n| `title` | The page's `<h1>` title, used for SEO and OG Images. |\n| `description` | The page's description, used in the `<meta name=\"description\">` tag for SEO. |\n\nrequired-fields.mdx\n\n```\n---\ntitle: Page Title\ndescription: Page Description\n---\n```\n\nIt's good practice to limit the page title to 2-3 words (e.g. Optimizing Images) and the description to 1-2 sentences (e.g. Learn how to optimize images in Next.js).",
+    "preview": "The following fields are **required**: | Field | Description | | --- | --- | | `title` | The page's `<h1>` title, used for SEO and OG Images. | | `description` | The page's description, used in the `<meta name=\"description\">` tag for SEO. | required-fields.mdx [Code Block] It's good practice to",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#required-fields-required-fields",
+    "position": 10
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Optional Fields](#optional-fields)",
+    "section_id": "optional-fields-optional-fields",
+    "heading_level": 3,
+    "content": "### [Optional Fields](#optional-fields)\n\nThe following fields are **optional**:\n\n| Field | Description |\n| --- | --- |\n| `nav_title` | Overrides the page's title in the navigation. This is useful when the page's title is too long to fit. If not provided, the `title` field is used. |\n| `source` | Pulls content into a shared page. See [Shared Pages](#shared-pages). |\n| `related` | A list of related pages at the bottom of the document. These will automatically be turned into cards. See [Related Links](#related-links). |\n\noptional-fields.mdx\n\n```\n---\nnav_title: Nav Item Title\nsource: app/building-your-application/optimizing/images\nrelated:\n  description: See the image component API reference.\n  links:\n    - app/api-reference/components/image\n---\n```",
+    "preview": "The following fields are **optional**: | Field | Description | | --- | --- | | `nav_title` | Overrides the page's title in the navigation. This is useful when the page's title is too long to fit. If not provided, the `title` field is used. | | `source` | Pulls content into a shared page. See [Share",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#optional-fields-optional-fields",
+    "position": 11
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[`App` and `Pages` Docs](#app-and-pages-docs)",
+    "section_id": "app-and-pages-docs-app-and-pages-docs",
+    "heading_level": 2,
+    "content": "## [`App` and `Pages` Docs](#app-and-pages-docs)\n\nSince most of the features in the **App Router** and **Pages Router** are completely different, their docs for each are kept in separate sections (`02-app` and `03-pages`). However, there are a few features that are shared between them.",
+    "preview": "Since most of the features in the **App Router** and **Pages Router** are completely different, their docs for each are kept in separate sections (`02-app` and `03-pages`). However, there are a few features that are shared between them.",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#app-and-pages-docs-app-and-pages-docs",
+    "position": 12
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Shared Pages](#shared-pages)",
+    "section_id": "shared-pages-shared-pages",
+    "heading_level": 3,
+    "content": "### [Shared Pages](#shared-pages)\n\nTo avoid content duplication and risk the content becoming out of sync, we use the `source` field to pull content from one page into another. For example, the `<Link>` component behaves *mostly* the same in **App** and **Pages**. Instead of duplicating the content, we can pull the content from `app/.../link.mdx` into `pages/.../link.mdx`:\n\napp/.../link.mdx\n\n```\n---\ntitle: <Link>\ndescription: API reference for the <Link> component.\n---\n \nThis API reference will help you understand how to use the props\nand configuration options available for the Link Component.\n```\n\npages/.../link.mdx\n\n```\n---\ntitle: <Link>\ndescription: API reference for the <Link> component.\nsource: app/api-reference/components/link\n---\n \n{/* DO NOT EDIT THIS PAGE. */}\n{/* The content of this page is pulled from the source above. */}\n```\n\nWe can therefore edit the content in one place and have it reflected in both sections.",
+    "preview": "To avoid content duplication and risk the content becoming out of sync, we use the `source` field to pull content from one page into another. For example, the `<Link>` component behaves *mostly* the same in **App** and **Pages**. Instead of duplicating the content, we can pull the content from `app/",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#shared-pages-shared-pages",
+    "position": 13
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Shared Content](#shared-content)",
+    "section_id": "shared-content-shared-content",
+    "heading_level": 3,
+    "content": "### [Shared Content](#shared-content)\n\nIn shared pages, sometimes there might be content that is **App Router** or **Pages Router** specific. For example, the `<Link>` component has a `shallow` prop that is only available in **Pages** but not in **App**.\n\nTo make sure the content only shows in the correct router, we can wrap content blocks in an `<AppOnly>` or `<PagesOnly>` components:\n\napp/.../link.mdx\n\n```\nThis content is shared between App and Pages.\n \n<PagesOnly>\n \nThis content will only be shown on the Pages docs.\n \n</PagesOnly>\n \nThis content is shared between App and Pages.\n```\n\nYou'll likely use these components for examples and code blocks.",
+    "preview": "In shared pages, sometimes there might be content that is **App Router** or **Pages Router** specific. For example, the `<Link>` component has a `shallow` prop that is only available in **Pages** but not in **App**. To make sure the content only shows in the correct router, we can wrap content bloc",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#shared-content-shared-content",
+    "position": 14
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Code Blocks](#code-blocks)",
+    "section_id": "code-blocks-code-blocks",
+    "heading_level": 2,
+    "content": "## [Code Blocks](#code-blocks)\n\nCode blocks should contain a minimum working example that can be copied and pasted. This means that the code should be able to run without any additional configuration.\n\nFor example, if you're showing how to use the `<Link>` component, you should include the `import` statement and the `<Link>` component itself.\n\napp/page.tsx\n\n```\nimport Link from 'next/link'\n \nexport default function Page() {\n  return <Link href=\"/about\">About</Link>\n}\n```\n\nAlways run examples locally before committing them. This will ensure that the code is up-to-date and working.",
+    "preview": "Code blocks should contain a minimum working example that can be copied and pasted. This means that the code should be able to run without any additional configuration. For example, if you're showing how to use the `<Link>` component, you should include the `import` statement and the `<Link>` compo",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#code-blocks-code-blocks",
+    "position": 15
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Language and Filename](#language-and-filename)",
+    "section_id": "language-and-filename-language-and-filename",
+    "heading_level": 3,
+    "content": "### [Language and Filename](#language-and-filename)\n\nCode blocks should have a header that includes the language and the `filename`. Add a `filename` prop to render a special Terminal icon that helps orientate users where to input the command. For example:\n\ncode-example.mdx\n\n```\n```bash filename=\"Terminal\"\nnpx create-next-app\n```\n```\n\nMost examples in the docs are written in `tsx` and `jsx`, and a few in `bash`. However, you can use any supported language, here's the [full list](https://github.com/shikijs/shiki/blob/main/docs/languages.md#all-languages).\n\nWhen writing JavaScript code blocks, we use the following language and extension combinations.\n\n|  | Language | Extension |\n| --- | --- | --- |\n| JavaScript files with JSX code | ```jsx | .js |\n| JavaScript files without JSX | ```js | .js |\n| TypeScript files with JSX | ```tsx | .tsx |\n| TypeScript files without JSX | ```ts | .ts |",
+    "preview": "Code blocks should have a header that includes the language and the `filename`. Add a `filename` prop to render a special Terminal icon that helps orientate users where to input the command. For example: code-example.mdx [Code Block]bash filename=\"Terminal\" npx create-next-app [Code Block] Most e",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#language-and-filename-language-and-filename",
+    "position": 16
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[TS and JS Switcher](#ts-and-js-switcher)",
+    "section_id": "ts-and-js-switcher-ts-and-js-switcher",
+    "heading_level": 3,
+    "content": "### [TS and JS Switcher](#ts-and-js-switcher)\n\nAdd a language switcher to toggle between TypeScript and JavaScript. Code blocks should be TypeScript first with a JavaScript version to accommodate users.\n\nCurrently, we write TS and JS examples one after the other, and link them with `switcher` prop:\n\ncode-example.mdx\n\n```\n```tsx filename=\"app/page.tsx\" switcher\n \n```\n \n```jsx filename=\"app/page.js\" switcher\n \n```\n```\n\n> **Good to know**: We plan to automatically compile TypeScript snippets to JavaScript in the future. In the meantime, you can use [transform.tools](https://transform.tools/typescript-to-javascript).",
+    "preview": "Add a language switcher to toggle between TypeScript and JavaScript. Code blocks should be TypeScript first with a JavaScript version to accommodate users. Currently, we write TS and JS examples one after the other, and link them with `switcher` prop: code-example.mdx [Code Block]tsx filename=\"ap",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#ts-and-js-switcher-ts-and-js-switcher",
+    "position": 17
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Line Highlighting](#line-highlighting)",
+    "section_id": "line-highlighting-line-highlighting",
+    "heading_level": 3,
+    "content": "### [Line Highlighting](#line-highlighting)\n\nCode lines can be highlighted. This is useful when you want to draw attention to a specific part of the code. You can highlight lines by passing a number to the `highlight` prop.\n\n**Single Line:** `highlight={1}`\n\napp/page.tsx\n\n```\nimport Link from 'next/link'\n \nexport default function Page() {\n  return <Link href=\"/about\">About</Link>\n}\n```\n\n**Multiple Lines:** `highlight={1,3}`\n\napp/page.tsx\n\n```\nimport Link from 'next/link'\n \nexport default function Page() {\n  return <Link href=\"/about\">About</Link>\n}\n```\n\n**Range of Lines:** `highlight={1-5}`\n\napp/page.tsx\n\n```\nimport Link from 'next/link'\n \nexport default function Page() {\n  return <Link href=\"/about\">About</Link>\n}\n```",
+    "preview": "Code lines can be highlighted. This is useful when you want to draw attention to a specific part of the code. You can highlight lines by passing a number to the `highlight` prop. **Single Line:** `highlight={1}` app/page.tsx [Code Block] **Multiple Lines:** `highlight={1,3}` app/page.tsx [Code",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#line-highlighting-line-highlighting",
+    "position": 18
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Icons](#icons)",
+    "section_id": "icons-icons",
+    "heading_level": 2,
+    "content": "## [Icons](#icons)\n\nThe following icons are available for use in the docs:\n\nmdx-icon.mdx\n\n```\n<Check size={18} />\n<Cross size={18} />\n```\n\n**Output:**\n\n\n\nWe do not use emojis in the docs.",
+    "preview": "The following icons are available for use in the docs: mdx-icon.mdx [Code Block] **Output:** We do not use emojis in the docs.",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#icons-icons",
+    "position": 19
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Notes](#notes)",
+    "section_id": "notes-notes",
+    "heading_level": 2,
+    "content": "## [Notes](#notes)\n\nFor information that is important but not critical, use notes. Notes are a good way to add information without distracting the user from the main content.\n\nnotes.mdx\n\n```\n> **Good to know**: This is a single line note.\n \n> **Good to know**:\n>\n> - We also use this format for multi-line notes.\n> - There are sometimes multiple items worth knowing or keeping in mind.\n```\n\n**Output:**\n\n> **Good to know**: This is a single line note.\n\n> **Good to know**:\n>\n> * We also use this format for multi-line notes.\n> * There are sometimes multiple item worths knowing or keeping in mind.",
+    "preview": "For information that is important but not critical, use notes. Notes are a good way to add information without distracting the user from the main content. notes.mdx [Code Block] **Output:** > **Good to know**: This is a single line note. > **Good to know**: > > * We also use this format for mul",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#notes-notes",
+    "position": 20
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Related Links](#related-links)",
+    "section_id": "related-links-related-links",
+    "heading_level": 2,
+    "content": "## [Related Links](#related-links)\n\nRelated Links guide the user's learning journey by adding links to logical next steps.\n\n* Links will be displayed in cards under the main content of the page.\n* Links will be automatically generated for pages that have child pages. For example, the [Optimizing](/docs/14/app/building-your-application/optimizing) section has links to all of its child pages.\n\nCreate related links using the `related` field in the page's metadata.\n\nexample.mdx\n\n```\n---\nrelated:\n  description: Learn how to quickly get started with your first application.\n  links:\n    - app/building-your-application/routing/defining-routes\n    - app/building-your-application/data-fetching\n    - app/api-reference/file-conventions/page\n---\n```",
+    "preview": "Related Links guide the user's learning journey by adding links to logical next steps. * Links will be displayed in cards under the main content of the page. * Links will be automatically generated for pages that have child pages. For example, the [Optimizing](/docs/14/app/building-your-application",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#related-links-related-links",
+    "position": 21
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Nested Fields](#nested-fields)",
+    "section_id": "nested-fields-nested-fields",
+    "heading_level": 3,
+    "content": "### [Nested Fields](#nested-fields)\n\n| Field | Required? | Description |\n| --- | --- | --- |\n| `title` | Optional | The title of the card list. Defaults to **Next Steps**. |\n| `description` | Optional | The description of the card list. |\n| `links` | Required | A list of links to other doc pages. Each list item should be a relative URL path (without a leading slash) e.g. `app/api-reference/file-conventions/page` |",
+    "preview": "| Field | Required? | Description | | --- | --- | --- | | `title` | Optional | The title of the card list. Defaults to **Next Steps**. | | `description` | Optional | The description of the card list. | | `links` | Required | A list of links to other doc pages. Each list item should be a relative URL",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#nested-fields-nested-fields",
+    "position": 22
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Diagrams](#diagrams)",
+    "section_id": "diagrams-diagrams",
+    "heading_level": 2,
+    "content": "## [Diagrams](#diagrams)\n\nDiagrams are a great way to explain complex concepts. We use [Figma](https://www.figma.com/) to create diagrams, following Vercel's design guide.\n\nThe diagrams currently live in the `/public` folder in our private Next.js site. If you'd like to update or add a diagram, please open a [GitHub issue](https://github.com/vercel/next.js/issues/new?assignees=&labels=template%3A+documentation&projects=&template=4.docs_request.yml&title=Docs%3A+) with your ideas.",
+    "preview": "Diagrams are a great way to explain complex concepts. We use [Figma](https://www.figma.com/) to create diagrams, following Vercel's design guide. The diagrams currently live in the `/public` folder in our private Next.js site. If you'd like to update or add a diagram, please open a [GitHub issue](h",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#diagrams-diagrams",
+    "position": 23
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Custom Components and HTML](#custom-components-and-html)",
+    "section_id": "custom-components-and-html-custom-components-and-html",
+    "heading_level": 2,
+    "content": "## [Custom Components and HTML](#custom-components-and-html)\n\nThese are the React Components available for the docs: `<Image />` (next/image), `<PagesOnly />`, `<AppOnly />`, `<Cross />`, and `<Check />`. We do not allow raw HTML in the docs besides the `<details>` tag.\n\nIf you have ideas for new components, please open a [GitHub issue](https://github.com/vercel/next.js/issues/new/choose).",
+    "preview": "These are the React Components available for the docs: `<Image />` (next/image), `<PagesOnly />`, `<AppOnly />`, `<Cross />`, and `<Check />`. We do not allow raw HTML in the docs besides the `<details>` tag. If you have ideas for new components, please open a [GitHub issue](https://github.com/verc",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#custom-components-and-html-custom-components-and-html",
+    "position": 24
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Style Guide](#style-guide)",
+    "section_id": "style-guide-style-guide",
+    "heading_level": 2,
+    "content": "## [Style Guide](#style-guide)\n\nThis section contains guidelines for writing docs for those who are new to technical writing.",
+    "preview": "This section contains guidelines for writing docs for those who are new to technical writing.",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#style-guide-style-guide",
+    "position": 25
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Page Templates](#page-templates)",
+    "section_id": "page-templates-page-templates",
+    "heading_level": 3,
+    "content": "### [Page Templates](#page-templates)\n\nWhile we don't have a strict template for pages, there are page sections you'll see repeated across the docs:\n\n* **Overview:** The first paragraph of a page should tell the user what the feature is and what it's used for. Followed by a minimum working example or its API reference.\n* **Convention:** If the feature has a convention, it should be explained here.\n* **Examples**: Show how the feature can be used with different use cases.\n* **API Tables**: API Pages should have an overview table at the of the page with jump-to-section links (when possible).\n* **Next Steps (Related Links)**: Add links to related pages to guide the user's learning journey.\n\nFeel free to add these sections as needed.",
+    "preview": "While we don't have a strict template for pages, there are page sections you'll see repeated across the docs: * **Overview:** The first paragraph of a page should tell the user what the feature is and what it's used for. Followed by a minimum working example or its API reference. * **Convention:**",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#page-templates-page-templates",
+    "position": 26
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Page Types](#page-types)",
+    "section_id": "page-types-page-types",
+    "heading_level": 3,
+    "content": "### [Page Types](#page-types)\n\nDocs pages are also split into two categories: Conceptual and Reference.\n\n* **Conceptual** pages are used to explain a concept or feature. They are usually longer and contain more information than reference pages. In the Next.js docs, conceptual pages are found in the **Building Your Application** section.\n* **Reference** pages are used to explain a specific API. They are usually shorter and more focused. In the Next.js docs, reference pages are found in the **API Reference** section.\n\n> **Good to know**: Depending on the page you're contributing to, you may need to follow a different voice and style. For example, conceptual pages are more instructional and use the word *you* to address the user. Reference pages are more technical, they use more imperative words like \"create, update, accept\" and tend to omit the word *you*.",
+    "preview": "Docs pages are also split into two categories: Conceptual and Reference. * **Conceptual** pages are used to explain a concept or feature. They are usually longer and contain more information than reference pages. In the Next.js docs, conceptual pages are found in the **Building Your Application** s",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#page-types-page-types",
+    "position": 27
+  },
+  {
+    "title": "Docs Contribution Guide",
+    "section": "[Voice](#voice)",
+    "section_id": "voice-voice",
+    "heading_level": 3,
+    "content": "### [Voice](#voice)\n\nHere are some guidelines to maintain a consistent style and voice across the docs:\n\n* Write clear, concise sentences. Avoid tangents.\n  + If you find yourself using a lot of commas, consider breaking the sentence into multiple sentences or use a list.\n  + Swap out complex words for simpler ones. For example, *use* instead of *utilize*.\n* Be mindful with the word *this*. It can be ambiguous and confusing, don't be afraid to repeat the subject of the sentence if unclear.\n  + For example, *Next.js uses React* instead of *Next.js uses this*.\n* Use an active voice instead of passive. An active sentence is easier to read.\n  + For example, *Next.js uses React* instead of *React is used by Next.js*. If you find yourself using words like *was* and *by* you may be using a passive voice.\n* Avoid using words like *easy*, *quick*, *simple*, *just*, etc. This is subjective and can be discouraging to users.\n* Avoid negative words like *don't*, *can't*, *won't*, etc. This can be discouraging to readers.\n  + For example, *\"You can use the `Link` component to create links between pages\"* instead of *\"Don't use the `<a>` tag to create links between pages\"*.\n* Write in second person (you/your). This is more personal and engaging.\n* Use gender-neutral language. Use *developers*, *users*, or *readers*, when referring to the audience.\n* If adding code examples, ensure they are properly formatted and working.\n\nWhile these guidelines are not exhaustive, they should help you get started. If you'd like to dive deeper into technical writing, check out the [Google Technical Writing Course](https://developers.google.com/tech-writing/overview).\n\n---\n\nThank you for contributing to the docs and being part of the Next.js community!\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Here are some guidelines to maintain a consistent style and voice across the docs: * Write clear, concise sentences. Avoid tangents. + If you find yourself using a lot of commas, consider breaking the sentence into multiple sentences or use a list. + Swap out complex words for simpler ones. For",
+    "url": "https://nextjs.org/docs/14/community/contribution-guide#voice-voice",
+    "position": 28
+  }
+]

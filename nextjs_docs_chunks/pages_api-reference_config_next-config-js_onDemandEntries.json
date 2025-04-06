@@ -1,0 +1,22 @@
+[
+  {
+    "title": "onDemandEntries",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)onDemandEntries",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)onDemandEntries",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/onDemandEntries#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "onDemandEntries",
+    "section": "onDemandEntries",
+    "section_id": "ondemandentries",
+    "heading_level": 1,
+    "content": "# onDemandEntries\n\nNext.js exposes some options that give you some control over how the server will dispose or keep in memory built pages in development.\n\nTo change the defaults, open `next.config.js` and add the `onDemandEntries` config:\n\nnext.config.js\n\n```\nmodule.exports = {\n  onDemandEntries: {\n    // period (in ms) where the server will keep pages in the buffer\n    maxInactiveAge: 25 * 1000,\n    // number of pages that should be kept simultaneously without being disposed\n    pagesBufferLength: 2,\n  },\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js exposes some options that give you some control over how the server will dispose or keep in memory built pages in development. To change the defaults, open `next.config.js` and add the `onDemandEntries` config: next.config.js [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/onDemandEntries#ondemandentries",
+    "position": 1
+  }
+]

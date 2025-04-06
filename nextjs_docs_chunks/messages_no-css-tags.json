@@ -1,0 +1,42 @@
+[
+  {
+    "title": "No CSS Tags",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No CSS Tags",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No CSS Tags",
+    "url": "https://nextjs.org/docs/messages/no-css-tags#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No CSS Tags",
+    "section": "No CSS Tags",
+    "section_id": "no-css-tags",
+    "heading_level": 1,
+    "content": "# No CSS Tags\n\n> Prevent manual stylesheet tags.",
+    "preview": "> Prevent manual stylesheet tags.",
+    "url": "https://nextjs.org/docs/messages/no-css-tags#no-css-tags",
+    "position": 1
+  },
+  {
+    "title": "No CSS Tags",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nA `link` element was used to link to an external stylesheet. This can negatively affect CSS resource loading on your webpage.",
+    "preview": "A `link` element was used to link to an external stylesheet. This can negatively affect CSS resource loading on your webpage.",
+    "url": "https://nextjs.org/docs/messages/no-css-tags#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No CSS Tags",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nThere are multiple ways to include styles using Next.js' built-in CSS support, including the option to use `@import` within the root stylesheet that is imported in `pages/_app.js`:\n\nstyles.css\n\n```\n/* Root stylesheet */\n@import 'extra.css';\n \nbody {\n  /* ... */\n}\n```\n\nAnother option is to use CSS Modules to import the CSS file scoped specifically to the component.\n\npages/index.js\n\n```\nimport styles from './extra.module.css'\n \nexport class Home {\n  render() {\n    return (\n      <div>\n        <button type=\"button\" className={styles.active}>\n          Open\n        </button>\n      </div>\n    )\n  }\n}\n```\n\nRefer to the [Built-In CSS Support](/docs/pages/building-your-application/styling) documentation to learn about all the ways to include CSS to your application.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "There are multiple ways to include styles using Next.js' built-in CSS support, including the option to use `@import` within the root stylesheet that is imported in `pages/_app.js`: styles.css [Code Block] Another option is to use CSS Modules to import the CSS file scoped specifically to the compo",
+    "url": "https://nextjs.org/docs/messages/no-css-tags#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  }
+]

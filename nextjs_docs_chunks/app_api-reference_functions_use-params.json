@@ -1,0 +1,52 @@
+[
+  {
+    "title": "useParams",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)useParams",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)useParams",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-params#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "useParams",
+    "section": "useParams",
+    "section_id": "useparams",
+    "heading_level": 1,
+    "content": "# useParams\n\n`useParams` is a **Client Component** hook that lets you read a route's [dynamic params](/docs/app/building-your-application/routing/dynamic-routes) filled in by the current URL.\n\napp/example-client-component.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useParams } from 'next/navigation'\n \nexport default function ExampleClientComponent() {\n  const params = useParams<{ tag: string; item: string }>()\n \n  // Route -> /shop/[tag]/[item]\n  // URL -> /shop/shoes/nike-air-max-97\n  // `params` -> { tag: 'shoes', item: 'nike-air-max-97' }\n  console.log(params)\n \n  return '...'\n}\n```",
+    "preview": "`useParams` is a **Client Component** hook that lets you read a route's [dynamic params](/docs/app/building-your-application/routing/dynamic-routes) filled in by the current URL. app/example-client-component.tsx TypeScript JavaScriptTypeScript ``` 'use client' import { useParams } from 'next/n",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-params#useparams",
+    "position": 1
+  },
+  {
+    "title": "useParams",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\n```\nconst params = useParams()\n```\n\n`useParams` does not take any parameters.",
+    "preview": "[Code Block] `useParams` does not take any parameters.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-params#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "useParams",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\n`useParams` returns an object containing the current route's filled in [dynamic parameters](/docs/app/building-your-application/routing/dynamic-routes).\n\n* Each property in the object is an active dynamic segment.\n* The properties name is the segment's name, and the properties value is what the segment is filled in with.\n* The properties value will either be a `string` or array of `string`'s depending on the [type of dynamic segment](/docs/app/building-your-application/routing/dynamic-routes).\n* If the route contains no dynamic parameters, `useParams` returns an empty object.\n* If used in Pages Router, `useParams` will return `null` on the initial render and updates with properties following the rules above once the router is ready.\n\nFor example:\n\n| Route | URL | `useParams()` |\n| --- | --- | --- |\n| `app/shop/page.js` | `/shop` | `{}` |\n| `app/shop/[slug]/page.js` | `/shop/1` | `{ slug: '1' }` |\n| `app/shop/[tag]/[item]/page.js` | `/shop/1/2` | `{ tag: '1', item: '2' }` |\n| `app/shop/[...slug]/page.js` | `/shop/1/2` | `{ slug: ['1', '2'] }` |",
+    "preview": "`useParams` returns an object containing the current route's filled in [dynamic parameters](/docs/app/building-your-application/routing/dynamic-routes). * Each property in the object is an active dynamic segment. * The properties name is the segment's name, and the properties value is what the segm",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-params#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "useParams",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.3.0` | `useParams` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.3.0` | `useParams` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-params#version-history-version-history",
+    "position": 4
+  }
+]

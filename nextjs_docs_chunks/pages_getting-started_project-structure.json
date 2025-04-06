@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Project Structure and Organization",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Pages Router](/docs/pages)[Getting Started](/docs/pages/getting-started)Project Structure",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Pages Router](/docs/pages)[Getting Started](/docs/pages/getting-started)Project Structure",
+    "url": "https://nextjs.org/docs/pages/getting-started/project-structure#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Project Structure and Organization",
+    "section": "Project Structure and Organization",
+    "section_id": "project-structure-and-organization",
+    "heading_level": 1,
+    "content": "# Project Structure and Organization\n\nThis page provides an overview of the folder and file conventions in Next.js, as well as tips for organizing your project.",
+    "preview": "This page provides an overview of the folder and file conventions in Next.js, as well as tips for organizing your project.",
+    "url": "https://nextjs.org/docs/pages/getting-started/project-structure#project-structure-and-organization",
+    "position": 1
+  },
+  {
+    "title": "Project Structure and Organization",
+    "section": "[Folder and file conventions](#folder-and-file-conventions)",
+    "section_id": "folder-and-file-conventions-folder-and-file-conventions",
+    "heading_level": 2,
+    "content": "## [Folder and file conventions](#folder-and-file-conventions)",
+    "preview": "## [Folder and file conventions](#folder-and-file-conventions)",
+    "url": "https://nextjs.org/docs/pages/getting-started/project-structure#folder-and-file-conventions-folder-and-file-conventions",
+    "position": 2
+  },
+  {
+    "title": "Project Structure and Organization",
+    "section": "[Top-level folders](#top-level-folders)",
+    "section_id": "top-level-folders-top-level-folders",
+    "heading_level": 3,
+    "content": "### [Top-level folders](#top-level-folders)\n\nTop-level folders are used to organize your application's code and static assets.\n\n[Image: Route segments to path segments][Image: Route segments to path segments]\n\n|  |  |\n| --- | --- |\n| [`app`](/docs/app/building-your-application/routing) | App Router |\n| [`pages`](/docs/pages/building-your-application/routing) | Pages Router |\n| [`public`](/docs/app/building-your-application/optimizing/static-assets) | Static assets to be served |\n| [`src`](/docs/app/building-your-application/configuring/src-directory) | Optional application source folder |",
+    "preview": "Top-level folders are used to organize your application's code and static assets. [Image: Route segments to path segments][Image: Route segments to path segments] | | | | --- | --- | | [`app`](/docs/app/building-your-application/routing) | App Router | | [`pages`](/docs/pages/building-your-appli",
+    "url": "https://nextjs.org/docs/pages/getting-started/project-structure#top-level-folders-top-level-folders",
+    "position": 3
+  },
+  {
+    "title": "Project Structure and Organization",
+    "section": "[Top-level files](#top-level-files)",
+    "section_id": "top-level-files-top-level-files",
+    "heading_level": 3,
+    "content": "### [Top-level files](#top-level-files)\n\nTop-level files are used to configure your application, manage dependencies, run middleware, integrate monitoring tools, and define environment variables.\n\n|  |  |\n| --- | --- |\n| **Next.js** |  |\n| [`next.config.js`](/docs/app/api-reference/config/next-config-js) | Configuration file for Next.js |\n| [`package.json`](/docs/app/getting-started/installation#manual-installation) | Project dependencies and scripts |\n| [`instrumentation.ts`](/docs/app/building-your-application/optimizing/instrumentation) | OpenTelemetry and Instrumentation file |\n| [`middleware.ts`](/docs/app/building-your-application/routing/middleware) | Next.js request middleware |\n| [`.env`](/docs/app/building-your-application/configuring/environment-variables) | Environment variables |\n| [`.env.local`](/docs/app/building-your-application/configuring/environment-variables) | Local environment variables |\n| [`.env.production`](/docs/app/building-your-application/configuring/environment-variables) | Production environment variables |\n| [`.env.development`](/docs/app/building-your-application/configuring/environment-variables) | Development environment variables |\n| [`.eslintrc.json`](/docs/app/api-reference/config/eslint) | Configuration file for ESLint |\n| `.gitignore` | Git files and folders to ignore |\n| `next-env.d.ts` | TypeScript declaration file for Next.js |\n| `tsconfig.json` | Configuration file for TypeScript |\n| `jsconfig.json` | Configuration file for JavaScript |",
+    "preview": "Top-level files are used to configure your application, manage dependencies, run middleware, integrate monitoring tools, and define environment variables. | | | | --- | --- | | **Next.js** | | | [`next.config.js`](/docs/app/api-reference/config/next-config-js) | Configuration file for Next.js |",
+    "url": "https://nextjs.org/docs/pages/getting-started/project-structure#top-level-files-top-level-files",
+    "position": 4
+  },
+  {
+    "title": "Project Structure and Organization",
+    "section": "[Files conventions](#files-conventions)",
+    "section_id": "files-conventions-files-conventions",
+    "heading_level": 3,
+    "content": "### [Files conventions](#files-conventions)\n\n|  |  |  |\n| --- | --- | --- |\n| [`_app`](/docs/pages/building-your-application/routing/custom-app) | `.js` `.jsx` `.tsx` | Custom App |\n| [`_document`](/docs/pages/building-your-application/routing/custom-document) | `.js` `.jsx` `.tsx` | Custom Document |\n| [`_error`](/docs/pages/building-your-application/routing/custom-error#more-advanced-error-page-customizing) | `.js` `.jsx` `.tsx` | Custom Error Page |\n| [`404`](/docs/pages/building-your-application/routing/custom-error#404-page) | `.js` `.jsx` `.tsx` | 404 Error Page |\n| [`500`](/docs/pages/building-your-application/routing/custom-error#500-page) | `.js` `.jsx` `.tsx` | 500 Error Page |",
+    "preview": "| | | | | --- | --- | --- | | [`_app`](/docs/pages/building-your-application/routing/custom-app) | `.js` `.jsx` `.tsx` | Custom App | | [`_document`](/docs/pages/building-your-application/routing/custom-document) | `.js` `.jsx` `.tsx` | Custom Document | | [`_error`](/docs/pages/building-your-app",
+    "url": "https://nextjs.org/docs/pages/getting-started/project-structure#files-conventions-files-conventions",
+    "position": 5
+  },
+  {
+    "title": "Project Structure and Organization",
+    "section": "[Routes](#routes)",
+    "section_id": "routes-routes",
+    "heading_level": 3,
+    "content": "### [Routes](#routes)\n\n|  |  |  |\n| --- | --- | --- |\n| **Folder convention** |  |  |\n| [`index`](/docs/pages/building-your-application/routing/pages-and-layouts#index-routes) | `.js` `.jsx` `.tsx` | Home page |\n| [`folder/index`](/docs/pages/building-your-application/routing/pages-and-layouts#index-routes) | `.js` `.jsx` `.tsx` | Nested page |\n| **File convention** |  |  |\n| [`index`](/docs/pages/building-your-application/routing/pages-and-layouts#index-routes) | `.js` `.jsx` `.tsx` | Home page |\n| [`file`](/docs/pages/building-your-application/routing/pages-and-layouts) | `.js` `.jsx` `.tsx` | Nested page |",
+    "preview": "| | | | | --- | --- | --- | | **Folder convention** | | | | [`index`](/docs/pages/building-your-application/routing/pages-and-layouts#index-routes) | `.js` `.jsx` `.tsx` | Home page | | [`folder/index`](/docs/pages/building-your-application/routing/pages-and-layouts#index-routes) | `.js` `.jsx`",
+    "url": "https://nextjs.org/docs/pages/getting-started/project-structure#routes-routes",
+    "position": 6
+  },
+  {
+    "title": "Project Structure and Organization",
+    "section": "[Dynamic routes](#dynamic-routes-1)",
+    "section_id": "dynamic-routes-dynamic-routes-1",
+    "heading_level": 3,
+    "content": "### [Dynamic routes](#dynamic-routes-1)\n\n|  |  |  |\n| --- | --- | --- |\n| **Folder convention** |  |  |\n| [`[folder]/index`](/docs/pages/building-your-application/routing/dynamic-routes) | `.js` `.jsx` `.tsx` | Dynamic route segment |\n| [`[...folder]/index`](/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) | `.js` `.jsx` `.tsx` | Catch-all route segment |\n| [`[[...folder]]/index`](/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) | `.js` `.jsx` `.tsx` | Optional catch-all route segment |\n| **File convention** |  |  |\n| [`[file]`](/docs/pages/building-your-application/routing/dynamic-routes) | `.js` `.jsx` `.tsx` | Dynamic route segment |\n| [`[...file]`](/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) | `.js` `.jsx` `.tsx` | Catch-all route segment |\n| [`[[...file]]`](/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments) | `.js` `.jsx` `.tsx` | Optional catch-all route segment |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| | | | | --- | --- | --- | | **Folder convention** | | | | [`[folder]/index`](/docs/pages/building-your-application/routing/dynamic-routes) | `.js` `.jsx` `.tsx` | Dynamic route segment | | [`[...folder]/index`](/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments) |",
+    "url": "https://nextjs.org/docs/pages/getting-started/project-structure#dynamic-routes-dynamic-routes-1",
+    "position": 7
+  }
+]

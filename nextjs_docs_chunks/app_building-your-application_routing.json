@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Routing Fundamentals",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Building Your Application](/docs/app/building-your-application)Routing",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Building Your Application](/docs/app/building-your-application)Routing",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Routing Fundamentals",
+    "section": "Routing Fundamentals",
+    "section_id": "routing-fundamentals",
+    "heading_level": 1,
+    "content": "# Routing Fundamentals\n\n[### Layouts and Templates\n\nCreate your first shared layout in Next.js.](/docs/app/building-your-application/routing/layouts-and-templates)[### Linking and Navigating\n\nLearn how navigation works in Next.js, and how to use the Link Component and `useRouter` hook.](/docs/app/building-your-application/routing/linking-and-navigating)[### Error Handling\n\nLearn how to display expected errors and handle uncaught exceptions.](/docs/app/building-your-application/routing/error-handling)[### Loading UI and Streaming\n\nBuilt on top of Suspense, Loading UI allows you to create a fallback for specific route segments, and automatically stream content as it becomes ready.](/docs/app/building-your-application/routing/loading-ui-and-streaming)[### Redirecting\n\nLearn the different ways to handle redirects in Next.js.](/docs/app/building-your-application/routing/redirecting)[### Route Groups\n\nRoute Groups can be used to partition your Next.js application into different sections.](/docs/app/building-your-application/routing/route-groups)[### Dynamic Routes\n\nDynamic Routes can be used to programmatically generate route segments from dynamic data.](/docs/app/building-your-application/routing/dynamic-routes)[### Parallel Routes\n\nSimultaneously render one or more pages in the same view that can be navigated independently. A pattern for highly dynamic applications.](/docs/app/building-your-application/routing/parallel-routes)[### Intercepting Routes\n\nUse intercepting routes to load a new route within the current layout while masking the browser URL, useful for advanced routing patterns such as modals.](/docs/app/building-your-application/routing/intercepting-routes)[### Route Handlers\n\nCreate custom request handlers for a given route using the Web's Request and Response APIs.](/docs/app/building-your-application/routing/route-handlers)[### Middleware\n\nLearn how to use Middleware to run code before a request is completed.](/docs/app/building-your-application/routing/middleware)[### Internationalization\n\nAdd support for multiple languages with internationalized routing and localized content.](/docs/app/building-your-application/routing/internationalization)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Layouts and Templates Create your first shared layout in Next.js.](/docs/app/building-your-application/routing/layouts-and-templates)[### Linking and Navigating Learn how navigation works in Next.js, and how to use the Link Component and `useRouter` hook.](/docs/app/building-your-application/",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing#routing-fundamentals",
+    "position": 1
+  }
+]

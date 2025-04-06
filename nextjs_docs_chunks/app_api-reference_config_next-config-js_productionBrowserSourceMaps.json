@@ -1,0 +1,22 @@
+[
+  {
+    "title": "productionBrowserSourceMaps",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)productionBrowserSourceMaps",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)productionBrowserSourceMaps",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/productionBrowserSourceMaps#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "productionBrowserSourceMaps",
+    "section": "productionBrowserSourceMaps",
+    "section_id": "productionbrowsersourcemaps",
+    "heading_level": 1,
+    "content": "# productionBrowserSourceMaps\n\nSource Maps are enabled by default during development. During production builds, they are disabled to prevent you leaking your source on the client, unless you specifically opt-in with the configuration flag.\n\nNext.js provides a configuration flag you can use to enable browser source map generation during the production build:\n\nnext.config.js\n\n```\nmodule.exports = {\n  productionBrowserSourceMaps: true,\n}\n```\n\nWhen the `productionBrowserSourceMaps` option is enabled, the source maps will be output in the same directory as the JavaScript files. Next.js will automatically serve these files when requested.\n\n* Adding source maps can increase `next build` time\n* Increases memory usage during `next build`\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Source Maps are enabled by default during development. During production builds, they are disabled to prevent you leaking your source on the client, unless you specifically opt-in with the configuration flag. Next.js provides a configuration flag you can use to enable browser source map generation",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/productionBrowserSourceMaps#productionbrowsersourcemaps",
+    "position": 1
+  }
+]

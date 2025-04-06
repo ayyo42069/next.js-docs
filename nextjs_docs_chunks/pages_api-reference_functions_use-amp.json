@@ -1,0 +1,42 @@
+[
+  {
+    "title": "useAmp",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[Functions](/docs/pages/api-reference/functions)useAmp",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[Functions](/docs/pages/api-reference/functions)useAmp",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/use-amp#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "useAmp",
+    "section": "useAmp",
+    "section_id": "useamp",
+    "heading_level": 1,
+    "content": "# useAmp\n\nExamples\n\n* [AMP](https://github.com/vercel/next.js/tree/canary/examples/amp)\n> AMP support is one of our advanced features, you can [read more about AMP here](/docs/pages/building-your-application/configuring/amp).\n\nTo enable AMP, add the following config to your page:\n\npages/index.js\n\n```\nexport const config = { amp: true }\n```\n\nThe `amp` config accepts the following values:\n\n* `true` - The page will be AMP-only\n* `'hybrid'` - The page will have two versions, one with AMP and another one with HTML\n\nTo learn more about the `amp` config, read the sections below.",
+    "preview": "Examples * [AMP](https://github.com/vercel/next.js/tree/canary/examples/amp) > AMP support is one of our advanced features, you can [read more about AMP here](/docs/pages/building-your-application/configuring/amp). To enable AMP, add the following config to your page: pages/index.js [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/use-amp#useamp",
+    "position": 1
+  },
+  {
+    "title": "useAmp",
+    "section": "[AMP First Page](#amp-first-page)",
+    "section_id": "amp-first-page-amp-first-page",
+    "heading_level": 2,
+    "content": "## [AMP First Page](#amp-first-page)\n\nTake a look at the following example:\n\npages/about.js\n\n```\nexport const config = { amp: true }\n \nfunction About(props) {\n  return <h3>My AMP About Page!</h3>\n}\n \nexport default About\n```\n\nThe page above is an AMP-only page, which means:\n\n* The page has no Next.js or React client-side runtime\n* The page is automatically optimized with [AMP Optimizer](https://github.com/ampproject/amp-toolbox/tree/master/packages/optimizer), an optimizer that applies the same transformations as AMP caches (improves performance by up to 42%)\n* The page has a user-accessible (optimized) version of the page and a search-engine indexable (unoptimized) version of the page",
+    "preview": "Take a look at the following example: pages/about.js [Code Block] The page above is an AMP-only page, which means: * The page has no Next.js or React client-side runtime * The page is automatically optimized with [AMP Optimizer](https://github.com/ampproject/amp-toolbox/tree/master/packages/opti",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/use-amp#amp-first-page-amp-first-page",
+    "position": 2
+  },
+  {
+    "title": "useAmp",
+    "section": "[Hybrid AMP Page](#hybrid-amp-page)",
+    "section_id": "hybrid-amp-page-hybrid-amp-page",
+    "heading_level": 2,
+    "content": "## [Hybrid AMP Page](#hybrid-amp-page)\n\nTake a look at the following example:\n\npages/about.js\n\n```\nimport { useAmp } from 'next/amp'\n \nexport const config = { amp: 'hybrid' }\n \nfunction About(props) {\n  const isAmp = useAmp()\n \n  return (\n    <div>\n      <h3>My AMP About Page!</h3>\n      {isAmp ? (\n        <amp-img\n          width=\"300\"\n          height=\"300\"\n          src=\"/my-img.jpg\"\n          alt=\"a cool image\"\n          layout=\"responsive\"\n        />\n      ) : (\n        <img width=\"300\" height=\"300\" src=\"/my-img.jpg\" alt=\"a cool image\" />\n      )}\n    </div>\n  )\n}\n \nexport default About\n```\n\nThe page above is a hybrid AMP page, which means:\n\n* The page is rendered as traditional HTML (default) and AMP HTML (by adding `?amp=1` to the URL)\n* The AMP version of the page only has valid optimizations applied with AMP Optimizer so that it is indexable by search-engines\n\nThe page uses `useAmp` to differentiate between modes, it's a [React Hook](https://react.dev/reference/react) that returns `true` if the page is using AMP, and `false` otherwise.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Take a look at the following example: pages/about.js [Code Block] The page above is a hybrid AMP page, which means: * The page is rendered as traditional HTML (default) and AMP HTML (by adding `?amp=1` to the URL) * The AMP version of the page only has valid optimizations applied with AMP Optimi",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/use-amp#hybrid-amp-page-hybrid-amp-page",
+    "position": 3
+  }
+]

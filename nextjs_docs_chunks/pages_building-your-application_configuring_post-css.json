@@ -1,0 +1,62 @@
+[
+  {
+    "title": "PostCSS",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Configuring](/docs/pages/building-your-application/configuring)PostCSS",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Configuring](/docs/pages/building-your-application/configuring)PostCSS",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/post-css#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "PostCSS",
+    "section": "PostCSS",
+    "section_id": "postcss",
+    "heading_level": 1,
+    "content": "# PostCSS",
+    "preview": "# PostCSS",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/post-css#postcss",
+    "position": 1
+  },
+  {
+    "title": "PostCSS",
+    "section": "[Default Behavior](#default-behavior)",
+    "section_id": "default-behavior-default-behavior",
+    "heading_level": 2,
+    "content": "## [Default Behavior](#default-behavior)\n\nNext.js compiles CSS for its [built-in CSS support](/docs/pages/building-your-application/styling) using PostCSS.\n\nOut of the box, with no configuration, Next.js compiles CSS with the following transformations:\n\n* [Autoprefixer](https://github.com/postcss/autoprefixer) automatically adds vendor prefixes to CSS rules (back to IE11).\n* [Cross-browser Flexbox bugs](https://github.com/philipwalton/flexbugs) are corrected to behave like [the spec](https://www.w3.org/TR/css-flexbox-1/).\n* New CSS features are automatically compiled for Internet Explorer 11 compatibility:\n  + [`all` Property](https://developer.mozilla.org/docs/Web/CSS/all)\n  + [Break Properties](https://developer.mozilla.org/docs/Web/CSS/break-after)\n  + [`font-variant` Property](https://developer.mozilla.org/docs/Web/CSS/font-variant)\n  + [Gap Properties](https://developer.mozilla.org/docs/Web/CSS/gap)\n  + [Media Query Ranges](https://developer.mozilla.org/docs/Web/CSS/Media_Queries/Using_media_queries#Syntax_improvements_in_Level_4)\n\nBy default, [CSS Grid](https://www.w3.org/TR/css-grid-1/) and [Custom Properties](https://developer.mozilla.org/docs/Web/CSS/var) (CSS variables) are **not compiled** for IE11 support.\n\nTo compile [CSS Grid Layout](https://developer.mozilla.org/docs/Web/CSS/grid) for IE11, you can place the following comment at the top of your CSS file:\n\n```\n/* autoprefixer grid: autoplace */\n```\n\nYou can also enable IE11 support for [CSS Grid Layout](https://developer.mozilla.org/docs/Web/CSS/grid)\nin your entire project by configuring autoprefixer with the configuration shown below (collapsed).\nSee [\"Customizing Plugins\"](#customizing-plugins) below for more information.\n\nClick to view the configuration to enable CSS Grid Layout\n\npostcss.config.json\n\n```\n{\n  \"plugins\": [\n    \"postcss-flexbugs-fixes\",\n    [\n      \"postcss-preset-env\",\n      {\n        \"autoprefixer\": {\n          \"flexbox\": \"no-2009\",\n          \"grid\": \"autoplace\"\n        },\n        \"stage\": 3,\n        \"features\": {\n          \"custom-properties\": false\n        }\n      }\n    ]\n  ]\n}\n```\n\nCSS variables are not compiled because it is [not possible to safely do so](https://github.com/MadLittleMods/postcss-css-variables#caveats).\nIf you must use variables, consider using something like [Sass variables](https://sass-lang.com/documentation/variables) which are compiled away by [Sass](https://sass-lang.com/).",
+    "preview": "Next.js compiles CSS for its [built-in CSS support](/docs/pages/building-your-application/styling) using PostCSS. Out of the box, with no configuration, Next.js compiles CSS with the following transformations: * [Autoprefixer](https://github.com/postcss/autoprefixer) automatically adds vendor pref",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/post-css#default-behavior-default-behavior",
+    "position": 2
+  },
+  {
+    "title": "PostCSS",
+    "section": "[Customizing Target Browsers](#customizing-target-browsers)",
+    "section_id": "customizing-target-browsers-customizing-target-browsers",
+    "heading_level": 2,
+    "content": "## [Customizing Target Browsers](#customizing-target-browsers)\n\nNext.js allows you to configure the target browsers (for [Autoprefixer](https://github.com/postcss/autoprefixer) and compiled css features) through [Browserslist](https://github.com/browserslist/browserslist).\n\nTo customize browserslist, create a `browserslist` key in your `package.json` like so:\n\npackage.json\n\n```\n{\n  \"browserslist\": [\">0.3%\", \"not dead\", \"not op_mini all\"]\n}\n```\n\nYou can use the [browsersl.ist](https://browsersl.ist/?q=%3E0.3%25%2C+not+ie+11%2C+not+dead%2C+not+op_mini+all) tool to visualize what browsers you are targeting.",
+    "preview": "Next.js allows you to configure the target browsers (for [Autoprefixer](https://github.com/postcss/autoprefixer) and compiled css features) through [Browserslist](https://github.com/browserslist/browserslist). To customize browserslist, create a `browserslist` key in your `package.json` like so: p",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/post-css#customizing-target-browsers-customizing-target-browsers",
+    "position": 3
+  },
+  {
+    "title": "PostCSS",
+    "section": "[CSS Modules](#css-modules)",
+    "section_id": "css-modules-css-modules",
+    "heading_level": 2,
+    "content": "## [CSS Modules](#css-modules)\n\nNo configuration is needed to support CSS Modules. To enable CSS Modules for a file, rename the file to have the extension `.module.css`.\n\nYou can learn more about [Next.js' CSS Module support here](/docs/pages/building-your-application/styling).",
+    "preview": "No configuration is needed to support CSS Modules. To enable CSS Modules for a file, rename the file to have the extension `.module.css`. You can learn more about [Next.js' CSS Module support here](/docs/pages/building-your-application/styling).",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/post-css#css-modules-css-modules",
+    "position": 4
+  },
+  {
+    "title": "PostCSS",
+    "section": "[Customizing Plugins](#customizing-plugins)",
+    "section_id": "customizing-plugins-customizing-plugins",
+    "heading_level": 2,
+    "content": "## [Customizing Plugins](#customizing-plugins)\n\n> **Warning**: When you define a custom PostCSS configuration file, Next.js **completely disables** the [default behavior](#default-behavior).\n> Be sure to manually configure all the features you need compiled, including [Autoprefixer](https://github.com/postcss/autoprefixer).\n> You also need to install any plugins included in your custom configuration manually, i.e. `npm install postcss-flexbugs-fixes postcss-preset-env`.\n\nTo customize the PostCSS configuration, create a `postcss.config.json` file in the root of your project.\n\nThis is the default configuration used by Next.js:\n\npostcss.config.json\n\n```\n{\n  \"plugins\": [\n    \"postcss-flexbugs-fixes\",\n    [\n      \"postcss-preset-env\",\n      {\n        \"autoprefixer\": {\n          \"flexbox\": \"no-2009\"\n        },\n        \"stage\": 3,\n        \"features\": {\n          \"custom-properties\": false\n        }\n      }\n    ]\n  ]\n}\n```\n\n> **Good to know**: Next.js also allows the file to be named `.postcssrc.json`, or, to be read from the `postcss` key in `package.json`.\n\nIt is also possible to configure PostCSS with a `postcss.config.js` file, which is useful when you want to conditionally include plugins based on environment:\n\npostcss.config.js\n\n```\nmodule.exports = {\n  plugins:\n    process.env.NODE_ENV === 'production'\n      ? [\n          'postcss-flexbugs-fixes',\n          [\n            'postcss-preset-env',\n            {\n              autoprefixer: {\n                flexbox: 'no-2009',\n              },\n              stage: 3,\n              features: {\n                'custom-properties': false,\n              },\n            },\n          ],\n        ]\n      : [\n          // No transformations in development\n        ],\n}\n```\n\n> **Good to know**: Next.js also allows the file to be named `.postcssrc.js`.\n\nDo **not use `require()`** to import the PostCSS Plugins. Plugins must be provided as strings.\n\n> **Good to know**: If your `postcss.config.js` needs to support other non-Next.js tools in the same project, you must use the interoperable object-based format instead:\n>\n> ```\n> module.exports = {\n>   plugins: {\n>     'postcss-flexbugs-fixes': {},\n>     'postcss-preset-env': {\n>       autoprefixer: {\n>         flexbox: 'no-2009',\n>       },\n>       stage: 3,\n>       features: {\n>         'custom-properties': false,\n>       },\n>     },\n>   },\n> }\n> ```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "> **Warning**: When you define a custom PostCSS configuration file, Next.js **completely disables** the [default behavior](#default-behavior). > Be sure to manually configure all the features you need compiled, including [Autoprefixer](https://github.com/postcss/autoprefixer). > You also need to ins",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/post-css#customizing-plugins-customizing-plugins",
+    "position": 5
+  }
+]

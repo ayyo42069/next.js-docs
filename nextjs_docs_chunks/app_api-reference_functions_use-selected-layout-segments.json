@@ -1,0 +1,52 @@
+[
+  {
+    "title": "useSelectedLayoutSegments",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)useSelectedLayoutSegments",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)useSelectedLayoutSegments",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "useSelectedLayoutSegments",
+    "section": "useSelectedLayoutSegments",
+    "section_id": "useselectedlayoutsegments",
+    "heading_level": 1,
+    "content": "# useSelectedLayoutSegments\n\n`useSelectedLayoutSegments` is a **Client Component** hook that lets you read the active route segments **below** the Layout it is called from.\n\nIt is useful for creating UI in parent Layouts that need knowledge of active child segments such as breadcrumbs.\n\napp/example-client-component.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useSelectedLayoutSegments } from 'next/navigation'\n \nexport default function ExampleClientComponent() {\n  const segments = useSelectedLayoutSegments()\n \n  return (\n    <ul>\n      {segments.map((segment, index) => (\n        <li key={index}>{segment}</li>\n      ))}\n    </ul>\n  )\n}\n```\n\n> **Good to know**:\n>\n> * Since `useSelectedLayoutSegments` is a [Client Component](/docs/app/building-your-application/rendering/client-components) hook, and Layouts are [Server Components](/docs/app/building-your-application/rendering/server-components) by default, `useSelectedLayoutSegments` is usually called via a Client Component that is imported into a Layout.\n> * The returned segments include [Route Groups](/docs/app/building-your-application/routing/route-groups), which you might not want to be included in your UI. You can use the `filter()` array method to remove items that start with a bracket.",
+    "preview": "`useSelectedLayoutSegments` is a **Client Component** hook that lets you read the active route segments **below** the Layout it is called from. It is useful for creating UI in parent Layouts that need knowledge of active child segments such as breadcrumbs. app/example-client-component.tsx TypeScr",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments#useselectedlayoutsegments",
+    "position": 1
+  },
+  {
+    "title": "useSelectedLayoutSegments",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\n```\nconst segments = useSelectedLayoutSegments(parallelRoutesKey?: string)\n```\n\n`useSelectedLayoutSegments` *optionally* accepts a [`parallelRoutesKey`](/docs/app/building-your-application/routing/parallel-routes#useselectedlayoutsegments), which allows you to read the active route segment within that slot.",
+    "preview": "[Code Block] `useSelectedLayoutSegments` *optionally* accepts a [`parallelRoutesKey`](/docs/app/building-your-application/routing/parallel-routes#useselectedlayoutsegments), which allows you to read the active route segment within that slot.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "useSelectedLayoutSegments",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\n`useSelectedLayoutSegments` returns an array of strings containing the active segments one level down from the layout the hook was called from. Or an empty array if none exist.\n\nFor example, given the Layouts and URLs below, the returned segments would be:\n\n| Layout | Visited URL | Returned Segments |\n| --- | --- | --- |\n| `app/layout.js` | `/` | `[]` |\n| `app/layout.js` | `/dashboard` | `['dashboard']` |\n| `app/layout.js` | `/dashboard/settings` | `['dashboard', 'settings']` |\n| `app/dashboard/layout.js` | `/dashboard` | `[]` |\n| `app/dashboard/layout.js` | `/dashboard/settings` | `['settings']` |",
+    "preview": "`useSelectedLayoutSegments` returns an array of strings containing the active segments one level down from the layout the hook was called from. Or an empty array if none exist. For example, given the Layouts and URLs below, the returned segments would be: | Layout | Visited URL | Returned Segments",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "useSelectedLayoutSegments",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.0.0` | `useSelectedLayoutSegments` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.0.0` | `useSelectedLayoutSegments` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments#version-history-version-history",
+    "position": 4
+  }
+]

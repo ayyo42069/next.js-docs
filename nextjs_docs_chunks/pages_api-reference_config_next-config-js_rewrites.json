@@ -1,0 +1,122 @@
+[
+  {
+    "title": "rewrites",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)rewrites",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)rewrites",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "rewrites",
+    "section": "rewrites",
+    "section_id": "rewrites",
+    "heading_level": 1,
+    "content": "# rewrites\n\nRewrites allow you to map an incoming request path to a different destination path.\n\nRewrites act as a URL proxy and mask the destination path, making it appear the user hasn't changed their location on the site. In contrast, [redirects](/docs/pages/api-reference/config/next-config-js/redirects) will reroute to a new page and show the URL changes.\n\nTo use rewrites you can use the `rewrites` key in `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/about',\n        destination: '/',\n      },\n    ]\n  },\n}\n```\n\nRewrites are applied to client-side routing, a `<Link href=\"/about\">` will have the rewrite applied in the above example.\n\n`rewrites` is an async function that expects to return either an array or an object of arrays (see below) holding objects with `source` and `destination` properties:\n\n* `source`: `String` - is the incoming request path pattern.\n* `destination`: `String` is the path you want to route to.\n* `basePath`: `false` or `undefined` - if false the basePath won't be included when matching, can be used for external rewrites only.\n* `locale`: `false` or `undefined` - whether the locale should not be included when matching.\n* `has` is an array of [has objects](#header-cookie-and-query-matching) with the `type`, `key` and `value` properties.\n* `missing` is an array of [missing objects](#header-cookie-and-query-matching) with the `type`, `key` and `value` properties.\n\nWhen the `rewrites` function returns an array, rewrites are applied after checking the filesystem (pages and `/public` files) and before dynamic routes. When the `rewrites` function returns an object of arrays with a specific shape, this behavior can be changed and more finely controlled, as of `v10.1` of Next.js:\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return {\n      beforeFiles: [\n        // These rewrites are checked after headers/redirects\n        // and before all files including _next/public files which\n        // allows overriding page files\n        {\n          source: '/some-page',\n          destination: '/somewhere-else',\n          has: [{ type: 'query', key: 'overrideMe' }],\n        },\n      ],\n      afterFiles: [\n        // These rewrites are checked after pages/public files\n        // are checked but before dynamic routes\n        {\n          source: '/non-existent',\n          destination: '/somewhere-else',\n        },\n      ],\n      fallback: [\n        // These rewrites are checked after both pages/public files\n        // and dynamic routes are checked\n        {\n          source: '/:path*',\n          destination: `https://my-old-site.com/:path*`,\n        },\n      ],\n    }\n  },\n}\n```\n\n> **Good to know**: rewrites in `beforeFiles` do not check the filesystem/dynamic routes immediately after matching a source, they continue until all `beforeFiles` have been checked.\n\nThe order Next.js routes are checked is:\n\n1. [headers](/docs/pages/api-reference/config/next-config-js/headers) are checked/applied\n2. [redirects](/docs/pages/api-reference/config/next-config-js/redirects) are checked/applied\n3. `beforeFiles` rewrites are checked/applied\n4. static files from the [public directory](/docs/pages/building-your-application/optimizing/static-assets), `_next/static` files, and non-dynamic pages are checked/served\n5. `afterFiles` rewrites are checked/applied, if one of these rewrites is matched we check dynamic routes/static files after each match\n6. `fallback` rewrites are checked/applied, these are applied before rendering the 404 page and after dynamic routes/all static assets have been checked. If you use [fallback: true/'blocking'](/docs/pages/api-reference/functions/get-static-paths#fallback-true) in `getStaticPaths`, the fallback `rewrites` defined in your `next.config.js` will *not* be run.",
+    "preview": "Rewrites allow you to map an incoming request path to a different destination path. Rewrites act as a URL proxy and mask the destination path, making it appear the user hasn't changed their location on the site. In contrast, [redirects](/docs/pages/api-reference/config/next-config-js/redirects) wil",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#rewrites",
+    "position": 1
+  },
+  {
+    "title": "rewrites",
+    "section": "[Rewrite parameters](#rewrite-parameters)",
+    "section_id": "rewrite-parameters-rewrite-parameters",
+    "heading_level": 2,
+    "content": "## [Rewrite parameters](#rewrite-parameters)\n\nWhen using parameters in a rewrite the parameters will be passed in the query by default when none of the parameters are used in the `destination`.\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/old-about/:path*',\n        destination: '/about', // The :path parameter isn't used here so will be automatically passed in the query\n      },\n    ]\n  },\n}\n```\n\nIf a parameter is used in the destination none of the parameters will be automatically passed in the query.\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/docs/:path*',\n        destination: '/:path*', // The :path parameter is used here so will not be automatically passed in the query\n      },\n    ]\n  },\n}\n```\n\nYou can still pass the parameters manually in the query if one is already used in the destination by specifying the query in the `destination`.\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/:first/:second',\n        destination: '/:first?second=:second',\n        // Since the :first parameter is used in the destination the :second parameter\n        // will not automatically be added in the query although we can manually add it\n        // as shown above\n      },\n    ]\n  },\n}\n```\n\n> **Good to know**: Static pages from [Automatic Static Optimization](/docs/pages/building-your-application/rendering/automatic-static-optimization) or [prerendering](/docs/pages/building-your-application/data-fetching/get-static-props) params from rewrites will be parsed on the client after hydration and provided in the query.",
+    "preview": "When using parameters in a rewrite the parameters will be passed in the query by default when none of the parameters are used in the `destination`. next.config.js [Code Block] If a parameter is used in the destination none of the parameters will be automatically passed in the query. next.config.",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#rewrite-parameters-rewrite-parameters",
+    "position": 2
+  },
+  {
+    "title": "rewrites",
+    "section": "[Path Matching](#path-matching)",
+    "section_id": "path-matching-path-matching",
+    "heading_level": 2,
+    "content": "## [Path Matching](#path-matching)\n\nPath matches are allowed, for example `/blog/:slug` will match `/blog/hello-world` (no nested paths):\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/blog/:slug',\n        destination: '/news/:slug', // Matched parameters can be used in the destination\n      },\n    ]\n  },\n}\n```",
+    "preview": "Path matches are allowed, for example `/blog/:slug` will match `/blog/hello-world` (no nested paths): next.config.js [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#path-matching-path-matching",
+    "position": 3
+  },
+  {
+    "title": "rewrites",
+    "section": "[Wildcard Path Matching](#wildcard-path-matching)",
+    "section_id": "wildcard-path-matching-wildcard-path-matching",
+    "heading_level": 3,
+    "content": "### [Wildcard Path Matching](#wildcard-path-matching)\n\nTo match a wildcard path you can use `*` after a parameter, for example `/blog/:slug*` will match `/blog/a/b/c/d/hello-world`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/blog/:slug*',\n        destination: '/news/:slug*', // Matched parameters can be used in the destination\n      },\n    ]\n  },\n}\n```",
+    "preview": "To match a wildcard path you can use `*` after a parameter, for example `/blog/:slug*` will match `/blog/a/b/c/d/hello-world`: next.config.js [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#wildcard-path-matching-wildcard-path-matching",
+    "position": 4
+  },
+  {
+    "title": "rewrites",
+    "section": "[Regex Path Matching](#regex-path-matching)",
+    "section_id": "regex-path-matching-regex-path-matching",
+    "heading_level": 3,
+    "content": "### [Regex Path Matching](#regex-path-matching)\n\nTo match a regex path you can wrap the regex in parenthesis after a parameter, for example `/blog/:slug(\\\\d{1,})` will match `/blog/123` but not `/blog/abc`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/old-blog/:post(\\\\d{1,})',\n        destination: '/blog/:post', // Matched parameters can be used in the destination\n      },\n    ]\n  },\n}\n```\n\nThe following characters `(`, `)`, `{`, `}`, `[`, `]`, `|`, `\\`, `^`, `.`, `:`, `*`, `+`, `-`, `?`, `$` are used for regex path matching, so when used in the `source` as non-special values they must be escaped by adding `\\\\` before them:\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        // this will match `/english(default)/something` being requested\n        source: '/english\\\\(default\\\\)/:slug',\n        destination: '/en-us/:slug',\n      },\n    ]\n  },\n}\n```",
+    "preview": "To match a regex path you can wrap the regex in parenthesis after a parameter, for example `/blog/:slug(\\\\d{1,})` will match `/blog/123` but not `/blog/abc`: next.config.js [Code Block] The following characters `(`, `)`, `{`, `}`, `[`, `]`, `|`, `\\`, `^`, `.`, `:`, `*`, `+`, `-`, `?`, `$` are use",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#regex-path-matching-regex-path-matching",
+    "position": 5
+  },
+  {
+    "title": "rewrites",
+    "section": "[Header, Cookie, and Query Matching](#header-cookie-and-query-matching)",
+    "section_id": "header-cookie-and-query-matching-header-cookie-and-query-matching",
+    "heading_level": 2,
+    "content": "## [Header, Cookie, and Query Matching](#header-cookie-and-query-matching)\n\nTo only match a rewrite when header, cookie, or query values also match the `has` field or don't match the `missing` field can be used. Both the `source` and all `has` items must match and all `missing` items must not match for the rewrite to be applied.\n\n`has` and `missing` items can have the following fields:\n\n* `type`: `String` - must be either `header`, `cookie`, `host`, or `query`.\n* `key`: `String` - the key from the selected type to match against.\n* `value`: `String` or `undefined` - the value to check for, if undefined any value will match. A regex like string can be used to capture a specific part of the value, e.g. if the value `first-(?<paramName>.*)` is used for `first-second` then `second` will be usable in the destination with `:paramName`.\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return [\n      // if the header `x-rewrite-me` is present,\n      // this rewrite will be applied\n      {\n        source: '/:path*',\n        has: [\n          {\n            type: 'header',\n            key: 'x-rewrite-me',\n          },\n        ],\n        destination: '/another-page',\n      },\n      // if the header `x-rewrite-me` is not present,\n      // this rewrite will be applied\n      {\n        source: '/:path*',\n        missing: [\n          {\n            type: 'header',\n            key: 'x-rewrite-me',\n          },\n        ],\n        destination: '/another-page',\n      },\n      // if the source, query, and cookie are matched,\n      // this rewrite will be applied\n      {\n        source: '/specific/:path*',\n        has: [\n          {\n            type: 'query',\n            key: 'page',\n            // the page value will not be available in the\n            // destination since value is provided and doesn't\n            // use a named capture group e.g. (?<page>home)\n            value: 'home',\n          },\n          {\n            type: 'cookie',\n            key: 'authorized',\n            value: 'true',\n          },\n        ],\n        destination: '/:path*/home',\n      },\n      // if the header `x-authorized` is present and\n      // contains a matching value, this rewrite will be applied\n      {\n        source: '/:path*',\n        has: [\n          {\n            type: 'header',\n            key: 'x-authorized',\n            value: '(?<authorized>yes|true)',\n          },\n        ],\n        destination: '/home?authorized=:authorized',\n      },\n      // if the host is `example.com`,\n      // this rewrite will be applied\n      {\n        source: '/:path*',\n        has: [\n          {\n            type: 'host',\n            value: 'example.com',\n          },\n        ],\n        destination: '/another-page',\n      },\n    ]\n  },\n}\n```",
+    "preview": "To only match a rewrite when header, cookie, or query values also match the `has` field or don't match the `missing` field can be used. Both the `source` and all `has` items must match and all `missing` items must not match for the rewrite to be applied. `has` and `missing` items can have the follo",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#header-cookie-and-query-matching-header-cookie-and-query-matching",
+    "position": 6
+  },
+  {
+    "title": "rewrites",
+    "section": "[Rewriting to an external URL](#rewriting-to-an-external-url)",
+    "section_id": "rewriting-to-an-external-url-rewriting-to-an-external-url",
+    "heading_level": 2,
+    "content": "## [Rewriting to an external URL](#rewriting-to-an-external-url)\n\nExamples\n\n* [Using Multiple Zones](https://github.com/vercel/next.js/tree/canary/examples/with-zones)\n\nRewrites allow you to rewrite to an external URL. This is especially useful for incrementally adopting Next.js. The following is an example rewrite for redirecting the `/blog` route of your main app to an external site.\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/blog',\n        destination: 'https://example.com/blog',\n      },\n      {\n        source: '/blog/:slug',\n        destination: 'https://example.com/blog/:slug', // Matched parameters can be used in the destination\n      },\n    ]\n  },\n}\n```\n\nIf you're using `trailingSlash: true`, you also need to insert a trailing slash in the `source` parameter. If the destination server is also expecting a trailing slash it should be included in the `destination` parameter as well.\n\nnext.config.js\n\n```\nmodule.exports = {\n  trailingSlash: true,\n  async rewrites() {\n    return [\n      {\n        source: '/blog/',\n        destination: 'https://example.com/blog/',\n      },\n      {\n        source: '/blog/:path*/',\n        destination: 'https://example.com/blog/:path*/',\n      },\n    ]\n  },\n}\n```",
+    "preview": "Examples * [Using Multiple Zones](https://github.com/vercel/next.js/tree/canary/examples/with-zones) Rewrites allow you to rewrite to an external URL. This is especially useful for incrementally adopting Next.js. The following is an example rewrite for redirecting the `/blog` route of your main ap",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#rewriting-to-an-external-url-rewriting-to-an-external-url",
+    "position": 7
+  },
+  {
+    "title": "rewrites",
+    "section": "[Incremental adoption of Next.js](#incremental-adoption-of-nextjs)",
+    "section_id": "incremental-adoption-of-next-js-incremental-adoption-of-nextjs",
+    "heading_level": 3,
+    "content": "### [Incremental adoption of Next.js](#incremental-adoption-of-nextjs)\n\nYou can also have Next.js fall back to proxying to an existing website after checking all Next.js routes.\n\nThis way you don't have to change the rewrites configuration when migrating more pages to Next.js\n\nnext.config.js\n\n```\nmodule.exports = {\n  async rewrites() {\n    return {\n      fallback: [\n        {\n          source: '/:path*',\n          destination: `https://custom-routes-proxying-endpoint.vercel.app/:path*`,\n        },\n      ],\n    }\n  },\n}\n```",
+    "preview": "You can also have Next.js fall back to proxying to an existing website after checking all Next.js routes. This way you don't have to change the rewrites configuration when migrating more pages to Next.js next.config.js ``` module.exports = { async rewrites() { return { fallback: [",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#incremental-adoption-of-next-js-incremental-adoption-of-nextjs",
+    "position": 8
+  },
+  {
+    "title": "rewrites",
+    "section": "[Rewrites with basePath support](#rewrites-with-basepath-support)",
+    "section_id": "rewrites-with-basepath-support-rewrites-with-basepath-support",
+    "heading_level": 3,
+    "content": "### [Rewrites with basePath support](#rewrites-with-basepath-support)\n\nWhen leveraging [`basePath` support](/docs/app/api-reference/config/next-config-js/basePath) with rewrites each `source` and `destination` is automatically prefixed with the `basePath` unless you add `basePath: false` to the rewrite:\n\nnext.config.js\n\n```\nmodule.exports = {\n  basePath: '/docs',\n \n  async rewrites() {\n    return [\n      {\n        source: '/with-basePath', // automatically becomes /docs/with-basePath\n        destination: '/another', // automatically becomes /docs/another\n      },\n      {\n        // does not add /docs to /without-basePath since basePath: false is set\n        // Note: this can not be used for internal rewrites e.g. `destination: '/another'`\n        source: '/without-basePath',\n        destination: 'https://example.com',\n        basePath: false,\n      },\n    ]\n  },\n}\n```",
+    "preview": "When leveraging [`basePath` support](/docs/app/api-reference/config/next-config-js/basePath) with rewrites each `source` and `destination` is automatically prefixed with the `basePath` unless you add `basePath: false` to the rewrite: next.config.js ``` module.exports = { basePath: '/docs', a",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#rewrites-with-basepath-support-rewrites-with-basepath-support",
+    "position": 9
+  },
+  {
+    "title": "rewrites",
+    "section": "[Rewrites with i18n support](#rewrites-with-i18n-support)",
+    "section_id": "rewrites-with-i18n-support-rewrites-with-i18n-support",
+    "heading_level": 3,
+    "content": "### [Rewrites with i18n support](#rewrites-with-i18n-support)\n\nWhen leveraging [`i18n` support](/docs/pages/building-your-application/routing/internationalization) with rewrites each `source` and `destination` is automatically prefixed to handle the configured `locales` unless you add `locale: false` to the rewrite. If `locale: false` is used you must prefix the `source` and `destination` with a locale for it to be matched correctly.\n\nnext.config.js\n\n```\nmodule.exports = {\n  i18n: {\n    locales: ['en', 'fr', 'de'],\n    defaultLocale: 'en',\n  },\n \n  async rewrites() {\n    return [\n      {\n        source: '/with-locale', // automatically handles all locales\n        destination: '/another', // automatically passes the locale on\n      },\n      {\n        // does not handle locales automatically since locale: false is set\n        source: '/nl/with-locale-manual',\n        destination: '/nl/another',\n        locale: false,\n      },\n      {\n        // this matches '/' since `en` is the defaultLocale\n        source: '/en',\n        destination: '/en/another',\n        locale: false,\n      },\n      {\n        // it's possible to match all locales even when locale: false is set\n        source: '/:locale/api-alias/:path*',\n        destination: '/api/:path*',\n        locale: false,\n      },\n      {\n        // this gets converted to /(en|fr|de)/(.*) so will not match the top-level\n        // `/` or `/fr` routes like /:path* would\n        source: '/(.*)',\n        destination: '/another',\n      },\n    ]\n  },\n}\n```",
+    "preview": "When leveraging [`i18n` support](/docs/pages/building-your-application/routing/internationalization) with rewrites each `source` and `destination` is automatically prefixed to handle the configured `locales` unless you add `locale: false` to the rewrite. If `locale: false` is used you must prefix th",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#rewrites-with-i18n-support-rewrites-with-i18n-support",
+    "position": 10
+  },
+  {
+    "title": "rewrites",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.3.0` | `missing` added. |\n| `v10.2.0` | `has` added. |\n| `v9.5.0` | Headers added. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v13.3.0` | `missing` added. | | `v10.2.0` | `has` added. | | `v9.5.0` | Headers added. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/rewrites#version-history-version-history",
+    "position": 11
+  }
+]

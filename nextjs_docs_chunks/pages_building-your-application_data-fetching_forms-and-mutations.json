@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Forms and Mutations",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Data Fetching](/docs/pages/building-your-application/data-fetching)Forms and Mutations",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Data Fetching](/docs/pages/building-your-application/data-fetching)Forms and Mutations",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Forms and Mutations",
+    "section": "Forms and Mutations",
+    "section_id": "forms-and-mutations",
+    "heading_level": 1,
+    "content": "# Forms and Mutations\n\nForms enable you to create and update data in web applications. Next.js provides a powerful way to handle form submissions and data mutations using **API Routes**.\n\n> **Good to know:**\n>\n> * We will soon recommend [incrementally adopting](/docs/app/building-your-application/upgrading/app-router-migration) the App Router and using [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) for handling form submissions and data mutations. Server Actions allow you to define asynchronous server functions that can be called directly from your components, without needing to manually create an API Route.\n> * API Routes [do not specify CORS headers](https://developer.mozilla.org/docs/Web/HTTP/CORS), meaning they are same-origin only by default.\n> * Since API Routes run on the server, we're able to use sensitive values (like API keys) through [Environment Variables](/docs/pages/building-your-application/configuring/environment-variables) without exposing them to the client. This is critical for the security of your application.",
+    "preview": "Forms enable you to create and update data in web applications. Next.js provides a powerful way to handle form submissions and data mutations using **API Routes**. > **Good to know:** > > * We will soon recommend [incrementally adopting](/docs/app/building-your-application/upgrading/app-router-migr",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#forms-and-mutations",
+    "position": 1
+  },
+  {
+    "title": "Forms and Mutations",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#examples-examples",
+    "position": 2
+  },
+  {
+    "title": "Forms and Mutations",
+    "section": "[Server-only form](#server-only-form)",
+    "section_id": "server-only-form-server-only-form",
+    "heading_level": 3,
+    "content": "### [Server-only form](#server-only-form)\n\nWith the Pages Router, you need to manually create API endpoints to handle securely mutating data on the server.\n\npages/api/submit.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  const data = req.body\n  const id = await createItem(data)\n  res.status(200).json({ id })\n}\n```\n\nThen, call the API Route from the client with an event handler:\n\npages/index.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { FormEvent } from 'react'\n \nexport default function Page() {\n  async function onSubmit(event: FormEvent<HTMLFormElement>) {\n    event.preventDefault()\n \n    const formData = new FormData(event.currentTarget)\n    const response = await fetch('/api/submit', {\n      method: 'POST',\n      body: formData,\n    })\n \n    // Handle response if necessary\n    const data = await response.json()\n    // ...\n  }\n \n  return (\n    <form onSubmit={onSubmit}>\n      <input type=\"text\" name=\"name\" />\n      <button type=\"submit\">Submit</button>\n    </form>\n  )\n}\n```",
+    "preview": "With the Pages Router, you need to manually create API endpoints to handle securely mutating data on the server. pages/api/submit.ts TypeScript JavaScriptTypeScript [Code Block] Then, call the API Route from the client with an event handler: pages/index.tsx TypeScript JavaScriptTypeScript [",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#server-only-form-server-only-form",
+    "position": 3
+  },
+  {
+    "title": "Forms and Mutations",
+    "section": "[Form validation](#form-validation)",
+    "section_id": "form-validation-form-validation",
+    "heading_level": 2,
+    "content": "## [Form validation](#form-validation)\n\nWe recommend using HTML validation like `required` and `type=\"email\"` for basic client-side form validation.\n\nFor more advanced server-side validation, you can use a schema validation library like [zod](https://zod.dev/) to validate the form fields before mutating the data:\n\npages/api/submit.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\nimport { z } from 'zod'\n \nconst schema = z.object({\n  // ...\n})\n \nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  const parsed = schema.parse(req.body)\n  // ...\n}\n```",
+    "preview": "We recommend using HTML validation like `required` and `type=\"email\"` for basic client-side form validation. For more advanced server-side validation, you can use a schema validation library like [zod](https://zod.dev/) to validate the form fields before mutating the data: pages/api/submit.ts Typ",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#form-validation-form-validation",
+    "position": 4
+  },
+  {
+    "title": "Forms and Mutations",
+    "section": "[Error handling](#error-handling)",
+    "section_id": "error-handling-error-handling",
+    "heading_level": 3,
+    "content": "### [Error handling](#error-handling)\n\nYou can use React state to show an error message when a form submission fails:\n\npages/index.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport React, { useState, FormEvent } from 'react'\n \nexport default function Page() {\n  const [isLoading, setIsLoading] = useState<boolean>(false)\n  const [error, setError] = useState<string | null>(null)\n \n  async function onSubmit(event: FormEvent<HTMLFormElement>) {\n    event.preventDefault()\n    setIsLoading(true)\n    setError(null) // Clear previous errors when a new request starts\n \n    try {\n      const formData = new FormData(event.currentTarget)\n      const response = await fetch('/api/submit', {\n        method: 'POST',\n        body: formData,\n      })\n \n      if (!response.ok) {\n        throw new Error('Failed to submit the data. Please try again.')\n      }\n \n      // Handle response if necessary\n      const data = await response.json()\n      // ...\n    } catch (error) {\n      // Capture the error message to display to the user\n      setError(error.message)\n      console.error(error)\n    } finally {\n      setIsLoading(false)\n    }\n  }\n \n  return (\n    <div>\n      {error && <div style={{ color: 'red' }}>{error}</div>}\n      <form onSubmit={onSubmit}>\n        <input type=\"text\" name=\"name\" />\n        <button type=\"submit\" disabled={isLoading}>\n          {isLoading ? 'Loading...' : 'Submit'}\n        </button>\n      </form>\n    </div>\n  )\n}\n```",
+    "preview": "You can use React state to show an error message when a form submission fails: pages/index.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#error-handling-error-handling",
+    "position": 5
+  },
+  {
+    "title": "Forms and Mutations",
+    "section": "[Displaying loading state](#displaying-loading-state)",
+    "section_id": "displaying-loading-state-displaying-loading-state",
+    "heading_level": 2,
+    "content": "## [Displaying loading state](#displaying-loading-state)\n\nYou can use React state to show a loading state when a form is submitting on the server:\n\npages/index.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport React, { useState, FormEvent } from 'react'\n \nexport default function Page() {\n  const [isLoading, setIsLoading] = useState<boolean>(false)\n \n  async function onSubmit(event: FormEvent<HTMLFormElement>) {\n    event.preventDefault()\n    setIsLoading(true) // Set loading to true when the request starts\n \n    try {\n      const formData = new FormData(event.currentTarget)\n      const response = await fetch('/api/submit', {\n        method: 'POST',\n        body: formData,\n      })\n \n      // Handle response if necessary\n      const data = await response.json()\n      // ...\n    } catch (error) {\n      // Handle error if necessary\n      console.error(error)\n    } finally {\n      setIsLoading(false) // Set loading to false when the request completes\n    }\n  }\n \n  return (\n    <form onSubmit={onSubmit}>\n      <input type=\"text\" name=\"name\" />\n      <button type=\"submit\" disabled={isLoading}>\n        {isLoading ? 'Loading...' : 'Submit'}\n      </button>\n    </form>\n  )\n}\n```",
+    "preview": "You can use React state to show a loading state when a form is submitting on the server: pages/index.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#displaying-loading-state-displaying-loading-state",
+    "position": 6
+  },
+  {
+    "title": "Forms and Mutations",
+    "section": "[Redirecting](#redirecting)",
+    "section_id": "redirecting-redirecting",
+    "heading_level": 3,
+    "content": "### [Redirecting](#redirecting)\n\nIf you would like to redirect the user to a different route after a mutation, you can [`redirect`](/docs/pages/building-your-application/routing/api-routes#response-helpers) to any absolute or relative URL:\n\npages/api/submit.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  const id = await addPost()\n  res.redirect(307, `/post/${id}`)\n}\n```",
+    "preview": "If you would like to redirect the user to a different route after a mutation, you can [`redirect`](/docs/pages/building-your-application/routing/api-routes#response-helpers) to any absolute or relative URL: pages/api/submit.ts TypeScript JavaScriptTypeScript ``` import type { NextApiRequest, Nex",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#redirecting-redirecting",
+    "position": 7
+  },
+  {
+    "title": "Forms and Mutations",
+    "section": "[Setting cookies](#setting-cookies)",
+    "section_id": "setting-cookies-setting-cookies",
+    "heading_level": 3,
+    "content": "### [Setting cookies](#setting-cookies)\n\nYou can set cookies inside an API Route using the `setHeader` method on the response:\n\npages/api/cookie.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  res.setHeader('Set-Cookie', 'username=lee; Path=/; HttpOnly')\n  res.status(200).send('Cookie has been set.')\n}\n```",
+    "preview": "You can set cookies inside an API Route using the `setHeader` method on the response: pages/api/cookie.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#setting-cookies-setting-cookies",
+    "position": 8
+  },
+  {
+    "title": "Forms and Mutations",
+    "section": "[Reading cookies](#reading-cookies)",
+    "section_id": "reading-cookies-reading-cookies",
+    "heading_level": 3,
+    "content": "### [Reading cookies](#reading-cookies)\n\nYou can read cookies inside an API Route using the [`cookies`](/docs/pages/building-your-application/routing/api-routes#request-helpers) request helper:\n\npages/api/cookie.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  const auth = req.cookies.authorization\n  // ...\n}\n```",
+    "preview": "You can read cookies inside an API Route using the [`cookies`](/docs/pages/building-your-application/routing/api-routes#request-helpers) request helper: pages/api/cookie.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#reading-cookies-reading-cookies",
+    "position": 9
+  },
+  {
+    "title": "Forms and Mutations",
+    "section": "[Deleting cookies](#deleting-cookies)",
+    "section_id": "deleting-cookies-deleting-cookies",
+    "heading_level": 3,
+    "content": "### [Deleting cookies](#deleting-cookies)\n\nYou can delete cookies inside an API Route using the `setHeader` method on the response:\n\npages/api/cookie.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default async function handler(\n  req: NextApiRequest,\n  res: NextApiResponse\n) {\n  res.setHeader('Set-Cookie', 'username=; Path=/; HttpOnly; Max-Age=0')\n  res.status(200).send('Cookie has been deleted.')\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "You can delete cookies inside an API Route using the `setHeader` method on the response: pages/api/cookie.ts TypeScript JavaScriptTypeScript [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/building-your-application/data-fetching/forms-and-mutations#deleting-cookies-deleting-cookies",
+    "position": 10
+  }
+]

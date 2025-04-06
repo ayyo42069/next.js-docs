@@ -1,0 +1,32 @@
+[
+  {
+    "title": "staleTimes",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)staleTimes",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)staleTimes",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/staleTimes#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "staleTimes",
+    "section": "staleTimes",
+    "section_id": "staletimes",
+    "heading_level": 1,
+    "content": "# staleTimes\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\n`staleTimes` is an experimental feature that enables caching of page segments in the [client-side router cache](/docs/app/building-your-application/caching#client-side-router-cache).\n\nYou can enable this experimental feature and provide custom revalidation times by setting the experimental `staleTimes` flag:\n\nnext.config.js\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  experimental: {\n    staleTimes: {\n      dynamic: 30,\n      static: 180,\n    },\n  },\n}\n \nmodule.exports = nextConfig\n```\n\nThe `static` and `dynamic` properties correspond with the time period (in seconds) based on different types of [link prefetching](/docs/app/api-reference/components/link#prefetch).\n\n* The `dynamic` property is used when the page is neither statically generated nor fully prefetched (e.g. with `prefetch={true}`).\n  + Default: 0 seconds (not cached)\n* The `static` property is used for statically generated pages, or when the `prefetch` prop on `Link` is set to `true`, or when calling [`router.prefetch`](/docs/app/building-your-application/caching#routerprefetch).\n  + Default: 5 minutes\n\n> **Good to know:**\n>\n> * [Loading boundaries](/docs/app/api-reference/file-conventions/loading) are considered reusable for the `static` period defined in this configuration.\n> * This doesn't affect [partial rendering](/docs/app/building-your-application/routing/linking-and-navigating#4-partial-rendering), **meaning shared layouts won't automatically be refetched on every navigation, only the page segment that changes.**\n> * This doesn't change [back/forward caching](/docs/app/building-your-application/caching#client-side-router-cache) behavior to prevent layout shift and to prevent losing the browser scroll position.\n\nYou can learn more about the Client Router Cache [here](/docs/app/building-your-application/caching#client-side-router-cache).",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). `staleTimes` is an experimental feature that enables caching of page segments in the [client-side router cache",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/staleTimes#staletimes",
+    "position": 1
+  },
+  {
+    "title": "staleTimes",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 3,
+    "content": "### [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0` | The `dynamic` `staleTimes` default changed from 30s to 0s. |\n| `v14.2.0` | Experimental `staleTimes` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0` | The `dynamic` `staleTimes` default changed from 30s to 0s. | | `v14.2.0` | Experimental `staleTimes` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/staleTimes#version-history-version-history",
+    "position": 2
+  }
+]

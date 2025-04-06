@@ -1,0 +1,242 @@
+[
+  {
+    "title": "Route Handlers",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Routing](/docs/app/building-your-application/routing)Route Handlers",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Routing](/docs/app/building-your-application/routing)Route Handlers",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Route Handlers",
+    "section": "Route Handlers",
+    "section_id": "route-handlers",
+    "heading_level": 1,
+    "content": "# Route Handlers\n\nRoute Handlers allow you to create custom request handlers for a given route using the Web [Request](https://developer.mozilla.org/docs/Web/API/Request) and [Response](https://developer.mozilla.org/docs/Web/API/Response) APIs.\n\n[Image: Route.js Special File][Image: Route.js Special File]\n> **Good to know**: Route Handlers are only available inside the `app` directory. They are the equivalent of [API Routes](/docs/pages/building-your-application/routing/api-routes) inside the `pages` directory meaning you **do not** need to use API Routes and Route Handlers together.",
+    "preview": "Route Handlers allow you to create custom request handlers for a given route using the Web [Request](https://developer.mozilla.org/docs/Web/API/Request) and [Response](https://developer.mozilla.org/docs/Web/API/Response) APIs. [Image: Route.js Special File][Image: Route.js Special File] > **Good to",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#route-handlers",
+    "position": 1
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Convention](#convention)",
+    "section_id": "convention-convention",
+    "heading_level": 2,
+    "content": "## [Convention](#convention)\n\nRoute Handlers are defined in a [`route.js|ts` file](/docs/app/api-reference/file-conventions/route) inside the `app` directory:\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function GET(request: Request) {}\n```\n\nRoute Handlers can be nested anywhere inside the `app` directory, similar to `page.js` and `layout.js`. But there **cannot** be a `route.js` file at the same route segment level as `page.js`.",
+    "preview": "Route Handlers are defined in a [`route.js|ts` file](/docs/app/api-reference/file-conventions/route) inside the `app` directory: app/api/route.ts TypeScript JavaScriptTypeScript [Code Block] Route Handlers can be nested anywhere inside the `app` directory, similar to `page.js` and `layout.js`.",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#convention-convention",
+    "position": 2
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Supported HTTP Methods](#supported-http-methods)",
+    "section_id": "supported-http-methods-supported-http-methods",
+    "heading_level": 3,
+    "content": "### [Supported HTTP Methods](#supported-http-methods)\n\nThe following [HTTP methods](https://developer.mozilla.org/docs/Web/HTTP/Methods) are supported: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, and `OPTIONS`. If an unsupported method is called, Next.js will return a `405 Method Not Allowed` response.",
+    "preview": "The following [HTTP methods](https://developer.mozilla.org/docs/Web/HTTP/Methods) are supported: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, and `OPTIONS`. If an unsupported method is called, Next.js will return a `405 Method Not Allowed` response.",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#supported-http-methods-supported-http-methods",
+    "position": 3
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Extended `NextRequest` and `NextResponse` APIs](#extended-nextrequest-and-nextresponse-apis)",
+    "section_id": "extended-nextrequest-and-nextresponse-apis-extended-nextrequest-and-nextresponse-apis",
+    "heading_level": 3,
+    "content": "### [Extended `NextRequest` and `NextResponse` APIs](#extended-nextrequest-and-nextresponse-apis)\n\nIn addition to supporting the native [Request](https://developer.mozilla.org/docs/Web/API/Request) and [Response](https://developer.mozilla.org/docs/Web/API/Response) APIs, Next.js extends them with [`NextRequest`](/docs/app/api-reference/functions/next-request) and [`NextResponse`](/docs/app/api-reference/functions/next-response) to provide convenient helpers for advanced use cases.",
+    "preview": "In addition to supporting the native [Request](https://developer.mozilla.org/docs/Web/API/Request) and [Response](https://developer.mozilla.org/docs/Web/API/Response) APIs, Next.js extends them with [`NextRequest`](/docs/app/api-reference/functions/next-request) and [`NextResponse`](/docs/app/api-re",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#extended-nextrequest-and-nextresponse-apis-extended-nextrequest-and-nextresponse-apis",
+    "position": 4
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Behavior](#behavior)",
+    "section_id": "behavior-behavior",
+    "heading_level": 2,
+    "content": "## [Behavior](#behavior)",
+    "preview": "## [Behavior](#behavior)",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#behavior-behavior",
+    "position": 5
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Caching](#caching)",
+    "section_id": "caching-caching",
+    "heading_level": 3,
+    "content": "### [Caching](#caching)\n\nRoute Handlers are not cached by default. You can, however, opt into caching for `GET` methods. Other supported HTTP methods are **not** cached. To cache a `GET` method, use a [route config option](/docs/app/api-reference/file-conventions/route-segment-config#dynamic) such as `export const dynamic = 'force-static'` in your Route Handler file.\n\napp/items/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport const dynamic = 'force-static'\n \nexport async function GET() {\n  const res = await fetch('https://data.mongodb-api.com/...', {\n    headers: {\n      'Content-Type': 'application/json',\n      'API-Key': process.env.DATA_API_KEY,\n    },\n  })\n  const data = await res.json()\n \n  return Response.json({ data })\n}\n```\n\n> **Good to know**: Other supported HTTP methods are **not** cached, even if they are placed alongside a `GET` method that is cached, in the same file.",
+    "preview": "Route Handlers are not cached by default. You can, however, opt into caching for `GET` methods. Other supported HTTP methods are **not** cached. To cache a `GET` method, use a [route config option](/docs/app/api-reference/file-conventions/route-segment-config#dynamic) such as `export const dynamic =",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#caching-caching",
+    "position": 6
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Special Route Handlers](#special-route-handlers)",
+    "section_id": "special-route-handlers-special-route-handlers",
+    "heading_level": 3,
+    "content": "### [Special Route Handlers](#special-route-handlers)\n\nSpecial Route Handlers like [`sitemap.ts`](/docs/app/api-reference/file-conventions/metadata/sitemap), [`opengraph-image.tsx`](/docs/app/api-reference/file-conventions/metadata/opengraph-image), and [`icon.tsx`](/docs/app/api-reference/file-conventions/metadata/app-icons), and other [metadata files](/docs/app/api-reference/file-conventions/metadata) remain static by default unless they use Dynamic APIs or dynamic config options.",
+    "preview": "Special Route Handlers like [`sitemap.ts`](/docs/app/api-reference/file-conventions/metadata/sitemap), [`opengraph-image.tsx`](/docs/app/api-reference/file-conventions/metadata/opengraph-image), and [`icon.tsx`](/docs/app/api-reference/file-conventions/metadata/app-icons), and other [metadata files]",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#special-route-handlers-special-route-handlers",
+    "position": 7
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Route Resolution](#route-resolution)",
+    "section_id": "route-resolution-route-resolution",
+    "heading_level": 3,
+    "content": "### [Route Resolution](#route-resolution)\n\nYou can consider a `route` the lowest level routing primitive.\n\n* They **do not** participate in layouts or client-side navigations like `page`.\n* There **cannot** be a `route.js` file at the same route as `page.js`.\n\n| Page | Route | Result |\n| --- | --- | --- |\n| `app/page.js` | `app/route.js` | Conflict |\n| `app/page.js` | `app/api/route.js` | Valid |\n| `app/[user]/page.js` | `app/api/route.js` | Valid |\n\nEach `route.js` or `page.js` file takes over all HTTP verbs for that route.\n\napp/page.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Page() {\n  return <h1>Hello, Next.js!</h1>\n}\n \n// \u274c Conflict\n// `app/route.ts`\nexport async function POST(request: Request) {}\n```",
+    "preview": "You can consider a `route` the lowest level routing primitive. * They **do not** participate in layouts or client-side navigations like `page`. * There **cannot** be a `route.js` file at the same route as `page.js`. | Page | Route | Result | | --- | --- | --- | | `app/page.js` | `app/route.js` | C",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#route-resolution-route-resolution",
+    "position": 8
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)\n\nThe following examples show how to combine Route Handlers with other Next.js APIs and features.",
+    "preview": "The following examples show how to combine Route Handlers with other Next.js APIs and features.",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#examples-examples",
+    "position": 9
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Revalidating Cached Data](#revalidating-cached-data)",
+    "section_id": "revalidating-cached-data-revalidating-cached-data",
+    "heading_level": 3,
+    "content": "### [Revalidating Cached Data](#revalidating-cached-data)\n\nYou can [revalidate cached data](/docs/app/building-your-application/data-fetching/incremental-static-regeneration) using Incremental Static Regeneration (ISR):\n\napp/posts/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport const revalidate = 60\n \nexport async function GET() {\n  const data = await fetch('https://api.vercel.app/blog')\n  const posts = await data.json()\n \n  return Response.json(posts)\n}\n```",
+    "preview": "You can [revalidate cached data](/docs/app/building-your-application/data-fetching/incremental-static-regeneration) using Incremental Static Regeneration (ISR): app/posts/route.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#revalidating-cached-data-revalidating-cached-data",
+    "position": 10
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Cookies](#cookies)",
+    "section_id": "cookies-cookies",
+    "heading_level": 3,
+    "content": "### [Cookies](#cookies)\n\nYou can read or set cookies with [`cookies`](/docs/app/api-reference/functions/cookies) from `next/headers`. This server function can be called directly in a Route Handler, or nested inside of another function.\n\nAlternatively, you can return a new `Response` using the [`Set-Cookie`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie) header.\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { cookies } from 'next/headers'\n \nexport async function GET(request: Request) {\n  const cookieStore = await cookies()\n  const token = cookieStore.get('token')\n \n  return new Response('Hello, Next.js!', {\n    status: 200,\n    headers: { 'Set-Cookie': `token=${token.value}` },\n  })\n}\n```\n\nYou can also use the underlying Web APIs to read cookies from the request ([`NextRequest`](/docs/app/api-reference/functions/next-request)):\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { type NextRequest } from 'next/server'\n \nexport async function GET(request: NextRequest) {\n  const token = request.cookies.get('token')\n}\n```",
+    "preview": "You can read or set cookies with [`cookies`](/docs/app/api-reference/functions/cookies) from `next/headers`. This server function can be called directly in a Route Handler, or nested inside of another function. Alternatively, you can return a new `Response` using the [`Set-Cookie`](https://develope",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#cookies-cookies",
+    "position": 11
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Headers](#headers)",
+    "section_id": "headers-headers",
+    "heading_level": 3,
+    "content": "### [Headers](#headers)\n\nYou can read headers with [`headers`](/docs/app/api-reference/functions/headers) from `next/headers`. This server function can be called directly in a Route Handler, or nested inside of another function.\n\nThis `headers` instance is read-only. To set headers, you need to return a new `Response` with new `headers`.\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { headers } from 'next/headers'\n \nexport async function GET(request: Request) {\n  const headersList = await headers()\n  const referer = headersList.get('referer')\n \n  return new Response('Hello, Next.js!', {\n    status: 200,\n    headers: { referer: referer },\n  })\n}\n```\n\nYou can also use the underlying Web APIs to read headers from the request ([`NextRequest`](/docs/app/api-reference/functions/next-request)):\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { type NextRequest } from 'next/server'\n \nexport async function GET(request: NextRequest) {\n  const requestHeaders = new Headers(request.headers)\n}\n```",
+    "preview": "You can read headers with [`headers`](/docs/app/api-reference/functions/headers) from `next/headers`. This server function can be called directly in a Route Handler, or nested inside of another function. This `headers` instance is read-only. To set headers, you need to return a new `Response` with",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#headers-headers",
+    "position": 12
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Redirects](#redirects)",
+    "section_id": "redirects-redirects",
+    "heading_level": 3,
+    "content": "### [Redirects](#redirects)\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { redirect } from 'next/navigation'\n \nexport async function GET(request: Request) {\n  redirect('https://nextjs.org/')\n}\n```",
+    "preview": "app/api/route.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#redirects-redirects",
+    "position": 13
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Dynamic Route Segments](#dynamic-route-segments)",
+    "section_id": "dynamic-route-segments-dynamic-route-segments",
+    "heading_level": 3,
+    "content": "### [Dynamic Route Segments](#dynamic-route-segments)\n\nRoute Handlers can use [Dynamic Segments](/docs/app/building-your-application/routing/dynamic-routes) to create request handlers from dynamic data.\n\napp/items/[slug]/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function GET(\n  request: Request,\n  { params }: { params: Promise<{ slug: string }> }\n) {\n  const { slug } = await params // 'a', 'b', or 'c'\n}\n```\n\n| Route | Example URL | `params` |\n| --- | --- | --- |\n| `app/items/[slug]/route.js` | `/items/a` | `Promise<{ slug: 'a' }>` |\n| `app/items/[slug]/route.js` | `/items/b` | `Promise<{ slug: 'b' }>` |\n| `app/items/[slug]/route.js` | `/items/c` | `Promise<{ slug: 'c' }>` |",
+    "preview": "Route Handlers can use [Dynamic Segments](/docs/app/building-your-application/routing/dynamic-routes) to create request handlers from dynamic data. app/items/[slug]/route.ts TypeScript JavaScriptTypeScript [Code Block] | Route | Example URL | `params` | | --- | --- | --- | | `app/items/[slug]/r",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#dynamic-route-segments-dynamic-route-segments",
+    "position": 14
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[URL Query Parameters](#url-query-parameters)",
+    "section_id": "url-query-parameters-url-query-parameters",
+    "heading_level": 3,
+    "content": "### [URL Query Parameters](#url-query-parameters)\n\nThe request object passed to the Route Handler is a `NextRequest` instance, which has [some additional convenience methods](/docs/app/api-reference/functions/next-request#nexturl), including for more easily handling query parameters.\n\napp/api/search/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { type NextRequest } from 'next/server'\n \nexport function GET(request: NextRequest) {\n  const searchParams = request.nextUrl.searchParams\n  const query = searchParams.get('query')\n  // query is \"hello\" for /api/search?query=hello\n}\n```",
+    "preview": "The request object passed to the Route Handler is a `NextRequest` instance, which has [some additional convenience methods](/docs/app/api-reference/functions/next-request#nexturl), including for more easily handling query parameters. app/api/search/route.ts TypeScript JavaScriptTypeScript [Code",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#url-query-parameters-url-query-parameters",
+    "position": 15
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Streaming](#streaming)",
+    "section_id": "streaming-streaming",
+    "heading_level": 3,
+    "content": "### [Streaming](#streaming)\n\nStreaming is commonly used in combination with Large Language Models (LLMs), such as OpenAI, for AI-generated content. Learn more about the [AI SDK](https://sdk.vercel.ai/docs/introduction).\n\napp/api/chat/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { openai } from '@ai-sdk/openai'\nimport { StreamingTextResponse, streamText } from 'ai'\n \nexport async function POST(req: Request) {\n  const { messages } = await req.json()\n  const result = await streamText({\n    model: openai('gpt-4-turbo'),\n    messages,\n  })\n \n  return new StreamingTextResponse(result.toAIStream())\n}\n```\n\nThese abstractions use the Web APIs to create a stream. You can also use the underlying Web APIs directly.\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n// https://developer.mozilla.org/docs/Web/API/ReadableStream#convert_async_iterator_to_stream\nfunction iteratorToStream(iterator: any) {\n  return new ReadableStream({\n    async pull(controller) {\n      const { value, done } = await iterator.next()\n \n      if (done) {\n        controller.close()\n      } else {\n        controller.enqueue(value)\n      }\n    },\n  })\n}\n \nfunction sleep(time: number) {\n  return new Promise((resolve) => {\n    setTimeout(resolve, time)\n  })\n}\n \nconst encoder = new TextEncoder()\n \nasync function* makeIterator() {\n  yield encoder.encode('<p>One</p>')\n  await sleep(200)\n  yield encoder.encode('<p>Two</p>')\n  await sleep(200)\n  yield encoder.encode('<p>Three</p>')\n}\n \nexport async function GET() {\n  const iterator = makeIterator()\n  const stream = iteratorToStream(iterator)\n \n  return new Response(stream)\n}\n```",
+    "preview": "Streaming is commonly used in combination with Large Language Models (LLMs), such as OpenAI, for AI-generated content. Learn more about the [AI SDK](https://sdk.vercel.ai/docs/introduction). app/api/chat/route.ts TypeScript JavaScriptTypeScript [Code Block] These abstractions use the Web APIs t",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#streaming-streaming",
+    "position": 16
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Request Body](#request-body)",
+    "section_id": "request-body-request-body",
+    "heading_level": 3,
+    "content": "### [Request Body](#request-body)\n\nYou can read the `Request` body using the standard Web API methods:\n\napp/items/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function POST(request: Request) {\n  const res = await request.json()\n  return Response.json({ res })\n}\n```",
+    "preview": "You can read the `Request` body using the standard Web API methods: app/items/route.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#request-body-request-body",
+    "position": 17
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Request Body FormData](#request-body-formdata)",
+    "section_id": "request-body-formdata-request-body-formdata",
+    "heading_level": 3,
+    "content": "### [Request Body FormData](#request-body-formdata)\n\nYou can read the `FormData` using the `request.formData()` function:\n\napp/items/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function POST(request: Request) {\n  const formData = await request.formData()\n  const name = formData.get('name')\n  const email = formData.get('email')\n  return Response.json({ name, email })\n}\n```\n\nSince `formData` data are all strings, you may want to use [`zod-form-data`](https://www.npmjs.com/zod-form-data) to validate the request and retrieve data in the format you prefer (e.g. `number`).",
+    "preview": "You can read the `FormData` using the `request.formData()` function: app/items/route.ts TypeScript JavaScriptTypeScript [Code Block] Since `formData` data are all strings, you may want to use [`zod-form-data`](https://www.npmjs.com/zod-form-data) to validate the request and retrieve data in the",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#request-body-formdata-request-body-formdata",
+    "position": 18
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[CORS](#cors)",
+    "section_id": "cors-cors",
+    "heading_level": 3,
+    "content": "### [CORS](#cors)\n\nYou can set CORS headers for a specific Route Handler using the standard Web API methods:\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function GET(request: Request) {\n  return new Response('Hello, Next.js!', {\n    status: 200,\n    headers: {\n      'Access-Control-Allow-Origin': '*',\n      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',\n      'Access-Control-Allow-Headers': 'Content-Type, Authorization',\n    },\n  })\n}\n```\n\n> **Good to know**:\n>\n> * To add CORS headers to multiple Route Handlers, you can use [Middleware](/docs/app/building-your-application/routing/middleware#cors) or the [`next.config.js` file](/docs/app/api-reference/config/next-config-js/headers#cors).\n> * Alternatively, see our [CORS example](https://github.com/vercel/examples/blob/main/edge-functions/cors/lib/cors.ts) package.",
+    "preview": "You can set CORS headers for a specific Route Handler using the standard Web API methods: app/api/route.ts TypeScript JavaScriptTypeScript [Code Block] > **Good to know**: > > * To add CORS headers to multiple Route Handlers, you can use [Middleware](/docs/app/building-your-application/routing/",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#cors-cors",
+    "position": 19
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Webhooks](#webhooks)",
+    "section_id": "webhooks-webhooks",
+    "heading_level": 3,
+    "content": "### [Webhooks](#webhooks)\n\nYou can use a Route Handler to receive webhooks from third-party services:\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function POST(request: Request) {\n  try {\n    const text = await request.text()\n    // Process the webhook payload\n  } catch (error) {\n    return new Response(`Webhook error: ${error.message}`, {\n      status: 400,\n    })\n  }\n \n  return new Response('Success!', {\n    status: 200,\n  })\n}\n```\n\nNotably, unlike API Routes with the Pages Router, you do not need to use `bodyParser` to use any additional configuration.",
+    "preview": "You can use a Route Handler to receive webhooks from third-party services: app/api/route.ts TypeScript JavaScriptTypeScript ``` export async function POST(request: Request) { try { const text = await request.text() // Process the webhook payload } catch (error) { return new Respo",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#webhooks-webhooks",
+    "position": 20
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Non-UI Responses](#non-ui-responses)",
+    "section_id": "non-ui-responses-non-ui-responses",
+    "heading_level": 3,
+    "content": "### [Non-UI Responses](#non-ui-responses)\n\nYou can use Route Handlers to return non-UI content. Note that [`sitemap.xml`](/docs/app/api-reference/file-conventions/metadata/sitemap#generating-a-sitemap-using-code-js-ts), [`robots.txt`](/docs/app/api-reference/file-conventions/metadata/robots#generate-a-robots-file), [`app icons`](/docs/app/api-reference/file-conventions/metadata/app-icons#generate-icons-using-code-js-ts-tsx), and [open graph images](/docs/app/api-reference/file-conventions/metadata/opengraph-image) all have built-in support.\n\napp/rss.xml/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function GET() {\n  return new Response(\n    `<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<rss version=\"2.0\">\n \n<channel>\n  <title>Next.js Documentation</title>\n  <link>https://nextjs.org/docs</link>\n  <description>The React Framework for the Web</description>\n</channel>\n \n</rss>`,\n    {\n      headers: {\n        'Content-Type': 'text/xml',\n      },\n    }\n  )\n}\n```",
+    "preview": "You can use Route Handlers to return non-UI content. Note that [`sitemap.xml`](/docs/app/api-reference/file-conventions/metadata/sitemap#generating-a-sitemap-using-code-js-ts), [`robots.txt`](/docs/app/api-reference/file-conventions/metadata/robots#generate-a-robots-file), [`app icons`](/docs/app/ap",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#non-ui-responses-non-ui-responses",
+    "position": 21
+  },
+  {
+    "title": "Route Handlers",
+    "section": "[Segment Config Options](#segment-config-options)",
+    "section_id": "segment-config-options-segment-config-options",
+    "heading_level": 3,
+    "content": "### [Segment Config Options](#segment-config-options)\n\nRoute Handlers use the same [route segment configuration](/docs/app/api-reference/file-conventions/route-segment-config) as pages and layouts.\n\napp/items/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport const dynamic = 'auto'\nexport const dynamicParams = true\nexport const revalidate = false\nexport const fetchCache = 'auto'\nexport const runtime = 'nodejs'\nexport const preferredRegion = 'auto'\n```\n\nSee the [API reference](/docs/app/api-reference/file-conventions/route-segment-config) for more details.",
+    "preview": "Route Handlers use the same [route segment configuration](/docs/app/api-reference/file-conventions/route-segment-config) as pages and layouts. app/items/route.ts TypeScript JavaScriptTypeScript [Code Block] See the [API reference](/docs/app/api-reference/file-conventions/route-segment-config) f",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#segment-config-options-segment-config-options",
+    "position": 22
+  },
+  {
+    "title": "Route Handlers",
+    "section": "API Reference",
+    "section_id": "api-reference",
+    "heading_level": 2,
+    "content": "## API Reference\n\nLearn more about the route.js file.\n\n[### route.js\n\nAPI reference for the route.js special file.](/docs/app/api-reference/file-conventions/route)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn more about the route.js file. [### route.js API reference for the route.js special file.](/docs/app/api-reference/file-conventions/route) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/route-handlers#api-reference",
+    "position": 23
+  }
+]

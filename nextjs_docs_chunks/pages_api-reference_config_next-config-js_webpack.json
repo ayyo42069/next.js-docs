@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Custom Webpack Config",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)webpack",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)webpack",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Custom Webpack Config",
+    "section": "Custom Webpack Config",
+    "section_id": "custom-webpack-config",
+    "heading_level": 1,
+    "content": "# Custom Webpack Config\n\n> **Good to know**: changes to webpack config are not covered by semver so proceed at your own risk\n\nBefore continuing to add custom webpack configuration to your application make sure Next.js doesn't already support your use-case:\n\n* [CSS imports](/docs/pages/building-your-application/styling)\n* [CSS modules](/docs/pages/building-your-application/styling/css)\n* [Sass/SCSS imports](/docs/pages/building-your-application/styling/sass)\n* [Sass/SCSS modules](/docs/pages/building-your-application/styling/sass)\n* [Customizing babel configuration](/docs/pages/building-your-application/configuring/babel)\n\nSome commonly asked for features are available as plugins:\n\n* [@next/mdx](https://github.com/vercel/next.js/tree/canary/packages/next-mdx)\n* [@next/bundle-analyzer](https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer)\n\nIn order to extend our usage of `webpack`, you can define a function that extends its config inside `next.config.js`, like so:\n\nnext.config.js\n\n```\nmodule.exports = {\n  webpack: (\n    config,\n    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }\n  ) => {\n    // Important: return the modified config\n    return config\n  },\n}\n```\n\n> The `webpack` function is executed three times, twice for the server (nodejs / edge runtime) and once for the client. This allows you to distinguish between client and server configuration using the `isServer` property.\n\nThe second argument to the `webpack` function is an object with the following properties:\n\n* `buildId`: `String` - The build id, used as a unique identifier between builds.\n* `dev`: `Boolean` - Indicates if the compilation will be done in development.\n* `isServer`: `Boolean` - It's `true` for server-side compilation, and `false` for client-side compilation.\n* `nextRuntime`: `String | undefined` - The target runtime for server-side compilation; either `\"edge\"` or `\"nodejs\"`, it's `undefined` for client-side compilation.\n* `defaultLoaders`: `Object` - Default loaders used internally by Next.js:\n  + `babel`: `Object` - Default `babel-loader` configuration.\n\nExample usage of `defaultLoaders.babel`:\n\n```\n// Example config for adding a loader that depends on babel-loader\n// This source was taken from the @next/mdx plugin source:\n// https://github.com/vercel/next.js/tree/canary/packages/next-mdx\nmodule.exports = {\n  webpack: (config, options) => {\n    config.module.rules.push({\n      test: /\\.mdx/,\n      use: [\n        options.defaultLoaders.babel,\n        {\n          loader: '@mdx-js/loader',\n          options: pluginOptions.options,\n        },\n      ],\n    })\n \n    return config\n  },\n}\n```\n\n#### [`nextRuntime`](#nextruntime)\n\nNotice that `isServer` is `true` when `nextRuntime` is `\"edge\"` or `\"nodejs\"`, `nextRuntime` `\"edge\"` is currently for middleware and Server Components in edge runtime only.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "> **Good to know**: changes to webpack config are not covered by semver so proceed at your own risk Before continuing to add custom webpack configuration to your application make sure Next.js doesn't already support your use-case: * [CSS imports](/docs/pages/building-your-application/styling) * [C",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack#custom-webpack-config",
+    "position": 1
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "title": "create-next-app",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[CLI](/docs/app/api-reference/cli)create-next-app",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[CLI](/docs/app/api-reference/cli)create-next-app",
+    "url": "https://nextjs.org/docs/app/api-reference/cli/create-next-app#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "create-next-app",
+    "section": "create-next-app",
+    "section_id": "create-next-app",
+    "heading_level": 1,
+    "content": "# create-next-app\n\nThe `create-next-app` CLI allow you to create a new Next.js application using the default template or an [example](https://github.com/vercel/next.js/tree/canary/examples) from a public GitHub repository. It is the easiest way to get started with Next.js.\n\nBasic usage:\n\nTerminal\n\n```\nnpx create-next-app@latest [project-name] [options]\n```",
+    "preview": "The `create-next-app` CLI allow you to create a new Next.js application using the default template or an [example](https://github.com/vercel/next.js/tree/canary/examples) from a public GitHub repository. It is the easiest way to get started with Next.js. Basic usage: Terminal [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/cli/create-next-app#create-next-app",
+    "position": 1
+  },
+  {
+    "title": "create-next-app",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)\n\nThe following options are available:\n\n| Options | Description |\n| --- | --- |\n| `-h` or `--help` | Show all available options |\n| `-v` or `--version` | Output the version number |\n| `--no-*` | Negate default options. E.g. `--no-eslint` |\n| `--ts` or `--typescript` | Initialize as a TypeScript project (default) |\n| `--js` or `--javascript` | Initialize as a JavaScript project |\n| `--tailwind` | Initialize with Tailwind CSS config (default) |\n| `--eslint` | Initialize with ESLint config |\n| `--app` | Initialize as an App Router project |\n| `--api` | Initialize a project with only route handlers |\n| `--src-dir` | Initialize inside a `src/` directory |\n| `--turbopack` | Enable Turbopack by default for development |\n| `--import-alias <alias-to-configure>` | Specify import alias to use (default \"@/\\*\") |\n| `--empty` | Initialize an empty project |\n| `--use-npm` | Explicitly tell the CLI to bootstrap the application using npm |\n| `--use-pnpm` | Explicitly tell the CLI to bootstrap the application using pnpm |\n| `--use-yarn` | Explicitly tell the CLI to bootstrap the application using Yarn |\n| `--use-bun` | Explicitly tell the CLI to bootstrap the application using Bun |\n| `-e` or `--example [name] [github-url]` | An example to bootstrap the app with |\n| `--example-path <path-to-example>` | Specify the path to the example separately |\n| `--reset-preferences` | Explicitly tell the CLI to reset any stored preferences |\n| `--skip-install` | Explicitly tell the CLI to skip installing packages |\n| `--yes` | Use previous preferences or defaults for all options |",
+    "preview": "The following options are available: | Options | Description | | --- | --- | | `-h` or `--help` | Show all available options | | `-v` or `--version` | Output the version number | | `--no-*` | Negate default options. E.g. `--no-eslint` | | `--ts` or `--typescript` | Initialize as a TypeScript projec",
+    "url": "https://nextjs.org/docs/app/api-reference/cli/create-next-app#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "create-next-app",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/cli/create-next-app#examples-examples",
+    "position": 3
+  },
+  {
+    "title": "create-next-app",
+    "section": "[With the default template](#with-the-default-template)",
+    "section_id": "with-the-default-template-with-the-default-template",
+    "heading_level": 3,
+    "content": "### [With the default template](#with-the-default-template)\n\nTo create a new app using the default template, run the following command in your terminal:\n\nTerminal\n\n```\nnpx create-next-app@latest\n```\n\nYou will then be asked the following prompts:\n\nTerminal\n\n```\nWhat is your project named?  my-app\nWould you like to use TypeScript?  No / Yes\nWould you like to use ESLint?  No / Yes\nWould you like to use Tailwind CSS?  No / Yes\nWould you like your code inside a `src/` directory?  No / Yes\nWould you like to use App Router? (recommended)  No / Yes\nWould you like to use Turbopack for `next dev`?  No / Yes\nWould you like to customize the import alias (`@/*` by default)?  No / Yes\n```\n\nOnce you've answered the prompts, a new project will be created with your chosen configuration.",
+    "preview": "To create a new app using the default template, run the following command in your terminal: Terminal [Code Block] You will then be asked the following prompts: Terminal ``` What is your project named? my-app Would you like to use TypeScript? No / Yes Would you like to use ESLint? No / Yes Wo",
+    "url": "https://nextjs.org/docs/app/api-reference/cli/create-next-app#with-the-default-template-with-the-default-template",
+    "position": 4
+  },
+  {
+    "title": "create-next-app",
+    "section": "[With an official Next.js example](#with-an-official-nextjs-example)",
+    "section_id": "with-an-official-next-js-example-with-an-official-nextjs-example",
+    "heading_level": 3,
+    "content": "### [With an official Next.js example](#with-an-official-nextjs-example)\n\nTo create a new app using an official Next.js example, use the `--example` flag. For example:\n\nTerminal\n\n```\nnpx create-next-app@latest --example [example-name] [your-project-name]\n```\n\nYou can view a list of all available examples along with setup instructions in the [Next.js repository](https://github.com/vercel/next.js/tree/canary/examples).",
+    "preview": "To create a new app using an official Next.js example, use the `--example` flag. For example: Terminal [Code Block] You can view a list of all available examples along with setup instructions in the [Next.js repository](https://github.com/vercel/next.js/tree/canary/examples).",
+    "url": "https://nextjs.org/docs/app/api-reference/cli/create-next-app#with-an-official-next-js-example-with-an-official-nextjs-example",
+    "position": 5
+  },
+  {
+    "title": "create-next-app",
+    "section": "[With any public GitHub example](#with-any-public-github-example)",
+    "section_id": "with-any-public-github-example-with-any-public-github-example",
+    "heading_level": 3,
+    "content": "### [With any public GitHub example](#with-any-public-github-example)\n\nTo create a new app using any public GitHub example, use the `--example` option with the GitHub repo's URL. For example:\n\nTerminal\n\n```\nnpx create-next-app@latest --example \"https://github.com/.../\" [your-project-name]\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "To create a new app using any public GitHub example, use the `--example` option with the GitHub repo's URL. For example: Terminal [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/cli/create-next-app#with-any-public-github-example-with-any-public-github-example",
+    "position": 6
+  }
+]

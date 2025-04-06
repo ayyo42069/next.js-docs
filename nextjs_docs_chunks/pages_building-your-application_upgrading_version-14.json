@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Version 14",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Upgrading](/docs/pages/building-your-application/upgrading)Version 14",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Upgrading](/docs/pages/building-your-application/upgrading)Version 14",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-14#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Version 14",
+    "section": "Version 14",
+    "section_id": "version-14",
+    "heading_level": 1,
+    "content": "# Version 14",
+    "preview": "# Version 14",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-14#version-14",
+    "position": 1
+  },
+  {
+    "title": "Version 14",
+    "section": "[Upgrading from 13 to 14](#upgrading-from-13-to-14)",
+    "section_id": "upgrading-from-13-to-14-upgrading-from-13-to-14",
+    "heading_level": 2,
+    "content": "## [Upgrading from 13 to 14](#upgrading-from-13-to-14)\n\nTo update to Next.js version 14, run the following command using your preferred package manager:\n\nTerminal\n\n```\nnpm i next@next-14 react@18 react-dom@18 && npm i eslint-config-next@next-14 -D\n```\n\nTerminal\n\n```\nyarn add next@next-14 react@18 react-dom@18 && yarn add eslint-config-next@next-14 -D\n```\n\nTerminal\n\n```\npnpm i next@next-14 react@18 react-dom@18 && pnpm i eslint-config-next@next-14 -D\n```\n\nTerminal\n\n```\nbun add next@next-14 react@18 react-dom@18 && bun add eslint-config-next@next-14 -D\n```\n\n> **Good to know:** If you are using TypeScript, ensure you also upgrade `@types/react` and `@types/react-dom` to their latest versions.",
+    "preview": "To update to Next.js version 14, run the following command using your preferred package manager: Terminal [Code Block] Terminal [Code Block] Terminal [Code Block] Terminal [Code Block] > **Good to know:** If you are using TypeScript, ensure you also upgrade `@types/react` and `@types/react-",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-14#upgrading-from-13-to-14-upgrading-from-13-to-14",
+    "position": 2
+  },
+  {
+    "title": "Version 14",
+    "section": "[v14 Summary](#v14-summary)",
+    "section_id": "v14-summary-v14-summary",
+    "heading_level": 3,
+    "content": "### [v14 Summary](#v14-summary)\n\n* The minimum Node.js version has been bumped from 16.14 to 18.17, since 16.x has reached end-of-life.\n* The `next export` command has been removed in favor of `output: 'export'` config. Please see the [docs](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) for more information.\n* The `next/server` import for `ImageResponse` was renamed to `next/og`. A [codemod is available](/docs/app/building-your-application/upgrading/codemods#next-og-import) to safely and automatically rename your imports.\n* The `@next/font` package has been fully removed in favor of the built-in `next/font`. A [codemod is available](/docs/app/building-your-application/upgrading/codemods#built-in-next-font) to safely and automatically rename your imports.\n* The WASM target for `next-swc` has been removed.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* The minimum Node.js version has been bumped from 16.14 to 18.17, since 16.x has reached end-of-life. * The `next export` command has been removed in favor of `output: 'export'` config. Please see the [docs](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) for more in",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-14#v14-summary-v14-summary",
+    "position": 3
+  }
+]

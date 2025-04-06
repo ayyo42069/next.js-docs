@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Form",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[Components](/docs/pages/api-reference/components)Form",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[Components](/docs/pages/api-reference/components)Form",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/form#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Form",
+    "section": "Form",
+    "section_id": "form",
+    "heading_level": 1,
+    "content": "# Form\n\nThe `<Form>` component extends the HTML `<form>` element to provide  **client-side navigation** on submission, and **progressive enhancement**.\n\nIt's useful for forms that update URL search params as it reduces the boilerplate code needed to achieve the above.\n\nBasic usage:\n\n/ui/search.js\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Form from 'next/form'\n \nexport default function Page() {\n  return (\n    <Form action=\"/search\">\n      {/* On submission, the input value will be appended to\n          the URL, e.g. /search?query=abc */}\n      <input name=\"query\" />\n      <button type=\"submit\">Submit</button>\n    </Form>\n  )\n}\n```",
+    "preview": "The `<Form>` component extends the HTML `<form>` element to provide **client-side navigation** on submission, and **progressive enhancement**. It's useful for forms that update URL search params as it reduces the boilerplate code needed to achieve the above. Basic usage: /ui/search.js TypeScrip",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/form#form",
+    "position": 1
+  },
+  {
+    "title": "Form",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)\n\nThe behavior of the `<Form>` component depends on whether the `action` prop is passed a `string` or `function`.\n\n* When `action` is a **string**, the `<Form>` behaves like a native HTML form that uses a **`GET`** method. The form data is encoded into the URL as search params, and when the form is submitted, it navigates to the specified URL. In addition, Next.js:\n  + Performs a [client-side navigation](/docs/app/building-your-application/routing/linking-and-navigating#5-soft-navigation) instead of a full page reload when the form is submitted. This retains shared UI and client-side state.",
+    "preview": "The behavior of the `<Form>` component depends on whether the `action` prop is passed a `string` or `function`. * When `action` is a **string**, the `<Form>` behaves like a native HTML form that uses a **`GET`** method. The form data is encoded into the URL as search params, and when the form is su",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/form#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "Form",
+    "section": "[`action` (string) Props](#action-string-props)",
+    "section_id": "action-string-props-action-string-props",
+    "heading_level": 3,
+    "content": "### [`action` (string) Props](#action-string-props)\n\nWhen `action` is a string, the `<Form>` component supports the following props:\n\n| Prop | Example | Type | Required |\n| --- | --- | --- | --- |\n| `action` | `action=\"/search\"` | `string` (URL or relative path) | Yes |\n| `replace` | `replace={false}` | `boolean` | - |\n| `scroll` | `scroll={true}` | `boolean` | - |\n\n* **`action`**: The URL or path to navigate to when the form is submitted.\n  + An empty string `\"\"` will navigate to the same route with updated search params.\n* **`replace`**: Replaces the current history state instead of pushing a new one to the [browser's history](https://developer.mozilla.org/en-US/docs/Web/API/History_API) stack. Default is `false`.\n* **`scroll`**: Controls the scroll behavior during navigation. Defaults to `true`, this means it will scroll to the top of the new route, and maintain the scroll position for backwards and forwards navigation.",
+    "preview": "When `action` is a string, the `<Form>` component supports the following props: | Prop | Example | Type | Required | | --- | --- | --- | --- | | `action` | `action=\"/search\"` | `string` (URL or relative path) | Yes | | `replace` | `replace={false}` | `boolean` | - | | `scroll` | `scroll={true}` | `",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/form#action-string-props-action-string-props",
+    "position": 3
+  },
+  {
+    "title": "Form",
+    "section": "[Caveats](#caveats)",
+    "section_id": "caveats-caveats",
+    "heading_level": 3,
+    "content": "### [Caveats](#caveats)\n\n* **`onSubmit`**: Can be used to handle form submission logic. However, calling `event.preventDefault()` will override `<Form>` behavior such as navigating to the specified URL.\n* **[`method`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#method), [`encType`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#enctype), [`target`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#target)**: Are not supported as they override `<Form>` behavior.\n  + Similarly, `formMethod`, `formEncType`, and `formTarget` can be used to override the `method`, `encType`, and `target` props respectively, and using them will fallback to native browser behavior.\n  + If you need to use these props, use the HTML `<form>` element instead.\n* **`<input type=\"file\">`**: Using this input type when the `action` is a string will match browser behavior by submitting the filename instead of the file object.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* **`onSubmit`**: Can be used to handle form submission logic. However, calling `event.preventDefault()` will override `<Form>` behavior such as navigating to the specified URL. * **[`method`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#method), [`encType`](https://developer.mozil",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/form#caveats-caveats",
+    "position": 4
+  }
+]

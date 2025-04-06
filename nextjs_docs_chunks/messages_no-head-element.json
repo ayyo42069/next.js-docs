@@ -1,0 +1,52 @@
+[
+  {
+    "title": "No Head Element",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No Head Element",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No Head Element",
+    "url": "https://nextjs.org/docs/messages/no-head-element#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No Head Element",
+    "section": "No Head Element",
+    "section_id": "no-head-element",
+    "heading_level": 1,
+    "content": "# No Head Element\n\n> Prevent usage of `<head>` element.",
+    "preview": "> Prevent usage of `<head>` element.",
+    "url": "https://nextjs.org/docs/messages/no-head-element#no-head-element",
+    "position": 1
+  },
+  {
+    "title": "No Head Element",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nA `<head>` element was used to include page-level metadata, but this can cause unexpected behavior in a Next.js application. Use Next.js' built-in `next/head` component instead.",
+    "preview": "A `<head>` element was used to include page-level metadata, but this can cause unexpected behavior in a Next.js application. Use Next.js' built-in `next/head` component instead.",
+    "url": "https://nextjs.org/docs/messages/no-head-element#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No Head Element",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nImport and use the `<Head />` component:\n\npages/index.js\n\n```\nimport Head from 'next/head'\n \nfunction Index() {\n  return (\n    <>\n      <Head>\n        <title>My page title</title>\n        <meta name=\"viewport\" content=\"initial-scale=1.0, width=device-width\" />\n      </Head>\n    </>\n  )\n}\n \nexport default Index\n```",
+    "preview": "Import and use the `<Head />` component: pages/index.js [Code Block]",
+    "url": "https://nextjs.org/docs/messages/no-head-element#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No Head Element",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [next/head](/docs/pages/api-reference/components/head)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [next/head](/docs/pages/api-reference/components/head) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/no-head-element#useful-links-useful-links",
+    "position": 4
+  }
+]

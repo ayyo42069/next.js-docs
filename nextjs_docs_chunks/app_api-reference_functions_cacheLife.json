@@ -1,0 +1,122 @@
+[
+  {
+    "title": "cacheLife",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)cacheLife",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)cacheLife",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "cacheLife",
+    "section": "cacheLife",
+    "section_id": "cachelife",
+    "heading_level": 1,
+    "content": "# cacheLife\n\nThis feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nThe `cacheLife` function is used to set the cache lifetime of a function or component. It should be used alongside the [`use cache`](/docs/app/api-reference/directives/use-cache) directive, and within the scope of the function or component.",
+    "preview": "This feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). The `cacheLife` function is used to set the cache",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#cachelife",
+    "position": 1
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Usage](#usage)",
+    "section_id": "usage-usage",
+    "heading_level": 2,
+    "content": "## [Usage](#usage)\n\nTo use `cacheLife`, enable the [`dynamicIO` flag](/docs/app/api-reference/config/next-config-js/dynamicIO) in your `next.config.js` file:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    dynamicIO: true,\n  },\n}\n \nexport default nextConfig\n```\n\nThen, import and invoke the `cacheLife` function within the scope of the function or component:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use cache'\nimport { unstable_cacheLife as cacheLife } from 'next/cache'\n \nexport default async function Page() {\n  cacheLife('hours')\n  return <div>Page</div>\n}\n```",
+    "preview": "To use `cacheLife`, enable the [`dynamicIO` flag](/docs/app/api-reference/config/next-config-js/dynamicIO) in your `next.config.js` file: next.config.ts TypeScript JavaScriptTypeScript [Code Block] Then, import and invoke the `cacheLife` function within the scope of the function or component:",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#usage-usage",
+    "position": 2
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#reference-reference",
+    "position": 3
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Default cache profiles](#default-cache-profiles)",
+    "section_id": "default-cache-profiles-default-cache-profiles",
+    "heading_level": 3,
+    "content": "### [Default cache profiles](#default-cache-profiles)\n\nNext.js provides a set of named cache profiles modeled on various timescales. If you don't specify a cache profile in the `cacheLife` function alongside the `use cache` directive, Next.js will automatically apply the \u201cdefault\u201d cache profile.\n\nHowever, we recommend always adding a cache profile when using the `use cache` directive to explicitly define caching behavior.\n\n| **Profile** | **Stale** | **Revalidate** | **Expire** | **Description** |\n| --- | --- | --- | --- | --- |\n| `default` | undefined | 15 minutes | INFINITE\\_CACHE | Default profile, suitable for content that doesn't need frequent updates |\n| `seconds` | undefined | 1 second | 1 minute | For rapidly changing content requiring near real-time updates |\n| `minutes` | 5 minutes | 1 minute | 1 hour | For content that updates frequently within an hour |\n| `hours` | 5 minutes | 1 hour | 1 day | For content that updates daily but can be slightly stale |\n| `days` | 5 minutes | 1 day | 1 week | For content that updates weekly but can be a day old |\n| `weeks` | 5 minutes | 1 week | 1 month | For content that updates monthly but can be a week old |\n| `max` | 5 minutes | 1 month | INFINITE\\_CACHE | For very stable content that rarely needs updating |\n\nThe string values used to reference cache profiles don't carry inherent meaning; instead they serve as semantic labels. This allows you to better understand and manage your cached content within your codebase.",
+    "preview": "Next.js provides a set of named cache profiles modeled on various timescales. If you don't specify a cache profile in the `cacheLife` function alongside the `use cache` directive, Next.js will automatically apply the \u201cdefault\u201d cache profile. However, we recommend always adding a cache profile when",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#default-cache-profiles-default-cache-profiles",
+    "position": 4
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Custom cache profiles](#custom-cache-profiles)",
+    "section_id": "custom-cache-profiles-custom-cache-profiles",
+    "heading_level": 3,
+    "content": "### [Custom cache profiles](#custom-cache-profiles)\n\nYou can configure custom cache profiles by adding them to the [`cacheLife`](/docs/app/api-reference/config/next-config-js/cacheLife) option in your `next.config.ts` file.\n\nCache profiles are objects that contain the following properties:\n\n| **Property** | **Value** | **Description** | **Requirement** |\n| --- | --- | --- | --- |\n| `stale` | `number` | Duration the client should cache a value without checking the server. | Optional |\n| `revalidate` | `number` | Frequency at which the cache should refresh on the server; stale values may be served while revalidating. | Optional |\n| `expire` | `number` | Maximum duration for which a value can remain stale before switching to dynamic fetching; must be longer than `revalidate`. | Optional - Must be longer than `revalidate` |\n\nThe \"stale\" property differs from the [`staleTimes`](/docs/app/api-reference/config/next-config-js/staleTimes) setting in that it specifically controls client-side router caching. While `staleTimes` is a global setting that affects all instances of both dynamic and static data, the `cacheLife` configuration allows you to define \"stale\" times on a per-function or per-route basis.\n\n> **Good to know**: The \u201cstale\u201d property does not set the `Cache-control: max-age` header. It instead controls the client-side router cache.",
+    "preview": "You can configure custom cache profiles by adding them to the [`cacheLife`](/docs/app/api-reference/config/next-config-js/cacheLife) option in your `next.config.ts` file. Cache profiles are objects that contain the following properties: | **Property** | **Value** | **Description** | **Requirement*",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#custom-cache-profiles-custom-cache-profiles",
+    "position": 5
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#examples-examples",
+    "position": 6
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Defining reusable cache profiles](#defining-reusable-cache-profiles)",
+    "section_id": "defining-reusable-cache-profiles-defining-reusable-cache-profiles",
+    "heading_level": 3,
+    "content": "### [Defining reusable cache profiles](#defining-reusable-cache-profiles)\n\nYou can create a reusable cache profile by defining them in your `next.config.ts` file. Choose a name that suits your use case and set values for the `stale`, `revalidate`, and `expire` properties. You can create as many custom cache profiles as needed. Each profile can be referenced by its name as a string value passed to the `cacheLife` function.\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    dynamicIO: true,\n    cacheLife: {\n      biweekly: {\n        stale: 60 * 60 * 24 * 14, // 14 days\n        revalidate: 60 * 60 * 24, // 1 day\n        expire: 60 * 60 * 24 * 14, // 14 days\n      },\n    },\n  },\n}\n \nmodule.exports = nextConfig\n```\n\nThe example above caches for 14 days, checks for updates daily, and expires the cache after 14 days. You can then reference this profile throughout your application by its name:\n\napp/page.tsx\n\n```\n'use cache'\nimport { unstable_cacheLife as cacheLife } from 'next/cache'\n \nexport default async function Page() {\n  cacheLife('biweekly')\n  return <div>Page</div>\n}\n```",
+    "preview": "You can create a reusable cache profile by defining them in your `next.config.ts` file. Choose a name that suits your use case and set values for the `stale`, `revalidate`, and `expire` properties. You can create as many custom cache profiles as needed. Each profile can be referenced by its name as",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#defining-reusable-cache-profiles-defining-reusable-cache-profiles",
+    "position": 7
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Overriding the default cache profiles](#overriding-the-default-cache-profiles)",
+    "section_id": "overriding-the-default-cache-profiles-overriding-the-default-cache-profiles",
+    "heading_level": 3,
+    "content": "### [Overriding the default cache profiles](#overriding-the-default-cache-profiles)\n\nWhile the default cache profiles provide a useful way to think about how fresh or stale any given part of cacheable output can be, you may prefer different named profiles to better align with your applications caching strategies.\n\nYou can override the default named cache profiles by creating a new configuration with the same name as the defaults.\n\nThe example below shows how to override the default \u201cdays\u201d cache profile:\n\nnext.config.ts\n\n```\nconst nextConfig = {\n  experimental: {\n    dynamicIO: true,\n    cacheLife: {\n      days: {\n        stale: 3600, // 1 hour\n        revalidate: 900, // 15 minutes\n        expire: 86400, // 1 day\n      },\n    },\n  },\n}\n \nmodule.exports = nextConfig\n```",
+    "preview": "While the default cache profiles provide a useful way to think about how fresh or stale any given part of cacheable output can be, you may prefer different named profiles to better align with your applications caching strategies. You can override the default named cache profiles by creating a new c",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#overriding-the-default-cache-profiles-overriding-the-default-cache-profiles",
+    "position": 8
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Defining cache profiles inline](#defining-cache-profiles-inline)",
+    "section_id": "defining-cache-profiles-inline-defining-cache-profiles-inline",
+    "heading_level": 3,
+    "content": "### [Defining cache profiles inline](#defining-cache-profiles-inline)\n\nFor specific use cases, you can set a custom cache profile by passing an object to the `cacheLife` function:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use cache'\nimport { unstable_cacheLife as cacheLife } from 'next/cache'\n \nexport default async function Page() {\n  cacheLife({\n    stale: 3600, // 1 hour\n    revalidate: 900, // 15 minutes\n    expire: 86400, // 1 day\n  })\n \n  return <div>Page</div>\n}\n```\n\nThis inline cache profile will only be applied to the function or file it was created in. If you want to reuse the same profile throughout your application, you can [add the configuration](#defining-reusable-cache-profiles) to the `cacheLife` property of your `next.config.ts` file.",
+    "preview": "For specific use cases, you can set a custom cache profile by passing an object to the `cacheLife` function: app/page.tsx TypeScript JavaScriptTypeScript [Code Block] This inline cache profile will only be applied to the function or file it was created in. If you want to reuse the same profile",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#defining-cache-profiles-inline-defining-cache-profiles-inline",
+    "position": 9
+  },
+  {
+    "title": "cacheLife",
+    "section": "[Nested usage of `use cache` and `cacheLife`](#nested-usage-of-use-cache-and-cachelife)",
+    "section_id": "nested-usage-of-use-cache-and-cachelife-nested-usage-of-use-cache-and-cachelife",
+    "heading_level": 3,
+    "content": "### [Nested usage of `use cache` and `cacheLife`](#nested-usage-of-use-cache-and-cachelife)\n\nWhen defining multiple caching behaviors in the same route or component tree, if the inner caches specify their own `cacheLife` profile, the outer cache will respect the shortest cache duration among them. **This applies only if the outer cache does not have its own explicit `cacheLife` profile defined.**\n\nFor example, if you add the `use cache` directive to your page, without specifying a cache profile, the default cache profile will be applied implicitly (`cacheLife(\u201ddefault\u201d)`). If a component imported into the page also uses the `use cache` directive with its own cache profile, the outer and inner cache profiles are compared, and shortest duration set in the profiles will be applied.\n\napp/components/parent.tsx\n\n```\n// Parent component\nimport { unstable_cacheLife as cacheLife } from 'next/cache'\nimport { ChildComponent } from './child'\n \nexport async function ParentComponent() {\n  'use cache'\n  cacheLife('days')\n \n  return (\n    <div>\n      <ChildComponent />\n    </div>\n  )\n}\n```\n\nAnd in a separate file, we defined the Child component that was imported:\n\napp/components/child.tsx\n\n```\n// Child component\nimport { unstable_cacheLife as cacheLife } from 'next/cache'\n \nexport async function ChildComponent() {\n  'use cache'\n  cacheLife('hours')\n  return <div>Child Content</div>\n \n  // This component's cache will respect the shorter 'hours' profile\n}\n```",
+    "preview": "When defining multiple caching behaviors in the same route or component tree, if the inner caches specify their own `cacheLife` profile, the outer cache will respect the shortest cache duration among them. **This applies only if the outer cache does not have its own explicit `cacheLife` profile defi",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#nested-usage-of-use-cache-and-cachelife-nested-usage-of-use-cache-and-cachelife",
+    "position": 10
+  },
+  {
+    "title": "cacheLife",
+    "section": "Related",
+    "section_id": "related",
+    "heading_level": 2,
+    "content": "## Related\n\nView related API references.\n\n[### dynamicIO\n\nLearn how to enable the dynamicIO flag in Next.js.](/docs/app/api-reference/config/next-config-js/dynamicIO)[### use cache\n\nLearn how to use the use cache directive to cache data in your Next.js application.](/docs/app/api-reference/directives/use-cache)[### revalidateTag\n\nAPI Reference for the revalidateTag function.](/docs/app/api-reference/functions/revalidateTag)[### cacheTag\n\nLearn how to use the cacheTag function to manage cache invalidation in your Next.js application.](/docs/app/api-reference/functions/cacheTag)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "View related API references. [### dynamicIO Learn how to enable the dynamicIO flag in Next.js.](/docs/app/api-reference/config/next-config-js/dynamicIO)[### use cache Learn how to use the use cache directive to cache data in your Next.js application.](/docs/app/api-reference/directives/use-cache)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife#related",
+    "position": 11
+  }
+]

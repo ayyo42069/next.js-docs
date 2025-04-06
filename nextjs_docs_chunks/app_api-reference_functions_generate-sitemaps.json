@@ -1,0 +1,72 @@
+[
+  {
+    "title": "generateSitemaps",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)generateSitemaps",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)generateSitemaps",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "generateSitemaps",
+    "section": "generateSitemaps",
+    "section_id": "generatesitemaps",
+    "heading_level": 1,
+    "content": "# generateSitemaps\n\nYou can use the `generateSitemaps` function to generate multiple sitemaps for your application.",
+    "preview": "You can use the `generateSitemaps` function to generate multiple sitemaps for your application.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps#generatesitemaps",
+    "position": 1
+  },
+  {
+    "title": "generateSitemaps",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\nThe `generateSitemaps` returns an array of objects with an `id` property.",
+    "preview": "The `generateSitemaps` returns an array of objects with an `id` property.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps#returns-returns",
+    "position": 2
+  },
+  {
+    "title": "generateSitemaps",
+    "section": "[URLs](#urls)",
+    "section_id": "urls-urls",
+    "heading_level": 2,
+    "content": "## [URLs](#urls)\n\nYour generated sitemaps will be available at `/.../sitemap/[id].xml`. For example, `/product/sitemap/1.xml`.",
+    "preview": "Your generated sitemaps will be available at `/.../sitemap/[id].xml`. For example, `/product/sitemap/1.xml`.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps#urls-urls",
+    "position": 3
+  },
+  {
+    "title": "generateSitemaps",
+    "section": "[Example](#example)",
+    "section_id": "example-example",
+    "heading_level": 2,
+    "content": "## [Example](#example)\n\nFor example, to split a sitemap using `generateSitemaps`, return an array of objects with the sitemap `id`. Then, use the `id` to generate the unique sitemaps.\n\napp/product/sitemap.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { BASE_URL } from '@/app/lib/constants'\n \nexport async function generateSitemaps() {\n  // Fetch the total number of products and calculate the number of sitemaps needed\n  return [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }]\n}\n \nexport default async function sitemap({\n  id,\n}: {\n  id: number\n}): Promise<MetadataRoute.Sitemap> {\n  // Google's limit is 50,000 URLs per sitemap\n  const start = id * 50000\n  const end = start + 50000\n  const products = await getProducts(\n    `SELECT id, date FROM products WHERE id BETWEEN ${start} AND ${end}`\n  )\n  return products.map((product) => ({\n    url: `${BASE_URL}/product/${product.id}`,\n    lastModified: product.date,\n  }))\n}\n```",
+    "preview": "For example, to split a sitemap using `generateSitemaps`, return an array of objects with the sitemap `id`. Then, use the `id` to generate the unique sitemaps. app/product/sitemap.ts TypeScript JavaScriptTypeScript ``` import { BASE_URL } from '@/app/lib/constants' export async function genera",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps#example-example",
+    "position": 4
+  },
+  {
+    "title": "generateSitemaps",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0` | `generateSitemaps` now generates consistent URLs between development and production |\n| `v13.3.2` | `generateSitemaps` introduced. In development, you can view the generated sitemap on `/.../sitemap.xml/[id]`. For example, `/product/sitemap.xml/1`. |",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0` | `generateSitemaps` now generates consistent URLs between development and production | | `v13.3.2` | `generateSitemaps` introduced. In development, you can view the generated sitemap on `/.../sitemap.xml/[id]`. For example, `/product/sitemap.xml/1`. |",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps#version-history-version-history",
+    "position": 5
+  },
+  {
+    "title": "generateSitemaps",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nLearn how to create sitemaps for your Next.js application.\n\n[### sitemap.xml\n\nAPI Reference for the sitemap.xml file.](/docs/app/api-reference/file-conventions/metadata/sitemap)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn how to create sitemaps for your Next.js application. [### sitemap.xml API Reference for the sitemap.xml file.](/docs/app/api-reference/file-conventions/metadata/sitemap) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/generate-sitemaps#next-steps",
+    "position": 6
+  }
+]

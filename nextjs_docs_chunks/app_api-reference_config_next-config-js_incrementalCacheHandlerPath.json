@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Custom Next.js Cache Handler",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)cacheHandler",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)cacheHandler",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Custom Next.js Cache Handler",
+    "section": "Custom Next.js Cache Handler",
+    "section_id": "custom-next-js-cache-handler",
+    "heading_level": 1,
+    "content": "# Custom Next.js Cache Handler\n\nCaching and revalidating pages (with Incremental Static Regeneration) use the same shared cache. When [deploying to Vercel](https://vercel.com/docs/incremental-static-regeneration?utm_source=next-site&utm_medium=docs&utm_campaign=next-website), the ISR cache is automatically persisted to durable storage.\n\nWhen self-hosting, the ISR cache is stored to the filesystem (on disk) on your Next.js server. This works automatically when self-hosting using both the Pages and App Router.\n\nYou can configure the Next.js cache location if you want to persist cached pages and data to durable storage, or share the cache across multiple containers or instances of your Next.js application.\n\nnext.config.js\n\n```\nmodule.exports = {\n  cacheHandler: require.resolve('./cache-handler.js'),\n  cacheMaxMemorySize: 0, // disable default in-memory caching\n}\n```\n\nView an example of a [custom cache handler](/docs/app/building-your-application/deploying#configuring-caching) and learn more about implementation.",
+    "preview": "Caching and revalidating pages (with Incremental Static Regeneration) use the same shared cache. When [deploying to Vercel](https://vercel.com/docs/incremental-static-regeneration?utm_source=next-site&utm_medium=docs&utm_campaign=next-website), the ISR cache is automatically persisted to durable sto",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath#custom-next-js-cache-handler",
+    "position": 1
+  },
+  {
+    "title": "Custom Next.js Cache Handler",
+    "section": "[API Reference](#api-reference)",
+    "section_id": "api-reference-api-reference",
+    "heading_level": 2,
+    "content": "## [API Reference](#api-reference)\n\nThe cache handler can implement the following methods: `get`, `set`, and `revalidateTag`.",
+    "preview": "The cache handler can implement the following methods: `get`, `set`, and `revalidateTag`.",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath#api-reference-api-reference",
+    "position": 2
+  },
+  {
+    "title": "Custom Next.js Cache Handler",
+    "section": "[`get()`](#get)",
+    "section_id": "get-get",
+    "heading_level": 3,
+    "content": "### [`get()`](#get)\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `key` | `string` | The key to the cached value. |\n\nReturns the cached value or `null` if not found.",
+    "preview": "| Parameter | Type | Description | | --- | --- | --- | | `key` | `string` | The key to the cached value. | Returns the cached value or `null` if not found.",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath#get-get",
+    "position": 3
+  },
+  {
+    "title": "Custom Next.js Cache Handler",
+    "section": "[`set()`](#set)",
+    "section_id": "set-set",
+    "heading_level": 3,
+    "content": "### [`set()`](#set)\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `key` | `string` | The key to store the data under. |\n| `data` | Data or `null` | The data to be cached. |\n| `ctx` | `{ tags: [] }` | The cache tags provided. |\n\nReturns `Promise<void>`.",
+    "preview": "| Parameter | Type | Description | | --- | --- | --- | | `key` | `string` | The key to store the data under. | | `data` | Data or `null` | The data to be cached. | | `ctx` | `{ tags: [] }` | The cache tags provided. | Returns `Promise<void>`.",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath#set-set",
+    "position": 4
+  },
+  {
+    "title": "Custom Next.js Cache Handler",
+    "section": "[`revalidateTag()`](#revalidatetag)",
+    "section_id": "revalidatetag-revalidatetag",
+    "heading_level": 3,
+    "content": "### [`revalidateTag()`](#revalidatetag)\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `tag` | `string` or `string[]` | The cache tags to revalidate. |\n\nReturns `Promise<void>`. Learn more about [revalidating data](/docs/app/building-your-application/data-fetching/incremental-static-regeneration) or the [`revalidateTag()`](/docs/app/api-reference/functions/revalidateTag) function.\n\n**Good to know:**\n\n* `revalidatePath` is a convenience layer on top of cache tags. Calling `revalidatePath` will call your `revalidateTag` function, which you can then choose if you want to tag cache keys based on the path.",
+    "preview": "| Parameter | Type | Description | | --- | --- | --- | | `tag` | `string` or `string[]` | The cache tags to revalidate. | Returns `Promise<void>`. Learn more about [revalidating data](/docs/app/building-your-application/data-fetching/incremental-static-regeneration) or the [`revalidateTag()`](/docs",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath#revalidatetag-revalidatetag",
+    "position": 5
+  },
+  {
+    "title": "Custom Next.js Cache Handler",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v14.1.0` | Renamed to `cacheHandler` and became stable. |\n| `v13.4.0` | `incrementalCacheHandlerPath` support for `revalidateTag`. |\n| `v13.4.0` | `incrementalCacheHandlerPath` support for standalone output. |\n| `v12.2.0` | Experimental `incrementalCacheHandlerPath` added. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v14.1.0` | Renamed to `cacheHandler` and became stable. | | `v13.4.0` | `incrementalCacheHandlerPath` support for `revalidateTag`. | | `v13.4.0` | `incrementalCacheHandlerPath` support for standalone output. | | `v12.2.0` | Experimental `incrementalCacheHandler",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath#version-history-version-history",
+    "position": 6
+  }
+]

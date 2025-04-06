@@ -1,0 +1,32 @@
+[
+  {
+    "title": "CSS-in-JS",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Styling](/docs/pages/building-your-application/styling)CSS-in-JS",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Styling](/docs/pages/building-your-application/styling)CSS-in-JS",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css-in-js#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "CSS-in-JS",
+    "section": "CSS-in-JS",
+    "section_id": "css-in-js",
+    "heading_level": 1,
+    "content": "# CSS-in-JS\n\nExamples\n\n* [Styled JSX](https://github.com/vercel/next.js/tree/canary/examples/with-styled-jsx)\n* [Styled Components](https://github.com/vercel/next.js/tree/canary/examples/with-styled-components)\n* [Emotion](https://github.com/vercel/next.js/tree/canary/examples/with-emotion)\n* [Linaria](https://github.com/vercel/next.js/tree/canary/examples/with-linaria)\n* [Styletron](https://github.com/vercel/next.js/tree/canary/examples/with-styletron)\n* [Cxs](https://github.com/vercel/next.js/tree/canary/examples/with-cxs)\n* [Fela](https://github.com/vercel/next.js/tree/canary/examples/with-fela)\n* [Stitches](https://github.com/vercel/next.js/tree/canary/examples/with-stitches)\n\nIt's possible to use any existing CSS-in-JS solution. The simplest one is inline styles:\n\n```\nfunction HiThere() {\n  return <p style={{ color: 'red' }}>hi there</p>\n}\n \nexport default HiThere\n```\n\nWe bundle [styled-jsx](https://github.com/vercel/styled-jsx) to provide support for isolated scoped CSS.\nThe aim is to support \"shadow CSS\" similar to Web Components, which unfortunately [do not support server-rendering and are JS-only](https://github.com/w3c/webcomponents/issues/71).\n\nSee the above examples for other popular CSS-in-JS solutions (like Styled Components).\n\nA component using `styled-jsx` looks like this:\n\n```\nfunction HelloWorld() {\n  return (\n    <div>\n      Hello world\n      <p>scoped!</p>\n      <style jsx>{`\n        p {\n          color: blue;\n        }\n        div {\n          background: red;\n        }\n        @media (max-width: 600px) {\n          div {\n            background: blue;\n          }\n        }\n      `}</style>\n      <style global jsx>{`\n        body {\n          background: black;\n        }\n      `}</style>\n    </div>\n  )\n}\n \nexport default HelloWorld\n```\n\nPlease see the [styled-jsx documentation](https://github.com/vercel/styled-jsx) for more examples.",
+    "preview": "Examples * [Styled JSX](https://github.com/vercel/next.js/tree/canary/examples/with-styled-jsx) * [Styled Components](https://github.com/vercel/next.js/tree/canary/examples/with-styled-components) * [Emotion](https://github.com/vercel/next.js/tree/canary/examples/with-emotion) * [Linaria](https://g",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css-in-js#css-in-js",
+    "position": 1
+  },
+  {
+    "title": "CSS-in-JS",
+    "section": "[Disabling JavaScript](#disabling-javascript)",
+    "section_id": "disabling-javascript-disabling-javascript",
+    "heading_level": 3,
+    "content": "### [Disabling JavaScript](#disabling-javascript)\n\nYes, if you disable JavaScript the CSS will still be loaded in the production build (`next start`). During development, we require JavaScript to be enabled to provide the best developer experience with [Fast Refresh](https://nextjs.org/blog/next-9-4#fast-refresh).\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Yes, if you disable JavaScript the CSS will still be loaded in the production build (`next start`). During development, we require JavaScript to be enabled to provide the best developer experience with [Fast Refresh](https://nextjs.org/blog/next-9-4#fast-refresh). Was this helpful? supported. Sen",
+    "url": "https://nextjs.org/docs/pages/building-your-application/styling/css-in-js#disabling-javascript-disabling-javascript",
+    "position": 2
+  }
+]

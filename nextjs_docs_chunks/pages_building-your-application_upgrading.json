@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Upgrading",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Pages Router](/docs/pages)[Building Your Application](/docs/pages/building-your-application)Upgrading",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Pages Router](/docs/pages)[Building Your Application](/docs/pages/building-your-application)Upgrading",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Upgrading",
+    "section": "Upgrading",
+    "section_id": "upgrading",
+    "heading_level": 1,
+    "content": "# Upgrading\n\nUpgrade your application to newer versions of Next.js or migrate from the Pages Router to the App Router.\n\n[### Codemods\n\nUse codemods to upgrade your Next.js codebase when new features are released.](/docs/pages/building-your-application/upgrading/codemods)[### From Pages to App\n\nLearn how to upgrade your existing Next.js application from the Pages Router to the App Router.](/docs/pages/building-your-application/upgrading/app-router-migration)[### Migrating from Vite\n\nLearn how to migrate your existing React application from Vite to Next.js.](/docs/pages/building-your-application/upgrading/from-vite)[### Migrating from Create React App\n\nLearn how to migrate your existing React application from Create React App to Next.js.](/docs/pages/building-your-application/upgrading/from-create-react-app)[### Version 14\n\nUpgrade your Next.js Application from Version 13 to 14.](/docs/pages/building-your-application/upgrading/version-14)[### Version 13\n\nUpgrade your Next.js Application from Version 12 to 13.](/docs/pages/building-your-application/upgrading/version-13)[### Version 12\n\nUpgrade your Next.js Application from Version 11 to Version 12.](/docs/pages/building-your-application/upgrading/version-12)[### Version 11\n\nUpgrade your Next.js Application from Version 10 to Version 11.](/docs/pages/building-your-application/upgrading/version-11)[### Version 10\n\nUpgrade your Next.js Application from Version 9 to Version 10.](/docs/pages/building-your-application/upgrading/version-10)[### Version 9\n\nUpgrade your Next.js Application from Version 8 to Version 9.](/docs/pages/building-your-application/upgrading/version-9)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Upgrade your application to newer versions of Next.js or migrate from the Pages Router to the App Router. [### Codemods Use codemods to upgrade your Next.js codebase when new features are released.](/docs/pages/building-your-application/upgrading/codemods)[### From Pages to App Learn how to upgra",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading#upgrading",
+    "position": 1
+  }
+]

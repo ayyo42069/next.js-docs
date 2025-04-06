@@ -1,0 +1,92 @@
+[
+  {
+    "title": "headers",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)headers",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)headers",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/headers#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "headers",
+    "section": "headers",
+    "section_id": "headers",
+    "heading_level": 1,
+    "content": "# headers\n\n`headers` is an **async** function that allows you to **read** the HTTP incoming request headers from a [Server Component](/docs/app/building-your-application/rendering/server-components).\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { headers } from 'next/headers'\n \nexport default async function Page() {\n  const headersList = await headers()\n  const userAgent = headersList.get('user-agent')\n}\n```",
+    "preview": "`headers` is an **async** function that allows you to **read** the HTTP incoming request headers from a [Server Component](/docs/app/building-your-application/rendering/server-components). app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/headers#headers",
+    "position": 1
+  },
+  {
+    "title": "headers",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/headers#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "headers",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 3,
+    "content": "### [Parameters](#parameters)\n\n`headers` does not take any parameters.",
+    "preview": "`headers` does not take any parameters.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/headers#parameters-parameters",
+    "position": 3
+  },
+  {
+    "title": "headers",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 3,
+    "content": "### [Returns](#returns)\n\n`headers` returns a **read-only** [Web Headers](https://developer.mozilla.org/docs/Web/API/Headers) object.\n\n* [`Headers.entries()`](https://developer.mozilla.org/docs/Web/API/Headers/entries): Returns an [`iterator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Iteration_protocols) allowing to go through all key/value pairs contained in this object.\n* [`Headers.forEach()`](https://developer.mozilla.org/docs/Web/API/Headers/forEach): Executes a provided function once for each key/value pair in this `Headers` object.\n* [`Headers.get()`](https://developer.mozilla.org/docs/Web/API/Headers/get): Returns a [`String`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) sequence of all the values of a header within a `Headers` object with a given name.\n* [`Headers.has()`](https://developer.mozilla.org/docs/Web/API/Headers/has): Returns a boolean stating whether a `Headers` object contains a certain header.\n* [`Headers.keys()`](https://developer.mozilla.org/docs/Web/API/Headers/keys): Returns an [`iterator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Iteration_protocols) allowing you to go through all keys of the key/value pairs contained in this object.\n* [`Headers.values()`](https://developer.mozilla.org/docs/Web/API/Headers/values): Returns an [`iterator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Iteration_protocols) allowing you to go through all values of the key/value pairs contained in this object.",
+    "preview": "`headers` returns a **read-only** [Web Headers](https://developer.mozilla.org/docs/Web/API/Headers) object. * [`Headers.entries()`](https://developer.mozilla.org/docs/Web/API/Headers/entries): Returns an [`iterator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Iteration_protocols) a",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/headers#returns-returns",
+    "position": 4
+  },
+  {
+    "title": "headers",
+    "section": "[Good to know](#good-to-know)",
+    "section_id": "good-to-know-good-to-know",
+    "heading_level": 2,
+    "content": "## [Good to know](#good-to-know)\n\n* `headers` is an **asynchronous** function that returns a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function.\n  + In version 14 and earlier, `headers` was a synchronous function. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.\n* Since `headers` is read-only, you cannot `set` or `delete` the outgoing request headers.\n* `headers` is a [Dynamic API](/docs/app/building-your-application/rendering/server-components#server-rendering-strategies#dynamic-apis) whose returned values cannot be known ahead of time. Using it in will opt a route into **[dynamic rendering](/docs/app/building-your-application/rendering/server-components#dynamic-rendering)**.",
+    "preview": "* `headers` is an **asynchronous** function that returns a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function. + In version 14 and earlier, `headers` was a synchronous function. To help with backwards compatibility, you can still access it synchr",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/headers#good-to-know-good-to-know",
+    "position": 5
+  },
+  {
+    "title": "headers",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/headers#examples-examples",
+    "position": 6
+  },
+  {
+    "title": "headers",
+    "section": "[Using the Authorization header](#using-the-authorization-header)",
+    "section_id": "using-the-authorization-header-using-the-authorization-header",
+    "heading_level": 3,
+    "content": "### [Using the Authorization header](#using-the-authorization-header)\n\napp/page.js\n\n```\nimport { headers } from 'next/headers'\n \nexport default async function Page() {\n  const authorization = (await headers()).get('authorization')\n  const res = await fetch('...', {\n    headers: { authorization }, // Forward the authorization header\n  })\n  const user = await res.json()\n \n  return <h1>{user.name}</h1>\n}\n```",
+    "preview": "app/page.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/headers#using-the-authorization-header-using-the-authorization-header",
+    "position": 7
+  },
+  {
+    "title": "headers",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0-RC` | `headers` is now an async function. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available. |\n| `v13.0.0` | `headers` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0-RC` | `headers` is now an async function. A [codemod](/docs/app/building-your-application/upgrading/codemods#150) is available. | | `v13.0.0` | `headers` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/headers#version-history-version-history",
+    "position": 8
+  }
+]

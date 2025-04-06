@@ -1,0 +1,72 @@
+[
+  {
+    "title": "No Sync Scripts",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No Sync Scripts",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No Sync Scripts",
+    "url": "https://nextjs.org/docs/messages/no-sync-scripts#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No Sync Scripts",
+    "section": "No Sync Scripts",
+    "section_id": "no-sync-scripts",
+    "heading_level": 1,
+    "content": "# No Sync Scripts\n\n> Prevent synchronous scripts.",
+    "preview": "> Prevent synchronous scripts.",
+    "url": "https://nextjs.org/docs/messages/no-sync-scripts#no-sync-scripts",
+    "position": 1
+  },
+  {
+    "title": "No Sync Scripts",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nA synchronous script was used which can impact your webpage performance.",
+    "preview": "A synchronous script was used which can impact your webpage performance.",
+    "url": "https://nextjs.org/docs/messages/no-sync-scripts#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No Sync Scripts",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "preview": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "url": "https://nextjs.org/docs/messages/no-sync-scripts#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No Sync Scripts",
+    "section": "[Script component (recommended)](#script-component-recommended)",
+    "section_id": "script-component-recommended-script-component-recommended",
+    "heading_level": 3,
+    "content": "### [Script component (recommended)](#script-component-recommended)\n\npages/index.js\n\n```\nimport Script from 'next/script'\n \nfunction Home() {\n  return (\n    <div class=\"container\">\n      <Script src=\"https://third-party-script.js\"></Script>\n      <div>Home Page</div>\n    </div>\n  )\n}\n \nexport default Home\n```",
+    "preview": "pages/index.js [Code Block]",
+    "url": "https://nextjs.org/docs/messages/no-sync-scripts#script-component-recommended-script-component-recommended",
+    "position": 4
+  },
+  {
+    "title": "No Sync Scripts",
+    "section": "[Use `async` or `defer`](#use-async-or-defer)",
+    "section_id": "use-async-or-defer-use-async-or-defer",
+    "heading_level": 3,
+    "content": "### [Use `async` or `defer`](#use-async-or-defer)\n\n```\n<script src=\"https://third-party-script.js\" async />\n<script src=\"https://third-party-script.js\" defer />\n```",
+    "preview": "[Code Block]",
+    "url": "https://nextjs.org/docs/messages/no-sync-scripts#use-async-or-defer-use-async-or-defer",
+    "position": 5
+  },
+  {
+    "title": "No Sync Scripts",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Efficiently load third-party JavaScript](https://web.dev/efficiently-load-third-party-javascript/)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Efficiently load third-party JavaScript](https://web.dev/efficiently-load-third-party-javascript/) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/no-sync-scripts#useful-links-useful-links",
+    "position": 6
+  }
+]

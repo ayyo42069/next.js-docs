@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Lazy Loading",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Optimizing](/docs/app/building-your-application/optimizing)Lazy Loading",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Optimizing](/docs/app/building-your-application/optimizing)Lazy Loading",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "Lazy Loading",
+    "section_id": "lazy-loading",
+    "heading_level": 1,
+    "content": "# Lazy Loading\n\n[Lazy loading](https://developer.mozilla.org/docs/Web/Performance/Lazy_loading) in Next.js helps improve the initial loading performance of an application by decreasing the amount of JavaScript needed to render a route.\n\nIt allows you to defer loading of **Client Components** and imported libraries, and only include them in the client bundle when they're needed. For example, you might want to defer loading a modal until a user clicks to open it.\n\nThere are two ways you can implement lazy loading in Next.js:\n\n1. Using [Dynamic Imports](#nextdynamic) with `next/dynamic`\n2. Using [`React.lazy()`](https://react.dev/reference/react/lazy) with [Suspense](https://react.dev/reference/react/Suspense)\n\nBy default, Server Components are automatically [code split](https://developer.mozilla.org/docs/Glossary/Code_splitting), and you can use [streaming](/docs/app/building-your-application/routing/loading-ui-and-streaming) to progressively send pieces of UI from the server to the client. Lazy loading applies to Client Components.",
+    "preview": "[Lazy loading](https://developer.mozilla.org/docs/Web/Performance/Lazy_loading) in Next.js helps improve the initial loading performance of an application by decreasing the amount of JavaScript needed to render a route. It allows you to defer loading of **Client Components** and imported libraries,",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading#lazy-loading",
+    "position": 1
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[`next/dynamic`](#nextdynamic)",
+    "section_id": "next-dynamic-nextdynamic",
+    "heading_level": 2,
+    "content": "## [`next/dynamic`](#nextdynamic)\n\n`next/dynamic` is a composite of [`React.lazy()`](https://react.dev/reference/react/lazy) and [Suspense](https://react.dev/reference/react/Suspense). It behaves the same way in the `app` and `pages` directories to allow for incremental migration.",
+    "preview": "`next/dynamic` is a composite of [`React.lazy()`](https://react.dev/reference/react/lazy) and [Suspense](https://react.dev/reference/react/Suspense). It behaves the same way in the `app` and `pages` directories to allow for incremental migration.",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading#next-dynamic-nextdynamic",
+    "position": 2
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading#examples-examples",
+    "position": 3
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[Importing Client Components](#importing-client-components)",
+    "section_id": "importing-client-components-importing-client-components",
+    "heading_level": 3,
+    "content": "### [Importing Client Components](#importing-client-components)\n\napp/page.js\n\n```\n'use client'\n \nimport { useState } from 'react'\nimport dynamic from 'next/dynamic'\n \n// Client Components:\nconst ComponentA = dynamic(() => import('../components/A'))\nconst ComponentB = dynamic(() => import('../components/B'))\nconst ComponentC = dynamic(() => import('../components/C'), { ssr: false })\n \nexport default function ClientComponentExample() {\n  const [showMore, setShowMore] = useState(false)\n \n  return (\n    <div>\n      {/* Load immediately, but in a separate client bundle */}\n      <ComponentA />\n \n      {/* Load on demand, only when/if the condition is met */}\n      {showMore && <ComponentB />}\n      <button onClick={() => setShowMore(!showMore)}>Toggle</button>\n \n      {/* Load only on the client side */}\n      <ComponentC />\n    </div>\n  )\n}\n```\n\n> **Note:** When a Server Component dynamically imports a Client Component, automatic [code splitting](https://developer.mozilla.org/docs/Glossary/Code_splitting) is currently **not** supported.",
+    "preview": "app/page.js [Code Block] > **Note:** When a Server Component dynamically imports a Client Component, automatic [code splitting](https://developer.mozilla.org/docs/Glossary/Code_splitting) is currently **not** supported.",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading#importing-client-components-importing-client-components",
+    "position": 4
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[Skipping SSR](#skipping-ssr)",
+    "section_id": "skipping-ssr-skipping-ssr",
+    "heading_level": 3,
+    "content": "### [Skipping SSR](#skipping-ssr)\n\nWhen using `React.lazy()` and Suspense, Client Components will be [prerendered](https://github.com/reactwg/server-components/discussions/4) (SSR) by default.\n\n> **Note:** `ssr: false` option will only work for client components, move it into client components ensure the client code-splitting working properly.\n\nIf you want to disable pre-rendering for a Client Component, you can use the `ssr` option set to `false`:\n\n```\nconst ComponentC = dynamic(() => import('../components/C'), { ssr: false })\n```",
+    "preview": "When using `React.lazy()` and Suspense, Client Components will be [prerendered](https://github.com/reactwg/server-components/discussions/4) (SSR) by default. > **Note:** `ssr: false` option will only work for client components, move it into client components ensure the client code-splitting working",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading#skipping-ssr-skipping-ssr",
+    "position": 5
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[Importing Server Components](#importing-server-components)",
+    "section_id": "importing-server-components-importing-server-components",
+    "heading_level": 3,
+    "content": "### [Importing Server Components](#importing-server-components)\n\nIf you dynamically import a Server Component, only the Client Components that are children of the Server Component will be lazy-loaded - not the Server Component itself.\nIt will also help preload the static assets such as CSS when you're using it in Server Components.\n\napp/page.js\n\n```\nimport dynamic from 'next/dynamic'\n \n// Server Component:\nconst ServerComponent = dynamic(() => import('../components/ServerComponent'))\n \nexport default function ServerComponentExample() {\n  return (\n    <div>\n      <ServerComponent />\n    </div>\n  )\n}\n```\n\n> **Note:** `ssr: false` option is not supported in Server Components. You will see an error if you try to use it in Server Components.\n> `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a client component.",
+    "preview": "If you dynamically import a Server Component, only the Client Components that are children of the Server Component will be lazy-loaded - not the Server Component itself. It will also help preload the static assets such as CSS when you're using it in Server Components. app/page.js [Code Block] > *",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading#importing-server-components-importing-server-components",
+    "position": 6
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[Loading External Libraries](#loading-external-libraries)",
+    "section_id": "loading-external-libraries-loading-external-libraries",
+    "heading_level": 3,
+    "content": "### [Loading External Libraries](#loading-external-libraries)\n\nExternal libraries can be loaded on demand using the [`import()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/import) function. This example uses the external library `fuse.js` for fuzzy search. The module is only loaded on the client after the user types in the search input.\n\napp/page.js\n\n```\n'use client'\n \nimport { useState } from 'react'\n \nconst names = ['Tim', 'Joe', 'Bel', 'Lee']\n \nexport default function Page() {\n  const [results, setResults] = useState()\n \n  return (\n    <div>\n      <input\n        type=\"text\"\n        placeholder=\"Search\"\n        onChange={async (e) => {\n          const { value } = e.currentTarget\n          // Dynamically load fuse.js\n          const Fuse = (await import('fuse.js')).default\n          const fuse = new Fuse(names)\n \n          setResults(fuse.search(value))\n        }}\n      />\n      <pre>Results: {JSON.stringify(results, null, 2)}</pre>\n    </div>\n  )\n}\n```",
+    "preview": "External libraries can be loaded on demand using the [`import()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/import) function. This example uses the external library `fuse.js` for fuzzy search. The module is only loaded on the client after the user types in the search inpu",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading#loading-external-libraries-loading-external-libraries",
+    "position": 7
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[Adding a custom loading component](#adding-a-custom-loading-component)",
+    "section_id": "adding-a-custom-loading-component-adding-a-custom-loading-component",
+    "heading_level": 3,
+    "content": "### [Adding a custom loading component](#adding-a-custom-loading-component)\n\napp/page.js\n\n```\n'use client'\n \nimport dynamic from 'next/dynamic'\n \nconst WithCustomLoading = dynamic(\n  () => import('../components/WithCustomLoading'),\n  {\n    loading: () => <p>Loading...</p>,\n  }\n)\n \nexport default function Page() {\n  return (\n    <div>\n      {/* The loading component will be rendered while  <WithCustomLoading/> is loading */}\n      <WithCustomLoading />\n    </div>\n  )\n}\n```",
+    "preview": "app/page.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading#adding-a-custom-loading-component-adding-a-custom-loading-component",
+    "position": 8
+  },
+  {
+    "title": "Lazy Loading",
+    "section": "[Importing Named Exports](#importing-named-exports)",
+    "section_id": "importing-named-exports-importing-named-exports",
+    "heading_level": 3,
+    "content": "### [Importing Named Exports](#importing-named-exports)\n\nTo dynamically import a named export, you can return it from the Promise returned by [`import()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/import) function:\n\ncomponents/hello.js\n\n```\n'use client'\n \nexport function Hello() {\n  return <p>Hello!</p>\n}\n```\n\napp/page.js\n\n```\nimport dynamic from 'next/dynamic'\n \nconst ClientComponent = dynamic(() =>\n  import('../components/hello').then((mod) => mod.Hello)\n)\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "To dynamically import a named export, you can return it from the Promise returned by [`import()`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/import) function: components/hello.js [Code Block] app/page.js [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/lazy-loading#importing-named-exports-importing-named-exports",
+    "position": 9
+  }
+]

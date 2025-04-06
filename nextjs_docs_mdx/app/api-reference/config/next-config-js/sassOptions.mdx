@@ -1,0 +1,58 @@
+---
+title: "sassOptions"
+description: "Menu..."
+url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/sassOptions"
+slug: "/docs/app/api-reference/config/next-config-js/sassOptions"
+date_crawled: "2025-04-06T12:10:40.452720+00:00"
+---
+
+**Path**: /docs/app/api-reference/config/next-config-js/sassOptions
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)sassOptions
+
+# sassOptions
+
+`sassOptions` allow you to configure the Sass compiler.
+
+next.config.ts
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+import type { NextConfig } from 'next'
+ 
+const sassOptions = {
+  additionalData: `
+    $var: red;
+  `,
+}
+ 
+const nextConfig: NextConfig = {
+  sassOptions: {
+    ...sassOptions,
+    implementation: 'sass-embedded',
+  },
+}
+ 
+export default nextConfig
+```
+
+> **Good to know:** `sassOptions` are not typed outside of `implementation` because Next.js does not maintain the other possible properties.
+
+Was this helpful?
+
+supported.
+
+Send

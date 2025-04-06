@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Intercepting Routes",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Routing](/docs/app/building-your-application/routing)Intercepting Routes",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Routing](/docs/app/building-your-application/routing)Intercepting Routes",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Intercepting Routes",
+    "section": "Intercepting Routes",
+    "section_id": "intercepting-routes",
+    "heading_level": 1,
+    "content": "# Intercepting Routes\n\nIntercepting routes allows you to load a route from another part of your application within the current layout. This routing paradigm can be useful when you want to display the content of a route without the user switching to a different context.\n\nFor example, when clicking on a photo in a feed, you can display the photo in a modal, overlaying the feed. In this case, Next.js intercepts the `/photo/123` route, masks the URL, and overlays it over `/feed`.\n\n[Image: Intercepting routes soft navigation][Image: Intercepting routes soft navigation]\n\nHowever, when navigating to the photo by clicking a shareable URL or by refreshing the page, the entire photo page should render instead of the modal. No route interception should occur.\n\n[Image: Intercepting routes hard navigation][Image: Intercepting routes hard navigation]",
+    "preview": "Intercepting routes allows you to load a route from another part of your application within the current layout. This routing paradigm can be useful when you want to display the content of a route without the user switching to a different context. For example, when clicking on a photo in a feed, you",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes#intercepting-routes",
+    "position": 1
+  },
+  {
+    "title": "Intercepting Routes",
+    "section": "[Convention](#convention)",
+    "section_id": "convention-convention",
+    "heading_level": 2,
+    "content": "## [Convention](#convention)\n\nIntercepting routes can be defined with the `(..)` convention, which is similar to relative path convention `../` but for segments.\n\nYou can use:\n\n* `(.)` to match segments on the **same level**\n* `(..)` to match segments **one level above**\n* `(..)(..)` to match segments **two levels above**\n* `(...)` to match segments from the **root** `app` directory\n\nFor example, you can intercept the `photo` segment from within the `feed` segment by creating a `(..)photo` directory.\n\n[Image: Intercepting routes folder structure][Image: Intercepting routes folder structure]\n> Note that the `(..)` convention is based on *route segments*, not the file-system.",
+    "preview": "Intercepting routes can be defined with the `(..)` convention, which is similar to relative path convention `../` but for segments. You can use: * `(.)` to match segments on the **same level** * `(..)` to match segments **one level above** * `(..)(..)` to match segments **two levels above** * `(..",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes#convention-convention",
+    "position": 2
+  },
+  {
+    "title": "Intercepting Routes",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes#examples-examples",
+    "position": 3
+  },
+  {
+    "title": "Intercepting Routes",
+    "section": "[Modals](#modals)",
+    "section_id": "modals-modals",
+    "heading_level": 3,
+    "content": "### [Modals](#modals)\n\nIntercepting Routes can be used together with [Parallel Routes](/docs/app/building-your-application/routing/parallel-routes) to create modals. This allows you to solve common challenges when building modals, such as:\n\n* Making the modal content **shareable through a URL**.\n* **Preserving context** when the page is refreshed, instead of closing the modal.\n* **Closing the modal on backwards navigation** rather than going to the previous route.\n* **Reopening the modal on forwards navigation**.\n\nConsider the following UI pattern, where a user can open a photo modal from a gallery using client-side navigation, or navigate to the photo page directly from a shareable URL:\n\n[Image: Intercepting routes modal example][Image: Intercepting routes modal example]\n\nIn the above example, the path to the `photo` segment can use the `(..)` matcher since `@modal` is a slot and **not** a segment. This means that the `photo` route is only one segment level higher, despite being two file-system levels higher.\n\nSee the [Parallel Routes](/docs/app/building-your-application/routing/parallel-routes#modals) documentation for a step-by-step example, or see our [image gallery example](https://github.com/vercel-labs/nextgram).\n\n> **Good to know:**\n>\n> * Other examples could include opening a login modal in a top navbar while also having a dedicated `/login` page, or opening a shopping cart in a side modal.",
+    "preview": "Intercepting Routes can be used together with [Parallel Routes](/docs/app/building-your-application/routing/parallel-routes) to create modals. This allows you to solve common challenges when building modals, such as: * Making the modal content **shareable through a URL**. * **Preserving context** w",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes#modals-modals",
+    "position": 4
+  },
+  {
+    "title": "Intercepting Routes",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nLearn how to use modals with Intercepted and Parallel Routes.\n\n[### Parallel Routes\n\nSimultaneously render one or more pages in the same view that can be navigated independently. A pattern for highly dynamic applications.](/docs/app/building-your-application/routing/parallel-routes)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn how to use modals with Intercepted and Parallel Routes. [### Parallel Routes Simultaneously render one or more pages in the same view that can be navigated independently. A pattern for highly dynamic applications.](/docs/app/building-your-application/routing/parallel-routes) Was this helpfu",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes#next-steps",
+    "position": 5
+  }
+]

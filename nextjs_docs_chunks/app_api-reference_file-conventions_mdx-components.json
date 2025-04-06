@@ -1,0 +1,82 @@
+[
+  {
+    "title": "mdx-components.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)mdx-components.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)mdx-components.js",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "mdx-components.js",
+    "section": "mdx-components.js",
+    "section_id": "mdx-components-js",
+    "heading_level": 1,
+    "content": "# mdx-components.js\n\nThe `mdx-components.js|tsx` file is **required** to use [`@next/mdx` with App Router](/docs/app/building-your-application/configuring/mdx) and will not work without it. Additionally, you can use it to [customize styles](/docs/app/building-your-application/configuring/mdx#using-custom-styles-and-components).\n\nUse the file `mdx-components.tsx` (or `.js`) in the root of your project to define MDX Components. For example, at the same level as `pages` or `app`, or inside `src` if applicable.\n\nmdx-components.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MDXComponents } from 'mdx/types'\n \nexport function useMDXComponents(components: MDXComponents): MDXComponents {\n  return {\n    ...components,\n  }\n}\n```",
+    "preview": "The `mdx-components.js|tsx` file is **required** to use [`@next/mdx` with App Router](/docs/app/building-your-application/configuring/mdx) and will not work without it. Additionally, you can use it to [customize styles](/docs/app/building-your-application/configuring/mdx#using-custom-styles-and-comp",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#mdx-components-js",
+    "position": 1
+  },
+  {
+    "title": "mdx-components.js",
+    "section": "[Exports](#exports)",
+    "section_id": "exports-exports",
+    "heading_level": 2,
+    "content": "## [Exports](#exports)",
+    "preview": "## [Exports](#exports)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#exports-exports",
+    "position": 2
+  },
+  {
+    "title": "mdx-components.js",
+    "section": "[`useMDXComponents` function](#usemdxcomponents-function)",
+    "section_id": "usemdxcomponents-function-usemdxcomponents-function",
+    "heading_level": 3,
+    "content": "### [`useMDXComponents` function](#usemdxcomponents-function)\n\nThe file must export a single function, either as a default export or named `useMDXComponents`.\n\nmdx-components.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MDXComponents } from 'mdx/types'\n \nexport function useMDXComponents(components: MDXComponents): MDXComponents {\n  return {\n    ...components,\n  }\n}\n```",
+    "preview": "The file must export a single function, either as a default export or named `useMDXComponents`. mdx-components.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#usemdxcomponents-function-usemdxcomponents-function",
+    "position": 3
+  },
+  {
+    "title": "mdx-components.js",
+    "section": "[Params](#params)",
+    "section_id": "params-params",
+    "heading_level": 2,
+    "content": "## [Params](#params)",
+    "preview": "## [Params](#params)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#params-params",
+    "position": 4
+  },
+  {
+    "title": "mdx-components.js",
+    "section": "[`components`](#components)",
+    "section_id": "components-components",
+    "heading_level": 3,
+    "content": "### [`components`](#components)\n\nWhen defining MDX Components, the export function accepts a single parameter, `components`. This parameter is an instance of `MDXComponents`.\n\n* The key is the name of the HTML element to override.\n* The value is the component to render instead.\n\n> **Good to know**: Remember to pass all other components (i.e. `...components`) that do not have overrides.",
+    "preview": "When defining MDX Components, the export function accepts a single parameter, `components`. This parameter is an instance of `MDXComponents`. * The key is the name of the HTML element to override. * The value is the component to render instead. > **Good to know**: Remember to pass all other compon",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#components-components",
+    "position": 5
+  },
+  {
+    "title": "mdx-components.js",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.1.2` | MDX Components added |",
+    "preview": "| Version | Changes | | --- | --- | | `v13.1.2` | MDX Components added |",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#version-history-version-history",
+    "position": 6
+  },
+  {
+    "title": "mdx-components.js",
+    "section": "Learn more about MDX Components",
+    "section_id": "learn-more-about-mdx-components",
+    "heading_level": 2,
+    "content": "## Learn more about MDX Components\n\n[### MDX\n\nLearn how to configure MDX and use it in your Next.js apps.](/docs/app/building-your-application/configuring/mdx)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### MDX Learn how to configure MDX and use it in your Next.js apps.](/docs/app/building-your-application/configuring/mdx) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components#learn-more-about-mdx-components",
+    "position": 7
+  }
+]

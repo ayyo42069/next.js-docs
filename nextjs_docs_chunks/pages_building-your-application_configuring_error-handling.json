@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Error Handling",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Configuring](/docs/pages/building-your-application/configuring)Error Handling",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Configuring](/docs/pages/building-your-application/configuring)Error Handling",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/error-handling#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Error Handling",
+    "section": "Error Handling",
+    "section_id": "error-handling",
+    "heading_level": 1,
+    "content": "# Error Handling\n\nThis documentation explains how you can handle development, server-side, and client-side errors.",
+    "preview": "This documentation explains how you can handle development, server-side, and client-side errors.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/error-handling#error-handling",
+    "position": 1
+  },
+  {
+    "title": "Error Handling",
+    "section": "[Handling Errors in Development](#handling-errors-in-development)",
+    "section_id": "handling-errors-in-development-handling-errors-in-development",
+    "heading_level": 2,
+    "content": "## [Handling Errors in Development](#handling-errors-in-development)\n\nWhen there is a runtime error during the development phase of your Next.js application, you will encounter an **overlay**. It is a modal that covers the webpage. It is **only** visible when the development server runs using `next dev` via `pnpm dev`, `npm run dev`, `yarn dev`, or `bun dev` and will not be shown in production. Fixing the error will automatically dismiss the overlay.\n\nHere is an example of an overlay:\n\n[Image: Example of an overlay when in development mode]",
+    "preview": "When there is a runtime error during the development phase of your Next.js application, you will encounter an **overlay**. It is a modal that covers the webpage. It is **only** visible when the development server runs using `next dev` via `pnpm dev`, `npm run dev`, `yarn dev`, or `bun dev` and will",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/error-handling#handling-errors-in-development-handling-errors-in-development",
+    "position": 2
+  },
+  {
+    "title": "Error Handling",
+    "section": "[Handling Server Errors](#handling-server-errors)",
+    "section_id": "handling-server-errors-handling-server-errors",
+    "heading_level": 2,
+    "content": "## [Handling Server Errors](#handling-server-errors)\n\nNext.js provides a static 500 page by default to handle server-side errors that occur in your application. You can also [customize this page](/docs/pages/building-your-application/routing/custom-error#customizing-the-500-page) by creating a `pages/500.js` file.\n\nHaving a 500 page in your application does not show specific errors to the app user.\n\nYou can also use [404 page](/docs/pages/building-your-application/routing/custom-error#404-page) to handle specific runtime error like `file not found`.",
+    "preview": "Next.js provides a static 500 page by default to handle server-side errors that occur in your application. You can also [customize this page](/docs/pages/building-your-application/routing/custom-error#customizing-the-500-page) by creating a `pages/500.js` file. Having a 500 page in your application",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/error-handling#handling-server-errors-handling-server-errors",
+    "position": 3
+  },
+  {
+    "title": "Error Handling",
+    "section": "[Handling Client Errors](#handling-client-errors)",
+    "section_id": "handling-client-errors-handling-client-errors",
+    "heading_level": 2,
+    "content": "## [Handling Client Errors](#handling-client-errors)\n\nReact [Error Boundaries](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary) is a graceful way to handle a JavaScript error on the client so that the other parts of the application continue working. In addition to preventing the page from crashing, it allows you to provide a custom fallback component and even log error information.\n\nTo use Error Boundaries for your Next.js application, you must create a class component `ErrorBoundary` and wrap the `Component` prop in the `pages/_app.js` file. This component will be responsible to:\n\n* Render a fallback UI after an error is thrown\n* Provide a way to reset the Application's state\n* Log error information\n\nYou can create an `ErrorBoundary` class component by extending `React.Component`. For example:\n\n```\nclass ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props)\n \n    // Define a state variable to track whether is an error or not\n    this.state = { hasError: false }\n  }\n  static getDerivedStateFromError(error) {\n    // Update state so the next render will show the fallback UI\n \n    return { hasError: true }\n  }\n  componentDidCatch(error, errorInfo) {\n    // You can use your own error logging service here\n    console.log({ error, errorInfo })\n  }\n  render() {\n    // Check if the error is thrown\n    if (this.state.hasError) {\n      // You can render any custom fallback UI\n      return (\n        <div>\n          <h2>Oops, there is an error!</h2>\n          <button\n            type=\"button\"\n            onClick={() => this.setState({ hasError: false })}\n          >\n            Try again?\n          </button>\n        </div>\n      )\n    }\n \n    // Return children components in case of no error\n \n    return this.props.children\n  }\n}\n \nexport default ErrorBoundary\n```\n\nThe `ErrorBoundary` component keeps track of an `hasError` state. The value of this state variable is a boolean. When the value of `hasError` is `true`, then the `ErrorBoundary` component will render a fallback UI. Otherwise, it will render the children components.\n\nAfter creating an `ErrorBoundary` component, import it in the `pages/_app.js` file to wrap the `Component` prop in your Next.js application.\n\n```\n// Import the ErrorBoundary component\nimport ErrorBoundary from '../components/ErrorBoundary'\n \nfunction MyApp({ Component, pageProps }) {\n  return (\n    // Wrap the Component prop with ErrorBoundary component\n    <ErrorBoundary>\n      <Component {...pageProps} />\n    </ErrorBoundary>\n  )\n}\n \nexport default MyApp\n```\n\nYou can learn more about [Error Boundaries](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary) in React's documentation.",
+    "preview": "React [Error Boundaries](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary) is a graceful way to handle a JavaScript error on the client so that the other parts of the application continue working. In addition to preventing the page from crashing, it allows",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/error-handling#handling-client-errors-handling-client-errors",
+    "position": 4
+  },
+  {
+    "title": "Error Handling",
+    "section": "[Reporting Errors](#reporting-errors)",
+    "section_id": "reporting-errors-reporting-errors",
+    "heading_level": 3,
+    "content": "### [Reporting Errors](#reporting-errors)\n\nTo monitor client errors, use a service like [Sentry](https://github.com/vercel/next.js/tree/canary/examples/with-sentry), Bugsnag or Datadog.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "To monitor client errors, use a service like [Sentry](https://github.com/vercel/next.js/tree/canary/examples/with-sentry), Bugsnag or Datadog. Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/building-your-application/configuring/error-handling#reporting-errors-reporting-errors",
+    "position": 5
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Data Fetching](/docs/app/building-your-application/data-fetching)Incremental Static Regeneration (ISR)",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Data Fetching](/docs/app/building-your-application/data-fetching)Incremental Static Regeneration (ISR)",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "Incremental Static Regeneration (ISR)",
+    "section_id": "incremental-static-regeneration-isr",
+    "heading_level": 1,
+    "content": "# Incremental Static Regeneration (ISR)\n\nExamples\n\n* [Next.js Commerce](https://vercel.com/templates/next.js/nextjs-commerce)\n* [On-Demand ISR](https://on-demand-isr.vercel.app)\n* [Next.js Forms](https://github.com/vercel/next.js/tree/canary/examples/next-forms)\n\nIncremental Static Regeneration (ISR) enables you to:\n\n* Update static content without rebuilding the entire site\n* Reduce server load by serving prerendered, static pages for most requests\n* Ensure proper `cache-control` headers are automatically added to pages\n* Handle large amounts of content pages without long `next build` times\n\nHere's a minimal example:\n\napp/blog/[id]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\ninterface Post {\n  id: string\n  title: string\n  content: string\n}\n \n// Next.js will invalidate the cache when a\n// request comes in, at most once every 60 seconds.\nexport const revalidate = 60\n \n// We'll prerender only the params from `generateStaticParams` at build time.\n// If a request comes in for a path that hasn't been generated,\n// Next.js will server-render the page on-demand.\nexport const dynamicParams = true // or false, to 404 on unknown paths\n \nexport async function generateStaticParams() {\n  const posts: Post[] = await fetch('https://api.vercel.app/blog').then((res) =>\n    res.json()\n  )\n  return posts.map((post) => ({\n    id: String(post.id),\n  }))\n}\n \nexport default async function Page({\n  params,\n}: {\n  params: Promise<{ id: string }>\n}) {\n  const { id } = await params\n  const post: Post = await fetch(`https://api.vercel.app/blog/${id}`).then(\n    (res) => res.json()\n  )\n  return (\n    <main>\n      <h1>{post.title}</h1>\n      <p>{post.content}</p>\n    </main>\n  )\n}\n```\n\nHere's how this example works:\n\n1. During `next build`, all known blog posts are generated (there are 25 in this example)\n2. All requests made to these pages (e.g. `/blog/1`) are cached and instantaneous\n3. After 60 seconds has passed, the next request will still show the cached (stale) page\n4. The cache is invalidated and a new version of the page begins generating in the background\n5. Once generated successfully, Next.js will display and cache the updated page\n6. If `/blog/26` is requested, Next.js will generate and cache this page on-demand",
+    "preview": "Examples * [Next.js Commerce](https://vercel.com/templates/next.js/nextjs-commerce) * [On-Demand ISR](https://on-demand-isr.vercel.app) * [Next.js Forms](https://github.com/vercel/next.js/tree/canary/examples/next-forms) Incremental Static Regeneration (ISR) enables you to: * Update static conten",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#incremental-static-regeneration-isr",
+    "position": 1
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Route segment config](#route-segment-config)",
+    "section_id": "route-segment-config-route-segment-config",
+    "heading_level": 3,
+    "content": "### [Route segment config](#route-segment-config)\n\n* [`revalidate`](/docs/app/api-reference/file-conventions/route-segment-config#revalidate)\n* [`dynamicParams`](/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams)",
+    "preview": "* [`revalidate`](/docs/app/api-reference/file-conventions/route-segment-config#revalidate) * [`dynamicParams`](/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams)",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#route-segment-config-route-segment-config",
+    "position": 3
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Functions](#functions)",
+    "section_id": "functions-functions",
+    "heading_level": 3,
+    "content": "### [Functions](#functions)\n\n* [`revalidatePath`](/docs/app/api-reference/functions/revalidatePath)\n* [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag)",
+    "preview": "* [`revalidatePath`](/docs/app/api-reference/functions/revalidatePath) * [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag)",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#functions-functions",
+    "position": 4
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#examples-examples",
+    "position": 5
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Time-based revalidation](#time-based-revalidation)",
+    "section_id": "time-based-revalidation-time-based-revalidation",
+    "heading_level": 3,
+    "content": "### [Time-based revalidation](#time-based-revalidation)\n\nThis fetches and displays a list of blog posts on `/blog`. After an hour, the cache for this page is invalidated on the next visit to the page. Then, in the background, a new version of the page is generated with the latest blog posts.\n\napp/blog/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\ninterface Post {\n  id: string\n  title: string\n  content: string\n}\n \nexport const revalidate = 3600 // invalidate every hour\n \nexport default async function Page() {\n  const data = await fetch('https://api.vercel.app/blog')\n  const posts: Post[] = await data.json()\n  return (\n    <main>\n      <h1>Blog Posts</h1>\n      <ul>\n        {posts.map((post) => (\n          <li key={post.id}>{post.title}</li>\n        ))}\n      </ul>\n    </main>\n  )\n}\n```\n\nWe recommend setting a high revalidation time. For instance, 1 hour instead of 1 second. If you need more precision, consider using on-demand revalidation. If you need real-time data, consider switching to [dynamic rendering](/docs/app/building-your-application/rendering/server-components#dynamic-rendering).",
+    "preview": "This fetches and displays a list of blog posts on `/blog`. After an hour, the cache for this page is invalidated on the next visit to the page. Then, in the background, a new version of the page is generated with the latest blog posts. app/blog/page.tsx TypeScript JavaScriptTypeScript [Code Bloc",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#time-based-revalidation-time-based-revalidation",
+    "position": 6
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[On-demand revalidation with `revalidatePath`](#on-demand-revalidation-with-revalidatepath)",
+    "section_id": "on-demand-revalidation-with-revalidatepath-on-demand-revalidation-with-revalidatepath",
+    "heading_level": 3,
+    "content": "### [On-demand revalidation with `revalidatePath`](#on-demand-revalidation-with-revalidatepath)\n\nFor a more precise method of revalidation, invalidate pages on-demand with the `revalidatePath` function.\n\nFor example, this Server Action would get called after adding a new post. Regardless of how you retrieve your data in your Server Component, either using `fetch` or connecting to a database, this will clear the cache for the entire route and allow the Server Component to fetch fresh data.\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { revalidatePath } from 'next/cache'\n \nexport async function createPost() {\n  // Invalidate the /posts route in the cache\n  revalidatePath('/posts')\n}\n```\n\n[View a demo](https://on-demand-isr.vercel.app) and [explore the source code](https://github.com/vercel/on-demand-isr).",
+    "preview": "For a more precise method of revalidation, invalidate pages on-demand with the `revalidatePath` function. For example, this Server Action would get called after adding a new post. Regardless of how you retrieve your data in your Server Component, either using `fetch` or connecting to a database, th",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation-with-revalidatepath-on-demand-revalidation-with-revalidatepath",
+    "position": 7
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[On-demand revalidation with `revalidateTag`](#on-demand-revalidation-with-revalidatetag)",
+    "section_id": "on-demand-revalidation-with-revalidatetag-on-demand-revalidation-with-revalidatetag",
+    "heading_level": 3,
+    "content": "### [On-demand revalidation with `revalidateTag`](#on-demand-revalidation-with-revalidatetag)\n\nFor most use cases, prefer revalidating entire paths. If you need more granular control, you can use the `revalidateTag` function. For example, you can tag individual `fetch` calls:\n\napp/blog/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page() {\n  const data = await fetch('https://api.vercel.app/blog', {\n    next: { tags: ['posts'] },\n  })\n  const posts = await data.json()\n  // ...\n}\n```\n\nIf you are using an ORM or connecting to a database, you can use `unstable_cache`:\n\napp/blog/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { unstable_cache } from 'next/cache'\nimport { db, posts } from '@/lib/db'\n \nconst getCachedPosts = unstable_cache(\n  async () => {\n    return await db.select().from(posts)\n  },\n  ['posts'],\n  { revalidate: 3600, tags: ['posts'] }\n)\n \nexport default async function Page() {\n  const posts = getCachedPosts()\n  // ...\n}\n```\n\nYou can then use `revalidateTag` in a [Server Actions](/docs/app/building-your-application/data-fetching/server-actions-and-mutations) or [Route Handler](/docs/app/building-your-application/routing/route-handlers):\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { revalidateTag } from 'next/cache'\n \nexport async function createPost() {\n  // Invalidate all data tagged with 'posts' in the cache\n  revalidateTag('posts')\n}\n```",
+    "preview": "For most use cases, prefer revalidating entire paths. If you need more granular control, you can use the `revalidateTag` function. For example, you can tag individual `fetch` calls: app/blog/page.tsx TypeScript JavaScriptTypeScript [Code Block] If you are using an ORM or connecting to a databas",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#on-demand-revalidation-with-revalidatetag-on-demand-revalidation-with-revalidatetag",
+    "position": 8
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Handling uncaught exceptions](#handling-uncaught-exceptions)",
+    "section_id": "handling-uncaught-exceptions-handling-uncaught-exceptions",
+    "heading_level": 3,
+    "content": "### [Handling uncaught exceptions](#handling-uncaught-exceptions)\n\nIf an error is thrown while attempting to revalidate data, the last successfully generated data will continue to be served from the cache. On the next subsequent request, Next.js will retry revalidating the data. [Learn more about error handling](/docs/app/building-your-application/routing/error-handling).",
+    "preview": "If an error is thrown while attempting to revalidate data, the last successfully generated data will continue to be served from the cache. On the next subsequent request, Next.js will retry revalidating the data. [Learn more about error handling](/docs/app/building-your-application/routing/error-han",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#handling-uncaught-exceptions-handling-uncaught-exceptions",
+    "position": 9
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Customizing the cache location](#customizing-the-cache-location)",
+    "section_id": "customizing-the-cache-location-customizing-the-cache-location",
+    "heading_level": 3,
+    "content": "### [Customizing the cache location](#customizing-the-cache-location)\n\nCaching and revalidating pages (with Incremental Static Regeneration) use the same shared cache. When [deploying to Vercel](https://vercel.com/docs/incremental-static-regeneration?utm_source=next-site&utm_medium=docs&utm_campaign=next-website), the ISR cache is automatically persisted to durable storage.\n\nWhen self-hosting, the ISR cache is stored to the filesystem (on disk) on your Next.js server. This works automatically when self-hosting using both the Pages and App Router.\n\nYou can configure the Next.js cache location if you want to persist cached pages and data to durable storage, or share the cache across multiple containers or instances of your Next.js application. [Learn more](/docs/app/building-your-application/deploying#caching-and-isr).",
+    "preview": "Caching and revalidating pages (with Incremental Static Regeneration) use the same shared cache. When [deploying to Vercel](https://vercel.com/docs/incremental-static-regeneration?utm_source=next-site&utm_medium=docs&utm_campaign=next-website), the ISR cache is automatically persisted to durable sto",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#customizing-the-cache-location-customizing-the-cache-location",
+    "position": 10
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Troubleshooting](#troubleshooting)",
+    "section_id": "troubleshooting-troubleshooting",
+    "heading_level": 2,
+    "content": "## [Troubleshooting](#troubleshooting)",
+    "preview": "## [Troubleshooting](#troubleshooting)",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#troubleshooting-troubleshooting",
+    "position": 11
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Debugging cached data in local development](#debugging-cached-data-in-local-development)",
+    "section_id": "debugging-cached-data-in-local-development-debugging-cached-data-in-local-development",
+    "heading_level": 3,
+    "content": "### [Debugging cached data in local development](#debugging-cached-data-in-local-development)\n\nIf you are using the `fetch` API, you can add additional logging to understand which requests are cached or uncached. [Learn more about the `logging` option](/docs/app/api-reference/config/next-config-js/logging).\n\nnext.config.js\n\n```\nmodule.exports = {\n  logging: {\n    fetches: {\n      fullUrl: true,\n    },\n  },\n}\n```",
+    "preview": "If you are using the `fetch` API, you can add additional logging to understand which requests are cached or uncached. [Learn more about the `logging` option](/docs/app/api-reference/config/next-config-js/logging). next.config.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#debugging-cached-data-in-local-development-debugging-cached-data-in-local-development",
+    "position": 12
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Verifying correct production behavior](#verifying-correct-production-behavior)",
+    "section_id": "verifying-correct-production-behavior-verifying-correct-production-behavior",
+    "heading_level": 3,
+    "content": "### [Verifying correct production behavior](#verifying-correct-production-behavior)\n\nTo verify your pages are cached and revalidated correctly in production, you can test locally by running `next build` and then `next start` to run the production Next.js server.\n\nThis will allow you to test ISR behavior as it would work in a production environment. For further debugging, add the following environment variable to your `.env` file:\n\n.env\n\n```\nNEXT_PRIVATE_DEBUG_CACHE=1\n```\n\nThis will make the Next.js server console log ISR cache hits and misses. You can inspect the output to see which pages are generated during `next build`, as well as how pages are updated as paths are accessed on-demand.",
+    "preview": "To verify your pages are cached and revalidated correctly in production, you can test locally by running `next build` and then `next start` to run the production Next.js server. This will allow you to test ISR behavior as it would work in a production environment. For further debugging, add the fol",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#verifying-correct-production-behavior-verifying-correct-production-behavior",
+    "position": 13
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Caveats](#caveats)",
+    "section_id": "caveats-caveats",
+    "heading_level": 2,
+    "content": "## [Caveats](#caveats)\n\n* ISR is only supported when using the Node.js runtime (default).\n* ISR is not supported when creating a [Static Export](/docs/app/building-your-application/deploying/static-exports).\n* If you have multiple `fetch` requests in a statically rendered route, and each has a different `revalidate` frequency, the lowest time will be used for ISR. However, those revalidate frequencies will still be respected by the [Data Cache](/docs/app/building-your-application/caching#data-cache).\n* If any of the `fetch` requests used on a route have a `revalidate` time of `0`, or an explicit `no-store`, the route will be [dynamically rendered](/docs/app/building-your-application/rendering/server-components#dynamic-rendering).\n* Middleware won't be executed for on-demand ISR requests, meaning any path rewrites or logic in Middleware will not be applied. Ensure you are revalidating the exact path. For example, `/post/1` instead of a rewritten `/post-1`.",
+    "preview": "* ISR is only supported when using the Node.js runtime (default). * ISR is not supported when creating a [Static Export](/docs/app/building-your-application/deploying/static-exports). * If you have multiple `fetch` requests in a statically rendered route, and each has a different `revalidate` freque",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#caveats-caveats",
+    "position": 14
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "section": "[Version history](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version history](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v14.1.0` | Custom `cacheHandler` is stable. |\n| `v13.0.0` | App Router is introduced. |\n| `v12.2.0` | Pages Router: On-Demand ISR is stable |\n| `v12.0.0` | Pages Router: [Bot-aware ISR fallback](/blog/next-12#bot-aware-isr-fallback) added. |\n| `v9.5.0` | Pages Router: [Stable ISR introduced](/blog/next-9-5). |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v14.1.0` | Custom `cacheHandler` is stable. | | `v13.0.0` | App Router is introduced. | | `v12.2.0` | Pages Router: On-Demand ISR is stable | | `v12.0.0` | Pages Router: [Bot-aware ISR fallback](/blog/next-12#bot-aware-isr-fallback) added. | | `v9.5.0` | Pages",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration#version-history-version-history",
+    "position": 15
+  }
+]

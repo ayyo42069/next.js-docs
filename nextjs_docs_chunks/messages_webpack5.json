@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Webpack 5 Adoption",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)Webpack 5 Adoption",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)Webpack 5 Adoption",
+    "url": "https://nextjs.org/docs/messages/webpack5#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Webpack 5 Adoption",
+    "section": "Webpack 5 Adoption",
+    "section_id": "webpack-5-adoption",
+    "heading_level": 1,
+    "content": "# Webpack 5 Adoption",
+    "preview": "# Webpack 5 Adoption",
+    "url": "https://nextjs.org/docs/messages/webpack5#webpack-5-adoption",
+    "position": 1
+  },
+  {
+    "title": "Webpack 5 Adoption",
+    "section": "[Why This Message Occurred](#why-this-message-occurred)",
+    "section_id": "why-this-message-occurred-why-this-message-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Message Occurred](#why-this-message-occurred)\n\nNext.js has adopted webpack 5 as the default for compilation. We've spent a lot of effort into ensuring the transition from webpack 4 to 5 will be as smooth as possible.\n\nYour application currently has webpack 5 disabled using the `webpack5: false` flag which has been removed in Next.js 12:\n\nnext.config.js\n\n```\nmodule.exports = {\n  // Webpack 5 is enabled by default\n  // You can still use webpack 4 while upgrading to the latest version of Next.js by adding the \"webpack5: false\" flag\n  webpack5: false,\n}\n```\n\nUsing webpack 5 in your application has many benefits, notably:\n\n* Improved Disk Caching: `next build` is significantly faster on subsequent builds\n* Improved Fast Refresh: Fast Refresh work is prioritized\n* Improved Long Term Caching of Assets: Deterministic code output that is less likely to change between builds\n* Improved Tree Shaking\n* Support for assets using `new URL(\"file.png\", import.meta.url)`\n* Support for web workers using `new Worker(new URL(\"worker.js\", import.meta.url))`\n* Support for `exports`/`imports` field in `package.json`\n\nIn the past releases we have gradually rolled out webpack 5 to Next.js applications:\n\n* In Next.js 10.2 we automatically opted-in applications without custom webpack configuration in `next.config.js`\n* In Next.js 10.2 we automatically opted-in applications that do not have a `next.config.js`\n* In Next.js 11 webpack 5 was enabled by default for all applications. You could still opt-out and use webpack 4 to help with backwards compatibility using `webpack5: false` in `next.config.js`\n* In Next.js 12 webpack 4 support was removed.",
+    "preview": "Next.js has adopted webpack 5 as the default for compilation. We've spent a lot of effort into ensuring the transition from webpack 4 to 5 will be as smooth as possible. Your application currently has webpack 5 disabled using the `webpack5: false` flag which has been removed in Next.js 12: next.co",
+    "url": "https://nextjs.org/docs/messages/webpack5#why-this-message-occurred-why-this-message-occurred",
+    "position": 2
+  },
+  {
+    "title": "Webpack 5 Adoption",
+    "section": "[Custom webpack configuration](#custom-webpack-configuration)",
+    "section_id": "custom-webpack-configuration-custom-webpack-configuration",
+    "heading_level": 2,
+    "content": "## [Custom webpack configuration](#custom-webpack-configuration)\n\nIn case you do have custom webpack configuration, either through custom plugins or your own modifications you'll have to take a few steps to ensure your applications works with webpack 5.\n\n* When using `next-transpile-modules` make sure you use the latest version which includes [this patch](https://github.com/martpie/next-transpile-modules/pull/179)\n* When using `@zeit/next-css` / `@zeit/next-sass` make sure you use the [built-in CSS/Sass support](/docs/pages/building-your-application/styling) instead\n* When using `@zeit/next-preact` use [this example](https://github.com/vercel/next.js/tree/canary/examples/using-preact) instead\n* When using `@zeit/next-source-maps` use the [built-in production Source Map support](/docs/pages/api-reference/config/next-config-js/productionBrowserSourceMaps)\n* When using webpack plugins make sure they're upgraded to the latest version, in most cases the latest version will include webpack 5 support. In some cases these upgraded webpack plugins will only support webpack 5.",
+    "preview": "In case you do have custom webpack configuration, either through custom plugins or your own modifications you'll have to take a few steps to ensure your applications works with webpack 5. * When using `next-transpile-modules` make sure you use the latest version which includes [this patch](https://",
+    "url": "https://nextjs.org/docs/messages/webpack5#custom-webpack-configuration-custom-webpack-configuration",
+    "position": 3
+  },
+  {
+    "title": "Webpack 5 Adoption",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\nIn case you're running into issues you can connect with the community in [this help discussion](https://github.com/vercel/next.js/discussions/23498).\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "In case you're running into issues you can connect with the community in [this help discussion](https://github.com/vercel/next.js/discussions/23498). Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/webpack5#useful-links-useful-links",
+    "position": 4
+  }
+]

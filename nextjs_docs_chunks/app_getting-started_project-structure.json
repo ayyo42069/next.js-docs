@@ -1,0 +1,182 @@
+[
+  {
+    "title": "Project structure and organization",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Getting Started](/docs/app/getting-started)Project Structure",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Getting Started](/docs/app/getting-started)Project Structure",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "Project structure and organization",
+    "section_id": "project-structure-and-organization",
+    "heading_level": 1,
+    "content": "# Project structure and organization\n\nThis page provides an overview of the folder and file conventions in Next.js, as well as tips for organizing your project.",
+    "preview": "This page provides an overview of the folder and file conventions in Next.js, as well as tips for organizing your project.",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#project-structure-and-organization",
+    "position": 1
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Folder and file conventions](#folder-and-file-conventions)",
+    "section_id": "folder-and-file-conventions-folder-and-file-conventions",
+    "heading_level": 2,
+    "content": "## [Folder and file conventions](#folder-and-file-conventions)",
+    "preview": "## [Folder and file conventions](#folder-and-file-conventions)",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#folder-and-file-conventions-folder-and-file-conventions",
+    "position": 2
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Top-level folders](#top-level-folders)",
+    "section_id": "top-level-folders-top-level-folders",
+    "heading_level": 3,
+    "content": "### [Top-level folders](#top-level-folders)\n\nTop-level folders are used to organize your application's code and static assets.\n\n[Image: Route segments to path segments][Image: Route segments to path segments]\n\n|  |  |\n| --- | --- |\n| [`app`](/docs/app/building-your-application/routing) | App Router |\n| [`pages`](/docs/pages/building-your-application/routing) | Pages Router |\n| [`public`](/docs/app/building-your-application/optimizing/static-assets) | Static assets to be served |\n| [`src`](/docs/app/building-your-application/configuring/src-directory) | Optional application source folder |",
+    "preview": "Top-level folders are used to organize your application's code and static assets. [Image: Route segments to path segments][Image: Route segments to path segments] | | | | --- | --- | | [`app`](/docs/app/building-your-application/routing) | App Router | | [`pages`](/docs/pages/building-your-appli",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#top-level-folders-top-level-folders",
+    "position": 3
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Top-level files](#top-level-files)",
+    "section_id": "top-level-files-top-level-files",
+    "heading_level": 3,
+    "content": "### [Top-level files](#top-level-files)\n\nTop-level files are used to configure your application, manage dependencies, run middleware, integrate monitoring tools, and define environment variables.\n\n|  |  |\n| --- | --- |\n| **Next.js** |  |\n| [`next.config.js`](/docs/app/api-reference/config/next-config-js) | Configuration file for Next.js |\n| [`package.json`](/docs/app/getting-started/installation#manual-installation) | Project dependencies and scripts |\n| [`instrumentation.ts`](/docs/app/building-your-application/optimizing/instrumentation) | OpenTelemetry and Instrumentation file |\n| [`middleware.ts`](/docs/app/building-your-application/routing/middleware) | Next.js request middleware |\n| [`.env`](/docs/app/building-your-application/configuring/environment-variables) | Environment variables |\n| [`.env.local`](/docs/app/building-your-application/configuring/environment-variables) | Local environment variables |\n| [`.env.production`](/docs/app/building-your-application/configuring/environment-variables) | Production environment variables |\n| [`.env.development`](/docs/app/building-your-application/configuring/environment-variables) | Development environment variables |\n| [`.eslintrc.json`](/docs/app/api-reference/config/eslint) | Configuration file for ESLint |\n| `.gitignore` | Git files and folders to ignore |\n| `next-env.d.ts` | TypeScript declaration file for Next.js |\n| `tsconfig.json` | Configuration file for TypeScript |\n| `jsconfig.json` | Configuration file for JavaScript |",
+    "preview": "Top-level files are used to configure your application, manage dependencies, run middleware, integrate monitoring tools, and define environment variables. | | | | --- | --- | | **Next.js** | | | [`next.config.js`](/docs/app/api-reference/config/next-config-js) | Configuration file for Next.js |",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#top-level-files-top-level-files",
+    "position": 4
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Routing Files](#routing-files)",
+    "section_id": "routing-files-routing-files",
+    "heading_level": 3,
+    "content": "### [Routing Files](#routing-files)\n\n|  |  |  |\n| --- | --- | --- |\n| [`layout`](/docs/app/api-reference/file-conventions/layout) | `.js` `.jsx` `.tsx` | Layout |\n| [`page`](/docs/app/api-reference/file-conventions/page) | `.js` `.jsx` `.tsx` | Page |\n| [`loading`](/docs/app/api-reference/file-conventions/loading) | `.js` `.jsx` `.tsx` | Loading UI |\n| [`not-found`](/docs/app/api-reference/file-conventions/not-found) | `.js` `.jsx` `.tsx` | Not found UI |\n| [`error`](/docs/app/api-reference/file-conventions/error) | `.js` `.jsx` `.tsx` | Error UI |\n| [`global-error`](/docs/app/api-reference/file-conventions/error#global-error) | `.js` `.jsx` `.tsx` | Global error UI |\n| [`route`](/docs/app/api-reference/file-conventions/route) | `.js` `.ts` | API endpoint |\n| [`template`](/docs/app/api-reference/file-conventions/template) | `.js` `.jsx` `.tsx` | Re-rendered layout |\n| [`default`](/docs/app/api-reference/file-conventions/default) | `.js` `.jsx` `.tsx` | Parallel route fallback page |",
+    "preview": "| | | | | --- | --- | --- | | [`layout`](/docs/app/api-reference/file-conventions/layout) | `.js` `.jsx` `.tsx` | Layout | | [`page`](/docs/app/api-reference/file-conventions/page) | `.js` `.jsx` `.tsx` | Page | | [`loading`](/docs/app/api-reference/file-conventions/loading) | `.js` `.jsx` `.tsx`",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#routing-files-routing-files",
+    "position": 5
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Nested routes](#nested-routes)",
+    "section_id": "nested-routes-nested-routes",
+    "heading_level": 3,
+    "content": "### [Nested routes](#nested-routes)\n\n|  |  |\n| --- | --- |\n| `folder` | Route segment |\n| `folder/folder` | Nested route segment |",
+    "preview": "| | | | --- | --- | | `folder` | Route segment | | `folder/folder` | Nested route segment |",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#nested-routes-nested-routes",
+    "position": 6
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Dynamic routes](#dynamic-routes)",
+    "section_id": "dynamic-routes-dynamic-routes",
+    "heading_level": 3,
+    "content": "### [Dynamic routes](#dynamic-routes)\n\n|  |  |\n| --- | --- |\n| [`[folder]`](/docs/app/building-your-application/routing/dynamic-routes#convention) | Dynamic route segment |\n| [`[...folder]`](/docs/app/building-your-application/routing/dynamic-routes#catch-all-segments) | Catch-all route segment |\n| [`[[...folder]]`](/docs/app/building-your-application/routing/dynamic-routes#optional-catch-all-segments) | Optional catch-all route segment |",
+    "preview": "| | | | --- | --- | | [`[folder]`](/docs/app/building-your-application/routing/dynamic-routes#convention) | Dynamic route segment | | [`[...folder]`](/docs/app/building-your-application/routing/dynamic-routes#catch-all-segments) | Catch-all route segment | | [`[[...folder]]`](/docs/app/building-yo",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#dynamic-routes-dynamic-routes",
+    "position": 7
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Route Groups and private folders](#route-groups-and-private-folders)",
+    "section_id": "route-groups-and-private-folders-route-groups-and-private-folders",
+    "heading_level": 3,
+    "content": "### [Route Groups and private folders](#route-groups-and-private-folders)\n\n|  |  |\n| --- | --- |\n| [`(folder)`](/docs/app/building-your-application/routing/route-groups#convention) | Group routes without affecting routing |\n| [`_folder`](#private-folders) | Opt folder and all child segments out of routing |",
+    "preview": "| | | | --- | --- | | [`(folder)`](/docs/app/building-your-application/routing/route-groups#convention) | Group routes without affecting routing | | [`_folder`](#private-folders) | Opt folder and all child segments out of routing |",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#route-groups-and-private-folders-route-groups-and-private-folders",
+    "position": 8
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Parallel and Intercepted Routes](#parallel-and-intercepted-routes)",
+    "section_id": "parallel-and-intercepted-routes-parallel-and-intercepted-routes",
+    "heading_level": 3,
+    "content": "### [Parallel and Intercepted Routes](#parallel-and-intercepted-routes)\n\n|  |  |\n| --- | --- |\n| [`@folder`](/docs/app/building-your-application/routing/parallel-routes#slots) | Named slot |\n| [`(.)folder`](/docs/app/building-your-application/routing/intercepting-routes#convention) | Intercept same level |\n| [`(..)folder`](/docs/app/building-your-application/routing/intercepting-routes#convention) | Intercept one level above |\n| [`(..)(..)folder`](/docs/app/building-your-application/routing/intercepting-routes#convention) | Intercept two levels above |\n| [`(...)folder`](/docs/app/building-your-application/routing/intercepting-routes#convention) | Intercept from root |",
+    "preview": "| | | | --- | --- | | [`@folder`](/docs/app/building-your-application/routing/parallel-routes#slots) | Named slot | | [`(.)folder`](/docs/app/building-your-application/routing/intercepting-routes#convention) | Intercept same level | | [`(..)folder`](/docs/app/building-your-application/routing/inte",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#parallel-and-intercepted-routes-parallel-and-intercepted-routes",
+    "position": 9
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Metadata file conventions](#metadata-file-conventions)",
+    "section_id": "metadata-file-conventions-metadata-file-conventions",
+    "heading_level": 3,
+    "content": "### [Metadata file conventions](#metadata-file-conventions)\n\n#### [App icons](#app-icons)\n\n|  |  |  |\n| --- | --- | --- |\n| [`favicon`](/docs/app/api-reference/file-conventions/metadata/app-icons#favicon) | `.ico` | Favicon file |\n| [`icon`](/docs/app/api-reference/file-conventions/metadata/app-icons#icon) | `.ico` `.jpg` `.jpeg` `.png` `.svg` | App Icon file |\n| [`icon`](/docs/app/api-reference/file-conventions/metadata/app-icons#generate-icons-using-code-js-ts-tsx) | `.js` `.ts` `.tsx` | Generated App Icon |\n| [`apple-icon`](/docs/app/api-reference/file-conventions/metadata/app-icons#apple-icon) | `.jpg` `.jpeg`, `.png` | Apple App Icon file |\n| [`apple-icon`](/docs/app/api-reference/file-conventions/metadata/app-icons#generate-icons-using-code-js-ts-tsx) | `.js` `.ts` `.tsx` | Generated Apple App Icon |\n\n#### [Open Graph and Twitter images](#open-graph-and-twitter-images)\n\n|  |  |  |\n| --- | --- | --- |\n| [`opengraph-image`](/docs/app/api-reference/file-conventions/metadata/opengraph-image#opengraph-image) | `.jpg` `.jpeg` `.png` `.gif` | Open Graph image file |\n| [`opengraph-image`](/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx) | `.js` `.ts` `.tsx` | Generated Open Graph image |\n| [`twitter-image`](/docs/app/api-reference/file-conventions/metadata/opengraph-image#twitter-image) | `.jpg` `.jpeg` `.png` `.gif` | Twitter image file |\n| [`twitter-image`](/docs/app/api-reference/file-conventions/metadata/opengraph-image#generate-images-using-code-js-ts-tsx) | `.js` `.ts` `.tsx` | Generated Twitter image |\n\n#### [SEO](#seo)\n\n|  |  |  |\n| --- | --- | --- |\n| [`sitemap`](/docs/app/api-reference/file-conventions/metadata/sitemap#sitemap-files-xml) | `.xml` | Sitemap file |\n| [`sitemap`](/docs/app/api-reference/file-conventions/metadata/sitemap#generating-a-sitemap-using-code-js-ts) | `.js` `.ts` | Generated Sitemap |\n| [`robots`](/docs/app/api-reference/file-conventions/metadata/robots#static-robotstxt) | `.txt` | Robots file |\n| [`robots`](/docs/app/api-reference/file-conventions/metadata/robots#generate-a-robots-file) | `.js` `.ts` | Generated Robots file |",
+    "preview": "#### [App icons](#app-icons) | | | | | --- | --- | --- | | [`favicon`](/docs/app/api-reference/file-conventions/metadata/app-icons#favicon) | `.ico` | Favicon file | | [`icon`](/docs/app/api-reference/file-conventions/metadata/app-icons#icon) | `.ico` `.jpg` `.jpeg` `.png` `.svg` | App Icon file",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#metadata-file-conventions-metadata-file-conventions",
+    "position": 10
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Component hierarchy](#component-hierarchy)",
+    "section_id": "component-hierarchy-component-hierarchy",
+    "heading_level": 2,
+    "content": "## [Component hierarchy](#component-hierarchy)\n\nThe React components defined in special files of a route segment are rendered in a specific hierarchy:\n\n* `layout.js`\n* `template.js`\n* `error.js` (React error boundary)\n* `loading.js` (React suspense boundary)\n* `not-found.js` (React error boundary)\n* `page.js` or nested `layout.js`\n\n[Image: Component Hierarchy for File Conventions][Image: Component Hierarchy for File Conventions]\n\nIn a nested route, the components of a segment will be nested **inside** the components of its parent segment.\n\n[Image: Nested File Conventions Component Hierarchy][Image: Nested File Conventions Component Hierarchy]",
+    "preview": "The React components defined in special files of a route segment are rendered in a specific hierarchy: * `layout.js` * `template.js` * `error.js` (React error boundary) * `loading.js` (React suspense boundary) * `not-found.js` (React error boundary) * `page.js` or nested `layout.js` [Image: Compon",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#component-hierarchy-component-hierarchy",
+    "position": 11
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Organizing your project](#organizing-your-project)",
+    "section_id": "organizing-your-project-organizing-your-project",
+    "heading_level": 2,
+    "content": "## [Organizing your project](#organizing-your-project)\n\nApart from [folder and file conventions](/docs/app/getting-started/project-structure), Next.js is **unopinionated** about how you organize and colocate your project files. But it does provide several features to help you organize your project.",
+    "preview": "Apart from [folder and file conventions](/docs/app/getting-started/project-structure), Next.js is **unopinionated** about how you organize and colocate your project files. But it does provide several features to help you organize your project.",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#organizing-your-project-organizing-your-project",
+    "position": 12
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Colocation](#colocation)",
+    "section_id": "colocation-colocation",
+    "heading_level": 3,
+    "content": "### [Colocation](#colocation)\n\nIn the `app` directory, nested folders define route structure. Each folder represents a route segment that is mapped to a corresponding segment in a URL path.\n\nHowever, even though route structure is defined through folders, a route is **not publicly accessible** until a `page.js` or `route.js` file is added to a route segment.\n\n[Image: A diagram showing how a route is not publicly accessible until a page.js or route.js file is added to a route segment.][Image: A diagram showing how a route is not publicly accessible until a page.js or route.js file is added to a route segment.]\n\nAnd, even when a route is made publicly accessible, only the **content returned** by `page.js` or `route.js` is sent to the client.\n\n[Image: A diagram showing how page.js and route.js files make routes publicly accessible.][Image: A diagram showing how page.js and route.js files make routes publicly accessible.]\n\nThis means that **project files** can be **safely colocated** inside route segments in the `app` directory without accidentally being routable.\n\n[Image: A diagram showing colocated project files are not routable even when a segment contains a page.js or route.js file.][Image: A diagram showing colocated project files are not routable even when a segment contains a page.js or route.js file.]\n> **Good to know**:\n>\n> * While you **can** colocate your project files in `app` you don't **have** to. If you prefer, you can [keep them outside the `app` directory](#store-project-files-outside-of-app).",
+    "preview": "In the `app` directory, nested folders define route structure. Each folder represents a route segment that is mapped to a corresponding segment in a URL path. However, even though route structure is defined through folders, a route is **not publicly accessible** until a `page.js` or `route.js` file",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#colocation-colocation",
+    "position": 13
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Private folders](#private-folders)",
+    "section_id": "private-folders-private-folders",
+    "heading_level": 3,
+    "content": "### [Private folders](#private-folders)\n\nPrivate folders can be created by prefixing a folder with an underscore: `_folderName`\n\nThis indicates the folder is a private implementation detail and should not be considered by the routing system, thereby **opting the folder and all its subfolders** out of routing.\n\n[Image: An example folder structure using private folders][Image: An example folder structure using private folders]\n\nSince files in the `app` directory can be [safely colocated by default](#colocation), private folders are not required for colocation. However, they can be useful for:\n\n* Separating UI logic from routing logic.\n* Consistently organizing internal files across a project and the Next.js ecosystem.\n* Sorting and grouping files in code editors.\n* Avoiding potential naming conflicts with future Next.js file conventions.\n\n> **Good to know**:\n>\n> * While not a framework convention, you might also consider marking files outside private folders as \"private\" using the same underscore pattern.\n> * You can create URL segments that start with an underscore by prefixing the folder name with `%5F` (the URL-encoded form of an underscore): `%5FfolderName`.\n> * If you don't use private folders, it would be helpful to know Next.js [special file conventions](/docs/app/getting-started/project-structure#routing-files) to prevent unexpected naming conflicts.",
+    "preview": "Private folders can be created by prefixing a folder with an underscore: `_folderName` This indicates the folder is a private implementation detail and should not be considered by the routing system, thereby **opting the folder and all its subfolders** out of routing. [Image: An example folder str",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#private-folders-private-folders",
+    "position": 14
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Route groups](#route-groups)",
+    "section_id": "route-groups-route-groups",
+    "heading_level": 3,
+    "content": "### [Route groups](#route-groups)\n\nRoute groups can be created by wrapping a folder in parenthesis: `(folderName)`\n\nThis indicates the folder is for organizational purposes and should **not be included** in the route's URL path.\n\n[Image: An example folder structure using route groups][Image: An example folder structure using route groups]\n\nRoute groups are useful for:\n\n* [Organizing routes into groups](/docs/app/building-your-application/routing/route-groups#organize-routes-without-affecting-the-url-path) e.g. by site section, intent, or team.\n* Enabling nested layouts in the same route segment level:\n  + [Creating multiple nested layouts in the same segment, including multiple root layouts](/docs/app/building-your-application/routing/route-groups#creating-multiple-root-layouts)\n  + [Adding a layout to a subset of routes in a common segment](/docs/app/building-your-application/routing/route-groups#opting-specific-segments-into-a-layout)",
+    "preview": "Route groups can be created by wrapping a folder in parenthesis: `(folderName)` This indicates the folder is for organizational purposes and should **not be included** in the route's URL path. [Image: An example folder structure using route groups][Image: An example folder structure using route gr",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#route-groups-route-groups",
+    "position": 15
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[`src` directory](#src-directory)",
+    "section_id": "src-directory-src-directory",
+    "heading_level": 3,
+    "content": "### [`src` directory](#src-directory)\n\nNext.js supports storing application code (including `app`) inside an optional [`src` directory](/docs/app/building-your-application/configuring/src-directory). This separates application code from project configuration files which mostly live in the root of a project.\n\n[Image: An example folder structure with the `src` directory][Image: An example folder structure with the `src` directory]",
+    "preview": "Next.js supports storing application code (including `app`) inside an optional [`src` directory](/docs/app/building-your-application/configuring/src-directory). This separates application code from project configuration files which mostly live in the root of a project. [Image: An example folder str",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#src-directory-src-directory",
+    "position": 16
+  },
+  {
+    "title": "Project structure and organization",
+    "section": "[Common strategies](#common-strategies)",
+    "section_id": "common-strategies-common-strategies",
+    "heading_level": 3,
+    "content": "### [Common strategies](#common-strategies)\n\nThe following section lists a very high-level overview of common strategies. The simplest takeaway is to choose a strategy that works for you and your team and be consistent across the project.\n\n> **Good to know**: In our examples below, we're using `components` and `lib` folders as generalized placeholders, their naming has no special framework significance and your projects might use other folders like `ui`, `utils`, `hooks`, `styles`, etc.\n\n#### [Store project files outside of `app`](#store-project-files-outside-of-app)\n\nThis strategy stores all application code in shared folders in the **root of your project** and keeps the `app` directory purely for routing purposes.\n\n[Image: An example folder structure with project files outside of app][Image: An example folder structure with project files outside of app]\n\n#### [Store project files in top-level folders inside of `app`](#store-project-files-in-top-level-folders-inside-of-app)\n\nThis strategy stores all application code in shared folders in the **root of the `app` directory**.\n\n[Image: An example folder structure with project files inside app][Image: An example folder structure with project files inside app]\n\n#### [Split project files by feature or route](#split-project-files-by-feature-or-route)\n\nThis strategy stores globally shared application code in the root `app` directory and **splits** more specific application code into the route segments that use them.\n\n[Image: An example folder structure with project files split by feature or route][Image: An example folder structure with project files split by feature or route]\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The following section lists a very high-level overview of common strategies. The simplest takeaway is to choose a strategy that works for you and your team and be consistent across the project. > **Good to know**: In our examples below, we're using `components` and `lib` folders as generalized plac",
+    "url": "https://nextjs.org/docs/app/getting-started/project-structure#common-strategies-common-strategies",
+    "position": 17
+  }
+]

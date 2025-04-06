@@ -1,0 +1,52 @@
+[
+  {
+    "title": "default.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)default.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)default.js",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/default#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "default.js",
+    "section": "default.js",
+    "section_id": "default-js",
+    "heading_level": 1,
+    "content": "# default.js\n\nThe `default.js` file is used to render a fallback within [Parallel Routes](/docs/app/building-your-application/routing/parallel-routes) when Next.js cannot recover a [slot's](/docs/app/building-your-application/routing/parallel-routes#slots) active state after a full-page load.\n\nDuring [soft navigation](/docs/app/building-your-application/routing/linking-and-navigating#5-soft-navigation), Next.js keeps track of the active *state* (subpage) for each slot. However, for hard navigations (full-page load), Next.js cannot recover the active state. In this case, a `default.js` file can be rendered for subpages that don't match the current URL.\n\nConsider the following folder structure. The `@team` slot has a `settings` page, but `@analytics` does not.\n\n[Image: Parallel Routes unmatched routes][Image: Parallel Routes unmatched routes]\n\nWhen navigating to `/settings`, the `@team` slot will render the `settings` page while maintaining the currently active page for the `@analytics` slot.\n\nOn refresh, Next.js will render a `default.js` for `@analytics`. If `default.js` doesn't exist, a `404` is rendered instead.\n\nAdditionally, since `children` is an implicit slot, you also need to create a `default.js` file to render a fallback for `children` when Next.js cannot recover the active state of the parent page.",
+    "preview": "The `default.js` file is used to render a fallback within [Parallel Routes](/docs/app/building-your-application/routing/parallel-routes) when Next.js cannot recover a [slot's](/docs/app/building-your-application/routing/parallel-routes#slots) active state after a full-page load. During [soft naviga",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/default#default-js",
+    "position": 1
+  },
+  {
+    "title": "default.js",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)",
+    "preview": "## [Reference](#reference)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/default#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "default.js",
+    "section": "[`params` (optional)](#params-optional)",
+    "section_id": "params-optional-params-optional",
+    "heading_level": 3,
+    "content": "### [`params` (optional)](#params-optional)\n\nA promise that resolves to an object containing the [dynamic route parameters](/docs/app/building-your-application/routing/dynamic-routes) from the root segment down to the slot's subpages. For example:\n\napp/[artist]/@sidebar/default.js\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Default({\n  params,\n}: {\n  params: Promise<{ artist: string }>\n}) {\n  const { artist } = await params\n}\n```\n\n| Example | URL | `params` |\n| --- | --- | --- |\n| `app/[artist]/@sidebar/default.js` | `/zack` | `Promise<{ artist: 'zack' }>` |\n| `app/[artist]/[album]/@sidebar/default.js` | `/zack/next` | `Promise<{ artist: 'zack', album: 'next' }>` |\n\n* Since the `params` prop is a promise. You must use `async/await` or React's [`use`](https://react.dev/reference/react/use) function to access the values.\n  + In version 14 and earlier, `params` was a synchronous prop. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.",
+    "preview": "A promise that resolves to an object containing the [dynamic route parameters](/docs/app/building-your-application/routing/dynamic-routes) from the root segment down to the slot's subpages. For example: app/[artist]/@sidebar/default.js TypeScript JavaScriptTypeScript [Code Block] | Example | UR",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/default#params-optional-params-optional",
+    "position": 3
+  },
+  {
+    "title": "default.js",
+    "section": "Learn more about Parallel Routes",
+    "section_id": "learn-more-about-parallel-routes",
+    "heading_level": 2,
+    "content": "## Learn more about Parallel Routes\n\n[### Parallel Routes\n\nSimultaneously render one or more pages in the same view that can be navigated independently. A pattern for highly dynamic applications.](/docs/app/building-your-application/routing/parallel-routes)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Parallel Routes Simultaneously render one or more pages in the same view that can be navigated independently. A pattern for highly dynamic applications.](/docs/app/building-your-application/routing/parallel-routes) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/default#learn-more-about-parallel-routes",
+    "position": 4
+  }
+]

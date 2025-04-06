@@ -1,0 +1,532 @@
+[
+  {
+    "title": "Image",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[Components](/docs/pages/api-reference/components)Image",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[Components](/docs/pages/api-reference/components)Image",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Image",
+    "section": "Image",
+    "section_id": "image",
+    "heading_level": 1,
+    "content": "# Image\n\nExamples\n\n* [Image Component](https://github.com/vercel/next.js/tree/canary/examples/image-component)\n> **Good to know**: If you are using a version of Next.js prior to 13, you'll want to use the [next/legacy/image](/docs/pages/api-reference/components/image-legacy) documentation since the component was renamed.\n\nThis API reference will help you understand how to use [props](#props) and [configuration options](#configuration-options) available for the Image Component. For features and usage, please see the [Image Component](/docs/app/building-your-application/optimizing/images) page.\n\napp/page.js\n\n```\nimport Image from 'next/image'\n \nexport default function Page() {\n  return (\n    <Image\n      src=\"/profile.png\"\n      width={500}\n      height={500}\n      alt=\"Picture of the author\"\n    />\n  )\n}\n```",
+    "preview": "Examples * [Image Component](https://github.com/vercel/next.js/tree/canary/examples/image-component) > **Good to know**: If you are using a version of Next.js prior to 13, you'll want to use the [next/legacy/image](/docs/pages/api-reference/components/image-legacy) documentation since the component",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#image",
+    "position": 1
+  },
+  {
+    "title": "Image",
+    "section": "[Props](#props)",
+    "section_id": "props-props",
+    "heading_level": 2,
+    "content": "## [Props](#props)\n\nHere's a summary of the props available for the Image Component:\n\n| Prop | Example | Type | Status |\n| --- | --- | --- | --- |\n| [`src`](#src) | `src=\"/profile.png\"` | String | Required |\n| [`width`](#width) | `width={500}` | Integer (px) | Required |\n| [`height`](#height) | `height={500}` | Integer (px) | Required |\n| [`alt`](#alt) | `alt=\"Picture of the author\"` | String | Required |\n| [`loader`](#loader) | `loader={imageLoader}` | Function | - |\n| [`fill`](#fill) | `fill={true}` | Boolean | - |\n| [`sizes`](#sizes) | `sizes=\"(max-width: 768px) 100vw, 33vw\"` | String | - |\n| [`quality`](#quality) | `quality={80}` | Integer (1-100) | - |\n| [`priority`](#priority) | `priority={true}` | Boolean | - |\n| [`placeholder`](#placeholder) | `placeholder=\"blur\"` | String | - |\n| [`style`](#style) | `style={{objectFit: \"contain\"}}` | Object | - |\n| [`onLoadingComplete`](#onloadingcomplete) | `onLoadingComplete={img => done())}` | Function | Deprecated |\n| [`onLoad`](#onload) | `onLoad={event => done())}` | Function | - |\n| [`onError`](#onerror) | `onError(event => fail()}` | Function | - |\n| [`loading`](#loading) | `loading=\"lazy\"` | String | - |\n| [`blurDataURL`](#blurdataurl) | `blurDataURL=\"data:image/jpeg...\"` | String | - |\n| [`overrideSrc`](#overridesrc) | `overrideSrc=\"/seo.png\"` | String | - |",
+    "preview": "Here's a summary of the props available for the Image Component: | Prop | Example | Type | Status | | --- | --- | --- | --- | | [`src`](#src) | `src=\"/profile.png\"` | String | Required | | [`width`](#width) | `width={500}` | Integer (px) | Required | | [`height`](#height) | `height={500}` | Integer",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#props-props",
+    "position": 2
+  },
+  {
+    "title": "Image",
+    "section": "[Required Props](#required-props)",
+    "section_id": "required-props-required-props",
+    "heading_level": 2,
+    "content": "## [Required Props](#required-props)\n\nThe Image Component requires the following properties: `src`, `alt`, `width` and `height` (or `fill`).\n\napp/page.js\n\n```\nimport Image from 'next/image'\n \nexport default function Page() {\n  return (\n    <div>\n      <Image\n        src=\"/profile.png\"\n        width={500}\n        height={500}\n        alt=\"Picture of the author\"\n      />\n    </div>\n  )\n}\n```",
+    "preview": "The Image Component requires the following properties: `src`, `alt`, `width` and `height` (or `fill`). app/page.js [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#required-props-required-props",
+    "position": 3
+  },
+  {
+    "title": "Image",
+    "section": "[`src`](#src)",
+    "section_id": "src-src",
+    "heading_level": 3,
+    "content": "### [`src`](#src)\n\nMust be one of the following:\n\n* A [statically imported](/docs/app/building-your-application/optimizing/images#local-images) image file\n* A path string. This can be either an absolute external URL, or an internal path depending on the [loader](#loader) prop.\n\nWhen using the default [loader](#loader), also consider the following for source images:\n\n* When src is an external URL, you must also configure [remotePatterns](#remotepatterns)\n* When src is [animated](#animated-images) or not a known format (JPEG, PNG, WebP, AVIF, GIF, TIFF) the image will be served as-is\n* When src is SVG format, it will be blocked unless [`unoptimized`](#unoptimized) or [`dangerouslyAllowSVG`](#dangerouslyallowsvg) is enabled",
+    "preview": "Must be one of the following: * A [statically imported](/docs/app/building-your-application/optimizing/images#local-images) image file * A path string. This can be either an absolute external URL, or an internal path depending on the [loader](#loader) prop. When using the default [loader](#loader)",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#src-src",
+    "position": 4
+  },
+  {
+    "title": "Image",
+    "section": "[`width`](#width)",
+    "section_id": "width-width",
+    "heading_level": 3,
+    "content": "### [`width`](#width)\n\nThe `width` property represents the *intrinsic* image width in pixels. This property is used to infer the correct aspect ratio of the image and avoid layout shift during loading. It does not determine the rendered size of the image, which is controlled by CSS, similar to the `width` attribute in the HTML `<img>` tag.\n\nRequired, except for [statically imported images](/docs/app/building-your-application/optimizing/images#local-images) or images with the [`fill` property](#fill).",
+    "preview": "The `width` property represents the *intrinsic* image width in pixels. This property is used to infer the correct aspect ratio of the image and avoid layout shift during loading. It does not determine the rendered size of the image, which is controlled by CSS, similar to the `width` attribute in the",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#width-width",
+    "position": 5
+  },
+  {
+    "title": "Image",
+    "section": "[`height`](#height)",
+    "section_id": "height-height",
+    "heading_level": 3,
+    "content": "### [`height`](#height)\n\nThe `height` property represents the *intrinsic* image height in pixels. This property is used to infer the correct aspect ratio of the image and avoid layout shift during loading. It does not determine the rendered size of the image, which is controlled by CSS, similar to the `height` attribute in the HTML `<img>` tag.\n\nRequired, except for [statically imported images](/docs/app/building-your-application/optimizing/images#local-images) or images with the [`fill` property](#fill).\n\n> **Good to know:**\n>\n> * Combined, both `width` and `height` properties are used to determine the aspect ratio of the image which used by browsers to reserve space for the image before it loads.\n> * The intrinsic size does not always mean the rendered size in the browser, which will be determined by the parent container. For example, if the parent container is smaller than the intrinsic size, the image will be scaled down to fit the container.\n> * You can use the [`fill`](#fill) property when the width and height are unknown.",
+    "preview": "The `height` property represents the *intrinsic* image height in pixels. This property is used to infer the correct aspect ratio of the image and avoid layout shift during loading. It does not determine the rendered size of the image, which is controlled by CSS, similar to the `height` attribute in",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#height-height",
+    "position": 6
+  },
+  {
+    "title": "Image",
+    "section": "[`alt`](#alt)",
+    "section_id": "alt-alt",
+    "heading_level": 3,
+    "content": "### [`alt`](#alt)\n\nThe `alt` property is used to describe the image for screen readers and search engines. It is also the fallback text if images have been disabled or an error occurs while loading the image.\n\nIt should contain text that could replace the image [without changing the meaning of the page](https://html.spec.whatwg.org/multipage/images.html#general-guidelines). It is not meant to supplement the image and should not repeat information that is already provided in the captions above or below the image.\n\nIf the image is [purely decorative](https://html.spec.whatwg.org/multipage/images.html#a-purely-decorative-image-that-doesn't-add-any-information) or [not intended for the user](https://html.spec.whatwg.org/multipage/images.html#an-image-not-intended-for-the-user), the `alt` property should be an empty string (`alt=\"\"`).\n\n[Learn more](https://html.spec.whatwg.org/multipage/images.html#alt)",
+    "preview": "The `alt` property is used to describe the image for screen readers and search engines. It is also the fallback text if images have been disabled or an error occurs while loading the image. It should contain text that could replace the image [without changing the meaning of the page](https://html.s",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#alt-alt",
+    "position": 7
+  },
+  {
+    "title": "Image",
+    "section": "[Optional Props](#optional-props)",
+    "section_id": "optional-props-optional-props",
+    "heading_level": 2,
+    "content": "## [Optional Props](#optional-props)\n\nThe `<Image />` component accepts a number of additional properties beyond those which are required. This section describes the most commonly-used properties of the Image component. Find details about more rarely-used properties in the [Advanced Props](#advanced-props) section.",
+    "preview": "The `<Image />` component accepts a number of additional properties beyond those which are required. This section describes the most commonly-used properties of the Image component. Find details about more rarely-used properties in the [Advanced Props](#advanced-props) section.",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#optional-props-optional-props",
+    "position": 8
+  },
+  {
+    "title": "Image",
+    "section": "[`loader`](#loader)",
+    "section_id": "loader-loader",
+    "heading_level": 3,
+    "content": "### [`loader`](#loader)\n\nA custom function used to resolve image URLs.\n\nA `loader` is a function returning a URL string for the image, given the following parameters:\n\n* [`src`](#src)\n* [`width`](#width)\n* [`quality`](#quality)\n\nHere is an example of using a custom loader:\n\n```\nimport Image from 'next/image'\n \nconst imageLoader = ({ src, width, quality }) => {\n  return `https://example.com/${src}?w=${width}&q=${quality || 75}`\n}\n \nexport default function Page() {\n  return (\n    <Image\n      loader={imageLoader}\n      src=\"me.png\"\n      alt=\"Picture of the author\"\n      width={500}\n      height={500}\n    />\n  )\n}\n```\n\nAlternatively, you can use the [loaderFile](#loaderfile) configuration in `next.config.js` to configure every instance of `next/image` in your application, without passing a prop.",
+    "preview": "A custom function used to resolve image URLs. A `loader` is a function returning a URL string for the image, given the following parameters: * [`src`](#src) * [`width`](#width) * [`quality`](#quality) Here is an example of using a custom loader: ``` import Image from 'next/image' const imageLo",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#loader-loader",
+    "position": 9
+  },
+  {
+    "title": "Image",
+    "section": "[`fill`](#fill)",
+    "section_id": "fill-fill",
+    "heading_level": 3,
+    "content": "### [`fill`](#fill)\n\n```\nfill={true} // {true} | {false}\n```\n\nA boolean that causes the image to fill the parent element, which is useful when the [`width`](#width) and [`height`](#height) are unknown.\n\nThe parent element *must* assign `position: \"relative\"`, `position: \"fixed\"`, or `position: \"absolute\"` style.\n\nBy default, the img element will automatically be assigned the `position: \"absolute\"` style.\n\nIf no styles are applied to the image, the image will stretch to fit the container. You may prefer to set `object-fit: \"contain\"` for an image which is letterboxed to fit the container and preserve aspect ratio.\n\nAlternatively, `object-fit: \"cover\"` will cause the image to fill the entire container and be cropped to preserve aspect ratio.\n\nFor more information, see also:\n\n* [`position`](https://developer.mozilla.org/docs/Web/CSS/position)\n* [`object-fit`](https://developer.mozilla.org/docs/Web/CSS/object-fit)\n* [`object-position`](https://developer.mozilla.org/docs/Web/CSS/object-position)",
+    "preview": "[Code Block] A boolean that causes the image to fill the parent element, which is useful when the [`width`](#width) and [`height`](#height) are unknown. The parent element *must* assign `position: \"relative\"`, `position: \"fixed\"`, or `position: \"absolute\"` style. By default, the img element will",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#fill-fill",
+    "position": 10
+  },
+  {
+    "title": "Image",
+    "section": "[`sizes`](#sizes)",
+    "section_id": "sizes-sizes",
+    "heading_level": 3,
+    "content": "### [`sizes`](#sizes)\n\nA string, similar to a media query, that provides information about how wide the image will be at different breakpoints. The value of `sizes` will greatly affect performance for images using [`fill`](#fill) or which are [styled to have a responsive size](#responsive-images).\n\nThe `sizes` property serves two important purposes related to image performance:\n\n* First, the value of `sizes` is used by the browser to determine which size of the image to download, from `next/image`'s automatically generated `srcset`. When the browser chooses, it does not yet know the size of the image on the page, so it selects an image that is the same size or larger than the viewport. The `sizes` property allows you to tell the browser that the image will actually be smaller than full screen. If you don't specify a `sizes` value in an image with the `fill` property, a default value of `100vw` (full screen width) is used.\n* Second, the `sizes` property changes the behavior of the automatically generated `srcset` value. If no `sizes` value is present, a small `srcset` is generated, suitable for a fixed-size image (1x/2x/etc). If `sizes` is defined, a large `srcset` is generated, suitable for a responsive image (640w/750w/etc). If the `sizes` property includes sizes such as `50vw`, which represent a percentage of the viewport width, then the `srcset` is trimmed to not include any values which are too small to ever be necessary.\n\nFor example, if you know your styling will cause an image to be full-width on mobile devices, in a 2-column layout on tablets, and a 3-column layout on desktop displays, you should include a sizes property such as the following:\n\n```\nimport Image from 'next/image'\n \nexport default function Page() {\n  return (\n    <div className=\"grid-element\">\n      <Image\n        fill\n        src=\"/example.png\"\n        sizes=\"(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw\"\n      />\n    </div>\n  )\n}\n```\n\nThis example `sizes` could have a dramatic effect on performance metrics. Without the `33vw` sizes, the image selected from the server would be 3 times as wide as it needs to be. Because file size is proportional to the square of the width, without `sizes` the user would download an image that's 9 times larger than necessary.\n\nLearn more about `srcset` and `sizes`:\n\n* [web.dev](https://web.dev/learn/design/responsive-images/#sizes)\n* [mdn](https://developer.mozilla.org/docs/Web/HTML/Element/img#sizes)",
+    "preview": "A string, similar to a media query, that provides information about how wide the image will be at different breakpoints. The value of `sizes` will greatly affect performance for images using [`fill`](#fill) or which are [styled to have a responsive size](#responsive-images). The `sizes` property se",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#sizes-sizes",
+    "position": 11
+  },
+  {
+    "title": "Image",
+    "section": "[`quality`](#quality)",
+    "section_id": "quality-quality",
+    "heading_level": 3,
+    "content": "### [`quality`](#quality)\n\n```\nquality={75} // {number 1-100}\n```\n\nThe quality of the optimized image, an integer between `1` and `100`, where `100` is the best quality and therefore largest file size. Defaults to `75`.\n\nIf the [`qualities`](#qualities) configuration is defined in `next.config.js`, the `quality` prop must match one of the values defined in the configuration.\n\n> **Good to know**: If the original source image was already low quality, setting the quality prop too high could cause the resulting optimized image to be larger than the original source image.",
+    "preview": "[Code Block] The quality of the optimized image, an integer between `1` and `100`, where `100` is the best quality and therefore largest file size. Defaults to `75`. If the [`qualities`](#qualities) configuration is defined in `next.config.js`, the `quality` prop must match one of the values defin",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#quality-quality",
+    "position": 12
+  },
+  {
+    "title": "Image",
+    "section": "[`priority`](#priority)",
+    "section_id": "priority-priority",
+    "heading_level": 3,
+    "content": "### [`priority`](#priority)\n\n```\npriority={false} // {false} | {true}\n```\n\nWhen true, Next.js will\n[preload](https://web.dev/preload-responsive-images/) the image. Lazy loading is automatically disabled for images using `priority`. If the [`loading`](#loading) property is also used and set to `lazy`, the `priority` property can't be used. The [`loading`](#loading) property is only meant for advanced use cases. Remove `loading` when `priority` is needed.\n\nYou should use the `priority` property on any image detected as the [Largest Contentful Paint (LCP)](https://nextjs.org/learn/seo/web-performance/lcp) element. It may be appropriate to have multiple priority images, as different images may be the LCP element for different viewport sizes.\n\nShould only be used when the image is visible above the fold. Defaults to `false`.",
+    "preview": "[Code Block] When true, Next.js will [preload](https://web.dev/preload-responsive-images/) the image. Lazy loading is automatically disabled for images using `priority`. If the [`loading`](#loading) property is also used and set to `lazy`, the `priority` property can't be used. The [`loading`](#loa",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#priority-priority",
+    "position": 13
+  },
+  {
+    "title": "Image",
+    "section": "[`placeholder`](#placeholder)",
+    "section_id": "placeholder-placeholder",
+    "heading_level": 3,
+    "content": "### [`placeholder`](#placeholder)\n\n```\nplaceholder = 'empty' // \"empty\" | \"blur\" | \"data:image/...\"\n```\n\nA placeholder to use while the image is loading. Possible values are `blur`, `empty`, or `data:image/...`. Defaults to `empty`.\n\nWhen `blur`, the [`blurDataURL`](#blurdataurl) property will be used as the placeholder. If `src` is an object from a [static import](/docs/app/building-your-application/optimizing/images#local-images) and the imported image is `.jpg`, `.png`, `.webp`, or `.avif`, then `blurDataURL` will be automatically populated, except when the image is detected to be animated.\n\nFor dynamic images, you must provide the [`blurDataURL`](#blurdataurl) property. Solutions such as [Plaiceholder](https://github.com/joe-bell/plaiceholder) can help with `base64` generation.\n\nWhen `data:image/...`, the [Data URL](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) will be used as the placeholder while the image is loading.\n\nWhen `empty`, there will be no placeholder while the image is loading, only empty space.\n\nTry it out:\n\n* [Demo the `blur` placeholder](https://image-component.nextjs.gallery/placeholder)\n* [Demo the shimmer effect with data URL `placeholder` prop](https://image-component.nextjs.gallery/shimmer)\n* [Demo the color effect with `blurDataURL` prop](https://image-component.nextjs.gallery/color)",
+    "preview": "[Code Block] A placeholder to use while the image is loading. Possible values are `blur`, `empty`, or `data:image/...`. Defaults to `empty`. When `blur`, the [`blurDataURL`](#blurdataurl) property will be used as the placeholder. If `src` is an object from a [static import](/docs/app/building-your",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#placeholder-placeholder",
+    "position": 14
+  },
+  {
+    "title": "Image",
+    "section": "[Advanced Props](#advanced-props)",
+    "section_id": "advanced-props-advanced-props",
+    "heading_level": 2,
+    "content": "## [Advanced Props](#advanced-props)\n\nIn some cases, you may need more advanced usage. The `<Image />` component optionally accepts the following advanced properties.",
+    "preview": "In some cases, you may need more advanced usage. The `<Image />` component optionally accepts the following advanced properties.",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#advanced-props-advanced-props",
+    "position": 15
+  },
+  {
+    "title": "Image",
+    "section": "[`style`](#style)",
+    "section_id": "style-style",
+    "heading_level": 3,
+    "content": "### [`style`](#style)\n\nAllows passing CSS styles to the underlying image element.\n\ncomponents/ProfileImage.js\n\n```\nconst imageStyle = {\n  borderRadius: '50%',\n  border: '1px solid #fff',\n}\n \nexport default function ProfileImage() {\n  return <Image src=\"...\" style={imageStyle} />\n}\n```\n\nRemember that the required width and height props can interact with your styling. If you use styling to modify an image's width, you should also style its height to `auto` to preserve its intrinsic aspect ratio, or your image will be distorted.",
+    "preview": "Allows passing CSS styles to the underlying image element. components/ProfileImage.js [Code Block] Remember that the required width and height props can interact with your styling. If you use styling to modify an image's width, you should also style its height to `auto` to preserve its intrinsic",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#style-style",
+    "position": 16
+  },
+  {
+    "title": "Image",
+    "section": "[`onLoadingComplete`](#onloadingcomplete)",
+    "section_id": "onloadingcomplete-onloadingcomplete",
+    "heading_level": 3,
+    "content": "### [`onLoadingComplete`](#onloadingcomplete)\n\n```\n<Image onLoadingComplete={(img) => console.log(img.naturalWidth)} />\n```\n\n> **Warning**: Deprecated since Next.js 14 in favor of [`onLoad`](#onload).\n\nA callback function that is invoked once the image is completely loaded and the [placeholder](#placeholder) has been removed.\n\nThe callback function will be called with one argument, a reference to the underlying `<img>` element.",
+    "preview": "[Code Block] > **Warning**: Deprecated since Next.js 14 in favor of [`onLoad`](#onload). A callback function that is invoked once the image is completely loaded and the [placeholder](#placeholder) has been removed. The callback function will be called with one argument, a reference to the underly",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#onloadingcomplete-onloadingcomplete",
+    "position": 17
+  },
+  {
+    "title": "Image",
+    "section": "[`onLoad`](#onload)",
+    "section_id": "onload-onload",
+    "heading_level": 3,
+    "content": "### [`onLoad`](#onload)\n\n```\n<Image onLoad={(e) => console.log(e.target.naturalWidth)} />\n```\n\nA callback function that is invoked once the image is completely loaded and the [placeholder](#placeholder) has been removed.\n\nThe callback function will be called with one argument, the Event which has a `target` that references the underlying `<img>` element.",
+    "preview": "[Code Block] A callback function that is invoked once the image is completely loaded and the [placeholder](#placeholder) has been removed. The callback function will be called with one argument, the Event which has a `target` that references the underlying `<img>` element.",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#onload-onload",
+    "position": 18
+  },
+  {
+    "title": "Image",
+    "section": "[`onError`](#onerror)",
+    "section_id": "onerror-onerror",
+    "heading_level": 3,
+    "content": "### [`onError`](#onerror)\n\n```\n<Image onError={(e) => console.error(e.target.id)} />\n```\n\nA callback function that is invoked if the image fails to load.",
+    "preview": "[Code Block] A callback function that is invoked if the image fails to load.",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#onerror-onerror",
+    "position": 19
+  },
+  {
+    "title": "Image",
+    "section": "[`loading`](#loading)",
+    "section_id": "loading-loading",
+    "heading_level": 3,
+    "content": "### [`loading`](#loading)\n\n```\nloading = 'lazy' // {lazy} | {eager}\n```\n\nThe loading behavior of the image. Defaults to `lazy`.\n\nWhen `lazy`, defer loading the image until it reaches a calculated distance from\nthe viewport.\n\nWhen `eager`, load the image immediately.\n\nLearn more about the [`loading` attribute](https://developer.mozilla.org/docs/Web/HTML/Element/img#loading).",
+    "preview": "[Code Block] The loading behavior of the image. Defaults to `lazy`. When `lazy`, defer loading the image until it reaches a calculated distance from the viewport. When `eager`, load the image immediately. Learn more about the [`loading` attribute](https://developer.mozilla.org/docs/Web/HTML/Elem",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#loading-loading",
+    "position": 20
+  },
+  {
+    "title": "Image",
+    "section": "[`blurDataURL`](#blurdataurl)",
+    "section_id": "blurdataurl-blurdataurl",
+    "heading_level": 3,
+    "content": "### [`blurDataURL`](#blurdataurl)\n\nA [Data URL](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) to\nbe used as a placeholder image before the `src` image successfully loads. Only takes effect when combined\nwith [`placeholder=\"blur\"`](#placeholder).\n\nMust be a base64-encoded image. It will be enlarged and blurred, so a very small image (10px or\nless) is recommended. Including larger images as placeholders may harm your application performance.\n\nTry it out:\n\n* [Demo the default `blurDataURL` prop](https://image-component.nextjs.gallery/placeholder)\n* [Demo the color effect with `blurDataURL` prop](https://image-component.nextjs.gallery/color)\n\nYou can also [generate a solid color Data URL](https://png-pixel.com) to match the image.",
+    "preview": "A [Data URL](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) to be used as a placeholder image before the `src` image successfully loads. Only takes effect when combined with [`placeholder=\"blur\"`](#placeholder). Must be a base64-encoded image. It will be enlarged and blurred,",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#blurdataurl-blurdataurl",
+    "position": 21
+  },
+  {
+    "title": "Image",
+    "section": "[`unoptimized`](#unoptimized)",
+    "section_id": "unoptimized-unoptimized",
+    "heading_level": 3,
+    "content": "### [`unoptimized`](#unoptimized)\n\n```\nunoptimized = {false} // {false} | {true}\n```\n\nWhen true, the source image will be served as-is from the `src` instead of changing quality, size, or format. Defaults to `false`.\n\nThis is useful for images that do not benefit from optimization such as small images (less than 1KB), vector images (SVG), or animated images (GIF).\n\n```\nimport Image from 'next/image'\n \nconst UnoptimizedImage = (props) => {\n  return <Image {...props} unoptimized />\n}\n```\n\nSince Next.js 12.3.0, this prop can be assigned to all images by updating `next.config.js` with the following configuration:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    unoptimized: true,\n  },\n}\n```",
+    "preview": "[Code Block] When true, the source image will be served as-is from the `src` instead of changing quality, size, or format. Defaults to `false`. This is useful for images that do not benefit from optimization such as small images (less than 1KB), vector images (SVG), or animated images (GIF). [Cod",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#unoptimized-unoptimized",
+    "position": 22
+  },
+  {
+    "title": "Image",
+    "section": "[`overrideSrc`](#overridesrc)",
+    "section_id": "overridesrc-overridesrc",
+    "heading_level": 3,
+    "content": "### [`overrideSrc`](#overridesrc)\n\nWhen providing the `src` prop to the `<Image>` component, both the `srcset` and `src` attributes are generated automatically for the resulting `<img>`.\n\ninput.js\n\n```\n<Image src=\"/me.jpg\" />\n```\n\noutput.html\n\n```\n<img\n  srcset=\"\n    /_next/image?url=%2Fme.jpg&w=640&q=75 1x,\n    /_next/image?url=%2Fme.jpg&w=828&q=75 2x\n  \"\n  src=\"/_next/image?url=%2Fme.jpg&w=828&q=75\"\n/>\n```\n\nIn some cases, it is not desirable to have the `src` attribute generated and you may wish to override it using the `overrideSrc` prop.\n\nFor example, when upgrading an existing website from `<img>` to `<Image>`, you may wish to maintain the same `src` attribute for SEO purposes such as image ranking or avoiding recrawl.\n\ninput.js\n\n```\n<Image src=\"/me.jpg\" overrideSrc=\"/override.jpg\" />\n```\n\noutput.html\n\n```\n<img\n  srcset=\"\n    /_next/image?url=%2Fme.jpg&w=640&q=75 1x,\n    /_next/image?url=%2Fme.jpg&w=828&q=75 2x\n  \"\n  src=\"/override.jpg\"\n/>\n```",
+    "preview": "When providing the `src` prop to the `<Image>` component, both the `srcset` and `src` attributes are generated automatically for the resulting `<img>`. input.js [Code Block] output.html [Code Block] In some cases, it is not desirable to have the `src` attribute generated and you may wish to ove",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#overridesrc-overridesrc",
+    "position": 23
+  },
+  {
+    "title": "Image",
+    "section": "[decoding](#decoding)",
+    "section_id": "decoding-decoding",
+    "heading_level": 3,
+    "content": "### [decoding](#decoding)\n\nA hint to the browser indicating if it should wait for the image to be decoded before presenting other content updates or not. Defaults to `async`.\n\nPossible values are the following:\n\n* `async` - Asynchronously decode the image and allow other content to be rendered before it completes.\n* `sync` - Synchronously decode the image for atomic presentation with other content.\n* `auto` - No preference for the decoding mode; the browser decides what's best.\n\nLearn more about the [`decoding` attribute](https://developer.mozilla.org/docs/Web/HTML/Element/img#decoding).",
+    "preview": "A hint to the browser indicating if it should wait for the image to be decoded before presenting other content updates or not. Defaults to `async`. Possible values are the following: * `async` - Asynchronously decode the image and allow other content to be rendered before it completes. * `sync` -",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#decoding-decoding",
+    "position": 24
+  },
+  {
+    "title": "Image",
+    "section": "[Other Props](#other-props)",
+    "section_id": "other-props-other-props",
+    "heading_level": 3,
+    "content": "### [Other Props](#other-props)\n\nOther properties on the `<Image />` component will be passed to the underlying\n`img` element with the exception of the following:\n\n* `srcSet`. Use [Device Sizes](#devicesizes) instead.",
+    "preview": "Other properties on the `<Image />` component will be passed to the underlying `img` element with the exception of the following: * `srcSet`. Use [Device Sizes](#devicesizes) instead.",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#other-props-other-props",
+    "position": 25
+  },
+  {
+    "title": "Image",
+    "section": "[Configuration Options](#configuration-options)",
+    "section_id": "configuration-options-configuration-options",
+    "heading_level": 2,
+    "content": "## [Configuration Options](#configuration-options)\n\nIn addition to props, you can configure the Image Component in `next.config.js`. The following options are available:",
+    "preview": "In addition to props, you can configure the Image Component in `next.config.js`. The following options are available:",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#configuration-options-configuration-options",
+    "position": 26
+  },
+  {
+    "title": "Image",
+    "section": "[`localPatterns`](#localpatterns)",
+    "section_id": "localpatterns-localpatterns",
+    "heading_level": 3,
+    "content": "### [`localPatterns`](#localpatterns)\n\nYou can optionally configure `localPatterns` in your `next.config.js` file in order to allow specific paths to be optimized and block all others paths.\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    localPatterns: [\n      {\n        pathname: '/assets/images/**',\n        search: '',\n      },\n    ],\n  },\n}\n```\n\n> **Good to know**: The example above will ensure the `src` property of `next/image` must start with `/assets/images/` and must not have a query string. Attempting to optimize any other path will respond with 400 Bad Request.",
+    "preview": "You can optionally configure `localPatterns` in your `next.config.js` file in order to allow specific paths to be optimized and block all others paths. next.config.js [Code Block] > **Good to know**: The example above will ensure the `src` property of `next/image` must start with `/assets/images/",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#localpatterns-localpatterns",
+    "position": 27
+  },
+  {
+    "title": "Image",
+    "section": "[`remotePatterns`](#remotepatterns)",
+    "section_id": "remotepatterns-remotepatterns",
+    "heading_level": 3,
+    "content": "### [`remotePatterns`](#remotepatterns)\n\nTo protect your application from malicious users, configuration is required in order to use external images. This ensures that only external images from your account can be served from the Next.js Image Optimization API. These external images can be configured with the `remotePatterns` property in your `next.config.js` file, as shown below:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    remotePatterns: [new URL('https://example.com/account123/**')],\n  },\n}\n```\n\nVersions of Next.js prior to 15.3.0 can configure `remotePatterns` using the object:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    remotePatterns: [\n      {\n        protocol: 'https',\n        hostname: 'example.com',\n        port: '',\n        pathname: '/account123/**',\n        search: '',\n      },\n    ],\n  },\n}\n```\n\n> **Good to know**: The example above will ensure the `src` property of `next/image` must start with `https://example.com/account123/` and must not have a query string. Any other protocol, hostname, port, or unmatched path will respond with 400 Bad Request.\n\nBelow is an example of the `remotePatterns` property in the `next.config.js` file using a wildcard pattern in the `hostname`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    remotePatterns: [\n      {\n        protocol: 'https',\n        hostname: '**.example.com',\n        port: '',\n        search: '',\n      },\n    ],\n  },\n}\n```\n\n> **Good to know**: The example above will ensure the `src` property of `next/image` must start with `https://img1.example.com` or `https://me.avatar.example.com` or any number of subdomains. It cannot have a port or query string. Any other protocol or unmatched hostname will respond with 400 Bad Request.\n\nWildcard patterns can be used for both `pathname` and `hostname` and have the following syntax:\n\n* `*` match a single path segment or subdomain\n* `**` match any number of path segments at the end or subdomains at the beginning\n\nThe `**` syntax does not work in the middle of the pattern.\n\n> **Good to know**: When omitting `protocol`, `port`, `pathname`, or `search` then the wildcard `**` is implied. This is not recommended because it may allow malicious actors to optimize urls you did not intend.\n\nBelow is an example of the `remotePatterns` property in the `next.config.js` file using `search`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    remotePatterns: [\n      {\n        protocol: 'https',\n        hostname: 'assets.example.com',\n        search: '?v=1727111025337',\n      },\n    ],\n  },\n}\n```\n\n> **Good to know**: The example above will ensure the `src` property of `next/image` must start with `https://assets.example.com` and must have the exact query string `?v=1727111025337`. Any other protocol or query string will respond with 400 Bad Request.",
+    "preview": "To protect your application from malicious users, configuration is required in order to use external images. This ensures that only external images from your account can be served from the Next.js Image Optimization API. These external images can be configured with the `remotePatterns` property in y",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#remotepatterns-remotepatterns",
+    "position": 28
+  },
+  {
+    "title": "Image",
+    "section": "[`domains`](#domains)",
+    "section_id": "domains-domains",
+    "heading_level": 3,
+    "content": "### [`domains`](#domains)\n\n> **Warning**: Deprecated since Next.js 14 in favor of strict [`remotePatterns`](#remotepatterns) in order to protect your application from malicious users. Only use `domains` if you own all the content served from the domain.\n\nSimilar to [`remotePatterns`](#remotepatterns), the `domains` configuration can be used to provide a list of allowed hostnames for external images.\n\nHowever, the `domains` configuration does not support wildcard pattern matching and it cannot restrict protocol, port, or pathname.\n\nBelow is an example of the `domains` property in the `next.config.js` file:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    domains: ['assets.acme.com'],\n  },\n}\n```",
+    "preview": "> **Warning**: Deprecated since Next.js 14 in favor of strict [`remotePatterns`](#remotepatterns) in order to protect your application from malicious users. Only use `domains` if you own all the content served from the domain. Similar to [`remotePatterns`](#remotepatterns), the `domains` configurat",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#domains-domains",
+    "position": 29
+  },
+  {
+    "title": "Image",
+    "section": "[`loaderFile`](#loaderfile)",
+    "section_id": "loaderfile-loaderfile",
+    "heading_level": 3,
+    "content": "### [`loaderFile`](#loaderfile)\n\nIf you want to use a cloud provider to optimize images instead of using the Next.js built-in Image Optimization API, you can configure the `loaderFile` in your `next.config.js` like the following:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    loader: 'custom',\n    loaderFile: './my/image/loader.js',\n  },\n}\n```\n\nThis must point to a file relative to the root of your Next.js application. The file must export a default function that returns a string, for example:\n\nmy/image/loader.js\n\n```\nexport default function myImageLoader({ src, width, quality }) {\n  return `https://example.com/${src}?w=${width}&q=${quality || 75}`\n}\n```\n\nAlternatively, you can use the [`loader` prop](#loader) to configure each instance of `next/image`.\n\nExamples:\n\n* [Custom Image Loader Configuration](/docs/app/api-reference/config/next-config-js/images#example-loader-configuration)",
+    "preview": "If you want to use a cloud provider to optimize images instead of using the Next.js built-in Image Optimization API, you can configure the `loaderFile` in your `next.config.js` like the following: next.config.js [Code Block] This must point to a file relative to the root of your Next.js applicati",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#loaderfile-loaderfile",
+    "position": 30
+  },
+  {
+    "title": "Image",
+    "section": "[Advanced](#advanced)",
+    "section_id": "advanced-advanced",
+    "heading_level": 2,
+    "content": "## [Advanced](#advanced)\n\nThe following configuration is for advanced use cases and is usually not necessary. If you choose to configure the properties below, you will override any changes to the Next.js defaults in future updates.",
+    "preview": "The following configuration is for advanced use cases and is usually not necessary. If you choose to configure the properties below, you will override any changes to the Next.js defaults in future updates.",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#advanced-advanced",
+    "position": 31
+  },
+  {
+    "title": "Image",
+    "section": "[`deviceSizes`](#devicesizes)",
+    "section_id": "devicesizes-devicesizes",
+    "heading_level": 3,
+    "content": "### [`deviceSizes`](#devicesizes)\n\nIf you know the expected device widths of your users, you can specify a list of device width breakpoints using the `deviceSizes` property in `next.config.js`. These widths are used when the `next/image` component uses [`sizes`](#sizes) prop to ensure the correct image is served for user's device.\n\nIf no configuration is provided, the default below is used.\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],\n  },\n}\n```",
+    "preview": "If you know the expected device widths of your users, you can specify a list of device width breakpoints using the `deviceSizes` property in `next.config.js`. These widths are used when the `next/image` component uses [`sizes`](#sizes) prop to ensure the correct image is served for user's device. I",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#devicesizes-devicesizes",
+    "position": 32
+  },
+  {
+    "title": "Image",
+    "section": "[`imageSizes`](#imagesizes)",
+    "section_id": "imagesizes-imagesizes",
+    "heading_level": 3,
+    "content": "### [`imageSizes`](#imagesizes)\n\nYou can specify a list of image widths using the `images.imageSizes` property in your `next.config.js` file. These widths are concatenated with the array of [device sizes](#devicesizes) to form the full array of sizes used to generate image [srcset](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/srcset)s.\n\nThe reason there are two separate lists is that imageSizes is only used for images which provide a [`sizes`](#sizes) prop, which indicates that the image is less than the full width of the screen. **Therefore, the sizes in imageSizes should all be smaller than the smallest size in deviceSizes.**\n\nIf no configuration is provided, the default below is used.\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],\n  },\n}\n```",
+    "preview": "You can specify a list of image widths using the `images.imageSizes` property in your `next.config.js` file. These widths are concatenated with the array of [device sizes](#devicesizes) to form the full array of sizes used to generate image [srcset](https://developer.mozilla.org/docs/Web/API/HTMLIma",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#imagesizes-imagesizes",
+    "position": 33
+  },
+  {
+    "title": "Image",
+    "section": "[`qualities`](#qualities)",
+    "section_id": "qualities-qualities",
+    "heading_level": 3,
+    "content": "### [`qualities`](#qualities)\n\nThe default [Image Optimization API](#loader) will automatically allow all qualities from 1 to 100. If you wish to restrict the allowed qualities, you can add configuration to `next.config.js`.\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    qualities: [25, 50, 75],\n  },\n}\n```\n\nIn this example above, only three qualities are allowed: 25, 50, and 75. If the [`quality`](#quality) prop does not match a value in this array, the image will fail with 400 Bad Request.",
+    "preview": "The default [Image Optimization API](#loader) will automatically allow all qualities from 1 to 100. If you wish to restrict the allowed qualities, you can add configuration to `next.config.js`. next.config.js [Code Block] In this example above, only three qualities are allowed: 25, 50, and 75. If",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#qualities-qualities",
+    "position": 34
+  },
+  {
+    "title": "Image",
+    "section": "[`formats`](#formats)",
+    "section_id": "formats-formats",
+    "heading_level": 3,
+    "content": "### [`formats`](#formats)\n\nThe default [Image Optimization API](#loader) will automatically detect the browser's supported image formats via the request's `Accept` header in order to determine the best output format.\n\nIf the `Accept` header matches more than one of the configured formats, the first match in the array is used. Therefore, the array order matters. If there is no match (or the source image is [animated](#animated-images)), the Image Optimization API will fallback to the original image's format.\n\nIf no configuration is provided, the default below is used.\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    formats: ['image/webp'],\n  },\n}\n```\n\nYou can enable AVIF support, which will fallback to the original format of the src image if the browser [does not support AVIF](https://caniuse.com/avif):\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    formats: ['image/avif'],\n  },\n}\n```\n\n> **Good to know**:\n>\n> * We still recommend using WebP for most use cases.\n> * AVIF generally takes 50% longer to encode but it compresses 20% smaller compared to WebP. This means that the first time an image is requested, it will typically be slower and then subsequent requests that are cached will be faster.\n> * If you self-host with a Proxy/CDN in front of Next.js, you must configure the Proxy to forward the `Accept` header.",
+    "preview": "The default [Image Optimization API](#loader) will automatically detect the browser's supported image formats via the request's `Accept` header in order to determine the best output format. If the `Accept` header matches more than one of the configured formats, the first match in the array is used.",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#formats-formats",
+    "position": 35
+  },
+  {
+    "title": "Image",
+    "section": "[Caching Behavior](#caching-behavior)",
+    "section_id": "caching-behavior-caching-behavior",
+    "heading_level": 2,
+    "content": "## [Caching Behavior](#caching-behavior)\n\nThe following describes the caching algorithm for the default [loader](#loader). For all other loaders, please refer to your cloud provider's documentation.\n\nImages are optimized dynamically upon request and stored in the `<distDir>/cache/images` directory. The optimized image file will be served for subsequent requests until the expiration is reached. When a request is made that matches a cached but expired file, the expired image is served stale immediately. Then the image is optimized again in the background (also called revalidation) and saved to the cache with the new expiration date.\n\nThe cache status of an image can be determined by reading the value of the `x-nextjs-cache` response header. The possible values are the following:\n\n* `MISS` - the path is not in the cache (occurs at most once, on the first visit)\n* `STALE` - the path is in the cache but exceeded the revalidate time so it will be updated in the background\n* `HIT` - the path is in the cache and has not exceeded the revalidate time\n\nThe expiration (or rather Max Age) is defined by either the [`minimumCacheTTL`](#minimumcachettl) configuration or the upstream image `Cache-Control` header, whichever is larger. Specifically, the `max-age` value of the `Cache-Control` header is used. If both `s-maxage` and `max-age` are found, then `s-maxage` is preferred. The `max-age` is also passed-through to any downstream clients including CDNs and browsers.\n\n* You can configure [`minimumCacheTTL`](#minimumcachettl) to increase the cache duration when the upstream image does not include `Cache-Control` header or the value is very low.\n* You can configure [`deviceSizes`](#devicesizes) and [`imageSizes`](#imagesizes) to reduce the total number of possible generated images.\n* You can configure [formats](#formats) to disable multiple formats in favor of a single image format.",
+    "preview": "The following describes the caching algorithm for the default [loader](#loader). For all other loaders, please refer to your cloud provider's documentation. Images are optimized dynamically upon request and stored in the `<distDir>/cache/images` directory. The optimized image file will be served fo",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#caching-behavior-caching-behavior",
+    "position": 36
+  },
+  {
+    "title": "Image",
+    "section": "[`minimumCacheTTL`](#minimumcachettl)",
+    "section_id": "minimumcachettl-minimumcachettl",
+    "heading_level": 3,
+    "content": "### [`minimumCacheTTL`](#minimumcachettl)\n\nYou can configure the Time to Live (TTL) in seconds for cached optimized images. In many cases, it's better to use a [Static Image Import](/docs/app/building-your-application/optimizing/images#local-images) which will automatically hash the file contents and cache the image forever with a `Cache-Control` header of `immutable`.\n\nIf no configuration is provided, the default below is used.\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    minimumCacheTTL: 60, // 1 minute\n  },\n}\n```\n\nYou can increase the TTL to reduce the number of revalidations and potentionally lower cost:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    minimumCacheTTL: 2678400, // 31 days\n  },\n}\n```\n\nThe expiration (or rather Max Age) of the optimized image is defined by either the `minimumCacheTTL` or the upstream image `Cache-Control` header, whichever is larger.\n\nIf you need to change the caching behavior per image, you can configure [`headers`](/docs/app/api-reference/config/next-config-js/headers) to set the `Cache-Control` header on the upstream image (e.g. `/some-asset.jpg`, not `/_next/image` itself).\n\nThere is no mechanism to invalidate the cache at this time, so its best to keep `minimumCacheTTL` low. Otherwise you may need to manually change the [`src`](#src) prop or delete `<distDir>/cache/images`.",
+    "preview": "You can configure the Time to Live (TTL) in seconds for cached optimized images. In many cases, it's better to use a [Static Image Import](/docs/app/building-your-application/optimizing/images#local-images) which will automatically hash the file contents and cache the image forever with a `Cache-Con",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#minimumcachettl-minimumcachettl",
+    "position": 37
+  },
+  {
+    "title": "Image",
+    "section": "[`disableStaticImages`](#disablestaticimages)",
+    "section_id": "disablestaticimages-disablestaticimages",
+    "heading_level": 3,
+    "content": "### [`disableStaticImages`](#disablestaticimages)\n\nThe default behavior allows you to import static files such as `import icon from './icon.png'` and then pass that to the `src` property.\n\nIn some cases, you may wish to disable this feature if it conflicts with other plugins that expect the import to behave differently.\n\nYou can disable static image imports inside your `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    disableStaticImages: true,\n  },\n}\n```",
+    "preview": "The default behavior allows you to import static files such as `import icon from './icon.png'` and then pass that to the `src` property. In some cases, you may wish to disable this feature if it conflicts with other plugins that expect the import to behave differently. You can disable static image",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#disablestaticimages-disablestaticimages",
+    "position": 38
+  },
+  {
+    "title": "Image",
+    "section": "[`dangerouslyAllowSVG`](#dangerouslyallowsvg)",
+    "section_id": "dangerouslyallowsvg-dangerouslyallowsvg",
+    "heading_level": 3,
+    "content": "### [`dangerouslyAllowSVG`](#dangerouslyallowsvg)\n\nThe default [loader](#loader) does not optimize SVG images for a few reasons. First, SVG is a vector format meaning it can be resized losslessly. Second, SVG has many of the same features as HTML/CSS, which can lead to vulnerabilities without proper [Content Security Policy (CSP) headers](/docs/app/api-reference/config/next-config-js/headers#content-security-policy).\n\nTherefore, we recommended using the [`unoptimized`](#unoptimized) prop when the [`src`](#src) prop is known to be SVG. This happens automatically when `src` ends with `\".svg\"`.\n\nHowever, if you need to serve SVG images with the default Image Optimization API, you can set `dangerouslyAllowSVG` inside your `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    dangerouslyAllowSVG: true,\n    contentDispositionType: 'attachment',\n    contentSecurityPolicy: \"default-src 'self'; script-src 'none'; sandbox;\",\n  },\n}\n```\n\nIn addition, it is strongly recommended to also set `contentDispositionType` to force the browser to download the image, as well as `contentSecurityPolicy` to prevent scripts embedded in the image from executing.",
+    "preview": "The default [loader](#loader) does not optimize SVG images for a few reasons. First, SVG is a vector format meaning it can be resized losslessly. Second, SVG has many of the same features as HTML/CSS, which can lead to vulnerabilities without proper [Content Security Policy (CSP) headers](/docs/app/",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#dangerouslyallowsvg-dangerouslyallowsvg",
+    "position": 39
+  },
+  {
+    "title": "Image",
+    "section": "[`contentDispositionType`](#contentdispositiontype)",
+    "section_id": "contentdispositiontype-contentdispositiontype",
+    "heading_level": 3,
+    "content": "### [`contentDispositionType`](#contentdispositiontype)\n\nThe default [loader](#loader) sets the [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition#as_a_response_header_for_the_main_body) header to `attachment` for added protection since the API can serve arbitrary remote images.\n\nThe default value is `attachment` which forces the browser to download the image when visiting directly. This is particularly important when [`dangerouslyAllowSVG`](#dangerouslyallowsvg) is true.\n\nYou can optionally configure `inline` to allow the browser to render the image when visiting directly, without downloading it.\n\nnext.config.js\n\n```\nmodule.exports = {\n  images: {\n    contentDispositionType: 'inline',\n  },\n}\n```",
+    "preview": "The default [loader](#loader) sets the [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition#as_a_response_header_for_the_main_body) header to `attachment` for added protection since the API can serve arbitrary remote images. The default value is `att",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#contentdispositiontype-contentdispositiontype",
+    "position": 40
+  },
+  {
+    "title": "Image",
+    "section": "[Animated Images](#animated-images)",
+    "section_id": "animated-images-animated-images",
+    "heading_level": 2,
+    "content": "## [Animated Images](#animated-images)\n\nThe default [loader](#loader) will automatically bypass Image Optimization for animated images and serve the image as-is.\n\nAuto-detection for animated files is best-effort and supports GIF, APNG, and WebP. If you want to explicitly bypass Image Optimization for a given animated image, use the [unoptimized](#unoptimized) prop.",
+    "preview": "The default [loader](#loader) will automatically bypass Image Optimization for animated images and serve the image as-is. Auto-detection for animated files is best-effort and supports GIF, APNG, and WebP. If you want to explicitly bypass Image Optimization for a given animated image, use the [unopt",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#animated-images-animated-images",
+    "position": 41
+  },
+  {
+    "title": "Image",
+    "section": "[Responsive Images](#responsive-images)",
+    "section_id": "responsive-images-responsive-images",
+    "heading_level": 2,
+    "content": "## [Responsive Images](#responsive-images)\n\nThe default generated `srcset` contains `1x` and `2x` images in order to support different device pixel ratios. However, you may wish to render a responsive image that stretches with the viewport. In that case, you'll need to set [`sizes`](#sizes) as well as `style` (or `className`).\n\nYou can render a responsive image using one of the following methods below.",
+    "preview": "The default generated `srcset` contains `1x` and `2x` images in order to support different device pixel ratios. However, you may wish to render a responsive image that stretches with the viewport. In that case, you'll need to set [`sizes`](#sizes) as well as `style` (or `className`). You can render",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#responsive-images-responsive-images",
+    "position": 42
+  },
+  {
+    "title": "Image",
+    "section": "[Responsive image using a static import](#responsive-image-using-a-static-import)",
+    "section_id": "responsive-image-using-a-static-import-responsive-image-using-a-static-import",
+    "heading_level": 3,
+    "content": "### [Responsive image using a static import](#responsive-image-using-a-static-import)\n\nIf the source image is not dynamic, you can statically import to create a responsive image:\n\ncomponents/author.js\n\n```\nimport Image from 'next/image'\nimport me from '../photos/me.jpg'\n \nexport default function Author() {\n  return (\n    <Image\n      src={me}\n      alt=\"Picture of the author\"\n      sizes=\"100vw\"\n      style={{\n        width: '100%',\n        height: 'auto',\n      }}\n    />\n  )\n}\n```\n\nTry it out:\n\n* [Demo the image responsive to viewport](https://image-component.nextjs.gallery/responsive)",
+    "preview": "If the source image is not dynamic, you can statically import to create a responsive image: components/author.js [Code Block] Try it out: * [Demo the image responsive to viewport](https://image-component.nextjs.gallery/responsive)",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#responsive-image-using-a-static-import-responsive-image-using-a-static-import",
+    "position": 43
+  },
+  {
+    "title": "Image",
+    "section": "[Responsive image with aspect ratio](#responsive-image-with-aspect-ratio)",
+    "section_id": "responsive-image-with-aspect-ratio-responsive-image-with-aspect-ratio",
+    "heading_level": 3,
+    "content": "### [Responsive image with aspect ratio](#responsive-image-with-aspect-ratio)\n\nIf the source image is a dynamic or a remote url, you will also need to provide `width` and `height` to set the correct aspect ratio of the responsive image:\n\ncomponents/page.js\n\n```\nimport Image from 'next/image'\n \nexport default function Page({ photoUrl }) {\n  return (\n    <Image\n      src={photoUrl}\n      alt=\"Picture of the author\"\n      sizes=\"100vw\"\n      style={{\n        width: '100%',\n        height: 'auto',\n      }}\n      width={500}\n      height={300}\n    />\n  )\n}\n```\n\nTry it out:\n\n* [Demo the image responsive to viewport](https://image-component.nextjs.gallery/responsive)",
+    "preview": "If the source image is a dynamic or a remote url, you will also need to provide `width` and `height` to set the correct aspect ratio of the responsive image: components/page.js [Code Block] Try it out: * [Demo the image responsive to viewport](https://image-component.nextjs.gallery/responsive)",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#responsive-image-with-aspect-ratio-responsive-image-with-aspect-ratio",
+    "position": 44
+  },
+  {
+    "title": "Image",
+    "section": "[Responsive image with `fill`](#responsive-image-with-fill)",
+    "section_id": "responsive-image-with-fill-responsive-image-with-fill",
+    "heading_level": 3,
+    "content": "### [Responsive image with `fill`](#responsive-image-with-fill)\n\nIf you don't know the aspect ratio, you will need to set the [`fill`](#fill) prop and set `position: relative` on the parent. Optionally, you can set `object-fit` style depending on the desired stretch vs crop behavior:\n\napp/page.js\n\n```\nimport Image from 'next/image'\n \nexport default function Page({ photoUrl }) {\n  return (\n    <div style={{ position: 'relative', width: '300px', height: '500px' }}>\n      <Image\n        src={photoUrl}\n        alt=\"Picture of the author\"\n        sizes=\"300px\"\n        fill\n        style={{\n          objectFit: 'contain',\n        }}\n      />\n    </div>\n  )\n}\n```\n\nTry it out:\n\n* [Demo the `fill` prop](https://image-component.nextjs.gallery/fill)",
+    "preview": "If you don't know the aspect ratio, you will need to set the [`fill`](#fill) prop and set `position: relative` on the parent. Optionally, you can set `object-fit` style depending on the desired stretch vs crop behavior: app/page.js [Code Block] Try it out: * [Demo the `fill` prop](https://image-",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#responsive-image-with-fill-responsive-image-with-fill",
+    "position": 45
+  },
+  {
+    "title": "Image",
+    "section": "[Theme Detection CSS](#theme-detection-css)",
+    "section_id": "theme-detection-css-theme-detection-css",
+    "heading_level": 2,
+    "content": "## [Theme Detection CSS](#theme-detection-css)\n\nIf you want to display a different image for light and dark mode, you can create a new component that wraps two `<Image>` components and reveals the correct one based on a CSS media query.\n\ncomponents/theme-image.module.css\n\n```\n.imgDark {\n  display: none;\n}\n \n@media (prefers-color-scheme: dark) {\n  .imgLight {\n    display: none;\n  }\n  .imgDark {\n    display: unset;\n  }\n}\n```\n\ncomponents/theme-image.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport styles from './theme-image.module.css'\nimport Image, { ImageProps } from 'next/image'\n \ntype Props = Omit<ImageProps, 'src' | 'priority' | 'loading'> & {\n  srcLight: string\n  srcDark: string\n}\n \nconst ThemeImage = (props: Props) => {\n  const { srcLight, srcDark, ...rest } = props\n \n  return (\n    <>\n      <Image {...rest} src={srcLight} className={styles.imgLight} />\n      <Image {...rest} src={srcDark} className={styles.imgDark} />\n    </>\n  )\n}\n```\n\n> **Good to know**: The default behavior of `loading=\"lazy\"` ensures that only the correct image is loaded. You cannot use `priority` or `loading=\"eager\"` because that would cause both images to load. Instead, you can use [`fetchPriority=\"high\"`](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/fetchPriority).\n\nTry it out:\n\n* [Demo light/dark mode theme detection](https://image-component.nextjs.gallery/theme)",
+    "preview": "If you want to display a different image for light and dark mode, you can create a new component that wraps two `<Image>` components and reveals the correct one based on a CSS media query. components/theme-image.module.css [Code Block] components/theme-image.tsx TypeScript JavaScriptTypeScript",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#theme-detection-css-theme-detection-css",
+    "position": 46
+  },
+  {
+    "title": "Image",
+    "section": "[getImageProps](#getimageprops)",
+    "section_id": "getimageprops-getimageprops",
+    "heading_level": 2,
+    "content": "## [getImageProps](#getimageprops)\n\nFor more advanced use cases, you can call `getImageProps()` to get the props that would be passed to the underlying `<img>` element, and instead pass to them to another component, style, canvas, etc.\n\nThis also avoid calling React `useState()` so it can lead to better performance, but it cannot be used with the [`placeholder`](#placeholder) prop because the placeholder will never be removed.",
+    "preview": "For more advanced use cases, you can call `getImageProps()` to get the props that would be passed to the underlying `<img>` element, and instead pass to them to another component, style, canvas, etc. This also avoid calling React `useState()` so it can lead to better performance, but it cannot be u",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#getimageprops-getimageprops",
+    "position": 47
+  },
+  {
+    "title": "Image",
+    "section": "[Theme Detection Picture](#theme-detection-picture)",
+    "section_id": "theme-detection-picture-theme-detection-picture",
+    "heading_level": 3,
+    "content": "### [Theme Detection Picture](#theme-detection-picture)\n\nIf you want to display a different image for light and dark mode, you can use the [`<picture>`](https://developer.mozilla.org/docs/Web/HTML/Element/picture) element to display a different image based on the user's [preferred color scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).\n\napp/page.js\n\n```\nimport { getImageProps } from 'next/image'\n \nexport default function Page() {\n  const common = { alt: 'Theme Example', width: 800, height: 400 }\n  const {\n    props: { srcSet: dark },\n  } = getImageProps({ ...common, src: '/dark.png' })\n  const {\n    props: { srcSet: light, ...rest },\n  } = getImageProps({ ...common, src: '/light.png' })\n \n  return (\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcSet={dark} />\n      <source media=\"(prefers-color-scheme: light)\" srcSet={light} />\n      <img {...rest} />\n    </picture>\n  )\n}\n```",
+    "preview": "If you want to display a different image for light and dark mode, you can use the [`<picture>`](https://developer.mozilla.org/docs/Web/HTML/Element/picture) element to display a different image based on the user's [preferred color scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefe",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#theme-detection-picture-theme-detection-picture",
+    "position": 48
+  },
+  {
+    "title": "Image",
+    "section": "[Art Direction](#art-direction)",
+    "section_id": "art-direction-art-direction",
+    "heading_level": 3,
+    "content": "### [Art Direction](#art-direction)\n\nIf you want to display a different image for mobile and desktop, sometimes called [Art Direction](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#art_direction), you can provide different `src`, `width`, `height`, and `quality` props to `getImageProps()`.\n\napp/page.js\n\n```\nimport { getImageProps } from 'next/image'\n \nexport default function Home() {\n  const common = { alt: 'Art Direction Example', sizes: '100vw' }\n  const {\n    props: { srcSet: desktop },\n  } = getImageProps({\n    ...common,\n    width: 1440,\n    height: 875,\n    quality: 80,\n    src: '/desktop.jpg',\n  })\n  const {\n    props: { srcSet: mobile, ...rest },\n  } = getImageProps({\n    ...common,\n    width: 750,\n    height: 1334,\n    quality: 70,\n    src: '/mobile.jpg',\n  })\n \n  return (\n    <picture>\n      <source media=\"(min-width: 1000px)\" srcSet={desktop} />\n      <source media=\"(min-width: 500px)\" srcSet={mobile} />\n      <img {...rest} style={{ width: '100%', height: 'auto' }} />\n    </picture>\n  )\n}\n```",
+    "preview": "If you want to display a different image for mobile and desktop, sometimes called [Art Direction](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images#art_direction), you can provide different `src`, `width`, `height`, and `quality` props to `getImageProps()",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#art-direction-art-direction",
+    "position": 49
+  },
+  {
+    "title": "Image",
+    "section": "[Background CSS](#background-css)",
+    "section_id": "background-css-background-css",
+    "heading_level": 3,
+    "content": "### [Background CSS](#background-css)\n\nYou can even convert the `srcSet` string to the [`image-set()`](https://developer.mozilla.org/en-US/docs/Web/CSS/image/image-set) CSS function to optimize a background image.\n\napp/page.js\n\n```\nimport { getImageProps } from 'next/image'\n \nfunction getBackgroundImage(srcSet = '') {\n  const imageSet = srcSet\n    .split(', ')\n    .map((str) => {\n      const [url, dpi] = str.split(' ')\n      return `url(\"${url}\") ${dpi}`\n    })\n    .join(', ')\n  return `image-set(${imageSet})`\n}\n \nexport default function Home() {\n  const {\n    props: { srcSet },\n  } = getImageProps({ alt: '', width: 128, height: 128, src: '/img.png' })\n  const backgroundImage = getBackgroundImage(srcSet)\n  const style = { height: '100vh', width: '100vw', backgroundImage }\n \n  return (\n    <main style={style}>\n      <h1>Hello World</h1>\n    </main>\n  )\n}\n```",
+    "preview": "You can even convert the `srcSet` string to the [`image-set()`](https://developer.mozilla.org/en-US/docs/Web/CSS/image/image-set) CSS function to optimize a background image. app/page.js ``` import { getImageProps } from 'next/image' function getBackgroundImage(srcSet = '') { const imageSet =",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#background-css-background-css",
+    "position": 50
+  },
+  {
+    "title": "Image",
+    "section": "[Known Browser Bugs](#known-browser-bugs)",
+    "section_id": "known-browser-bugs-known-browser-bugs",
+    "heading_level": 2,
+    "content": "## [Known Browser Bugs](#known-browser-bugs)\n\nThis `next/image` component uses browser native [lazy loading](https://caniuse.com/loading-lazy-attr), which may fallback to eager loading for older browsers before Safari 15.4. When using the blur-up placeholder, older browsers before Safari 12 will fallback to empty placeholder. When using styles with `width`/`height` of `auto`, it is possible to cause [Layout Shift](https://web.dev/cls/) on older browsers before Safari 15 that don't [preserve the aspect ratio](https://caniuse.com/mdn-html_elements_img_aspect_ratio_computed_from_attributes). For more details, see [this MDN video](https://www.youtube.com/watch?v=4-d_SoCHeWE).\n\n* [Safari 15 - 16.3](https://bugs.webkit.org/show_bug.cgi?id=243601) display a gray border while loading. Safari 16.4 [fixed this issue](https://webkit.org/blog/13966/webkit-features-in-safari-16-4/#:~:text=Now%20in%20Safari%2016.4%2C%20a%20gray%20line%20no%20longer%20appears%20to%20mark%20the%20space%20where%20a%20lazy%2Dloaded%20image%20will%20appear%20once%20it%E2%80%99s%20been%20loaded.). Possible solutions:\n  + Use CSS `@supports (font: -apple-system-body) and (-webkit-appearance: none) { img[loading=\"lazy\"] { clip-path: inset(0.6px) } }`\n  + Use [`priority`](#priority) if the image is above the fold\n* [Firefox 67+](https://bugzilla.mozilla.org/show_bug.cgi?id=1556156) displays a white background while loading. Possible solutions:\n  + Enable [AVIF `formats`](#formats)\n  + Use [`placeholder`](#placeholder)",
+    "preview": "This `next/image` component uses browser native [lazy loading](https://caniuse.com/loading-lazy-attr), which may fallback to eager loading for older browsers before Safari 15.4. When using the blur-up placeholder, older browsers before Safari 12 will fallback to empty placeholder. When using styles",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#known-browser-bugs-known-browser-bugs",
+    "position": 51
+  },
+  {
+    "title": "Image",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.3.0` | `remotePatterns` added support for array of `URL` objects. |\n| `v15.0.0` | `contentDispositionType` configuration default changed to `attachment`. |\n| `v14.2.23` | `qualities` configuration added. |\n| `v14.2.15` | `decoding` prop added and `localPatterns` configuration added. |\n| `v14.2.14` | `remotePatterns.search` prop added. |\n| `v14.2.0` | `overrideSrc` prop added. |\n| `v14.1.0` | `getImageProps()` is stable. |\n| `v14.0.0` | `onLoadingComplete` prop and `domains` config deprecated. |\n| `v13.4.14` | `placeholder` prop support for `data:/image...` |\n| `v13.2.0` | `contentDispositionType` configuration added. |\n| `v13.0.6` | `ref` prop added. |\n| `v13.0.0` | The `next/image` import was renamed to `next/legacy/image`. The `next/future/image` import was renamed to `next/image`. A [codemod is available](/docs/app/building-your-application/upgrading/codemods#next-image-to-legacy-image) to safely and automatically rename your imports. `<span>` wrapper removed. `layout`, `objectFit`, `objectPosition`, `lazyBoundary`, `lazyRoot` props removed. `alt` is required. `onLoadingComplete` receives reference to `img` element. Built-in loader config removed. |\n| `v12.3.0` | `remotePatterns` and `unoptimized` configuration is stable. |\n| `v12.2.0` | Experimental `remotePatterns` and experimental `unoptimized` configuration added. `layout=\"raw\"` removed. |\n| `v12.1.1` | `style` prop added. Experimental support for `layout=\"raw\"` added. |\n| `v12.1.0` | `dangerouslyAllowSVG` and `contentSecurityPolicy` configuration added. |\n| `v12.0.9` | `lazyRoot` prop added. |\n| `v12.0.0` | `formats` configuration added. AVIF support added. Wrapper `<div>` changed to `<span>`. |\n| `v11.1.0` | `onLoadingComplete` and `lazyBoundary` props added. |\n| `v11.0.0` | `src` prop support for static import. `placeholder` prop added. `blurDataURL` prop added. |\n| `v10.0.5` | `loader` prop added. |\n| `v10.0.1` | `layout` prop added. |\n| `v10.0.0` | `next/image` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.3.0` | `remotePatterns` added support for array of `URL` objects. | | `v15.0.0` | `contentDispositionType` configuration default changed to `attachment`. | | `v14.2.23` | `qualities` configuration added. | | `v14.2.15` | `decoding` prop added and `localPatt",
+    "url": "https://nextjs.org/docs/pages/api-reference/components/image#version-history-version-history",
+    "position": 52
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Accessibility",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Introduction](/docs)[Architecture](/docs/architecture)Accessibility",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Introduction](/docs)[Architecture](/docs/architecture)Accessibility",
+    "url": "https://nextjs.org/docs/architecture/accessibility#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Accessibility",
+    "section": "Accessibility",
+    "section_id": "accessibility",
+    "heading_level": 1,
+    "content": "# Accessibility\n\nThe Next.js team is committed to making Next.js accessible to all developers (and their end-users). By adding accessibility features to Next.js by default, we aim to make the Web more inclusive for everyone.",
+    "preview": "The Next.js team is committed to making Next.js accessible to all developers (and their end-users). By adding accessibility features to Next.js by default, we aim to make the Web more inclusive for everyone.",
+    "url": "https://nextjs.org/docs/architecture/accessibility#accessibility",
+    "position": 1
+  },
+  {
+    "title": "Accessibility",
+    "section": "[Route Announcements](#route-announcements)",
+    "section_id": "route-announcements-route-announcements",
+    "heading_level": 2,
+    "content": "## [Route Announcements](#route-announcements)\n\nWhen transitioning between pages rendered on the server (e.g. using the `<a href>` tag) screen readers and other assistive technology announce the page title when the page loads so that users understand that the page has changed.\n\nIn addition to traditional page navigations, Next.js also supports client-side transitions for improved performance (using `next/link`). To ensure that client-side transitions are also announced to assistive technology, Next.js includes a route announcer by default.\n\nThe Next.js route announcer looks for the page name to announce by first inspecting `document.title`, then the `<h1>` element, and finally the URL pathname. For the most accessible user experience, ensure that each page in your application has a unique and descriptive title.",
+    "preview": "When transitioning between pages rendered on the server (e.g. using the `<a href>` tag) screen readers and other assistive technology announce the page title when the page loads so that users understand that the page has changed. In addition to traditional page navigations, Next.js also supports cl",
+    "url": "https://nextjs.org/docs/architecture/accessibility#route-announcements-route-announcements",
+    "position": 2
+  },
+  {
+    "title": "Accessibility",
+    "section": "[Linting](#linting)",
+    "section_id": "linting-linting",
+    "heading_level": 2,
+    "content": "## [Linting](#linting)\n\nNext.js provides an [integrated ESLint experience](/docs/pages/api-reference/config/eslint) out of the box, including custom rules for Next.js. By default, Next.js includes `eslint-plugin-jsx-a11y` to help catch accessibility issues early, including warning on:\n\n* [aria-props](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/aria-props.md?rgh-link-date=2021-06-04T02%3A10%3A36Z)\n* [aria-proptypes](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/aria-proptypes.md?rgh-link-date=2021-06-04T02%3A10%3A36Z)\n* [aria-unsupported-elements](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/aria-unsupported-elements.md?rgh-link-date=2021-06-04T02%3A10%3A36Z)\n* [role-has-required-aria-props](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/role-has-required-aria-props.md?rgh-link-date=2021-06-04T02%3A10%3A36Z)\n* [role-supports-aria-props](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/docs/rules/role-supports-aria-props.md?rgh-link-date=2021-06-04T02%3A10%3A36Z)\n\nFor example, this plugin helps ensure you add alt text to `img` tags, use correct `aria-*` attributes, use correct `role` attributes, and more.",
+    "preview": "Next.js provides an [integrated ESLint experience](/docs/pages/api-reference/config/eslint) out of the box, including custom rules for Next.js. By default, Next.js includes `eslint-plugin-jsx-a11y` to help catch accessibility issues early, including warning on: * [aria-props](https://github.com/jsx",
+    "url": "https://nextjs.org/docs/architecture/accessibility#linting-linting",
+    "position": 3
+  },
+  {
+    "title": "Accessibility",
+    "section": "[Accessibility Resources](#accessibility-resources)",
+    "section_id": "accessibility-resources-accessibility-resources",
+    "heading_level": 2,
+    "content": "## [Accessibility Resources](#accessibility-resources)\n\n* [WebAIM WCAG checklist](https://webaim.org/standards/wcag/checklist)\n* [WCAG 2.2 Guidelines](https://www.w3.org/TR/WCAG22/)\n* [The A11y Project](https://www.a11yproject.com/)\n* Check [color contrast ratios](https://developer.mozilla.org/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast) between foreground and background elements\n* Use [`prefers-reduced-motion`](https://web.dev/prefers-reduced-motion/) when working with animations\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [WebAIM WCAG checklist](https://webaim.org/standards/wcag/checklist) * [WCAG 2.2 Guidelines](https://www.w3.org/TR/WCAG22/) * [The A11y Project](https://www.a11yproject.com/) * Check [color contrast ratios](https://developer.mozilla.org/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_c",
+    "url": "https://nextjs.org/docs/architecture/accessibility#accessibility-resources-accessibility-resources",
+    "position": 4
+  }
+]

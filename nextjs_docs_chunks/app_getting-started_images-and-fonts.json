@@ -1,0 +1,102 @@
+[
+  {
+    "title": "How to optimize images and fonts",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Getting Started](/docs/app/getting-started)Images and Fonts",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Getting Started](/docs/app/getting-started)Images and Fonts",
+    "url": "https://nextjs.org/docs/app/getting-started/images-and-fonts#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "How to optimize images and fonts",
+    "section": "How to optimize images and fonts",
+    "section_id": "how-to-optimize-images-and-fonts",
+    "heading_level": 1,
+    "content": "# How to optimize images and fonts\n\nNext.js comes with automatic image and font optimization for better performance and user experience. This page will guide you through how to start using them.",
+    "preview": "Next.js comes with automatic image and font optimization for better performance and user experience. This page will guide you through how to start using them.",
+    "url": "https://nextjs.org/docs/app/getting-started/images-and-fonts#how-to-optimize-images-and-fonts",
+    "position": 1
+  },
+  {
+    "title": "How to optimize images and fonts",
+    "section": "[Handling static assets](#handling-static-assets)",
+    "section_id": "handling-static-assets-handling-static-assets",
+    "heading_level": 2,
+    "content": "## [Handling static assets](#handling-static-assets)\n\nYou can store static files, like images and fonts, under a folder called `public` in the root directory. Files inside `public` can then be referenced by your code starting from the base URL (`/`).\n\n[Image: Folder structure showing app and public folders][Image: Folder structure showing app and public folders]",
+    "preview": "You can store static files, like images and fonts, under a folder called `public` in the root directory. Files inside `public` can then be referenced by your code starting from the base URL (`/`). [Image: Folder structure showing app and public folders][Image: Folder structure showing app and publi",
+    "url": "https://nextjs.org/docs/app/getting-started/images-and-fonts#handling-static-assets-handling-static-assets",
+    "position": 2
+  },
+  {
+    "title": "How to optimize images and fonts",
+    "section": "[Optimizing images](#optimizing-images)",
+    "section_id": "optimizing-images-optimizing-images",
+    "heading_level": 2,
+    "content": "## [Optimizing images](#optimizing-images)\n\nThe Next.js [`<Image>`](/docs/app/building-your-application/optimizing/images) component extends the HTML `<img>` element to provide:\n\n* **Size optimization:** Automatically serving correctly sized images for each device, using modern image formats like WebP.\n* **Visual stability:** Preventing [layout shift](https://web.dev/articles/cls) automatically when images are loading.\n* **Faster page loads:** Only loading images when they enter the viewport using native browser lazy loading, with optional blur-up placeholders.\n* **Asset flexibility:** Resizing images on-demand, even images stored on remote servers.\n\nTo start using `<Image>`, import it from `next/image` and render it within your component.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Image from 'next/image'\n \nexport default function Page() {\n  return <Image src=\"\" alt=\"\" />\n}\n```\n\nThe `src` property can be a [local](#local-images) or [remote](#remote-images) image.",
+    "preview": "The Next.js [`<Image>`](/docs/app/building-your-application/optimizing/images) component extends the HTML `<img>` element to provide: * **Size optimization:** Automatically serving correctly sized images for each device, using modern image formats like WebP. * **Visual stability:** Preventing [layo",
+    "url": "https://nextjs.org/docs/app/getting-started/images-and-fonts#optimizing-images-optimizing-images",
+    "position": 3
+  },
+  {
+    "title": "How to optimize images and fonts",
+    "section": "[Local images](#local-images)",
+    "section_id": "local-images-local-images",
+    "heading_level": 3,
+    "content": "### [Local images](#local-images)\n\nTo use a local image, `import` your `.jpg`, `.png`, or `.webp` image files from your [`public` folder](#handling-static-assets).\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Image from 'next/image'\nimport profilePic from './me.png'\n \nexport default function Page() {\n  return (\n    <Image\n      src={profilePic}\n      alt=\"Picture of the author\"\n      // width={500} automatically provided\n      // height={500} automatically provided\n      // blurDataURL=\"data:...\" automatically provided\n      // placeholder=\"blur\" // Optional blur-up while loading\n    />\n  )\n}\n```\n\nNext.js will automatically determine the intrinsic [`width`](/docs/app/api-reference/components/image#width) and [`height`](/docs/app/api-reference/components/image#height) of your image based on the imported file. These values are used to determine the image ratio and prevent [Cumulative Layout Shift](https://web.dev/articles/cls) while your image is loading.",
+    "preview": "To use a local image, `import` your `.jpg`, `.png`, or `.webp` image files from your [`public` folder](#handling-static-assets). app/page.tsx TypeScript JavaScriptTypeScript [Code Block] Next.js will automatically determine the intrinsic [`width`](/docs/app/api-reference/components/image#width)",
+    "url": "https://nextjs.org/docs/app/getting-started/images-and-fonts#local-images-local-images",
+    "position": 4
+  },
+  {
+    "title": "How to optimize images and fonts",
+    "section": "[Remote images](#remote-images)",
+    "section_id": "remote-images-remote-images",
+    "heading_level": 3,
+    "content": "### [Remote images](#remote-images)\n\nTo use a remote image, you can provide a URL string for the `src` property.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Image from 'next/image'\n \nexport default function Page() {\n  return (\n    <Image\n      src=\"https://s3.amazonaws.com/my-bucket/profile.png\"\n      alt=\"Picture of the author\"\n      width={500}\n      height={500}\n    />\n  )\n}\n```\n\nSince Next.js does not have access to remote files during the build process, you'll need to provide the [`width`](/docs/app/api-reference/components/image#width), [`height`](/docs/app/api-reference/components/image#height) and optional [`blurDataURL`](/docs/app/api-reference/components/image#blurdataurl) props manually. The `width` and `height` attributes are used to infer the correct aspect ratio of image and avoid layout shift from the image loading in.\n\nThen, to safely allow images from remote servers, you need to define a list of supported URL patterns in [`next.config.js`](/docs/app/api-reference/config/next-config-js). Be as specific as possible to prevent malicious usage. For example, the following configuration will only allow images from a specific AWS S3 bucket:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextConfig } from 'next'\n \nconst config: NextConfig = {\n  images: {\n    remotePatterns: [\n      {\n        protocol: 'https',\n        hostname: 's3.amazonaws.com',\n        port: '',\n        pathname: '/my-bucket/**',\n        search: '',\n      },\n    ],\n  },\n}\n \nexport default config\n```",
+    "preview": "To use a remote image, you can provide a URL string for the `src` property. app/page.tsx TypeScript JavaScriptTypeScript [Code Block] Since Next.js does not have access to remote files during the build process, you'll need to provide the [`width`](/docs/app/api-reference/components/image#width)",
+    "url": "https://nextjs.org/docs/app/getting-started/images-and-fonts#remote-images-remote-images",
+    "position": 5
+  },
+  {
+    "title": "How to optimize images and fonts",
+    "section": "[Optimizing fonts](#optimizing-fonts)",
+    "section_id": "optimizing-fonts-optimizing-fonts",
+    "heading_level": 2,
+    "content": "## [Optimizing fonts](#optimizing-fonts)\n\nThe [`next/font`](/docs/app/api-reference/components/font) module automatically optimizes your fonts and removes external network requests for improved privacy and performance.\n\nIt includes **built-in automatic self-hosting** for *any* font file. This means you can optimally load web fonts with no layout shift.\n\nTo start using `next/font`, import it from [`next/font/local`](#local-fonts) or [`next/font/google`](#google-fonts), call it as a function with the appropriate options, and set the `className` of the element you want to apply the font to. For example:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Geist } from 'next/font/google'\n \nconst geist = Geist({\n  subsets: ['latin'],\n})\n \nexport default function Layout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\" className={geist.className}>\n      <body>{children}</body>\n    </html>\n  )\n}\n```",
+    "preview": "The [`next/font`](/docs/app/api-reference/components/font) module automatically optimizes your fonts and removes external network requests for improved privacy and performance. It includes **built-in automatic self-hosting** for *any* font file. This means you can optimally load web fonts with no l",
+    "url": "https://nextjs.org/docs/app/getting-started/images-and-fonts#optimizing-fonts-optimizing-fonts",
+    "position": 6
+  },
+  {
+    "title": "How to optimize images and fonts",
+    "section": "[Google fonts](#google-fonts)",
+    "section_id": "google-fonts-google-fonts",
+    "heading_level": 3,
+    "content": "### [Google fonts](#google-fonts)\n\nYou can automatically self-host any Google Font. Fonts are included in the deployment and served from the same domain as your deployment, meaning no requests are sent to Google by the browser when the user visits your site.\n\nTo start using a Google Font, import your chosen font from `next/font/google`:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Geist } from 'next/font/google'\n \nconst geist = Geist({\n  subsets: ['latin'],\n})\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\" className={geist.className}>\n      <body>{children}</body>\n    </html>\n  )\n}\n```\n\nWe recommend using [variable fonts](https://fonts.google.com/variablefonts) for the best performance and flexibility. But if you can't use a variable font, you will **need to specify a weight**:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Roboto } from 'next/font/google'\n \nconst roboto = Roboto({\n  weight: '400',\n  subsets: ['latin'],\n})\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\" className={roboto.className}>\n      <body>{children}</body>\n    </html>\n  )\n}\n```",
+    "preview": "You can automatically self-host any Google Font. Fonts are included in the deployment and served from the same domain as your deployment, meaning no requests are sent to Google by the browser when the user visits your site. To start using a Google Font, import your chosen font from `next/font/googl",
+    "url": "https://nextjs.org/docs/app/getting-started/images-and-fonts#google-fonts-google-fonts",
+    "position": 7
+  },
+  {
+    "title": "How to optimize images and fonts",
+    "section": "[Local fonts](#local-fonts)",
+    "section_id": "local-fonts-local-fonts",
+    "heading_level": 3,
+    "content": "### [Local fonts](#local-fonts)\n\nTo use a local font, import your font from `next/font/local` and specify the `src` of your local font file in the [`public` folder](#handling-static-assets).\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport localFont from 'next/font/local'\n \nconst myFont = localFont({\n  src: './my-font.woff2',\n})\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\" className={myFont.className}>\n      <body>{children}</body>\n    </html>\n  )\n}\n```\n\nIf you want to use multiple files for a single font family, `src` can be an array:\n\n```\nconst roboto = localFont({\n  src: [\n    {\n      path: './Roboto-Regular.woff2',\n      weight: '400',\n      style: 'normal',\n    },\n    {\n      path: './Roboto-Italic.woff2',\n      weight: '400',\n      style: 'italic',\n    },\n    {\n      path: './Roboto-Bold.woff2',\n      weight: '700',\n      style: 'normal',\n    },\n    {\n      path: './Roboto-BoldItalic.woff2',\n      weight: '700',\n      style: 'italic',\n    },\n  ],\n})\n```",
+    "preview": "To use a local font, import your font from `next/font/local` and specify the `src` of your local font file in the [`public` folder](#handling-static-assets). app/layout.tsx TypeScript JavaScriptTypeScript [Code Block] If you want to use multiple files for a single font family, `src` can be an a",
+    "url": "https://nextjs.org/docs/app/getting-started/images-and-fonts#local-fonts-local-fonts",
+    "position": 8
+  },
+  {
+    "title": "How to optimize images and fonts",
+    "section": "API Reference",
+    "section_id": "api-reference",
+    "heading_level": 2,
+    "content": "## API Reference\n\nLearn more about the features mentioned in this page by reading the API Reference.\n\n[### Font\n\nOptimizing loading web fonts with the built-in `next/font` loaders.](/docs/app/api-reference/components/font)[### Image\n\nOptimize Images in your Next.js Application using the built-in `next/image` Component.](/docs/app/api-reference/components/image)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn more about the features mentioned in this page by reading the API Reference. [### Font Optimizing loading web fonts with the built-in `next/font` loaders.](/docs/app/api-reference/components/font)[### Image Optimize Images in your Next.js Application using the built-in `next/image` Componen",
+    "url": "https://nextjs.org/docs/app/getting-started/images-and-fonts#api-reference",
+    "position": 9
+  }
+]

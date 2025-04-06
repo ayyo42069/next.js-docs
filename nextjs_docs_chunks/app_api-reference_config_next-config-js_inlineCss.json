@@ -1,0 +1,62 @@
+[
+  {
+    "title": "inlineCss",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)inlineCss",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)inlineCss",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "inlineCss",
+    "section": "inlineCss",
+    "section_id": "inlinecss",
+    "heading_level": 1,
+    "content": "# inlineCss\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss#inlinecss",
+    "position": 1
+  },
+  {
+    "title": "inlineCss",
+    "section": "[Usage](#usage)",
+    "section_id": "usage-usage",
+    "heading_level": 2,
+    "content": "## [Usage](#usage)\n\nExperimental support for inlining CSS in the `<head>`. When this flag is enabled, all places where we normally generate a `<link>` tag will instead have a generated `<style>` tag.\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    inlineCss: true,\n  },\n}\n \nexport default nextConfig\n```",
+    "preview": "Experimental support for inlining CSS in the `<head>`. When this flag is enabled, all places where we normally generate a `<link>` tag will instead have a generated `<style>` tag. next.config.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss#usage-usage",
+    "position": 2
+  },
+  {
+    "title": "inlineCss",
+    "section": "[Trade-Offs](#trade-offs)",
+    "section_id": "trade-offs-trade-offs",
+    "heading_level": 2,
+    "content": "## [Trade-Offs](#trade-offs)",
+    "preview": "## [Trade-Offs](#trade-offs)",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss#trade-offs-trade-offs",
+    "position": 3
+  },
+  {
+    "title": "inlineCss",
+    "section": "[When to Use Inline CSS](#when-to-use-inline-css)",
+    "section_id": "when-to-use-inline-css-when-to-use-inline-css",
+    "heading_level": 3,
+    "content": "### [When to Use Inline CSS](#when-to-use-inline-css)\n\nInlining CSS can be beneficial in several scenarios:\n\n* **First-Time Visitors**: Since CSS files are render-blocking resources, inlining eliminates the initial download delay that first-time visitors experience, improving page load performance.\n* **Performance Metrics**: By removing the additional network requests for CSS files, inlining can significantly improve key metrics like First Contentful Paint (FCP) and Largest Contentful Paint (LCP).\n* **Slow Connections**: For users on slower networks where each request adds considerable latency, inlining CSS can provide a noticeable performance boost by reducing network roundtrips.\n* **Atomic CSS Bundles (e.g., Tailwind)**: With utility-first frameworks like Tailwind CSS, the size of the styles required for a page is often O(1) relative to the complexity of the design. This makes inlining a compelling choice because the entire set of styles for the current page is lightweight and doesn\u2019t grow with the page size. Inlining Tailwind styles ensures minimal payload and eliminates the need for additional network requests, which can further enhance performance.",
+    "preview": "Inlining CSS can be beneficial in several scenarios: * **First-Time Visitors**: Since CSS files are render-blocking resources, inlining eliminates the initial download delay that first-time visitors experience, improving page load performance. * **Performance Metrics**: By removing the additional n",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss#when-to-use-inline-css-when-to-use-inline-css",
+    "position": 4
+  },
+  {
+    "title": "inlineCss",
+    "section": "[When Not to Use Inline CSS](#when-not-to-use-inline-css)",
+    "section_id": "when-not-to-use-inline-css-when-not-to-use-inline-css",
+    "heading_level": 3,
+    "content": "### [When Not to Use Inline CSS](#when-not-to-use-inline-css)\n\nWhile inlining CSS offers significant benefits for performance, there are scenarios where it may not be the best choice:\n\n* **Large CSS Bundles**: If your CSS bundle is too large, inlining it may significantly increase the size of the HTML, resulting in slower Time to First Byte (TTFB) and potentially worse performance for users with slow connections.\n* **Dynamic or Page-Specific CSS**: For applications with highly dynamic styles or pages that use different sets of CSS, inlining may lead to redundancy and bloat, as the full CSS for all pages may need to be inlined repeatedly.\n* **Browser Caching**: In cases where visitors frequently return to your site, external CSS files allow browsers to cache styles efficiently, reducing data transfer for subsequent visits. Inlining CSS eliminates this benefit.\n\nEvaluate these trade-offs carefully, and consider combining inlining with other strategies, such as critical CSS extraction or a hybrid approach, for the best results tailored to your site's needs.\n\n> **Good to know**:\n>\n> This feature is currently experimental and has some known limitations:\n>\n> * CSS inlining is applied globally and cannot be configured on a per-page basis\n> * Styles are duplicated during initial page load - once within `<style>` tags for SSR and once in the RSC payload\n> * When navigating to statically rendered pages, styles will use `<link>` tags instead of inline CSS to avoid duplication\n> * This feature is not available in development mode and only works in production builds\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "While inlining CSS offers significant benefits for performance, there are scenarios where it may not be the best choice: * **Large CSS Bundles**: If your CSS bundle is too large, inlining it may significantly increase the size of the HTML, resulting in slower Time to First Byte (TTFB) and potential",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/inlineCss#when-not-to-use-inline-css-when-not-to-use-inline-css",
+    "position": 5
+  }
+]

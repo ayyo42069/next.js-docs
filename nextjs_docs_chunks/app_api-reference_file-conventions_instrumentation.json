@@ -1,0 +1,82 @@
+[
+  {
+    "title": "instrumentation.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)instrumentation.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)instrumentation.js",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "instrumentation.js",
+    "section": "instrumentation.js",
+    "section_id": "instrumentation-js",
+    "heading_level": 1,
+    "content": "# instrumentation.js\n\nThe `instrumentation.js|ts` file is used to integrate observability tools into your application, allowing you to track the performance and behavior, and to debug issues in production.\n\nTo use it, place the file in the **root** of your application or inside a [`src` folder](/docs/app/building-your-application/configuring/src-directory) if using one.",
+    "preview": "The `instrumentation.js|ts` file is used to integrate observability tools into your application, allowing you to track the performance and behavior, and to debug issues in production. To use it, place the file in the **root** of your application or inside a [`src` folder](/docs/app/building-your-ap",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#instrumentation-js",
+    "position": 1
+  },
+  {
+    "title": "instrumentation.js",
+    "section": "[Exports](#exports)",
+    "section_id": "exports-exports",
+    "heading_level": 2,
+    "content": "## [Exports](#exports)",
+    "preview": "## [Exports](#exports)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#exports-exports",
+    "position": 2
+  },
+  {
+    "title": "instrumentation.js",
+    "section": "[`register` (optional)](#register-optional)",
+    "section_id": "register-optional-register-optional",
+    "heading_level": 3,
+    "content": "### [`register` (optional)](#register-optional)\n\nThe file exports a `register` function that is called **once** when a new Next.js server instance is initiated. `register` can be an async function.\n\ninstrumentation.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { registerOTel } from '@vercel/otel'\n \nexport function register() {\n  registerOTel('next-app')\n}\n```",
+    "preview": "The file exports a `register` function that is called **once** when a new Next.js server instance is initiated. `register` can be an async function. instrumentation.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#register-optional-register-optional",
+    "position": 3
+  },
+  {
+    "title": "instrumentation.js",
+    "section": "[`onRequestError` (optional)](#onrequesterror-optional)",
+    "section_id": "onrequesterror-optional-onrequesterror-optional",
+    "heading_level": 3,
+    "content": "### [`onRequestError` (optional)](#onrequesterror-optional)\n\nYou can optionally export an `onRequestError` function to track **server** errors to any custom observability provider.\n\n* If you're running any async tasks in `onRequestError`, make sure they're awaited. `onRequestError` will be triggered when the Next.js server captures the error.\n* The `error` instance might not be the original error instance thrown, as it may be processed by React if encountered during Server Components rendering. If this happens, you can use `digest` property on an error to identify the actual error type.\n\ninstrumentation.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { type Instrumentation } from 'next'\n \nexport const onRequestError: Instrumentation.onRequestError = async (\n  err,\n  request,\n  context\n) => {\n  await fetch('https://.../report-error', {\n    method: 'POST',\n    body: JSON.stringify({\n      message: err.message,\n      request,\n      context,\n    }),\n    headers: {\n      'Content-Type': 'application/json',\n    },\n  })\n}\n```\n\n#### [Parameters](#parameters)\n\nThe function accepts three parameters: `error`, `request`, and `context`.\n\nTypes\n\n```\nexport function onRequestError(\n  error: { digest: string } & Error,\n  request: {\n    path: string // resource path, e.g. /blog?name=foo\n    method: string // request method. e.g. GET, POST, etc\n    headers: { [key: string]: string }\n  },\n  context: {\n    routerKind: 'Pages Router' | 'App Router' // the router type\n    routePath: string // the route file path, e.g. /app/blog/[dynamic]\n    routeType: 'render' | 'route' | 'action' | 'middleware' // the context in which the error occurred\n    renderSource:\n      | 'react-server-components'\n      | 'react-server-components-payload'\n      | 'server-rendering'\n    revalidateReason: 'on-demand' | 'stale' | undefined // undefined is a normal request without revalidation\n    renderType: 'dynamic' | 'dynamic-resume' // 'dynamic-resume' for PPR\n  }\n): void | Promise<void>\n```\n\n* `error`: The caught error itself (type is always `Error`), and a `digest` property which is the unique ID of the error.\n* `request`: Read-only request information associated with the error.\n* `context`: The context in which the error occurred. This can be the type of router (App or Pages Router), and/or (Server Components (`'render'`), Route Handlers (`'route'`), Server Actions (`'action'`), or Middleware (`'middleware'`)).",
+    "preview": "You can optionally export an `onRequestError` function to track **server** errors to any custom observability provider. * If you're running any async tasks in `onRequestError`, make sure they're awaited. `onRequestError` will be triggered when the Next.js server captures the error. * The `error` in",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#onrequesterror-optional-onrequesterror-optional",
+    "position": 4
+  },
+  {
+    "title": "instrumentation.js",
+    "section": "[Specifying the runtime](#specifying-the-runtime)",
+    "section_id": "specifying-the-runtime-specifying-the-runtime",
+    "heading_level": 3,
+    "content": "### [Specifying the runtime](#specifying-the-runtime)\n\nThe `instrumentation.js` file works in both the Node.js and Edge runtime, however, you can use `process.env.NEXT_RUNTIME` to target a specific runtime.\n\ninstrumentation.js\n\n```\nexport function register() {\n  if (process.env.NEXT_RUNTIME === 'edge') {\n    return require('./register.edge')\n  } else {\n    return require('./register.node')\n  }\n}\n \nexport function onRequestError() {\n  if (process.env.NEXT_RUNTIME === 'edge') {\n    return require('./on-request-error.edge')\n  } else {\n    return require('./on-request-error.node')\n  }\n}\n```",
+    "preview": "The `instrumentation.js` file works in both the Node.js and Edge runtime, however, you can use `process.env.NEXT_RUNTIME` to target a specific runtime. instrumentation.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#specifying-the-runtime-specifying-the-runtime",
+    "position": 5
+  },
+  {
+    "title": "instrumentation.js",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0` | `onRequestError` introduced, `instrumentation` stable |\n| `v14.0.4` | Turbopack support for `instrumentation` |\n| `v13.2.0` | `instrumentation` introduced as an experimental feature |",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0` | `onRequestError` introduced, `instrumentation` stable | | `v14.0.4` | Turbopack support for `instrumentation` | | `v13.2.0` | `instrumentation` introduced as an experimental feature |",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#version-history-version-history",
+    "position": 6
+  },
+  {
+    "title": "instrumentation.js",
+    "section": "Learn more about Instrumentation",
+    "section_id": "learn-more-about-instrumentation",
+    "heading_level": 2,
+    "content": "## Learn more about Instrumentation\n\n[### Instrumentation\n\nLearn how to use instrumentation to run code at server startup in your Next.js app](/docs/app/building-your-application/optimizing/instrumentation)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Instrumentation Learn how to use instrumentation to run code at server startup in your Next.js app](/docs/app/building-your-application/optimizing/instrumentation) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation#learn-more-about-instrumentation",
+    "position": 7
+  }
+]

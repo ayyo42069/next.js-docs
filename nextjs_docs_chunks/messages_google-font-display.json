@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Google Font Display",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)Google Font Display",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)Google Font Display",
+    "url": "https://nextjs.org/docs/messages/google-font-display#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Google Font Display",
+    "section": "Google Font Display",
+    "section_id": "google-font-display",
+    "heading_level": 1,
+    "content": "# Google Font Display\n\n> Enforce font-display behavior with Google Fonts.",
+    "preview": "> Enforce font-display behavior with Google Fonts.",
+    "url": "https://nextjs.org/docs/messages/google-font-display#google-font-display",
+    "position": 1
+  },
+  {
+    "title": "Google Font Display",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nFor a Google Font, the font-display descriptor was either missing or set to `auto`, `block`, or `fallback`, which are not recommended.",
+    "preview": "For a Google Font, the font-display descriptor was either missing or set to `auto`, `block`, or `fallback`, which are not recommended.",
+    "url": "https://nextjs.org/docs/messages/google-font-display#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "Google Font Display",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nFor most cases, the best font display strategy for custom fonts is `optional`.\n\npages/index.js\n\n```\nimport Head from 'next/head'\n \nexport default function IndexPage() {\n  return (\n    <div>\n      <Head>\n        <link\n          href=\"https://fonts.googleapis.com/css2?family=Krona+One&display=optional\"\n          rel=\"stylesheet\"\n        />\n      </Head>\n    </div>\n  )\n}\n```\n\nSpecifying `display=optional` minimizes the risk of invisible text or layout shift. If swapping to the custom font after it has loaded is important to you, then use `display=swap` instead.",
+    "preview": "For most cases, the best font display strategy for custom fonts is `optional`. pages/index.js [Code Block] Specifying `display=optional` minimizes the risk of invisible text or layout shift. If swapping to the custom font after it has loaded is important to you, then use `display=swap` instead.",
+    "url": "https://nextjs.org/docs/messages/google-font-display#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "Google Font Display",
+    "section": "[When Not To Use It](#when-not-to-use-it)",
+    "section_id": "when-not-to-use-it-when-not-to-use-it",
+    "heading_level": 3,
+    "content": "### [When Not To Use It](#when-not-to-use-it)\n\nIf you want to specifically display a font using an `auto`, `block`, or `fallback` strategy, then you can disable this rule.",
+    "preview": "If you want to specifically display a font using an `auto`, `block`, or `fallback` strategy, then you can disable this rule.",
+    "url": "https://nextjs.org/docs/messages/google-font-display#when-not-to-use-it-when-not-to-use-it",
+    "position": 4
+  },
+  {
+    "title": "Google Font Display",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Controlling Font Performance with font-display](https://developer.chrome.com/blog/font-display/)\n* [Google Fonts API Docs](https://developers.google.com/fonts/docs/css2#use_font-display)\n* [CSS `font-display` property](https://www.w3.org/TR/css-fonts-4/#font-display-desc)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Controlling Font Performance with font-display](https://developer.chrome.com/blog/font-display/) * [Google Fonts API Docs](https://developers.google.com/fonts/docs/css2#use_font-display) * [CSS `font-display` property](https://www.w3.org/TR/css-fonts-4/#font-display-desc) Was this helpful? supp",
+    "url": "https://nextjs.org/docs/messages/google-font-display#useful-links-useful-links",
+    "position": 5
+  }
+]

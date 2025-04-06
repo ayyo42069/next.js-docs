@@ -1,0 +1,65 @@
+---
+title: "dynamicIO"
+description: "Menu..."
+url: "https://nextjs.org/docs/app/api-reference/config/next-config-js/dynamicIO"
+slug: "/docs/app/api-reference/config/next-config-js/dynamicIO"
+date_crawled: "2025-04-06T12:10:26.220542+00:00"
+---
+
+**Path**: /docs/app/api-reference/config/next-config-js/dynamicIO
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)dynamicIO
+
+# dynamicIO
+
+This feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).
+
+The `dynamicIO` flag is an experimental feature in Next.js that causes data fetching operations in the App Router to be excluded from pre-renders unless they are explicitly cached. This can be useful for optimizing the performance of dynamic data fetching in server components.
+
+It is useful if your application requires fresh data fetching during runtime rather than serving from a pre-rendered cache.
+
+It is expected to be used in conjunction with [`use cache`](/docs/app/api-reference/directives/use-cache) so that your data fetching happens at runtime by default unless you define specific parts of your application to be cached with `use cache` at the page, function, or component level.
+
+## [Usage](#usage)
+
+To enable the `dynamicIO` flag, set it to `true` in the `experimental` section of your `next.config.ts` file:
+
+next.config.ts
+
+```
+import type { NextConfig } from 'next'
+ 
+const nextConfig: NextConfig = {
+  experimental: {
+    dynamicIO: true,
+  },
+}
+ 
+export default nextConfig
+```
+
+When `dynamicIO` is enabled, you can use the following cache functions and configurations:
+
+* The [`use cache` directive](/docs/app/api-reference/directives/use-cache)
+* The [`cacheLife` function](/docs/app/api-reference/config/next-config-js/cacheLife) with `use cache`
+* The [`cacheTag` function](/docs/app/api-reference/functions/cacheTag)
+
+## [Notes](#notes)
+
+* While `dynamicIO` can optimize performance by ensuring fresh data fetching during runtime, it may also introduce additional latency compared to serving pre-rendered content.
+
+Was this helpful?
+
+supported.
+
+Send

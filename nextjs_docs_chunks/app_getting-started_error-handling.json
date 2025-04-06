@@ -1,0 +1,102 @@
+[
+  {
+    "title": "How to handle errors",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Getting Started](/docs/app/getting-started)Error Handling",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Getting Started](/docs/app/getting-started)Error Handling",
+    "url": "https://nextjs.org/docs/app/getting-started/error-handling#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "How to handle errors",
+    "section": "How to handle errors",
+    "section_id": "how-to-handle-errors",
+    "heading_level": 1,
+    "content": "# How to handle errors\n\nErrors can be divided into two categories: [expected errors](#handling-expected-errors) and [uncaught exceptions](#handling-uncaught-exceptions). This page will walk you through how you can handle these errors in your Next.js application.",
+    "preview": "Errors can be divided into two categories: [expected errors](#handling-expected-errors) and [uncaught exceptions](#handling-uncaught-exceptions). This page will walk you through how you can handle these errors in your Next.js application.",
+    "url": "https://nextjs.org/docs/app/getting-started/error-handling#how-to-handle-errors",
+    "position": 1
+  },
+  {
+    "title": "How to handle errors",
+    "section": "[Handling expected errors](#handling-expected-errors)",
+    "section_id": "handling-expected-errors-handling-expected-errors",
+    "heading_level": 2,
+    "content": "## [Handling expected errors](#handling-expected-errors)\n\nExpected errors are those that can occur during the normal operation of the application, such as those from [server-side form validation](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#server-side-form-validation) or failed requests. These errors should be handled explicitly and returned to the client.",
+    "preview": "Expected errors are those that can occur during the normal operation of the application, such as those from [server-side form validation](/docs/app/building-your-application/data-fetching/server-actions-and-mutations#server-side-form-validation) or failed requests. These errors should be handled exp",
+    "url": "https://nextjs.org/docs/app/getting-started/error-handling#handling-expected-errors-handling-expected-errors",
+    "position": 2
+  },
+  {
+    "title": "How to handle errors",
+    "section": "[Server Actions](#server-actions)",
+    "section_id": "server-actions-server-actions",
+    "heading_level": 3,
+    "content": "### [Server Actions](#server-actions)\n\nYou can use the [`useActionState`](https://react.dev/reference/react/useActionState) hook to manage the state of [Server Functions](https://react.dev/reference/rsc/server-functions) and handle expected errors. Avoid using `try`/`catch` blocks for expected errors. Instead, you can model expected errors as return values, not as thrown exceptions.\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nexport async function createPost(prevState: any, formData: FormData) {\n  const title = formData.get('title')\n  const content = formData.get('content')\n \n  const res = await fetch('https://api.vercel.app/posts', {\n    method: 'POST',\n    body: { title, content },\n  })\n  const json = await res.json()\n \n  if (!res.ok) {\n    return { message: 'Failed to create post' }\n  }\n}\n```\n\nThen, you can pass your action to the `useActionState` hook and use the returned `state` to display an error message.\n\napp/ui/form.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useActionState } from 'react'\nimport { createPost } from '@/app/actions'\n \nconst initialState = {\n  message: '',\n}\n \nexport function Form() {\n  const [state, formAction, pending] = useActionState(createPost, initialState)\n \n  return (\n    <form action={formAction}>\n      <label htmlFor=\"title\">Title</label>\n      <input type=\"text\" id=\"title\" name=\"title\" required />\n      <label htmlFor=\"content\">Content</label>\n      <textarea id=\"content\" name=\"content\" required />\n      {state?.message && <p aria-live=\"polite\">{state.message}</p>}\n      <button disabled={pending}>Create Post</button>\n    </form>\n  )\n}\n```",
+    "preview": "You can use the [`useActionState`](https://react.dev/reference/react/useActionState) hook to manage the state of [Server Functions](https://react.dev/reference/rsc/server-functions) and handle expected errors. Avoid using `try`/`catch` blocks for expected errors. Instead, you can model expected erro",
+    "url": "https://nextjs.org/docs/app/getting-started/error-handling#server-actions-server-actions",
+    "position": 3
+  },
+  {
+    "title": "How to handle errors",
+    "section": "[Server Components](#server-components)",
+    "section_id": "server-components-server-components",
+    "heading_level": 3,
+    "content": "### [Server Components](#server-components)\n\nWhen fetching data inside of a Server Component, you can use the response to conditionally render an error message or [`redirect`](/docs/app/api-reference/functions/redirect).\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page() {\n  const res = await fetch(`https://...`)\n  const data = await res.json()\n \n  if (!res.ok) {\n    return 'There was an error.'\n  }\n \n  return '...'\n}\n```",
+    "preview": "When fetching data inside of a Server Component, you can use the response to conditionally render an error message or [`redirect`](/docs/app/api-reference/functions/redirect). app/page.tsx TypeScript JavaScriptTypeScript ``` export default async function Page() { const res = await fetch(`https",
+    "url": "https://nextjs.org/docs/app/getting-started/error-handling#server-components-server-components",
+    "position": 4
+  },
+  {
+    "title": "How to handle errors",
+    "section": "[Not found](#not-found)",
+    "section_id": "not-found-not-found",
+    "heading_level": 3,
+    "content": "### [Not found](#not-found)\n\nYou can call the [`notFound`](/docs/app/api-reference/functions/not-found) function within a route segment and use the [`not-found.js`](/docs/app/api-reference/file-conventions/not-found) file to show a 404 UI.\n\napp/blog/[slug]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { getPostBySlug } from '@/lib/posts'\n \nexport default async function Page({ params }: { params: { slug: string } }) {\n  const { slug } = await params\n  const post = getPostBySlug(slug)\n \n  if (!post) {\n    notFound()\n  }\n \n  return <div>{post.title}</div>\n}\n```\n\napp/blog/[slug]/not-found.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function NotFound() {\n  return <div>404 - Page Not Found</div>\n}\n```",
+    "preview": "You can call the [`notFound`](/docs/app/api-reference/functions/not-found) function within a route segment and use the [`not-found.js`](/docs/app/api-reference/file-conventions/not-found) file to show a 404 UI. app/blog/[slug]/page.tsx TypeScript JavaScriptTypeScript [Code Block] app/blog/[slug",
+    "url": "https://nextjs.org/docs/app/getting-started/error-handling#not-found-not-found",
+    "position": 5
+  },
+  {
+    "title": "How to handle errors",
+    "section": "[Handling uncaught exceptions](#handling-uncaught-exceptions)",
+    "section_id": "handling-uncaught-exceptions-handling-uncaught-exceptions",
+    "heading_level": 2,
+    "content": "## [Handling uncaught exceptions](#handling-uncaught-exceptions)\n\nUncaught exceptions are unexpected errors that indicate bugs or issues that should not occur during the normal flow of your application. These should be handled by throwing errors, which will then be caught by error boundaries.",
+    "preview": "Uncaught exceptions are unexpected errors that indicate bugs or issues that should not occur during the normal flow of your application. These should be handled by throwing errors, which will then be caught by error boundaries.",
+    "url": "https://nextjs.org/docs/app/getting-started/error-handling#handling-uncaught-exceptions-handling-uncaught-exceptions",
+    "position": 6
+  },
+  {
+    "title": "How to handle errors",
+    "section": "[Nested error boundaries](#nested-error-boundaries)",
+    "section_id": "nested-error-boundaries-nested-error-boundaries",
+    "heading_level": 3,
+    "content": "### [Nested error boundaries](#nested-error-boundaries)\n\nNext.js uses error boundaries to handle uncaught exceptions. Error boundaries catch errors in their child components and display a fallback UI instead of the component tree that crashed.\n\nCreate an error boundary by adding an [`error.js`](/docs/app/api-reference/file-conventions/error) file inside a route segment and exporting a React component:\n\napp/dashboard/error.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client' // Error boundaries must be Client Components\n \nimport { useEffect } from 'react'\n \nexport default function Error({\n  error,\n  reset,\n}: {\n  error: Error & { digest?: string }\n  reset: () => void\n}) {\n  useEffect(() => {\n    // Log the error to an error reporting service\n    console.error(error)\n  }, [error])\n \n  return (\n    <div>\n      <h2>Something went wrong!</h2>\n      <button\n        onClick={\n          // Attempt to recover by trying to re-render the segment\n          () => reset()\n        }\n      >\n        Try again\n      </button>\n    </div>\n  )\n}\n```\n\nErrors will bubble up to the nearest parent error boundary. This allows for granular error handling by placing `error.tsx` files at different levels in the [route hierarchy](/docs/app/getting-started/project-structure#component-hierarchy).\n\n[Image: Nested Error Component Hierarchy][Image: Nested Error Component Hierarchy]",
+    "preview": "Next.js uses error boundaries to handle uncaught exceptions. Error boundaries catch errors in their child components and display a fallback UI instead of the component tree that crashed. Create an error boundary by adding an [`error.js`](/docs/app/api-reference/file-conventions/error) file inside a",
+    "url": "https://nextjs.org/docs/app/getting-started/error-handling#nested-error-boundaries-nested-error-boundaries",
+    "position": 7
+  },
+  {
+    "title": "How to handle errors",
+    "section": "[Global errors](#global-errors)",
+    "section_id": "global-errors-global-errors",
+    "heading_level": 3,
+    "content": "### [Global errors](#global-errors)\n\nWhile less common, you can handle errors in the root layout using the [`global-error.js`](/docs/app/api-reference/file-conventions/error#global-error) file, located in the root app directory, even when leveraging [internationalization](/docs/app/building-your-application/routing/internationalization). Global error UI must define its own `<html>` and `<body>` tags, since it is replacing the root layout or template when active.\n\napp/global-error.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client' // Error boundaries must be Client Components\n \nexport default function GlobalError({\n  error,\n  reset,\n}: {\n  error: Error & { digest?: string }\n  reset: () => void\n}) {\n  return (\n    // global-error must include html and body tags\n    <html>\n      <body>\n        <h2>Something went wrong!</h2>\n        <button onClick={() => reset()}>Try again</button>\n      </body>\n    </html>\n  )\n}\n```",
+    "preview": "While less common, you can handle errors in the root layout using the [`global-error.js`](/docs/app/api-reference/file-conventions/error#global-error) file, located in the root app directory, even when leveraging [internationalization](/docs/app/building-your-application/routing/internationalization",
+    "url": "https://nextjs.org/docs/app/getting-started/error-handling#global-errors-global-errors",
+    "position": 8
+  },
+  {
+    "title": "How to handle errors",
+    "section": "API Reference",
+    "section_id": "api-reference",
+    "heading_level": 2,
+    "content": "## API Reference\n\nLearn more about the features mentioned in this page by reading the API Reference.\n\n[### redirect\n\nAPI Reference for the redirect function.](/docs/app/api-reference/functions/redirect)[### error.js\n\nAPI reference for the error.js special file.](/docs/app/api-reference/file-conventions/error)[### notFound\n\nAPI Reference for the notFound function.](/docs/app/api-reference/functions/not-found)[### not-found.js\n\nAPI reference for the not-found.js file.](/docs/app/api-reference/file-conventions/not-found)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn more about the features mentioned in this page by reading the API Reference. [### redirect API Reference for the redirect function.](/docs/app/api-reference/functions/redirect)[### error.js API reference for the error.js special file.](/docs/app/api-reference/file-conventions/error)[### not",
+    "url": "https://nextjs.org/docs/app/getting-started/error-handling#api-reference",
+    "position": 9
+  }
+]

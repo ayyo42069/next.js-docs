@@ -1,0 +1,182 @@
+[
+  {
+    "title": "Middleware",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Routing](/docs/pages/building-your-application/routing)Middleware",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Routing](/docs/pages/building-your-application/routing)Middleware",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Middleware",
+    "section": "Middleware",
+    "section_id": "middleware",
+    "heading_level": 1,
+    "content": "# Middleware\n\nMiddleware allows you to run code before a request is completed. Then, based on the incoming request, you can modify the response by rewriting, redirecting, modifying the request or response headers, or responding directly.\n\nMiddleware runs before cached content and routes are matched. See [Matching Paths](#matching-paths) for more details.",
+    "preview": "Middleware allows you to run code before a request is completed. Then, based on the incoming request, you can modify the response by rewriting, redirecting, modifying the request or response headers, or responding directly. Middleware runs before cached content and routes are matched. See [Matching",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#middleware",
+    "position": 1
+  },
+  {
+    "title": "Middleware",
+    "section": "[Use Cases](#use-cases)",
+    "section_id": "use-cases-use-cases",
+    "heading_level": 2,
+    "content": "## [Use Cases](#use-cases)\n\nSome common scenarios where Middleware is effective include:\n\n* Quick redirects after reading parts of the incoming request\n* Rewriting to different pages based on A/B tests or experiments\n* Modifying headers for all pages or a subset of pages\n\nMiddleware is *not* a good fit for:\n\n* Slow data fetching\n* Session management",
+    "preview": "Some common scenarios where Middleware is effective include: * Quick redirects after reading parts of the incoming request * Rewriting to different pages based on A/B tests or experiments * Modifying headers for all pages or a subset of pages Middleware is *not* a good fit for: * Slow data fetchi",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#use-cases-use-cases",
+    "position": 2
+  },
+  {
+    "title": "Middleware",
+    "section": "[Convention](#convention)",
+    "section_id": "convention-convention",
+    "heading_level": 2,
+    "content": "## [Convention](#convention)\n\nUse the file `middleware.ts` (or `.js`) in the root of your project to define Middleware. For example, at the same level as `pages` or `app`, or inside `src` if applicable.\n\n> **Note**: While only one `middleware.ts` file is supported per project, you can still organize your middleware logic modularly. Break out middleware functionalities into separate `.ts` or `.js` files and import them into your main `middleware.ts` file. This allows for cleaner management of route-specific middleware, aggregated in the `middleware.ts` for centralized control. By enforcing a single middleware file, it simplifies configuration, prevents potential conflicts, and optimizes performance by avoiding multiple middleware layers.",
+    "preview": "Use the file `middleware.ts` (or `.js`) in the root of your project to define Middleware. For example, at the same level as `pages` or `app`, or inside `src` if applicable. > **Note**: While only one `middleware.ts` file is supported per project, you can still organize your middleware logic modular",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#convention-convention",
+    "position": 3
+  },
+  {
+    "title": "Middleware",
+    "section": "[Example](#example)",
+    "section_id": "example-example",
+    "heading_level": 2,
+    "content": "## [Example](#example)\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextResponse } from 'next/server'\nimport type { NextRequest } from 'next/server'\n \n// This function can be marked `async` if using `await` inside\nexport function middleware(request: NextRequest) {\n  return NextResponse.redirect(new URL('/home', request.url))\n}\n \n// See \"Matching Paths\" below to learn more\nexport const config = {\n  matcher: '/about/:path*',\n}\n```",
+    "preview": "middleware.ts TypeScript JavaScriptTypeScript ``` import { NextResponse } from 'next/server' import type { NextRequest } from 'next/server' // This function can be marked `async` if using `await` inside export function middleware(request: NextRequest) { return NextResponse.redirect(new URL('/",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#example-example",
+    "position": 4
+  },
+  {
+    "title": "Middleware",
+    "section": "[Matching Paths](#matching-paths)",
+    "section_id": "matching-paths-matching-paths",
+    "heading_level": 2,
+    "content": "## [Matching Paths](#matching-paths)\n\nMiddleware will be invoked for **every route in your project**. Given this, it's crucial to use matchers to precisely target or exclude specific routes. The following is the execution order:\n\n1. `headers` from `next.config.js`\n2. `redirects` from `next.config.js`\n3. Middleware (`rewrites`, `redirects`, etc.)\n4. `beforeFiles` (`rewrites`) from `next.config.js`\n5. Filesystem routes (`public/`, `_next/static/`, `pages/`, `app/`, etc.)\n6. `afterFiles` (`rewrites`) from `next.config.js`\n7. Dynamic Routes (`/blog/[slug]`)\n8. `fallback` (`rewrites`) from `next.config.js`\n\nThere are two ways to define which paths Middleware will run on:\n\n1. [Custom matcher config](#matcher)\n2. [Conditional statements](#conditional-statements)",
+    "preview": "Middleware will be invoked for **every route in your project**. Given this, it's crucial to use matchers to precisely target or exclude specific routes. The following is the execution order: 1. `headers` from `next.config.js` 2. `redirects` from `next.config.js` 3. Middleware (`rewrites`, `redirect",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#matching-paths-matching-paths",
+    "position": 5
+  },
+  {
+    "title": "Middleware",
+    "section": "[Matcher](#matcher)",
+    "section_id": "matcher-matcher",
+    "heading_level": 3,
+    "content": "### [Matcher](#matcher)\n\n`matcher` allows you to filter Middleware to run on specific paths.\n\nmiddleware.js\n\n```\nexport const config = {\n  matcher: '/about/:path*',\n}\n```\n\nYou can match a single path or multiple paths with an array syntax:\n\nmiddleware.js\n\n```\nexport const config = {\n  matcher: ['/about/:path*', '/dashboard/:path*'],\n}\n```\n\nThe `matcher` config allows full regex so matching like negative lookaheads or character matching is supported. An example of a negative lookahead to match all except specific paths can be seen here:\n\nmiddleware.js\n\n```\nexport const config = {\n  matcher: [\n    /*\n     * Match all request paths except for the ones starting with:\n     * - api (API routes)\n     * - _next/static (static files)\n     * - _next/image (image optimization files)\n     * - favicon.ico, sitemap.xml, robots.txt (metadata files)\n     */\n    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',\n  ],\n}\n```\n\nYou can also bypass Middleware for certain requests by using the `missing` or `has` arrays, or a combination of both:\n\nmiddleware.js\n\n```\nexport const config = {\n  matcher: [\n    /*\n     * Match all request paths except for the ones starting with:\n     * - api (API routes)\n     * - _next/static (static files)\n     * - _next/image (image optimization files)\n     * - favicon.ico, sitemap.xml, robots.txt (metadata files)\n     */\n    {\n      source:\n        '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',\n      missing: [\n        { type: 'header', key: 'next-router-prefetch' },\n        { type: 'header', key: 'purpose', value: 'prefetch' },\n      ],\n    },\n \n    {\n      source:\n        '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',\n      has: [\n        { type: 'header', key: 'next-router-prefetch' },\n        { type: 'header', key: 'purpose', value: 'prefetch' },\n      ],\n    },\n \n    {\n      source:\n        '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',\n      has: [{ type: 'header', key: 'x-present' }],\n      missing: [{ type: 'header', key: 'x-missing', value: 'prefetch' }],\n    },\n  ],\n}\n```\n\n> **Good to know**: The `matcher` values need to be constants so they can be statically analyzed at build-time. Dynamic values such as variables will be ignored.\n\nConfigured matchers:\n\n1. MUST start with `/`\n2. Can include named parameters: `/about/:path` matches `/about/a` and `/about/b` but not `/about/a/c`\n3. Can have modifiers on named parameters (starting with `:`): `/about/:path*` matches `/about/a/b/c` because `*` is *zero or more*. `?` is *zero or one* and `+` *one or more*\n4. Can use regular expression enclosed in parenthesis: `/about/(.*)` is the same as `/about/:path*`\n\nRead more details on [path-to-regexp](https://github.com/pillarjs/path-to-regexp#path-to-regexp-1) documentation.\n\n> **Good to know**: For backward compatibility, Next.js always considers `/public` as `/public/index`. Therefore, a matcher of `/public/:path` will match.",
+    "preview": "`matcher` allows you to filter Middleware to run on specific paths. middleware.js [Code Block] You can match a single path or multiple paths with an array syntax: middleware.js [Code Block] The `matcher` config allows full regex so matching like negative lookaheads or character matching is sup",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#matcher-matcher",
+    "position": 6
+  },
+  {
+    "title": "Middleware",
+    "section": "[Conditional Statements](#conditional-statements)",
+    "section_id": "conditional-statements-conditional-statements",
+    "heading_level": 3,
+    "content": "### [Conditional Statements](#conditional-statements)\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextResponse } from 'next/server'\nimport type { NextRequest } from 'next/server'\n \nexport function middleware(request: NextRequest) {\n  if (request.nextUrl.pathname.startsWith('/about')) {\n    return NextResponse.rewrite(new URL('/about-2', request.url))\n  }\n \n  if (request.nextUrl.pathname.startsWith('/dashboard')) {\n    return NextResponse.rewrite(new URL('/dashboard/user', request.url))\n  }\n}\n```",
+    "preview": "middleware.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#conditional-statements-conditional-statements",
+    "position": 7
+  },
+  {
+    "title": "Middleware",
+    "section": "[NextResponse](#nextresponse)",
+    "section_id": "nextresponse-nextresponse",
+    "heading_level": 2,
+    "content": "## [NextResponse](#nextresponse)\n\nThe `NextResponse` API allows you to:\n\n* `redirect` the incoming request to a different URL\n* `rewrite` the response by displaying a given URL\n* Set request headers for API Routes, `getServerSideProps`, and `rewrite` destinations\n* Set response cookies\n* Set response headers\n\nTo produce a response from Middleware, you can:\n\n1. `rewrite` to a route ([Page](/docs/pages/building-your-application/routing/pages-and-layouts) or [Edge API Route](/docs/pages/building-your-application/routing/api-routes)) that produces a response\n2. return a `NextResponse` directly. See [Producing a Response](#producing-a-response)",
+    "preview": "The `NextResponse` API allows you to: * `redirect` the incoming request to a different URL * `rewrite` the response by displaying a given URL * Set request headers for API Routes, `getServerSideProps`, and `rewrite` destinations * Set response cookies * Set response headers To produce a response f",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#nextresponse-nextresponse",
+    "position": 8
+  },
+  {
+    "title": "Middleware",
+    "section": "[Using Cookies](#using-cookies)",
+    "section_id": "using-cookies-using-cookies",
+    "heading_level": 2,
+    "content": "## [Using Cookies](#using-cookies)\n\nCookies are regular headers. On a `Request`, they are stored in the `Cookie` header. On a `Response` they are in the `Set-Cookie` header. Next.js provides a convenient way to access and manipulate these cookies through the `cookies` extension on `NextRequest` and `NextResponse`.\n\n1. For incoming requests, `cookies` comes with the following methods: `get`, `getAll`, `set`, and `delete` cookies. You can check for the existence of a cookie with `has` or remove all cookies with `clear`.\n2. For outgoing responses, `cookies` have the following methods `get`, `getAll`, `set`, and `delete`.\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextResponse } from 'next/server'\nimport type { NextRequest } from 'next/server'\n \nexport function middleware(request: NextRequest) {\n  // Assume a \"Cookie:nextjs=fast\" header to be present on the incoming request\n  // Getting cookies from the request using the `RequestCookies` API\n  let cookie = request.cookies.get('nextjs')\n  console.log(cookie) // => { name: 'nextjs', value: 'fast', Path: '/' }\n  const allCookies = request.cookies.getAll()\n  console.log(allCookies) // => [{ name: 'nextjs', value: 'fast' }]\n \n  request.cookies.has('nextjs') // => true\n  request.cookies.delete('nextjs')\n  request.cookies.has('nextjs') // => false\n \n  // Setting cookies on the response using the `ResponseCookies` API\n  const response = NextResponse.next()\n  response.cookies.set('vercel', 'fast')\n  response.cookies.set({\n    name: 'vercel',\n    value: 'fast',\n    path: '/',\n  })\n  cookie = response.cookies.get('vercel')\n  console.log(cookie) // => { name: 'vercel', value: 'fast', Path: '/' }\n  // The outgoing response will have a `Set-Cookie:vercel=fast;path=/` header.\n \n  return response\n}\n```",
+    "preview": "Cookies are regular headers. On a `Request`, they are stored in the `Cookie` header. On a `Response` they are in the `Set-Cookie` header. Next.js provides a convenient way to access and manipulate these cookies through the `cookies` extension on `NextRequest` and `NextResponse`. 1. For incoming req",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#using-cookies-using-cookies",
+    "position": 9
+  },
+  {
+    "title": "Middleware",
+    "section": "[Setting Headers](#setting-headers)",
+    "section_id": "setting-headers-setting-headers",
+    "heading_level": 2,
+    "content": "## [Setting Headers](#setting-headers)\n\nYou can set request and response headers using the `NextResponse` API (setting *request* headers is available since Next.js v13.0.0).\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextResponse } from 'next/server'\nimport type { NextRequest } from 'next/server'\n \nexport function middleware(request: NextRequest) {\n  // Clone the request headers and set a new header `x-hello-from-middleware1`\n  const requestHeaders = new Headers(request.headers)\n  requestHeaders.set('x-hello-from-middleware1', 'hello')\n \n  // You can also set request headers in NextResponse.next\n  const response = NextResponse.next({\n    request: {\n      // New request headers\n      headers: requestHeaders,\n    },\n  })\n \n  // Set a new response header `x-hello-from-middleware2`\n  response.headers.set('x-hello-from-middleware2', 'hello')\n  return response\n}\n```\n\n> **Good to know**: Avoid setting large headers as it might cause [431 Request Header Fields Too Large](https://developer.mozilla.org/docs/Web/HTTP/Status/431) error depending on your backend web server configuration.",
+    "preview": "You can set request and response headers using the `NextResponse` API (setting *request* headers is available since Next.js v13.0.0). middleware.ts TypeScript JavaScriptTypeScript ``` import { NextResponse } from 'next/server' import type { NextRequest } from 'next/server' export function midd",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#setting-headers-setting-headers",
+    "position": 10
+  },
+  {
+    "title": "Middleware",
+    "section": "[CORS](#cors)",
+    "section_id": "cors-cors",
+    "heading_level": 3,
+    "content": "### [CORS](#cors)\n\nYou can set CORS headers in Middleware to allow cross-origin requests, including [simple](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests) and [preflighted](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#preflighted_requests) requests.\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextRequest, NextResponse } from 'next/server'\n \nconst allowedOrigins = ['https://acme.com', 'https://my-app.org']\n \nconst corsOptions = {\n  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',\n  'Access-Control-Allow-Headers': 'Content-Type, Authorization',\n}\n \nexport function middleware(request: NextRequest) {\n  // Check the origin from the request\n  const origin = request.headers.get('origin') ?? ''\n  const isAllowedOrigin = allowedOrigins.includes(origin)\n \n  // Handle preflighted requests\n  const isPreflight = request.method === 'OPTIONS'\n \n  if (isPreflight) {\n    const preflightHeaders = {\n      ...(isAllowedOrigin && { 'Access-Control-Allow-Origin': origin }),\n      ...corsOptions,\n    }\n    return NextResponse.json({}, { headers: preflightHeaders })\n  }\n \n  // Handle simple requests\n  const response = NextResponse.next()\n \n  if (isAllowedOrigin) {\n    response.headers.set('Access-Control-Allow-Origin', origin)\n  }\n \n  Object.entries(corsOptions).forEach(([key, value]) => {\n    response.headers.set(key, value)\n  })\n \n  return response\n}\n \nexport const config = {\n  matcher: '/api/:path*',\n}\n```",
+    "preview": "You can set CORS headers in Middleware to allow cross-origin requests, including [simple](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests) and [preflighted](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#preflighted_requests) requests. middleware.ts TypeScript JavaS",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#cors-cors",
+    "position": 11
+  },
+  {
+    "title": "Middleware",
+    "section": "[Producing a Response](#producing-a-response)",
+    "section_id": "producing-a-response-producing-a-response",
+    "heading_level": 2,
+    "content": "## [Producing a Response](#producing-a-response)\n\nYou can respond from Middleware directly by returning a `Response` or `NextResponse` instance. (This is available since [Next.js v13.1.0](https://nextjs.org/blog/next-13-1#nextjs-advanced-middleware))\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextRequest } from 'next/server'\nimport { isAuthenticated } from '@lib/auth'\n \n// Limit the middleware to paths starting with `/api/`\nexport const config = {\n  matcher: '/api/:function*',\n}\n \nexport function middleware(request: NextRequest) {\n  // Call our authentication function to check the request\n  if (!isAuthenticated(request)) {\n    // Respond with JSON indicating an error message\n    return Response.json(\n      { success: false, message: 'authentication failed' },\n      { status: 401 }\n    )\n  }\n}\n```",
+    "preview": "You can respond from Middleware directly by returning a `Response` or `NextResponse` instance. (This is available since [Next.js v13.1.0](https://nextjs.org/blog/next-13-1#nextjs-advanced-middleware)) middleware.ts TypeScript JavaScriptTypeScript ``` import type { NextRequest } from 'next/server",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#producing-a-response-producing-a-response",
+    "position": 12
+  },
+  {
+    "title": "Middleware",
+    "section": "[`waitUntil` and `NextFetchEvent`](#waituntil-and-nextfetchevent)",
+    "section_id": "waituntil-and-nextfetchevent-waituntil-and-nextfetchevent",
+    "heading_level": 3,
+    "content": "### [`waitUntil` and `NextFetchEvent`](#waituntil-and-nextfetchevent)\n\nThe `NextFetchEvent` object extends the native [`FetchEvent`](https://developer.mozilla.org/docs/Web/API/FetchEvent) object, and includes the [`waitUntil()`](https://developer.mozilla.org/docs/Web/API/ExtendableEvent/waitUntil) method.\n\nThe `waitUntil()` method takes a promise as an argument, and extends the lifetime of the Middleware until the promise settles. This is useful for performing work in the background.\n\nmiddleware.ts\n\n```\nimport { NextResponse } from 'next/server'\nimport type { NextFetchEvent, NextRequest } from 'next/server'\n \nexport function middleware(req: NextRequest, event: NextFetchEvent) {\n  event.waitUntil(\n    fetch('https://my-analytics-platform.com', {\n      method: 'POST',\n      body: JSON.stringify({ pathname: req.nextUrl.pathname }),\n    })\n  )\n \n  return NextResponse.next()\n}\n```",
+    "preview": "The `NextFetchEvent` object extends the native [`FetchEvent`](https://developer.mozilla.org/docs/Web/API/FetchEvent) object, and includes the [`waitUntil()`](https://developer.mozilla.org/docs/Web/API/ExtendableEvent/waitUntil) method. The `waitUntil()` method takes a promise as an argument, and ex",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#waituntil-and-nextfetchevent-waituntil-and-nextfetchevent",
+    "position": 13
+  },
+  {
+    "title": "Middleware",
+    "section": "[Advanced Middleware Flags](#advanced-middleware-flags)",
+    "section_id": "advanced-middleware-flags-advanced-middleware-flags",
+    "heading_level": 2,
+    "content": "## [Advanced Middleware Flags](#advanced-middleware-flags)\n\nIn `v13.1` of Next.js two additional flags were introduced for middleware, `skipMiddlewareUrlNormalize` and `skipTrailingSlashRedirect` to handle advanced use cases.\n\n`skipTrailingSlashRedirect` disables Next.js redirects for adding or removing trailing slashes. This allows custom handling inside middleware to maintain the trailing slash for some paths but not others, which can make incremental migrations easier.\n\nnext.config.js\n\n```\nmodule.exports = {\n  skipTrailingSlashRedirect: true,\n}\n```\n\nmiddleware.js\n\n```\nconst legacyPrefixes = ['/docs', '/blog']\n \nexport default async function middleware(req) {\n  const { pathname } = req.nextUrl\n \n  if (legacyPrefixes.some((prefix) => pathname.startsWith(prefix))) {\n    return NextResponse.next()\n  }\n \n  // apply trailing slash handling\n  if (\n    !pathname.endsWith('/') &&\n    !pathname.match(/((?!\\.well-known(?:\\/.*)?)(?:[^/]+\\/)*[^/]+\\.\\w+)/)\n  ) {\n    return NextResponse.redirect(\n      new URL(`${req.nextUrl.pathname}/`, req.nextUrl)\n    )\n  }\n}\n```\n\n`skipMiddlewareUrlNormalize` allows for disabling the URL normalization in Next.js to make handling direct visits and client-transitions the same. In some advanced cases, this option provides full control by using the original URL.\n\nnext.config.js\n\n```\nmodule.exports = {\n  skipMiddlewareUrlNormalize: true,\n}\n```\n\nmiddleware.js\n\n```\nexport default async function middleware(req) {\n  const { pathname } = req.nextUrl\n \n  // GET /_next/data/build-id/hello.json\n \n  console.log(pathname)\n  // with the flag this now /_next/data/build-id/hello.json\n  // without the flag this would be normalized to /hello\n}\n```",
+    "preview": "In `v13.1` of Next.js two additional flags were introduced for middleware, `skipMiddlewareUrlNormalize` and `skipTrailingSlashRedirect` to handle advanced use cases. `skipTrailingSlashRedirect` disables Next.js redirects for adding or removing trailing slashes. This allows custom handling inside mi",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#advanced-middleware-flags-advanced-middleware-flags",
+    "position": 14
+  },
+  {
+    "title": "Middleware",
+    "section": "[Unit Testing (experimental)](#unit-testing-experimental)",
+    "section_id": "unit-testing-experimental-unit-testing-experimental",
+    "heading_level": 2,
+    "content": "## [Unit Testing (experimental)](#unit-testing-experimental)\n\nStarting in Next.js 15.1, the `next/experimental/testing/server` package contains utilities to help unit test middleware files. Unit testing middleware can help ensure that it's only run on desired paths and that custom routing logic works as intended before code reaches production.\n\nThe `unstable_doesMiddlewareMatch` function can be used to assert whether middleware will run for the provided URL, headers, and cookies.\n\n```\nimport { unstable_doesMiddlewareMatch } from 'next/experimental/testing/server'\n \nexpect(\n  unstable_doesMiddlewareMatch({\n    config,\n    nextConfig,\n    url: '/test',\n  })\n).toEqual(false)\n```\n\nThe entire middleware function can also be tested.\n\n```\nimport { isRewrite, getRewrittenUrl } from 'next/experimental/testing/server'\n \nconst request = new NextRequest('https://nextjs.org/docs')\nconst response = await middleware(request)\nexpect(isRewrite(response)).toEqual(true)\nexpect(getRewrittenUrl(response)).toEqual('https://other-domain.com/docs')\n// getRedirectUrl could also be used if the response were a redirect\n```",
+    "preview": "Starting in Next.js 15.1, the `next/experimental/testing/server` package contains utilities to help unit test middleware files. Unit testing middleware can help ensure that it's only run on desired paths and that custom routing logic works as intended before code reaches production. The `unstable_d",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#unit-testing-experimental-unit-testing-experimental",
+    "position": 15
+  },
+  {
+    "title": "Middleware",
+    "section": "[Runtime](#runtime)",
+    "section_id": "runtime-runtime",
+    "heading_level": 2,
+    "content": "## [Runtime](#runtime)\n\nMiddleware defaults to using the Edge runtime. As of v15.2 (canary), we have experimental support for using the Node.js runtime. To enable, add the flag to your `next.config` file:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    nodeMiddleware: true,\n  },\n}\n \nexport default nextConfig\n```\n\nThen in your middleware file, set the runtime to `nodejs` in the `config` object:\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport const config = {\n  runtime: 'nodejs',\n}\n```\n\n> **Note**: This feature is not yet recommended for production use. Therefore, Next.js will throw an error unless you are using the next@canary release instead of the stable release.",
+    "preview": "Middleware defaults to using the Edge runtime. As of v15.2 (canary), we have experimental support for using the Node.js runtime. To enable, add the flag to your `next.config` file: next.config.ts TypeScript JavaScriptTypeScript [Code Block] Then in your middleware file, set the runtime to `node",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#runtime-runtime",
+    "position": 16
+  },
+  {
+    "title": "Middleware",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.2.0` | Middleware can now use the Node.js runtime (experimental) |\n| `v13.1.0` | Advanced Middleware flags added |\n| `v13.0.0` | Middleware can modify request headers, response headers, and send responses |\n| `v12.2.0` | Middleware is stable, please see the [upgrade guide](/docs/messages/middleware-upgrade-guide) |\n| `v12.0.9` | Enforce absolute URLs in Edge Runtime ([PR](https://github.com/vercel/next.js/pull/33410)) |\n| `v12.0.0` | Middleware (Beta) added |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.2.0` | Middleware can now use the Node.js runtime (experimental) | | `v13.1.0` | Advanced Middleware flags added | | `v13.0.0` | Middleware can modify request headers, response headers, and send responses | | `v12.2.0` | Middleware is stable, please see the",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/middleware#version-history-version-history",
+    "position": 17
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "title": "middleware.js",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)middleware.js",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)middleware.js",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "middleware.js",
+    "section": "middleware.js",
+    "section_id": "middleware-js",
+    "heading_level": 1,
+    "content": "# middleware.js\n\nThe `middleware.js|ts` file is used to write [Middleware](/docs/app/building-your-application/routing/middleware) and run code on the server before a request is completed. Then, based on the incoming request, you can modify the response by rewriting, redirecting, modifying the request or response headers, or responding directly.\n\nMiddleware executes before routes are rendered. It's particularly useful for implementing custom server-side logic like authentication, logging, or handling redirects.\n\nUse the file `middleware.ts` (or .js) in the root of your project to define Middleware. For example, at the same level as `app` or `pages`, or inside `src` if applicable.\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextResponse, NextRequest } from 'next/server'\n \n// This function can be marked `async` if using `await` inside\nexport function middleware(request: NextRequest) {\n  return NextResponse.redirect(new URL('/home', request.url))\n}\n \nexport const config = {\n  matcher: '/about/:path*',\n}\n```",
+    "preview": "The `middleware.js|ts` file is used to write [Middleware](/docs/app/building-your-application/routing/middleware) and run code on the server before a request is completed. Then, based on the incoming request, you can modify the response by rewriting, redirecting, modifying the request or response he",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#middleware-js",
+    "position": 1
+  },
+  {
+    "title": "middleware.js",
+    "section": "[Exports](#exports)",
+    "section_id": "exports-exports",
+    "heading_level": 2,
+    "content": "## [Exports](#exports)",
+    "preview": "## [Exports](#exports)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#exports-exports",
+    "position": 2
+  },
+  {
+    "title": "middleware.js",
+    "section": "[Middleware function](#middleware-function)",
+    "section_id": "middleware-function-middleware-function",
+    "heading_level": 3,
+    "content": "### [Middleware function](#middleware-function)\n\nThe file must export a single function, either as a default export or named `middleware`. Note that multiple middleware from the same file are not supported.\n\nmiddleware.js\n\n```\n// Example of default export\nexport default function middleware(request) {\n  // Middleware logic\n}\n```",
+    "preview": "The file must export a single function, either as a default export or named `middleware`. Note that multiple middleware from the same file are not supported. middleware.js [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#middleware-function-middleware-function",
+    "position": 3
+  },
+  {
+    "title": "middleware.js",
+    "section": "[Config object (optional)](#config-object-optional)",
+    "section_id": "config-object-optional-config-object-optional",
+    "heading_level": 3,
+    "content": "### [Config object (optional)](#config-object-optional)\n\nOptionally, a config object can be exported alongside the Middleware function. This object includes the [matcher](#matcher) to specify paths where the Middleware applies.\n\n#### [Matcher](#matcher)\n\nThe `matcher` option allows you to target specific paths for the Middleware to run on. You can specify these paths in several ways:\n\n* For a single path: Directly use a string to define the path, like `'/about'`.\n* For multiple paths: Use an array to list multiple paths, such as `matcher: ['/about', '/contact']`, which applies the Middleware to both `/about` and `/contact`.\n\nAdditionally, `matcher` supports complex path specifications through regular expressions, such as `matcher: ['/((?!api|_next/static|_next/image|.*\\\\.png$).*)']`, enabling precise control over which paths to include or exclude.\n\nThe `matcher` option also accepts an array of objects with the following keys:\n\n* `source`: The path or pattern used to match the request paths. It can be a string for direct path matching or a pattern for more complex matching.\n* `regexp` (optional): A regular expression string that fine-tunes the matching based on the source. It provides additional control over which paths are included or excluded.\n* `locale` (optional): A boolean that, when set to `false`, ignores locale-based routing in path matching.\n* `has` (optional): Specifies conditions based on the presence of specific request elements such as headers, query parameters, or cookies.\n* `missing` (optional): Focuses on conditions where certain request elements are absent, like missing headers or cookies.\n\nmiddleware.js\n\n```\nexport const config = {\n  matcher: [\n    {\n      source: '/api/*',\n      regexp: '^/api/(.*)',\n      locale: false,\n      has: [\n        { type: 'header', key: 'Authorization', value: 'Bearer Token' },\n        { type: 'query', key: 'userId', value: '123' },\n      ],\n      missing: [{ type: 'cookie', key: 'session', value: 'active' }],\n    },\n  ],\n}\n```",
+    "preview": "Optionally, a config object can be exported alongside the Middleware function. This object includes the [matcher](#matcher) to specify paths where the Middleware applies. #### [Matcher](#matcher) The `matcher` option allows you to target specific paths for the Middleware to run on. You can specify",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#config-object-optional-config-object-optional",
+    "position": 4
+  },
+  {
+    "title": "middleware.js",
+    "section": "[Params](#params)",
+    "section_id": "params-params",
+    "heading_level": 2,
+    "content": "## [Params](#params)",
+    "preview": "## [Params](#params)",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#params-params",
+    "position": 5
+  },
+  {
+    "title": "middleware.js",
+    "section": "[`request`](#request)",
+    "section_id": "request-request",
+    "heading_level": 3,
+    "content": "### [`request`](#request)\n\nWhen defining Middleware, the default export function accepts a single parameter, `request`. This parameter is an instance of `NextRequest`, which represents the incoming HTTP request.\n\nmiddleware.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextRequest } from 'next/server'\n \nexport function middleware(request: NextRequest) {\n  // Middleware logic goes here\n}\n```\n\n> **Good to know**:\n>\n> * `NextRequest` is a type that represents incoming HTTP requests in Next.js Middleware, whereas [`NextResponse`](#nextresponse) is a class used to manipulate and send back HTTP responses.",
+    "preview": "When defining Middleware, the default export function accepts a single parameter, `request`. This parameter is an instance of `NextRequest`, which represents the incoming HTTP request. middleware.ts TypeScript JavaScriptTypeScript [Code Block] > **Good to know**: > > * `NextRequest` is a type t",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#request-request",
+    "position": 6
+  },
+  {
+    "title": "middleware.js",
+    "section": "[NextResponse](#nextresponse)",
+    "section_id": "nextresponse-nextresponse",
+    "heading_level": 2,
+    "content": "## [NextResponse](#nextresponse)\n\nMiddleware can use the [`NextResponse`](/docs/app/building-your-application/routing/middleware#nextresponse) object which extends the [Web Response API](https://developer.mozilla.org/en-US/docs/Web/API/Response). By returning a `NextResponse` object, you can directly manipulate cookies, set headers, implement redirects, and rewrite paths.\n\n> **Good to know**: For redirects, you can also use `Response.redirect` instead of `NextResponse.redirect`.",
+    "preview": "Middleware can use the [`NextResponse`](/docs/app/building-your-application/routing/middleware#nextresponse) object which extends the [Web Response API](https://developer.mozilla.org/en-US/docs/Web/API/Response). By returning a `NextResponse` object, you can directly manipulate cookies, set headers,",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#nextresponse-nextresponse",
+    "position": 7
+  },
+  {
+    "title": "middleware.js",
+    "section": "[Runtime](#runtime)",
+    "section_id": "runtime-runtime",
+    "heading_level": 2,
+    "content": "## [Runtime](#runtime)\n\nMiddleware only supports the [Edge runtime](/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes). The Node.js runtime cannot be used.",
+    "preview": "Middleware only supports the [Edge runtime](/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes). The Node.js runtime cannot be used.",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#runtime-runtime",
+    "position": 8
+  },
+  {
+    "title": "middleware.js",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v13.1.0` | Advanced Middleware flags added |\n| `v13.0.0` | Middleware can modify request headers, response headers, and send responses |\n| `v12.2.0` | Middleware is stable, please see the [upgrade guide](/docs/messages/middleware-upgrade-guide) |\n| `v12.0.9` | Enforce absolute URLs in Edge Runtime ([PR](https://github.com/vercel/next.js/pull/33410)) |\n| `v12.0.0` | Middleware (Beta) added |",
+    "preview": "| Version | Changes | | --- | --- | | `v13.1.0` | Advanced Middleware flags added | | `v13.0.0` | Middleware can modify request headers, response headers, and send responses | | `v12.2.0` | Middleware is stable, please see the [upgrade guide](/docs/messages/middleware-upgrade-guide) | | `v12.0.9` |",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#version-history-version-history",
+    "position": 9
+  },
+  {
+    "title": "middleware.js",
+    "section": "Learn more about Middleware",
+    "section_id": "learn-more-about-middleware",
+    "heading_level": 2,
+    "content": "## Learn more about Middleware\n\n[### Middleware\n\nLearn how to use Middleware to run code before a request is completed.](/docs/app/building-your-application/routing/middleware)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### Middleware Learn how to use Middleware to run code before a request is completed.](/docs/app/building-your-application/routing/middleware) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/middleware#learn-more-about-middleware",
+    "position": 10
+  }
+]

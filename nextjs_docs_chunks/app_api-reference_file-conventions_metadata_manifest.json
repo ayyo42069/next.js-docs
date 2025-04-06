@@ -1,0 +1,52 @@
+[
+  {
+    "title": "manifest.json",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[File Conventions](/docs/app/api-reference/file-conventions)[Metadata Files](/docs/app/api-reference/file-conventions/metadata)manifest.json",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [File Conventions](/docs/app/api-reference/file-conventions)[Metadata Files](/docs/app/api-reference/file-conventions/metadata)manifest.json",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "manifest.json",
+    "section": "manifest.json",
+    "section_id": "manifest-json",
+    "heading_level": 1,
+    "content": "# manifest.json\n\nAdd or generate a `manifest.(json|webmanifest)` file that matches the [Web Manifest Specification](https://developer.mozilla.org/docs/Web/Manifest) in the **root** of `app` directory to provide information about your web application for the browser.",
+    "preview": "Add or generate a `manifest.(json|webmanifest)` file that matches the [Web Manifest Specification](https://developer.mozilla.org/docs/Web/Manifest) in the **root** of `app` directory to provide information about your web application for the browser.",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest#manifest-json",
+    "position": 1
+  },
+  {
+    "title": "manifest.json",
+    "section": "[Static Manifest file](#static-manifest-file)",
+    "section_id": "static-manifest-file-static-manifest-file",
+    "heading_level": 2,
+    "content": "## [Static Manifest file](#static-manifest-file)\n\napp/manifest.json | app/manifest.webmanifest\n\n```\n{\n  \"name\": \"My Next.js Application\",\n  \"short_name\": \"Next.js App\",\n  \"description\": \"An application built with Next.js\",\n  \"start_url\": \"/\"\n  // ...\n}\n```",
+    "preview": "app/manifest.json | app/manifest.webmanifest [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest#static-manifest-file-static-manifest-file",
+    "position": 2
+  },
+  {
+    "title": "manifest.json",
+    "section": "[Generate a Manifest file](#generate-a-manifest-file)",
+    "section_id": "generate-a-manifest-file-generate-a-manifest-file",
+    "heading_level": 2,
+    "content": "## [Generate a Manifest file](#generate-a-manifest-file)\n\nAdd a `manifest.js` or `manifest.ts` file that returns a [`Manifest` object](#manifest-object).\n\n> Good to know: `manifest.js` is special Route Handlers that is cached by default unless it uses a [Dynamic API](/docs/app/building-your-application/caching#dynamic-apis) or [dynamic config](/docs/app/building-your-application/caching#segment-config-options) option.\n\napp/manifest.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MetadataRoute } from 'next'\n \nexport default function manifest(): MetadataRoute.Manifest {\n  return {\n    name: 'Next.js App',\n    short_name: 'Next.js App',\n    description: 'Next.js App',\n    start_url: '/',\n    display: 'standalone',\n    background_color: '#fff',\n    theme_color: '#fff',\n    icons: [\n      {\n        src: '/favicon.ico',\n        sizes: 'any',\n        type: 'image/x-icon',\n      },\n    ],\n  }\n}\n```",
+    "preview": "Add a `manifest.js` or `manifest.ts` file that returns a [`Manifest` object](#manifest-object). > Good to know: `manifest.js` is special Route Handlers that is cached by default unless it uses a [Dynamic API](/docs/app/building-your-application/caching#dynamic-apis) or [dynamic config](/docs/app/bu",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest#generate-a-manifest-file-generate-a-manifest-file",
+    "position": 3
+  },
+  {
+    "title": "manifest.json",
+    "section": "[Manifest Object](#manifest-object)",
+    "section_id": "manifest-object-manifest-object",
+    "heading_level": 3,
+    "content": "### [Manifest Object](#manifest-object)\n\nThe manifest object contains an extensive list of options that may be updated due to new web standards. For information on all the current options, refer to the `MetadataRoute.Manifest` type in your code editor if using [TypeScript](https://nextjs.org/docs/app/api-reference/config/typescript#ide-plugin) or see the [MDN](https://developer.mozilla.org/docs/Web/Manifest) docs.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The manifest object contains an extensive list of options that may be updated due to new web standards. For information on all the current options, refer to the `MetadataRoute.Manifest` type in your code editor if using [TypeScript](https://nextjs.org/docs/app/api-reference/config/typescript#ide-plu",
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest#manifest-object-manifest-object",
+    "position": 4
+  }
+]

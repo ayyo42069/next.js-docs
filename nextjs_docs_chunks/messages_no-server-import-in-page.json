@@ -1,0 +1,52 @@
+[
+  {
+    "title": "No Server Import In Page",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No Server Import In Page",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No Server Import In Page",
+    "url": "https://nextjs.org/docs/messages/no-server-import-in-page#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No Server Import In Page",
+    "section": "No Server Import In Page",
+    "section_id": "no-server-import-in-page",
+    "heading_level": 1,
+    "content": "# No Server Import In Page\n\n> Prevent usage of `next/server` outside of `middleware.js`.",
+    "preview": "> Prevent usage of `next/server` outside of `middleware.js`.",
+    "url": "https://nextjs.org/docs/messages/no-server-import-in-page#no-server-import-in-page",
+    "position": 1
+  },
+  {
+    "title": "No Server Import In Page",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\n`next/server` was imported outside of `middleware.{js,ts}`.",
+    "preview": "`next/server` was imported outside of `middleware.{js,ts}`.",
+    "url": "https://nextjs.org/docs/messages/no-server-import-in-page#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No Server Import In Page",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nOnly import and use `next/server` in a file located within the project root directory: `middleware.{js,ts}`.\n\nmiddleware.ts\n\n```\nimport type { NextFetchEvent, NextRequest } from 'next/server'\n \nexport function middleware(req: NextRequest, ev: NextFetchEvent) {\n  return new Response('Hello, world!')\n}\n```",
+    "preview": "Only import and use `next/server` in a file located within the project root directory: `middleware.{js,ts}`. middleware.ts [Code Block]",
+    "url": "https://nextjs.org/docs/messages/no-server-import-in-page#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  },
+  {
+    "title": "No Server Import In Page",
+    "section": "[Useful Links](#useful-links)",
+    "section_id": "useful-links-useful-links",
+    "heading_level": 2,
+    "content": "## [Useful Links](#useful-links)\n\n* [Middleware](/docs/pages/building-your-application/routing/middleware)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Middleware](/docs/pages/building-your-application/routing/middleware) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/no-server-import-in-page#useful-links-useful-links",
+    "position": 4
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Runtime Config",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)Runtime Config",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/pages/api-reference/config)[next.config.js Options](/docs/pages/api-reference/config/next-config-js)Runtime Config",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/runtime-configuration#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Runtime Config",
+    "section": "Runtime Config",
+    "section_id": "runtime-config",
+    "heading_level": 1,
+    "content": "# Runtime Config\n\n> **Warning:**\n>\n> * **This feature is deprecated.** We recommend using [environment variables](/docs/pages/building-your-application/configuring/environment-variables) instead, which also can support reading runtime values.\n> * You can run code on server startup using the [`register` function](/docs/app/building-your-application/optimizing/instrumentation).\n> * This feature does not work with [Automatic Static Optimization](/docs/pages/building-your-application/rendering/automatic-static-optimization), [Output File Tracing](/docs/pages/api-reference/config/next-config-js/output#automatically-copying-traced-files), or [React Server Components](/docs/app/building-your-application/rendering/server-components).\n\nTo add runtime configuration to your app, open `next.config.js` and add the `publicRuntimeConfig` and `serverRuntimeConfig` configs:\n\nnext.config.js\n\n```\nmodule.exports = {\n  serverRuntimeConfig: {\n    // Will only be available on the server side\n    mySecret: 'secret',\n    secondSecret: process.env.SECOND_SECRET, // Pass through env variables\n  },\n  publicRuntimeConfig: {\n    // Will be available on both server and client\n    staticFolder: '/static',\n  },\n}\n```\n\nPlace any server-only runtime config under `serverRuntimeConfig`.\n\nAnything accessible to both client and server-side code should be under `publicRuntimeConfig`.\n\n> A page that relies on `publicRuntimeConfig` **must** use `getInitialProps` or `getServerSideProps` or your application must have a [Custom App](/docs/pages/building-your-application/routing/custom-app) with `getInitialProps` to opt-out of [Automatic Static Optimization](/docs/pages/building-your-application/rendering/automatic-static-optimization). Runtime configuration won't be available to any page (or component in a page) without being server-side rendered.\n\nTo get access to the runtime configs in your app use `next/config`, like so:\n\n```\nimport getConfig from 'next/config'\nimport Image from 'next/image'\n \n// Only holds serverRuntimeConfig and publicRuntimeConfig\nconst { serverRuntimeConfig, publicRuntimeConfig } = getConfig()\n// Will only be available on the server-side\nconsole.log(serverRuntimeConfig.mySecret)\n// Will be available on both server-side and client-side\nconsole.log(publicRuntimeConfig.staticFolder)\n \nfunction MyImage() {\n  return (\n    <div>\n      <Image\n        src={`${publicRuntimeConfig.staticFolder}/logo.png`}\n        alt=\"logo\"\n        layout=\"fill\"\n      />\n    </div>\n  )\n}\n \nexport default MyImage\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "> **Warning:** > > * **This feature is deprecated.** We recommend using [environment variables](/docs/pages/building-your-application/configuring/environment-variables) instead, which also can support reading runtime values. > * You can run code on server startup using the [`register` function](/doc",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/next-config-js/runtime-configuration#runtime-config",
+    "position": 1
+  }
+]

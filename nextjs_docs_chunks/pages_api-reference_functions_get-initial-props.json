@@ -1,0 +1,42 @@
+[
+  {
+    "title": "getInitialProps",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[Functions](/docs/pages/api-reference/functions)getInitialProps",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[Functions](/docs/pages/api-reference/functions)getInitialProps",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-initial-props#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "getInitialProps",
+    "section": "getInitialProps",
+    "section_id": "getinitialprops",
+    "heading_level": 1,
+    "content": "# getInitialProps\n\n> **Good to know**: `getInitialProps` is a legacy API. We recommend using [`getStaticProps`](/docs/pages/building-your-application/data-fetching/get-static-props) or [`getServerSideProps`](/docs/pages/building-your-application/data-fetching/get-server-side-props) instead.\n\n`getInitialProps` is an `async` function that can be added to the default exported React component for the page. It will run on both the server-side and again on the client-side during page transitions. The result of the function will be forwarded to the React component as `props`.\n\npages/index.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextPageContext } from 'next'\n \nPage.getInitialProps = async (ctx: NextPageContext) => {\n  const res = await fetch('https://api.github.com/repos/vercel/next.js')\n  const json = await res.json()\n  return { stars: json.stargazers_count }\n}\n \nexport default function Page({ stars }: { stars: number }) {\n  return stars\n}\n```\n\n> **Good to know**:\n>\n> * Data returned from `getInitialProps` is serialized when server rendering. Ensure the returned object from `getInitialProps` is a plain `Object`, and not using `Date`, `Map` or `Set`.\n> * For the initial page load, `getInitialProps` will run on the server only. `getInitialProps` will then also run on the client when navigating to a different route with the [`next/link`](/docs/pages/api-reference/components/link) component or by using [`next/router`](/docs/pages/api-reference/functions/use-router).\n> * If `getInitialProps` is used in a custom `_app.js`, and the page being navigated to is using `getServerSideProps`, then `getInitialProps` will also run on the server.",
+    "preview": "> **Good to know**: `getInitialProps` is a legacy API. We recommend using [`getStaticProps`](/docs/pages/building-your-application/data-fetching/get-static-props) or [`getServerSideProps`](/docs/pages/building-your-application/data-fetching/get-server-side-props) instead. `getInitialProps` is an `a",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-initial-props#getinitialprops",
+    "position": 1
+  },
+  {
+    "title": "getInitialProps",
+    "section": "[Context Object](#context-object)",
+    "section_id": "context-object-context-object",
+    "heading_level": 2,
+    "content": "## [Context Object](#context-object)\n\n`getInitialProps` receives a single argument called `context`, which is an object with the following properties:\n\n| Name | Description |\n| --- | --- |\n| `pathname` | Current route, the path of the page in `/pages` |\n| `query` | Query string of the URL, parsed as an object |\n| `asPath` | `String` of the actual path (including the query) shown in the browser |\n| `req` | [HTTP request object](https://nodejs.org/api/http.html#http_class_http_incomingmessage) (server only) |\n| `res` | [HTTP response object](https://nodejs.org/api/http.html#http_class_http_serverresponse) (server only) |\n| `err` | Error object if any error is encountered during the rendering |",
+    "preview": "`getInitialProps` receives a single argument called `context`, which is an object with the following properties: | Name | Description | | --- | --- | | `pathname` | Current route, the path of the page in `/pages` | | `query` | Query string of the URL, parsed as an object | | `asPath` | `String` of",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-initial-props#context-object-context-object",
+    "position": 2
+  },
+  {
+    "title": "getInitialProps",
+    "section": "[Caveats](#caveats)",
+    "section_id": "caveats-caveats",
+    "heading_level": 2,
+    "content": "## [Caveats](#caveats)\n\n* `getInitialProps` can only be used in `pages/` top level files, and not in nested components. To have nested data fetching at the component level, consider exploring the [App Router](/docs/app/building-your-application/data-fetching).\n* Regardless of whether your route is static or dynamic, any data returned from `getInitialProps` as `props` will be able to be examined on the client-side in the initial HTML. This is to allow the page to be [hydrated](https://react.dev/reference/react-dom/hydrate) correctly. Make sure that you don't pass any sensitive information that shouldn't be available on the client in `props`.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* `getInitialProps` can only be used in `pages/` top level files, and not in nested components. To have nested data fetching at the component level, consider exploring the [App Router](/docs/app/building-your-application/data-fetching). * Regardless of whether your route is static or dynamic, any da",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/get-initial-props#caveats-caveats",
+    "position": 3
+  }
+]

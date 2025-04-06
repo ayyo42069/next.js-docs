@@ -1,0 +1,112 @@
+[
+  {
+    "title": "TypeScript",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[Configuration](/docs/pages/api-reference/config)TypeScript",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[Configuration](/docs/pages/api-reference/config)TypeScript",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "TypeScript",
+    "section": "TypeScript",
+    "section_id": "typescript",
+    "heading_level": 1,
+    "content": "# TypeScript\n\nNext.js comes with built-in TypeScript, automatically installing the necessary packages and configuring the proper settings when you create a new project with `create-next-app`.\n\nTo add TypeScript to an existing project, rename a file to `.ts` / `.tsx`. Run `next dev` and `next build` to automatically install the necessary dependencies and add a `tsconfig.json` file with the recommended config options.\n\n> **Good to know**: If you already have a `jsconfig.json` file, copy the `paths` compiler option from the old `jsconfig.json` into the new `tsconfig.json` file, and delete the old `jsconfig.json` file.",
+    "preview": "Next.js comes with built-in TypeScript, automatically installing the necessary packages and configuring the proper settings when you create a new project with `create-next-app`. To add TypeScript to an existing project, rename a file to `.ts` / `.tsx`. Run `next dev` and `next build` to automatical",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#typescript",
+    "position": 1
+  },
+  {
+    "title": "TypeScript",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#examples-examples",
+    "position": 2
+  },
+  {
+    "title": "TypeScript",
+    "section": "[Type checking `next.config.ts`](#type-checking-nextconfigts)",
+    "section_id": "type-checking-next-config-ts-type-checking-nextconfigts",
+    "heading_level": 3,
+    "content": "### [Type checking `next.config.ts`](#type-checking-nextconfigts)\n\nYou can use TypeScript and import types in your Next.js configuration by using `next.config.ts`.\n\nnext.config.ts\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  /* config options here */\n}\n \nexport default nextConfig\n```\n\n> **Good to know**: Module resolution in `next.config.ts` is currently limited to `CommonJS`. This may cause incompatibilities with ESM only packages being loaded in `next.config.ts`.\n\nWhen using the `next.config.js` file, you can add some type checking in your IDE using JSDoc as below:\n\nnext.config.js\n\n```\n// @ts-check\n \n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  /* config options here */\n}\n \nmodule.exports = nextConfig\n```",
+    "preview": "You can use TypeScript and import types in your Next.js configuration by using `next.config.ts`. next.config.ts [Code Block] > **Good to know**: Module resolution in `next.config.ts` is currently limited to `CommonJS`. This may cause incompatibilities with ESM only packages being loaded in `next.",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#type-checking-next-config-ts-type-checking-nextconfigts",
+    "position": 3
+  },
+  {
+    "title": "TypeScript",
+    "section": "[Static Generation and Server-side Rendering](#static-generation-and-server-side-rendering)",
+    "section_id": "static-generation-and-server-side-rendering-static-generation-and-server-side-rendering",
+    "heading_level": 3,
+    "content": "### [Static Generation and Server-side Rendering](#static-generation-and-server-side-rendering)\n\nFor [`getStaticProps`](/docs/pages/api-reference/functions/get-static-props), [`getStaticPaths`](/docs/pages/api-reference/functions/get-static-paths), and [`getServerSideProps`](/docs/pages/api-reference/functions/get-server-side-props), you can use the `GetStaticProps`, `GetStaticPaths`, and `GetServerSideProps` types respectively:\n\npages/blog/[slug].tsx\n\n```\nimport type { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'\n \nexport const getStaticProps = (async (context) => {\n  // ...\n}) satisfies GetStaticProps\n \nexport const getStaticPaths = (async () => {\n  // ...\n}) satisfies GetStaticPaths\n \nexport const getServerSideProps = (async (context) => {\n  // ...\n}) satisfies GetServerSideProps\n```\n\n> **Good to know:** `satisfies` was added to TypeScript in [4.9](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html). We recommend upgrading to the latest version of TypeScript.",
+    "preview": "For [`getStaticProps`](/docs/pages/api-reference/functions/get-static-props), [`getStaticPaths`](/docs/pages/api-reference/functions/get-static-paths), and [`getServerSideProps`](/docs/pages/api-reference/functions/get-server-side-props), you can use the `GetStaticProps`, `GetStaticPaths`, and `GetS",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#static-generation-and-server-side-rendering-static-generation-and-server-side-rendering",
+    "position": 4
+  },
+  {
+    "title": "TypeScript",
+    "section": "[With API Routes](#with-api-routes)",
+    "section_id": "with-api-routes-with-api-routes",
+    "heading_level": 3,
+    "content": "### [With API Routes](#with-api-routes)\n\nThe following is an example of how to use the built-in types for API routes:\n\npages/api/hello.ts\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \nexport default function handler(req: NextApiRequest, res: NextApiResponse) {\n  res.status(200).json({ name: 'John Doe' })\n}\n```\n\nYou can also type the response data:\n\npages/api/hello.ts\n\n```\nimport type { NextApiRequest, NextApiResponse } from 'next'\n \ntype Data = {\n  name: string\n}\n \nexport default function handler(\n  req: NextApiRequest,\n  res: NextApiResponse<Data>\n) {\n  res.status(200).json({ name: 'John Doe' })\n}\n```",
+    "preview": "The following is an example of how to use the built-in types for API routes: pages/api/hello.ts [Code Block] You can also type the response data: pages/api/hello.ts [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#with-api-routes-with-api-routes",
+    "position": 5
+  },
+  {
+    "title": "TypeScript",
+    "section": "[With custom `App`](#with-custom-app)",
+    "section_id": "with-custom-app-with-custom-app",
+    "heading_level": 3,
+    "content": "### [With custom `App`](#with-custom-app)\n\nIf you have a [custom `App`](/docs/pages/building-your-application/routing/custom-app), you can use the built-in type `AppProps` and change file name to `./pages/_app.tsx` like so:\n\n```\nimport type { AppProps } from 'next/app'\n \nexport default function MyApp({ Component, pageProps }: AppProps) {\n  return <Component {...pageProps} />\n}\n```",
+    "preview": "If you have a [custom `App`](/docs/pages/building-your-application/routing/custom-app), you can use the built-in type `AppProps` and change file name to `./pages/_app.tsx` like so: [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#with-custom-app-with-custom-app",
+    "position": 6
+  },
+  {
+    "title": "TypeScript",
+    "section": "[Incremental type checking](#incremental-type-checking)",
+    "section_id": "incremental-type-checking-incremental-type-checking",
+    "heading_level": 3,
+    "content": "### [Incremental type checking](#incremental-type-checking)\n\nSince `v10.2.1` Next.js supports [incremental type checking](https://www.typescriptlang.org/tsconfig#incremental) when enabled in your `tsconfig.json`, this can help speed up type checking in larger applications.",
+    "preview": "Since `v10.2.1` Next.js supports [incremental type checking](https://www.typescriptlang.org/tsconfig#incremental) when enabled in your `tsconfig.json`, this can help speed up type checking in larger applications.",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#incremental-type-checking-incremental-type-checking",
+    "position": 7
+  },
+  {
+    "title": "TypeScript",
+    "section": "[Disabling TypeScript errors in production](#disabling-typescript-errors-in-production)",
+    "section_id": "disabling-typescript-errors-in-production-disabling-typescript-errors-in-production",
+    "heading_level": 3,
+    "content": "### [Disabling TypeScript errors in production](#disabling-typescript-errors-in-production)\n\nNext.js fails your **production build** (`next build`) when TypeScript errors are present in your project.\n\nIf you'd like Next.js to dangerously produce production code even when your application has errors, you can disable the built-in type checking step.\n\nIf disabled, be sure you are running type checks as part of your build or deploy process, otherwise this can be very dangerous.\n\nOpen `next.config.ts` and enable the `ignoreBuildErrors` option in the `typescript` config:\n\nnext.config.ts\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  typescript: {\n    // !! WARN !!\n    // Dangerously allow production builds to successfully complete even if\n    // your project has type errors.\n    // !! WARN !!\n    ignoreBuildErrors: true,\n  },\n}\n \nexport default nextConfig\n```\n\n> **Good to know**: You can run `tsc --noEmit` to check for TypeScript errors yourself before building. This is useful for CI/CD pipelines where you'd like to check for TypeScript errors before deploying.",
+    "preview": "Next.js fails your **production build** (`next build`) when TypeScript errors are present in your project. If you'd like Next.js to dangerously produce production code even when your application has errors, you can disable the built-in type checking step. If disabled, be sure you are running type",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#disabling-typescript-errors-in-production-disabling-typescript-errors-in-production",
+    "position": 8
+  },
+  {
+    "title": "TypeScript",
+    "section": "[Custom type declarations](#custom-type-declarations)",
+    "section_id": "custom-type-declarations-custom-type-declarations",
+    "heading_level": 3,
+    "content": "### [Custom type declarations](#custom-type-declarations)\n\nWhen you need to declare custom types, you might be tempted to modify `next-env.d.ts`. However, this file is automatically generated, so any changes you make will be overwritten. Instead, you should create a new file, let's call it `new-types.d.ts`, and reference it in your `tsconfig.json`:\n\ntsconfig.json\n\n```\n{\n  \"compilerOptions\": {\n    \"skipLibCheck\": true\n    //...truncated...\n  },\n  \"include\": [\n    \"new-types.d.ts\",\n    \"next-env.d.ts\",\n    \".next/types/**/*.ts\",\n    \"**/*.ts\",\n    \"**/*.tsx\"\n  ],\n  \"exclude\": [\"node_modules\"]\n}\n```",
+    "preview": "When you need to declare custom types, you might be tempted to modify `next-env.d.ts`. However, this file is automatically generated, so any changes you make will be overwritten. Instead, you should create a new file, let's call it `new-types.d.ts`, and reference it in your `tsconfig.json`: tsconfi",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#custom-type-declarations-custom-type-declarations",
+    "position": 9
+  },
+  {
+    "title": "TypeScript",
+    "section": "[Version Changes](#version-changes)",
+    "section_id": "version-changes-version-changes",
+    "heading_level": 2,
+    "content": "## [Version Changes](#version-changes)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0` | [`next.config.ts`](#type-checking-nextconfigts) support added for TypeScript projects. |\n| `v13.2.0` | Statically typed links are available in beta. |\n| `v12.0.0` | [SWC](/docs/architecture/nextjs-compiler) is now used by default to compile TypeScript and TSX for faster builds. |\n| `v10.2.1` | [Incremental type checking](https://www.typescriptlang.org/tsconfig#incremental) support added when enabled in your `tsconfig.json`. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0` | [`next.config.ts`](#type-checking-nextconfigts) support added for TypeScript projects. | | `v13.2.0` | Statically typed links are available in beta. | | `v12.0.0` | [SWC](/docs/architecture/nextjs-compiler) is now used by default to compile TypeScrip",
+    "url": "https://nextjs.org/docs/pages/api-reference/config/typescript#version-changes-version-changes",
+    "position": 10
+  }
+]

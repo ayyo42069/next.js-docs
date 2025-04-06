@@ -1,0 +1,47 @@
+---
+title: "Edge and Node.js Runtimes"
+description: "Menu..."
+url: "https://nextjs.org/docs/pages/building-your-application/rendering/edge-and-nodejs-runtimes"
+slug: "/docs/pages/building-your-application/rendering/edge-and-nodejs-runtimes"
+date_crawled: "2025-04-06T12:13:50.935842+00:00"
+---
+
+**Path**: /docs/pages/building-your-application/rendering/edge-and-nodejs-runtimes
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[Building Your Application](/docs/pages/building-your-application)[Rendering](/docs/pages/building-your-application/rendering)Edge and Node.js Runtimes
+
+# Edge and Node.js Runtimes
+
+Next.js has two server runtimes you can use in your application:
+
+* The **Node.js Runtime** (default), which has access to all Node.js APIs and compatible packages from the ecosystem.
+* The **Edge Runtime** which contains a more limited [set of APIs](/docs/app/api-reference/edge).
+
+The Edge Runtime is the default runtime for [Middleware](/docs/app/building-your-application/routing/middleware). However, this can be changed to the Node.js runtime. See the [Middleware documentation](/docs/app/building-your-application/routing/middleware#runtime) for more details.
+
+## [Use Cases](#use-cases)
+
+* The Node.js Runtime is used for rendering your application.
+* The Edge Runtime is used for Middleware (routing rules like redirects, rewrites, and setting headers).
+
+## [Caveats](#caveats)
+
+* The Edge Runtime does not support all Node.js APIs. Some packages may not work as expected. Learn more about the unsupported APIs in the [Edge Runtime](/docs/app/api-reference/edge#unsupported-apis).
+* The Edge Runtime does not support Incremental Static Regeneration (ISR).
+* Both runtimes can support [streaming](/docs/app/building-your-application/routing/loading-ui-and-streaming) depending on your deployment infrastructure.
+
+Was this helpful?
+
+supported.
+
+Send

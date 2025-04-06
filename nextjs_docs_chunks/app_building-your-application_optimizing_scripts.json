@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Script Optimization",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Optimizing](/docs/app/building-your-application/optimizing)Scripts",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Optimizing](/docs/app/building-your-application/optimizing)Scripts",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/scripts#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Script Optimization",
+    "section": "Script Optimization",
+    "section_id": "script-optimization",
+    "heading_level": 1,
+    "content": "# Script Optimization",
+    "preview": "# Script Optimization",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/scripts#script-optimization",
+    "position": 1
+  },
+  {
+    "title": "Script Optimization",
+    "section": "[Layout Scripts](#layout-scripts)",
+    "section_id": "layout-scripts-layout-scripts",
+    "heading_level": 3,
+    "content": "### [Layout Scripts](#layout-scripts)\n\nTo load a third-party script for multiple routes, import `next/script` and include the script directly in your layout component:\n\napp/dashboard/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Script from 'next/script'\n \nexport default function DashboardLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <>\n      <section>{children}</section>\n      <Script src=\"https://example.com/script.js\" />\n    </>\n  )\n}\n```\n\nThe third-party script is fetched when the folder route (e.g. `dashboard/page.js`) or any nested route (e.g. `dashboard/settings/page.js`) is accessed by the user. Next.js will ensure the script will **only load once**, even if a user navigates between multiple routes in the same layout.",
+    "preview": "To load a third-party script for multiple routes, import `next/script` and include the script directly in your layout component: app/dashboard/layout.tsx TypeScript JavaScriptTypeScript [Code Block] The third-party script is fetched when the folder route (e.g. `dashboard/page.js`) or any nested",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/scripts#layout-scripts-layout-scripts",
+    "position": 2
+  },
+  {
+    "title": "Script Optimization",
+    "section": "[Application Scripts](#application-scripts)",
+    "section_id": "application-scripts-application-scripts",
+    "heading_level": 3,
+    "content": "### [Application Scripts](#application-scripts)\n\nTo load a third-party script for all routes, import `next/script` and include the script directly in your root layout:\n\napp/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Script from 'next/script'\n \nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body>{children}</body>\n      <Script src=\"https://example.com/script.js\" />\n    </html>\n  )\n}\n```\n\nThis script will load and execute when *any* route in your application is accessed. Next.js will ensure the script will **only load once**, even if a user navigates between multiple pages.\n\n> **Recommendation**: We recommend only including third-party scripts in specific pages or layouts in order to minimize any unnecessary impact to performance.",
+    "preview": "To load a third-party script for all routes, import `next/script` and include the script directly in your root layout: app/layout.tsx TypeScript JavaScriptTypeScript [Code Block] This script will load and execute when *any* route in your application is accessed. Next.js will ensure the script w",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/scripts#application-scripts-application-scripts",
+    "position": 3
+  },
+  {
+    "title": "Script Optimization",
+    "section": "[Strategy](#strategy)",
+    "section_id": "strategy-strategy",
+    "heading_level": 3,
+    "content": "### [Strategy](#strategy)\n\nAlthough the default behavior of `next/script` allows you to load third-party scripts in any page or layout, you can fine-tune its loading behavior by using the `strategy` property:\n\n* `beforeInteractive`: Load the script before any Next.js code and before any page hydration occurs.\n* `afterInteractive`: (**default**) Load the script early but after some hydration on the page occurs.\n* `lazyOnload`: Load the script later during browser idle time.\n* `worker`: (experimental) Load the script in a web worker.\n\nRefer to the [`next/script`](/docs/app/api-reference/components/script#strategy) API reference documentation to learn more about each strategy and their use cases.",
+    "preview": "Although the default behavior of `next/script` allows you to load third-party scripts in any page or layout, you can fine-tune its loading behavior by using the `strategy` property: * `beforeInteractive`: Load the script before any Next.js code and before any page hydration occurs. * `afterInteract",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/scripts#strategy-strategy",
+    "position": 4
+  },
+  {
+    "title": "Script Optimization",
+    "section": "[Offloading Scripts To A Web Worker (experimental)](#offloading-scripts-to-a-web-worker-experimental)",
+    "section_id": "offloading-scripts-to-a-web-worker-experimental-offloading-scripts-to-a-web-worker-experimental",
+    "heading_level": 3,
+    "content": "### [Offloading Scripts To A Web Worker (experimental)](#offloading-scripts-to-a-web-worker-experimental)\n\n> **Warning:** The `worker` strategy is not yet stable and does not yet work with the App Router. Use with caution.\n\nScripts that use the `worker` strategy are offloaded and executed in a web worker with [Partytown](https://partytown.builder.io/). This can improve the performance of your site by dedicating the main thread to the rest of your application code.\n\nThis strategy is still experimental and can only be used if the `nextScriptWorkers` flag is enabled in `next.config.js`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  experimental: {\n    nextScriptWorkers: true,\n  },\n}\n```\n\nThen, run `next` (normally `npm run dev` or `yarn dev`) and Next.js will guide you through the installation of the required packages to finish the setup:\n\nTerminal\n\n```\nnpm run dev\n```\n\nYou'll see instructions like these: Please install Partytown by running `npm install @builder.io/partytown`\n\nOnce setup is complete, defining `strategy=\"worker\"` will automatically instantiate Partytown in your application and offload the script to a web worker.\n\npages/home.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Script from 'next/script'\n \nexport default function Home() {\n  return (\n    <>\n      <Script src=\"https://example.com/script.js\" strategy=\"worker\" />\n    </>\n  )\n}\n```\n\nThere are a number of trade-offs that need to be considered when loading a third-party script in a web worker. Please see Partytown's [tradeoffs](https://partytown.builder.io/trade-offs) documentation for more information.",
+    "preview": "> **Warning:** The `worker` strategy is not yet stable and does not yet work with the App Router. Use with caution. Scripts that use the `worker` strategy are offloaded and executed in a web worker with [Partytown](https://partytown.builder.io/). This can improve the performance of your site by ded",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/scripts#offloading-scripts-to-a-web-worker-experimental-offloading-scripts-to-a-web-worker-experimental",
+    "position": 5
+  },
+  {
+    "title": "Script Optimization",
+    "section": "[Inline Scripts](#inline-scripts)",
+    "section_id": "inline-scripts-inline-scripts",
+    "heading_level": 3,
+    "content": "### [Inline Scripts](#inline-scripts)\n\nInline scripts, or scripts not loaded from an external file, are also supported by the Script component. They can be written by placing the JavaScript within curly braces:\n\n```\n<Script id=\"show-banner\">\n  {`document.getElementById('banner').classList.remove('hidden')`}\n</Script>\n```\n\nOr by using the `dangerouslySetInnerHTML` property:\n\n```\n<Script\n  id=\"show-banner\"\n  dangerouslySetInnerHTML={{\n    __html: `document.getElementById('banner').classList.remove('hidden')`,\n  }}\n/>\n```\n\n> **Warning**: An `id` property must be assigned for inline scripts in order for Next.js to track and optimize the script.",
+    "preview": "Inline scripts, or scripts not loaded from an external file, are also supported by the Script component. They can be written by placing the JavaScript within curly braces: ``` <Script id=\"show-banner\"> {`document.getElementById('banner').classList.remove('hidden')`} </Script> ``` Or by using the",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/scripts#inline-scripts-inline-scripts",
+    "position": 6
+  },
+  {
+    "title": "Script Optimization",
+    "section": "[Executing Additional Code](#executing-additional-code)",
+    "section_id": "executing-additional-code-executing-additional-code",
+    "heading_level": 3,
+    "content": "### [Executing Additional Code](#executing-additional-code)\n\nEvent handlers can be used with the Script component to execute additional code after a certain event occurs:\n\n* `onLoad`: Execute code after the script has finished loading.\n* `onReady`: Execute code after the script has finished loading and every time the component is mounted.\n* `onError`: Execute code if the script fails to load.\n\nThese handlers will only work when `next/script` is imported and used inside of a [Client Component](/docs/app/building-your-application/rendering/client-components) where `\"use client\"` is defined as the first line of code:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport Script from 'next/script'\n \nexport default function Page() {\n  return (\n    <>\n      <Script\n        src=\"https://example.com/script.js\"\n        onLoad={() => {\n          console.log('Script has loaded')\n        }}\n      />\n    </>\n  )\n}\n```\n\nRefer to the [`next/script`](/docs/app/api-reference/components/script#onload) API reference to learn more about each event handler and view examples.",
+    "preview": "Event handlers can be used with the Script component to execute additional code after a certain event occurs: * `onLoad`: Execute code after the script has finished loading. * `onReady`: Execute code after the script has finished loading and every time the component is mounted. * `onError`: Execute",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/scripts#executing-additional-code-executing-additional-code",
+    "position": 7
+  },
+  {
+    "title": "Script Optimization",
+    "section": "[Additional Attributes](#additional-attributes)",
+    "section_id": "additional-attributes-additional-attributes",
+    "heading_level": 3,
+    "content": "### [Additional Attributes](#additional-attributes)\n\nThere are many DOM attributes that can be assigned to a `<script>` element that are not used by the Script component, like [`nonce`](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/nonce) or [custom data attributes](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/data-*). Including any additional attributes will automatically forward it to the final, optimized `<script>` element that is included in the HTML.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Script from 'next/script'\n \nexport default function Page() {\n  return (\n    <>\n      <Script\n        src=\"https://example.com/script.js\"\n        id=\"example-script\"\n        nonce=\"XUENAJFW\"\n        data-test=\"script\"\n      />\n    </>\n  )\n}\n```",
+    "preview": "There are many DOM attributes that can be assigned to a `<script>` element that are not used by the Script component, like [`nonce`](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/nonce) or [custom data attributes](https://developer.mozilla.org/docs/Web/HTML/Global_attributes/data-*).",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/scripts#additional-attributes-additional-attributes",
+    "position": 8
+  },
+  {
+    "title": "Script Optimization",
+    "section": "API Reference",
+    "section_id": "api-reference",
+    "heading_level": 2,
+    "content": "## API Reference\n\nLearn more about the next/script API.\n\n[### Script\n\nOptimize third-party scripts in your Next.js application using the built-in `next/script` Component.](/docs/app/api-reference/components/script)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn more about the next/script API. [### Script Optimize third-party scripts in your Next.js application using the built-in `next/script` Component.](/docs/app/api-reference/components/script) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/building-your-application/optimizing/scripts#api-reference",
+    "position": 9
+  }
+]

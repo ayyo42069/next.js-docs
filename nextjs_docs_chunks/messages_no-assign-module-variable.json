@@ -1,0 +1,42 @@
+[
+  {
+    "title": "No assign module variable",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Docs](/docs)[Errors](/docs)No assign module variable",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Docs](/docs)[Errors](/docs)No assign module variable",
+    "url": "https://nextjs.org/docs/messages/no-assign-module-variable#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "No assign module variable",
+    "section": "No assign module variable",
+    "section_id": "no-assign-module-variable",
+    "heading_level": 1,
+    "content": "# No assign module variable\n\n> Prevent assignment to the `module` variable.",
+    "preview": "> Prevent assignment to the `module` variable.",
+    "url": "https://nextjs.org/docs/messages/no-assign-module-variable#no-assign-module-variable",
+    "position": 1
+  },
+  {
+    "title": "No assign module variable",
+    "section": "[Why This Error Occurred](#why-this-error-occurred)",
+    "section_id": "why-this-error-occurred-why-this-error-occurred",
+    "heading_level": 2,
+    "content": "## [Why This Error Occurred](#why-this-error-occurred)\n\nA value is being assigned to the `module` variable. The `module` variable is already used and it is highly likely that assigning to this variable will cause errors.",
+    "preview": "A value is being assigned to the `module` variable. The `module` variable is already used and it is highly likely that assigning to this variable will cause errors.",
+    "url": "https://nextjs.org/docs/messages/no-assign-module-variable#why-this-error-occurred-why-this-error-occurred",
+    "position": 2
+  },
+  {
+    "title": "No assign module variable",
+    "section": "[Possible Ways to Fix It](#possible-ways-to-fix-it)",
+    "section_id": "possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "heading_level": 2,
+    "content": "## [Possible Ways to Fix It](#possible-ways-to-fix-it)\n\nUse a different variable name:\n\nexample.js\n\n```\nlet myModule = {...}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Use a different variable name: example.js [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/messages/no-assign-module-variable#possible-ways-to-fix-it-possible-ways-to-fix-it",
+    "position": 3
+  }
+]

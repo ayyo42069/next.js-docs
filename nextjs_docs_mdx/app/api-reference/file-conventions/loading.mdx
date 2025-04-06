@@ -1,0 +1,58 @@
+---
+title: "loading.js"
+description: "Menu..."
+url: "https://nextjs.org/docs/app/api-reference/file-conventions/loading"
+slug: "/docs/app/api-reference/file-conventions/loading"
+date_crawled: "2025-04-06T12:10:57.002902+00:00"
+---
+
+**Path**: /docs/app/api-reference/file-conventions/loading
+
+Menu
+
+Using App Router
+
+Features available in /app
+
+Using Latest Version
+
+15.2.4
+
+[API Reference](/docs/app/api-reference)[File Conventions](/docs/app/api-reference/file-conventions)loading.js
+
+# loading.js
+
+A **loading** file can create instant loading states built on [Suspense](/docs/app/building-your-application/routing/loading-ui-and-streaming).
+
+By default, this file is a [Server Component](/docs/app/building-your-application/rendering/server-components) - but can also be used as a Client Component through the `"use client"` directive.
+
+app/feed/loading.tsx
+
+TypeScript
+
+JavaScriptTypeScript
+
+```
+export default function Loading() {
+  // Or a custom loading skeleton component
+  return <p>Loading...</p>
+}
+```
+
+Loading UI components do not accept any parameters.
+
+> **Good to know**:
+>
+> * While designing loading UI, you may find it helpful to use the [React Developer Tools](https://react.dev/learn/react-developer-tools) to manually toggle Suspense boundaries.
+
+## [Version History](#version-history)
+
+| Version | Changes |
+| --- | --- |
+| `v13.0.0` | `loading` introduced. |
+
+Was this helpful?
+
+supported.
+
+Send

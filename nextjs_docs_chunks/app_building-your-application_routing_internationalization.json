@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Internationalization",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Routing](/docs/app/building-your-application/routing)Internationalization",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Routing](/docs/app/building-your-application/routing)Internationalization",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/internationalization#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Internationalization",
+    "section": "Internationalization",
+    "section_id": "internationalization",
+    "heading_level": 1,
+    "content": "# Internationalization\n\nNext.js enables you to configure the routing and rendering of content to support multiple languages. Making your site adaptive to different locales includes translated content (localization) and internationalized routes.",
+    "preview": "Next.js enables you to configure the routing and rendering of content to support multiple languages. Making your site adaptive to different locales includes translated content (localization) and internationalized routes.",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/internationalization#internationalization",
+    "position": 1
+  },
+  {
+    "title": "Internationalization",
+    "section": "[Terminology](#terminology)",
+    "section_id": "terminology-terminology",
+    "heading_level": 2,
+    "content": "## [Terminology](#terminology)\n\n* **Locale:** An identifier for a set of language and formatting preferences. This usually includes the preferred language of the user and possibly their geographic region.\n  + `en-US`: English as spoken in the United States\n  + `nl-NL`: Dutch as spoken in the Netherlands\n  + `nl`: Dutch, no specific region",
+    "preview": "* **Locale:** An identifier for a set of language and formatting preferences. This usually includes the preferred language of the user and possibly their geographic region. + `en-US`: English as spoken in the United States + `nl-NL`: Dutch as spoken in the Netherlands + `nl`: Dutch, no specifi",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/internationalization#terminology-terminology",
+    "position": 2
+  },
+  {
+    "title": "Internationalization",
+    "section": "[Routing Overview](#routing-overview)",
+    "section_id": "routing-overview-routing-overview",
+    "heading_level": 2,
+    "content": "## [Routing Overview](#routing-overview)\n\nIt\u2019s recommended to use the user\u2019s language preferences in the browser to select which locale to use. Changing your preferred language will modify the incoming `Accept-Language` header to your application.\n\nFor example, using the following libraries, you can look at an incoming `Request` to determine which locale to select, based on the `Headers`, locales you plan to support, and the default locale.\n\nmiddleware.js\n\n```\nimport { match } from '@formatjs/intl-localematcher'\nimport Negotiator from 'negotiator'\n \nlet headers = { 'accept-language': 'en-US,en;q=0.5' }\nlet languages = new Negotiator({ headers }).languages()\nlet locales = ['en-US', 'nl-NL', 'nl']\nlet defaultLocale = 'en-US'\n \nmatch(languages, locales, defaultLocale) // -> 'en-US'\n```\n\nRouting can be internationalized by either the sub-path (`/fr/products`) or domain (`my-site.fr/products`). With this information, you can now redirect the user based on the locale inside [Middleware](/docs/app/building-your-application/routing/middleware).\n\nmiddleware.js\n\n```\nimport { NextResponse } from \"next/server\";\n \nlet locales = ['en-US', 'nl-NL', 'nl']\n \n// Get the preferred locale, similar to the above or using a library\nfunction getLocale(request) { ... }\n \nexport function middleware(request) {\n  // Check if there is any supported locale in the pathname\n  const { pathname } = request.nextUrl\n  const pathnameHasLocale = locales.some(\n    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`\n  )\n \n  if (pathnameHasLocale) return\n \n  // Redirect if there is no locale\n  const locale = getLocale(request)\n  request.nextUrl.pathname = `/${locale}${pathname}`\n  // e.g. incoming request is /products\n  // The new URL is now /en-US/products\n  return NextResponse.redirect(request.nextUrl)\n}\n \nexport const config = {\n  matcher: [\n    // Skip all internal paths (_next)\n    '/((?!_next).*)',\n    // Optional: only run on root (/) URL\n    // '/'\n  ],\n}\n```\n\nFinally, ensure all special files inside `app/` are nested under `app/[lang]`. This enables the Next.js router to dynamically handle different locales in the route, and forward the `lang` parameter to every layout and page. For example:\n\napp/[lang]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n// You now have access to the current locale\n// e.g. /en-US/products -> `lang` is \"en-US\"\nexport default async function Page({\n  params,\n}: {\n  params: Promise<{ lang: string }>\n}) {\n  const { lang } = await params\n  return ...\n}\n```\n\nThe root layout can also be nested in the new folder (e.g. `app/[lang]/layout.js`).",
+    "preview": "It\u2019s recommended to use the user\u2019s language preferences in the browser to select which locale to use. Changing your preferred language will modify the incoming `Accept-Language` header to your application. For example, using the following libraries, you can look at an incoming `Request` to determin",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/internationalization#routing-overview-routing-overview",
+    "position": 3
+  },
+  {
+    "title": "Internationalization",
+    "section": "[Localization](#localization)",
+    "section_id": "localization-localization",
+    "heading_level": 2,
+    "content": "## [Localization](#localization)\n\nChanging displayed content based on the user\u2019s preferred locale, or localization, is not something specific to Next.js. The patterns described below would work the same with any web application.\n\nLet\u2019s assume we want to support both English and Dutch content inside our application. We might maintain two different \u201cdictionaries\u201d, which are objects that give us a mapping from some key to a localized string. For example:\n\ndictionaries/en.json\n\n```\n{\n  \"products\": {\n    \"cart\": \"Add to Cart\"\n  }\n}\n```\n\ndictionaries/nl.json\n\n```\n{\n  \"products\": {\n    \"cart\": \"Toevoegen aan Winkelwagen\"\n  }\n}\n```\n\nWe can then create a `getDictionary` function to load the translations for the requested locale:\n\napp/[lang]/dictionaries.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport 'server-only'\n \nconst dictionaries = {\n  en: () => import('./dictionaries/en.json').then((module) => module.default),\n  nl: () => import('./dictionaries/nl.json').then((module) => module.default),\n}\n \nexport const getDictionary = async (locale: 'en' | 'nl') =>\n  dictionaries[locale]()\n```\n\nGiven the currently selected language, we can fetch the dictionary inside of a layout or page.\n\napp/[lang]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { getDictionary } from './dictionaries'\n \nexport default async function Page({\n  params,\n}: {\n  params: Promise<{ lang: 'en' | 'nl' }>\n}) {\n  const { lang } = await params\n  const dict = await getDictionary(lang) // en\n  return <button>{dict.products.cart}</button> // Add to Cart\n}\n```\n\nBecause all layouts and pages in the `app/` directory default to [Server Components](/docs/app/building-your-application/rendering/server-components), we do not need to worry about the size of the translation files affecting our client-side JavaScript bundle size. This code will **only run on the server**, and only the resulting HTML will be sent to the browser.",
+    "preview": "Changing displayed content based on the user\u2019s preferred locale, or localization, is not something specific to Next.js. The patterns described below would work the same with any web application. Let\u2019s assume we want to support both English and Dutch content inside our application. We might maintain",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/internationalization#localization-localization",
+    "position": 4
+  },
+  {
+    "title": "Internationalization",
+    "section": "[Static Generation](#static-generation)",
+    "section_id": "static-generation-static-generation",
+    "heading_level": 2,
+    "content": "## [Static Generation](#static-generation)\n\nTo generate static routes for a given set of locales, we can use `generateStaticParams` with any page or layout. This can be global, for example, in the root layout:\n\napp/[lang]/layout.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function generateStaticParams() {\n  return [{ lang: 'en-US' }, { lang: 'de' }]\n}\n \nexport default async function RootLayout({\n  children,\n  params,\n}: Readonly<{\n  children: React.ReactNode\n  params: Promise<{ lang: 'en-US' | 'de' }>\n}>) {\n  return (\n    <html lang={(await params).lang}>\n      <body>{children}</body>\n    </html>\n  )\n}\n```",
+    "preview": "To generate static routes for a given set of locales, we can use `generateStaticParams` with any page or layout. This can be global, for example, in the root layout: app/[lang]/layout.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/internationalization#static-generation-static-generation",
+    "position": 5
+  },
+  {
+    "title": "Internationalization",
+    "section": "[Resources](#resources)",
+    "section_id": "resources-resources",
+    "heading_level": 2,
+    "content": "## [Resources](#resources)\n\n* [Minimal i18n routing and translations](https://github.com/vercel/next.js/tree/canary/examples/i18n-routing)\n* [`next-intl`](https://next-intl.dev)\n* [`next-international`](https://github.com/QuiiBz/next-international)\n* [`next-i18n-router`](https://github.com/i18nexus/next-i18n-router)\n* [`paraglide-next`](https://inlang.com/m/osslbuzt/paraglide-next-i18n)\n* [`lingui`](https://lingui.dev)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "* [Minimal i18n routing and translations](https://github.com/vercel/next.js/tree/canary/examples/i18n-routing) * [`next-intl`](https://next-intl.dev) * [`next-international`](https://github.com/QuiiBz/next-international) * [`next-i18n-router`](https://github.com/i18nexus/next-i18n-router) * [`paragl",
+    "url": "https://nextjs.org/docs/app/building-your-application/routing/internationalization#resources-resources",
+    "position": 6
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "title": "NextResponse",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)NextResponse",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)NextResponse",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "NextResponse",
+    "section": "NextResponse",
+    "section_id": "nextresponse",
+    "heading_level": 1,
+    "content": "# NextResponse\n\nNextResponse extends the [Web Response API](https://developer.mozilla.org/docs/Web/API/Response) with additional convenience methods.",
+    "preview": "NextResponse extends the [Web Response API](https://developer.mozilla.org/docs/Web/API/Response) with additional convenience methods.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#nextresponse",
+    "position": 1
+  },
+  {
+    "title": "NextResponse",
+    "section": "[`cookies`](#cookies)",
+    "section_id": "cookies-cookies",
+    "heading_level": 2,
+    "content": "## [`cookies`](#cookies)\n\nRead or mutate the [`Set-Cookie`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie) header of the response.",
+    "preview": "Read or mutate the [`Set-Cookie`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie) header of the response.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#cookies-cookies",
+    "position": 2
+  },
+  {
+    "title": "NextResponse",
+    "section": "[`set(name, value)`](#setname-value)",
+    "section_id": "set-name-value-setname-value",
+    "heading_level": 3,
+    "content": "### [`set(name, value)`](#setname-value)\n\nGiven a name, set a cookie with the given value on the response.\n\n```\n// Given incoming request /home\nlet response = NextResponse.next()\n// Set a cookie to hide the banner\nresponse.cookies.set('show-banner', 'false')\n// Response will have a `Set-Cookie:show-banner=false;path=/home` header\nreturn response\n```",
+    "preview": "Given a name, set a cookie with the given value on the response. ``` // Given incoming request /home let response = NextResponse.next() // Set a cookie to hide the banner response.cookies.set('show-banner', 'false') // Response will have a `Set-Cookie:show-banner=false;path=/home` header return res",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#set-name-value-setname-value",
+    "position": 3
+  },
+  {
+    "title": "NextResponse",
+    "section": "[`get(name)`](#getname)",
+    "section_id": "get-name-getname",
+    "heading_level": 3,
+    "content": "### [`get(name)`](#getname)\n\nGiven a cookie name, return the value of the cookie. If the cookie is not found, `undefined` is returned. If multiple cookies are found, the first one is returned.\n\n```\n// Given incoming request /home\nlet response = NextResponse.next()\n// { name: 'show-banner', value: 'false', Path: '/home' }\nresponse.cookies.get('show-banner')\n```",
+    "preview": "Given a cookie name, return the value of the cookie. If the cookie is not found, `undefined` is returned. If multiple cookies are found, the first one is returned. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#get-name-getname",
+    "position": 4
+  },
+  {
+    "title": "NextResponse",
+    "section": "[`getAll()`](#getall)",
+    "section_id": "getall-getall",
+    "heading_level": 3,
+    "content": "### [`getAll()`](#getall)\n\nGiven a cookie name, return the values of the cookie. If no name is given, return all cookies on the response.\n\n```\n// Given incoming request /home\nlet response = NextResponse.next()\n// [\n//   { name: 'experiments', value: 'new-pricing-page', Path: '/home' },\n//   { name: 'experiments', value: 'winter-launch', Path: '/home' },\n// ]\nresponse.cookies.getAll('experiments')\n// Alternatively, get all cookies for the response\nresponse.cookies.getAll()\n```",
+    "preview": "Given a cookie name, return the values of the cookie. If no name is given, return all cookies on the response. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#getall-getall",
+    "position": 5
+  },
+  {
+    "title": "NextResponse",
+    "section": "[`delete(name)`](#deletename)",
+    "section_id": "delete-name-deletename",
+    "heading_level": 3,
+    "content": "### [`delete(name)`](#deletename)\n\nGiven a cookie name, delete the cookie from the response.\n\n```\n// Given incoming request /home\nlet response = NextResponse.next()\n// Returns true for deleted, false is nothing is deleted\nresponse.cookies.delete('experiments')\n```",
+    "preview": "Given a cookie name, delete the cookie from the response. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#delete-name-deletename",
+    "position": 6
+  },
+  {
+    "title": "NextResponse",
+    "section": "[`json()`](#json)",
+    "section_id": "json-json",
+    "heading_level": 2,
+    "content": "## [`json()`](#json)\n\nProduce a response with the given JSON body.\n\napp/api/route.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { NextResponse } from 'next/server'\n \nexport async function GET(request: Request) {\n  return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })\n}\n```",
+    "preview": "Produce a response with the given JSON body. app/api/route.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#json-json",
+    "position": 7
+  },
+  {
+    "title": "NextResponse",
+    "section": "[`redirect()`](#redirect)",
+    "section_id": "redirect-redirect",
+    "heading_level": 2,
+    "content": "## [`redirect()`](#redirect)\n\nProduce a response that redirects to a [URL](https://developer.mozilla.org/docs/Web/API/URL).\n\n```\nimport { NextResponse } from 'next/server'\n \nreturn NextResponse.redirect(new URL('/new', request.url))\n```\n\nThe [URL](https://developer.mozilla.org/docs/Web/API/URL) can be created and modified before being used in the `NextResponse.redirect()` method. For example, you can use the `request.nextUrl` property to get the current URL, and then modify it to redirect to a different URL.\n\n```\nimport { NextResponse } from 'next/server'\n \n// Given an incoming request...\nconst loginUrl = new URL('/login', request.url)\n// Add ?from=/incoming-url to the /login URL\nloginUrl.searchParams.set('from', request.nextUrl.pathname)\n// And redirect to the new URL\nreturn NextResponse.redirect(loginUrl)\n```",
+    "preview": "Produce a response that redirects to a [URL](https://developer.mozilla.org/docs/Web/API/URL). [Code Block] The [URL](https://developer.mozilla.org/docs/Web/API/URL) can be created and modified before being used in the `NextResponse.redirect()` method. For example, you can use the `request.nextUrl`",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#redirect-redirect",
+    "position": 8
+  },
+  {
+    "title": "NextResponse",
+    "section": "[`rewrite()`](#rewrite)",
+    "section_id": "rewrite-rewrite",
+    "heading_level": 2,
+    "content": "## [`rewrite()`](#rewrite)\n\nProduce a response that rewrites (proxies) the given [URL](https://developer.mozilla.org/docs/Web/API/URL) while preserving the original URL.\n\n```\nimport { NextResponse } from 'next/server'\n \n// Incoming request: /about, browser shows /about\n// Rewritten request: /proxy, browser shows /about\nreturn NextResponse.rewrite(new URL('/proxy', request.url))\n```",
+    "preview": "Produce a response that rewrites (proxies) the given [URL](https://developer.mozilla.org/docs/Web/API/URL) while preserving the original URL. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#rewrite-rewrite",
+    "position": 9
+  },
+  {
+    "title": "NextResponse",
+    "section": "[`next()`](#next)",
+    "section_id": "next-next",
+    "heading_level": 2,
+    "content": "## [`next()`](#next)\n\nThe `next()` method is useful for Middleware, as it allows you to return early and continue routing.\n\n```\nimport { NextResponse } from 'next/server'\n \nreturn NextResponse.next()\n```\n\nYou can also forward `headers` when producing the response:\n\n```\nimport { NextResponse } from 'next/server'\n \n// Given an incoming request...\nconst newHeaders = new Headers(request.headers)\n// Add a new header\nnewHeaders.set('x-version', '123')\n// And produce a response with the new headers\nreturn NextResponse.next({\n  request: {\n    // New request headers\n    headers: newHeaders,\n  },\n})\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The `next()` method is useful for Middleware, as it allows you to return early and continue routing. [Code Block] You can also forward `headers` when producing the response: [Code Block] Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/next-response#next-next",
+    "position": 10
+  }
+]

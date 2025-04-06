@@ -1,0 +1,32 @@
+[
+  {
+    "title": "authInterrupts",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)authInterrupts",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)authInterrupts",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/authInterrupts#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "authInterrupts",
+    "section": "authInterrupts",
+    "section_id": "authinterrupts",
+    "heading_level": 1,
+    "content": "# authInterrupts\n\nThis feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nThe `authInterrupts` configuration option allows you to use [`forbidden`](/docs/app/api-reference/functions/forbidden) and [`unauthorized`](/docs/app/api-reference/functions/unauthorized) APIs in your application. While these functions are experimental, you must enable the `authInterrupts` option in your `next.config.js` file to use them:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    authInterrupts: true,\n  },\n}\n \nexport default nextConfig\n```",
+    "preview": "This feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). The `authInterrupts` configuration option allows y",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/authInterrupts#authinterrupts",
+    "position": 1
+  },
+  {
+    "title": "authInterrupts",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\n[### forbidden\n\nAPI Reference for the forbidden function.](/docs/app/api-reference/functions/forbidden)[### unauthorized\n\nAPI Reference for the unauthorized function.](/docs/app/api-reference/functions/unauthorized)[### forbidden.js\n\nAPI reference for the forbidden.js special file.](/docs/app/api-reference/file-conventions/forbidden)[### unauthorized.js\n\nAPI reference for the unauthorized.js special file.](/docs/app/api-reference/file-conventions/unauthorized)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### forbidden API Reference for the forbidden function.](/docs/app/api-reference/functions/forbidden)[### unauthorized API Reference for the unauthorized function.](/docs/app/api-reference/functions/unauthorized)[### forbidden.js API reference for the forbidden.js special file.](/docs/app/api-re",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/authInterrupts#next-steps",
+    "position": 2
+  }
+]

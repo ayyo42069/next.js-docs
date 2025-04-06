@@ -1,0 +1,22 @@
+[
+  {
+    "title": "typedRoutes",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)typedRoutes",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Configuration](/docs/app/api-reference/config)[next.config.js](/docs/app/api-reference/config/next-config-js)typedRoutes",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/typedRoutes#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "typedRoutes",
+    "section": "typedRoutes",
+    "section_id": "typedroutes",
+    "heading_level": 1,
+    "content": "# typedRoutes\n\nThis feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nExperimental support for [statically typed links](/docs/app/api-reference/config/typescript#statically-typed-links). This feature requires using the App Router as well as TypeScript in your project.\n\nnext.config.js\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  experimental: {\n    typedRoutes: true,\n  },\n}\n \nmodule.exports = nextConfig\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "This feature is currently experimental and subject to change, it's not recommended for production. Try it out and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). Experimental support for [statically typed links](/docs/app/api-reference/config/typescript#statically-typed-l",
+    "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/typedRoutes#typedroutes",
+    "position": 1
+  }
+]

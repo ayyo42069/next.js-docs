@@ -1,0 +1,132 @@
+[
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Configuring](/docs/app/building-your-application/configuring)Progressive Web Applications (PWA)",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Configuring](/docs/app/building-your-application/configuring)Progressive Web Applications (PWA)",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "Progressive Web Applications (PWA)",
+    "section_id": "progressive-web-applications-pwa",
+    "heading_level": 1,
+    "content": "# Progressive Web Applications (PWA)\n\nProgressive Web Applications (PWAs) offer the reach and accessibility of web applications combined with the features and user experience of native mobile apps. With Next.js, you can create PWAs that provide a seamless, app-like experience across all platforms without the need for multiple codebases or app store approvals.\n\nPWAs allow you to:\n\n* Deploy updates instantly without waiting for app store approval\n* Create cross-platform applications with a single codebase\n* Provide native-like features such as home screen installation and push notifications",
+    "preview": "Progressive Web Applications (PWAs) offer the reach and accessibility of web applications combined with the features and user experience of native mobile apps. With Next.js, you can create PWAs that provide a seamless, app-like experience across all platforms without the need for multiple codebases",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#progressive-web-applications-pwa",
+    "position": 1
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "[Creating a PWA with Next.js](#creating-a-pwa-with-nextjs)",
+    "section_id": "creating-a-pwa-with-next-js-creating-a-pwa-with-nextjs",
+    "heading_level": 2,
+    "content": "## [Creating a PWA with Next.js](#creating-a-pwa-with-nextjs)",
+    "preview": "## [Creating a PWA with Next.js](#creating-a-pwa-with-nextjs)",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#creating-a-pwa-with-next-js-creating-a-pwa-with-nextjs",
+    "position": 2
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "[1. Creating the Web App Manifest](#1-creating-the-web-app-manifest)",
+    "section_id": "1-creating-the-web-app-manifest-1-creating-the-web-app-manifest",
+    "heading_level": 3,
+    "content": "### [1. Creating the Web App Manifest](#1-creating-the-web-app-manifest)\n\nNext.js provides built-in support for creating a [web app manifest](/docs/app/api-reference/file-conventions/metadata/manifest) using the App Router. You can create either a static or dynamic manifest file:\n\nFor example, create a `app/manifest.ts` or `app/manifest.json` file:\n\napp/manifest.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { MetadataRoute } from 'next'\n \nexport default function manifest(): MetadataRoute.Manifest {\n  return {\n    name: 'Next.js PWA',\n    short_name: 'NextPWA',\n    description: 'A Progressive Web App built with Next.js',\n    start_url: '/',\n    display: 'standalone',\n    background_color: '#ffffff',\n    theme_color: '#000000',\n    icons: [\n      {\n        src: '/icon-192x192.png',\n        sizes: '192x192',\n        type: 'image/png',\n      },\n      {\n        src: '/icon-512x512.png',\n        sizes: '512x512',\n        type: 'image/png',\n      },\n    ],\n  }\n}\n```\n\nThis file should contain information about the name, icons, and how it should be displayed as an icon on the user's device. This will allow users to install your PWA on their home screen, providing a native app-like experience.\n\nYou can use tools like [favicon generators](https://realfavicongenerator.net/) to create the different icon sets and place the generated files in your `public/` folder.",
+    "preview": "Next.js provides built-in support for creating a [web app manifest](/docs/app/api-reference/file-conventions/metadata/manifest) using the App Router. You can create either a static or dynamic manifest file: For example, create a `app/manifest.ts` or `app/manifest.json` file: app/manifest.ts TypeS",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#1-creating-the-web-app-manifest-1-creating-the-web-app-manifest",
+    "position": 3
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "[2. Implementing Web Push Notifications](#2-implementing-web-push-notifications)",
+    "section_id": "2-implementing-web-push-notifications-2-implementing-web-push-notifications",
+    "heading_level": 3,
+    "content": "### [2. Implementing Web Push Notifications](#2-implementing-web-push-notifications)\n\nWeb Push Notifications are supported with all modern browsers, including:\n\n* iOS 16.4+ for applications installed to the home screen\n* Safari 16 for macOS 13 or later\n* Chromium based browsers\n* Firefox\n\nThis makes PWAs a viable alternative to native apps. Notably, you can trigger install prompts without needing offline support.\n\nWeb Push Notifications allow you to re-engage users even when they're not actively using your app. Here's how to implement them in a Next.js application:\n\nFirst, let's create the main page component in `app/page.tsx`. We'll break it down into smaller parts for better understanding. First, we\u2019ll add some of the imports and utilities we\u2019ll need. It\u2019s okay that the referenced Server Actions do not yet exist:\n\n```\n'use client'\n \nimport { useState, useEffect } from 'react'\nimport { subscribeUser, unsubscribeUser, sendNotification } from './actions'\n \nfunction urlBase64ToUint8Array(base64String: string) {\n  const padding = '='.repeat((4 - (base64String.length % 4)) % 4)\n  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/')\n \n  const rawData = window.atob(base64)\n  const outputArray = new Uint8Array(rawData.length)\n \n  for (let i = 0; i < rawData.length; ++i) {\n    outputArray[i] = rawData.charCodeAt(i)\n  }\n  return outputArray\n}\n```\n\nLet\u2019s now add a component to manage subscribing, unsubscribing, and sending push notifications.\n\n```\nfunction PushNotificationManager() {\n  const [isSupported, setIsSupported] = useState(false)\n  const [subscription, setSubscription] = useState<PushSubscription | null>(\n    null\n  )\n  const [message, setMessage] = useState('')\n \n  useEffect(() => {\n    if ('serviceWorker' in navigator && 'PushManager' in window) {\n      setIsSupported(true)\n      registerServiceWorker()\n    }\n  }, [])\n \n  async function registerServiceWorker() {\n    const registration = await navigator.serviceWorker.register('/sw.js', {\n      scope: '/',\n      updateViaCache: 'none',\n    })\n    const sub = await registration.pushManager.getSubscription()\n    setSubscription(sub)\n  }\n \n  async function subscribeToPush() {\n    const registration = await navigator.serviceWorker.ready\n    const sub = await registration.pushManager.subscribe({\n      userVisibleOnly: true,\n      applicationServerKey: urlBase64ToUint8Array(\n        process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!\n      ),\n    })\n    setSubscription(sub)\n    const serializedSub = JSON.parse(JSON.stringify(sub))\n    await subscribeUser(serializedSub)\n  }\n \n  async function unsubscribeFromPush() {\n    await subscription?.unsubscribe()\n    setSubscription(null)\n    await unsubscribeUser()\n  }\n \n  async function sendTestNotification() {\n    if (subscription) {\n      await sendNotification(message)\n      setMessage('')\n    }\n  }\n \n  if (!isSupported) {\n    return <p>Push notifications are not supported in this browser.</p>\n  }\n \n  return (\n    <div>\n      <h3>Push Notifications</h3>\n      {subscription ? (\n        <>\n          <p>You are subscribed to push notifications.</p>\n          <button onClick={unsubscribeFromPush}>Unsubscribe</button>\n          <input\n            type=\"text\"\n            placeholder=\"Enter notification message\"\n            value={message}\n            onChange={(e) => setMessage(e.target.value)}\n          />\n          <button onClick={sendTestNotification}>Send Test</button>\n        </>\n      ) : (\n        <>\n          <p>You are not subscribed to push notifications.</p>\n          <button onClick={subscribeToPush}>Subscribe</button>\n        </>\n      )}\n    </div>\n  )\n}\n```\n\nFinally, let\u2019s create a component to show a message for iOS devices to instruct them to install to their home screen, and only show this if the app is not already installed.\n\n```\nfunction InstallPrompt() {\n  const [isIOS, setIsIOS] = useState(false)\n  const [isStandalone, setIsStandalone] = useState(false)\n \n  useEffect(() => {\n    setIsIOS(\n      /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream\n    )\n \n    setIsStandalone(window.matchMedia('(display-mode: standalone)').matches)\n  }, [])\n \n  if (isStandalone) {\n    return null // Don't show install button if already installed\n  }\n \n  return (\n    <div>\n      <h3>Install App</h3>\n      <button>Add to Home Screen</button>\n      {isIOS && (\n        <p>\n          To install this app on your iOS device, tap the share button\n          <span role=\"img\" aria-label=\"share icon\">\n            {' '}\n            \u238b{' '}\n          </span>\n          and then \"Add to Home Screen\"\n          <span role=\"img\" aria-label=\"plus icon\">\n            {' '}\n            \u2795{' '}\n          </span>.\n        </p>\n      )}\n    </div>\n  )\n}\n \nexport default function Page() {\n  return (\n    <div>\n      <PushNotificationManager />\n      <InstallPrompt />\n    </div>\n  )\n}\n```\n\nNow, let\u2019s create the Server Actions which this file calls.",
+    "preview": "Web Push Notifications are supported with all modern browsers, including: * iOS 16.4+ for applications installed to the home screen * Safari 16 for macOS 13 or later * Chromium based browsers * Firefox This makes PWAs a viable alternative to native apps. Notably, you can trigger install prompts wi",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#2-implementing-web-push-notifications-2-implementing-web-push-notifications",
+    "position": 4
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "[3. Implementing Server Actions](#3-implementing-server-actions)",
+    "section_id": "3-implementing-server-actions-3-implementing-server-actions",
+    "heading_level": 3,
+    "content": "### [3. Implementing Server Actions](#3-implementing-server-actions)\n\nCreate a new file to contain your actions at `app/actions.ts`. This file will handle creating subscriptions, deleting subscriptions, and sending notifications.\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport webpush from 'web-push'\n \nwebpush.setVapidDetails(\n  '<mailto:your-email@example.com>',\n  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,\n  process.env.VAPID_PRIVATE_KEY!\n)\n \nlet subscription: PushSubscription | null = null\n \nexport async function subscribeUser(sub: PushSubscription) {\n  subscription = sub\n  // In a production environment, you would want to store the subscription in a database\n  // For example: await db.subscriptions.create({ data: sub })\n  return { success: true }\n}\n \nexport async function unsubscribeUser() {\n  subscription = null\n  // In a production environment, you would want to remove the subscription from the database\n  // For example: await db.subscriptions.delete({ where: { ... } })\n  return { success: true }\n}\n \nexport async function sendNotification(message: string) {\n  if (!subscription) {\n    throw new Error('No subscription available')\n  }\n \n  try {\n    await webpush.sendNotification(\n      subscription,\n      JSON.stringify({\n        title: 'Test Notification',\n        body: message,\n        icon: '/icon.png',\n      })\n    )\n    return { success: true }\n  } catch (error) {\n    console.error('Error sending push notification:', error)\n    return { success: false, error: 'Failed to send notification' }\n  }\n}\n```\n\nSending a notification will be handled by our service worker, created in step 5.\n\nIn a production environment, you would want to store the subscription in a database for persistence across server restarts and to manage multiple users' subscriptions.",
+    "preview": "Create a new file to contain your actions at `app/actions.ts`. This file will handle creating subscriptions, deleting subscriptions, and sending notifications. app/actions.ts TypeScript JavaScriptTypeScript [Code Block] Sending a notification will be handled by our service worker, created in st",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#3-implementing-server-actions-3-implementing-server-actions",
+    "position": 5
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "[4. Generating VAPID Keys](#4-generating-vapid-keys)",
+    "section_id": "4-generating-vapid-keys-4-generating-vapid-keys",
+    "heading_level": 3,
+    "content": "### [4. Generating VAPID Keys](#4-generating-vapid-keys)\n\nTo use the Web Push API, you need to generate [VAPID](https://vapidkeys.com/) keys. The simplest way is to use the web-push CLI directly:\n\nFirst, install web-push globally:\n\nTerminal\n\n```\nnpm install -g web-push\n```\n\nGenerate the VAPID keys by running:\n\nTerminal\n\n```\nweb-push generate-vapid-keys\n```\n\nCopy the output and paste the keys into your `.env` file:\n\n```\nNEXT_PUBLIC_VAPID_PUBLIC_KEY=your_public_key_here\nVAPID_PRIVATE_KEY=your_private_key_here\n```",
+    "preview": "To use the Web Push API, you need to generate [VAPID](https://vapidkeys.com/) keys. The simplest way is to use the web-push CLI directly: First, install web-push globally: Terminal [Code Block] Generate the VAPID keys by running: Terminal [Code Block] Copy the output and paste the keys into y",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#4-generating-vapid-keys-4-generating-vapid-keys",
+    "position": 6
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "[5. Creating a Service Worker](#5-creating-a-service-worker)",
+    "section_id": "5-creating-a-service-worker-5-creating-a-service-worker",
+    "heading_level": 3,
+    "content": "### [5. Creating a Service Worker](#5-creating-a-service-worker)\n\nCreate a `public/sw.js` file for your service worker:\n\npublic/sw.js\n\n```\nself.addEventListener('push', function (event) {\n  if (event.data) {\n    const data = event.data.json()\n    const options = {\n      body: data.body,\n      icon: data.icon || '/icon.png',\n      badge: '/badge.png',\n      vibrate: [100, 50, 100],\n      data: {\n        dateOfArrival: Date.now(),\n        primaryKey: '2',\n      },\n    }\n    event.waitUntil(self.registration.showNotification(data.title, options))\n  }\n})\n \nself.addEventListener('notificationclick', function (event) {\n  console.log('Notification click received.')\n  event.notification.close()\n  event.waitUntil(clients.openWindow('<https://your-website.com>'))\n})\n```\n\nThis service worker supports custom images and notifications. It handles incoming push events and notification clicks.\n\n* You can set custom icons for notifications using the `icon` and `badge` properties.\n* The `vibrate` pattern can be adjusted to create custom vibration alerts on supported devices.\n* Additional data can be attached to the notification using the `data` property.\n\nRemember to test your service worker thoroughly to ensure it behaves as expected across different devices and browsers. Also, make sure to update the `'https://your-website.com'` link in the `notificationclick` event listener to the appropriate URL for your application.",
+    "preview": "Create a `public/sw.js` file for your service worker: public/sw.js [Code Block] This service worker supports custom images and notifications. It handles incoming push events and notification clicks. * You can set custom icons for notifications using the `icon` and `badge` properties. * The `vibr",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#5-creating-a-service-worker-5-creating-a-service-worker",
+    "position": 7
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "[6. Adding to Home Screen](#6-adding-to-home-screen)",
+    "section_id": "6-adding-to-home-screen-6-adding-to-home-screen",
+    "heading_level": 3,
+    "content": "### [6. Adding to Home Screen](#6-adding-to-home-screen)\n\nThe `InstallPrompt` component defined in step 2 shows a message for iOS devices to instruct them to install to their home screen.\n\nTo ensure your application can be installed to a mobile home screen, you must have:\n\n1. A valid web app manifest (created in step 1)\n2. The website served over HTTPS\n\nModern browsers will automatically show an installation prompt to users when these criteria are met. You can provide a custom installation button with [`beforeinstallprompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeinstallprompt_event), however, we do not recommend this as it is not cross browser and platform (does not work on Safari iOS).",
+    "preview": "The `InstallPrompt` component defined in step 2 shows a message for iOS devices to instruct them to install to their home screen. To ensure your application can be installed to a mobile home screen, you must have: 1. A valid web app manifest (created in step 1) 2. The website served over HTTPS Mo",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#6-adding-to-home-screen-6-adding-to-home-screen",
+    "position": 8
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "[7. Testing Locally](#7-testing-locally)",
+    "section_id": "7-testing-locally-7-testing-locally",
+    "heading_level": 3,
+    "content": "### [7. Testing Locally](#7-testing-locally)\n\nTo ensure you can view notifications locally, ensure that:\n\n* You are [running locally with HTTPS](/docs/app/api-reference/cli/next#using-https-during-development)\n  + Use `next dev --experimental-https` for testing\n* Your browser (Chrome, Safari, Firefox) has notifications enabled\n  + When prompted locally, accept permissions to use notifications\n  + Ensure notifications are not disabled globally for the entire browser\n  + If you are still not seeing notifications, try using another browser to debug",
+    "preview": "To ensure you can view notifications locally, ensure that: * You are [running locally with HTTPS](/docs/app/api-reference/cli/next#using-https-during-development) + Use `next dev --experimental-https` for testing * Your browser (Chrome, Safari, Firefox) has notifications enabled + When prompted",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#7-testing-locally-7-testing-locally",
+    "position": 9
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "[8. Securing your application](#8-securing-your-application)",
+    "section_id": "8-securing-your-application-8-securing-your-application",
+    "heading_level": 3,
+    "content": "### [8. Securing your application](#8-securing-your-application)\n\nSecurity is a crucial aspect of any web application, especially for PWAs. Next.js allows you to configure security headers using the `next.config.js` file. For example:\n\nnext.config.js\n\n```\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        source: '/(.*)',\n        headers: [\n          {\n            key: 'X-Content-Type-Options',\n            value: 'nosniff',\n          },\n          {\n            key: 'X-Frame-Options',\n            value: 'DENY',\n          },\n          {\n            key: 'Referrer-Policy',\n            value: 'strict-origin-when-cross-origin',\n          },\n        ],\n      },\n      {\n        source: '/sw.js',\n        headers: [\n          {\n            key: 'Content-Type',\n            value: 'application/javascript; charset=utf-8',\n          },\n          {\n            key: 'Cache-Control',\n            value: 'no-cache, no-store, must-revalidate',\n          },\n          {\n            key: 'Content-Security-Policy',\n            value: \"default-src 'self'; script-src 'self'\",\n          },\n        ],\n      },\n    ]\n  },\n}\n```\n\nLet\u2019s go over each of these options:\n\n1. Global Headers (applied to all routes):\n   1. `X-Content-Type-Options: nosniff`: Prevents MIME type sniffing, reducing the risk of malicious file uploads.\n   2. `X-Frame-Options: DENY`: Protects against clickjacking attacks by preventing your site from being embedded in iframes.\n   3. `Referrer-Policy: strict-origin-when-cross-origin`: Controls how much referrer information is included with requests, balancing security and functionality.\n2. Service Worker Specific Headers:\n   1. `Content-Type: application/javascript; charset=utf-8`: Ensures the service worker is interpreted correctly as JavaScript.\n   2. `Cache-Control: no-cache, no-store, must-revalidate`: Prevents caching of the service worker, ensuring users always get the latest version.\n   3. `Content-Security-Policy: default-src 'self'; script-src 'self'`: Implements a strict Content Security Policy for the service worker, only allowing scripts from the same origin.\n\nLearn more about defining [Content Security Policies](/docs/app/building-your-application/configuring/content-security-policy) with Next.js.",
+    "preview": "Security is a crucial aspect of any web application, especially for PWAs. Next.js allows you to configure security headers using the `next.config.js` file. For example: next.config.js [Code Block] Let\u2019s go over each of these options: 1. Global Headers (applied to all routes): 1. `X-Content-Ty",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#8-securing-your-application-8-securing-your-application",
+    "position": 10
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "[Next Steps](#next-steps)",
+    "section_id": "next-steps-next-steps",
+    "heading_level": 2,
+    "content": "## [Next Steps](#next-steps)\n\n1. **Exploring PWA Capabilities**: PWAs can leverage various web APIs to provide advanced functionality. Consider exploring features like background sync, periodic background sync, or the File System Access API to enhance your application. For inspiration and up-to-date information on PWA capabilities, you can refer to resources like [What PWA Can Do Today](https://whatpwacando.today/).\n2. **Static Exports:** If your application requires not running a server, and instead using a static export of files, you can update the Next.js configuration to enable this change. Learn more in the [Next.js Static Export documentation](/docs/app/building-your-application/deploying/static-exports). However, you will need to move from Server Actions to calling an external API, as well as moving your defined headers to your proxy.\n3. **Offline Support**: To provide offline functionality, one option is [Serwist](https://github.com/serwist/serwist) with Next.js. You can find an example of how to integrate Serwist with Next.js in their [documentation](https://github.com/serwist/serwist/tree/main/examples/next-basic). **Note:** this plugin currently requires webpack configuration.\n4. **Security Considerations**: Ensure that your service worker is properly secured. This includes using HTTPS, validating the source of push messages, and implementing proper error handling.\n5. **User Experience**: Consider implementing progressive enhancement techniques to ensure your app works well even when certain PWA features are not supported by the user's browser.",
+    "preview": "1. **Exploring PWA Capabilities**: PWAs can leverage various web APIs to provide advanced functionality. Consider exploring features like background sync, periodic background sync, or the File System Access API to enhance your application. For inspiration and up-to-date information on PWA capabiliti",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#next-steps-next-steps",
+    "position": 11
+  },
+  {
+    "title": "Progressive Web Applications (PWA)",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\n[### manifest.json\n\nAPI Reference for manifest.json file.](/docs/app/api-reference/file-conventions/metadata/manifest)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "[### manifest.json API Reference for manifest.json file.](/docs/app/api-reference/file-conventions/metadata/manifest) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/building-your-application/configuring/progressive-web-apps#next-steps",
+    "position": 12
+  }
+]

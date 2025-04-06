@@ -1,0 +1,142 @@
+[
+  {
+    "title": "Data Fetching and Caching",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Data Fetching](/docs/app/building-your-application/data-fetching)Data Fetching and Caching",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Data Fetching](/docs/app/building-your-application/data-fetching)Data Fetching and Caching",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "Data Fetching and Caching",
+    "section_id": "data-fetching-and-caching",
+    "heading_level": 1,
+    "content": "# Data Fetching and Caching\n\nExamples\n\n* [Next.js Commerce](https://vercel.com/templates/next.js/nextjs-commerce)\n* [On-Demand ISR](https://on-demand-isr.vercel.app)\n* [Next.js Forms](https://github.com/vercel/next.js/tree/canary/examples/next-forms)\n\nThis guide will walk you through the basics of data fetching and caching in Next.js, providing practical examples and best practices.\n\nHere's a minimal example of data fetching in Next.js:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page() {\n  const data = await fetch('https://api.vercel.app/blog')\n  const posts = await data.json()\n  return (\n    <ul>\n      {posts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```\n\nThis example demonstrates a basic server-side data fetch using the `fetch` API in an asynchronous React Server Component.",
+    "preview": "Examples * [Next.js Commerce](https://vercel.com/templates/next.js/nextjs-commerce) * [On-Demand ISR](https://on-demand-isr.vercel.app) * [Next.js Forms](https://github.com/vercel/next.js/tree/canary/examples/next-forms) This guide will walk you through the basics of data fetching and caching in N",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#data-fetching-and-caching",
+    "position": 1
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Reference](#reference)",
+    "section_id": "reference-reference",
+    "heading_level": 2,
+    "content": "## [Reference](#reference)\n\n* [`fetch`](/docs/app/api-reference/functions/fetch)\n* React [`cache`](https://react.dev/reference/react/cache)\n* Next.js [`unstable_cache`](/docs/app/api-reference/functions/unstable_cache)",
+    "preview": "* [`fetch`](/docs/app/api-reference/functions/fetch) * React [`cache`](https://react.dev/reference/react/cache) * Next.js [`unstable_cache`](/docs/app/api-reference/functions/unstable_cache)",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#reference-reference",
+    "position": 2
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#examples-examples",
+    "position": 3
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Fetching data on the server with the `fetch` API](#fetching-data-on-the-server-with-the-fetch-api)",
+    "section_id": "fetching-data-on-the-server-with-the-fetch-api-fetching-data-on-the-server-with-the-fetch-api",
+    "heading_level": 3,
+    "content": "### [Fetching data on the server with the `fetch` API](#fetching-data-on-the-server-with-the-fetch-api)\n\nThis component will fetch and display a list of blog posts. The response from `fetch` is not cached by default.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page() {\n  const data = await fetch('https://api.vercel.app/blog')\n  const posts = await data.json()\n  return (\n    <ul>\n      {posts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```\n\nIf you are not using any [Dynamic APIs](/docs/app/building-your-application/rendering/server-components#dynamic-rendering) anywhere else in this route, it will be prerendered during `next build` to a static page. The data can then be updated using [Incremental Static Regeneration](/docs/app/building-your-application/data-fetching/incremental-static-regeneration).\n\nTo prevent the page from prerendering, you can add the following to your file:\n\n```\nexport const dynamic = 'force-dynamic'\n```\n\nHowever, you will commonly use functions like `cookies`, `headers`, or reading the incoming `searchParams` from the page props, which will automatically make the page render dynamically. In this case, you do *not* need to explicitly use `force-dynamic`.",
+    "preview": "This component will fetch and display a list of blog posts. The response from `fetch` is not cached by default. app/page.tsx TypeScript JavaScriptTypeScript [Code Block] If you are not using any [Dynamic APIs](/docs/app/building-your-application/rendering/server-components#dynamic-rendering) an",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#fetching-data-on-the-server-with-the-fetch-api-fetching-data-on-the-server-with-the-fetch-api",
+    "position": 4
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Fetching data on the server with an ORM or database](#fetching-data-on-the-server-with-an-orm-or-database)",
+    "section_id": "fetching-data-on-the-server-with-an-orm-or-database-fetching-data-on-the-server-with-an-orm-or-database",
+    "heading_level": 3,
+    "content": "### [Fetching data on the server with an ORM or database](#fetching-data-on-the-server-with-an-orm-or-database)\n\nThis component will fetch and display a list of blog posts. The response from the database is not cached by default but could be with [additional configuration](#caching-data-with-an-orm-or-database).\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { db, posts } from '@/lib/db'\n \nexport default async function Page() {\n  const allPosts = await db.select().from(posts)\n  return (\n    <ul>\n      {allPosts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```\n\nIf you are not using any [Dynamic APIs](/docs/app/building-your-application/rendering/server-components#dynamic-rendering) anywhere else in this route, it will be prerendered during `next build` to a static page. The data can then be updated using [Incremental Static Regeneration](/docs/app/building-your-application/data-fetching/incremental-static-regeneration).\n\nTo prevent the page from prerendering, you can add the following to your file:\n\n```\nexport const dynamic = 'force-dynamic'\n```\n\nHowever, you will commonly use functions like `cookies`, `headers`, or reading the incoming `searchParams` from the page props, which will automatically make the page render dynamically. In this case, you do *not* need to explicitly use `force-dynamic`.",
+    "preview": "This component will fetch and display a list of blog posts. The response from the database is not cached by default but could be with [additional configuration](#caching-data-with-an-orm-or-database). app/page.tsx TypeScript JavaScriptTypeScript [Code Block] If you are not using any [Dynamic AP",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#fetching-data-on-the-server-with-an-orm-or-database-fetching-data-on-the-server-with-an-orm-or-database",
+    "position": 5
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Fetching data on the client](#fetching-data-on-the-client)",
+    "section_id": "fetching-data-on-the-client-fetching-data-on-the-client",
+    "heading_level": 3,
+    "content": "### [Fetching data on the client](#fetching-data-on-the-client)\n\nWe recommend first attempting to fetch data on the server-side.\n\nHowever, there are still cases where client-side data fetching makes sense. In these scenarios, you can manually call `fetch` in a `useEffect` (not recommended), or lean on popular React libraries in the community (such as [SWR](https://swr.vercel.app/) or [React Query](https://tanstack.com/query/latest)) for client fetching.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useState, useEffect } from 'react'\n \nexport function Posts() {\n  const [posts, setPosts] = useState(null)\n \n  useEffect(() => {\n    async function fetchPosts() {\n      const res = await fetch('https://api.vercel.app/blog')\n      const data = await res.json()\n      setPosts(data)\n    }\n    fetchPosts()\n  }, [])\n \n  if (!posts) return <div>Loading...</div>\n \n  return (\n    <ul>\n      {posts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```",
+    "preview": "We recommend first attempting to fetch data on the server-side. However, there are still cases where client-side data fetching makes sense. In these scenarios, you can manually call `fetch` in a `useEffect` (not recommended), or lean on popular React libraries in the community (such as [SWR](https:",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#fetching-data-on-the-client-fetching-data-on-the-client",
+    "position": 6
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Caching data with an ORM or Database](#caching-data-with-an-orm-or-database)",
+    "section_id": "caching-data-with-an-orm-or-database-caching-data-with-an-orm-or-database",
+    "heading_level": 3,
+    "content": "### [Caching data with an ORM or Database](#caching-data-with-an-orm-or-database)\n\nYou can use the `unstable_cache` API to cache the response when running `next build`.\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { unstable_cache } from 'next/cache'\nimport { db, posts } from '@/lib/db'\n \nconst getPosts = unstable_cache(\n  async () => {\n    return await db.select().from(posts)\n  },\n  ['posts'],\n  { revalidate: 3600, tags: ['posts'] }\n)\n \nexport default async function Page() {\n  const allPosts = await getPosts()\n \n  return (\n    <ul>\n      {allPosts.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n```\n\nThis example caches the result of the database query for 1 hour (3600 seconds). It also adds the cache tag `posts` which can then be invalidated with [Incremental Static Regeneration](/docs/app/building-your-application/data-fetching/incremental-static-regeneration).",
+    "preview": "You can use the `unstable_cache` API to cache the response when running `next build`. app/page.tsx TypeScript JavaScriptTypeScript [Code Block] This example caches the result of the database query for 1 hour (3600 seconds). It also adds the cache tag `posts` which can then be invalidated with [",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#caching-data-with-an-orm-or-database-caching-data-with-an-orm-or-database",
+    "position": 7
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Reusing data across multiple functions](#reusing-data-across-multiple-functions)",
+    "section_id": "reusing-data-across-multiple-functions-reusing-data-across-multiple-functions",
+    "heading_level": 3,
+    "content": "### [Reusing data across multiple functions](#reusing-data-across-multiple-functions)\n\nNext.js uses APIs like `generateMetadata` and `generateStaticParams` where you will need to use the same data fetched in the `page`.\n\nIf you are using `fetch`, requests can be [memoized](/docs/app/building-your-application/caching#request-memoization) by adding `cache: 'force-cache'`. This means you can safely call the same URL with the same options, and only one request will be made.\n\n> **Good to know:**\n>\n> * In previous versions of Next.js, using `fetch` would have a default `cache` value of `force-cache`. This changed in version 15, to a default of `cache: no-store`.\n\napp/blog/[id]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { notFound } from 'next/navigation'\n \ninterface Post {\n  id: string\n  title: string\n  content: string\n}\n \nasync function getPost(id: string) {\n  const res = await fetch(`https://api.vercel.app/blog/${id}`, {\n    cache: 'force-cache',\n  })\n  const post: Post = await res.json()\n  if (!post) notFound()\n  return post\n}\n \nexport async function generateStaticParams() {\n  const posts = await fetch('https://api.vercel.app/blog', {\n    cache: 'force-cache',\n  }).then((res) => res.json())\n \n  return posts.map((post: Post) => ({\n    id: String(post.id),\n  }))\n}\n \nexport async function generateMetadata({\n  params,\n}: {\n  params: Promise<{ id: string }>\n}) {\n  const { id } = await params\n  const post = await getPost(id)\n \n  return {\n    title: post.title,\n  }\n}\n \nexport default async function Page({\n  params,\n}: {\n  params: Promise<{ id: string }>\n}) {\n  const { id } = await params\n  const post = await getPost(id)\n \n  return (\n    <article>\n      <h1>{post.title}</h1>\n      <p>{post.content}</p>\n    </article>\n  )\n}\n```\n\nIf you are *not* using `fetch`, and instead using an ORM or database directly, you can wrap your data fetch with the React `cache` function. This will de-duplicate and only make one query.\n\n```\nimport { cache } from 'react'\nimport { db, posts, eq } from '@/lib/db' // Example with Drizzle ORM\nimport { notFound } from 'next/navigation'\n \nexport const getPost = cache(async (id) => {\n  const post = await db.query.posts.findFirst({\n    where: eq(posts.id, parseInt(id)),\n  })\n \n  if (!post) notFound()\n  return post\n})\n```",
+    "preview": "Next.js uses APIs like `generateMetadata` and `generateStaticParams` where you will need to use the same data fetched in the `page`. If you are using `fetch`, requests can be [memoized](/docs/app/building-your-application/caching#request-memoization) by adding `cache: 'force-cache'`. This means you",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#reusing-data-across-multiple-functions-reusing-data-across-multiple-functions",
+    "position": 8
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Revalidating cached data](#revalidating-cached-data)",
+    "section_id": "revalidating-cached-data-revalidating-cached-data",
+    "heading_level": 3,
+    "content": "### [Revalidating cached data](#revalidating-cached-data)\n\nLearn more about revalidating cached data with [Incremental Static Regeneration](/docs/app/building-your-application/data-fetching/incremental-static-regeneration).",
+    "preview": "Learn more about revalidating cached data with [Incremental Static Regeneration](/docs/app/building-your-application/data-fetching/incremental-static-regeneration).",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#revalidating-cached-data-revalidating-cached-data",
+    "position": 9
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Patterns](#patterns)",
+    "section_id": "patterns-patterns",
+    "heading_level": 2,
+    "content": "## [Patterns](#patterns)",
+    "preview": "## [Patterns](#patterns)",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#patterns-patterns",
+    "position": 10
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Parallel and sequential data fetching](#parallel-and-sequential-data-fetching)",
+    "section_id": "parallel-and-sequential-data-fetching-parallel-and-sequential-data-fetching",
+    "heading_level": 3,
+    "content": "### [Parallel and sequential data fetching](#parallel-and-sequential-data-fetching)\n\nWhen fetching data inside components, you need to be aware of two data fetching patterns: Parallel and Sequential.\n\n[Image: Sequential and Parallel Data Fetching][Image: Sequential and Parallel Data Fetching]\n\n* **Sequential**: requests in a component tree are dependent on each other. This can lead to longer loading times.\n* **Parallel**: requests in a route are eagerly initiated and will load data at the same time. This reduces the total time it takes to load data.\n\n#### [Sequential data fetching](#sequential-data-fetching)\n\nIf you have nested components, and each component fetches its own data, then data fetching will happen sequentially if those data requests are not [memoized](/docs/app/building-your-application/caching#request-memoization).\n\nThere may be cases where you want this pattern because one fetch depends on the result of the other. For example, the `Playlists` component will only start fetching data once the `Artist` component has finished fetching data because `Playlists` depends on the `artistID` prop:\n\napp/artist/[username]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default async function Page({\n  params,\n}: {\n  params: Promise<{ username: string }>\n}) {\n  const { username } = await params\n  // Get artist information\n  const artist = await getArtist(username)\n \n  return (\n    <>\n      <h1>{artist.name}</h1>\n      {/* Show fallback UI while the Playlists component is loading */}\n      <Suspense fallback={<div>Loading...</div>}>\n        {/* Pass the artist ID to the Playlists component */}\n        <Playlists artistID={artist.id} />\n      </Suspense>\n    </>\n  )\n}\n \nasync function Playlists({ artistID }: { artistID: string }) {\n  // Use the artist ID to fetch playlists\n  const playlists = await getArtistPlaylists(artistID)\n \n  return (\n    <ul>\n      {playlists.map((playlist) => (\n        <li key={playlist.id}>{playlist.name}</li>\n      ))}\n    </ul>\n  )\n}\n```\n\nYou can use [`loading.js`](/docs/app/building-your-application/routing/loading-ui-and-streaming) (for route segments) or [React `<Suspense>`](/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense) (for nested components) to show an instant loading state while React streams in the result.\n\nThis will prevent the whole route from being blocked by data requests, and the user will be able to interact with the parts of the page that are ready.\n\n#### [Parallel Data Fetching](#parallel-data-fetching)\n\nBy default, layout and page segments are rendered in parallel. This means requests will be initiated in parallel.\n\nHowever, due to the nature of `async`/`await`, an awaited request inside the same segment or component will block any requests below it.\n\nTo fetch data in parallel, you can eagerly initiate requests by defining them outside the components that use the data. This saves time by initiating both requests in parallel, however, the user won't see the rendered result until both promises are resolved.\n\nIn the example below, the `getArtist` and `getAlbums` functions are defined outside the `Page` component and initiated inside the component using `Promise.all`:\n\napp/artist/[username]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Albums from './albums'\n \nasync function getArtist(username: string) {\n  const res = await fetch(`https://api.example.com/artist/${username}`)\n  return res.json()\n}\n \nasync function getAlbums(username: string) {\n  const res = await fetch(`https://api.example.com/artist/${username}/albums`)\n  return res.json()\n}\n \nexport default async function Page({\n  params,\n}: {\n  params: Promise<{ username: string }>\n}) {\n  const { username } = await params\n  const artistData = getArtist(username)\n  const albumsData = getAlbums(username)\n \n  // Initiate both requests in parallel\n  const [artist, albums] = await Promise.all([artistData, albumsData])\n \n  return (\n    <>\n      <h1>{artist.name}</h1>\n      <Albums list={albums} />\n    </>\n  )\n}\n```\n\nIn addition, you can add a [Suspense Boundary](/docs/app/building-your-application/routing/loading-ui-and-streaming) to break up the rendering work and show part of the result as soon as possible.",
+    "preview": "When fetching data inside components, you need to be aware of two data fetching patterns: Parallel and Sequential. [Image: Sequential and Parallel Data Fetching][Image: Sequential and Parallel Data Fetching] * **Sequential**: requests in a component tree are dependent on each other. This can lead",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#parallel-and-sequential-data-fetching-parallel-and-sequential-data-fetching",
+    "position": 11
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Preloading Data](#preloading-data)",
+    "section_id": "preloading-data-preloading-data",
+    "heading_level": 3,
+    "content": "### [Preloading Data](#preloading-data)\n\nAnother way to prevent waterfalls is to use the *preload* pattern by creating an utility function that you eagerly call above blocking requests. For example, `checkIsAvailable()` blocks `<Item/>` from rendering, so you can call `preload()` before it to eagerly initiate `<Item/>` data dependencies. By the time `<Item/>` is rendered, its data has already been fetched.\n\nNote that `preload` function doesn't block `checkIsAvailable()` from running.\n\ncomponents/Item.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { getItem } from '@/utils/get-item'\n \nexport const preload = (id: string) => {\n  // void evaluates the given expression and returns undefined\n  // https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void\n  void getItem(id)\n}\nexport default async function Item({ id }: { id: string }) {\n  const result = await getItem(id)\n  // ...\n}\n```\n\napp/item/[id]/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Item, { preload, checkIsAvailable } from '@/components/Item'\n \nexport default async function Page({\n  params,\n}: {\n  params: Promise<{ id: string }>\n}) {\n  const { id } = await params\n  // starting loading item data\n  preload(id)\n  // perform another asynchronous task\n  const isAvailable = await checkIsAvailable()\n \n  return isAvailable ? <Item id={id} /> : null\n}\n```\n\n> **Good to know:** The \"preload\" function can also have any name as it's a pattern, not an API.\n\n#### [Using React `cache` and `server-only` with the Preload Pattern](#using-react-cache-and-server-only-with-the-preload-pattern)\n\nYou can combine the `cache` function, the `preload` pattern, and the `server-only` package to create a data fetching utility that can be used throughout your app.\n\nutils/get-item.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { cache } from 'react'\nimport 'server-only'\n \nexport const preload = (id: string) => {\n  void getItem(id)\n}\n \nexport const getItem = cache(async (id: string) => {\n  // ...\n})\n```\n\nWith this approach, you can eagerly fetch data, cache responses, and guarantee that this data fetching [only happens on the server](/docs/app/building-your-application/rendering/composition-patterns#keeping-server-only-code-out-of-the-client-environment).\n\nThe `utils/get-item` exports can be used by Layouts, Pages, or other components to give them control over when an item's data is fetched.\n\n> **Good to know:**\n>\n> * We recommend using the [`server-only` package](/docs/app/building-your-application/rendering/composition-patterns#keeping-server-only-code-out-of-the-client-environment) to make sure server data fetching functions are never used on the client.",
+    "preview": "Another way to prevent waterfalls is to use the *preload* pattern by creating an utility function that you eagerly call above blocking requests. For example, `checkIsAvailable()` blocks `<Item/>` from rendering, so you can call `preload()` before it to eagerly initiate `<Item/>` data dependencies. B",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#preloading-data-preloading-data",
+    "position": 12
+  },
+  {
+    "title": "Data Fetching and Caching",
+    "section": "[Preventing sensitive data from being exposed to the client](#preventing-sensitive-data-from-being-exposed-to-the-client)",
+    "section_id": "preventing-sensitive-data-from-being-exposed-to-the-client-preventing-sensitive-data-from-being-exposed-to-the-client",
+    "heading_level": 3,
+    "content": "### [Preventing sensitive data from being exposed to the client](#preventing-sensitive-data-from-being-exposed-to-the-client)\n\nWe recommend using React's taint APIs, [`taintObjectReference`](https://react.dev/reference/react/experimental_taintObjectReference) and [`taintUniqueValue`](https://react.dev/reference/react/experimental_taintUniqueValue), to prevent whole object instances or sensitive values from being passed to the client.\n\nTo enable tainting in your application, set the Next.js Config `experimental.taint` option to `true`:\n\nnext.config.js\n\n```\nmodule.exports = {\n  experimental: {\n    taint: true,\n  },\n}\n```\n\nThen pass the object or value you want to taint to the `experimental_taintObjectReference` or `experimental_taintUniqueValue` functions:\n\napp/utils.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { queryDataFromDB } from './api'\nimport {\n  experimental_taintObjectReference,\n  experimental_taintUniqueValue,\n} from 'react'\n \nexport async function getUserData() {\n  const data = await queryDataFromDB()\n  experimental_taintObjectReference(\n    'Do not pass the whole user object to the client',\n    data\n  )\n  experimental_taintUniqueValue(\n    \"Do not pass the user's address to the client\",\n    data,\n    data.address\n  )\n  return data\n}\n```\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { getUserData } from './data'\n \nexport async function Page() {\n  const userData = getUserData()\n  return (\n    <ClientComponent\n      user={userData} // this will cause an error because of taintObjectReference\n      address={userData.address} // this will cause an error because of taintUniqueValue\n    />\n  )\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "We recommend using React's taint APIs, [`taintObjectReference`](https://react.dev/reference/react/experimental_taintObjectReference) and [`taintUniqueValue`](https://react.dev/reference/react/experimental_taintUniqueValue), to prevent whole object instances or sensitive values from being passed to t",
+    "url": "https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#preventing-sensitive-data-from-being-exposed-to-the-client-preventing-sensitive-data-from-being-exposed-to-the-client",
+    "position": 13
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "title": "cacheTag",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)cacheTag",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)cacheTag",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheTag#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "cacheTag",
+    "section": "cacheTag",
+    "section_id": "cachetag",
+    "heading_level": 1,
+    "content": "# cacheTag\n\nThis feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues).\n\nThe `cacheTag` function allows you to tag cached data for on-demand invalidation. By associating tags with cache entries, you can selectively purge or revalidate specific cache entries without affecting other cached data.",
+    "preview": "This feature is currently available in the canary channel and subject to change. Try it out by [upgrading Next.js](/docs/app/building-your-application/upgrading/canary), and share your feedback on [GitHub](https://github.com/vercel/next.js/issues). The `cacheTag` function allows you to tag cached d",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheTag#cachetag",
+    "position": 1
+  },
+  {
+    "title": "cacheTag",
+    "section": "[Usage](#usage)",
+    "section_id": "usage-usage",
+    "heading_level": 2,
+    "content": "## [Usage](#usage)\n\nTo use `cacheTag`, enable the [`dynamicIO` flag](/docs/app/api-reference/config/next-config-js/dynamicIO) in your `next.config.js` file:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    dynamicIO: true,\n  },\n}\n \nexport default nextConfig\n```\n\nThe `cacheTag` function takes a single string value, or a string array.\n\napp/data.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { unstable_cacheTag as cacheTag } from 'next/cache'\n \nexport async function getData() {\n  'use cache'\n  cacheTag('my-data')\n  const data = await fetch('/api/data')\n  return data\n}\n```\n\nYou can then purge the cache on-demand using [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag) API in another function, for example, a [route handler](/docs/app/building-your-application/routing/route-handlers) or [Server Action](/docs/app/building-your-application/data-fetching/server-actions-and-mutations):\n\napp/action.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { revalidateTag } from 'next/cache'\n \nexport default async function submit() {\n  await addPost()\n  revalidateTag('my-data')\n}\n```",
+    "preview": "To use `cacheTag`, enable the [`dynamicIO` flag](/docs/app/api-reference/config/next-config-js/dynamicIO) in your `next.config.js` file: next.config.ts TypeScript JavaScriptTypeScript [Code Block] The `cacheTag` function takes a single string value, or a string array. app/data.ts TypeScript",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheTag#usage-usage",
+    "position": 2
+  },
+  {
+    "title": "cacheTag",
+    "section": "[Good to know](#good-to-know)",
+    "section_id": "good-to-know-good-to-know",
+    "heading_level": 2,
+    "content": "## [Good to know](#good-to-know)\n\n* **Idempotent Tags**: Applying the same tag multiple times has no additional effect.\n* **Multiple Tags**: You can assign multiple tags to a single cache entry by passing an array to `cacheTag`.\n\n```\ncacheTag('tag-one', 'tag-two')\n```",
+    "preview": "* **Idempotent Tags**: Applying the same tag multiple times has no additional effect. * **Multiple Tags**: You can assign multiple tags to a single cache entry by passing an array to `cacheTag`. [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheTag#good-to-know-good-to-know",
+    "position": 3
+  },
+  {
+    "title": "cacheTag",
+    "section": "[Examples](#examples)",
+    "section_id": "examples-examples",
+    "heading_level": 2,
+    "content": "## [Examples](#examples)",
+    "preview": "## [Examples](#examples)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheTag#examples-examples",
+    "position": 4
+  },
+  {
+    "title": "cacheTag",
+    "section": "[Tagging components or functions](#tagging-components-or-functions)",
+    "section_id": "tagging-components-or-functions-tagging-components-or-functions",
+    "heading_level": 3,
+    "content": "### [Tagging components or functions](#tagging-components-or-functions)\n\nTag your cached data by calling `cacheTag` within a cached function or component:\n\napp/components/bookings.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { unstable_cacheTag as cacheTag } from 'next/cache'\n \ninterface BookingsProps {\n  type: string\n}\n \nexport async function Bookings({ type = 'haircut' }: BookingsProps) {\n  'use cache'\n  cacheTag('bookings-data')\n \n  async function getBookingsData() {\n    const data = await fetch(`/api/bookings?type=${encodeURIComponent(type)}`)\n    return data\n  }\n \n  return //...\n}\n```",
+    "preview": "Tag your cached data by calling `cacheTag` within a cached function or component: app/components/bookings.tsx TypeScript JavaScriptTypeScript ``` import { unstable_cacheTag as cacheTag } from 'next/cache' interface BookingsProps { type: string } export async function Bookings({ type = 'hai",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheTag#tagging-components-or-functions-tagging-components-or-functions",
+    "position": 5
+  },
+  {
+    "title": "cacheTag",
+    "section": "[Creating tags from external data](#creating-tags-from-external-data)",
+    "section_id": "creating-tags-from-external-data-creating-tags-from-external-data",
+    "heading_level": 3,
+    "content": "### [Creating tags from external data](#creating-tags-from-external-data)\n\nYou can use the data returned from an async function to tag the cache entry.\n\napp/components/bookings.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { unstable_cacheTag as cacheTag } from 'next/cache'\n \ninterface BookingsProps {\n  type: string\n}\n \nexport async function Bookings({ type = 'haircut' }: BookingsProps) {\n  async function getBookingsData() {\n    'use cache'\n    const data = await fetch(`/api/bookings?type=${encodeURIComponent(type)}`)\n    cacheTag('bookings-data', data.id)\n    return data\n  }\n  return //...\n}\n```",
+    "preview": "You can use the data returned from an async function to tag the cache entry. app/components/bookings.tsx TypeScript JavaScriptTypeScript ``` import { unstable_cacheTag as cacheTag } from 'next/cache' interface BookingsProps { type: string } export async function Bookings({ type = 'haircut'",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheTag#creating-tags-from-external-data-creating-tags-from-external-data",
+    "position": 6
+  },
+  {
+    "title": "cacheTag",
+    "section": "[Invalidating tagged cache](#invalidating-tagged-cache)",
+    "section_id": "invalidating-tagged-cache-invalidating-tagged-cache",
+    "heading_level": 3,
+    "content": "### [Invalidating tagged cache](#invalidating-tagged-cache)\n\nUsing [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag), you can invalidate the cache for a specific tag when needed:\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { revalidateTag } from 'next/cache'\n \nexport async function updateBookings() {\n  await updateBookingData()\n  revalidateTag('bookings-data')\n}\n```",
+    "preview": "Using [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag), you can invalidate the cache for a specific tag when needed: app/actions.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheTag#invalidating-tagged-cache-invalidating-tagged-cache",
+    "position": 7
+  },
+  {
+    "title": "cacheTag",
+    "section": "Related",
+    "section_id": "related",
+    "heading_level": 2,
+    "content": "## Related\n\nView related API references.\n\n[### dynamicIO\n\nLearn how to enable the dynamicIO flag in Next.js.](/docs/app/api-reference/config/next-config-js/dynamicIO)[### use cache\n\nLearn how to use the use cache directive to cache data in your Next.js application.](/docs/app/api-reference/directives/use-cache)[### revalidateTag\n\nAPI Reference for the revalidateTag function.](/docs/app/api-reference/functions/revalidateTag)[### cacheLife\n\nLearn how to use the cacheLife function to set the cache expiration time for a cached function or component.](/docs/app/api-reference/functions/cacheLife)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "View related API references. [### dynamicIO Learn how to enable the dynamicIO flag in Next.js.](/docs/app/api-reference/config/next-config-js/dynamicIO)[### use cache Learn how to use the use cache directive to cache data in your Next.js application.](/docs/app/api-reference/directives/use-cache)",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/cacheTag#related",
+    "position": 8
+  }
+]

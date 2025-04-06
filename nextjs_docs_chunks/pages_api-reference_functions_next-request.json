@@ -1,0 +1,112 @@
+[
+  {
+    "title": "NextRequest",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/pages/api-reference)[Functions](/docs/pages/api-reference/functions)NextRequest",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/pages/api-reference)[Functions](/docs/pages/api-reference/functions)NextRequest",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "NextRequest",
+    "section": "NextRequest",
+    "section_id": "nextrequest",
+    "heading_level": 1,
+    "content": "# NextRequest\n\nNextRequest extends the [Web Request API](https://developer.mozilla.org/docs/Web/API/Request) with additional convenience methods.",
+    "preview": "NextRequest extends the [Web Request API](https://developer.mozilla.org/docs/Web/API/Request) with additional convenience methods.",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#nextrequest",
+    "position": 1
+  },
+  {
+    "title": "NextRequest",
+    "section": "[`cookies`](#cookies)",
+    "section_id": "cookies-cookies",
+    "heading_level": 2,
+    "content": "## [`cookies`](#cookies)\n\nRead or mutate the [`Set-Cookie`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie) header of the request.",
+    "preview": "Read or mutate the [`Set-Cookie`](https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie) header of the request.",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#cookies-cookies",
+    "position": 2
+  },
+  {
+    "title": "NextRequest",
+    "section": "[`set(name, value)`](#setname-value)",
+    "section_id": "set-name-value-setname-value",
+    "heading_level": 3,
+    "content": "### [`set(name, value)`](#setname-value)\n\nGiven a name, set a cookie with the given value on the request.\n\n```\n// Given incoming request /home\n// Set a cookie to hide the banner\n// request will have a `Set-Cookie:show-banner=false;path=/home` header\nrequest.cookies.set('show-banner', 'false')\n```",
+    "preview": "Given a name, set a cookie with the given value on the request. ``` // Given incoming request /home // Set a cookie to hide the banner // request will have a `Set-Cookie:show-banner=false;path=/home` header request.cookies.set('show-banner', 'false') ```",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#set-name-value-setname-value",
+    "position": 3
+  },
+  {
+    "title": "NextRequest",
+    "section": "[`get(name)`](#getname)",
+    "section_id": "get-name-getname",
+    "heading_level": 3,
+    "content": "### [`get(name)`](#getname)\n\nGiven a cookie name, return the value of the cookie. If the cookie is not found, `undefined` is returned. If multiple cookies are found, the first one is returned.\n\n```\n// Given incoming request /home\n// { name: 'show-banner', value: 'false', Path: '/home' }\nrequest.cookies.get('show-banner')\n```",
+    "preview": "Given a cookie name, return the value of the cookie. If the cookie is not found, `undefined` is returned. If multiple cookies are found, the first one is returned. [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#get-name-getname",
+    "position": 4
+  },
+  {
+    "title": "NextRequest",
+    "section": "[`getAll()`](#getall)",
+    "section_id": "getall-getall",
+    "heading_level": 3,
+    "content": "### [`getAll()`](#getall)\n\nGiven a cookie name, return the values of the cookie. If no name is given, return all cookies on the request.\n\n```\n// Given incoming request /home\n// [\n//   { name: 'experiments', value: 'new-pricing-page', Path: '/home' },\n//   { name: 'experiments', value: 'winter-launch', Path: '/home' },\n// ]\nrequest.cookies.getAll('experiments')\n// Alternatively, get all cookies for the request\nrequest.cookies.getAll()\n```",
+    "preview": "Given a cookie name, return the values of the cookie. If no name is given, return all cookies on the request. [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#getall-getall",
+    "position": 5
+  },
+  {
+    "title": "NextRequest",
+    "section": "[`delete(name)`](#deletename)",
+    "section_id": "delete-name-deletename",
+    "heading_level": 3,
+    "content": "### [`delete(name)`](#deletename)\n\nGiven a cookie name, delete the cookie from the request.\n\n```\n// Returns true for deleted, false is nothing is deleted\nrequest.cookies.delete('experiments')\n```",
+    "preview": "Given a cookie name, delete the cookie from the request. [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#delete-name-deletename",
+    "position": 6
+  },
+  {
+    "title": "NextRequest",
+    "section": "[`has(name)`](#hasname)",
+    "section_id": "has-name-hasname",
+    "heading_level": 3,
+    "content": "### [`has(name)`](#hasname)\n\nGiven a cookie name, return `true` if the cookie exists on the request.\n\n```\n// Returns true if cookie exists, false if it does not\nrequest.cookies.has('experiments')\n```",
+    "preview": "Given a cookie name, return `true` if the cookie exists on the request. [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#has-name-hasname",
+    "position": 7
+  },
+  {
+    "title": "NextRequest",
+    "section": "[`clear()`](#clear)",
+    "section_id": "clear-clear",
+    "heading_level": 3,
+    "content": "### [`clear()`](#clear)\n\nRemove the `Set-Cookie` header from the request.\n\n```\nrequest.cookies.clear()\n```",
+    "preview": "Remove the `Set-Cookie` header from the request. [Code Block]",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#clear-clear",
+    "position": 8
+  },
+  {
+    "title": "NextRequest",
+    "section": "[`nextUrl`](#nexturl)",
+    "section_id": "nexturl-nexturl",
+    "heading_level": 2,
+    "content": "## [`nextUrl`](#nexturl)\n\nExtends the native [`URL`](https://developer.mozilla.org/docs/Web/API/URL) API with additional convenience methods, including Next.js specific properties.\n\n```\n// Given a request to /home, pathname is /home\nrequest.nextUrl.pathname\n// Given a request to /home?name=lee, searchParams is { 'name': 'lee' }\nrequest.nextUrl.searchParams\n```\n\nThe following options are available:\n\n| Property | Type | Description |\n| --- | --- | --- |\n| `basePath` | `string` | The [base path](/docs/pages/api-reference/config/next-config-js/basePath) of the URL. |\n| `buildId` | `string` | `undefined` | The build identifier of the Next.js application. Can be [customized](/docs/pages/api-reference/config/next-config-js/generateBuildId). |\n| `defaultLocale` | `string` | `undefined` | The default locale for [internationalization](/docs/pages/building-your-application/routing/internationalization). |\n| `domainLocale` |  |  |\n| - `defaultLocale` | `string` | The default locale within a domain. |\n| - `domain` | `string` | The domain associated with a specific locale. |\n| - `http` | `boolean` | `undefined` | Indicates if the domain is using HTTP. |\n| `locales` | `string[]` | `undefined` | An array of available locales. |\n| `locale` | `string` | `undefined` | The currently active locale. |\n| `url` | `URL` | The URL object. |",
+    "preview": "Extends the native [`URL`](https://developer.mozilla.org/docs/Web/API/URL) API with additional convenience methods, including Next.js specific properties. [Code Block] The following options are available: | Property | Type | Description | | --- | --- | --- | | `basePath` | `string` | The [base pa",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#nexturl-nexturl",
+    "position": 9
+  },
+  {
+    "title": "NextRequest",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v15.0.0` | `ip` and `geo` removed. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v15.0.0` | `ip` and `geo` removed. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/pages/api-reference/functions/next-request#version-history-version-history",
+    "position": 10
+  }
+]

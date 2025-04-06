@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Runtimes",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Rendering](/docs/app/building-your-application/rendering)Runtimes",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Rendering](/docs/app/building-your-application/rendering)Runtimes",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Runtimes",
+    "section": "Runtimes",
+    "section_id": "runtimes",
+    "heading_level": 1,
+    "content": "# Runtimes\n\nNext.js has two server runtimes you can use in your application:\n\n* The **Node.js Runtime** (default), which has access to all Node.js APIs and compatible packages from the ecosystem.\n* The **Edge Runtime** which contains a more limited [set of APIs](/docs/app/api-reference/edge).\n\nThe Edge Runtime is the default runtime for [Middleware](/docs/app/building-your-application/routing/middleware). However, this can be changed to the Node.js runtime. See the [Middleware documentation](/docs/app/building-your-application/routing/middleware#runtime) for more details.",
+    "preview": "Next.js has two server runtimes you can use in your application: * The **Node.js Runtime** (default), which has access to all Node.js APIs and compatible packages from the ecosystem. * The **Edge Runtime** which contains a more limited [set of APIs](/docs/app/api-reference/edge). The Edge Runtime",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes#runtimes",
+    "position": 1
+  },
+  {
+    "title": "Runtimes",
+    "section": "[Use Cases](#use-cases)",
+    "section_id": "use-cases-use-cases",
+    "heading_level": 2,
+    "content": "## [Use Cases](#use-cases)\n\n* The Node.js Runtime is used for rendering your application.\n* The Edge Runtime is used for Middleware (routing rules like redirects, rewrites, and setting headers).",
+    "preview": "* The Node.js Runtime is used for rendering your application. * The Edge Runtime is used for Middleware (routing rules like redirects, rewrites, and setting headers).",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes#use-cases-use-cases",
+    "position": 2
+  },
+  {
+    "title": "Runtimes",
+    "section": "[Caveats](#caveats)",
+    "section_id": "caveats-caveats",
+    "heading_level": 2,
+    "content": "## [Caveats](#caveats)\n\n* The Edge Runtime does not support all Node.js APIs. Some packages may not work as expected. Learn more about the unsupported APIs in the [Edge Runtime](/docs/app/api-reference/edge#unsupported-apis).\n* The Edge Runtime does not support Incremental Static Regeneration (ISR).\n* Both runtimes can support [streaming](/docs/app/building-your-application/routing/loading-ui-and-streaming) depending on your deployment infrastructure.",
+    "preview": "* The Edge Runtime does not support all Node.js APIs. Some packages may not work as expected. Learn more about the unsupported APIs in the [Edge Runtime](/docs/app/api-reference/edge#unsupported-apis). * The Edge Runtime does not support Incremental Static Regeneration (ISR). * Both runtimes can sup",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes#caveats-caveats",
+    "position": 3
+  },
+  {
+    "title": "Runtimes",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nView the Edge Runtime API reference.\n\n[### Edge Runtime\n\nAPI Reference for the Edge Runtime.](/docs/app/api-reference/edge)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "View the Edge Runtime API reference. [### Edge Runtime API Reference for the Edge Runtime.](/docs/app/api-reference/edge) Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes#next-steps",
+    "position": 4
+  }
+]

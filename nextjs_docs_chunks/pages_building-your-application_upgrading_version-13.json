@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Version 13",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Upgrading](/docs/pages/building-your-application/upgrading)Version 13",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Upgrading](/docs/pages/building-your-application/upgrading)Version 13",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-13#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Version 13",
+    "section": "Version 13",
+    "section_id": "version-13",
+    "heading_level": 1,
+    "content": "# Version 13",
+    "preview": "# Version 13",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-13#version-13",
+    "position": 1
+  },
+  {
+    "title": "Version 13",
+    "section": "[Upgrading from 12 to 13](#upgrading-from-12-to-13)",
+    "section_id": "upgrading-from-12-to-13-upgrading-from-12-to-13",
+    "heading_level": 2,
+    "content": "## [Upgrading from 12 to 13](#upgrading-from-12-to-13)\n\nTo update to Next.js version 13, run the following command using your preferred package manager:\n\nTerminal\n\n```\nnpm i next@13 react@latest react-dom@latest eslint-config-next@13\n```\n\nTerminal\n\n```\nyarn add next@13 react@latest react-dom@latest eslint-config-next@13\n```\n\nTerminal\n\n```\npnpm i next@13 react@latest react-dom@latest eslint-config-next@13\n```\n\nTerminal\n\n```\nbun add next@13 react@latest react-dom@latest eslint-config-next@13\n```\n\n> **Good to know:** If you are using TypeScript, ensure you also upgrade `@types/react` and `@types/react-dom` to their latest versions.",
+    "preview": "To update to Next.js version 13, run the following command using your preferred package manager: Terminal [Code Block] Terminal [Code Block] Terminal [Code Block] Terminal [Code Block] > **Good to know:** If you are using TypeScript, ensure you also upgrade `@types/react` and `@types/react-",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-13#upgrading-from-12-to-13-upgrading-from-12-to-13",
+    "position": 2
+  },
+  {
+    "title": "Version 13",
+    "section": "[v13 Summary](#v13-summary)",
+    "section_id": "v13-summary-v13-summary",
+    "heading_level": 3,
+    "content": "### [v13 Summary](#v13-summary)\n\n* The [Supported Browsers](/docs/architecture/supported-browsers) have been changed to drop Internet Explorer and target modern browsers.\n* The minimum Node.js version has been bumped from 12.22.0 to 16.14.0, since 12.x and 14.x have reached end-of-life.\n* The minimum React version has been bumped from 17.0.2 to 18.2.0.\n* The `swcMinify` configuration property was changed from `false` to `true`. See [Next.js Compiler](/docs/architecture/nextjs-compiler) for more info.\n* The `next/image` import was renamed to `next/legacy/image`. The `next/future/image` import was renamed to `next/image`. A [codemod is available](/docs/pages/building-your-application/upgrading/codemods#next-image-to-legacy-image) to safely and automatically rename your imports.\n* The `next/link` child can no longer be `<a>`. Add the `legacyBehavior` prop to use the legacy behavior or remove the `<a>` to upgrade. A [codemod is available](/docs/pages/building-your-application/upgrading/codemods#new-link) to automatically upgrade your code.\n* The `target` configuration property has been removed and superseded by [Output File Tracing](/docs/pages/api-reference/config/next-config-js/output).",
+    "preview": "* The [Supported Browsers](/docs/architecture/supported-browsers) have been changed to drop Internet Explorer and target modern browsers. * The minimum Node.js version has been bumped from 12.22.0 to 16.14.0, since 12.x and 14.x have reached end-of-life. * The minimum React version has been bumped f",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-13#v13-summary-v13-summary",
+    "position": 3
+  },
+  {
+    "title": "Version 13",
+    "section": "[Migrating shared features](#migrating-shared-features)",
+    "section_id": "migrating-shared-features-migrating-shared-features",
+    "heading_level": 2,
+    "content": "## [Migrating shared features](#migrating-shared-features)\n\nNext.js 13 introduces a new [`app` directory](/docs/app/building-your-application/routing) with new features and conventions. However, upgrading to Next.js 13 does **not** require using the new `app` Router.\n\nYou can continue using `pages` with new features that work in both directories, such as the updated [Image component](#image-component), [Link component](#link-component), [Script component](#script-component), and [Font optimization](#font-optimization).",
+    "preview": "Next.js 13 introduces a new [`app` directory](/docs/app/building-your-application/routing) with new features and conventions. However, upgrading to Next.js 13 does **not** require using the new `app` Router. You can continue using `pages` with new features that work in both directories, such as the",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-13#migrating-shared-features-migrating-shared-features",
+    "position": 4
+  },
+  {
+    "title": "Version 13",
+    "section": "[`<Image/>` Component](#image-component)",
+    "section_id": "image-component-image-component",
+    "heading_level": 3,
+    "content": "### [`<Image/>` Component](#image-component)\n\nNext.js 12 introduced many improvements to the Image Component with a temporary import: `next/future/image`. These improvements included less client-side JavaScript, easier ways to extend and style images, better accessibility, and native browser lazy loading.\n\nStarting in Next.js 13, this new behavior is now the default for `next/image`.\n\nThere are two codemods to help you migrate to the new Image Component:\n\n* [next-image-to-legacy-image](/docs/pages/building-your-application/upgrading/codemods#next-image-to-legacy-image): This codemod will safely and automatically rename `next/image` imports to `next/legacy/image` to maintain the same behavior as Next.js 12. We recommend running this codemod to quickly update to Next.js 13 automatically.\n* [next-image-experimental](/docs/pages/building-your-application/upgrading/codemods#next-image-experimental): After running the previous codemod, you can optionally run this experimental codemod to upgrade `next/legacy/image` to the new `next/image`, which will remove unused props and add inline styles. Please note this codemod is experimental and only covers static usage (such as `<Image src={img} layout=\"responsive\" />`) but not dynamic usage (such as `<Image {...props} />`).\n\nAlternatively, you can manually update by following the [migration guide](/docs/pages/building-your-application/upgrading/codemods#next-image-experimental) and also see the [legacy comparison](/docs/pages/api-reference/components/image-legacy#comparison).",
+    "preview": "Next.js 12 introduced many improvements to the Image Component with a temporary import: `next/future/image`. These improvements included less client-side JavaScript, easier ways to extend and style images, better accessibility, and native browser lazy loading. Starting in Next.js 13, this new behav",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-13#image-component-image-component",
+    "position": 5
+  },
+  {
+    "title": "Version 13",
+    "section": "[`<Link>` Component](#link-component)",
+    "section_id": "link-component-link-component",
+    "heading_level": 3,
+    "content": "### [`<Link>` Component](#link-component)\n\nThe [`<Link>` Component](/docs/pages/api-reference/components/link) no longer requires manually adding an `<a>` tag as a child. This behavior was added as an experimental option in [version 12.2](https://nextjs.org/blog/next-12-2) and is now the default. In Next.js 13, `<Link>` always renders `<a>` and allows you to forward props to the underlying tag.\n\nFor example:\n\n```\nimport Link from 'next/link'\n \n// Next.js 12: `<a>` has to be nested otherwise it's excluded\n<Link href=\"/about\">\n  <a>About</a>\n</Link>\n \n// Next.js 13: `<Link>` always renders `<a>` under the hood\n<Link href=\"/about\">\n  About\n</Link>\n```\n\nTo upgrade your links to Next.js 13, you can use the [`new-link` codemod](/docs/pages/building-your-application/upgrading/codemods#new-link).",
+    "preview": "The [`<Link>` Component](/docs/pages/api-reference/components/link) no longer requires manually adding an `<a>` tag as a child. This behavior was added as an experimental option in [version 12.2](https://nextjs.org/blog/next-12-2) and is now the default. In Next.js 13, `<Link>` always renders `<a>`",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-13#link-component-link-component",
+    "position": 6
+  },
+  {
+    "title": "Version 13",
+    "section": "[`<Script>` Component](#script-component)",
+    "section_id": "script-component-script-component",
+    "heading_level": 3,
+    "content": "### [`<Script>` Component](#script-component)\n\nThe behavior of [`next/script`](/docs/pages/api-reference/components/script) has been updated to support both `pages` and `app`. If incrementally adopting `app`, read the [upgrade guide](/docs/pages/building-your-application/upgrading).",
+    "preview": "The behavior of [`next/script`](/docs/pages/api-reference/components/script) has been updated to support both `pages` and `app`. If incrementally adopting `app`, read the [upgrade guide](/docs/pages/building-your-application/upgrading).",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-13#script-component-script-component",
+    "position": 7
+  },
+  {
+    "title": "Version 13",
+    "section": "[Font Optimization](#font-optimization)",
+    "section_id": "font-optimization-font-optimization",
+    "heading_level": 3,
+    "content": "### [Font Optimization](#font-optimization)\n\nPreviously, Next.js helped you optimize fonts by inlining font CSS. Version 13 introduces the new [`next/font`](/docs/pages/building-your-application/optimizing/fonts) module which gives you the ability to customize your font loading experience while still ensuring great performance and privacy.\n\nSee [Optimizing Fonts](/docs/pages/building-your-application/optimizing/fonts) to learn how to use `next/font`.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Previously, Next.js helped you optimize fonts by inlining font CSS. Version 13 introduces the new [`next/font`](/docs/pages/building-your-application/optimizing/fonts) module which gives you the ability to customize your font loading experience while still ensuring great performance and privacy. Se",
+    "url": "https://nextjs.org/docs/pages/building-your-application/upgrading/version-13#font-optimization-font-optimization",
+    "position": 8
+  }
+]

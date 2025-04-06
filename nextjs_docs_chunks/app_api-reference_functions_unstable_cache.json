@@ -1,0 +1,62 @@
+[
+  {
+    "title": "unstable_cache",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)unstable\\_cache",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [API Reference](/docs/app/api-reference)[Functions](/docs/app/api-reference/functions)unstable\\_cache",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unstable_cache#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "unstable_cache",
+    "section": "unstable\\_cache",
+    "section_id": "unstable-cache",
+    "heading_level": 1,
+    "content": "# unstable\\_cache\n\n> **Note:** This API will be replaced by [`use cache`](/docs/app/api-reference/directives/use-cache) when it reaches stability.\n\n`unstable_cache` allows you to cache the results of expensive operations, like database queries, and reuse them across multiple requests.\n\n```\nimport { getUser } from './data';\nimport { unstable_cache } from 'next/cache';\n \nconst getCachedUser = unstable_cache(\n  async (id) => getUser(id),\n  ['my-app-user']\n);\n \nexport default async function Component({ userID }) {\n  const user = await getCachedUser(userID);\n  ...\n}\n```\n\n> **Good to know**:\n>\n> * Accessing dynamic data sources such as `headers` or `cookies` inside a cache scope is not supported. If you need this data inside a cached function use `headers` outside of the cached function and pass the required dynamic data in as an argument.\n> * This API uses Next.js' built-in [Data Cache](/docs/app/building-your-application/caching#data-cache) to persist the result across requests and deployments.\n\n> **Warning**: This API is unstable and may change in the future. We will provide migration documentation and codemods, if needed, as this API stabilizes.",
+    "preview": "> **Note:** This API will be replaced by [`use cache`](/docs/app/api-reference/directives/use-cache) when it reaches stability. `unstable_cache` allows you to cache the results of expensive operations, like database queries, and reuse them across multiple requests. [Code Block] > **Good to know**",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unstable_cache#unstable-cache",
+    "position": 1
+  },
+  {
+    "title": "unstable_cache",
+    "section": "[Parameters](#parameters)",
+    "section_id": "parameters-parameters",
+    "heading_level": 2,
+    "content": "## [Parameters](#parameters)\n\n```\nconst data = unstable_cache(fetchData, keyParts, options)()\n```\n\n* `fetchData`: This is an asynchronous function that fetches the data you want to cache. It must be a function that returns a `Promise`.\n* `keyParts`: This is an extra array of keys that further adds identification to the cache. By default, `unstable_cache` already uses the arguments and the stringified version of your function as the cache key. It is optional in most cases; the only time you need to use it is when you use external variables without passing them as parameters. However, it is important to add closures used within the function if you do not pass them as parameters.\n* `options`: This is an object that controls how the cache behaves. It can contain the following properties:\n  + `tags`: An array of tags that can be used to control cache invalidation. Next.js will not use this to uniquely identify the function.\n  + `revalidate`: The number of seconds after which the cache should be revalidated. Omit or pass `false` to cache indefinitely or until matching `revalidateTag()` or `revalidatePath()` methods are called.",
+    "preview": "[Code Block] * `fetchData`: This is an asynchronous function that fetches the data you want to cache. It must be a function that returns a `Promise`. * `keyParts`: This is an extra array of keys that further adds identification to the cache. By default, `unstable_cache` already uses the arguments a",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unstable_cache#parameters-parameters",
+    "position": 2
+  },
+  {
+    "title": "unstable_cache",
+    "section": "[Returns](#returns)",
+    "section_id": "returns-returns",
+    "heading_level": 2,
+    "content": "## [Returns](#returns)\n\n`unstable_cache` returns a function that when invoked, returns a Promise that resolves to the cached data. If the data is not in the cache, the provided function will be invoked, and its result will be cached and returned.",
+    "preview": "`unstable_cache` returns a function that when invoked, returns a Promise that resolves to the cached data. If the data is not in the cache, the provided function will be invoked, and its result will be cached and returned.",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unstable_cache#returns-returns",
+    "position": 3
+  },
+  {
+    "title": "unstable_cache",
+    "section": "[Example](#example)",
+    "section_id": "example-example",
+    "heading_level": 2,
+    "content": "## [Example](#example)\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { unstable_cache } from 'next/cache'\n \nexport default async function Page({\n  params,\n}: {\n  params: Promise<{ userId: string }>\n}) {\n  const { userId } = await params\n  const getCachedUser = unstable_cache(\n    async () => {\n      return { id: userId }\n    },\n    [userId], // add the user ID to the cache key\n    {\n      tags: ['users'],\n      revalidate: 60,\n    }\n  )\n \n  //...\n}\n```",
+    "preview": "app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unstable_cache#example-example",
+    "position": 4
+  },
+  {
+    "title": "unstable_cache",
+    "section": "[Version History](#version-history)",
+    "section_id": "version-history-version-history",
+    "heading_level": 2,
+    "content": "## [Version History](#version-history)\n\n| Version | Changes |\n| --- | --- |\n| `v14.0.0` | `unstable_cache` introduced. |\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "| Version | Changes | | --- | --- | | `v14.0.0` | `unstable_cache` introduced. | Was this helpful? supported. Send",
+    "url": "https://nextjs.org/docs/app/api-reference/functions/unstable_cache#version-history-version-history",
+    "position": 5
+  }
+]

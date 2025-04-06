@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Dynamic Routes",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Routing](/docs/pages/building-your-application/routing)Dynamic Routes",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Routing](/docs/pages/building-your-application/routing)Dynamic Routes",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "Dynamic Routes",
+    "section_id": "dynamic-routes",
+    "heading_level": 1,
+    "content": "# Dynamic Routes\n\nWhen you don't know the exact segment names ahead of time and want to create routes from dynamic data, you can use Dynamic Segments that are filled in at request time or [prerendered](/docs/pages/building-your-application/data-fetching/get-static-paths) at build time.",
+    "preview": "When you don't know the exact segment names ahead of time and want to create routes from dynamic data, you can use Dynamic Segments that are filled in at request time or [prerendered](/docs/pages/building-your-application/data-fetching/get-static-paths) at build time.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#dynamic-routes",
+    "position": 1
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[Convention](#convention)",
+    "section_id": "convention-convention",
+    "heading_level": 2,
+    "content": "## [Convention](#convention)\n\nA Dynamic Segment can be created by wrapping a file or folder name in square brackets: `[segmentName]`. For example, `[id]` or `[slug]`.\n\nDynamic Segments can be accessed from [`useRouter`](/docs/pages/api-reference/functions/use-router).",
+    "preview": "A Dynamic Segment can be created by wrapping a file or folder name in square brackets: `[segmentName]`. For example, `[id]` or `[slug]`. Dynamic Segments can be accessed from [`useRouter`](/docs/pages/api-reference/functions/use-router).",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#convention-convention",
+    "position": 2
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[Example](#example)",
+    "section_id": "example-example",
+    "heading_level": 2,
+    "content": "## [Example](#example)\n\nFor example, a blog could include the following route `pages/blog/[slug].js` where `[slug]` is the Dynamic Segment for blog posts.\n\n```\nimport { useRouter } from 'next/router'\n \nexport default function Page() {\n  const router = useRouter()\n  return <p>Post: {router.query.slug}</p>\n}\n```\n\n| Route | Example URL | `params` |\n| --- | --- | --- |\n| `pages/blog/[slug].js` | `/blog/a` | `{ slug: 'a' }` |\n| `pages/blog/[slug].js` | `/blog/b` | `{ slug: 'b' }` |\n| `pages/blog/[slug].js` | `/blog/c` | `{ slug: 'c' }` |",
+    "preview": "For example, a blog could include the following route `pages/blog/[slug].js` where `[slug]` is the Dynamic Segment for blog posts. [Code Block] | Route | Example URL | `params` | | --- | --- | --- | | `pages/blog/[slug].js` | `/blog/a` | `{ slug: 'a' }` | | `pages/blog/[slug].js` | `/blog/b` | `{",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#example-example",
+    "position": 3
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[Catch-all Segments](#catch-all-segments)",
+    "section_id": "catch-all-segments-catch-all-segments",
+    "heading_level": 2,
+    "content": "## [Catch-all Segments](#catch-all-segments)\n\nDynamic Segments can be extended to **catch-all** subsequent segments by adding an ellipsis inside the brackets `[...segmentName]`.\n\nFor example, `pages/shop/[...slug].js` will match `/shop/clothes`, but also `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts`, and so on.\n\n| Route | Example URL | `params` |\n| --- | --- | --- |\n| `pages/shop/[...slug].js` | `/shop/a` | `{ slug: ['a'] }` |\n| `pages/shop/[...slug].js` | `/shop/a/b` | `{ slug: ['a', 'b'] }` |\n| `pages/shop/[...slug].js` | `/shop/a/b/c` | `{ slug: ['a', 'b', 'c'] }` |",
+    "preview": "Dynamic Segments can be extended to **catch-all** subsequent segments by adding an ellipsis inside the brackets `[...segmentName]`. For example, `pages/shop/[...slug].js` will match `/shop/clothes`, but also `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts`, and so on. | Route | Example URL | `p",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#catch-all-segments-catch-all-segments",
+    "position": 4
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "[Optional Catch-all Segments](#optional-catch-all-segments)",
+    "section_id": "optional-catch-all-segments-optional-catch-all-segments",
+    "heading_level": 2,
+    "content": "## [Optional Catch-all Segments](#optional-catch-all-segments)\n\nCatch-all Segments can be made **optional** by including the parameter in double square brackets: `[[...segmentName]]`.\n\nFor example, `pages/shop/[[...slug]].js` will **also** match `/shop`, in addition to `/shop/clothes`, `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts`.\n\nThe difference between **catch-all** and **optional catch-all** segments is that with optional, the route without the parameter is also matched (`/shop` in the example above).\n\n| Route | Example URL | `params` |\n| --- | --- | --- |\n| `pages/shop/[[...slug]].js` | `/shop` | `{ slug: undefined }` |\n| `pages/shop/[[...slug]].js` | `/shop/a` | `{ slug: ['a'] }` |\n| `pages/shop/[[...slug]].js` | `/shop/a/b` | `{ slug: ['a', 'b'] }` |\n| `pages/shop/[[...slug]].js` | `/shop/a/b/c` | `{ slug: ['a', 'b', 'c'] }` |",
+    "preview": "Catch-all Segments can be made **optional** by including the parameter in double square brackets: `[[...segmentName]]`. For example, `pages/shop/[[...slug]].js` will **also** match `/shop`, in addition to `/shop/clothes`, `/shop/clothes/tops`, `/shop/clothes/tops/t-shirts`. The difference between",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#optional-catch-all-segments-optional-catch-all-segments",
+    "position": 5
+  },
+  {
+    "title": "Dynamic Routes",
+    "section": "Next Steps",
+    "section_id": "next-steps",
+    "heading_level": 2,
+    "content": "## Next Steps\n\nFor more information on what to do next, we recommend the following sections\n\n[### Linking and Navigating\n\nLearn how navigation works in Next.js, and how to use the Link Component and `useRouter` hook.](/docs/pages/building-your-application/routing/linking-and-navigating)[### useRouter\n\nLearn more about the API of the Next.js Router, and access the router instance in your page with the useRouter hook.](/docs/pages/api-reference/functions/use-router)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "For more information on what to do next, we recommend the following sections [### Linking and Navigating Learn how navigation works in Next.js, and how to use the Link Component and `useRouter` hook.](/docs/pages/building-your-application/routing/linking-and-navigating)[### useRouter Learn more a",
+    "url": "https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes#next-steps",
+    "position": 6
+  }
+]

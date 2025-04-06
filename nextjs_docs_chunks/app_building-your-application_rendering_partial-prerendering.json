@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Partial Prerendering",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Rendering](/docs/app/building-your-application/rendering)Partial Prerendering",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Rendering](/docs/app/building-your-application/rendering)Partial Prerendering",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Partial Prerendering",
+    "section": "Partial Prerendering",
+    "section_id": "partial-prerendering",
+    "heading_level": 1,
+    "content": "# Partial Prerendering\n\n> **Note:** Partial Prerendering is an **experimental** feature only available on canary and is subject to change. It is not ready for production use.\n\nPartial Prerendering (PPR) enables you to combine static and dynamic components together in the same route.\n\nDuring the build, Next.js prerenders as much of the route as possible. If [dynamic](/docs/app/building-your-application/rendering/server-components#dynamic-rendering) code is detected, like reading from the incoming request, you can wrap the relevant component with a [React Suspense](https://react.dev/reference/react/Suspense) boundary. The Suspense boundary fallback will then be included in the prerendered HTML.\n\n[Image: Partially Prerendered Product Page showing static nav and product information, and dynamic cart and recommended products][Image: Partially Prerendered Product Page showing static nav and product information, and dynamic cart and recommended products]\n> **\ud83c\udfa5 Watch:** Why PPR and how it works \u2192 [YouTube (10 minutes)](https://www.youtube.com/watch?v=MTcPrTIBkpA).",
+    "preview": "> **Note:** Partial Prerendering is an **experimental** feature only available on canary and is subject to change. It is not ready for production use. Partial Prerendering (PPR) enables you to combine static and dynamic components together in the same route. During the build, Next.js prerenders as",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#partial-prerendering",
+    "position": 1
+  },
+  {
+    "title": "Partial Prerendering",
+    "section": "[Background](#background)",
+    "section_id": "background-background",
+    "heading_level": 2,
+    "content": "## [Background](#background)\n\nPPR enables your Next.js server to immediately send prerendered content.\n\nTo prevent client to server waterfalls, dynamic components begin streaming from the server in parallel while serving the initial prerender. This ensures dynamic components can begin rendering before client JavaScript has been loaded in the browser.\n\nTo prevent creating many HTTP requests for each dynamic component, PPR is able to combine the static prerender and dynamic components together into a single HTTP request. This ensures there are not multiple network roundtrips needed for each dynamic component.",
+    "preview": "PPR enables your Next.js server to immediately send prerendered content. To prevent client to server waterfalls, dynamic components begin streaming from the server in parallel while serving the initial prerender. This ensures dynamic components can begin rendering before client JavaScript has been",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#background-background",
+    "position": 2
+  },
+  {
+    "title": "Partial Prerendering",
+    "section": "[Using Partial Prerendering](#using-partial-prerendering)",
+    "section_id": "using-partial-prerendering-using-partial-prerendering",
+    "heading_level": 2,
+    "content": "## [Using Partial Prerendering](#using-partial-prerendering)",
+    "preview": "## [Using Partial Prerendering](#using-partial-prerendering)",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#using-partial-prerendering-using-partial-prerendering",
+    "position": 3
+  },
+  {
+    "title": "Partial Prerendering",
+    "section": "[Incremental Adoption (Version 15 Canary Versions)](#incremental-adoption-version-15-canary-versions)",
+    "section_id": "incremental-adoption-version-15-canary-versions-incremental-adoption-version-15-canary-versions",
+    "heading_level": 3,
+    "content": "### [Incremental Adoption (Version 15 Canary Versions)](#incremental-adoption-version-15-canary-versions)\n\nIn Next.js 15 canary versions, PPR is available as an experimental feature. It's not available in the stable versions yet. To install:\n\n```\nnpm install next@canary\n```\n\nYou can incrementally adopt Partial Prerendering in [layouts](/docs/app/building-your-application/routing/layouts-and-templates) and [pages](/docs/app/api-reference/file-conventions/page) by setting the [`ppr`](/docs/app/api-reference/config/next-config-js/ppr) option in `next.config.js` to `incremental`, and exporting the `experimental_ppr` [route config option](/docs/app/api-reference/file-conventions/route-segment-config) at the top of the file:\n\nnext.config.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { NextConfig } from 'next'\n \nconst nextConfig: NextConfig = {\n  experimental: {\n    ppr: 'incremental',\n  },\n}\n \nexport default nextConfig\n```\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Suspense } from 'react'\nimport { StaticComponent, DynamicComponent, Fallback } from '@/app/ui'\n \nexport const experimental_ppr = true\n \nexport default function Page() {\n  return (\n    <>\n      <StaticComponent />\n      <Suspense fallback={<Fallback />}>\n        <DynamicComponent />\n      </Suspense>\n    </>\n  )\n}\n```\n\n> **Good to know**:\n>\n> * Routes that don't have `experimental_ppr` will default to `false` and will not be prerendered using PPR. You need to explicitly opt-in to PPR for each route.\n> * `experimental_ppr` will apply to all children of the route segment, including nested layouts and pages. You don't have to add it to every file, only the top segment of a route.\n> * To disable PPR for children segments, you can set `experimental_ppr` to `false` in the child segment.",
+    "preview": "In Next.js 15 canary versions, PPR is available as an experimental feature. It's not available in the stable versions yet. To install: [Code Block] You can incrementally adopt Partial Prerendering in [layouts](/docs/app/building-your-application/routing/layouts-and-templates) and [pages](/docs/app",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#incremental-adoption-version-15-canary-versions-incremental-adoption-version-15-canary-versions",
+    "position": 4
+  },
+  {
+    "title": "Partial Prerendering",
+    "section": "[Dynamic Components](#dynamic-components)",
+    "section_id": "dynamic-components-dynamic-components",
+    "heading_level": 2,
+    "content": "## [Dynamic Components](#dynamic-components)\n\nWhen creating the prerender for your route during `next build`, Next.js requires that Dynamic APIs are wrapped with React Suspense. The `fallback` is then included in the prerender.\n\nFor example, using functions like `cookies` or `headers`:\n\napp/user.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { cookies } from 'next/headers'\n \nexport async function User() {\n  const session = (await cookies()).get('session')?.value\n  return '...'\n}\n```\n\nThis component requires looking at the incoming request to read cookies. To use this with PPR, you should wrap the component with Suspense:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Suspense } from 'react'\nimport { User, AvatarSkeleton } from './user'\n \nexport const experimental_ppr = true\n \nexport default function Page() {\n  return (\n    <section>\n      <h1>This will be prerendered</h1>\n      <Suspense fallback={<AvatarSkeleton />}>\n        <User />\n      </Suspense>\n    </section>\n  )\n}\n```\n\nComponents only opt into dynamic rendering when the value is accessed.\n\nFor example, if you are reading `searchParams` from a `page`, you can forward this value to another component as a prop:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Table } from './table'\n \nexport default function Page({\n  searchParams,\n}: {\n  searchParams: Promise<{ sort: string }>\n}) {\n  return (\n    <section>\n      <h1>This will be prerendered</h1>\n      <Table searchParams={searchParams} />\n    </section>\n  )\n}\n```\n\nInside of the table component, accessing the value from `searchParams` will make the component run dynamically:\n\napp/table.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport async function Table({\n  searchParams,\n}: {\n  searchParams: Promise<{ sort: string }>\n}) {\n  const sort = (await searchParams).sort === 'true'\n  return '...'\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "When creating the prerender for your route during `next build`, Next.js requires that Dynamic APIs are wrapped with React Suspense. The `fallback` is then included in the prerender. For example, using functions like `cookies` or `headers`: app/user.tsx TypeScript JavaScriptTypeScript [Code Bloc",
+    "url": "https://nextjs.org/docs/app/building-your-application/rendering/partial-prerendering#dynamic-components-dynamic-components",
+    "position": 5
+  }
+]

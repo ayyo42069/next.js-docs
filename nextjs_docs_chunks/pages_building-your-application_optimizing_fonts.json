@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Font Optimization",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Optimizing](/docs/pages/building-your-application/optimizing)Fonts",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Optimizing](/docs/pages/building-your-application/optimizing)Fonts",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Font Optimization",
+    "section": "Font Optimization",
+    "section_id": "font-optimization",
+    "heading_level": 1,
+    "content": "# Font Optimization\n\n[**`next/font`**](/docs/app/api-reference/components/font) will automatically optimize your fonts (including custom fonts) and remove external network requests for improved privacy and performance.\n\n> **\ud83c\udfa5 Watch:** Learn more about using `next/font` \u2192 [YouTube (6 minutes)](https://www.youtube.com/watch?v=L8_98i_bMMA).\n\n`next/font` includes **built-in automatic self-hosting** for *any* font file. This means you can optimally load web fonts with zero layout shift, thanks to the underlying CSS `size-adjust` property used.\n\nThis new font system also allows you to conveniently use all Google Fonts with performance and privacy in mind. CSS and font files are downloaded at build time and self-hosted with the rest of your static assets. **No requests are sent to Google by the browser.**",
+    "preview": "[**`next/font`**](/docs/app/api-reference/components/font) will automatically optimize your fonts (including custom fonts) and remove external network requests for improved privacy and performance. > **\ud83c\udfa5 Watch:** Learn more about using `next/font` \u2192 [YouTube (6 minutes)](https://www.youtube.com/wat",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#font-optimization",
+    "position": 1
+  },
+  {
+    "title": "Font Optimization",
+    "section": "[Google Fonts](#google-fonts)",
+    "section_id": "google-fonts-google-fonts",
+    "heading_level": 2,
+    "content": "## [Google Fonts](#google-fonts)\n\nAutomatically self-host any Google Font. Fonts are included in the deployment and served from the same domain as your deployment. **No requests are sent to Google by the browser.**\n\nGet started by importing the font you would like to use from `next/font/google` as a function. We recommend using [variable fonts](https://fonts.google.com/variablefonts) for the best performance and flexibility.\n\nTo use the font in all your pages, add it to [`_app.js` file](/docs/pages/building-your-application/routing/custom-app) under `/pages` as shown below:\n\npages/\\_app.js\n\n```\nimport { Inter } from 'next/font/google'\n \n// If loading a variable font, you don't need to specify the font weight\nconst inter = Inter({ subsets: ['latin'] })\n \nexport default function MyApp({ Component, pageProps }) {\n  return (\n    <main className={inter.className}>\n      <Component {...pageProps} />\n    </main>\n  )\n}\n```\n\nIf you can't use a variable font, you will **need to specify a weight**:\n\npages/\\_app.js\n\n```\nimport { Roboto } from 'next/font/google'\n \nconst roboto = Roboto({\n  weight: '400',\n  subsets: ['latin'],\n})\n \nexport default function MyApp({ Component, pageProps }) {\n  return (\n    <main className={roboto.className}>\n      <Component {...pageProps} />\n    </main>\n  )\n}\n```\n\nYou can specify multiple weights and/or styles by using an array:\n\napp/layout.js\n\n```\nconst roboto = Roboto({\n  weight: ['400', '700'],\n  style: ['normal', 'italic'],\n  subsets: ['latin'],\n  display: 'swap',\n})\n```\n\n> **Good to know**: Use an underscore (\\_) for font names with multiple words. E.g. `Roboto Mono` should be imported as `Roboto_Mono`.",
+    "preview": "Automatically self-host any Google Font. Fonts are included in the deployment and served from the same domain as your deployment. **No requests are sent to Google by the browser.** Get started by importing the font you would like to use from `next/font/google` as a function. We recommend using [var",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#google-fonts-google-fonts",
+    "position": 2
+  },
+  {
+    "title": "Font Optimization",
+    "section": "[Apply the font in `<head>`](#apply-the-font-in-head)",
+    "section_id": "apply-the-font-in-head-apply-the-font-in-head",
+    "heading_level": 3,
+    "content": "### [Apply the font in `<head>`](#apply-the-font-in-head)\n\nYou can also use the font without a wrapper and `className` by injecting it inside the `<head>` as follows:\n\npages/\\_app.js\n\n```\nimport { Inter } from 'next/font/google'\n \nconst inter = Inter({ subsets: ['latin'] })\n \nexport default function MyApp({ Component, pageProps }) {\n  return (\n    <>\n      <style jsx global>{`\n        html {\n          font-family: ${inter.style.fontFamily};\n        }\n      `}</style>\n      <Component {...pageProps} />\n    </>\n  )\n}\n```",
+    "preview": "You can also use the font without a wrapper and `className` by injecting it inside the `<head>` as follows: pages/\\_app.js ``` import { Inter } from 'next/font/google' const inter = Inter({ subsets: ['latin'] }) export default function MyApp({ Component, pageProps }) { return ( <>",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#apply-the-font-in-head-apply-the-font-in-head",
+    "position": 3
+  },
+  {
+    "title": "Font Optimization",
+    "section": "[Single page usage](#single-page-usage)",
+    "section_id": "single-page-usage-single-page-usage",
+    "heading_level": 3,
+    "content": "### [Single page usage](#single-page-usage)\n\nTo use the font on a single page, add it to the specific page as shown below:\n\npages/index.js\n\n```\nimport { Inter } from 'next/font/google'\n \nconst inter = Inter({ subsets: ['latin'] })\n \nexport default function Home() {\n  return (\n    <div className={inter.className}>\n      <p>Hello World</p>\n    </div>\n  )\n}\n```",
+    "preview": "To use the font on a single page, add it to the specific page as shown below: pages/index.js [Code Block]",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#single-page-usage-single-page-usage",
+    "position": 4
+  },
+  {
+    "title": "Font Optimization",
+    "section": "[Specifying a subset](#specifying-a-subset)",
+    "section_id": "specifying-a-subset-specifying-a-subset",
+    "heading_level": 3,
+    "content": "### [Specifying a subset](#specifying-a-subset)\n\nGoogle Fonts are automatically [subset](https://fonts.google.com/knowledge/glossary/subsetting). This reduces the size of the font file and improves performance. You'll need to define which of these subsets you want to preload. Failing to specify any subsets while [`preload`](/docs/app/api-reference/components/font#preload) is `true` will result in a warning.\n\nThis can be done by adding it to the function call:\n\npages/\\_app.js\n\n```\nconst inter = Inter({ subsets: ['latin'] })\n```\n\nView the [Font API Reference](/docs/app/api-reference/components/font) for more information.",
+    "preview": "Google Fonts are automatically [subset](https://fonts.google.com/knowledge/glossary/subsetting). This reduces the size of the font file and improves performance. You'll need to define which of these subsets you want to preload. Failing to specify any subsets while [`preload`](/docs/app/api-reference",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#specifying-a-subset-specifying-a-subset",
+    "position": 5
+  },
+  {
+    "title": "Font Optimization",
+    "section": "[Using Multiple Fonts](#using-multiple-fonts)",
+    "section_id": "using-multiple-fonts-using-multiple-fonts",
+    "heading_level": 3,
+    "content": "### [Using Multiple Fonts](#using-multiple-fonts)\n\nYou can import and use multiple fonts in your application. There are two approaches you can take.\n\nThe first approach is to create a utility function that exports a font, imports it, and applies its `className` where needed. This ensures the font is preloaded only when it's rendered:\n\napp/fonts.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Inter, Roboto_Mono } from 'next/font/google'\n \nexport const inter = Inter({\n  subsets: ['latin'],\n  display: 'swap',\n})\n \nexport const roboto_mono = Roboto_Mono({\n  subsets: ['latin'],\n  display: 'swap',\n})\n```\n\n\n\nIn the example above, `Inter` will be applied globally, and `Roboto Mono` can be imported and applied as needed.\n\nAlternatively, you can create a [CSS variable](/docs/app/api-reference/components/font#variable) and use it with your preferred CSS solution:\n\napp/global.css\n\n```\nhtml {\n  font-family: var(--font-inter);\n}\n \nh1 {\n  font-family: var(--font-roboto-mono);\n}\n```\n\nIn the example above, `Inter` will be applied globally, and any `<h1>` tags will be styled with `Roboto Mono`.\n\n> **Recommendation**: Use multiple fonts conservatively since each new font is an additional resource the client has to download.",
+    "preview": "You can import and use multiple fonts in your application. There are two approaches you can take. The first approach is to create a utility function that exports a font, imports it, and applies its `className` where needed. This ensures the font is preloaded only when it's rendered: app/fonts.ts",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#using-multiple-fonts-using-multiple-fonts",
+    "position": 6
+  },
+  {
+    "title": "Font Optimization",
+    "section": "[Local Fonts](#local-fonts)",
+    "section_id": "local-fonts-local-fonts",
+    "heading_level": 2,
+    "content": "## [Local Fonts](#local-fonts)\n\nImport `next/font/local` and specify the `src` of your local font file. We recommend using [variable fonts](https://fonts.google.com/variablefonts) for the best performance and flexibility.\n\npages/\\_app.js\n\n```\nimport localFont from 'next/font/local'\n \n// Font files can be colocated inside of `pages`\nconst myFont = localFont({ src: './my-font.woff2' })\n \nexport default function MyApp({ Component, pageProps }) {\n  return (\n    <main className={myFont.className}>\n      <Component {...pageProps} />\n    </main>\n  )\n}\n```\n\nIf you want to use multiple files for a single font family, `src` can be an array:\n\n```\nconst roboto = localFont({\n  src: [\n    {\n      path: './Roboto-Regular.woff2',\n      weight: '400',\n      style: 'normal',\n    },\n    {\n      path: './Roboto-Italic.woff2',\n      weight: '400',\n      style: 'italic',\n    },\n    {\n      path: './Roboto-Bold.woff2',\n      weight: '700',\n      style: 'normal',\n    },\n    {\n      path: './Roboto-BoldItalic.woff2',\n      weight: '700',\n      style: 'italic',\n    },\n  ],\n})\n```\n\nView the [Font API Reference](/docs/app/api-reference/components/font) for more information.",
+    "preview": "Import `next/font/local` and specify the `src` of your local font file. We recommend using [variable fonts](https://fonts.google.com/variablefonts) for the best performance and flexibility. pages/\\_app.js ``` import localFont from 'next/font/local' // Font files can be colocated inside of `pages",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#local-fonts-local-fonts",
+    "position": 7
+  },
+  {
+    "title": "Font Optimization",
+    "section": "[With Tailwind CSS](#with-tailwind-css)",
+    "section_id": "with-tailwind-css-with-tailwind-css",
+    "heading_level": 2,
+    "content": "## [With Tailwind CSS](#with-tailwind-css)\n\n`next/font` can be used with [Tailwind CSS](https://tailwindcss.com/) through a [CSS variable](/docs/app/api-reference/components/font#css-variables).\n\nIn the example below, we use the font `Inter` from `next/font/google` (you can use any font from Google or Local Fonts). Load your font with the `variable` option to define your CSS variable name and assign it to `inter`. Then, use `inter.variable` to add the CSS variable to your HTML document.\n\npages/\\_app.js\n\n```\nimport { Inter } from 'next/font/google'\n \nconst inter = Inter({\n  subsets: ['latin'],\n  variable: '--font-inter',\n})\n \nexport default function MyApp({ Component, pageProps }) {\n  return (\n    <main className={`${inter.variable} font-sans`}>\n      <Component {...pageProps} />\n    </main>\n  )\n}\n```\n\nFinally, add the CSS variable to your [Tailwind CSS config](/docs/app/building-your-application/styling/tailwind-css#configuring-tailwind):\n\ntailwind.config.js\n\n```\n/** @type {import('tailwindcss').Config} */\nmodule.exports = {\n  content: [\n    './pages/**/*.{js,ts,jsx,tsx}',\n    './components/**/*.{js,ts,jsx,tsx}',\n    './app/**/*.{js,ts,jsx,tsx}',\n  ],\n  theme: {\n    extend: {\n      fontFamily: {\n        sans: ['var(--font-inter)'],\n        mono: ['var(--font-roboto-mono)'],\n      },\n    },\n  },\n  plugins: [],\n}\n```\n\nYou can now use the `font-sans` and `font-mono` utility classes to apply the font to your elements.",
+    "preview": "`next/font` can be used with [Tailwind CSS](https://tailwindcss.com/) through a [CSS variable](/docs/app/api-reference/components/font#css-variables). In the example below, we use the font `Inter` from `next/font/google` (you can use any font from Google or Local Fonts). Load your font with the `va",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#with-tailwind-css-with-tailwind-css",
+    "position": 8
+  },
+  {
+    "title": "Font Optimization",
+    "section": "[Preloading](#preloading)",
+    "section_id": "preloading-preloading",
+    "heading_level": 2,
+    "content": "## [Preloading](#preloading)\n\nWhen a font function is called on a page of your site, it is not globally available and preloaded on all routes. Rather, the font is only preloaded on the related route/s based on the type of file where it is used:\n\n* if it's a [unique page](/docs/pages/building-your-application/routing/pages-and-layouts), it is preloaded on the unique route for that page\n* if it's in the [custom App](/docs/pages/building-your-application/routing/custom-app), it is preloaded on all the routes of the site under `/pages`",
+    "preview": "When a font function is called on a page of your site, it is not globally available and preloaded on all routes. Rather, the font is only preloaded on the related route/s based on the type of file where it is used: * if it's a [unique page](/docs/pages/building-your-application/routing/pages-and-la",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#preloading-preloading",
+    "position": 9
+  },
+  {
+    "title": "Font Optimization",
+    "section": "[Reusing fonts](#reusing-fonts)",
+    "section_id": "reusing-fonts-reusing-fonts",
+    "heading_level": 2,
+    "content": "## [Reusing fonts](#reusing-fonts)\n\nEvery time you call the `localFont` or Google font function, that font is hosted as one instance in your application. Therefore, if you load the same font function in multiple files, multiple instances of the same font are hosted. In this situation, it is recommended to do the following:\n\n* Call the font loader function in one shared file\n* Export it as a constant\n* Import the constant in each file where you would like to use this font\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Every time you call the `localFont` or Google font function, that font is hosted as one instance in your application. Therefore, if you load the same font function in multiple files, multiple instances of the same font are hosted. In this situation, it is recommended to do the following: * Call the",
+    "url": "https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#reusing-fonts-reusing-fonts",
+    "position": 10
+  }
+]

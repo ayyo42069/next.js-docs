@@ -1,0 +1,122 @@
+[
+  {
+    "title": "How to update data",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[App Router](/docs/app)[Getting Started](/docs/app/getting-started)Updating Data",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [App Router](/docs/app)[Getting Started](/docs/app/getting-started)Updating Data",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "How to update data",
+    "section": "How to update data",
+    "section_id": "how-to-update-data",
+    "heading_level": 1,
+    "content": "# How to update data\n\nYou can update data in Next.js using React's [Server Functions](https://react.dev/reference/rsc/server-functions). This page will go through how you can [create](#creating-server-functions) and [invoke](#invoking-server-functions) Server Functions.",
+    "preview": "You can update data in Next.js using React's [Server Functions](https://react.dev/reference/rsc/server-functions). This page will go through how you can [create](#creating-server-functions) and [invoke](#invoking-server-functions) Server Functions.",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#how-to-update-data",
+    "position": 1
+  },
+  {
+    "title": "How to update data",
+    "section": "[Creating Server Functions](#creating-server-functions)",
+    "section_id": "creating-server-functions-creating-server-functions",
+    "heading_level": 2,
+    "content": "## [Creating Server Functions](#creating-server-functions)\n\nA Server Function can be defined by using the [`use server`](https://react.dev/reference/rsc/use-server) directive. You can place the directive at the top of an **asynchronous** function to mark the function as a Server Function, or at the top of a separate file to mark all exports of that file. We recommend using a separate file in most instances.\n\napp/lib/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nexport async function createPost(formData: FormData) {}\n \nexport async function deletePost(formData: FormData) {}\n```",
+    "preview": "A Server Function can be defined by using the [`use server`](https://react.dev/reference/rsc/use-server) directive. You can place the directive at the top of an **asynchronous** function to mark the function as a Server Function, or at the top of a separate file to mark all exports of that file. We",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#creating-server-functions-creating-server-functions",
+    "position": 2
+  },
+  {
+    "title": "How to update data",
+    "section": "[Server Components](#server-components)",
+    "section_id": "server-components-server-components",
+    "heading_level": 3,
+    "content": "### [Server Components](#server-components)\n\nServer Functions can be inlined in Server Components by adding the `\"use server\"` directive to the top of the function body:\n\napp/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Page() {\n  // Server Action\n  async function createPost() {\n    'use server'\n    // Update data\n    // ...\n  }\n \n  return <></>\n}\n```",
+    "preview": "Server Functions can be inlined in Server Components by adding the `\"use server\"` directive to the top of the function body: app/page.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#server-components-server-components",
+    "position": 3
+  },
+  {
+    "title": "How to update data",
+    "section": "[Client Components](#client-components)",
+    "section_id": "client-components-client-components",
+    "heading_level": 3,
+    "content": "### [Client Components](#client-components)\n\nIt's not possible to define Server Functions in Client Components. However, you can invoke them in Client Components by importing them from a file that has the `\"use server\"` directive at the top of it:\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nexport async function createPost() {}\n```\n\napp/ui/button.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { createPost } from '@/app/actions'\n \nexport function Button() {\n  return <button formAction={createPost}>Create</button>\n}\n```",
+    "preview": "It's not possible to define Server Functions in Client Components. However, you can invoke them in Client Components by importing them from a file that has the `\"use server\"` directive at the top of it: app/actions.ts TypeScript JavaScriptTypeScript [Code Block] app/ui/button.tsx TypeScript J",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#client-components-client-components",
+    "position": 4
+  },
+  {
+    "title": "How to update data",
+    "section": "[Invoking Server Functions](#invoking-server-functions)",
+    "section_id": "invoking-server-functions-invoking-server-functions",
+    "heading_level": 2,
+    "content": "## [Invoking Server Functions](#invoking-server-functions)\n\nThere are two main ways you can invoke a Server Function:\n\n1. [Forms](#forms) in Server and Client Components\n2. [Event Handlers](#event-handlers) in Client Components",
+    "preview": "There are two main ways you can invoke a Server Function: 1. [Forms](#forms) in Server and Client Components 2. [Event Handlers](#event-handlers) in Client Components",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#invoking-server-functions-invoking-server-functions",
+    "position": 5
+  },
+  {
+    "title": "How to update data",
+    "section": "[Forms](#forms)",
+    "section_id": "forms-forms",
+    "heading_level": 3,
+    "content": "### [Forms](#forms)\n\nReact extends the HTML [`<form>`](https://react.dev/reference/react-dom/components/form) element to allow Server Function to be invoked with the HTML `action` prop.\n\nWhen invoked in a form, the function automatically receives the [`FormData`](https://developer.mozilla.org/docs/Web/API/FormData/FormData) object. You can extract the data using the native [`FormData` methods](https://developer.mozilla.org/en-US/docs/Web/API/FormData#instance_methods):\n\napp/ui/form.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { createPost } from '@/app/actions'\n \nexport function Form() {\n  return (\n    <form action={createPost}>\n      <input type=\"text\" name=\"title\" />\n      <input type=\"text\" name=\"content\" />\n      <button type=\"submit\">Create</button>\n    </form>\n  )\n}\n```\n\napp/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nexport async function createPost(formData: FormData) {\n  const title = formData.get('title')\n  const content = formData.get('content')\n \n  // Update data\n  // Revalidate cache\n}\n```\n\n> **Good to know:** When passed to the `action` prop, Server Functions are also known as *Server Actions*.",
+    "preview": "React extends the HTML [`<form>`](https://react.dev/reference/react-dom/components/form) element to allow Server Function to be invoked with the HTML `action` prop. When invoked in a form, the function automatically receives the [`FormData`](https://developer.mozilla.org/docs/Web/API/FormData/FormD",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#forms-forms",
+    "position": 6
+  },
+  {
+    "title": "How to update data",
+    "section": "[Event Handlers](#event-handlers)",
+    "section_id": "event-handlers-event-handlers",
+    "heading_level": 3,
+    "content": "### [Event Handlers](#event-handlers)\n\nYou can invoke a Server Function in a Client Component by using event handlers such as `onClick`.\n\napp/like-button.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { incrementLike } from './actions'\nimport { useState } from 'react'\n \nexport default function LikeButton({ initialLikes }: { initialLikes: number }) {\n  const [likes, setLikes] = useState(initialLikes)\n \n  return (\n    <>\n      <p>Total Likes: {likes}</p>\n      <button\n        onClick={async () => {\n          const updatedLikes = await incrementLike()\n          setLikes(updatedLikes)\n        }}\n      >\n        Like\n      </button>\n    </>\n  )\n}\n```",
+    "preview": "You can invoke a Server Function in a Client Component by using event handlers such as `onClick`. app/like-button.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#event-handlers-event-handlers",
+    "position": 7
+  },
+  {
+    "title": "How to update data",
+    "section": "[Showing a pending state](#showing-a-pending-state)",
+    "section_id": "showing-a-pending-state-showing-a-pending-state",
+    "heading_level": 3,
+    "content": "### [Showing a pending state](#showing-a-pending-state)\n\nWhile executing a Server Function, you can show a loading indicator with React's [`useActionState`](https://react.dev/reference/react/useActionState) hook. This hook returns a `pending` boolean:\n\napp/ui/button.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use client'\n \nimport { useActionState } from 'react'\nimport { createPost } from '@/app/actions'\nimport { LoadingSpinner } from '@/app/ui/loading-spinner'\n \nexport function Button() {\n  const [state, action, pending] = useActionState(createPost, false)\n \n  return (\n    <button onClick={async () => action()}>\n      {pending ? <LoadingSpinner /> : 'Create Post'}\n    </button>\n  )\n}\n```",
+    "preview": "While executing a Server Function, you can show a loading indicator with React's [`useActionState`](https://react.dev/reference/react/useActionState) hook. This hook returns a `pending` boolean: app/ui/button.tsx TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#showing-a-pending-state-showing-a-pending-state",
+    "position": 8
+  },
+  {
+    "title": "How to update data",
+    "section": "[Revalidating the cache](#revalidating-the-cache)",
+    "section_id": "revalidating-the-cache-revalidating-the-cache",
+    "heading_level": 3,
+    "content": "### [Revalidating the cache](#revalidating-the-cache)\n\nAfter performing an update, you can revalidate the Next.js cache and show the updated data by calling [`revalidatePath`](/docs/app/api-reference/functions/revalidatePath) or [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag) within the Server Function:\n\napp/lib/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { revalidatePath } from 'next/cache'\n \nexport async function createPost(formData: FormData) {\n  // Update data\n  // ...\n \n  revalidatePath('/posts')\n}\n```",
+    "preview": "After performing an update, you can revalidate the Next.js cache and show the updated data by calling [`revalidatePath`](/docs/app/api-reference/functions/revalidatePath) or [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag) within the Server Function: app/lib/actions.ts TypeScript",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#revalidating-the-cache-revalidating-the-cache",
+    "position": 9
+  },
+  {
+    "title": "How to update data",
+    "section": "[Redirecting](#redirecting)",
+    "section_id": "redirecting-redirecting",
+    "heading_level": 3,
+    "content": "### [Redirecting](#redirecting)\n\nYou may want to redirect the user to a different page after performing an update. You can do this by calling [`redirect`](/docs/app/api-reference/functions/redirect) within the Server Function:\n\napp/lib/actions.ts\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\n'use server'\n \nimport { redirect } from 'next/navigation'\n \nexport async function createPost(formData: FormData) {\n  // Update data\n  // ...\n \n  redirect('/posts')\n}\n```",
+    "preview": "You may want to redirect the user to a different page after performing an update. You can do this by calling [`redirect`](/docs/app/api-reference/functions/redirect) within the Server Function: app/lib/actions.ts TypeScript JavaScriptTypeScript [Code Block]",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#redirecting-redirecting",
+    "position": 10
+  },
+  {
+    "title": "How to update data",
+    "section": "API Reference",
+    "section_id": "api-reference",
+    "heading_level": 2,
+    "content": "## API Reference\n\nLearn more about the features mentioned in this page by reading the API Reference.\n\n[### revalidatePath\n\nAPI Reference for the revalidatePath function.](/docs/app/api-reference/functions/revalidatePath)[### revalidateTag\n\nAPI Reference for the revalidateTag function.](/docs/app/api-reference/functions/revalidateTag)[### redirect\n\nAPI Reference for the redirect function.](/docs/app/api-reference/functions/redirect)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Learn more about the features mentioned in this page by reading the API Reference. [### revalidatePath API Reference for the revalidatePath function.](/docs/app/api-reference/functions/revalidatePath)[### revalidateTag API Reference for the revalidateTag function.](/docs/app/api-reference/functio",
+    "url": "https://nextjs.org/docs/app/getting-started/updating-data#api-reference",
+    "position": 11
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "title": "How to upgrade to Next.js Canary",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/app/building-your-application)[Upgrading](/docs/app/building-your-application/upgrading)Canary",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/app/building-your-application)[Upgrading](/docs/app/building-your-application/upgrading)Canary",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/canary#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "How to upgrade to Next.js Canary",
+    "section": "How to upgrade to Next.js Canary",
+    "section_id": "how-to-upgrade-to-next-js-canary",
+    "heading_level": 1,
+    "content": "# How to upgrade to Next.js Canary\n\nThe Next.js canary channel is updated daily with the latest experimental features and bug fixes. It's a great way to try out new features and [give feedback](https://github.com/vercel/next.js/issues) before they are released in a stable version.\n\nTo upgrade to canary, make sure you're on the latest version of Next.js and everything is working as expected. See the [upgrade guides](/docs/app/building-your-application/upgrading) for more information.\n\nThen, run the following command:\n\nTerminal\n\n```\nnpm i next@canary",
+    "preview": "The Next.js canary channel is updated daily with the latest experimental features and bug fixes. It's a great way to try out new features and [give feedback](https://github.com/vercel/next.js/issues) before they are released in a stable version. To upgrade to canary, make sure you're on the latest",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/canary#how-to-upgrade-to-next-js-canary",
+    "position": 1
+  },
+  {
+    "title": "How to upgrade to Next.js Canary",
+    "section": "or",
+    "section_id": "or",
+    "heading_level": 1,
+    "content": "# or\nyarn add next@canary",
+    "preview": "yarn add next@canary",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/canary#or",
+    "position": 2
+  },
+  {
+    "title": "How to upgrade to Next.js Canary",
+    "section": "or",
+    "section_id": "or",
+    "heading_level": 1,
+    "content": "# or\npnpm i next@canary\n```",
+    "preview": "pnpm i next@canary ```",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/canary#or",
+    "position": 3
+  },
+  {
+    "title": "How to upgrade to Next.js Canary",
+    "section": "[Features available in canary](#features-available-in-canary)",
+    "section_id": "features-available-in-canary-features-available-in-canary",
+    "heading_level": 2,
+    "content": "## [Features available in canary](#features-available-in-canary)\n\nThe following features are currently available in canary:\n\n**Caching**:\n\n* [`\"use cache\"`](/docs/app/api-reference/directives/use-cache)\n* [`cacheLife`](/docs/app/api-reference/functions/cacheLife)\n* [`cacheTag`](/docs/app/api-reference/functions/cacheTag)\n* [`dynamicIO`](/docs/app/api-reference/config/next-config-js/dynamicIO)\n\n**Authentication**:\n\n* [`forbidden`](/docs/app/api-reference/functions/forbidden)\n* [`unauthorized`](/docs/app/api-reference/functions/unauthorized)\n* [`forbidden.js`](/docs/app/api-reference/file-conventions/forbidden)\n* [`unauthorized.js`](/docs/app/api-reference/file-conventions/unauthorized)\n* [`authInterrupts`](/docs/app/api-reference/config/next-config-js/authInterrupts)\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The following features are currently available in canary: **Caching**: * [`\"use cache\"`](/docs/app/api-reference/directives/use-cache) * [`cacheLife`](/docs/app/api-reference/functions/cacheLife) * [`cacheTag`](/docs/app/api-reference/functions/cacheTag) * [`dynamicIO`](/docs/app/api-reference/con",
+    "url": "https://nextjs.org/docs/app/building-your-application/upgrading/canary#features-available-in-canary-features-available-in-canary",
+    "position": 4
+  }
+]

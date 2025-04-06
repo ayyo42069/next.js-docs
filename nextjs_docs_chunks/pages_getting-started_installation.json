@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Create a new Next.js application",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Pages Router](/docs/pages)[Getting Started](/docs/pages/getting-started)Installation",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Pages Router](/docs/pages)[Getting Started](/docs/pages/getting-started)Installation",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Create a new Next.js application",
+    "section": "Create a new Next.js application",
+    "section_id": "create-a-new-next-js-application",
+    "heading_level": 1,
+    "content": "# Create a new Next.js application",
+    "preview": "# Create a new Next.js application",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#create-a-new-next-js-application",
+    "position": 1
+  },
+  {
+    "title": "Create a new Next.js application",
+    "section": "[System requirements](#system-requirements)",
+    "section_id": "system-requirements-system-requirements",
+    "heading_level": 2,
+    "content": "## [System requirements](#system-requirements)\n\n* [Node.js 18.18](https://nodejs.org/) or later.\n* macOS, Windows (including WSL), and Linux are supported.",
+    "preview": "* [Node.js 18.18](https://nodejs.org/) or later. * macOS, Windows (including WSL), and Linux are supported.",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#system-requirements-system-requirements",
+    "position": 2
+  },
+  {
+    "title": "Create a new Next.js application",
+    "section": "[Automatic installation](#automatic-installation)",
+    "section_id": "automatic-installation-automatic-installation",
+    "heading_level": 2,
+    "content": "## [Automatic installation](#automatic-installation)\n\nWe recommend starting a new Next.js app using [`create-next-app`](/docs/app/api-reference/cli/create-next-app), which sets up everything automatically for you. To create a project, run:\n\nTerminal\n\n```\nnpx create-next-app@latest\n```\n\nOn installation, you'll see the following prompts:\n\nTerminal\n\n```\nWhat is your project named? my-app\nWould you like to use TypeScript? No / Yes\nWould you like to use ESLint? No / Yes\nWould you like to use Tailwind CSS? No / Yes\nWould you like your code inside a `src/` directory? No / Yes\nWould you like to use App Router? (recommended) No / Yes\nWould you like to use Turbopack for `next dev`?  No / Yes\nWould you like to customize the import alias (`@/*` by default)? No / Yes\nWhat import alias would you like configured? @/*\n```\n\nAfter the prompts, [`create-next-app`](/docs/app/api-reference/cli/create-next-app) will create a folder with your project name and install the required dependencies.",
+    "preview": "We recommend starting a new Next.js app using [`create-next-app`](/docs/app/api-reference/cli/create-next-app), which sets up everything automatically for you. To create a project, run: Terminal [Code Block] On installation, you'll see the following prompts: Terminal ``` What is your project na",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#automatic-installation-automatic-installation",
+    "position": 3
+  },
+  {
+    "title": "Create a new Next.js application",
+    "section": "[Manual installation](#manual-installation)",
+    "section_id": "manual-installation-manual-installation",
+    "heading_level": 2,
+    "content": "## [Manual installation](#manual-installation)\n\nTo manually create a new Next.js app, install the required packages:\n\nTerminal\n\n```\nnpm install next@latest react@latest react-dom@latest\n```\n\nOpen your `package.json` file and add the following `scripts`:\n\npackage.json\n\n```\n{\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"lint\": \"next lint\"\n  }\n}\n```\n\nThese scripts refer to the different stages of developing an application:\n\n* `dev`: runs [`next dev`](/docs/app/api-reference/cli/next#next-dev-options) to start Next.js in development mode.\n* `build`: runs [`next build`](/docs/app/api-reference/cli/next#next-build-options) to build the application for production usage.\n* `start`: runs [`next start`](/docs/app/api-reference/cli/next#next-start-options) to start a Next.js production server.\n* `lint`: runs [`next lint`](/docs/app/api-reference/cli/next#next-lint-options) to set up Next.js' built-in ESLint configuration.",
+    "preview": "To manually create a new Next.js app, install the required packages: Terminal [Code Block] Open your `package.json` file and add the following `scripts`: package.json [Code Block] These scripts refer to the different stages of developing an application: * `dev`: runs [`next dev`](/docs/app/ap",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#manual-installation-manual-installation",
+    "position": 4
+  },
+  {
+    "title": "Create a new Next.js application",
+    "section": "[Create the `pages` directory](#create-the-pages-directory)",
+    "section_id": "create-the-pages-directory-create-the-pages-directory",
+    "heading_level": 3,
+    "content": "### [Create the `pages` directory](#create-the-pages-directory)\n\nNext.js uses file-system routing, which means the routes in your application are determined by how you structure your files.\n\nCreate a `pages` directory at the root of your project. Then, add an `index.tsx` file inside your `pages` folder. This will be your home page (`/`):\n\npages/index.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nexport default function Page() {\n  return <h1>Hello, Next.js!</h1>\n}\n```\n\nNext, add an `_app.tsx` file inside `pages/` to define the global layout. Learn more about the [custom App file](/docs/pages/building-your-application/routing/custom-app).\n\npages/\\_app.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport type { AppProps } from 'next/app'\n \nexport default function App({ Component, pageProps }: AppProps) {\n  return <Component {...pageProps} />\n}\n```\n\nFinally, add a `_document.tsx` file inside `pages/` to control the initial response from the server. Learn more about the [custom Document file](/docs/pages/building-your-application/routing/custom-document).\n\npages/\\_document.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport { Html, Head, Main, NextScript } from 'next/document'\n \nexport default function Document() {\n  return (\n    <Html>\n      <Head />\n      <body>\n        <Main />\n        <NextScript />\n      </body>\n    </Html>\n  )\n}\n```",
+    "preview": "Next.js uses file-system routing, which means the routes in your application are determined by how you structure your files. Create a `pages` directory at the root of your project. Then, add an `index.tsx` file inside your `pages` folder. This will be your home page (`/`): pages/index.tsx TypeScr",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#create-the-pages-directory-create-the-pages-directory",
+    "position": 5
+  },
+  {
+    "title": "Create a new Next.js application",
+    "section": "[Create the `public` folder (optional)](#create-the-public-folder-optional)",
+    "section_id": "create-the-public-folder-optional-create-the-public-folder-optional",
+    "heading_level": 3,
+    "content": "### [Create the `public` folder (optional)](#create-the-public-folder-optional)\n\nYou can optionally create a [`public` folder](/docs/app/building-your-application/optimizing/static-assets) at the root of your project to store static assets such as images, fonts, etc. Files inside `public` can then be referenced by your code starting from the base URL (`/`).",
+    "preview": "You can optionally create a [`public` folder](/docs/app/building-your-application/optimizing/static-assets) at the root of your project to store static assets such as images, fonts, etc. Files inside `public` can then be referenced by your code starting from the base URL (`/`).",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#create-the-public-folder-optional-create-the-public-folder-optional",
+    "position": 6
+  },
+  {
+    "title": "Create a new Next.js application",
+    "section": "[Run the development server](#run-the-development-server)",
+    "section_id": "run-the-development-server-run-the-development-server",
+    "heading_level": 2,
+    "content": "## [Run the development server](#run-the-development-server)\n\n1. Run `npm run dev` to start the development server.\n2. Visit `http://localhost:3000` to view your application.\n3. Edit the `pages/index.tsx` file and save it to see the updated result in your browser.",
+    "preview": "1. Run `npm run dev` to start the development server. 2. Visit `http://localhost:3000` to view your application. 3. Edit the `pages/index.tsx` file and save it to see the updated result in your browser.",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#run-the-development-server-run-the-development-server",
+    "position": 7
+  },
+  {
+    "title": "Create a new Next.js application",
+    "section": "[Set up TypeScript](#set-up-typescript)",
+    "section_id": "set-up-typescript-set-up-typescript",
+    "heading_level": 2,
+    "content": "## [Set up TypeScript](#set-up-typescript)\n\n> Minimum TypeScript version: `v4.5.2`\n\nNext.js comes with built-in TypeScript support. To add TypeScript to your project, rename a file to `.ts` / `.tsx`. Run `next dev`, Next.js will automatically install the necessary dependencies and add a `tsconfig.json` file with the recommended config options.\n\nSee the [TypeScript configuration](/docs/app/api-reference/config/next-config-js/typescript) page for more information on how to use TypeScript in your project.",
+    "preview": "> Minimum TypeScript version: `v4.5.2` Next.js comes with built-in TypeScript support. To add TypeScript to your project, rename a file to `.ts` / `.tsx`. Run `next dev`, Next.js will automatically install the necessary dependencies and add a `tsconfig.json` file with the recommended config options",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#set-up-typescript-set-up-typescript",
+    "position": 8
+  },
+  {
+    "title": "Create a new Next.js application",
+    "section": "[Set up ESLint](#set-up-eslint)",
+    "section_id": "set-up-eslint-set-up-eslint",
+    "heading_level": 2,
+    "content": "## [Set up ESLint](#set-up-eslint)\n\nNext.js comes with built-in ESLint, automatically installing the necessary packages and configuring the proper settings when you create a new project with `create-next-app`.\n\nTo add ESLint to an existing project, add `next lint` as a script to `package.json`:\n\npackage.json\n\n```\n{\n  \"scripts\": {\n    \"lint\": \"next lint\"\n  }\n}\n```\n\nThen, run `npm run lint` and you will be guided through the installation and configuration process.\n\nTerminal\n\n```\nnpm run lint\n```\n\nYou'll see a prompt like this:\n\n> ? How would you like to configure ESLint?\n>\n> \u276f Strict (recommended)  \n> Base  \n> Cancel\n\n* **Strict**: Includes Next.js' base ESLint configuration along with a stricter Core Web Vitals rule-set. This is the recommended configuration for developers setting up ESLint for the first time.\n* **Base**: Includes Next.js' base ESLint configuration.\n* **Cancel**: Does not include any ESLint configuration. Only select this option if you plan on setting up your own custom ESLint configuration.\n\nIf either of the two configuration options are selected, Next.js will automatically install `eslint` and `eslint-config-next` as dependencies in your application and create an `.eslintrc.json` file in the root of your project that includes your selected configuration.\n\nYou can now run `next lint` every time you want to run ESLint to catch errors. Once ESLint has been set up, it will also automatically run during every build (`next build`). Errors will fail the build, while warnings will not.\n\nSee the [ESLint Plugin](/docs/app/api-reference/config/next-config-js/eslint) page for more information on how to configure ESLint in your project.",
+    "preview": "Next.js comes with built-in ESLint, automatically installing the necessary packages and configuring the proper settings when you create a new project with `create-next-app`. To add ESLint to an existing project, add `next lint` as a script to `package.json`: package.json [Code Block] Then, run `",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#set-up-eslint-set-up-eslint",
+    "position": 9
+  },
+  {
+    "title": "Create a new Next.js application",
+    "section": "[Set up Absolute Imports and Module Path Aliases](#set-up-absolute-imports-and-module-path-aliases)",
+    "section_id": "set-up-absolute-imports-and-module-path-aliases-set-up-absolute-imports-and-module-path-aliases",
+    "heading_level": 2,
+    "content": "## [Set up Absolute Imports and Module Path Aliases](#set-up-absolute-imports-and-module-path-aliases)\n\nNext.js has in-built support for the `\"paths\"` and `\"baseUrl\"` options of `tsconfig.json` and `jsconfig.json` files. These options allow you to alias project directories to absolute paths, making it easier to import modules. For example:\n\n```\n// Before\nimport { Button } from '../../../components/button'\n \n// After\nimport { Button } from '@/components/button'\n```\n\nTo configure absolute imports, add the `baseUrl` configuration option to your `tsconfig.json` or `jsconfig.json` file. For example:\n\ntsconfig.json or jsconfig.json\n\n```\n{\n  \"compilerOptions\": {\n    \"baseUrl\": \"src/\"\n  }\n}\n```\n\nIn addition to configuring the `baseUrl` path, you can use the `\"paths\"` option to `\"alias\"` module paths.\n\nFor example, the following configuration maps `@/components/*` to `components/*`:\n\ntsconfig.json or jsconfig.json\n\n```\n{\n  \"compilerOptions\": {\n    \"baseUrl\": \"src/\",\n    \"paths\": {\n      \"@/styles/*\": [\"styles/*\"],\n      \"@/components/*\": [\"components/*\"]\n    }\n  }\n}\n```\n\nEach of the `\"paths\"` are relative to the `baseUrl` location. For example:\n\nsrc/app/page.tsx\n\nTypeScript\n\nJavaScriptTypeScript\n\n```\nimport Button from '@/components/button'\nimport '@/styles/styles.css'\n \nexport default function HomePage() {\n  return (\n    <div>\n      <h1>Hello World</h1>\n      <Button />\n    </div>\n  )\n}\n```\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "Next.js has in-built support for the `\"paths\"` and `\"baseUrl\"` options of `tsconfig.json` and `jsconfig.json` files. These options allow you to alias project directories to absolute paths, making it easier to import modules. For example: [Code Block] To configure absolute imports, add the `baseUrl",
+    "url": "https://nextjs.org/docs/pages/getting-started/installation#set-up-absolute-imports-and-module-path-aliases-set-up-absolute-imports-and-module-path-aliases",
+    "position": 10
+  }
+]

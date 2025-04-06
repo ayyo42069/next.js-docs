@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Multi-Zones",
+    "section": "Untitled Section",
+    "section_id": "untitled-section",
+    "heading_level": 3,
+    "content": "Menu\n\nUsing App Router\n\nFeatures available in /app\n\nUsing Latest Version\n\n15.2.4\n\n[Building Your Application](/docs/pages/building-your-application)[Deploying](/docs/pages/building-your-application/deploying)Multi-Zones",
+    "preview": "Menu Using App Router Features available in /app Using Latest Version 15.2.4 [Building Your Application](/docs/pages/building-your-application)[Deploying](/docs/pages/building-your-application/deploying)Multi-Zones",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/multi-zones#untitled-section",
+    "position": 0
+  },
+  {
+    "title": "Multi-Zones",
+    "section": "Multi-Zones",
+    "section_id": "multi-zones",
+    "heading_level": 1,
+    "content": "# Multi-Zones\n\nExamples\n\n* [With Zones](https://github.com/vercel/next.js/tree/canary/examples/with-zones)\n\nMulti-Zones are an approach to micro-frontends that separate a large application on a domain into smaller Next.js applications that each serve a set of paths. This is useful when there are collections of pages unrelated to the other pages in the application. By moving those pages to a separate zone (i.e., a separate application), you can reduce the size of each application which improves build times and removes code that is only necessary for one of the zones. Since applications are decoupled, Multi-Zones also allows other applications on the domain to use their own choice of framework.\n\nFor example, let's say you have the following set of pages that you would like to split up:\n\n* `/blog/*` for all blog posts\n* `/dashboard/*` for all pages when the user is logged-in to the dashboard\n* `/*` for the rest of your website not covered by other zones\n\nWith Multi-Zones support, you can create three applications that all are served on the same domain and look the same to the user, but you can develop and deploy each of the applications independently.\n\n[Image: Three zones: A, B, C. Showing a hard navigation between routes from different zones, and soft navigations between routes within the same zone.][Image: Three zones: A, B, C. Showing a hard navigation between routes from different zones, and soft navigations between routes within the same zone.]\n\nNavigating between pages in the same zone will perform soft navigations, a navigation that does not require reloading the page. For example, in this diagram, navigating from `/` to `/products` will be a soft navigation.\n\nNavigating from a page in one zone to a page in another zone, such as from `/` to `/dashboard`, will perform a hard navigation, unloading the resources of the current page and loading the resources of the new page. Pages that are frequently visited together should live in the same zone to avoid hard navigations.",
+    "preview": "Examples * [With Zones](https://github.com/vercel/next.js/tree/canary/examples/with-zones) Multi-Zones are an approach to micro-frontends that separate a large application on a domain into smaller Next.js applications that each serve a set of paths. This is useful when there are collections of pag",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/multi-zones#multi-zones",
+    "position": 1
+  },
+  {
+    "title": "Multi-Zones",
+    "section": "[How to define a zone](#how-to-define-a-zone)",
+    "section_id": "how-to-define-a-zone-how-to-define-a-zone",
+    "heading_level": 2,
+    "content": "## [How to define a zone](#how-to-define-a-zone)\n\nA zone is a normal Next.js application where you also configure an [assetPrefix](/docs/app/api-reference/config/next-config-js/assetPrefix) to avoid conflicts with pages and static files in other zones.\n\nnext.config.js\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  assetPrefix: '/blog-static',\n}\n```\n\nNext.js assets, such as JavaScript and CSS, will be prefixed with `assetPrefix` to make sure that they don't conflict with assets from other zones. These assets will be served under `/assetPrefix/_next/...` for each of the zones.\n\nThe default application handling all paths not routed to another more specific zone does not need an `assetPrefix`.\n\nIn versions older than Next.js 15, you may also need an additional rewrite to handle the static assets. This is no longer necessary in Next.js 15.\n\nnext.config.js\n\n```\n/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  assetPrefix: '/blog-static',\n  async rewrites() {\n    return {\n      beforeFiles: [\n        {\n          source: '/blog-static/_next/:path+',\n          destination: '/_next/:path+',\n        },\n      ],\n    }\n  },\n}\n```",
+    "preview": "A zone is a normal Next.js application where you also configure an [assetPrefix](/docs/app/api-reference/config/next-config-js/assetPrefix) to avoid conflicts with pages and static files in other zones. next.config.js [Code Block] Next.js assets, such as JavaScript and CSS, will be prefixed with",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/multi-zones#how-to-define-a-zone-how-to-define-a-zone",
+    "position": 2
+  },
+  {
+    "title": "Multi-Zones",
+    "section": "[How to route requests to the right zone](#how-to-route-requests-to-the-right-zone)",
+    "section_id": "how-to-route-requests-to-the-right-zone-how-to-route-requests-to-the-right-zone",
+    "heading_level": 2,
+    "content": "## [How to route requests to the right zone](#how-to-route-requests-to-the-right-zone)\n\nWith the Multi Zones set-up, you need to route the paths to the correct zone since they are served by different applications. You can use any HTTP proxy to do this, but one of the Next.js applications can also be used to route requests for the entire domain.\n\nTo route to the correct zone using a Next.js application, you can use [`rewrites`](/docs/app/api-reference/config/next-config-js/rewrites). For each path served by a different zone, you would add a rewrite rule to send that path to the domain of the other zone. For example:\n\nnext.config.js\n\n```\nasync rewrites() {\n    return [\n        {\n            source: '/blog',\n            destination: `${process.env.BLOG_DOMAIN}/blog`,\n        },\n        {\n            source: '/blog/:path+',\n            destination: `${process.env.BLOG_DOMAIN}/blog/:path+`,\n        }\n    ];\n}\n```\n\n`destination` should be a URL that is served by the zone, including scheme and domain. This should point to the zone's production domain, but it can also be used to route requests to `localhost` in local development.\n\n> **Good to know**: URL paths should be unique to a zone. For example, two zones trying to serve `/blog` would create a routing conflict.",
+    "preview": "With the Multi Zones set-up, you need to route the paths to the correct zone since they are served by different applications. You can use any HTTP proxy to do this, but one of the Next.js applications can also be used to route requests for the entire domain. To route to the correct zone using a Nex",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/multi-zones#how-to-route-requests-to-the-right-zone-how-to-route-requests-to-the-right-zone",
+    "position": 3
+  },
+  {
+    "title": "Multi-Zones",
+    "section": "[Routing requests using middleware](#routing-requests-using-middleware)",
+    "section_id": "routing-requests-using-middleware-routing-requests-using-middleware",
+    "heading_level": 3,
+    "content": "### [Routing requests using middleware](#routing-requests-using-middleware)\n\nRouting requests through [`rewrites`](/docs/app/api-reference/config/next-config-js/rewrites) is recommended to minimize latency overhead for the requests, but middleware can also be used when there is a need for a dynamic decision when routing. For example, if you are using a feature flag to decide where a path should be routed such as during a migration, you can use middleware.\n\nmiddleware.js\n\n```\nexport async function middleware(request) {\n  const { pathname, search } = req.nextUrl;\n  if (pathname === '/your-path' && myFeatureFlag.isEnabled()) {\n    return NextResponse.rewrite(`${rewriteDomain}${pathname}${search});\n  }\n}\n```",
+    "preview": "Routing requests through [`rewrites`](/docs/app/api-reference/config/next-config-js/rewrites) is recommended to minimize latency overhead for the requests, but middleware can also be used when there is a need for a dynamic decision when routing. For example, if you are using a feature flag to decide",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/multi-zones#routing-requests-using-middleware-routing-requests-using-middleware",
+    "position": 4
+  },
+  {
+    "title": "Multi-Zones",
+    "section": "[Linking between zones](#linking-between-zones)",
+    "section_id": "linking-between-zones-linking-between-zones",
+    "heading_level": 2,
+    "content": "## [Linking between zones](#linking-between-zones)\n\nLinks to paths in a different zone should use an `a` tag instead of the Next.js [`<Link>`](/docs/pages/api-reference/components/link) component. This is because Next.js will try to prefetch and soft navigate to any relative path in `<Link>` component, which will not work across zones.",
+    "preview": "Links to paths in a different zone should use an `a` tag instead of the Next.js [`<Link>`](/docs/pages/api-reference/components/link) component. This is because Next.js will try to prefetch and soft navigate to any relative path in `<Link>` component, which will not work across zones.",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/multi-zones#linking-between-zones-linking-between-zones",
+    "position": 5
+  },
+  {
+    "title": "Multi-Zones",
+    "section": "[Sharing code](#sharing-code)",
+    "section_id": "sharing-code-sharing-code",
+    "heading_level": 2,
+    "content": "## [Sharing code](#sharing-code)\n\nThe Next.js applications that make up the different zones can live in any repository. However, it is often convenient to put these zones in a [monorepo](https://en.wikipedia.org/wiki/Monorepo) to more easily share code. For zones that live in different repositories, code can also be shared using public or private NPM packages.\n\nSince the pages in different zones may be released at different times, feature flags can be useful for enabling or disabling features in unison across the different zones.\n\nFor [Next.js on Vercel](https://vercel.com?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) applications, you can use a [monorepo](https://vercel.com/blog/monorepos-are-changing-how-teams-build-software?utm_source=next-site&utm_medium=docs&utm_campaign=next-website) to deploy all affected zones with a single `git push`.\n\nWas this helpful?\n\nsupported.\n\nSend",
+    "preview": "The Next.js applications that make up the different zones can live in any repository. However, it is often convenient to put these zones in a [monorepo](https://en.wikipedia.org/wiki/Monorepo) to more easily share code. For zones that live in different repositories, code can also be shared using pub",
+    "url": "https://nextjs.org/docs/pages/building-your-application/deploying/multi-zones#sharing-code-sharing-code",
+    "position": 6
+  }
+]
